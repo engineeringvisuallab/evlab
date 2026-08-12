@@ -1,0 +1,2309 @@
+{
+  "water-supply-engineer": {
+    "id": "water-supply-engineer",
+    "name": "Water Supply Engineer",
+    "description": "Engineers who plan, design, and supervise water distribution systems and treatment facilities.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design water pipe networks and pumping stations",
+      "Perform hydraulic simulation and network optimization",
+      "Ensure compliance with drinking water quality standards",
+      "Coordinate with municipal authorities and EPC contractors"
+    ],
+    "tags": [
+      "Civil Engineering",
+      "Water Resources",
+      "Design"
+    ]
+  },
+  "hydraulic-modelling-engineer": {
+    "id": "hydraulic-modelling-engineer",
+    "name": "Hydraulic Modelling Specialist",
+    "description": "Specialists focused on numerical modeling of pressurized water networks, surges, and storm water drainage.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Calibrate hydraulic models against field flow/pressure measurements",
+      "Simulate transient pressure surges (water hammer)",
+      "Analyze extended period simulations and water age"
+    ],
+    "tags": [
+      "Modelling",
+      "Simulation",
+      "Hydraulics"
+    ]
+  },
+  "network-design-engineer": {
+    "id": "network-design-engineer",
+    "name": "Network Design Engineer",
+    "description": "Focuses on spatial alignment, pipe material selection, and CAD/BIM drafting for utility distribution.",
+    "demand": "Medium Demand",
+    "responsibilities": [
+      "Prepare utility alignment drawings and crossing details",
+      "Perform quantity takeoff and cost estimation"
+    ],
+    "tags": [
+      "CAD",
+      "Design",
+      "Utilities"
+    ]
+  },
+  "rc-design-engineer": {
+    "id": "rc-design-engineer",
+    "name": "Reinforced Concrete Structural Design Engineer",
+    "description": "Specialized structural engineer designing reinforced concrete beams, columns, slabs, shear walls, and foundation systems.",
+    "demand": "Very High Demand",
+    "responsibilities": [
+      "Perform RC section flexure, shear, and torsion capacity calculations",
+      "Design ductile frame detailing for earthquake resistance per ACI 318 / BNBC",
+      "Generate bar bending schedules (BBS) and structural CAD/BIM rebar drawings",
+      "Conduct structural health monitoring and FRP strengthening assessments"
+    ],
+    "tags": [
+      "RC Design",
+      "Concrete Structures",
+      "ACI 318",
+      "BNBC",
+      "Rebar Detailing"
+    ]
+  },
+  "structural-engineer": {
+    "id": "structural-engineer",
+    "name": "Structural Design Engineer",
+    "description": "Engineers responsible for analyzing, designing, and detailing building structures and infrastructure frames.",
+    "demand": "Very High Demand",
+    "responsibilities": [
+      "Perform 3D structural analysis in ETABS, STAAD.Pro, or SAP2000",
+      "Design RC beams, columns, shear walls, and foundations per code",
+      "Prepare structural calculations and sign off on design documents",
+      "Coordinate with architectural, MEP, and site construction teams"
+    ],
+    "tags": [
+      "Structural Engineering",
+      "ETABS",
+      "RC Design",
+      "Code Compliance"
+    ]
+  },
+  "structural-analyst": {
+    "id": "structural-analyst",
+    "name": "Structural Analysis & FEA Specialist",
+    "description": "Advanced structural specialist performing non-linear finite element modeling, dynamic dynamic response analysis, and stability checks.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Perform dynamic modal analysis and time-history earthquake simulation",
+      "Evaluate non-linear material behavior and progressive collapse risks",
+      "Provide expert analysis reports for high-rise and complex infrastructure"
+    ],
+    "tags": [
+      "FEA",
+      "Finite Element",
+      "Nonlinear Analysis",
+      "Dynamics"
+    ]
+  },
+  "steel-design-engineer": {
+    "id": "steel-design-engineer",
+    "name": "Steel Structure Design Engineer",
+    "description": "Engineers specializing in heavy industrial steel buildings, trusses, portal frames, and complex bolted/welded connections.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design structural steel framing per AISC 360 / Eurocode 3",
+      "Design moment, shear, and base plate steel connections",
+      "Review Tekla steel shop drawings and fabrication models"
+    ],
+    "tags": [
+      "Steel Design",
+      "AISC 360",
+      "Connections",
+      "Industrial Structures"
+    ]
+  },
+  "seismic-design-engineer": {
+    "id": "seismic-design-engineer",
+    "name": "Seismic & Earthquake Engineering Specialist",
+    "description": "Engineers specializing in earthquake-resistant design, response spectrum procedures, base isolation, and damper systems.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Evaluate site-specific seismic hazard criteria",
+      "Design lateral force resisting systems (LFRS) with high ductility",
+      "Conduct pushover analysis and performance-based seismic design"
+    ],
+    "tags": [
+      "Seismic Engineering",
+      "Pushover Analysis",
+      "Base Isolation"
+    ]
+  },
+  "structural-bim-engineer": {
+    "id": "structural-bim-engineer",
+    "name": "Structural BIM & Detailing Engineer",
+    "description": "Engineers building 3D parametric BIM models, generating rebar schedules, and performing clash detection in Revit and Tekla.",
+    "demand": "Very High Demand",
+    "responsibilities": [
+      "Develop 3D structural BIM models in Revit and Tekla Structures",
+      "Extract structural construction drawings and bar bending schedules (BBS)",
+      "Perform multi-disciplinary clash detection with MEP and Architecture"
+    ],
+    "tags": [
+      "BIM",
+      "Revit",
+      "Tekla",
+      "Clash Detection",
+      "Rebar Detailing"
+    ]
+  },
+  "bridge-structural-engineer": {
+    "id": "bridge-structural-engineer",
+    "name": "Bridge Structural Design Engineer",
+    "description": "Engineers designing highway and railway bridge superstructures, piers, abutments, and deep pile foundations.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Model bridge decks, prestressed girders, and piers in MIDAS Civil / SAP2000",
+      "Analyze moving traffic loads, wind dynamics, and temperature effects",
+      "Design deep pile foundations and elastomeric bearing pads"
+    ],
+    "tags": [
+      "Bridge Design",
+      "MIDAS Civil",
+      "Prestressed Concrete",
+      "Piles"
+    ]
+  },
+  "geotechnical-engineer": {
+    "id": "geotechnical-engineer",
+    "name": "Geotechnical Engineer",
+    "description": "Professional engineer responsible for evaluating earth materials, designing foundations, slopes, and retaining systems.",
+    "demand": "Very High Demand",
+    "responsibilities": [
+      "Plan and supervise geotechnical subsurface investigations",
+      "Interpret SPT, CPT, and lab test results to derive design soil parameters",
+      "Design shallow footings, deep pile foundations, and retaining walls",
+      "Prepare geotechnical investigation and design reports"
+    ],
+    "tags": [
+      "Geotechnical Engineering",
+      "Foundations",
+      "Soil Mechanics",
+      "Site Investigation"
+    ]
+  },
+  "foundation-engineer": {
+    "id": "foundation-engineer",
+    "name": "Foundation Design Engineer",
+    "description": "Specialist engineer focused on structural and geotechnical design of shallow mats, deep bored/driven piles, and caissons.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Calculate ultimate and allowable bearing capacity of soils and rocks",
+      "Analyze pile axial friction, end bearing, and lateral load response",
+      "Model mat foundations on elastomeric subgrade springs in SAFE",
+      "Interpret pile load testing and wave equation pile driving analysis"
+    ],
+    "tags": [
+      "Foundation Design",
+      "Pile Capacity",
+      "Mat Foundations",
+      "SAFE"
+    ]
+  },
+  "geotechnical-investigation-engineer": {
+    "id": "geotechnical-investigation-engineer",
+    "name": "Geotechnical Site Investigation Engineer",
+    "description": "Field specialist supervising borehole drilling, in-situ soil testing, piezometer installations, and sample logging.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Manage drilling rigs, CPT trucks, and field sampling teams",
+      "Execute Standard Penetration Tests (SPT) and vane shear tests",
+      "Prepare borehole stratigraphy logs and undisturbed sampling records",
+      "Maintain quality assurance for field testing and sample transfer"
+    ],
+    "tags": [
+      "Site Investigation",
+      "Borehole Drilling",
+      "SPT",
+      "CPT",
+      "Field Supervisor"
+    ]
+  },
+  "geotechnical-fem-engineer": {
+    "id": "geotechnical-fem-engineer",
+    "name": "Geotechnical Finite Element (FEA) Specialist",
+    "description": "Advanced specialist modeling non-linear soil-structure interaction, staged excavations, and tunneling in PLAXIS and GTS NX.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Build 2D and 3D finite element numerical meshes in PLAXIS and MIDAS GTS NX",
+      "Calibrate constitutive soil models (Hardening Soil, Soft Soil Creep)",
+      "Analyze ground movement, pore pressure dissipation, and tunnel lining forces",
+      "Provide numerical safety checks for complex urban mega-projects"
+    ],
+    "tags": [
+      "PLAXIS",
+      "Geotechnical FEA",
+      "Numerical Modeling",
+      "Excavations"
+    ]
+  },
+  "slope-stability-engineer": {
+    "id": "slope-stability-engineer",
+    "name": "Slope Stability & Landslide Remediation Specialist",
+    "description": "Specialist in analyzing natural/cut slopes, landslide hazards, and designing soil nailing, anchors, and slope drainage.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Perform limit equilibrium slope stability analysis in SLOPE/W and Slide2",
+      "Design soil nail walls, ground tieback anchors, and rock catch fences",
+      "Evaluate seismic pseudo-static slope stability and rainfall-induced seepage",
+      "Inspect emergency landslide sites and specify stabilization repairs"
+    ],
+    "tags": [
+      "Slope Stability",
+      "Landslides",
+      "GeoStudio",
+      "Soil Nailing"
+    ]
+  },
+  "forensic-geotechnical-engineer": {
+    "id": "forensic-geotechnical-engineer",
+    "name": "Forensic Geotechnical Engineer",
+    "description": "Expert investigator analyzing foundation distress, slope failures, ground distress, and providing expert testimony.",
+    "demand": "Medium Demand",
+    "responsibilities": [
+      "Investigate building cracks, excessive differential settlement, and foundation failures",
+      "Conduct post-failure subsurface sampling and back-analysis",
+      "Determine root cause of geotechnical distress and recommend underpinning",
+      "Author expert technical reports for legal and insurance arbitration"
+    ],
+    "tags": [
+      "Forensic Engineering",
+      "Failure Analysis",
+      "Settlement",
+      "Underpinning"
+    ]
+  },
+  "transportation-engineer": {
+    "id": "transportation-engineer",
+    "name": "Transportation Infrastructure Engineer",
+    "description": "Generalist professional planning, designing, and operating multi-modal transportation networks, roadways, and public transit infrastructure.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Develop feasibility studies for urban transportation projects",
+      "Design roadway alignments, intersections, and drainage systems",
+      "Perform traffic capacity evaluations and signal optimization",
+      "Coordinate multi-disciplinary transport infrastructure projects"
+    ],
+    "tags": [
+      "Transportation",
+      "Highways",
+      "Traffic",
+      "Infrastructure",
+      "Planning"
+    ]
+  },
+  "traffic-engineer": {
+    "id": "traffic-engineer",
+    "name": "Traffic & Operations Engineer",
+    "description": "Specialist in analyzing traffic flow, signal timing, intersection capacity, and traffic control devices to reduce congestion and improve safety.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct peak hour turning movement counts and speed surveys",
+      "Optimize traffic signal timing and signal coordination in Synchro",
+      "Perform intersection capacity analysis according to HCM guidelines",
+      "Design traffic sign, signal, and pavement marking plans"
+    ],
+    "tags": [
+      "Traffic Engineering",
+      "Synchro",
+      "Signal Timing",
+      "HCM",
+      "LOS"
+    ]
+  },
+  "highway-design-engineer": {
+    "id": "highway-design-engineer",
+    "name": "Highway Geometric Design Engineer",
+    "description": "Engineers specializing in 3D horizontal/vertical corridor modeling, cross-section design, interchanges, and earthworks in Civil 3D/OpenRoads.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design 3D highway alignments, vertical curves, and superelevation diagrams",
+      "Create parametric corridor assemblies and target surfaces in Civil 3D",
+      "Calculate earthwork mass-haul balances and construction quantities",
+      "Ensure alignment compliance with AASHTO Green Book standards"
+    ],
+    "tags": [
+      "Highway Design",
+      "Civil 3D",
+      "OpenRoads",
+      "Alignment",
+      "AASHTO"
+    ]
+  },
+  "transportation-planner": {
+    "id": "transportation-planner",
+    "name": "Transportation Planner",
+    "description": "Professional modeling regional mobility demand, transit-oriented development (TOD), origin-destination trends, and long-range transport policies.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Calibrate 4-step regional travel demand forecasting models in TransCAD/Visum",
+      "Analyze socio-economic growth impacts on transport corridors",
+      "Develop Transit-Oriented Development (TOD) station master plans",
+      "Evaluate multi-modal transport policy and capital allocation programs"
+    ],
+    "tags": [
+      "Transport Planning",
+      "TransCAD",
+      "Visum",
+      "4-Step Model",
+      "TOD"
+    ]
+  },
+  "traffic-modeling-engineer": {
+    "id": "traffic-modeling-engineer",
+    "name": "Traffic Simulation & Modeling Engineer",
+    "description": "Specialist building microscopic and macroscopic traffic simulation models to evaluate complex junctions, freeways, and transit networks.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Develop microscopic simulation networks in PTV Vissim and Aimsun",
+      "Calibrate driver behavior car-following parameters against field counts",
+      "Simulate weaving sections, toll plazas, and transit priority lanes",
+      "Present 3D traffic simulation visualizations to stakeholders"
+    ],
+    "tags": [
+      "Vissim",
+      "Traffic Simulation",
+      "Aimsun",
+      "Microscopic",
+      "Car Following"
+    ]
+  },
+  "pavement-engineer": {
+    "id": "pavement-engineer",
+    "name": "Pavement Structural Design Engineer",
+    "description": "Materials and structural engineer designing flexible asphalt and rigid concrete pavement layer thicknesses and managing roadway assets.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Calculate 20-year cumulative design traffic ESALs",
+      "Design flexible and rigid pavement structural layer thicknesses (AASHTO / MEPDG)",
+      "Analyze FWD non-destructive deflection data for structural capacity",
+      "Specify Superpave asphalt mixes and concrete pavement joint details"
+    ],
+    "tags": [
+      "Pavement Design",
+      "AASHTO",
+      "ESAL",
+      "Superpave",
+      "PCI"
+    ]
+  },
+  "railway-engineer": {
+    "id": "railway-engineer",
+    "name": "Railway Track & Infrastructure Engineer",
+    "description": "Specialist in heavy-rail and urban rail track alignment geometry, turnout design, slab track systems, and trackbed stability.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design 3D track horizontal alignments, cant, and transition curves in OpenRail",
+      "Select rail profiles, sleepers, fastenings, and turnout geometries",
+      "Analyze trackbed subgrade stresses and ballast thickness requirements",
+      "Verify structural clearance envelopes against AREMA standards"
+    ],
+    "tags": [
+      "Railway Engineering",
+      "OpenRail",
+      "Track Geometry",
+      "Cant",
+      "AREMA"
+    ]
+  },
+  "airport-engineer": {
+    "id": "airport-engineer",
+    "name": "Airport Airside Infrastructure Engineer",
+    "description": "Specialist designing runway geometric alignments, taxiway safety fillets, airfield pavements, and apron parking layouts.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Perform wind rose analysis for optimal runway orientation",
+      "Design runway length, taxiway geometry, and safety areas to FAA standards",
+      "Calculate airfield flexible/rigid pavement thickness using FAARFIELD",
+      "Layout terminal gate stand geometry and aircraft apron taxilanes"
+    ],
+    "tags": [
+      "Airport Design",
+      "Runway Design",
+      "FAA",
+      "FAARFIELD",
+      "ACN-PCN"
+    ]
+  },
+  "transit-planning-engineer": {
+    "id": "transit-planning-engineer",
+    "name": "Public Transit & BRT Systems Engineer",
+    "description": "Specialist planning Bus Rapid Transit (BRT) networks, metro feeder lines, route timetabling, station design, and transit operations.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design dedicated BRT busway corridors and median platform stations",
+      "Calculate route headways, run times, and bus fleet requirements",
+      "Optimize transit signal priority (TSP) timing at signalized junctions",
+      "Evaluate transit system capacity and passenger level of service"
+    ],
+    "tags": [
+      "Transit Planning",
+      "BRT",
+      "Bus Operations",
+      "Headway",
+      "TSP"
+    ]
+  },
+  "traffic-simulation-engineer": {
+    "id": "traffic-simulation-engineer",
+    "name": "Macroscopic & Microscopic Traffic Simulation Specialist",
+    "description": "Advanced engineer executing regional macroscopic assignment and microscopic bottleneck simulation for mega-infrastructure projects.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Construct multi-modal macroscopic traffic assignment models in Visum",
+      "Perform microscopic congestion analysis for complex freeway interchanges",
+      "Evaluate traffic mitigation scenarios for bridge and tunnel approaches",
+      "Validate simulation models against real-time probe speed datasets"
+    ],
+    "tags": [
+      "Visum",
+      "Vissim",
+      "Traffic Assignment",
+      "Interchanges"
+    ]
+  },
+  "transportation-gis-engineer": {
+    "id": "transportation-gis-engineer",
+    "name": "Transport Spatial Data & GIS Specialist",
+    "description": "GIS professional building transport network graphs, running spatial accessibility modeling, and managing highway asset databases.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Build vector transportation network datasets in ArcGIS Network Analyst",
+      "Model travel time isochrone accessibility zones for urban transit",
+      "Process GPS probe vehicle and cellular origin-destination location data",
+      "Develop web GIS dashboards for highway asset maintenance tracking"
+    ],
+    "tags": [
+      "Transport GIS",
+      "ArcGIS",
+      "QGIS",
+      "Isochrone",
+      "Network Analyst"
+    ]
+  },
+  "road-safety-engineer": {
+    "id": "road-safety-engineer",
+    "name": "Road Safety Auditor & Collision Specialist",
+    "description": "Safety specialist conducting formal road safety audits, crash blackspot statistical analysis, and forgiving roadside safety design.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct Stage 1 to Stage 4 formal Road Safety Audits (RSA)",
+      "Analyze crash collision databases and identify high-frequency blackspots",
+      "Design speed management countermeasures and forgiving roadside barriers",
+      "Author safety audit compliance reports for transportation agencies"
+    ],
+    "tags": [
+      "Road Safety Audit",
+      "Crash Analytics",
+      "Blackspot",
+      "RSA",
+      "HSM"
+    ]
+  },
+  "transportation-data-analyst": {
+    "id": "transportation-data-analyst",
+    "name": "Transportation Mobility Data Analyst",
+    "description": "Data scientist/engineer analyzing big mobility data, cellular origin-destination matrix data, and smart city traffic sensors.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Clean and process large probe GPS, Bluetooth, and cellular travel datasets",
+      "Extract origin-destination matrices and travel time delay metrics",
+      "Develop predictive traffic congestion algorithms using Python/R",
+      "Visualize mobility trends for smart city traffic management centers"
+    ],
+    "tags": [
+      "Mobility Data",
+      "Data Analytics",
+      "Python",
+      "OD Matrix",
+      "Smart City"
+    ]
+  },
+  "its-engineer": {
+    "id": "its-engineer",
+    "name": "Intelligent Transportation Systems (ITS) Engineer",
+    "description": "Specialist designing advanced traffic management systems (ATMS), SCATS/SCOOT adaptive signals, CCTV surveillance, and CAV V2X systems.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design traffic management center (TMC) system architecture",
+      "Deploy adaptive signal control systems (SCATS / SCOOT / InSync)",
+      "Specify CCTV surveillance, loop detector, and Variable Message Sign networks",
+      "Prepare infrastructure specifications for Connected & Autonomous Vehicles (V2X)"
+    ],
+    "tags": [
+      "ITS",
+      "ATMS",
+      "Adaptive Signals",
+      "SCATS",
+      "V2X"
+    ]
+  },
+  "water-resources-engineer": {
+    "id": "water-resources-engineer",
+    "name": "Water Resources Engineer",
+    "description": "Specialist who plans, analyzes, and manages river basins, water supply yield, climate impacts, and integrated water resources systems.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct river basin water balance and yield reliability studies",
+      "Develop integrated water resources management (IWRM) plans",
+      "Analyze climate change impacts on rainfall and drought resilience",
+      "Coordinate multi-sectoral water allocation models"
+    ],
+    "tags": [
+      "Water Resources",
+      "IWRM",
+      "Hydrology",
+      "Water Balance"
+    ]
+  },
+  "hydrologist": {
+    "id": "hydrologist",
+    "name": "Hydrologist & Hydrologic Modeler",
+    "description": "Engineering scientist specializing in rainfall-runoff processes, flood hydrograph forecasting, and hydrologic statistical modeling.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Delineate catchments and calculate rainfall-runoff parameters",
+      "Develop and calibrate HEC-HMS and rainfall-runoff models",
+      "Perform extreme rainfall frequency and IDF curve analysis",
+      "Provide flood hydrograph inputs for bridge and dam hydraulics"
+    ],
+    "tags": [
+      "Hydrologist",
+      "HEC-HMS",
+      "Rainfall Runoff",
+      "IDF Curves"
+    ]
+  },
+  "flood-modeling-engineer": {
+    "id": "flood-modeling-engineer",
+    "name": "Flood Risk & 1D/2D Hydrodynamic Modeling Engineer",
+    "description": "Engineers dedicated to 1D and 2D flood inundation modeling, floodplain mapping, and designing flood mitigation infrastructure.",
+    "demand": "Very High Demand",
+    "responsibilities": [
+      "Build 1D/2D hydraulic flood models using HEC-RAS or MIKE 21",
+      "Prepare hazard and risk flood maps for government authorities",
+      "Evaluate flood wall, levee, and retention pond performance",
+      "Develop real-time flood forecasting and early warning systems"
+    ],
+    "tags": [
+      "Flood Modeling",
+      "HEC-RAS 2D",
+      "Flood Mapping",
+      "Hydrodynamics"
+    ]
+  },
+  "river-engineer": {
+    "id": "river-engineer",
+    "name": "River & Morphological Design Engineer",
+    "description": "Engineer specializing in river hydraulics, channel morphology, bank erosion control, sediment transport, and river dredging.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design river training structures, revetments, and spur dikes",
+      "Analyze sediment transport rates and scour at bridge piers",
+      "Plan river dredging channels and bank stabilization works",
+      "Assess river channel meandering and erosion risks"
+    ],
+    "tags": [
+      "River Engineer",
+      "Scour Analysis",
+      "Bank Protection",
+      "Sediment Transport"
+    ]
+  },
+  "water-treatment-engineer": {
+    "id": "water-treatment-engineer",
+    "name": "Water Treatment Process Engineer",
+    "description": "Process engineer who designs drinking water treatment plants (WTP), membrane systems, and chemical dosing facilities.",
+    "demand": "Very High Demand",
+    "responsibilities": [
+      "Perform chemical dosing calculations and jar testing protocols",
+      "Design clarifiers, rapid sand filters, and membrane filtration",
+      "Develop hydraulic profile across WTP treatment trains",
+      "Specify chemical dosing pumps and chlorination systems"
+    ],
+    "tags": [
+      "WTP Engineer",
+      "Water Treatment",
+      "Process Design",
+      "Filtration"
+    ]
+  },
+  "wastewater-engineer": {
+    "id": "wastewater-engineer",
+    "name": "Wastewater Treatment & Process Engineer",
+    "description": "Specialist in biological wastewater treatment (WWTP), activated sludge, biological nutrient removal, and sludge processing.",
+    "demand": "Very High Demand",
+    "responsibilities": [
+      "Size aeration basins, oxygenation capacity, and RAS/WAS rates",
+      "Design secondary clarifiers and nutrient removal systems",
+      "Specify anaerobic digesters and mechanical sludge dewatering",
+      "Ensure treated effluent meets environmental discharge limits"
+    ],
+    "tags": [
+      "WWTP Engineer",
+      "Wastewater Process",
+      "Activated Sludge",
+      "BOD Removal"
+    ]
+  },
+  "drainage-engineer": {
+    "id": "drainage-engineer",
+    "name": "Urban Stormwater & Drainage Engineer",
+    "description": "Engineer designing urban drainage networks, detention ponds, box culverts, and green stormwater infrastructure (SUDS).",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Size urban storm sewer pipes, gutters, and curb inlets",
+      "Model stormwater runoff networks using EPA SWMM",
+      "Design stormwater detention basins and culvert structures",
+      "Implement Sustainable Drainage Systems (SUDS/LID)"
+    ],
+    "tags": [
+      "Drainage Engineer",
+      "Stormwater",
+      "SWMM",
+      "SUDS",
+      "Culverts"
+    ]
+  },
+  "irrigation-engineer": {
+    "id": "irrigation-engineer",
+    "name": "Irrigation & Agricultural Water Engineer",
+    "description": "Engineer who plans and designs canal distribution networks, crop water scheduling, pressurized drip systems, and drainage.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Calculate crop water requirements and duty/delta parameters",
+      "Design gravity irrigation canal networks and cross-regulators",
+      "Layout pressurized drip and sprinkler irrigation piping",
+      "Design agricultural land subsurface drainage systems"
+    ],
+    "tags": [
+      "Irrigation Engineer",
+      "Canal Design",
+      "Drip Irrigation",
+      "Crop Water"
+    ]
+  },
+  "groundwater-engineer": {
+    "id": "groundwater-engineer",
+    "name": "Groundwater & Hydrogeological Engineer",
+    "description": "Hydrogeologist specializing in groundwater extraction, tubewell design, aquifer yield analysis, and MODFLOW numerical modeling.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Analyze pumping test data to calculate aquifer parameters",
+      "Develop 3D groundwater flow and transport models in MODFLOW",
+      "Design deep tubewells and gravel pack specifications",
+      "Assess saline intrusion and managed aquifer recharge (MAR)"
+    ],
+    "tags": [
+      "Groundwater Engineer",
+      "MODFLOW",
+      "Tubewell Design",
+      "Hydrogeology"
+    ]
+  },
+  "smart-water-engineer": {
+    "id": "smart-water-engineer",
+    "name": "Smart Water & Network Telemetry Specialist",
+    "description": "Engineer combining water network hydraulics with SCADA telemetry, IoT pressure sensors, and digital twin analytics for leak detection.",
+    "demand": "Very High Demand",
+    "responsibilities": [
+      "Design District Metered Areas (DMAs) and install PRVs",
+      "Integrate real-time IoT pressure/flow telemetry with SCADA",
+      "Calibrate online water network digital twins",
+      "Analyze real-time data for non-revenue water (NRW) leak detection"
+    ],
+    "tags": [
+      "Smart Water",
+      "Digital Twin",
+      "SCADA",
+      "Leak Detection",
+      "DMA"
+    ]
+  },
+  "water-quality-engineer": {
+    "id": "water-quality-engineer",
+    "name": "Water Quality Engineer",
+    "description": "Specialist focused on physicochemical/microbiological testing, source water protection, water quality modeling, and environmental compliance.",
+    "demand": "Very High",
+    "responsibilities": [
+      "Perform physicochemical and microbiological water testing and analysis",
+      "Model dissolved oxygen sag and nutrient transport in river systems",
+      "Design source water protection zones and catchment management plans",
+      "Ensure compliance with drinking water and industrial effluent standards"
+    ],
+    "tags": [
+      "Water Quality",
+      "Environmental Engineering",
+      "WHO Standards",
+      "Pollution Control"
+    ]
+  },
+  "environmental-engineer": {
+    "id": "environmental-engineer",
+    "name": "Environmental Engineer",
+    "description": "Engineers who apply scientific and engineering principles to protect human health, reduce environmental pollution, and design sustainable control systems.",
+    "demand": "Very High",
+    "responsibilities": [
+      "Design pollution control systems for air, water, soil, and solid waste",
+      "Conduct environmental impact assessments (EIA) and regulatory compliance audits",
+      "Perform field sampling and atmospheric dispersion or contaminant transport modelling",
+      "Prepare Environmental Management Plans (EMP) for industrial and infrastructure projects"
+    ],
+    "tags": [
+      "Environmental Engineering",
+      "Pollution Control",
+      "EIA",
+      "Sustainability"
+    ]
+  },
+  "sanitary-engineer": {
+    "id": "sanitary-engineer",
+    "name": "Sanitary Engineer",
+    "description": "Specialists in public health engineering, municipal sanitation, fecal sludge management (FSM), and hygienic waste management systems.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design municipal and institutional sanitation facilities and service chains",
+      "Engineering fecal sludge treatment plants (FSTP) and septage management systems",
+      "Plan non-sewered sanitation (NSS) and public hygiene infrastructure",
+      "Collaborate with urban authorities on city-wide inclusive sanitation (CWIS)"
+    ],
+    "tags": [
+      "Sanitary Engineering",
+      "Fecal Sludge",
+      "Public Health",
+      "Sanitation"
+    ]
+  },
+  "air-quality-engineer": {
+    "id": "air-quality-engineer",
+    "name": "Air Quality Engineer",
+    "description": "Engineers specializing in air pollution measurement, stack emission testing, atmospheric dispersion modeling, and air filtration system design.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Execute atmospheric dispersion modeling using AERMOD and CALPUFF",
+      "Design industrial air pollution control equipment (cyclones, baghouse filters, scrubbers)",
+      "Manage continuous ambient air monitoring stations (CAMS)",
+      "Prepare industrial emissions inventories and greenhouse gas accounting"
+    ],
+    "tags": [
+      "Air Quality",
+      "AERMOD",
+      "Emissions",
+      "Air Pollution Control"
+    ]
+  },
+  "solid-waste-engineer": {
+    "id": "solid-waste-engineer",
+    "name": "Solid Waste & Landfill Engineer",
+    "description": "Engineers who plan solid waste management systems, material recovery facilities (MRF), waste-to-energy plants, and sanitary landfills.",
+    "demand": "Very High",
+    "responsibilities": [
+      "Design composite geomembrane liners, leachate collection, and landfill gas extraction",
+      "Optimize municipal solid waste collection logistics and transfer station networks",
+      "Design organic waste composting and anaerobic digestion facilities",
+      "Oversee landfill post-closure environmental monitoring and gas flaring"
+    ],
+    "tags": [
+      "Solid Waste",
+      "Landfill Engineering",
+      "Leachate Treatment",
+      "Recycling"
+    ]
+  },
+  "eia-environmental-consultant": {
+    "id": "eia-environmental-consultant",
+    "name": "EIA & Environmental Compliance Specialist",
+    "description": "Consultants who conduct environmental baseline studies, predict environmental impacts, and guide projects through regulatory clearance.",
+    "demand": "Very High",
+    "responsibilities": [
+      "Lead Environmental Impact Assessment (EIA) and Strategic Environmental Assessment (SEA) studies",
+      "Draft Environmental Management Plans (EMP) and monitoring protocols",
+      "Coordinate public stakeholder consultations and regulatory submissions to DoE",
+      "Audit industrial plants for ISO 14001 compliance and environmental performance"
+    ],
+    "tags": [
+      "EIA Specialist",
+      "Compliance",
+      "Environmental Clearance",
+      "EMP"
+    ]
+  },
+  "environmental-monitoring-specialist": {
+    "id": "environmental-monitoring-specialist",
+    "name": "Environmental Monitoring & QA/QC Specialist",
+    "description": "Specialists focused on multi-media environmental field sampling, analytical testing, and environmental data quality control.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design environmental field sampling networks for air, surface/groundwater, soil, and noise",
+      "Operate analytical instrumentation (GC-MS, AAS, spectrophotometers)",
+      "Maintain strict sample chain of custody and laboratory QA/QC protocols",
+      "Analyze environmental monitoring data against national and international standards"
+    ],
+    "tags": [
+      "Environmental Monitoring",
+      "Sampling",
+      "QAQC",
+      "Laboratory Analysis"
+    ]
+  },
+  "remediation-engineer": {
+    "id": "remediation-engineer",
+    "name": "Remediation & Contaminated Site Engineer",
+    "description": "Engineers who investigate brownfields, contaminated soils, and groundwater plumes, and design in-situ/ex-situ cleanup systems.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct Phase I and Phase II Environmental Site Assessments (ESA)",
+      "Delineate soil contamination and LNAPL/DNAPL groundwater plumes",
+      "Design remediation systems (Pump & Treat, Soil Vapor Extraction, ISCO, Bioremediation)",
+      "Monitor remediation progress until regulatory site closure clearance"
+    ],
+    "tags": [
+      "Remediation",
+      "Contaminated Sites",
+      "Soil Cleanup",
+      "Phase II ESA"
+    ]
+  },
+  "sustainability-lca-engineer": {
+    "id": "sustainability-lca-engineer",
+    "name": "Sustainability & Life Cycle Assessment (LCA) Engineer",
+    "description": "Engineers who model environmental life cycle impacts, carbon footprints, circular economy systems, and corporate ESG metrics.",
+    "demand": "Very High",
+    "responsibilities": [
+      "Perform Life Cycle Assessments (LCA) according to ISO 14040/14044 using openLCA or SimaPro",
+      "Quantify Scope 1, 2, and 3 corporate greenhouse gas (GHG) carbon footprints",
+      "Design circular material flow strategies and eco-industrial symbiosis",
+      "Prepare Environmental Product Declarations (EPD) and ESG sustainability reports"
+    ],
+    "tags": [
+      "Sustainability",
+      "LCA",
+      "Carbon Footprint",
+      "Circular Economy"
+    ]
+  },
+  "construction-manager": {
+    "id": "construction-manager",
+    "department": "Site Operations",
+    "level": "Senior Management",
+    "name": "Construction Manager",
+    "description": "Oversees day-to-day site execution, contractor management, schedule adherence, quality assurance, safety, and operational budget."
+  },
+  "construction-project-manager": {
+    "id": "construction-project-manager",
+    "department": "Project Management",
+    "level": "Executive / Director",
+    "name": "Construction Project Manager",
+    "description": "Leads overall construction project delivery from tendering to handover, managing cost, time, scope, contracts, stakeholders, and risks."
+  },
+  "site-engineer": {
+    "id": "site-engineer",
+    "department": "Site Operations",
+    "level": "Mid-Level",
+    "name": "Site / Construction Engineer",
+    "description": "Directs daily site operations, supervises labor and subcontractors, verifies structural work compliance, and maintains site records."
+  },
+  "planning-scheduling-engineer": {
+    "id": "planning-scheduling-engineer",
+    "department": "Project Controls",
+    "level": "Mid-Level",
+    "name": "Planning & Scheduling Engineer",
+    "description": "Develops and updates CPM schedules in Primavera P6, tracks progress, conducts delay analysis, and generates project control reports."
+  },
+  "quantity-surveyor-cost-engineer": {
+    "id": "quantity-surveyor-cost-engineer",
+    "department": "Commercial & Cost",
+    "level": "Mid-Level",
+    "name": "Quantity Surveyor / Cost Engineer",
+    "description": "Responsible for material quantity takeoffs, BOQ preparation, interim valuation certificates, variation pricing, and cost control."
+  },
+  "procurement-contract-engineer": {
+    "id": "procurement-contract-engineer",
+    "department": "Contracts & Commercial",
+    "level": "Mid-Level",
+    "name": "Procurement & Contract Engineer",
+    "description": "Manages tender preparation, vendor selection, subcontract negotiation, FIDIC contract administration, and variation processing."
+  },
+  "construction-qaqc-engineer": {
+    "id": "construction-qaqc-engineer",
+    "department": "Quality Management",
+    "level": "Mid-Level",
+    "name": "Construction QA/QC Engineer",
+    "description": "Enforces quality plans, conducts field inspections, reviews material submittals, oversees lab testing, and resolves non-conformances."
+  },
+  "construction-hse-engineer": {
+    "id": "construction-hse-engineer",
+    "department": "HSE",
+    "level": "Mid-Level",
+    "name": "Construction Health & Safety (HSE) Engineer",
+    "description": "Establishes site safety protocols, conducts job hazard assessments, issues work permits, and enforces OSHA/ISO 45001 compliance."
+  },
+  "claims-delay-analyst": {
+    "id": "claims-delay-analyst",
+    "department": "Commercial & Claims",
+    "level": "Senior / Specialist",
+    "name": "Forensic Delay & Claims Analyst",
+    "description": "Specializes in schedule forensic analysis, delay event quantification, Extension of Time (EOT) claim packages, and dispute resolution."
+  },
+  "construction-bim-coordinator": {
+    "id": "construction-bim-coordinator",
+    "department": "Digital Engineering",
+    "level": "Mid-Level",
+    "name": "Digital Construction & BIM Coordinator",
+    "description": "Coordinates 3D/4D/5D BIM models, manages spatial clash detection, integrates schedules with Navisworks/Synchro, and maintains CDE."
+  },
+  "municipal-engineer": {
+    "id": "municipal-engineer",
+    "department": "Public Works / Municipal Engineering",
+    "responsibilities": [
+      "Design urban roads, storm sewers, and public facility infrastructure",
+      "Coordinate underground utility works with telecom, power, and gas agencies",
+      "Review private development municipal infrastructure compliance",
+      "Supervise municipal construction contractors and maintenance works"
+    ],
+    "keySkills": [
+      "Municipal Infrastructure Design",
+      "Civil 3D",
+      "Urban Drainage",
+      "Utility Coordination"
+    ],
+    "name": "Municipal & Urban Infrastructure Engineer",
+    "description": "Engineers responsible for planning, designing, constructing, and maintaining public municipal infrastructure including local roads, drainage, water supply, and public amenities."
+  },
+  "urban-infrastructure-planner": {
+    "id": "urban-infrastructure-planner",
+    "department": "Urban Planning & Development Authority",
+    "responsibilities": [
+      "Prepare municipal infrastructure capital improvement plans (CIP)",
+      "Assess long-range water, drainage, and waste capacity requirements",
+      "Coordinate master planning with city corporations and urban authorities",
+      "Analyze spatial urban growth scenarios using GIS tools"
+    ],
+    "keySkills": [
+      "Infrastructure Master Planning",
+      "ArcGIS",
+      "Demographic Demand Modeling",
+      "Capital Improvement Programming"
+    ],
+    "name": "Urban Infrastructure Master Planner",
+    "description": "Specialists who formulate citywide infrastructure master plans, forecast utility demands, draft capital improvement budgets, and align infrastructure with land-use plans."
+  },
+  "utility-coordination-engineer": {
+    "id": "utility-coordination-engineer",
+    "department": "Utility Management / Right-of-Way",
+    "responsibilities": [
+      "Manage ASCE 38 subsurface utility surveys and GPR field investigations",
+      "Build 3D subsurface utility CAD corridor models and perform clash audits",
+      "Chair multi-agency utility relocation and trenching coordination boards",
+      "Issue municipal utility excavation permits and inspect reinstatement"
+    ],
+    "keySkills": [
+      "Subsurface Utility Engineering (SUE)",
+      "Utility Clash Analysis",
+      "GPR Survey Interpretation",
+      "CAD / GIS Integration"
+    ],
+    "name": "Underground Utility & Corridor Coordination Engineer",
+    "description": "Engineers specialized in subsurface utility engineering (SUE), utility mapping, multi-agency clash resolution, and right-of-way corridor allocation."
+  },
+  "municipal-asset-manager": {
+    "id": "municipal-asset-manager",
+    "department": "Asset Management & Operations",
+    "responsibilities": [
+      "Maintain municipal GIS asset register for roads, drains, and utilities",
+      "Develop asset decay curves and condition rating inspection standards",
+      "Prioritize risk-based infrastructure renewal and rehabilitation budgets",
+      "Track lifecycle maintenance costs and asset performance metrics"
+    ],
+    "keySkills": [
+      "ISO 55000",
+      "Infrastructure Asset Management",
+      "Condition Rating Audits",
+      "Life Cycle Costing"
+    ],
+    "name": "Municipal Infrastructure Asset Manager",
+    "description": "Professionals who oversee municipal asset registers, establish ISO 55000 asset management frameworks, execute condition audits, and plan capital renewals."
+  },
+  "municipal-gis-specialist": {
+    "id": "municipal-gis-specialist",
+    "department": "GIS & Information Technology",
+    "responsibilities": [
+      "Manage citywide enterprise GIS database for land parcels, roads, and utilities",
+      "Develop mobile GIS applications for field inspector asset data entry",
+      "Publish spatial web GIS maps and city dashboard visualizations",
+      "Perform spatial network analysis for waste routing and water service"
+    ],
+    "keySkills": [
+      "ArcGIS Pro",
+      "QGIS",
+      "Enterprise Geodatabase",
+      "Web GIS & Python"
+    ],
+    "name": "Municipal GIS & Urban Spatial Data Specialist",
+    "description": "Experts in designing, deploying, and maintaining enterprise spatial data infrastructure (SDI), utility geodatabases, and municipal web maps."
+  },
+  "smart-city-infrastructure-engineer": {
+    "id": "smart-city-infrastructure-engineer",
+    "department": "Smart Infrastructure & Innovation",
+    "responsibilities": [
+      "Design smart street lighting mesh communication networks and sensors",
+      "Deploy IoT water level and flow telemetry sensors across storm drains",
+      "Integrate automated water meter reading (AMI) into utility databases",
+      "Develop central command dashboard for real-time city infrastructure alerts"
+    ],
+    "keySkills": [
+      "IoT Sensor Networks",
+      "Smart Infrastructure",
+      "Urban Telemetry",
+      "SCADA & Web Dashboards"
+    ],
+    "name": "Smart City & Connected Infrastructure Engineer",
+    "description": "Engineers who integrate IoT sensors, smart street lighting networks, automated telemetry, and digital twins into municipal infrastructure operations."
+  },
+  "urban-resilience-engineer": {
+    "id": "urban-resilience-engineer",
+    "department": "Resilience & Environment",
+    "responsibilities": [
+      "Conduct urban climate risk and flood vulnerability spatial mapping",
+      "Design nature-based solutions including bioswales, rain gardens, and wetlands",
+      "Incorporate climate change allowance factors into storm drainage design",
+      "Develop municipal emergency utility backup plans for extreme weather events"
+    ],
+    "keySkills": [
+      "Climate Vulnerability Assessment",
+      "Sponge City / SUDS",
+      "Nature-Based Solutions",
+      "Urban Flood Resilience"
+    ],
+    "name": "Urban Resilience & Climate Adaptation Engineer",
+    "description": "Specialists who design climate-adapted urban infrastructure, sponge city drainage systems, urban heat mitigation, and disaster backup utilities."
+  },
+  "coastal-engineer": {
+    "id": "coastal-engineer",
+    "category": "Coastal Engineering",
+    "name": "Coastal Engineer",
+    "description": "Specialist civil engineer designing coastal protection structures, analyzing wave dynamics, and managing shoreline processes."
+  },
+  "port-harbor-engineer": {
+    "id": "port-harbor-engineer",
+    "category": "Coastal Engineering",
+    "name": "Port & Harbor Civil Engineer",
+    "description": "Civil engineer specializing in port master planning, quay wall structural engineering, jetties, berthing dolphins, and harbor layouts."
+  },
+  "dredging-navigation-engineer": {
+    "id": "dredging-navigation-engineer",
+    "category": "Coastal Engineering",
+    "name": "Dredging & Navigation Engineer",
+    "description": "Maritime engineer managing navigation channel design, capital dredging projects, dredger fleet selection, and spoil management."
+  },
+  "coastal-modelling-engineer": {
+    "id": "coastal-modelling-engineer",
+    "category": "Coastal Engineering",
+    "name": "Coastal Hydrodynamic & Wave Modelling Specialist",
+    "description": "Specialist engineer creating 2D/3D numerical models of coastal currents, wave transformation, storm surge, and sediment transport."
+  },
+  "coastal-protection-engineer": {
+    "id": "coastal-protection-engineer",
+    "category": "Coastal Engineering",
+    "name": "Coastal Protection & Revetment Engineer",
+    "description": "Engineer dedicated to designing breakwaters, revetments, seawalls, coastal dikes, and beach nourishment protection systems."
+  },
+  "coastal-resilience-specialist": {
+    "id": "coastal-resilience-specialist",
+    "category": "Coastal Engineering",
+    "name": "Coastal Resilience & Climate Adaptation Specialist",
+    "description": "Specialist evaluating sea level rise vulnerabilities, designing nature-based shoreline defenses, and implementing adaptive coastal plans."
+  },
+  "river-hydraulics-engineer": {
+    "id": "river-hydraulics-engineer",
+    "category": "River Engineering",
+    "tags": [
+      "River Hydraulics",
+      "Open Channel",
+      "Flow Analysis",
+      "Manning"
+    ],
+    "name": "River Hydraulics & Open Channel Engineer",
+    "description": "Specialist responsible for open channel flow calculations, backwater profiling, energy dissipation design, and river channel hydraulic sizing."
+  },
+  "river-morphology-specialist": {
+    "id": "river-morphology-specialist",
+    "category": "Fluvial Science",
+    "tags": [
+      "River Morphology",
+      "Fluvial Geomorphology",
+      "Meander",
+      "Sediment"
+    ],
+    "name": "River Morphology & Fluvial Geomorphologist",
+    "description": "Expert analyzing river planform changes, meander migration rates, bed aggradation/degradation, and long-term river stability."
+  },
+  "riverbank-protection-engineer": {
+    "id": "riverbank-protection-engineer",
+    "category": "Structural River Engineering",
+    "tags": [
+      "Bank Protection",
+      "Revetment",
+      "Geobags",
+      "Launching Apron"
+    ],
+    "name": "Riverbank Protection & Revetment Engineer",
+    "description": "Professional specializing in geobag revetments, CC block mattresses, slope stability, launching aprons, and erosion hotspot protection."
+  },
+  "river-training-engineer": {
+    "id": "river-training-engineer",
+    "category": "River Engineering",
+    "tags": [
+      "River Training",
+      "Groynes",
+      "Spurs",
+      "Guide Bunds"
+    ],
+    "name": "River Training & Channel Stabilization Engineer",
+    "description": "Specialist designing groynes, spurs, guide bunds, porcupine screens, and channel alignment schemes for river training."
+  },
+  "bridge-hydraulics-scour-engineer": {
+    "id": "bridge-hydraulics-scour-engineer",
+    "category": "Bridge & Infrastructure",
+    "tags": [
+      "Bridge Scour",
+      "Pier Scour",
+      "HEC-18",
+      "Afflux"
+    ],
+    "name": "Bridge Hydraulics & Scour Specialist",
+    "description": "Engineer computing waterway opening clearances, bridge afflux, pier/contraction scour depths, and designing scour countermeasures."
+  },
+  "inland-waterway-engineer": {
+    "id": "inland-waterway-engineer",
+    "category": "Waterway Transport",
+    "tags": [
+      "Inland Waterway",
+      "Navigation",
+      "Dredging",
+      "BIWTA",
+      "PIANC"
+    ],
+    "name": "Inland Waterway & Dredging Engineer",
+    "description": "Professional managing navigation fairway design, draft clearance maintenance, vessel turning basins, and river dredging operations."
+  },
+  "river-restoration-engineer": {
+    "id": "river-restoration-engineer",
+    "category": "Eco-Hydraulics",
+    "tags": [
+      "River Restoration",
+      "Bioengineering",
+      "Eco-Hydraulics",
+      "E-Flows"
+    ],
+    "name": "River Restoration & Bioengineering Specialist",
+    "description": "Practitioner implementing nature-based bank protection, riparian habitat restoration, fish passes, and environmental flow regimes."
+  },
+  "river-basin-engineer": {
+    "id": "river-basin-engineer",
+    "category": "Basin Governance",
+    "tags": [
+      "River Basin",
+      "IWRM",
+      "Transboundary Water",
+      "Master Planning"
+    ],
+    "name": "River Basin Master Planner & IWRM Specialist",
+    "description": "Senior consultant leading integrated river basin water resources planning, transboundary river agreements, and basin-wide flood strategies."
+  },
+  "land-surveyor": {
+    "id": "land-surveyor",
+    "department": "Geomatics & Land Administration",
+    "tags": [
+      "Land Surveyor",
+      "Cadastral",
+      "Boundary",
+      "Field Survey"
+    ],
+    "name": "Professional Land Surveyor",
+    "description": "Executes boundary demarcation, parcel mapping, land subdivision, property records, and cadastral field surveys."
+  },
+  "engineering-surveyor": {
+    "id": "engineering-surveyor",
+    "department": "Civil Infrastructure Engineering",
+    "tags": [
+      "Engineering Surveyor",
+      "Alignment",
+      "Civil 3D",
+      "Setting Out"
+    ],
+    "name": "Engineering & Alignment Surveyor",
+    "description": "Specializes in site topography, road route alignment, civil infrastructure control networks, and volume measurements."
+  },
+  "construction-surveyor": {
+    "id": "construction-surveyor",
+    "department": "Construction Management",
+    "tags": [
+      "Construction Surveyor",
+      "Setting Out",
+      "Staking",
+      "As-Built"
+    ],
+    "name": "Construction Layout & Staking Surveyor",
+    "description": "Responsible for building grid setting out, foundation positioning, structural alignment, and as-built verification on site."
+  },
+  "geodetic-surveyor": {
+    "id": "geodetic-surveyor",
+    "department": "Geodesy & Satellite Positioning",
+    "tags": [
+      "Geodesist",
+      "Geodetic Control",
+      "GNSS",
+      "CORS"
+    ],
+    "name": "Geodetic Survey Engineer / Geodesist",
+    "description": "Establishes primary national/regional geodetic control networks, datum transformations, CORS management, and high-precision positioning."
+  },
+  "geomatics-engineer": {
+    "id": "geomatics-engineer",
+    "department": "Geomatics Engineering",
+    "tags": [
+      "Geomatics Engineer",
+      "GIS",
+      "Surveying",
+      "Remote Sensing"
+    ],
+    "name": "Geomatics Engineer",
+    "description": "Combines surveying engineering, spatial data processing, GIS, remote sensing, and 3D reality capture into integrated civil solutions."
+  },
+  "gis-engineer-analyst": {
+    "id": "gis-engineer-analyst",
+    "department": "GIS & Spatial Analytics",
+    "tags": [
+      "GIS Engineer",
+      "ArcGIS Pro",
+      "QGIS",
+      "PostGIS",
+      "Web GIS"
+    ],
+    "name": "GIS Engineer / Spatial Analyst",
+    "description": "Develops geodatabases, performs spatial overlay and network analytics, builds Web GIS web apps, and manages enterprise GIS systems."
+  },
+  "remote-sensing-specialist": {
+    "id": "remote-sensing-specialist",
+    "department": "Remote Sensing & Space Applications",
+    "tags": [
+      "Remote Sensing",
+      "Satellite Imagery",
+      "SAR",
+      "ENVI",
+      "SPARRSO"
+    ],
+    "name": "Remote Sensing & Earth Observation Specialist",
+    "description": "Analyzes satellite multispectral/radar imagery, conducts land cover classification, environmental monitoring, and change detection."
+  },
+  "photogrammetrist-uav-specialist": {
+    "id": "photogrammetrist-uav-specialist",
+    "department": "Photogrammetry & UAV Mapping",
+    "tags": [
+      "Photogrammetrist",
+      "UAV",
+      "Drone Mapping",
+      "Pix4D",
+      "Metashape"
+    ],
+    "name": "Photogrammetrist & UAV Drone Mapping Specialist",
+    "description": "Plans drone survey flights, processes aerial photography, generates orthomosaics, point clouds, and DTMs for engineering projects."
+  },
+  "hydrographic-surveyor": {
+    "id": "hydrographic-surveyor",
+    "department": "Hydrographic & Coastal Engineering",
+    "tags": [
+      "Hydrographic Surveyor",
+      "Bathymetry",
+      "Multibeam",
+      "HYPACK"
+    ],
+    "name": "Hydrographic & Bathymetric Surveyor",
+    "description": "Executes offshore, river, and harbor bathymetric surveys using multibeam echosounders, acoustic positioning, and nautical charting tools."
+  },
+  "lidar-point-cloud-specialist": {
+    "id": "lidar-point-cloud-specialist",
+    "department": "3D Reality Capture & LiDAR",
+    "tags": [
+      "LiDAR Specialist",
+      "Point Cloud",
+      "Scan-to-BIM",
+      "Laser Scanning"
+    ],
+    "name": "LiDAR & 3D Point Cloud Processing Specialist",
+    "description": "Processes airborne, terrestrial, and mobile laser scan data, performs ground classification, and converts point clouds to BIM geometry."
+  },
+  "geospatial-data-scientist-ai": {
+    "id": "geospatial-data-scientist-ai",
+    "department": "Spatial Data Science & AI",
+    "tags": [
+      "GeoAI",
+      "Data Scientist",
+      "Machine Learning",
+      "Python",
+      "Computer Vision"
+    ],
+    "name": "Geospatial Data Scientist / GeoAI Engineer",
+    "description": "Applies machine learning, computer vision, and spatial statistics to automatically analyze large satellite, drone, and vector spatial datasets."
+  },
+  "geospatial-digital-twin-engineer": {
+    "id": "geospatial-digital-twin-engineer",
+    "department": "Digital Twin & Smart Cities",
+    "tags": [
+      "Digital Twin",
+      "BIM-GIS",
+      "Smart Cities",
+      "Cesium",
+      "3D GIS"
+    ],
+    "name": "Geospatial Digital Twin & Smart Cities Specialist",
+    "description": "Builds integrated 3D BIM-GIS city platforms, real-time spatial dashboards, and digital twin environments for infrastructure asset management."
+  },
+  "bridge-engineer": {
+    "id": "bridge-engineer",
+    "department": "Bridge Engineering",
+    "category": "Engineering Practice",
+    "tags": [
+      "Bridge Engineer",
+      "Civil Engineering",
+      "Structural Design"
+    ],
+    "name": "Bridge Engineer",
+    "description": "Civil engineer specializing in the planning, design, analysis, construction, and maintenance of bridge structures."
+  },
+  "bridge-design-engineer": {
+    "id": "bridge-design-engineer",
+    "department": "Bridge Structural Design",
+    "category": "Engineering Practice",
+    "tags": [
+      "Bridge Design",
+      "AASHTO LRFD",
+      "Superstructure",
+      "Substructure"
+    ],
+    "name": "Bridge Design Specialist",
+    "description": "Structural engineer focused on superstructure, substructure, and foundation design calculations for bridges."
+  },
+  "bridge-construction-engineer": {
+    "id": "bridge-construction-engineer",
+    "department": "Bridge Construction",
+    "category": "Construction Management",
+    "tags": [
+      "Construction",
+      "Erection",
+      "Falsework",
+      "QA/QC"
+    ],
+    "name": "Bridge Construction Engineer",
+    "description": "Site engineer responsible for managing bridge construction, temporary works, segment erection, and QA/QC."
+  },
+  "bridge-inspection-engineer": {
+    "id": "bridge-inspection-engineer",
+    "department": "Bridge Asset Management",
+    "category": "Inspection & Maintenance",
+    "tags": [
+      "Bridge Inspection",
+      "Condition Rating",
+      "NDT",
+      "Defect Mapping"
+    ],
+    "name": "Bridge Inspection Engineer",
+    "description": "Certified engineer conducting field condition assessments, non-destructive testing, and defect logging on bridges."
+  },
+  "bridge-rehabilitation-engineer": {
+    "id": "bridge-rehabilitation-engineer",
+    "department": "Bridge Maintenance",
+    "category": "Rehabilitation & Repair",
+    "tags": [
+      "Rehabilitation",
+      "FRP Strengthening",
+      "Load Rating",
+      "Repair"
+    ],
+    "name": "Bridge Rehabilitation & Repair Engineer",
+    "description": "Specialist in structural repair, FRP strengthening, load rating, and retrofitting aging bridge assets."
+  },
+  "bridge-seismic-engineer": {
+    "id": "bridge-seismic-engineer",
+    "department": "Seismic & Structural Dynamics",
+    "category": "Engineering Practice",
+    "tags": [
+      "Bridge Seismic",
+      "Seismic Isolation",
+      "Dynamic Analysis"
+    ],
+    "name": "Bridge Seismic Engineer",
+    "description": "Specialist in earthquake-resistant design, dynamic response analysis, and seismic isolation for bridges."
+  },
+  "bridge-bim-modelling-engineer": {
+    "id": "bridge-bim-modelling-engineer",
+    "department": "Digital Engineering",
+    "category": "BIM & Digital Engineering",
+    "tags": [
+      "Bridge BIM",
+      "OpenBridge",
+      "Revit",
+      "Digital Twin"
+    ],
+    "name": "Bridge BIM & Digital Engineer",
+    "description": "Digital engineering specialist creating parametric 3D bridge models, rebar detailing, and scan-to-BIM digital twins."
+  },
+  "structural-health-monitoring-engineer": {
+    "id": "structural-health-monitoring-engineer",
+    "department": "Digital Engineering & Monitoring",
+    "category": "Engineering Practice",
+    "tags": [
+      "SHM",
+      "Sensor Networks",
+      "Vibration Monitoring",
+      "Telemetry"
+    ],
+    "name": "Structural Health Monitoring (SHM) Engineer",
+    "description": "Specialist in sensor networks, telemetry, vibration/strain monitoring, and health assessment of major bridges."
+  },
+  "bridge-asset-manager": {
+    "id": "bridge-asset-manager",
+    "department": "Infrastructure Asset Management",
+    "category": "Management",
+    "tags": [
+      "Asset Management",
+      "BMS",
+      "LCCA",
+      "Resilience"
+    ],
+    "name": "Bridge Asset Manager",
+    "description": "Infrastructure manager overseeing bridge databases, life-cycle prioritization, maintenance budgets, and risk strategies."
+  },
+  "tunnel-engineer": {
+    "id": "tunnel-engineer",
+    "name": "Tunnel Engineer",
+    "description": "Professional engineer involved in planning, geotechnical assessment, structural design, and field construction of tunnel projects.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Perform tunnel structural and geotechnical alignment design",
+      "Prepare excavation and ground support specifications",
+      "Review TBM advance logs and ground condition reports",
+      "Coordinate with contractor and site supervision teams"
+    ],
+    "tags": [
+      "Civil Engineering",
+      "Tunneling",
+      "Geotechnical"
+    ]
+  },
+  "tunnel-design-engineer": {
+    "id": "tunnel-design-engineer",
+    "name": "Tunnel Design Engineer",
+    "description": "Specialist focused on structural calculation of primary and secondary tunnel linings, segment rings, and ground support.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design precast concrete segmental rings and shotcrete linings",
+      "Perform finite element soil-structure interaction modeling in PLAXIS / RS2",
+      "Prepare CAD/BIM tunnel construction drawings and details",
+      "Check structural load combinations under static and seismic conditions"
+    ],
+    "tags": [
+      "Structural Design",
+      "Segmental Lining",
+      "FEA"
+    ]
+  },
+  "tunnel-geotechnical-engineer": {
+    "id": "tunnel-geotechnical-engineer",
+    "name": "Tunnel Geotechnical Engineer",
+    "description": "Geotechnical expert evaluating rock mass strength, fault zones, water inflows, and ground improvement techniques.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Interpret core drilling logs and rock mass classification (RMR/Q/GSI)",
+      "Draft Geotechnical Baseline Reports (GBR)",
+      "Assess face stability and surface settlement risk",
+      "Design pre-grouting, forepoling, and ground freezing works"
+    ],
+    "tags": [
+      "Geotechnical",
+      "Rock Mechanics",
+      "GBR"
+    ]
+  },
+  "tbm-tunnel-engineer": {
+    "id": "tbm-tunnel-engineer",
+    "name": "TBM Tunnel Engineer / Shield Tunnelling Specialist",
+    "description": "Engineer specializing in mechanized TBM selection, cutterhead wear, slurry/EPB pressure control, and segment erection.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Monitor TBM face support pressure, thrust, and torque parameters",
+      "Manage slurry separation plant operations or EPB soil conditioning",
+      "Supervise segment ring erection and tail void grouting",
+      "Optimize cutterhead disc cutter replacement cycles"
+    ],
+    "tags": [
+      "TBM",
+      "EPB",
+      "Slurry TBM",
+      "Mechanized Tunnelling"
+    ]
+  },
+  "natm-tunnel-engineer": {
+    "id": "natm-tunnel-engineer",
+    "name": "NATM / SEM Tunnel Construction Engineer",
+    "description": "Site engineer supervising sequential excavation headings, shotcrete application, rock bolting, and convergence measurements.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Direct top heading, bench, and invert excavation sequencing",
+      "Inspect shotcrete layer thickness and rock bolt installation",
+      "Evaluate 3D optical convergence prism trends daily",
+      "Adjust primary support classes dynamically based on exposed geology"
+    ],
+    "tags": [
+      "NATM",
+      "SEM",
+      "Shotcrete",
+      "Construction"
+    ]
+  },
+  "tunnel-structural-lining-engineer": {
+    "id": "tunnel-structural-lining-engineer",
+    "name": "Tunnel Structural & Lining Design Engineer",
+    "description": "Engineers designing reinforced concrete box tunnels, cast-in-place secondary linings, and precast segment production.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Calculate bending moments and thrust forces in tunnel rings",
+      "Design segment ring gaskets and bolted connection details",
+      "Specify fiber-reinforced concrete mix designs for tunnel durability",
+      "Inspect segment precasting yard quality and steam curing"
+    ],
+    "tags": [
+      "Structural",
+      "Concrete",
+      "Segmental Ring"
+    ]
+  },
+  "tunnel-ventilation-fire-safety-engineer": {
+    "id": "tunnel-ventilation-fire-safety-engineer",
+    "name": "Tunnel Ventilation & Fire Safety Systems Engineer",
+    "description": "Specialist designing jet fan ventilation, CFD smoke control, fire suppression, and emergency egress systems.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design longitudinal and transverse jet fan ventilation layouts",
+      "Simulate fire smoke dynamics and critical velocity in 1D/3D CFD",
+      "Ensure compliance with NFPA 502 and NFPA 130 life safety codes",
+      "Commission emergency cross-passage pressurization fans"
+    ],
+    "tags": [
+      "Ventilation",
+      "Fire Safety",
+      "NFPA 502",
+      "CFD"
+    ]
+  },
+  "tunnel-inspection-rehabilitation-engineer": {
+    "id": "tunnel-inspection-rehabilitation-engineer",
+    "name": "Tunnel Inspection & Rehabilitation Specialist",
+    "description": "Engineer dedicated to tunnel condition grading, crack/leakage mapping, GPR scanning, and injection grouting repairs.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct routine and principal tunnel structural inspections",
+      "Map concrete lining defects, spalling, and water ingress",
+      "Design polyurethane and microfine cement injection grouting schemes",
+      "Supervise FRP structural strengthening and re-lining projects"
+    ],
+    "tags": [
+      "Inspection",
+      "Rehabilitation",
+      "Grouting",
+      "Condition Assessment"
+    ]
+  },
+  "tunnel-monitoring-instrumentation-engineer": {
+    "id": "tunnel-monitoring-instrumentation-engineer",
+    "name": "Tunnel Monitoring & Instrumentation Specialist",
+    "description": "Specialist managing optical prisms, extensometers, inclinometers, and automated telemetry systems for tunnels.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Install and calibrate total station prisms, inclinometers, and piezometers",
+      "Configure automated data acquisition and web-based dashboards",
+      "Analyze crown settlement and ground loss trends",
+      "Issue warning alerts when movement triggers are breached"
+    ],
+    "tags": [
+      "Instrumentation",
+      "Monitoring",
+      "Convergence",
+      "SHM"
+    ]
+  },
+  "tunnel-bim-digital-twin-engineer": {
+    "id": "tunnel-bim-digital-twin-engineer",
+    "name": "Tunnel BIM & Digital Twin Engineer",
+    "description": "Digital engineering specialist building parametric 3D tunnel models, processing LiDAR point clouds, and managing digital twins.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Create parametric 3D tunnel BIM models along complex alignments",
+      "Process mobile laser scanning point clouds into as-built models",
+      "Develop 4D TBM advance simulations for construction scheduling",
+      "Integrate IoT sensor data feeds into tunnel asset digital twins"
+    ],
+    "tags": [
+      "BIM",
+      "Digital Twin",
+      "Point Cloud",
+      "3D Modeling"
+    ]
+  },
+  "underground-construction-manager": {
+    "id": "underground-construction-manager",
+    "name": "Underground Construction & Tunnel Project Manager",
+    "description": "Senior project manager leading heavy underground infrastructure, TBM operations, site HSE, and contract delivery.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Oversee underground construction budget, schedule, and safety",
+      "Manage TBM logistics, muck spoil disposal, and site power supply",
+      "Coordinate multi-disciplinary civil, MEP, and rail system teams",
+      "Manage contractual risks using Geotechnical Baseline Reports"
+    ],
+    "tags": [
+      "Project Management",
+      "Underground Construction",
+      "TBM"
+    ]
+  },
+  "municipal-water-engineer": {
+    "id": "municipal-water-engineer",
+    "description": "Designs and manages municipal water distribution networks, pressure zones, pumping stations, and DMA water loss reduction.",
+    "name": "Municipal Water Supply Engineer"
+  },
+  "urban-drainage-engineer": {
+    "id": "urban-drainage-engineer",
+    "description": "Engineers urban storm drainage channels, culverts, detention ponds, and hydrodynamic flood mitigation systems.",
+    "name": "Urban Drainage & Stormwater Engineer"
+  },
+  "sewerage-engineer": {
+    "id": "sewerage-engineer",
+    "description": "Designs municipal gravity sewers, lift stations, force mains, and decentralized wastewater collection infrastructure.",
+    "name": "Sewerage & Sanitation Engineer"
+  },
+  "infrastructure-project-manager": {
+    "id": "infrastructure-project-manager",
+    "description": "Oversees public works construction contracts, budget execution, multi-stakeholder coordination, and municipal project delivery.",
+    "name": "Municipal Infrastructure Project Manager"
+  },
+  "infrastructure-planning-engineer": {
+    "id": "infrastructure-planning-engineer",
+    "name": "Infrastructure Planning Engineer",
+    "description": "Engineers specializing in long-term infrastructure master planning, growth forecasting, and capital program development.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Prepare regional and municipal infrastructure master plans",
+      "Model population growth and infrastructure service demand",
+      "Prioritize capital improvement projects based on cost-benefit analysis",
+      "Coordinate with public planning agencies and international donors"
+    ]
+  },
+  "infrastructure-consultant": {
+    "id": "infrastructure-consultant",
+    "name": "Infrastructure Consultant",
+    "description": "Advisors providing technical, economic, and strategic guidance for public and private infrastructure investments.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct feasibility studies and economic evaluations for mega-projects",
+      "Advise government bodies on infrastructure policy and funding models",
+      "Perform risk assessments and sustainability audits for civil infrastructure",
+      "Manage client relationships and technical proposal preparation"
+    ]
+  },
+  "infrastructure-design-engineer": {
+    "id": "infrastructure-design-engineer",
+    "name": "Infrastructure Design Engineer",
+    "description": "Engineers who design roads, utilities, drainage, and civil structures using advanced CAD and BIM software.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Prepare detailed civil engineering designs and construction drawings",
+      "Coordinate multidisciplinary design interfaces across civil, structural, and MEP",
+      "Ensure compliance with national design standards and building codes",
+      "Perform quantity takeoff and technical specification writing"
+    ]
+  },
+  "infrastructure-project-engineer": {
+    "id": "infrastructure-project-engineer",
+    "name": "Infrastructure Project Engineer",
+    "description": "Engineers managing technical execution, submittals, and site coordination for major public works projects.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Supervise daily civil construction activities and contractor execution",
+      "Review contractor shop drawings, RFIs, and technical submittals",
+      "Enforce QA/QC standards and safety regulations on site",
+      "Monitor progress against baseline project schedules"
+    ]
+  },
+  "infrastructure-systems-engineer": {
+    "id": "infrastructure-systems-engineer",
+    "name": "Infrastructure Systems Engineer",
+    "description": "Specialists in system architecture, interdisciplinary interfaces, and systems integration for complex infrastructure.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Develop system requirements and interface control documents (ICDs)",
+      "Analyze cross-sector dependencies between power, transport, and water",
+      "Oversee system verification, validation, and commissioning tests",
+      "Ensure system interoperability across hardware and software platforms"
+    ]
+  },
+  "infrastructure-construction-engineer": {
+    "id": "infrastructure-construction-engineer",
+    "name": "Infrastructure Construction Engineer",
+    "description": "Engineers leading field operations, heavy equipment deployment, and temporary works for civil construction.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Manage site execution for earthworks, paving, drainage, and structures",
+      "Design temporary works, shoring, and excavation support systems",
+      "Coordinate heavy construction equipment and material logistics",
+      "Implement site HSE plans and environmental protection controls"
+    ]
+  },
+  "infrastructure-rehabilitation-engineer": {
+    "id": "infrastructure-rehabilitation-engineer",
+    "name": "Infrastructure Rehabilitation Engineer",
+    "description": "Specialists in diagnosing, repairing, and strengthening aging civil infrastructure assets.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Evaluate diagnostic inspection reports and material test results",
+      "Design structural retrofits, jacketings, and trenchless lining solutions",
+      "Select repair materials and specialized rehabilitation techniques",
+      "Supervise rehabilitation work execution and quality control"
+    ]
+  },
+  "infrastructure-asset-engineer": {
+    "id": "infrastructure-asset-engineer",
+    "name": "Infrastructure Asset Engineer",
+    "description": "Engineers responsible for inventory management, condition scoring, and lifecycle maintenance planning.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Maintain enterprise infrastructure asset registries in GIS/CMMS",
+      "Conduct condition assessments and calculate asset condition indices",
+      "Develop preventive maintenance schedules and lifecycle cost models",
+      "Implement ISO 55000 asset management standards"
+    ]
+  },
+  "infrastructure-asset-manager": {
+    "id": "infrastructure-asset-manager",
+    "name": "Infrastructure Asset Manager",
+    "description": "Leaders overseeing strategic asset portfolios, capital renewal budgets, and level-of-service optimization.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Formulate corporate infrastructure asset management strategies",
+      "Optimize capital renewal and maintenance expenditure portfolios",
+      "Define and monitor Level of Service (LOS) performance metrics",
+      "Report asset risk profiles and funding requirements to stakeholders"
+    ]
+  },
+  "infrastructure-inspection-engineer": {
+    "id": "infrastructure-inspection-engineer",
+    "name": "Infrastructure Inspection Engineer",
+    "description": "Engineers carrying out field inspections, diagnostic NDT testing, and safety ratings for public structures.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Perform visual and non-destructive inspection of bridges, roads, and sewers",
+      "Log structural defects, cracking, corrosion, and scouring",
+      "Prepare official inspection reports and assign condition ratings",
+      "Recommend immediate emergency repairs or load restrictions"
+    ]
+  },
+  "infrastructure-resilience-engineer": {
+    "id": "infrastructure-resilience-engineer",
+    "name": "Infrastructure Resilience Engineer",
+    "description": "Specialists designing infrastructure to withstand extreme climate events, flooding, and natural hazards.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct climate risk vulnerability assessments for civil assets",
+      "Design coastal embankments, flood barriers, and resilient drainage",
+      "Develop emergency response and infrastructure recovery plans",
+      "Integrate nature-based solutions and climate adaptation strategies"
+    ]
+  },
+  "smart-infrastructure-engineer": {
+    "id": "smart-infrastructure-engineer",
+    "name": "Smart Infrastructure Engineer",
+    "description": "Engineers implementing IoT sensor networks, digital twins, and automated monitoring for smart assets.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design IoT sensor deployments for structural and environmental monitoring",
+      "Integrate real-time telemetry data streams into digital twin platforms",
+      "Set up automated anomaly detection and threshold alert systems",
+      "Coordinate with IT, telecom, and software development teams"
+    ]
+  },
+  "infrastructure-data-analyst": {
+    "id": "infrastructure-data-analyst",
+    "name": "Infrastructure Data Analyst",
+    "description": "Data specialists analyzing asset performance data, GIS layers, and sensor telemetry for infrastructure decision-making.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Process spatial databases, sensor telemetry, and inspection datasets",
+      "Develop predictive deterioration models and machine learning algorithms",
+      "Build interactive GIS and BI analytics dashboards for managers",
+      "Perform spatial statistics and route optimization analysis"
+    ]
+  },
+  "infrastructure-bim-engineer": {
+    "id": "infrastructure-bim-engineer",
+    "name": "Infrastructure BIM Engineer",
+    "description": "Specialists creating and coordinating 3D/4D/5D BIM models for civil and linear infrastructure projects.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Build complex 3D parametric models in Civil 3D, Revit, and InfraWorks",
+      "Manage Common Data Environment (CDE) and ISO 19650 compliance",
+      "Execute 4D construction simulation and 5D cost estimation",
+      "Perform automated clash detection across discipline models"
+    ]
+  },
+  "infrastructure-gis-engineer": {
+    "id": "infrastructure-gis-engineer",
+    "name": "Infrastructure GIS Engineer",
+    "description": "Engineers managing spatial databases, utility mapping, and remote sensing for infrastructure assets.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Build and maintain enterprise GIS databases for utility and civil assets",
+      "Process drone LiDAR point clouds and high-resolution satellite imagery",
+      "Perform utility conflict analysis and sub-surface mapping",
+      "Develop custom GIS web applications and geoprocessing scripts"
+    ]
+  },
+  "flexible-pavement-design-engineer": {
+    "category": "Civil Engineering",
+    "name": "Flexible Pavement Design Engineer",
+    "description": "Specialist responsible for structural design, asphalt layer optimization, subgrade evaluation, and empirical/ME design for asphalt pavements.",
+    "id": "flexible-pavement-design-engineer"
+  },
+  "rigid-pavement-specialist": {
+    "category": "Civil Engineering",
+    "name": "Rigid Concrete Pavement Specialist",
+    "description": "Engineer focused on jointed concrete pavement and CRCP slab thickness, joint sealant design, load transfer dowel bars, and concrete materials.",
+    "id": "rigid-pavement-specialist"
+  },
+  "pavement-materials-engineer": {
+    "category": "Civil & Materials Engineering",
+    "name": "Pavement Materials & Mix Design Engineer",
+    "description": "Engineer leading laboratory testing of asphalt binders, aggregates, concrete mixes, subgrade soils, and Superpave mix design compliance.",
+    "id": "pavement-materials-engineer"
+  },
+  "asphalt-technology-specialist": {
+    "category": "Pavement & Materials Engineering",
+    "name": "Asphalt Paving & Bituminous Technology Specialist",
+    "description": "Expert specializing in hot mix asphalt production, polymer modification, warm mix technologies, RAP recycling, and paving laydown QA/QC.",
+    "id": "asphalt-technology-specialist"
+  },
+  "pavement-evaluation-fwd-engineer": {
+    "category": "Civil Engineering",
+    "name": "Pavement Evaluation & Structural Testing Engineer",
+    "description": "Field engineer specializing in Falling Weight Deflectometer (FWD) testing, backcalculation, pavement profile indexing (IRI), and PCI survey management.",
+    "id": "pavement-evaluation-fwd-engineer"
+  },
+  "pavement-asset-management-engineer": {
+    "category": "Infrastructure Management",
+    "name": "Pavement Asset Management & PMS Engineer",
+    "description": "Engineer responsible for managing network pavement databases, HDM-4 deterioration modeling, remaining service life analysis, and multi-year maintenance budgeting.",
+    "id": "pavement-asset-management-engineer"
+  },
+  "road-maintenance-rehabilitation-engineer": {
+    "category": "Civil Engineering",
+    "name": "Road Maintenance & Pavement Rehabilitation Engineer",
+    "description": "Engineer directing pavement resurfacing, asphalt overlays, crack sealing, pavement recycling, and structural retrofitting of aging road networks.",
+    "id": "road-maintenance-rehabilitation-engineer"
+  },
+  "seismic-engineer": {
+    "id": "seismic-engineer",
+    "name": "Seismic Engineer",
+    "description": "Civil and structural engineers specializing in earthquake-resistant design, seismic hazard analysis, and dynamic structural modeling.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Perform dynamic response spectrum and time-history earthquake analysis",
+      "Design earthquake-resistant structural members and ductile connections",
+      "Evaluate building vulnerability and design structural retrofits",
+      "Coordinate with geotechnical specialists on site response and foundation interaction"
+    ],
+    "tags": [
+      "Civil Engineering",
+      "Seismic Engineering",
+      "Structural Design"
+    ]
+  },
+  "earthquake-risk-engineer": {
+    "id": "earthquake-risk-engineer",
+    "name": "Earthquake Risk & Vulnerability Engineer",
+    "description": "Specialists who quantify building exposure, model physical damage fragility, and estimate financial risk for urban portfolios.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Develop probabilistic seismic loss models using FEMA P-58 / PACT tools",
+      "Analyze structural vulnerability curves for diverse building typologies",
+      "Advise insurance, municipal, and corporate clients on seismic risk reduction",
+      "Conduct regional seismic risk mapping using GIS platforms"
+    ],
+    "tags": [
+      "Seismic Risk",
+      "Loss Estimation",
+      "FEMA P-58"
+    ]
+  },
+  "seismic-hazard-engineer": {
+    "id": "seismic-hazard-engineer",
+    "name": "Seismic Hazard Engineer",
+    "description": "Engineers focusing on probabilistic seismic hazard analysis (PSHA), fault rupture characterization, and site-specific ground motions.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Process earthquake catalog data and model seismic source zones",
+      "Apply ground motion prediction equations (GMPEs) in hazard code software",
+      "Select and scale acceleration time-history records for structural design",
+      "Generate site-specific elastic design response spectra"
+    ],
+    "tags": [
+      "PSHA",
+      "Seismic Hazard",
+      "Ground Motion"
+    ]
+  },
+  "seismic-analysis-engineer": {
+    "id": "seismic-analysis-engineer",
+    "name": "Seismic Dynamic Analysis Specialist",
+    "description": "FEA specialists who execute complex linear and nonlinear dynamic simulations for tall buildings, bridges, and nuclear facilities.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Build complex 3D nonlinear structural models in ETABS, PERFORM-3D, or OpenSees",
+      "Perform nonlinear time-history dynamic simulations under strong ground shaking",
+      "Extract story drifts, plastic hinge rotations, and member force envelopes",
+      "Validate structural compliance with performance-based seismic criteria"
+    ],
+    "tags": [
+      "FEA",
+      "Nonlinear Analysis",
+      "OpenSees"
+    ]
+  },
+  "geotechnical-earthquake-engineer": {
+    "id": "geotechnical-earthquake-engineer",
+    "name": "Geotechnical Earthquake Engineer",
+    "description": "Specialists focusing on dynamic soil behavior, site response amplification, liquefaction triggering, and soil-structure interaction.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Evaluate soil liquefaction potential and post-liquefaction ground settlement",
+      "Execute 1D/2D seismic site response analyses in DEEPSOIL or PLAXIS",
+      "Design earthquake-resistant pile foundations and subterranean walls",
+      "Assess dynamic soil-structure interaction and foundation impedance"
+    ],
+    "tags": [
+      "Geotechnical",
+      "Soil Dynamics",
+      "Liquefaction"
+    ]
+  },
+  "seismic-retrofit-engineer": {
+    "id": "seismic-retrofit-engineer",
+    "name": "Seismic Retrofit & Rehabilitation Specialist",
+    "description": "Engineers who evaluate vulnerable existing buildings and design structural strengthening solutions using FRP, jackets, and braces.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct structural condition surveys and ASCE 41 seismic evaluations",
+      "Design concrete column jackets, steel bracing systems, and FRP wraps",
+      "Perform pushover non-linear static analysis to verify retrofit efficacy",
+      "Supervise structural strengthening construction in historical and urban structures"
+    ],
+    "tags": [
+      "Seismic Retrofit",
+      "ASCE 41",
+      "Structural Repair"
+    ]
+  },
+  "post-earthquake-assessment-engineer": {
+    "id": "post-earthquake-assessment-engineer",
+    "name": "Post-Earthquake Assessment Engineer",
+    "description": "Engineers trained in ATC-20 procedures for rapid damage inspection and safety tagging following severe earthquake disasters.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Inspect earthquake-damaged buildings and assign safety tags (Green/Yellow/Red)",
+      "Evaluate structural cracking, residual capacity, and collapse hazards",
+      "Design emergency shoring and temporary structural stabilization",
+      "Prepare forensic disaster assessment reports for emergency response authorities"
+    ],
+    "tags": [
+      "ATC-20",
+      "Safety Tagging",
+      "Emergency Response"
+    ]
+  },
+  "seismic-monitoring-engineer": {
+    "id": "seismic-monitoring-engineer",
+    "name": "Seismic Instrumentation & SHM Engineer",
+    "description": "Engineers responsible for deploying accelerometer sensor networks, monitoring real-time building vibration, and detecting dynamic damage.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Design and install structural health monitoring sensor arrays on bridges and high-rises",
+      "Maintain data acquisition pipelines and automated seismic trigger alerts",
+      "Analyze structural modal frequency degradation following major quakes",
+      "Manage digital twin real-time structural performance platforms"
+    ],
+    "tags": [
+      "SHM",
+      "Sensors",
+      "Structural Monitoring"
+    ]
+  },
+  "performance-based-design-engineer": {
+    "id": "performance-based-design-engineer",
+    "name": "Performance-Based Seismic Design Specialist",
+    "description": "Advanced structural engineers who implement performance-based seismic design for high-rise, complex, and landmark projects.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Establish project performance targets (Immediate Occupancy, Life Safety, Collapse Prevention)",
+      "Execute nonlinear dynamic time-history simulations using PERFORM-3D",
+      "Perform probabilistic loss and downtime calculations using FEMA P-58 / PACT",
+      "Defend structural design solutions before independent peer review panels"
+    ],
+    "tags": [
+      "PBSD",
+      "PERFORM-3D",
+      "FEMA P-58"
+    ]
+  },
+  "seismic-resilience-engineer": {
+    "id": "seismic-resilience-engineer",
+    "name": "Seismic Infrastructure Resilience Specialist",
+    "description": "Engineers and planners focused on enhancing network-level infrastructure recovery, disaster resilience, and functional continuity.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Assess infrastructure network vulnerability for transportation, energy, and water networks",
+      "Design resilience-based upgrades to ensure rapid functional recovery post-quake",
+      "Formulate municipal disaster mitigation and emergency infrastructure recovery plans",
+      "Implement resilience metrics into long-term capital improvement projects"
+    ],
+    "tags": [
+      "Resilience",
+      "Infrastructure",
+      "Disaster Mitigation"
+    ]
+  },
+  "structural-dynamics-engineer": {
+    "id": "structural-dynamics-engineer",
+    "name": "Structural Dynamics & Vibration Engineer",
+    "description": "Engineers specializing in structural dynamics, vibration mitigation, base isolation, and damper system design.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Model dynamic response of complex structures under earthquake and wind loads",
+      "Design base isolation systems and passive/active vibration dampers",
+      "Perform dynamic field testing and ambient vibration measurement",
+      "Optimize dynamic mass and stiffness distribution for dynamic performance"
+    ],
+    "tags": [
+      "Structural Dynamics",
+      "Base Isolation",
+      "Dampers"
+    ]
+  },
+  "earthquake-engineer": {
+    "id": "earthquake-engineer",
+    "name": "Earthquake Engineer",
+    "description": "Multidisciplinary civil engineers combining seismology, geotechnical dynamics, and structural engineering to reduce earthquake risk.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Provide technical oversight on seismic hazard and structural design projects",
+      "Develop earthquake-resistant engineering guidelines and local building codes",
+      "Conduct forensic engineering investigations of earthquake structural failures",
+      "Promote community earthquake readiness and resilient infrastructure construction"
+    ],
+    "tags": [
+      "Earthquake Engineering",
+      "Civil Engineering",
+      "Seismic Safety"
+    ]
+  },
+  "disaster-risk-engineer": {
+    "id": "disaster-risk-engineer",
+    "name": "Disaster Risk Engineer",
+    "description": "Specialist civil engineers who assess natural hazard exposure, build probabilistic loss models, and formulate risk mitigation infrastructure solutions.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Evaluate multi-hazard exposure and physical vulnerability across infrastructure assets",
+      "Calculate probabilistic expected annual losses and return periods",
+      "Formulate structural and non-structural disaster risk reduction strategies",
+      "Advise government agencies and international donors on disaster mitigation investments"
+    ],
+    "tags": [
+      "Disaster Risk",
+      "Risk Assessment",
+      "DRR"
+    ]
+  },
+  "climate-resilience-engineer": {
+    "id": "climate-resilience-engineer",
+    "name": "Climate Resilience Engineer",
+    "description": "Engineers specializing in downscaling climate projections and designing adaptive infrastructure to withstand future extreme weather.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Analyze downscaled climate projections for sea-level rise, rainfall, and temperature extremes",
+      "Conduct climate vulnerability stress-testing on civil engineering assets",
+      "Develop flexible adaptation pathways and design life upgrade plans",
+      "Integrate nature-based solutions into climate adaptation infrastructure"
+    ],
+    "tags": [
+      "Climate Resilience",
+      "Adaptation",
+      "Climate Change"
+    ]
+  },
+  "flood-resilience-engineer": {
+    "id": "flood-resilience-engineer",
+    "name": "Flood Resilience Engineer",
+    "description": "Hydraulic engineers focused on flood hazard modeling, urban drainage design, embankment protection, and flood damage mitigation.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Model riverine, pluvial, and surge flood inundation using HEC-RAS and SWMM",
+      "Design levees, flood walls, detention basins, and high-capacity pump stations",
+      "Develop flood-proofing details for critical building utilities and infrastructure",
+      "Prepare urban flood risk management and master drainage plans"
+    ],
+    "tags": [
+      "Flood Resilience",
+      "Hydraulics",
+      "HEC-RAS"
+    ]
+  },
+  "coastal-resilience-engineer": {
+    "id": "coastal-resilience-engineer",
+    "name": "Coastal Resilience Engineer",
+    "description": "Coastal and marine civil engineers specializing in storm surge defense, cyclone polder embankments, and nature-based shoreline protection.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Simulate tropical cyclone storm surge and wave overtopping dynamics",
+      "Design coastal embankments, sea walls, breakwaters, and sluice gates",
+      "Integrate mangrove belts and eco-friendly shoreline stabilization",
+      "Manage coastal erosion and sediment transport modeling"
+    ],
+    "tags": [
+      "Coastal Engineering",
+      "Storm Surge",
+      "Cyclone Protection"
+    ]
+  },
+  "disaster-risk-analyst": {
+    "id": "disaster-risk-analyst",
+    "name": "Disaster Risk & Vulnerability Analyst",
+    "description": "Data specialists and engineers who utilize spatial GIS platforms and disaster loss estimation software to quantify portfolio risk.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Compile geospatial hazard maps and asset exposure databases",
+      "Run loss estimation calculations in Hazus, OpenQuake, or InaSAFE",
+      "Generate vulnerability maps and risk heat maps for emergency decision makers",
+      "Prepare quantitative risk reports for insurance and disaster management authorities"
+    ],
+    "tags": [
+      "Risk Analyst",
+      "Disaster GIS",
+      "Loss Estimation"
+    ]
+  },
+  "climate-adaptation-engineer": {
+    "id": "climate-adaptation-engineer",
+    "name": "Climate Adaptation Specialist Engineer",
+    "description": "Engineers leading the formulation and execution of climate adaptation plans for municipal, water, and transport infrastructure.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Guide public authorities on integrating ISO 14090 climate adaptation guidelines",
+      "Formulate nature-based solutions and hybrid infrastructure projects",
+      "Prepare grant applications for multilateral climate funds (GCF, GEF)",
+      "Monitor long-term climate adaptation metrics across completed projects"
+    ],
+    "tags": [
+      "Climate Adaptation",
+      "GCF",
+      "Resilience"
+    ]
+  },
+  "disaster-gis-analyst": {
+    "id": "disaster-gis-analyst",
+    "name": "Disaster GIS & Geospatial Specialist",
+    "description": "Geospatial experts who process satellite remote sensing data and build interactive web dashboards for disaster monitoring and response.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Process post-disaster satellite SAR imagery for rapid flood and damage mapping",
+      "Build real-time interactive GIS web dashboards for disaster control rooms",
+      "Conduct spatial overlays of population density and hazard exposure",
+      "Maintain spatial databases for national disaster management agencies"
+    ],
+    "tags": [
+      "Disaster GIS",
+      "Remote Sensing",
+      "Geospatial"
+    ]
+  },
+  "emergency-infrastructure-engineer": {
+    "id": "emergency-infrastructure-engineer",
+    "name": "Emergency Infrastructure Engineer",
+    "description": "Engineers responsible for rapid deployment of temporary access bridges, emergency water units, and field shelter facilities post-disaster.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Deploy modular bridging and rapid temporary culvert solutions after washouts",
+      "Configure containerized emergency water purification and power generation",
+      "Inspect and approve emergency shelter facilities for structural safety",
+      "Coordinate disaster logistics corridors with emergency response agencies"
+    ],
+    "tags": [
+      "Emergency Infrastructure",
+      "Disaster Response",
+      "Logistics"
+    ]
+  },
+  "post-disaster-recovery-engineer": {
+    "id": "post-disaster-recovery-engineer",
+    "name": "Post-Disaster Recovery & Reconstruction Engineer",
+    "description": "Engineers managing the inspection, structural rehabilitation, and Build-Back-Better reconstruction of disaster-damaged communities.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct rapid structural inspection and safety tagging of damaged assets",
+      "Design structural strengthening and elevation retrofits for damaged buildings",
+      "Oversee resilient reconstruction projects following Build-Back-Better standards",
+      "Document post-disaster reconstruction progress for donor organizations"
+    ],
+    "tags": [
+      "Post-Disaster",
+      "Build Back Better",
+      "Reconstruction"
+    ]
+  },
+  "resilience-planning-engineer": {
+    "id": "resilience-planning-engineer",
+    "name": "Resilience Infrastructure Planning Engineer",
+    "description": "Strategic planners who integrate disaster resilience, climate risk, and asset management into regional capital investment plans.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Formulate regional infrastructure resilience master plans",
+      "Prioritize capital investment projects using multi-criteria risk analysis",
+      "Ensure compliance with international disaster resilience frameworks (Sendai, UNDRR)",
+      "Lead stakeholder engagement for community-level resilience initiatives"
+    ],
+    "tags": [
+      "Resilience Planning",
+      "Master Planning",
+      "Urban Governance"
+    ]
+  },
+  "disaster-risk-consultant": {
+    "id": "disaster-risk-consultant",
+    "name": "Disaster Risk & Resilience Consultant",
+    "description": "Consulting engineers providing advisory services to governments, insurance firms, and multilateral banks on risk management.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct disaster risk audits for major commercial and municipal clients",
+      "Perform life-cycle cost-benefit analyses of resilience investment options",
+      "Develop customized disaster risk reduction guidelines and code provisions",
+      "Facilitate capacity building workshops on disaster risk management"
+    ],
+    "tags": [
+      "Consulting",
+      "Disaster Risk",
+      "Advisory"
+    ]
+  }
+}

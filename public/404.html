@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>EVLab — Redirecting…</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      //
+      // GitHub Pages serves this file for any URL that doesn't match a real
+      // file (i.e. any client-side route like /career-roadmap/civil-engineering).
+      // It re-encodes the path into a query string and redirects to the real
+      // index.html, which then restores the original URL (see the matching
+      // script in index.html) before the app mounts — so deep links and
+      // page refreshes both work correctly.
+      //
+      // pathSegmentsToKeep = 1 assumes a GitHub Pages PROJECT site
+      // (https://username.github.io/repo-name/...). If this is deployed to
+      // a custom domain or a user/organization page (https://username.github.io/...)
+      // instead, change this to 0.
+      var pathSegmentsToKeep = 1;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

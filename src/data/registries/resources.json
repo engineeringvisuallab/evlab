@@ -1,0 +1,880 @@
+{
+  "water-supply-design-handbook": {
+    "id": "water-supply-design-handbook",
+    "name": "Practical Water Supply Distribution Design Guide",
+    "description": "Technical reference manual covering design criteria, peak factors, material standards, and hydraulic formulas.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Reference Manual",
+      "Design Guide"
+    ]
+  },
+  "structural-design-checklist": {
+    "id": "structural-design-checklist",
+    "name": "Structural Engineering Calculation & Peer Review Checklist",
+    "description": "Comprehensive design review checklist covering dead/live load verification, wind/seismic parameter validation, drift limits, and rebar development lengths.",
+    "type": "Design Checklist",
+    "fileFormat": "PDF / Excel",
+    "tags": [
+      "Checklist",
+      "Design Review",
+      "Quality Assurance"
+    ]
+  },
+  "rebar-detailing-handbook": {
+    "id": "rebar-detailing-handbook",
+    "name": "RC Structural Detailing & Bar Bending Schedule (BBS) Guide",
+    "description": "Reference manual illustrating standard hook lengths, lap splices, column stirrup seismic spacing, beam bar anchoring, and BBS generation formulas.",
+    "type": "Reference Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "Rebar Detailing",
+      "BBS",
+      "ACI 318",
+      "Concrete Detailing"
+    ]
+  },
+  "geotechnical-investigation-handbook": {
+    "id": "geotechnical-investigation-handbook",
+    "name": "Geotechnical Field Investigation & Subsurface Sampling Guide",
+    "description": "Field manual detailing rotary drilling procedures, undisturbed tube sampling, SPT N-value correction methods, and soil stratum logging.",
+    "type": "Field Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Field Manual",
+      "Borehole Logging",
+      "SPT",
+      "Site Exploration"
+    ]
+  },
+  "foundation-design-calculation-sheets": {
+    "id": "foundation-design-calculation-sheets",
+    "name": "Geotechnical Foundation Bearing Capacity & Pile Design Spreadsheets",
+    "description": "Verified Excel design toolkits for Terzaghi/Meyerhof shallow footing capacity, 1D settlement prediction, and bored pile shaft/tip resistance.",
+    "type": "Calculation Spreadsheet",
+    "fileFormat": "XLSX",
+    "tags": [
+      "Excel Spreadsheet",
+      "Bearing Capacity",
+      "Pile Capacity",
+      "Settlement"
+    ]
+  },
+  "slope-stability-handbook": {
+    "id": "slope-stability-handbook",
+    "name": "Slope Stability Analysis & Soil Nailing Design Manual",
+    "description": "Engineering guide on limit equilibrium methods, earthquake pseudo-static coefficient selection, and soil nail bond length calculations.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Slope Stability",
+      "Soil Nailing",
+      "GeoStudio",
+      "Landslide"
+    ]
+  },
+  "aashto-green-book-resource": {
+    "id": "aashto-green-book-resource",
+    "name": "AASHTO Highway Geometric Design Guidelines & Computation Sheets",
+    "description": "Quick reference tables and calculation templates for sight distances, horizontal curve radii, superelevation runoff, and sag/crest vertical profiles.",
+    "type": "Design Guide & Reference Sheets",
+    "fileFormat": "PDF / Excel",
+    "tags": [
+      "AASHTO Green Book",
+      "Geometric Design",
+      "Superelevation",
+      "Sight Distance"
+    ]
+  },
+  "vissim-traffic-simulation-manual": {
+    "id": "vissim-traffic-simulation-manual",
+    "name": "PTV Vissim Traffic Simulation Calibration & Signal Timing Guide",
+    "description": "Technical manual on car-following driver behavior parameter calibration, signal timing logic setup, and 3D network model validation.",
+    "type": "Technical User Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Vissim",
+      "Traffic Simulation",
+      "Signal Timing",
+      "Calibration"
+    ]
+  },
+  "pavement-design-spreadsheet-toolkit": {
+    "id": "pavement-design-spreadsheet-toolkit",
+    "name": "AASHTO Flexible & Rigid Pavement Structural Calculation Spreadsheets",
+    "description": "Verified Excel design sheets for calculating cumulative ESALs, structural number (SN), asphalt layer thickness, and concrete pavement dowel bar sizing.",
+    "type": "Calculation Sheets",
+    "fileFormat": "XLSX",
+    "tags": [
+      "Pavement Design",
+      "AASHTO",
+      "ESAL",
+      "Calculation Sheet"
+    ]
+  },
+  "hec-ras-reference-manual": {
+    "id": "hec-ras-reference-manual",
+    "name": "USACE HEC-RAS Hydraulic Reference Manual",
+    "type": "Technical Reference Manual",
+    "author": "US Army Corps of Engineers",
+    "description": "Definitive mathematical and theoretical reference manual for 1D and 2D hydraulic calculations in HEC-RAS.",
+    "tags": [
+      "HEC-RAS Manual",
+      "USACE",
+      "Hydraulics Reference",
+      "River Hydraulics"
+    ]
+  },
+  "hec-hms-user-manual": {
+    "id": "hec-hms-user-manual",
+    "name": "USACE HEC-HMS Hydrologic Modeling Technical Manual",
+    "type": "Technical Guide",
+    "author": "US Army Corps of Engineers",
+    "description": "Comprehensive guide covering hydrologic loss methods, transform hydrographs, and channel routing equations.",
+    "tags": [
+      "HEC-HMS Manual",
+      "Hydrology Reference",
+      "USACE",
+      "Loss Methods"
+    ]
+  },
+  "sewergems-design-handbook": {
+    "id": "sewergems-design-handbook",
+    "name": "Sewer Network Hydraulic Sizing & SewerGEMS Reference Guide",
+    "type": "Design Guide",
+    "author": "Bentley Infrastructure Series",
+    "description": "Engineering reference guide for gravity sewer layout, force main design, and dynamic modeling in SewerGEMS.",
+    "tags": [
+      "Sewer Design",
+      "SewerGEMS",
+      "Gravity Sewer",
+      "Bentley Guide"
+    ]
+  },
+  "wtp-design-manual": {
+    "id": "wtp-design-manual",
+    "name": "AWWA Water Treatment Plant Design Manual",
+    "type": "Engineering Design Manual",
+    "author": "AWWA & ASCE",
+    "description": "Standard engineering design manual covering all unit operations in modern municipal water treatment plants.",
+    "tags": [
+      "AWWA Manual",
+      "WTP Design",
+      "Water Treatment",
+      "Clarifiers"
+    ]
+  },
+  "swmm-user-guide": {
+    "id": "swmm-user-guide",
+    "name": "US EPA SWMM 5.2 User Manual & Reference Volumes",
+    "type": "Software User Manual",
+    "author": "US Environmental Protection Agency",
+    "description": "Official EPA user manual and hydrologic/hydraulic theoretical reference for stormwater management modeling.",
+    "tags": [
+      "EPA SWMM",
+      "User Manual",
+      "Stormwater Reference",
+      "Urban Drainage"
+    ]
+  },
+  "eia-guidelines-bangladesh-resource": {
+    "id": "eia-guidelines-bangladesh-resource",
+    "name": "Department of Environment (DoE) EIA Guidelines Manual",
+    "description": "Official technical guidelines for conducting Environmental Impact Assessments and preparing Environmental Management Plans in Bangladesh.",
+    "type": "Regulatory Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "EIA Guidelines",
+      "DoE Manual",
+      "Regulatory Reference",
+      "Bangladesh"
+    ]
+  },
+  "aermod-user-guide-resource": {
+    "id": "aermod-user-guide-resource",
+    "name": "US EPA AERMOD Dispersion Model User Guide & Technical Reference",
+    "description": "Comprehensive technical manual explaining boundary layer formulation, input file structure, and dispersion calculations in AERMOD.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "AERMOD",
+      "Air Dispersion",
+      "EPA Manual",
+      "Reference"
+    ]
+  },
+  "solid-waste-landfill-design-handbook": {
+    "id": "solid-waste-landfill-design-handbook",
+    "name": "Sanitary Landfill & Leachate Management Engineering Manual",
+    "description": "Engineering reference manual for composite liner specification, leachate collection pipe sizing, gas venting, and capping design.",
+    "type": "Engineering Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Landfill Manual",
+      "Leachate Design",
+      "Geomembrane",
+      "Solid Waste"
+    ]
+  },
+  "who-sanitation-safety-planning-manual": {
+    "id": "who-sanitation-safety-planning-manual",
+    "name": "WHO Sanitation Safety Planning (SSP) Manual",
+    "description": "Step-by-step risk management manual for safe operational management and health risk reduction across sanitation service chains.",
+    "type": "Safety Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "WHO Manual",
+      "Sanitation Safety",
+      "Health Risk",
+      "FSM"
+    ]
+  },
+  "aace-cost-engineering-handbook": {
+    "id": "aace-cost-engineering-handbook",
+    "type": "Handbook",
+    "author": "AACE International",
+    "name": "AACE Professional Cost Engineering & Estimation Handbook",
+    "description": "Comprehensive manual covering cost estimation methodologies, contingency evaluation, earned value management, and cost control."
+  },
+  "fidic-red-book-contract-guide": {
+    "id": "fidic-red-book-contract-guide",
+    "type": "Guidebook",
+    "author": "FIDIC Secretariat",
+    "name": "FIDIC Contract Administration & Claims Management Guide",
+    "description": "Practical guidance on employer/contractor obligations, engineer instructions, variation valuation, and dispute adjudication procedures."
+  },
+  "primavera-p6-user-guide-resource": {
+    "id": "primavera-p6-user-guide-resource",
+    "type": "User Manual",
+    "author": "Oracle Construction Engineering",
+    "name": "Primavera P6 Construction Project Scheduling Manual",
+    "description": "Complete technical user guide detailing P6 database setup, activity linking, resource curves, threshold monitoring, and reporting."
+  },
+  "construction-safety-osha-pocket-guide": {
+    "id": "construction-safety-osha-pocket-guide",
+    "type": "Safety Manual",
+    "author": "OSHA",
+    "name": "OSHA Site Safety & Hazard Identification Handbook",
+    "description": "Essential field reference guide for construction site hazard controls, scaffolding requirements, excavation shoring, and personal protective equipment."
+  },
+  "lged-urban-infrastructure-design-manual": {
+    "id": "lged-urban-infrastructure-design-manual",
+    "author": "Local Government Engineering Department (LGED)",
+    "type": "Design Manual",
+    "name": "LGED Urban Infrastructure Design & Maintenance Manual",
+    "description": "Standard technical guidance document detailing geometric road design, storm drainage sizing, and market facility guidelines for urban municipalities."
+  },
+  "apwa-public-works-management-handbook": {
+    "id": "apwa-public-works-management-handbook",
+    "author": "American Public Works Association (APWA)",
+    "type": "Handbook",
+    "name": "APWA Public Works Management & Operations Handbook",
+    "description": "Comprehensive reference guide covering public works leadership, municipal utility management, street maintenance, and emergency operations."
+  },
+  "iso-55000-asset-management-guidelines-resource": {
+    "id": "iso-55000-asset-management-guidelines-resource",
+    "author": "ISO / IAM",
+    "type": "Standard Guidance",
+    "name": "ISO 55000 Asset Management Principles & Implementation Guide",
+    "description": "Implementation handbook for municipal authorities to institute asset management policy, strategic asset plans, and condition rating systems."
+  },
+  "usace-cem-handbook-resource": {
+    "id": "usace-cem-handbook-resource",
+    "type": "Engineering Manual",
+    "name": "USACE Coastal Engineering Manual (CEM) Technical Reference Series",
+    "description": "Comprehensive 6-part technical reference manual covering coastal hydrodynamics, coastal geology, sediment transport, and coastal structure design."
+  },
+  "ciria-rock-manual-resource": {
+    "id": "ciria-rock-manual-resource",
+    "type": "Technical Guide",
+    "name": "CIRIA C683 The Rock Manual Engineering Reference Guide",
+    "description": "The international benchmark guide for designing and constructing rock armor structures in coastal and hydraulic engineering."
+  },
+  "pianc-maritime-reports-resource": {
+    "id": "pianc-maritime-reports-resource",
+    "type": "Technical Standard Collection",
+    "name": "PIANC Technical Reports on Navigation Channels & Port Design",
+    "description": "Collection of technical reports setting global guidelines for fairway dimensions, container terminal layouts, and fender design."
+  },
+  "river-engineering-handbook": {
+    "id": "river-engineering-handbook",
+    "author": "Petersen & Chang",
+    "category": "Reference Manual",
+    "tags": [
+      "River Engineering",
+      "Handbook",
+      "Reference"
+    ],
+    "name": "Principles and Practice of River Engineering (Handbook)",
+    "description": "Comprehensive reference manual detailing fluvial geomorphology, river hydraulics, sediment transport, and river training structures."
+  },
+  "usace-river-hydraulics-manual": {
+    "id": "usace-river-hydraulics-manual",
+    "author": "USACE",
+    "category": "Engineering Manual",
+    "tags": [
+      "USACE",
+      "EM 1110-2-1601",
+      "River Hydraulics"
+    ],
+    "name": "USACE River Hydraulics & Channel Stability Engineering Manual",
+    "description": "US Army Corps of Engineers benchmark technical manual for open channel hydraulics and river channel stability evaluation."
+  },
+  "bridge-scour-manual-hec18": {
+    "id": "bridge-scour-manual-hec18",
+    "author": "Federal Highway Administration",
+    "category": "Technical Reference",
+    "tags": [
+      "FHWA",
+      "HEC-18",
+      "Bridge Scour"
+    ],
+    "name": "FHWA HEC-18 Reference Manual — Evaluating Scour at Bridges",
+    "description": "Fifth edition FHWA reference guidelines for bridge scour analysis, local pier scour equations, and field testing."
+  },
+  "geodesy-gnss-surveying-handbook": {
+    "id": "geodesy-gnss-surveying-handbook",
+    "type": "Reference Handbook",
+    "url": "https://www.fig.net/resources/publications/",
+    "tags": [
+      "Geodesy",
+      "GNSS",
+      "Surveying Handbook",
+      "Least Squares"
+    ],
+    "name": "Geodesy, GNSS & High-Precision Surveying Engineering Handbook",
+    "description": "Reference handbook detailing physical geodesy, coordinate reference systems, least squares adjustment, and multi-constellation GNSS principles."
+  },
+  "gis-spatial-analysis-principles-manual": {
+    "id": "gis-spatial-analysis-principles-manual",
+    "type": "Technical Manual",
+    "url": "https://www.ogc.org/standards/",
+    "tags": [
+      "GIS",
+      "PostGIS",
+      "Geostatistics",
+      "Spatial Analysis"
+    ],
+    "name": "GIS, Spatial Database & Geostatistical Analysis Manual",
+    "description": "Guide covering spatial data models, PostGIS database queries, vector/raster overlay algorithms, and spatial kriging statistics."
+  },
+  "uav-photogrammetry-lidar-best-practices-guide": {
+    "id": "uav-photogrammetry-lidar-best-practices-guide",
+    "type": "Best Practices Guide",
+    "url": "https://www.asprs.org/standards-guidelines",
+    "tags": [
+      "UAV",
+      "LiDAR",
+      "Photogrammetry",
+      "ASPRS Accuracy"
+    ],
+    "name": "UAV Photogrammetry & Laser Scanning Accuracy & Best Practices Guide",
+    "description": "ASPRS-aligned guidelines for drone flight parameters, GCP configuration, ground sample distance (GSD), and point cloud scan-to-BIM modeling."
+  },
+  "aashto-lrfd-bridge-design-specs-manual": {
+    "id": "aashto-lrfd-bridge-design-specs-manual",
+    "type": "Design Specification Manual",
+    "category": "Bridge Structural Design",
+    "tags": [
+      "AASHTO",
+      "LRFD",
+      "Bridge Specifications",
+      "Design Manual"
+    ],
+    "name": "AASHTO LRFD Bridge Design Specifications Manual",
+    "description": "Official AASHTO LRFD Bridge Design Specifications manual and design examples."
+  },
+  "fhwa-bridge-inspector-reference-manual": {
+    "id": "fhwa-bridge-inspector-reference-manual",
+    "type": "Field Inspection Manual",
+    "category": "Bridge Inspection",
+    "tags": [
+      "FHWA",
+      "BIRM",
+      "Bridge Inspection",
+      "Condition Rating"
+    ],
+    "name": "FHWA Bridge Inspector's Reference Manual (BIRM)",
+    "description": "Comprehensive reference manual for bridge safety inspectors covering defects, inspection procedures, and rating."
+  },
+  "bridge-engineering-handbook-waisang": {
+    "id": "bridge-engineering-handbook-waisang",
+    "type": "Reference Handbook",
+    "category": "Bridge Engineering Textbook",
+    "tags": [
+      "Bridge Handbook",
+      "Wai-Fah Chen",
+      "Superstructure",
+      "Substructure"
+    ],
+    "name": "Bridge Engineering Handbook (Wai-Fah Chen & Lian Duan)",
+    "description": "Definitive multi-volume reference handbook covering superstructures, substructures, construction, and maintenance."
+  },
+  "ita-tunnel-design-guidelines-resource": {
+    "id": "ita-tunnel-design-guidelines-resource",
+    "name": "ITA Guidelines for Design and Construction of Underground Structures",
+    "description": "Essential technical manual by ITA WG2 outlining design loads, ground-lining interaction, and safety factors.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "ITA",
+      "Reference Manual",
+      "Tunnel Design"
+    ]
+  },
+  "fhwa-road-tunnel-manual-resource": {
+    "id": "fhwa-road-tunnel-manual-resource",
+    "name": "FHWA Technical Manual for Design and Construction of Road Tunnels",
+    "description": "Comprehensive 700-page engineering manual published by FHWA covering civil, geotechnical, structural, and MEP systems.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "FHWA",
+      "Road Tunnels",
+      "Design Manual"
+    ]
+  },
+  "bts-specification-for-tunnelling": {
+    "id": "bts-specification-for-tunnelling",
+    "name": "BTS Specification for Tunnelling (3rd Edition)",
+    "description": "Industry standard specification document published by the British Tunnelling Society for underground construction contracts.",
+    "type": "Specification Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "BTS",
+      "Specification",
+      "Tunnelling"
+    ]
+  },
+  "ciria-c760-retaining-walls-resource": {
+    "id": "ciria-c760-retaining-walls-resource",
+    "name": "CIRIA C760 Embedded Retaining Walls and Underground Shafts Guide",
+    "description": "Technical guidance manual for diaphragm walls, secant pile walls, and shaft excavations in urban tunnelling.",
+    "type": "Design Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "CIRIA",
+      "Retaining Walls",
+      "Diaphragm Walls"
+    ]
+  },
+  "who-water-supply-guidelines": {
+    "id": "who-water-supply-guidelines",
+    "description": "International guidelines for safe drinking water quality standards, distribution safety plans, and pressure management.",
+    "name": "WHO Guidelines for Drinking-Water Quality & Municipal Distribution"
+  },
+  "world-bank-urban-resilience-guide": {
+    "id": "world-bank-urban-resilience-guide",
+    "description": "Framework for integrating climate change adaptation, flood mitigation, and green infrastructure into municipal planning.",
+    "name": "World Bank Guide to Climate Resilient Urban Infrastructure"
+  },
+  "world-bank-infrastructure-guidelines": {
+    "id": "world-bank-infrastructure-guidelines",
+    "name": "World Bank Infrastructure Planning & Delivery Framework",
+    "description": "Comprehensive guide on planning, financing, and executing public infrastructure projects in developing economies.",
+    "type": "Framework Guide"
+  },
+  "asce-infrastructure-report-card-resource": {
+    "id": "asce-infrastructure-report-card-resource",
+    "name": "ASCE Infrastructure Report Card & Assessment Methodology",
+    "description": "Methodology manual for evaluating condition, capacity, risk, and funding needs across civil infrastructure sectors.",
+    "type": "Methodology Manual"
+  },
+  "incose-systems-engineering-handbook-resource": {
+    "id": "incose-systems-engineering-handbook-resource",
+    "name": "INCOSE Systems Engineering Handbook for Infrastructure",
+    "description": "Reference manual for applying systems engineering principles to large-scale built environment assets.",
+    "type": "Technical Handbook"
+  },
+  "rhd-road-design-manual-resource": {
+    "id": "rhd-road-design-manual-resource",
+    "name": "RHD Highway Design Manual",
+    "description": "Official design manual covering geometric parameters, pavement structures, and drainage for Bangladesh highways.",
+    "type": "Technical Manual"
+  },
+  "fidic-contract-users-guide-resource": {
+    "id": "fidic-contract-users-guide-resource",
+    "name": "FIDIC Conditions of Contract User Manual",
+    "description": "Practitioner manual for administering FIDIC Red, Yellow, and Silver Book contracts in construction.",
+    "type": "User Manual"
+  },
+  "iso-19650-bim-guidelines-resource": {
+    "id": "iso-19650-bim-guidelines-resource",
+    "name": "ISO 19650 BIM Standards Execution Guide for Infrastructure",
+    "description": "Practical guide for establishing Common Data Environments and information workflows on civil projects.",
+    "type": "Implementation Guide"
+  },
+  "aashto-pavement-design-guide-resource": {
+    "format": "Technical Manual",
+    "name": "AASHTO Guide for Design of Pavement Structures",
+    "description": "Definitive design manual for empirical structural design of flexible and rigid highway pavements.",
+    "id": "aashto-pavement-design-guide-resource"
+  },
+  "fhwa-pavement-distress-identification-manual": {
+    "format": "Field Guide",
+    "name": "FHWA Distress Identification Manual for LTPP Project",
+    "description": "Standard visual reference guide for identifying, measuring, and classifying asphalt and concrete pavement distresses.",
+    "id": "fhwa-pavement-distress-identification-manual"
+  },
+  "rhd-pavement-design-standards-manual": {
+    "format": "Design Specification",
+    "name": "RHD Pavement Structural Design Manual & Specifications",
+    "description": "Official guidelines for flexible and rigid pavement design, subgrade support requirements, and pavement material standards in Bangladesh.",
+    "id": "rhd-pavement-design-standards-manual"
+  },
+  "hdm4-analytical-framework-guide": {
+    "format": "Reference Manual",
+    "name": "HDM-4 Analytical Framework & Pavement Management Guide",
+    "description": "Comprehensive reference on HDM-4 road deterioration models, vehicle operating cost (VOC) calculations, and lifecycle economic optimization.",
+    "id": "hdm4-analytical-framework-guide"
+  },
+  "earthquake-engineering-design-handbook": {
+    "id": "earthquake-engineering-design-handbook",
+    "name": "Earthquake Engineering & Seismic Design Handbook",
+    "description": "Comprehensive reference guide covering seismic lateral force procedures, dynamic response, and ductile detailing.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Reference Manual",
+      "Seismic Design",
+      "Earthquake Engineering"
+    ]
+  },
+  "seismic-hazard-assessment-guide": {
+    "id": "seismic-hazard-assessment-guide",
+    "name": "Probabilistic Seismic Hazard Analysis (PSHA) Guide",
+    "description": "Technical manual on seismic source characterization, GMPE selection, and response spectrum generation.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "PSHA",
+      "Seismic Hazard",
+      "Reference"
+    ]
+  },
+  "ground-motion-processing-manual": {
+    "id": "ground-motion-processing-manual",
+    "name": "Strong Motion Data Processing & Spectral Matching Manual",
+    "description": "Practical guide on baseline correction, frequency filtering, and time-history record scaling.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Ground Motion",
+      "SeismoSignal",
+      "Time-History"
+    ]
+  },
+  "liquefaction-assessment-manual": {
+    "id": "liquefaction-assessment-manual",
+    "name": "Soil Liquefaction Triggering & Mitigation Engineering Manual",
+    "description": "Geotechnical manual covering SPT/CPT empirical liquefaction evaluation and ground improvement design.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Liquefaction",
+      "Geotechnical",
+      "Soil Dynamics"
+    ]
+  },
+  "site-response-analysis-handbook": {
+    "id": "site-response-analysis-handbook",
+    "name": "1D Dynamic Site Response Analysis Engineering Handbook",
+    "description": "Handbook covering soil column discretization, shear modulus degradation curves, and DEEPSOIL modeling.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "DEEPSOIL",
+      "Site Response",
+      "Geotechnical"
+    ]
+  },
+  "structural-seismic-analysis-manual": {
+    "id": "structural-seismic-analysis-manual",
+    "name": "Modal Response Spectrum & Dynamic FEA Practice Manual",
+    "description": "Practical engineering guide for building dynamic finite element models in ETABS and SAP2000.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "ETABS",
+      "Response Spectrum",
+      "FEA"
+    ]
+  },
+  "earthquake-design-guidelines-manual": {
+    "id": "earthquake-design-guidelines-manual",
+    "name": "BNBC & ASCE 7 Earthquake-Resistant Structural Design Guide",
+    "description": "Step-by-step guidance on applying code-prescribed seismic lateral forces, drift limits, and structural regularity rules.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "BNBC",
+      "ASCE 7",
+      "Seismic Design"
+    ]
+  },
+  "aci-318-seismic-design-guide": {
+    "id": "aci-318-seismic-design-guide",
+    "name": "ACI 318 Reinforced Concrete Seismic Detailing Handbook",
+    "description": "Illustrated guide to special moment frame hoops, shear wall boundary elements, and beam-column joint rebar.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "ACI 318",
+      "Concrete Detailing",
+      "Rebar"
+    ]
+  },
+  "aisc-seismic-design-manual": {
+    "id": "aisc-seismic-design-manual",
+    "name": "AISC Steel Seismic Design & Connection Manual",
+    "description": "Comprehensive design examples for steel moment frames, braced frames, and prequalified connections.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "AISC 341",
+      "Steel Frames",
+      "Connections"
+    ]
+  },
+  "confined-masonry-construction-guide": {
+    "id": "confined-masonry-construction-guide",
+    "name": "Confined Masonry Building Design & Field Detailing Guide",
+    "description": "Practical field guide on tie-column rebar placement, concrete pouring sequence, and brick wall bonding.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Confined Masonry",
+      "Low-Rise",
+      "Construction Guide"
+    ]
+  },
+  "aashto-seismic-bridge-design-guide": {
+    "id": "aashto-seismic-bridge-design-guide",
+    "name": "AASHTO Guide Specifications for LRFD Seismic Bridge Design",
+    "description": "Reference manual for displacement-based seismic design of bridge piers, foundations, and isolators.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "AASHTO",
+      "Bridge Design",
+      "Seismic"
+    ]
+  },
+  "seismic-design-underground-structures-manual": {
+    "id": "seismic-design-underground-structures-manual",
+    "name": "Seismic Design & Tunnel Lining Racking Manual",
+    "description": "Engineering guide on dynamic soil pressures, tunnel lining flexible joints, and underground racking analysis.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Tunnels",
+      "Underground",
+      "PLAXIS"
+    ]
+  },
+  "fema-soil-structure-interaction-guide": {
+    "id": "fema-soil-structure-interaction-guide",
+    "name": "FEMA P-2008 Soil-Structure Interaction Engineering Guide",
+    "description": "Engineering reference on modeling foundation springs, radiation damping, and kinematic interaction.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "SSI",
+      "Foundations",
+      "FEMA"
+    ]
+  },
+  "seismic-isolation-design-handbook": {
+    "id": "seismic-isolation-design-handbook",
+    "name": "Base Isolation System Design & Bearing Selection Handbook",
+    "description": "Technical manual covering lead-rubber bearing design, friction pendulum isolator sizing, and testing.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Base Isolation",
+      "LRB Bearings",
+      "Damping"
+    ]
+  },
+  "structural-control-systems-manual": {
+    "id": "structural-control-systems-manual",
+    "name": "Passive & Active Structural Control Engineering Manual",
+    "description": "Reference manual covering viscous damper installation, tuned mass damper tuning, and vibration attenuation.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Structural Control",
+      "Dampers",
+      "Vibration"
+    ]
+  },
+  "atc-20-field-manual": {
+    "id": "atc-20-field-manual",
+    "name": "ATC-20 Field Manual for Post-Earthquake Building Inspection",
+    "description": "Pocket field guide for emergency inspection teams executing rapid visual screening and posting Green/Yellow/Red tags.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "ATC-20",
+      "Safety Tagging",
+      "Field Inspection"
+    ]
+  },
+  "seismic-retrofit-design-guidelines": {
+    "id": "seismic-retrofit-design-guidelines",
+    "name": "ASCE 41 Structural Retrofit & Rehabilitation Guidelines",
+    "description": "Technical guide on concrete jacketing, steel bracing addition, and FRP composite wrapping for existing buildings.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "ASCE 41",
+      "Seismic Retrofit",
+      "FRP Wrapping"
+    ]
+  },
+  "seismic-shm-instrumentation-guide": {
+    "id": "seismic-shm-instrumentation-guide",
+    "name": "Structural Health Monitoring & Accelerometer Installation Guide",
+    "description": "Guide on selecting, deploying, and calibrating dynamic sensors for real-time earthquake monitoring.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "SHM",
+      "Sensors",
+      "Accelerometers"
+    ]
+  },
+  "fema-p58-methodology-manual": {
+    "id": "fema-p58-methodology-manual",
+    "name": "FEMA P-58 Performance-Based Seismic Design Methodology Manual",
+    "description": "Detailed guide on building damage fragility functions, repair cost assessment, and probability distributions.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "FEMA P-58",
+      "PBSD",
+      "Loss Assessment"
+    ]
+  },
+  "disaster-risk-reduction-engineering-handbook": {
+    "id": "disaster-risk-reduction-engineering-handbook",
+    "name": "Disaster Risk Reduction & Infrastructure Resilience Handbook",
+    "description": "Comprehensive reference guide covering multi-hazard risk assessment, vulnerability curves, and resilient design principles.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Reference Manual",
+      "DRR",
+      "Disaster Management"
+    ]
+  },
+  "multi-hazard-risk-assessment-manual": {
+    "id": "multi-hazard-risk-assessment-manual",
+    "name": "Multi-Hazard Assessment & Risk Analysis Manual",
+    "description": "Technical manual on compound hazard interactions, cascading failure modeling, and vulnerability matrix compilation.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Multi-Hazard",
+      "Cascading Risk",
+      "Manual"
+    ]
+  },
+  "flood-resilience-infrastructure-design-guide": {
+    "id": "flood-resilience-infrastructure-design-guide",
+    "name": "Flood-Resilient Urban Infrastructure Design Guide",
+    "description": "Practical guide on flood-proofing building utilities, raised embankments, retention ponds, and high-capacity pump stations.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Flood Resilience",
+      "Hydraulic Design",
+      "Flood Proofing"
+    ]
+  },
+  "coastal-cyclone-protection-handbook": {
+    "id": "coastal-cyclone-protection-handbook",
+    "name": "Coastal Cyclone Defense & Embankment Engineering Manual",
+    "description": "Technical manual covering storm surge modeling, coastal polder revetments, sluice gates, and cyclone shelter design.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Coastal Defense",
+      "Cyclone Protection",
+      "Storm Surge"
+    ]
+  },
+  "climate-adaptation-infrastructure-guidelines": {
+    "id": "climate-adaptation-infrastructure-guidelines",
+    "name": "Climate Adaptation Guidelines for Civil Infrastructure",
+    "description": "Engineering guidelines on downscaling GCM climate models, sea-level rise allowances, and flexible adaptation pathways.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Climate Adaptation",
+      "Climate Risk",
+      "Guidelines"
+    ]
+  },
+  "critical-infrastructure-continuity-manual": {
+    "id": "critical-infrastructure-continuity-manual",
+    "name": "Critical Infrastructure Continuity & System Redundancy Manual",
+    "description": "Reference manual covering network interdependency mapping, emergency backup power interface, and business continuity.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Critical Infrastructure",
+      "Continuity",
+      "Redundancy"
+    ]
+  },
+  "post-disaster-recovery-reconstruction-guide": {
+    "id": "post-disaster-recovery-reconstruction-guide",
+    "name": "Post-Disaster Inspection & Build-Back-Better Technical Guide",
+    "description": "Illustrated guide to rapid structural inspection, safety tagging, residual capacity check, and resilient reconstruction.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Build Back Better",
+      "Damage Assessment",
+      "Post-Disaster"
+    ]
+  },
+  "disaster-gis-exposure-mapping-manual": {
+    "id": "disaster-gis-exposure-mapping-manual",
+    "name": "Disaster GIS & Geospatial Hazard Mapping Technical Manual",
+    "description": "Handbook covering satellite remote sensing processing, flood overlay creation, and interactive web GIS dashboards.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Disaster GIS",
+      "Remote Sensing",
+      "Exposure Mapping"
+    ]
+  },
+  "nature-based-solutions-engineering-guide": {
+    "id": "nature-based-solutions-engineering-guide",
+    "name": "Nature-Based Solutions & Ecosystem-Based Adaptation Guide",
+    "description": "Engineering guide on mangrove belt design, bio-engineered slopes, wetland retention, and hybrid coastal defenses.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Nature-Based Solutions",
+      "Green Infrastructure",
+      "Eco-Adaptation"
+    ]
+  },
+  "resilience-economics-capital-planning-manual": {
+    "id": "resilience-economics-capital-planning-manual",
+    "name": "Infrastructure Resilience Economics & Investment Manual",
+    "description": "Reference guide on probabilistic disaster loss estimation, cost-benefit ratios, and capital allocation for resilience.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Resilience Economics",
+      "Capital Allocation",
+      "Cost-Benefit"
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "civil3d-booster": {
+    "id": "civil3d-booster",
+    "name": "Civil 3D Booster",
+    "description": "Productivity toolkit for Civil 3D to automate surface labeling, alignment offsets, and pipe corridor editing.",
+    "hostSoftware": [
+      "Civil 3D"
+    ],
+    "version": "2.4",
+    "author": "EVLab Tools",
+    "price": "Free / Open Source",
+    "tags": [
+      "Civil 3D",
+      "Automation",
+      "Productivity"
+    ]
+  },
+  "autolisp-toolkit": {
+    "id": "autolisp-toolkit",
+    "name": "AutoLISP Toolkit for Water Utilities",
+    "description": "Collection of specialized AutoLISP routines to speed up pipe drafting and node numbering in AutoCAD.",
+    "hostSoftware": [
+      "AutoCAD"
+    ],
+    "version": "1.1",
+    "author": "EVLab Tools",
+    "price": "Free",
+    "tags": [
+      "AutoCAD",
+      "AutoLISP",
+      "Drafting"
+    ]
+  },
+  "gis-connector-plugin": {
+    "id": "gis-connector-plugin",
+    "name": "CAD to Enterprise GIS Vector Connector",
+    "description": "Bi-directional bridge plugin converting AutoCAD/Civil 3D utility vector drawings directly into enterprise ArcGIS/QGIS geodatabase features.",
+    "hostSoftware": [
+      "AutoCAD",
+      "Civil 3D"
+    ],
+    "version": "1.8",
+    "author": "EVLab Tools",
+    "price": "Free",
+    "tags": [
+      "AutoCAD",
+      "GIS",
+      "Geodatabase",
+      "Utility Mapping"
+    ]
+  },
+  "hec-ras-controller-plugin": {
+    "id": "hec-ras-controller-plugin",
+    "category": "Modelling Plugin",
+    "tags": [
+      "HEC-RAS Controller",
+      "Python",
+      "Automation",
+      "Monte Carlo"
+    ],
+    "name": "HEC-RAS Controller Automation & Python Scripting Tool",
+    "description": "Automation script library and COM interface for batch running HEC-RAS 1D/2D models, Monte Carlo sensitivity runs, and GIS output exporting."
+  },
+  "qgis-geoprocessing-python-plugin": {
+    "id": "qgis-geoprocessing-python-plugin",
+    "category": "GIS Plugins",
+    "tags": [
+      "QGIS Plugin",
+      "PyQGIS",
+      "Traverse Import",
+      "Python"
+    ],
+    "name": "QGIS GeoProcessing & Survey Data Import Python Plugin",
+    "description": "Custom PyQGIS plugin for direct import of total station field raw files, automated traverse plotting, and coordinate transformation."
+  },
+  "bridge-section-property-calculator": {
+    "id": "bridge-section-property-calculator",
+    "category": "Bridge Analysis Plugins",
+    "tags": [
+      "Section Properties",
+      "Prestress Loss",
+      "Composite Action",
+      "Calculator"
+    ],
+    "name": "Bridge Composite Section Property & Prestress Loss Calculator",
+    "description": "Utility plugin for calculating composite section properties, cracked section properties, and prestress losses."
+  },
+  "tunnel-parametric-bim-plugin": {
+    "id": "tunnel-parametric-bim-plugin",
+    "name": "Parametric Tunnel Alignment & Lining Generator Plugin",
+    "description": "Civil 3D / Revit plugin for automated generation of 3D parametric tunnel segment rings along complex 3D alignment profiles.",
+    "hostSoftware": [
+      "Civil 3D",
+      "Revit"
+    ],
+    "version": "1.5",
+    "author": "EVLab Tools",
+    "price": "Free / Open Source",
+    "tags": [
+      "Civil 3D",
+      "Revit",
+      "Automation",
+      "Segment Ring"
+    ]
+  }
+}
