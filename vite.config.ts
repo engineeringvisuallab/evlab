@@ -16,4 +16,16 @@ export default defineConfig({
       '@': path.resolve(import.meta.dirname, './src'),
     },
   },
+  server: {
+    // Lets `npm run dev` (plain Vite) talk to the admin API when it's
+    // running separately via `npm run dev:admin` (Express, port 3000).
+    // Not needed if you use `npm run dev:admin` on its own, since that
+    // server already serves the whole app itself in middleware mode.
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+  },
 })

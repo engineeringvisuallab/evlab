@@ -22,6 +22,9 @@ const BimViewerPage = lazy(() =>
 )
 const SheetApp = lazy(() => import('@/software/sheet/SheetApp'))
 const PlannerApp = lazy(() => import('@/software/planner/PlannerApp'))
+const AdminPage = lazy(() =>
+  import('@/pages/AdminPage').then((m) => ({ default: m.AdminPage }))
+)
 
 const TOOL_LOADING_LABEL: Record<string, string> = {
   wtp: 'Loading EVLab WTP Design…',
@@ -78,6 +81,24 @@ function AppShell() {
         </main>
         <Footer />
       </div>
+    )
+  }
+
+  // Standalone admin panel — no public Navbar/Footer chrome, has its own
+  // login gate + shell (sidebar/header). Talks to the optional Express API
+  // in server.ts (run via `npm run dev:admin`) for auth, the UELE
+  // database, and GIS layer storage.
+  if (isActivePath(path, '/admin')) {
+    return (
+      <Suspense
+        fallback={
+          <div className="w-full h-screen flex items-center justify-center bg-slate-950 text-slate-400 font-mono text-sm">
+            Loading EVLab Admin…
+          </div>
+        }
+      >
+        <AdminPage />
+      </Suspense>
     )
   }
 

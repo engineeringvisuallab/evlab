@@ -7,6 +7,8 @@ export type BadgeVariant =
   | 'emerald'
   | 'cyan'
   | 'amber'
+  | 'rose'
+  | 'slate'
   | 'outline'
   | 'muted';
 
@@ -45,6 +47,10 @@ export const Badge: React.FC<BadgeProps> = ({
       'bg-[var(--accent-cyan-bg)] text-[var(--accent-cyan)] border border-[var(--accent-cyan)]/20',
     amber:
       'bg-[var(--accent-warning-bg)] text-[var(--accent-warning)] border border-[var(--accent-warning)]/20',
+    rose:
+      'bg-[var(--accent-rose-bg)] text-[var(--accent-rose)] border border-[var(--accent-rose)]/20',
+    slate:
+      'bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-color)]',
     outline:
       'bg-transparent text-[var(--text-secondary)] border border-[var(--border-color)]',
     muted:

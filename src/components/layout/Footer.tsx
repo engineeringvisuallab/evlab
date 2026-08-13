@@ -88,6 +88,9 @@ export function Footer() {
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-[var(--border-color)] pt-6 text-xs text-[var(--text-muted)] sm:flex-row">
           <p>&copy; {new Date().getFullYear()} EVLab — Engineering Visual Lab. All rights reserved.</p>
           <p>Your Future. Our Mission. Engineering For The World.</p>
+          <Link to="/admin" className="text-[var(--text-muted)] transition-colors hover:text-[var(--accent-blue)]">
+            Admin
+          </Link>
         </div>
       </div>
     </footer>
