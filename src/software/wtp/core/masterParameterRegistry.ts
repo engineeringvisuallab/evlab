@@ -2013,6 +2013,58 @@ export const MASTER_PARAMETER_REGISTRY: ParameterDefinition[] = [
     type: 'derived',
     defaultValue: 12,
     required: true
+  },
+
+  // ==========================================
+  // PHASE 12: QA/QC, COMMISSIONING, O&M & MASTER REPORTING
+  // ==========================================
+  {
+    id: 'AUD-OVR-001',
+    name: 'Master Final Engineering Readiness Score',
+    symbol: 'Score_WTP',
+    category: 'Final Engineering Audit',
+    subcategory: 'Readiness Score',
+    description: 'Project-wide transparent engineering completeness score based on subsystem audits.',
+    unit: '%',
+    type: 'derived',
+    defaultValue: 98,
+    required: true
+  },
+  {
+    id: 'CMP-RAT-001',
+    name: 'Standards Compliance Rate',
+    symbol: 'Rate_cmp',
+    category: 'Standards & Compliance',
+    subcategory: 'Compliance Rate',
+    description: 'Percentage of evaluated international and local regulatory standards passed.',
+    unit: '%',
+    type: 'derived',
+    defaultValue: 100,
+    required: true
+  },
+  {
+    id: 'COM-REL-001',
+    name: 'Commissioning Reliability Run Duration',
+    symbol: 'T_reliability',
+    category: 'Commissioning',
+    subcategory: 'Performance Testing',
+    description: 'Continuous 100% load reliability run duration prior to client handover.',
+    unit: 'hours',
+    type: 'input',
+    defaultValue: 72,
+    required: true
+  },
+  {
+    id: 'OM-AST-001',
+    name: 'Registered Maintenance Assets Count',
+    symbol: 'N_assets',
+    category: 'Operation & Maintenance',
+    subcategory: 'Asset Management',
+    description: 'Total number of maintainable equipment assets registered in master O&M database.',
+    unit: 'Assets',
+    type: 'derived',
+    defaultValue: 38,
+    required: true
   }
 ];
 

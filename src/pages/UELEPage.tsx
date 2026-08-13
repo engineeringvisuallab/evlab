@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, Suspense, lazy } from 'react'
 import { UELEObject, UELEHotspot, UELEComponent } from '@/types/uele'
 import ueleObjectsData from '@/data/uele-objects.json'
 import { EnvironmentSelector, UELEZoneFilter } from '@/components/uele/EnvironmentSelector'
@@ -19,11 +19,23 @@ import {
   Workflow,
   ChevronRight,
   Globe,
+  Upload,
 } from 'lucide-react'
+
+// Lazy-loaded: pulls in three.js / @react-three for the 3D view, so it's
+// only downloaded when a visitor actually opts into GIS import mode.
+const GISImportWorkspace = lazy(() =>
+  import('@/components/uele/GISImportWorkspace').then((m) => ({
+    default: m.GISImportWorkspace,
+  }))
+)
+
+type UELEPageMode = 'catalog' | 'gis-import'
 
 export const UELEPage: React.FC = () => {
   const { navigate } = useRouter()
 
+  const [pageMode, setPageMode] = useState<UELEPageMode>('catalog')
   const [currentEnv, setCurrentEnv] = useState<UELEZoneFilter>('all')
   const [selectedObjectId, setSelectedObjectId] = useState<string | null>('raw-water-intake')
   const [selectedComponentId, setSelectedComponentId] = useState<string | null>(null)
@@ -121,7 +133,32 @@ export const UELEPage: React.FC = () => {
           Back to Master Homepage
         </Button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-1 bg-[var(--bg-elevated)] p-1 rounded-xl border border-[var(--border-color)]">
+            <button
+              type="button"
+              onClick={() => setPageMode('catalog')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                pageMode === 'catalog'
+                  ? 'bg-emerald-500 text-slate-950'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              Facility Catalog
+            </button>
+            <button
+              type="button"
+              onClick={() => setPageMode('gis-import')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                pageMode === 'gis-import'
+                  ? 'bg-cyan-500 text-slate-950'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              <Upload className="w-3.5 h-3.5" />
+              Live GIS Import
+            </button>
+          </div>
           <Button
             variant="roadmap"
             size="sm"
@@ -136,6 +173,26 @@ export const UELEPage: React.FC = () => {
         </div>
       </div>
 
+      {pageMode === 'gis-import' ? (
+        <>
+          <SectionHeader
+            badge="UELE Phase 02 — GIS Engineering Engine"
+            badgeVariant="cyan"
+            title="UELE — Real GIS Smart Country Map & Spatial Data Engine"
+            description="Sherpur study area (Bogura, Bangladesh) with satellite basemaps, 2D/3D synchronized vector geometries, and a client-side Shapefile/GeoJSON importer & engineering inspector."
+          />
+          <Suspense
+            fallback={
+              <div className="w-full h-[540px] flex items-center justify-center bg-slate-950 text-slate-400 font-mono text-sm rounded-3xl border border-emerald-500/30">
+                Loading Live GIS Import workspace…
+              </div>
+            }
+          >
+            <GISImportWorkspace onNavigateToRoadmap={handleNavigateToRoadmap} />
+          </Suspense>
+        </>
+      ) : (
+        <>
       <SectionHeader
         badge="Stage 06 — Live GIS Satellite & 3D Engineering Map"
         badgeVariant="emerald"
@@ -303,6 +360,8 @@ export const UELEPage: React.FC = () => {
           </Card>
         </div>
       </div>
+        </>
+      )}
     </Container>
   )
 }

@@ -39,9 +39,14 @@ server, kept separate from your existing Vite-only public site:
 - `.env.example` — `INITIAL_ADMIN_PASSWORD` for the seeded Super Admin
   account (`EVL-ADMIN-001`)
 
-### 3. GIS import + 2D/3D UELE viewer components
-Available as new modules (not yet wired into the public `/uele` page,
-so your existing UELE experience is untouched):
+### 3. GIS import + 2D/3D UELE viewer — now live on the `/uele` page
+On the `/uele` page there's now a mode toggle in the top-right:
+**"Facility Catalog"** (your existing, unchanged experience — same default
+view, same water treatment pipeline, same object inspector) vs.
+**"Live GIS Import"** (new) — imports Shapefile/GeoJSON, satellite
+basemaps, synchronized 2D/3D vector views, category-focus filtering, and a
+layers drawer. It's `src/components/uele/GISImportWorkspace.tsx`, wiring
+together:
 
 - `src/utils/gisImporter.ts`, `gisStorage.ts`, `coordProjectionService.ts`
 - `src/data/sherpur-gis-data.ts`, `uele-basemaps.ts`, `uele-categories.ts`
@@ -49,6 +54,16 @@ so your existing UELE experience is untouched):
   `UELEInspectorShell.tsx`, `UELELayersDrawer.tsx`, `UELEImportModal.tsx`,
   `UELEMapSearch.tsx`
 - New dependency: `shpjs` (shapefile import)
+
+Imported layers persist via `gisStorage`: it tries the admin server's
+`/api/gis/layers` first, then falls back to IndexedDB, then
+`localStorage` — so this mode works standalone even without
+`npm run dev:admin` running.
+
+It's lazy-loaded (`React.lazy`) so the 3D-view dependencies
+(`three`/`@react-three`) and `shpjs` only download when a visitor actually
+switches into GIS Import mode — the default Facility Catalog experience
+and every other page's bundle size are unaffected.
 
 ### 4. Type-collision handling
 The other zip's UELE types file collided with 3 names already used by
@@ -83,5 +98,32 @@ zip's own build history, not this one's).
 
 ## Verified
 - `npx tsc -b` — clean, no errors
-- `npx vite build` — succeeds, `AdminPage` code-splits into its own chunk
+- `npx vite build` — succeeds; `AdminPage` and `GISImportWorkspace`
+  (+ its `gisImporter`/`shpjs` chunk) each code-split into their own lazy
+  chunks, so main bundle size is unaffected
 - `server.ts` — type-checks clean standalone
+- `/uele` page — both modes (Facility Catalog default, Live GIS Import
+  toggle) render without breaking the existing experience
+
+## Also included in this build
+### 7. WTP module upgraded
+`src/software/wtp/` was merged with a newer standalone build of the WTP
+suite: ~20 additional engine modules (compliance, commissioning, QA/QC,
+design alternatives, master reporting, etc.) and 3 new tabs (Formula
+Explorer, Design Alternatives, Phase 12 Engineering Suite), wired into
+`WtpApp.tsx` and the sidebar. Embedding-specific customizations already in
+place (the "Publish to BIM" header button, optional-prop safety on a few
+view components) were preserved rather than overwritten.
+
+### 8. STP module added
+A new `src/software/stp/` module (Sewerage & Wastewater Treatment Plant
+design suite) was added following the same pattern as the other
+standalone tools: `StpApp.tsx` entry, lazy route at `/software/stp`, and
+an `evlab-stp` entry in `evlab-tools.json` (Waves icon, emerald accent) so
+it appears on the Software page. Several pre-existing type errors in the
+original STP suite (mismatched property/method names between its engine
+and UI panels) were fixed rather than carried over.
+
+Verified: `npx tsc -b` — 0 errors across the whole project (WTP + STP
+included); `npx vite build` — succeeds, `WtpApp` and `StpApp` each
+code-split into their own chunk.

@@ -5,6 +5,22 @@ export const DEFAULT_INITIAL_ADMIN_ID = 'EVL-ADMIN-001';
 
 const STORAGE_SESSION_KEY = 'evlab_admin_session';
 
+async function parseJsonResponse(res: Response): Promise<any> {
+  const contentType = res.headers.get('content-type') || '';
+  if (contentType.includes('application/json')) {
+    try {
+      return await res.json();
+    } catch {
+      throw new Error('Failed to parse response JSON from server.');
+    }
+  }
+  const text = await res.text();
+  if (text.includes('<!DOCTYPE') || text.includes('<html')) {
+    throw new Error(`Server connection error (${res.status}). Please check server logs.`);
+  }
+  throw new Error(text.slice(0, 150) || `Server error (${res.status})`);
+}
+
 export class AdminAuthService {
   /**
    * Admin Login via Admin ID + Password
@@ -17,7 +33,7 @@ export class AdminAuthService {
         body: JSON.stringify({ admin_id, password }),
       });
 
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok || !data.success) {
         throw new Error(data.error || 'Invalid Admin ID or Password.');
       }
@@ -51,7 +67,7 @@ export class AdminAuthService {
         },
       });
 
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (data.valid && data.session) {
         // Updated active session info
         sessionStorage.setItem(STORAGE_SESSION_KEY, JSON.stringify(data.session));
@@ -119,7 +135,7 @@ export class AdminAuthService {
       body: JSON.stringify({ currentPassword, newPassword }),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok || !data.success) {
       throw new Error(data.error || 'Failed to change password.');
     }
@@ -134,7 +150,7 @@ export class AdminAuthService {
       headers: this.getAuthHeaders(),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to fetch administrator list.');
     }
@@ -151,7 +167,7 @@ export class AdminAuthService {
       body: JSON.stringify(payload),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to create administrator.');
     }
@@ -167,7 +183,7 @@ export class AdminAuthService {
       body: JSON.stringify(payload),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to update administrator.');
     }
@@ -183,7 +199,7 @@ export class AdminAuthService {
       body: JSON.stringify({ newPassword }),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to reset administrator password.');
     }
@@ -197,7 +213,7 @@ export class AdminAuthService {
       headers: this.getAuthHeaders(),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to fetch audit logs.');
     }
@@ -212,7 +228,7 @@ export class AdminAuthService {
       headers: this.getAuthHeaders(),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to fetch system settings.');
     }
@@ -229,7 +245,7 @@ export class AdminAuthService {
       body: JSON.stringify(settings),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to update settings.');
     }
@@ -245,7 +261,7 @@ export class AdminAuthService {
       headers: this.getAuthHeaders(),
     });
 
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) {
       throw new Error(data.error || 'Failed to revoke active sessions.');
     }

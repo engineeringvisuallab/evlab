@@ -4,13 +4,38 @@
     "name": "EVLab WTP Design",
     "shortName": "WTP Design",
     "tagline": "Water Treatment Plant process & engineering design suite",
-    "description": "Full water treatment plant design workspace — design basis, process selection, hydraulics, chemical dosing, equipment sizing, electrical, structural, BOQ/cost, drawings, standards compliance and reporting, following CPHEEO & AWWA criteria.",
+    "description": "Full water treatment plant design workspace \u2014 design basis, process selection, hydraulics, chemical dosing, equipment sizing, electrical, structural, BOQ/cost, drawings, standards compliance and reporting, following CPHEEO & AWWA criteria.",
     "field": "Civil / Environmental Engineering",
     "status": "live",
     "route": "wtp",
     "icon": "Droplets",
     "accent": "cyan",
-    "tags": ["Water Treatment", "Process Design", "Hydraulics", "BOQ", "CPHEEO"]
+    "tags": [
+      "Water Treatment",
+      "Process Design",
+      "Hydraulics",
+      "BOQ",
+      "CPHEEO"
+    ]
+  },
+  "evlab-stp": {
+    "id": "evlab-stp",
+    "name": "EVLab STP Design",
+    "shortName": "STP Design",
+    "tagline": "Sewerage & Wastewater Treatment Plant engineering design suite",
+    "description": "Full sewerage and wastewater treatment plant design workspace \u2014 design basis, wastewater quality, parameter registry, scenarios & alternatives, calculations inspector, and validation audit, following CPHEEO & standard wastewater engineering criteria.",
+    "field": "Civil / Environmental Engineering",
+    "status": "live",
+    "route": "stp",
+    "icon": "Waves",
+    "accent": "emerald",
+    "tags": [
+      "Wastewater Treatment",
+      "Sewerage",
+      "Process Design",
+      "Pollutant Loading",
+      "CPHEEO"
+    ]
   },
   "evlab-minicad": {
     "id": "evlab-minicad",
@@ -23,7 +48,11 @@
     "route": "minicad",
     "icon": "PenTool",
     "accent": "warning",
-    "tags": ["CAD", "Drafting", "2D/3D"]
+    "tags": [
+      "CAD",
+      "Drafting",
+      "2D/3D"
+    ]
   },
   "evlab-bim": {
     "id": "evlab-bim",
@@ -36,71 +65,102 @@
     "route": "bim",
     "icon": "Box",
     "accent": "blue",
-    "tags": ["BIM", "3D", "Digital Twin", "Integration"]
+    "tags": [
+      "BIM",
+      "3D",
+      "Digital Twin",
+      "Integration"
+    ]
   },
   "evlab-gis": {
     "id": "evlab-gis",
     "name": "EVLab GIS",
     "shortName": "GIS",
     "tagline": "In-browser geographic information system & spatial analysis workbench",
-    "description": "Full GIS workspace for engineers — 2D/3D maps, layer management, basemaps, spatial analysis toolbox, attribute tables, geometry validation, and map layout/export, all running in the browser.",
+    "description": "Full GIS workspace for engineers \u2014 2D/3D maps, layer management, basemaps, spatial analysis toolbox, attribute tables, geometry validation, and map layout/export, all running in the browser.",
     "field": "Civil / Geomatics Engineering",
     "status": "live",
     "route": "gis",
     "icon": "Map",
     "accent": "emerald",
-    "tags": ["GIS", "Spatial Analysis", "Mapping", "Layers"]
+    "tags": [
+      "GIS",
+      "Spatial Analysis",
+      "Mapping",
+      "Layers"
+    ]
   },
   "evlab-boq": {
     "id": "evlab-boq",
     "name": "EVLab BOQ",
     "shortName": "BOQ",
     "tagline": "Bill of Quantities, estimation & cost control workspace",
-    "description": "Professional civil engineering BOQ suite — takeoff, rate analysis, estimates, abstracts, measurement, billing, variations, cost control, materials/labour/equipment libraries, and reporting.",
+    "description": "Professional civil engineering BOQ suite \u2014 takeoff, rate analysis, estimates, abstracts, measurement, billing, variations, cost control, materials/labour/equipment libraries, and reporting.",
     "field": "Civil Engineering / Quantity Surveying",
     "status": "live",
     "route": "boq",
     "icon": "Calculator",
     "accent": "purple",
-    "tags": ["BOQ", "Estimation", "Cost Control", "Quantity Surveying"]
+    "tags": [
+      "BOQ",
+      "Estimation",
+      "Cost Control",
+      "Quantity Surveying"
+    ]
   },
   "evlab-waterflow": {
     "id": "evlab-waterflow",
     "name": "EVLab WaterFlow",
     "shortName": "WaterFlow",
     "tagline": "Water distribution network modeling & hydraulic analysis",
-    "description": "Professional water distribution network workstation — build junctions, pipes, tanks, reservoirs and pumps in 2D or 3D, run hydraulic analysis, and inspect pressure, velocity, and head loss results.",
+    "description": "Professional water distribution network workstation \u2014 build junctions, pipes, tanks, reservoirs and pumps in 2D or 3D, run hydraulic analysis, and inspect pressure, velocity, and head loss results.",
     "field": "Civil / Water Engineering",
     "status": "live",
     "route": "waterflow",
     "icon": "Droplets",
     "accent": "cyan",
-    "tags": ["Hydraulics", "Water Distribution", "Network Analysis", "EPANET"]
+    "tags": [
+      "Hydraulics",
+      "Water Distribution",
+      "Network Analysis",
+      "EPANET"
+    ]
   },
   "evlab-sheet": {
     "id": "evlab-sheet",
     "name": "EVLab Sheet",
     "shortName": "Sheet",
     "tagline": "Professional engineering spreadsheet platform",
-    "description": "In-browser spreadsheet workspace built for engineers — multi-sheet workbooks, a full formula engine with dependency tracking, engineering-specific functions, and a project explorer, all running offline in the browser.",
+    "description": "In-browser spreadsheet workspace built for engineers \u2014 multi-sheet workbooks, a full formula engine with dependency tracking, engineering-specific functions, and a project explorer, all running offline in the browser.",
     "field": "Cross-discipline",
     "status": "live",
     "route": "sheet",
     "icon": "Table2",
     "accent": "blue",
-    "tags": ["Spreadsheet", "Formula Engine", "Calculations", "Workbook"]
+    "tags": [
+      "Spreadsheet",
+      "Formula Engine",
+      "Calculations",
+      "Workbook"
+    ]
   },
   "evlab-planner": {
     "id": "evlab-planner",
     "name": "EVLab Project Planner",
     "shortName": "Project Planner",
     "tagline": "Construction scheduling, WBS & earned value management",
-    "description": "Full project controls workspace — WBS, Gantt scheduling, critical path analysis, resource loading, baselines, cost & earned value management (EVM), look-ahead planning, risks/issues tracking, and reporting.",
+    "description": "Full project controls workspace \u2014 WBS, Gantt scheduling, critical path analysis, resource loading, baselines, cost & earned value management (EVM), look-ahead planning, risks/issues tracking, and reporting.",
     "field": "Civil Engineering / Project Management",
     "status": "live",
     "route": "planner",
     "icon": "GanttChartSquare",
     "accent": "purple",
-    "tags": ["Scheduling", "Gantt", "WBS", "EVM", "Project Controls"]
+    "tags": [
+      "Scheduling",
+      "Gantt",
+      "WBS",
+      "EVM",
+      "Project Controls"
+    ]
   }
 }

@@ -7,6 +7,8 @@ import { DesignBasisView } from './components/DesignBasisView';
 import { WaterQualityView } from './components/WaterQualityView';
 import { ProcessSelectionView } from './components/ProcessSelectionView';
 import { ProcessDesignView } from './components/ProcessDesignView';
+import { FormulaExplorerView } from './components/FormulaExplorerView';
+import { DesignAlternativesView } from './components/DesignAlternativesView';
 import { HydraulicsView } from './components/HydraulicsView';
 import { ChemicalDosingView } from './components/ChemicalDosingView';
 import { EquipmentView } from './components/EquipmentView';
@@ -21,6 +23,7 @@ import { ValidationMatrixView } from './components/ValidationMatrixView';
 import { CompletenessAuditView } from './components/CompletenessAuditView';
 import { StandardsLibraryView } from './components/StandardsLibraryView';
 import { ReportsView } from './components/ReportsView';
+import { Phase12View } from './components/Phase12View';
 
 import { FormulaInspectorModal } from './components/FormulaInspectorModal';
 import { AiAssistantModal } from './components/AiAssistantModal';
@@ -233,6 +236,22 @@ export default function WtpApp() {
             />
           )}
 
+          {activeTab === 'formulaExplorer' && (
+            <FormulaExplorerView
+              project={project}
+              state={calculatedState}
+              onOpenFormulaInspector={(paramId) => setInspectorParamId(paramId)}
+            />
+          )}
+
+          {activeTab === 'designAlternatives' && (
+            <DesignAlternativesView
+              project={project}
+              state={calculatedState}
+              waterQuality={waterQualityList}
+            />
+          )}
+
           {activeTab === 'hydraulics' && (
             <HydraulicsView state={calculatedState} />
           )}
@@ -291,6 +310,10 @@ export default function WtpApp() {
 
           {activeTab === 'reports' && (
             <ReportsView project={project} state={calculatedState} />
+          )}
+
+          {activeTab === 'phase12' && (
+            <Phase12View state={calculatedState} />
           )}
         </main>
       </div>

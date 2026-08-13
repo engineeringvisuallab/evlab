@@ -13,6 +13,7 @@ import { isActivePath } from '@/utils/router'
 // Lazy-loaded so each EVLab-built software tool only downloads when a
 // visitor actually opens it, keeping the main site bundle lean.
 const WtpApp = lazy(() => import('@/software/wtp/WtpApp'))
+const StpApp = lazy(() => import('@/software/stp/StpApp'))
 const MiniCadApp = lazy(() => import('@/software/minicad/MiniCadApp'))
 const WaterFlowApp = lazy(() => import('@/software/waterflow/WaterFlowApp'))
 const GisApp = lazy(() => import('@/software/gis/GisApp'))
@@ -28,6 +29,7 @@ const AdminPage = lazy(() =>
 
 const TOOL_LOADING_LABEL: Record<string, string> = {
   wtp: 'Loading EVLab WTP Design…',
+  stp: 'Loading EVLab STP Design…',
   minicad: 'Loading EVLab Mini CAD…',
   waterflow: 'Loading EVLab WaterFlow…',
   gis: 'Loading EVLab GIS…',
@@ -104,6 +106,7 @@ function AppShell() {
 
   const STANDALONE_TOOL_ROUTES = [
     'wtp',
+    'stp',
     'minicad',
     'waterflow',
     'gis',
@@ -127,6 +130,8 @@ function AppShell() {
       >
         {standaloneToolKey === 'wtp' ? (
           <WtpApp />
+        ) : standaloneToolKey === 'stp' ? (
+          <StpApp />
         ) : standaloneToolKey === 'minicad' ? (
           <MiniCadApp />
         ) : standaloneToolKey === 'waterflow' ? (

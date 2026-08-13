@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ArrowUpRight, Clock, Droplets, PenTool, Code2, Box, Map, Calculator, Table2, GanttChartSquare } from 'lucide-react';
+import { Sparkles, ArrowUpRight, Clock, Droplets, Waves, PenTool, Code2, Box, Map, Calculator, Table2, GanttChartSquare } from 'lucide-react';
 import { Container } from '../components/shared/Container';
 import { SectionHeader } from '../components/shared/SectionHeader';
 import { Card } from '../components/shared/Card';
@@ -24,6 +24,7 @@ export interface EvlabTool {
 
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   Droplets,
+  Waves,
   PenTool,
   Code2,
   Box,

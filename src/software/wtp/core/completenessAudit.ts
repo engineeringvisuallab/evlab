@@ -240,5 +240,45 @@ export const WTP_COMPLETENESS_AUDIT_LIST: CompletenessAuditItem[] = [
     proposedParameter: 'EngineeringModelRegistry, IFC GUID Mapping, Automated BIM Integrity Audit',
     proposedCalculation: 'Enforces end-to-end traceability from design parameters to 2D CAD, 3D BIM, GIS, BOQ, Procurement, Construction, and As-Built data.',
     status: 'COMPLETE'
+  },
+  {
+    id: 'AUD-025',
+    category: 'QA/QC & Standards',
+    item: 'Inspection Test Plan (ITP) & Multi-Standard Compliance Matrix',
+    importance: 'CRITICAL',
+    whyRequired: 'Lack of systematic quality control and standards auditing leads to non-compliant equipment, material failures, and regulatory rejection.',
+    proposedParameter: 'ITP Hold Points, Clause-by-Clause Standards Comparison, QA/QC Workflows',
+    proposedCalculation: 'Evaluates design values against WHO, AWWA, ACI, IEEE, and BD ECR 2023 standards and generates project ITP.',
+    status: 'COMPLETE'
+  },
+  {
+    id: 'AUD-026',
+    category: 'Commissioning & Handover',
+    item: 'Multi-Phase Commissioning Plan & 72-Hour Reliability Run',
+    importance: 'CRITICAL',
+    whyRequired: 'Incomplete commissioning leads to premature component failure, process instability, and operational safety hazards upon handover.',
+    proposedParameter: 'Pre-Commissioning Checklists, Dry/Wet Testing, 72h Performance Run, Handover Package',
+    proposedCalculation: 'Tracks pre-commissioning readiness, dry bump tests, wet chemical/water balance, and reliability run metrics.',
+    status: 'COMPLETE'
+  },
+  {
+    id: 'AUD-027',
+    category: 'Operation & Maintenance',
+    item: 'Master Asset Register, PM Schedules & Operating Dashboard',
+    importance: 'HIGH',
+    whyRequired: 'Inadequate O&M documentation leads to unmaintained assets, uncalibrated instruments, and excessive plant downtime.',
+    proposedParameter: 'Asset Register, PM Frequency Rules, Spare Inventory, Calibration Logs, SOP Framework',
+    proposedCalculation: 'Generates master asset register, preventive maintenance schedules, spare parts reorder thresholds, and SOP manuals.',
+    status: 'COMPLETE'
+  },
+  {
+    id: 'AUD-028',
+    category: 'Master Reporting',
+    item: '36-Section Master Report Engine & 19-Folder Engineering Package',
+    importance: 'CRITICAL',
+    whyRequired: 'Fragmented reports delay client approval, tender issuance, financing clearance, and statutory authority permits.',
+    proposedParameter: '36-Section Comprehensive Report, 19 Folder Engineering Package Structure, Issues Register',
+    proposedCalculation: 'Aggregates all 27+ engineering subsystems into a single comprehensive master engineering package.',
+    status: 'COMPLETE'
   }
 ];

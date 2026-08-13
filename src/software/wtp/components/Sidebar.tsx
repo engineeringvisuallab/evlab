@@ -6,6 +6,7 @@ import {
   Droplets, 
   Cpu, 
   GitFork, 
+  Sliders,
   Pipette, 
   HardDrive, 
   Recycle, 
@@ -18,7 +19,8 @@ import {
   CheckCheck, 
   ShieldCheck, 
   BookOpen, 
-  FileCheck2 
+  FileCheck2,
+  Calculator
 } from 'lucide-react';
 
 export type ViewTab = 
@@ -28,6 +30,8 @@ export type ViewTab =
   | 'waterQuality'
   | 'processSelection'
   | 'processDesign'
+  | 'formulaExplorer'
+  | 'designAlternatives'
   | 'hydraulics'
   | 'chemical'
   | 'equipment'
@@ -41,7 +45,8 @@ export type ViewTab =
   | 'validation'
   | 'completeness'
   | 'standards'
-  | 'reports';
+  | 'reports'
+  | 'phase12';
 
 interface SidebarProps {
   activeTab: ViewTab;
@@ -61,6 +66,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'waterQuality', label: 'Raw Water Database', icon: Droplets },
     { id: 'processSelection', label: 'Process Recommendation', icon: Cpu },
     { id: 'processDesign', label: 'Unit Process Design', icon: GitFork },
+    { id: 'formulaExplorer', label: 'Formula & Traceability', icon: Calculator },
+    { id: 'designAlternatives', label: 'Design Alternatives (Phase 13)', icon: Sliders },
     { id: 'hydraulics', label: 'Hydraulics & Profile', icon: Compass },
     { id: 'chemical', label: 'Chemical Dosing', icon: Pipette },
     { id: 'equipment', label: 'Equipment Schedule', icon: HardDrive },
@@ -74,7 +81,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'validation', label: 'Design Validation Matrix', icon: CheckCheck, badge: validationFailCount },
     { id: 'completeness', label: 'Completeness Audit', icon: ShieldCheck },
     { id: 'standards', label: 'Standards Library', icon: BookOpen },
-    { id: 'reports', label: 'Engineering Reports', icon: FileCheck2 }
+    { id: 'reports', label: 'Engineering Reports', icon: FileCheck2 },
+    { id: 'phase12', label: 'Phase 12 Engineering Suite', icon: ShieldCheck }
   ];
 
   return (
