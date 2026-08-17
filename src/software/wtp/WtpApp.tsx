@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Header } from './components/Header';
 import { Sidebar, ViewTab } from './components/Sidebar';
 import { DashboardView } from './components/DashboardView';
+import { LiveProcessSimulationView } from './components/LiveProcessSimulationView';
 import { ProjectManagementView } from './components/ProjectManagementView';
 import { DesignBasisView } from './components/DesignBasisView';
 import { WaterQualityView } from './components/WaterQualityView';
@@ -112,6 +113,7 @@ export default function WtpApp() {
 
   const [inspectorParamId, setInspectorParamId] = useState<string | null>(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState<boolean>(false);
+  const [transparencyMode, setTransparencyMode] = useState<boolean>(true);
 
   const [revisions, setRevisions] = useState<RevisionRecord[]>([
     { revId: 'REV-00', date: '2026-08-01', author: 'Principal Process Engineer', description: 'Initial Baseline Design', changesCount: 12, status: 'Approved' },
@@ -170,6 +172,9 @@ export default function WtpApp() {
         onOpenFormulaInspector={(paramId) => setInspectorParamId(paramId || 'DES-CAP-001')}
         onOpenAiAssistant={() => setIsAiModalOpen(true)}
         onPublishToBim={handlePublishToBim}
+        transparencyMode={transparencyMode}
+        onToggleTransparency={() => setTransparencyMode(v => !v)}
+        onNavigateTab={setActiveTab}
       />
 
       <div className="flex flex-1 overflow-hidden">
@@ -184,6 +189,15 @@ export default function WtpApp() {
               state={calculatedState}
               validations={validationMatrix}
               onNavigateTab={setActiveTab}
+              transparencyMode={transparencyMode}
+            />
+          )}
+
+          {activeTab === 'liveSimulation' && (
+            <LiveProcessSimulationView
+              project={project}
+              state={calculatedState}
+              onOpenFormulaInspector={(paramId) => setInspectorParamId(paramId)}
             />
           )}
 

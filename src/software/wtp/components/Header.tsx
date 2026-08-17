@@ -5,10 +5,13 @@ import {
   CheckCircle2, 
   AlertTriangle, 
   Layers,
-  Box
+  Box,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 import { ProjectMetadata, ValidationResult } from '../types/wtp';
 import { CalculatedWtpState } from '../core/dependencyEngine';
+import { ViewTab } from './Sidebar';
 
 interface HeaderProps {
   project: ProjectMetadata;
@@ -21,6 +24,11 @@ interface HeaderProps {
   validationPassCount?: number;
   validationWarnCount?: number;
   validationFailCount?: number;
+  /** Global "Engineering Transparency Mode" — shows [fx] formula buttons on every calculation field */
+  transparencyMode?: boolean;
+  onToggleTransparency?: () => void;
+  /** Optional: lets the "Formula Traceability" button navigate to the Formula Explorer tab instead of only opening the modal inspector */
+  onNavigateTab?: (tab: ViewTab) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -31,7 +39,10 @@ export const Header: React.FC<HeaderProps> = ({
   onPublishToBim,
   validationPassCount,
   validationWarnCount,
-  validationFailCount
+  validationFailCount,
+  transparencyMode = false,
+  onToggleTransparency,
+  onNavigateTab
 }) => {
   const passes = validationPassCount ?? validations.filter(v => v.status === 'PASS').length;
   const warns = validationWarnCount ?? validations.filter(v => v.status === 'WARNING').length;
@@ -82,9 +93,36 @@ export const Header: React.FC<HeaderProps> = ({
           )}
         </div>
 
-        {/* Formula Inspector Button */}
+        {/* Engineering Transparency Mode Toggle */}
+        {onToggleTransparency && (
+          <button
+            onClick={onToggleTransparency}
+            title="Toggle Engineering Transparency Mode — shows [fx] formula buttons on every calculation field"
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border transition ${
+              transparencyMode
+                ? 'bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 border-emerald-700/60'
+                : 'bg-slate-800 hover:bg-slate-700 text-slate-400 border-slate-700'
+            }`}
+          >
+            {transparencyMode ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+            <span className="hidden sm:inline">
+              Transparency: {transparencyMode ? 'ON [fx]' : 'OFF'}
+            </span>
+          </button>
+        )}
+
+        {/* Formula Inspector Button — opens the modal formula inspector directly.
+            If onNavigateTab is wired up, this can instead route to the Formula Explorer tab
+            for the toggle-driven UX (set FORMULA_BUTTON_NAVIGATES = true below). */}
         <button
-          onClick={() => onOpenFormulaInspector()}
+          onClick={() => {
+            const FORMULA_BUTTON_NAVIGATES = false;
+            if (FORMULA_BUTTON_NAVIGATES && onNavigateTab) {
+              onNavigateTab('formulaExplorer' as ViewTab);
+            } else {
+              onOpenFormulaInspector();
+            }
+          }}
           className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
         >
           <Layers className="w-4 h-4 text-amber-400" />

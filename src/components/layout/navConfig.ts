@@ -14,6 +14,7 @@ export const NAV_SECTIONS: NavSection[] = [
   { section: 'plugins', label: 'Plugins', path: '/plugins' },
   { section: 'projects', label: 'Projects', path: '/projects' },
   { section: 'software', label: 'Software', path: '/software' },
+  { section: 'ev-software', label: 'EV Software', path: '/ev-software' },
   { section: 'work', label: 'Work', path: '/work' },
   { section: 'about', label: 'About', path: '/about' },
 ]

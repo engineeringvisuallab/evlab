@@ -20,11 +20,13 @@ import {
   ShieldCheck, 
   BookOpen, 
   FileCheck2,
-  Calculator
+  Calculator,
+  Activity
 } from 'lucide-react';
 
 export type ViewTab = 
   | 'dashboard'
+  | 'liveSimulation'
   | 'projects'
   | 'designBasis'
   | 'waterQuality'
@@ -61,6 +63,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const navigationItems = [
     { id: 'dashboard', label: 'Executive Dashboard', icon: LayoutDashboard },
+    { id: 'liveSimulation', label: '⚡ Live Flow Simulation', icon: Activity },
     { id: 'projects', label: 'Project & Revisions', icon: FolderGit2 },
     { id: 'designBasis', label: 'Design Basis & Demand', icon: Target },
     { id: 'waterQuality', label: 'Raw Water Database', icon: Droplets },

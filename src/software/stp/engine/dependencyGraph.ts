@@ -37,10 +37,17 @@ export class DependencyGraphEngine {
     this.addNode('STP.FLOW.PEAK_FACTOR', 'PARAMETER', 'Peak Factor', 'Hydraulics', ['STP.DEMO.P_DES']);
     this.addNode('STP.FLOW.PWWF', 'CALCULATION', 'Peak Wet Weather Flow (PWWF)', 'Hydraulics', ['STP.FLOW.ADWF', 'STP.FLOW.PEAK_FACTOR']);
 
+    // Phase 03 — Sewerage Network & Pumping Station Links
+    this.addNode('CALC-SWR-MANNING_CAPACITY', 'CALCULATION', 'Gravity Sewer Manning Hydraulic Capacity', 'Sewer Network', ['STP.FLOW.PWWF', 'STP.SWR.PIPE.DIAMETER', 'STP.SWR.PIPE.SLOPE']);
+    this.addNode('CALC-SWR-HGL_PROFILE', 'CALCULATION', 'Hydraulic Grade Line (HGL) Profile', 'Sewer Network', ['CALC-SWR-MANNING_CAPACITY', 'STP.SWR.PIPE.LENGTH']);
+    this.addNode('CALC-PS-WETWELL_DIMENSIONS', 'CALCULATION', 'Lift Station Wet Well Volume & Sizing', 'Pumping Station', ['STP.FLOW.PWWF']);
+    this.addNode('CALC-PS-TDH', 'CALCULATION', 'Pump Total Dynamic Head (TDH)', 'Pumping Station', ['STP.FLOW.PWWF', 'CALC-PS-WETWELL_DIMENSIONS']);
+    this.addNode('CALC-PS-POWER_HYDRAULIC', 'CALCULATION', 'Pump Motor Rating & Power', 'Pumping Station', ['CALC-PS-TDH']);
+
     // 2. Process Sizing
     this.addNode('CALC-BIO-REACTOR_VOLUME', 'CALCULATION', 'Biological Aeration Tank Volume', 'Biological Treatment', ['STP.FLOW.ADWF', 'STP.QUAL.BOD5', 'STP.BIO.MLSS']);
     this.addNode('CALC-AERATION-AIRFLOW', 'CALCULATION', 'Aeration Blower Airflow Demand', 'Aeration System', ['CALC-BIO-REACTOR_VOLUME', 'STP.QUAL.BOD5', 'STP.QUAL.TEMP']);
-    this.addNode('CALC-ELEC-POWER_DEMAND', 'CALCULATION', 'Plant Connected Electrical Load', 'Electrical Power', ['CALC-AERATION-AIRFLOW']);
+    this.addNode('CALC-ELEC-POWER_DEMAND', 'CALCULATION', 'Plant Connected Electrical Load', 'Electrical Power', ['CALC-AERATION-AIRFLOW', 'CALC-PS-POWER_HYDRAULIC']);
 
     // 3. Downstream BOQ, BIM & Reports
     this.addNode('BOQ-CIV-CONCRETE', 'BOQ', 'Concrete Tank Quantity Takeoff', 'Civil', ['CALC-BIO-REACTOR_VOLUME']);

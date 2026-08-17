@@ -37,11 +37,11 @@ export const DesignBasisPanel: React.FC<DesignBasisPanelProps> = ({
   };
 
   const regressionStats = PopulationEngine.calculateCensusRegression(basis.censusHistory || [], 2026 + (basis.designHorizonYears || 30));
-  const diurnalCurve = DesignBasisEngine.getDiurnalProfile(basis.diurnalProfileType || 'RESIDENTIAL');
-  const diurnalPoints = diurnalCurve.hourlyMultipliers.map((multiplier, hour) => ({
+  const diurnalProfile = DesignBasisEngine.getDiurnalProfile(basis.diurnalProfileType || 'RESIDENTIAL');
+  const diurnalPoints = diurnalProfile.hourlyMultipliers.map((mult, hour) => ({
     hour,
-    multiplier,
-    flowM3d: (basis.adwfM3d || 10000) * multiplier,
+    multiplier: mult,
+    flowM3d: Math.round((basis.adwfM3d || 10000) * mult),
   }));
 
   return (

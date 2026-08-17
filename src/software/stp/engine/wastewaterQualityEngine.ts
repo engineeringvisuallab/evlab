@@ -43,7 +43,6 @@ export class WastewaterQualityEngine {
     const bodToCod = cod > 0 ? Number((bod5 / cod).toFixed(3)) : 0.5;
     const codToTkn = tkn > 0 ? Number((cod / tkn).toFixed(2)) : 10.0;
     const bodToTp = tp > 0 ? Number((bod5 / tp).toFixed(2)) : 30.0;
-    const bodToTkn = tkn > 0 ? Number((bod5 / tkn).toFixed(2)) : 5.0;
     const vssToTss = tss > 0 ? Number((vss / tss).toFixed(3)) : 0.8;
     const alkToTkn = tkn > 0 ? Number((alkalinity / tkn).toFixed(2)) : 5.0;
 
@@ -84,7 +83,6 @@ export class WastewaterQualityEngine {
       bodToCod,
       codToTkn,
       bodToTp,
-      bodToTkn,
       vssToTss,
       alkToTkn,
       biodegradability,
@@ -92,26 +90,6 @@ export class WastewaterQualityEngine {
       ebprFeasibility,
       alkalinityFeasibility,
     };
-  }
-
-  /**
-   * Splits total COD into readily-biodegradable (rbCOD), slowly-biodegradable
-   * (sbCOD), and inert (iCOD) fractions using standard municipal wastewater
-   * proportions (20% / 60% / 20% of total COD), and reports the combined
-   * biodegradable COD (bCOD = rbCOD + sbCOD). Falls back to a BOD5-derived
-   * COD estimate (COD ≈ BOD5 × 1.8) when total COD is not yet available.
-   */
-  public static calculateCodFractionation(
-    codTotal: number,
-    bod5: number
-  ): { rbCOD: number; sbCOD: number; iCOD: number; bCOD: number } {
-    const total = codTotal > 0 ? codTotal : bod5 * 1.8;
-    const rbCOD = Number((total * 0.2).toFixed(1));
-    const sbCOD = Number((total * 0.6).toFixed(1));
-    const iCOD = Number((total * 0.2).toFixed(1));
-    const bCOD = Number((rbCOD + sbCOD).toFixed(1));
-
-    return { rbCOD, sbCOD, iCOD, bCOD };
   }
 
   /**
@@ -177,5 +155,60 @@ export class WastewaterQualityEngine {
     influent.ratios = ratios;
 
     return { codFractions, ratios, cnp };
+  }
+
+  /**
+   * Factory providing standard default municipal raw influent quality.
+   */
+  public static createDefaultInfluentQuality(): InfluentQuality {
+    return {
+      flowM3d: { min: 4500, avg: 12826, max: 30154, designValue: 12826, unit: 'm3/day', isAssumed: false, source: 'Calculated ADWF' },
+      bod5: { min: 180, avg: 250, max: 380, designValue: 250, unit: 'mg/L', isAssumed: true, source: 'Metcalf & Eddy Domestic Sewage' },
+      cod: { min: 320, avg: 450, max: 700, designValue: 450, unit: 'mg/L', isAssumed: true, source: 'Metcalf & Eddy Domestic Sewage' },
+      codSoluble: { min: 120, avg: 200, max: 310, designValue: 200, unit: 'mg/L', isAssumed: true, source: '0.45 x Total COD' },
+      codInert: { min: 20, avg: 50, max: 90, designValue: 50, unit: 'mg/L', isAssumed: true, source: 'Respirometric Estimate' },
+      toc: { min: 80, avg: 140, max: 220, designValue: 140, unit: 'mg/L', isAssumed: true, source: 'Assumed Ratio' },
+      tss: { min: 180, avg: 280, max: 450, designValue: 280, unit: 'mg/L', isAssumed: true, source: 'Domestic Sewage Average' },
+      vss: { min: 140, avg: 224, max: 360, designValue: 224, unit: 'mg/L', isAssumed: true, source: '0.8 x TSS' },
+      tds: { min: 300, avg: 500, max: 800, designValue: 500, unit: 'mg/L', isAssumed: true, source: 'Municipal Supply TDS' },
+      tn: { min: 25, avg: 48, max: 75, designValue: 48, unit: 'mg/L', isAssumed: true, source: 'TKN + NO3' },
+      tkn: { min: 25, avg: 45, max: 70, designValue: 45, unit: 'mg/L', isAssumed: true, source: 'Domestic Sewage Average' },
+      nh3n: { min: 15, avg: 30, max: 50, designValue: 30, unit: 'mg/L', isAssumed: true, source: 'Domestic Sewage Average' },
+      no3n: { min: 0, avg: 1.0, max: 3.0, designValue: 1.0, unit: 'mg/L', isAssumed: true, source: 'Traces' },
+      orgN: { min: 8, avg: 15, max: 25, designValue: 15, unit: 'mg/L', isAssumed: true, source: 'TKN - NH3' },
+      tp: { min: 4.0, avg: 8.0, max: 14.0, designValue: 8.0, unit: 'mg/L', isAssumed: true, source: 'Detergent Contribution' },
+      po4p: { min: 2.0, avg: 5.0, max: 9.0, designValue: 5.0, unit: 'mg/L', isAssumed: true, source: 'Orthophosphate Ratio' },
+      alkalinity: { min: 150, avg: 250, max: 400, designValue: 250, unit: 'mg/L', isAssumed: true, source: 'Carbonate Hardness' },
+      ph: { min: 6.8, avg: 7.4, max: 8.2, designValue: 7.4, unit: '-', isAssumed: false, source: 'Measured Field Probe' },
+      temperature: { min: 12.0, avg: 24.0, max: 32.0, designValue: 18.0, unit: '°C', isAssumed: false, source: 'Winter Minimum Design' },
+      tempMax: { min: 22.0, avg: 30.0, max: 38.0, designValue: 32.0, unit: '°C', isAssumed: false, source: 'Summer Maximum Design' },
+      do: { min: 0.0, avg: 0.5, max: 2.0, designValue: 0.5, unit: 'mg/L', isAssumed: true, source: 'Septic Sewer Influent' },
+      oilAndGrease: { min: 15, avg: 35, max: 80, designValue: 35, unit: 'mg/L', isAssumed: true, source: 'Kitchen Waste Contribution' },
+      fecalColiform: { min: 1e5, avg: 1e7, max: 1e8, designValue: 1e7, unit: 'MPN/100mL', isAssumed: true, source: 'Domestic Sewage Standard' },
+      codFractions: {
+        codTotal: 450,
+        codSoluble: 200,
+        codInert: 50,
+        codParticulate: 200,
+        codBiodegradable: 400,
+      },
+      ratios: {
+        bodToCod: 0.556,
+        codToTkn: 10.0,
+        bodToTp: 31.25,
+        vssToTss: 0.8,
+        alkToTkn: 5.56,
+        biodegradability: 'HIGHLY_BIODEGRADABLE',
+        denitrificationFeasibility: 'SUFFICIENT',
+        ebprFeasibility: 'HIGH',
+        alkalinityFeasibility: 'SUFFICIENT',
+      },
+      samplingConfidence: {
+        sampleCount: 24,
+        dataQualityFlag: 'MUNICIPAL_DEFAULT',
+        confidenceIntervalPct: 90,
+        lastUpdated: '2026-01-01',
+      },
+    };
   }
 }

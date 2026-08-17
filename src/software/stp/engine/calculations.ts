@@ -10,6 +10,10 @@ import { PopulationEngine } from './populationEngine';
 import { DesignBasisEngine } from './designBasisEngine';
 import { WastewaterQualityEngine } from './wastewaterQualityEngine';
 import { PollutantLoadingEngine } from './pollutantLoadingEngine';
+import { SewerNetworkEngine } from './sewerNetworkEngine';
+import { PreliminaryPrimaryMasterEngine } from './preliminaryPrimaryMasterEngine';
+import { ScreeningEngine } from './screeningEngine';
+import { PrimaryClarifierEngine } from './primaryClarifierEngine';
 
 export class CalculationEngine {
   /**
@@ -270,6 +274,105 @@ export class CalculationEngine {
   }
 
   /**
+   * Calculates Kirschmer Screen Headloss & Approach Hydraulics.
+   */
+  public static calculateScreeningHeadloss(
+    barOpeningMm: number,
+    barThicknessMm: number,
+    angleDeg: number,
+    channelWidthM: number,
+    waterDepthM: number,
+    peakFlowLps: number
+  ): CalculationResult {
+    const defaultScreen = ScreeningEngine.createDefaultCoarseScreen();
+    defaultScreen.barOpeningMm = barOpeningMm;
+    defaultScreen.barThicknessMm = barThicknessMm;
+    defaultScreen.screenAngleDeg = angleDeg;
+    defaultScreen.channelWidthM = channelWidthM;
+    defaultScreen.upstreamWaterDepthM = waterDepthM;
+
+    const res = ScreeningEngine.calculateScreenHydraulics(defaultScreen, peakFlowLps);
+
+    return {
+      id: IDGenerator.calculationID('PRELIM'),
+      name: 'Screening Kirschmer Headloss & Velocities',
+      subsystem: 'Preliminary Screening',
+      value: Number(res.cleanHeadlossM.toFixed(4)),
+      unit: 'm',
+      formulaDisplay: 'h_L = beta * (s/b)^(4/3) * (v_a^2 / 2g) * sin(theta)',
+      inputParameters: {
+        'Bar Clear Opening b (mm)': barOpeningMm,
+        'Bar Thickness s (mm)': barThicknessMm,
+        'Screen Angle (deg)': angleDeg,
+        'Channel Width (m)': channelWidthM,
+        'Water Depth (m)': waterDepthM,
+        'Peak Flow (L/s)': peakFlowLps,
+      },
+      subSteps: [
+        { stepName: 'Approach Velocity v_a', formula: 'Q / (W * d)', value: Number(res.approachVelocityMps.toFixed(3)), unit: 'm/s' },
+        { stepName: 'Open Area Fraction e', formula: 'b / (b + s)', value: Number(res.openAreaFraction.toFixed(3)), unit: 'fraction' },
+        { stepName: 'Through-Bar Velocity v_t (Clean)', formula: 'Q / A_open', value: Number(res.velocityThroughBarsCleanMps.toFixed(3)), unit: 'm/s' },
+        { stepName: 'Design Clogged Headloss (50%)', formula: 'Orifice Equation (50% blockage)', value: Number(res.cloggedHeadlossM.toFixed(4)), unit: 'm' },
+      ],
+      dependencyIds: ['STP.PRELIM.SCREEN.BAR_OPENING', 'STP.PRELIM.SCREEN.APPROACH_VEL'],
+      standardReference: 'Kirschmer Formula / Metcalf & Eddy Section 5-2',
+      assumptions: ['Rectangular bar shape factor beta = 2.42 assumed.'],
+      warnings: res.validationMessages,
+      reviewStatus: 'VERIFIED',
+      usedByModules: ['HGL', 'BOQ', 'REPORT', 'BIM'],
+    };
+  }
+
+  /**
+   * Calculates Primary Clarifier Surface Overflow Rate & Sizing.
+   */
+  public static calculatePrimaryClarifier(
+    diameterM: number,
+    swdM: number,
+    numTanks: number,
+    peakFlowLps: number,
+    avgFlowLps: number
+  ): CalculationResult {
+    const config = PrimaryClarifierEngine.createDefaultCircularClarifier();
+    config.tankCount = numTanks;
+    config.dutyCount = numTanks;
+    if (config.circular) {
+      config.circular.diameterM = diameterM;
+      config.circular.sideWaterDepthM = swdM;
+    }
+
+    const res = PrimaryClarifierEngine.calculateClarifierHydraulics(config, avgFlowLps, peakFlowLps);
+
+    return {
+      id: IDGenerator.calculationID('PRIM'),
+      name: 'Primary Clarifier Sizing & Surface Overflow Rate',
+      subsystem: 'Primary Clarification',
+      value: Number(res.actualSorPeakM3M2D.toFixed(1)),
+      unit: 'm3/m2/day',
+      formulaDisplay: 'SOR_peak = Q_peak / Total_Surface_Area',
+      inputParameters: {
+        'Tank Diameter (m)': diameterM,
+        'Side Water Depth (m)': swdM,
+        'Number of Tanks': numTanks,
+        'Peak Flow (L/s)': peakFlowLps,
+        'Average Flow (L/s)': avgFlowLps,
+      },
+      subSteps: [
+        { stepName: 'Total Surface Area', formula: 'N * (pi * D^2 / 4)', value: Number(res.surfaceAreaTotalM2.toFixed(1)), unit: 'm2' },
+        { stepName: 'Peak HRT', formula: 'Volume / (Q_peak / 24)', value: Number(res.actualHrtPeakHours.toFixed(2)), unit: 'h' },
+        { stepName: 'Peak Weir Loading', formula: 'Q_peak / Total_Weir_Length', value: Number(res.weirLoadingPeakM3MD.toFixed(1)), unit: 'm3/m/d' },
+        { stepName: 'Weir Crest Head Drop', formula: '90-deg V-Notch Formula', value: Number(res.weirDropM.toFixed(3)), unit: 'm' },
+      ],
+      dependencyIds: ['STP.PRIM.CLAR.SOR_PEAK', 'STP.PRIM.CLAR.HRT_PEAK', 'STP.PRIM.CLAR.WEIR_LOADING'],
+      standardReference: 'CPHEEO Manual Section 5.3 / Metcalf & Eddy Table 5-16',
+      assumptions: ['Radial flow with peripheral V-notch weir launders.'],
+      warnings: res.validationMessages,
+      reviewStatus: 'VERIFIED',
+      usedByModules: ['HGL', 'BOQ', 'REPORT', 'BIM'],
+    };
+  }
+
+  /**
    * Executes complete calculation refresh across baseline parameters.
    */
   public static runAllCalculations(project: ProjectState): Record<string, CalculationResult> {
@@ -348,6 +451,37 @@ export class CalculationEngine {
     // 7. Sample Pipe Manning Hydraulics
     const pipeRes = this.calculateManningPipeFullFlow(600, 0.003, 0.013);
     results[pipeRes.id] = pipeRes;
+
+    // 8. Phase 03 Sewer Network Recalculation
+    if (scenario.sewerNetwork) {
+      scenario.sewerNetwork = SewerNetworkEngine.recomputeNetworkHydraulics(scenario.sewerNetwork);
+    }
+
+    // 9. Phase 04 Preliminary & Primary Treatment Master Calculation
+    scenario.preliminaryPrimary = PreliminaryPrimaryMasterEngine.calculatePreliminaryPrimaryState(
+      scenario,
+      project,
+      scenario.preliminaryPrimary
+    );
+
+    const screenRes = this.calculateScreeningHeadloss(
+      scenario.preliminaryPrimary.coarseScreen.barOpeningMm,
+      scenario.preliminaryPrimary.coarseScreen.barThicknessMm,
+      scenario.preliminaryPrimary.coarseScreen.screenAngleDeg,
+      scenario.preliminaryPrimary.coarseScreen.channelWidthM,
+      scenario.preliminaryPrimary.coarseScreen.upstreamWaterDepthM,
+      completeFlows.peakFlowLps
+    );
+    results[screenRes.id] = screenRes;
+
+    const clarRes = this.calculatePrimaryClarifier(
+      scenario.preliminaryPrimary.primaryClarifier.circular?.diameterM || 18.0,
+      scenario.preliminaryPrimary.primaryClarifier.circular?.sideWaterDepthM || 3.5,
+      scenario.preliminaryPrimary.primaryClarifier.dutyCount || 2,
+      completeFlows.peakFlowLps,
+      (completeFlows.adwfM3d * 1000) / 86400
+    );
+    results[clarRes.id] = clarRes;
 
     return results;
   }

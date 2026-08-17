@@ -9,16 +9,22 @@ import {
   LayoutDashboard,
   Users,
   Droplets,
+  Network,
   Database,
   Layers,
   Calculator,
   ShieldCheck,
+  Filter,
+  Waves,
 } from 'lucide-react';
 
 export type TabKey =
   | 'DASHBOARD'
   | 'DESIGN_BASIS'
+  | 'SEWER_NETWORK'
   | 'WASTEWATER_QUALITY'
+  | 'PRELIMINARY_TREATMENT'
+  | 'PRIMARY_TREATMENT'
   | 'PARAMETER_REGISTRY'
   | 'SCENARIOS_ALTERNATIVES'
   | 'CALCULATIONS'
@@ -38,7 +44,10 @@ export const Navigation: React.FC<NavigationProps> = ({
   const tabs: { key: TabKey; label: string; icon: React.ReactNode; badge?: number }[] = [
     { key: 'DASHBOARD', label: 'Project Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
     { key: 'DESIGN_BASIS', label: 'Design Basis & Flows', icon: <Users className="w-4 h-4" /> },
+    { key: 'SEWER_NETWORK', label: 'Sewerage & Pumping', icon: <Network className="w-4 h-4" /> },
     { key: 'WASTEWATER_QUALITY', label: 'Wastewater Quality', icon: <Droplets className="w-4 h-4" /> },
+    { key: 'PRELIMINARY_TREATMENT', label: 'Preliminary Treatment', icon: <Filter className="w-4 h-4" /> },
+    { key: 'PRIMARY_TREATMENT', label: 'Primary Clarification', icon: <Waves className="w-4 h-4" /> },
     { key: 'PARAMETER_REGISTRY', label: 'Parameter Registry', icon: <Database className="w-4 h-4" /> },
     { key: 'SCENARIOS_ALTERNATIVES', label: 'Scenarios & Alternatives', icon: <Layers className="w-4 h-4" /> },
     { key: 'CALCULATIONS', label: 'Calculation Inspector', icon: <Calculator className="w-4 h-4" /> },

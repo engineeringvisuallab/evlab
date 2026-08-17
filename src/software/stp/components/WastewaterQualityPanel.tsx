@@ -39,8 +39,8 @@ export const WastewaterQualityPanel: React.FC<WastewaterQualityPanelProps> = ({
   };
 
   const analysis = WastewaterQualityEngine.analyzeInfluentQuality(quality);
-  const ratios = analysis.ratios;
-  const codFrac = WastewaterQualityEngine.calculateCodFractionation(quality.cod.designValue, quality.bod5.designValue);
+  const { codFractions: codFrac, ratios: qualityRatios } = analysis;
+  const bodToTkn = quality.tkn.designValue > 0 ? quality.bod5.designValue / quality.tkn.designValue : 5.0;
 
   const paramList: { key: keyof typeof quality; label: string; symbol: string }[] = [
     { key: 'bod5', label: '5-Day Biochemical Oxygen Demand', symbol: 'BOD5' },
@@ -75,11 +75,11 @@ export const WastewaterQualityPanel: React.FC<WastewaterQualityPanelProps> = ({
         <div className="flex items-center space-x-3 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-xs">
           <div>
             <span className="text-slate-400 block text-[10px]">COD / BOD5 Ratio</span>
-            <span className="font-mono font-bold text-cyan-300 text-sm">{ratios.bodToCod ? (1 / ratios.bodToCod).toFixed(2) : '1.80'}</span>
+            <span className="font-mono font-bold text-cyan-300 text-sm">{qualityRatios.bodToCod ? (1 / qualityRatios.bodToCod).toFixed(2) : '1.80'}</span>
           </div>
           <div className="text-left border-l border-slate-800 pl-3">
-            <span className="text-emerald-400 font-semibold block text-[11px]">{ratios.biodegradability}</span>
-            <span className="text-[10px] text-slate-500">COD:TKN = {ratios.codToTkn.toFixed(1)} &bull; BOD:TP = {ratios.bodToTp.toFixed(1)}</span>
+            <span className="text-emerald-400 font-semibold block text-[11px]">{qualityRatios.biodegradability}</span>
+            <span className="text-[10px] text-slate-500">COD:TKN = {qualityRatios.codToTkn.toFixed(1)} &bull; BOD:TP = {qualityRatios.bodToTp.toFixed(1)}</span>
           </div>
         </div>
       </div>
@@ -154,7 +154,7 @@ export const WastewaterQualityPanel: React.FC<WastewaterQualityPanelProps> = ({
               </thead>
               <tbody className="divide-y divide-slate-800/60 font-mono">
                 {paramList.map((item) => {
-                  const param = quality[item.key] as InfluentQualityParameter;
+                  const param = quality[item.key] as unknown as InfluentQualityParameter | undefined;
                   if (!param) return null;
 
                   const massLoadingKgDay = ((flowM3d * param.designValue) / 1000).toFixed(1);
@@ -211,7 +211,7 @@ export const WastewaterQualityPanel: React.FC<WastewaterQualityPanelProps> = ({
               <div className="bg-slate-950 border border-slate-800 p-3 rounded-lg flex items-center justify-between">
                 <div>
                   <span className="text-slate-400 block text-[11px]">Readily Biodegradable Soluble COD (rbCOD / S_s)</span>
-                  <span className="text-base font-bold text-cyan-300">{codFrac.rbCOD.toFixed(1)} mg/L (20%)</span>
+                  <span className="text-base font-bold text-cyan-300">{codFrac.codSoluble.toFixed(1)} mg/L</span>
                 </div>
                 <span className="text-[10px] bg-cyan-950 text-cyan-300 px-2 py-1 rounded">Fast Denitrification</span>
               </div>
@@ -219,7 +219,7 @@ export const WastewaterQualityPanel: React.FC<WastewaterQualityPanelProps> = ({
               <div className="bg-slate-950 border border-slate-800 p-3 rounded-lg flex items-center justify-between">
                 <div>
                   <span className="text-slate-400 block text-[11px]">Slowly Biodegradable Particulate COD (sbCOD / X_s)</span>
-                  <span className="text-base font-bold text-emerald-300">{codFrac.sbCOD.toFixed(1)} mg/L (60%)</span>
+                  <span className="text-base font-bold text-emerald-300">{codFrac.codParticulate.toFixed(1)} mg/L</span>
                 </div>
                 <span className="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-1 rounded">Requires Hydrolysis</span>
               </div>
@@ -227,7 +227,7 @@ export const WastewaterQualityPanel: React.FC<WastewaterQualityPanelProps> = ({
               <div className="bg-slate-950 border border-slate-800 p-3 rounded-lg flex items-center justify-between">
                 <div>
                   <span className="text-slate-400 block text-[11px]">Inert Non-Biodegradable COD (iCOD / S_i + X_i)</span>
-                  <span className="text-base font-bold text-amber-300">{codFrac.iCOD.toFixed(1)} mg/L (20%)</span>
+                  <span className="text-base font-bold text-amber-300">{codFrac.codInert.toFixed(1)} mg/L</span>
                 </div>
                 <span className="text-[10px] bg-amber-950 text-amber-300 px-2 py-1 rounded">Passes through / Sludge</span>
               </div>
@@ -239,7 +239,7 @@ export const WastewaterQualityPanel: React.FC<WastewaterQualityPanelProps> = ({
               Biodegradable COD (bCOD) Summary
             </h3>
             <div className="p-4 bg-slate-950 rounded-lg space-y-2 border border-slate-800">
-              <div className="text-lg font-bold text-emerald-400">Total bCOD = {codFrac.bCOD.toFixed(1)} mg/L</div>
+              <div className="text-lg font-bold text-emerald-400">Total bCOD = {codFrac.codBiodegradable.toFixed(1)} mg/L</div>
               <p className="text-slate-400 text-[11px] leading-relaxed">
                 The bCOD (Readily + Slowly Biodegradable COD) represents the exact substrate available for heterotrophic bacterial synthesis, oxygen consumption, and biological denitrification.
               </p>
@@ -253,25 +253,25 @@ export const WastewaterQualityPanel: React.FC<WastewaterQualityPanelProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-mono text-xs">
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-2">
             <span className="text-slate-400 text-[11px] uppercase block">BOD5 : TKN Ratio (Nitrification)</span>
-            <div className="text-2xl font-bold text-cyan-300">{ratios.bodToTkn.toFixed(2)}</div>
+            <div className="text-2xl font-bold text-cyan-300">{bodToTkn.toFixed(2)}</div>
             <p className="text-[10px] text-slate-400">
-              {ratios.bodToTkn > 5.0 ? 'High carbon availability. Nitrifiers compete with heterotrophs.' : 'Optimal for combined carbon oxidation & nitrification.'}
+              {bodToTkn > 5.0 ? 'High carbon availability. Nitrifiers compete with heterotrophs.' : 'Optimal for combined carbon oxidation & nitrification.'}
             </p>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-2">
             <span className="text-slate-400 text-[11px] uppercase block">COD : TKN Ratio (Denitrification)</span>
-            <div className="text-2xl font-bold text-emerald-300">{ratios.codToTkn.toFixed(2)}</div>
+            <div className="text-2xl font-bold text-emerald-300">{qualityRatios.codToTkn.toFixed(2)}</div>
             <p className="text-[10px] text-slate-400">
-              {ratios.codToTkn >= 10.0 ? 'Sufficient carbon for complete total nitrogen removal.' : 'Low carbon ratio. External carbon (Methanol/Glycerol) required.'}
+              {qualityRatios.codToTkn >= 10.0 ? 'Sufficient carbon for complete total nitrogen removal.' : 'Low carbon ratio. External carbon (Methanol/Glycerol) required.'}
             </p>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-2">
             <span className="text-slate-400 text-[11px] uppercase block">BOD5 : TP Ratio (Bio-P Removal)</span>
-            <div className="text-2xl font-bold text-amber-300">{ratios.bodToTp.toFixed(2)}</div>
+            <div className="text-2xl font-bold text-amber-300">{qualityRatios.bodToTp.toFixed(2)}</div>
             <p className="text-[10px] text-slate-400">
-              {ratios.bodToTp >= 20.0 ? 'Ideal ratio for Enhanced Biological Phosphorus Removal (EBPR).' : 'Low BOD. Chemical alum/ferric dosing required.'}
+              {qualityRatios.bodToTp >= 20.0 ? 'Ideal ratio for Enhanced Biological Phosphorus Removal (EBPR).' : 'Low BOD. Chemical alum/ferric dosing required.'}
             </p>
           </div>
         </div>

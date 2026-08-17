@@ -27,48 +27,257 @@
         "title": "Survey & Point Tools",
         "titleBn": "সার্ভে ও পয়েন্ট টুলস",
         "commands": [
-          { "command": "FPOINT", "description": "Places a donut marker (survey point) at a picked location with a chosen diameter." },
-          { "command": "FPSTYLE", "description": "Switches the drawing's point style to a filled circle." },
-          { "command": "PFILL", "description": "Turns selected POINT entities into filled, colored survey markers." },
-          { "command": "PCT", "description": "Places text (RL, chainage, etc.) at each selected POINT location." },
-          { "command": "PTB", "description": "Inserts a chosen block at every selected POINT location, with progress feedback." },
-          { "command": "PTBL", "description": "Fast, no-dialog version of block-at-point insertion." }
+          {
+            "command": "FPOINT",
+            "description": "Places a donut marker (survey point) at a picked location with a chosen diameter."
+          },
+          {
+            "command": "FPSTYLE",
+            "description": "Switches the drawing's point style to a filled circle."
+          },
+          {
+            "command": "PFILL",
+            "description": "Turns selected POINT entities into filled, colored survey markers."
+          },
+          {
+            "command": "PCT",
+            "description": "Places text (RL, chainage, etc.) at each selected POINT location."
+          },
+          {
+            "command": "PTB",
+            "description": "Inserts a chosen block at every selected POINT location, with progress feedback."
+          },
+          {
+            "command": "PTBL",
+            "description": "Fast, no-dialog version of block-at-point insertion."
+          }
         ]
       },
       {
         "title": "Text & Annotation Tools",
         "titleBn": "টেক্সট ও অ্যানোটেশন টুলস",
         "commands": [
-          { "command": "T110", "description": "Changes the picked text/mtext content to \"110\"." },
-          { "command": "CH110", "description": "Finds \"90\" inside a selection of text/mtext and replaces it with \"110\"." },
-          { "command": "UL", "description": "Underlines the selected text or mtext." },
-          { "command": "JTO", "description": "Builds an underlined \"A to B\" label from two picked text values." },
-          { "command": "LPEP", "description": "Writes a chosen label into every selected circle." }
+          {
+            "command": "T110",
+            "description": "Changes the picked text/mtext content to \"110\"."
+          },
+          {
+            "command": "CH110",
+            "description": "Finds \"90\" inside a selection of text/mtext and replaces it with \"110\"."
+          },
+          {
+            "command": "UL",
+            "description": "Underlines the selected text or mtext."
+          },
+          {
+            "command": "JTO",
+            "description": "Builds an underlined \"A to B\" label from two picked text values."
+          },
+          {
+            "command": "LPEP",
+            "description": "Writes a chosen label into every selected circle."
+          }
         ]
       },
       {
         "title": "Layer Tools",
         "titleBn": "লেয়ার টুলস",
         "commands": [
-          { "command": "SDLW", "description": "Lists the layers found in a selection and lets you isolate objects on one of them." }
+          {
+            "command": "SDLW",
+            "description": "Lists the layers found in a selection and lets you isolate objects on one of them."
+          }
         ]
       },
       {
         "title": "Layout & Sheet Management Tools",
         "titleBn": "লেআউট ও শীট ম্যানেজমেন্ট টুলস",
         "commands": [
-          { "command": "ACAD", "description": "Sets every layout except Model to the DWG To PDF.pc3 / acad.ctb plot style." },
-          { "command": "CTBACA", "description": "Sets every layout, including Model, to the DWG To PDF.pc3 / acad.ctb plot style." },
-          { "command": "CLRLAYTXT", "description": "Deletes stray text/mtext across all layouts (block text is left untouched)." },
-          { "command": "FFFVPFIND", "description": "Finds a text string anywhere in the drawing, zooms to it, and selects it." },
-          { "command": "LAYREN", "description": "Renames layouts with a chosen prefix and running serial number." },
-          { "command": "LAYSORTNUM", "description": "Reorders layout tabs by the number embedded in each layout name." },
-          { "command": "NEXTLAY", "description": "Jumps to the next layout tab, wrapping back to the first at the end." },
-          { "command": "NSYNC", "description": "Rotates a north-sign block to match its viewport's twist angle." },
-          { "command": "SSSCOPY", "description": "Duplicates the current numbered layout (e.g. (01)) as the next serial." },
-          { "command": "SHNO", "description": "Drops in a dynamic sheet-number field tied to the current layout name." },
-          { "command": "SNO-DRWNO", "description": "Combines a sheet serial and drawing number into one label." },
-          { "command": "VPLOCKALL", "description": "Locks or unlocks every viewport across all layouts at once." }
+          {
+            "command": "ACAD",
+            "description": "Sets every layout except Model to the DWG To PDF.pc3 / acad.ctb plot style."
+          },
+          {
+            "command": "CTBACA",
+            "description": "Sets every layout, including Model, to the DWG To PDF.pc3 / acad.ctb plot style."
+          },
+          {
+            "command": "CLRLAYTXT",
+            "description": "Deletes stray text/mtext across all layouts (block text is left untouched)."
+          },
+          {
+            "command": "FFFVPFIND",
+            "description": "Finds a text string anywhere in the drawing, zooms to it, and selects it."
+          },
+          {
+            "command": "LAYREN",
+            "description": "Renames layouts with a chosen prefix and running serial number."
+          },
+          {
+            "command": "LAYSORTNUM",
+            "description": "Reorders layout tabs by the number embedded in each layout name."
+          },
+          {
+            "command": "NEXTLAY",
+            "description": "Jumps to the next layout tab, wrapping back to the first at the end."
+          },
+          {
+            "command": "NSYNC",
+            "description": "Rotates a north-sign block to match its viewport's twist angle."
+          },
+          {
+            "command": "SSSCOPY",
+            "description": "Duplicates the current numbered layout (e.g. (01)) as the next serial."
+          },
+          {
+            "command": "SHNO",
+            "description": "Drops in a dynamic sheet-number field tied to the current layout name."
+          },
+          {
+            "command": "SNO-DRWNO",
+            "description": "Combines a sheet serial and drawing number into one label."
+          },
+          {
+            "command": "VPLOCKALL",
+            "description": "Locks or unlocks every viewport across all layouts at once."
+          }
+        ]
+      }
+    ]
+  },
+  "surveypro-autolisp-suite": {
+    "id": "surveypro-autolisp-suite",
+    "name": "SurveyPro AutoLISP Suite",
+    "description": "20 production-grade AutoLISP tools for land surveying & drafting automation — point auto-labeling, CSV coordinate import, spot levels, contour prep & labeling, closed traverse with Bowditch adjustment, bearing/distance COGO, road chainage & cross-sections, boundary area, coordinate tables, point QC, and one-click SURVEYPRO master menu with DCL dialog.",
+    "hostSoftware": [
+      "AutoCAD",
+      "Civil 3D"
+    ],
+    "version": "2.0",
+    "author": "EVLab Tools",
+    "price": "Free",
+    "downloadUrl": "/downloads/surveypro-autolisp-suite.zip",
+    "fileName": "surveypro-autolisp-suite.zip",
+    "fileSize": "26 KB",
+    "installNote": "APPLOAD দিয়ে সব .lsp ফাইল (বা শুধু 20_surveypro_master.lsp) লোড করুন, DCL ও MNU ফাইল একই ফোল্ডারে রাখুন, তারপর SURVEYPRO টাইপ করলেই মাস্টার মেনু চালু হবে।",
+    "tags": [
+      "AutoCAD",
+      "AutoLISP",
+      "Survey",
+      "Traverse",
+      "COGO",
+      "Road Chainage",
+      "Bowditch"
+    ],
+    "categories": [
+      {
+        "title": "Points",
+        "commands": [
+          {
+            "command": "AUTOLABEL",
+            "description": "Batch labels POINT entities with Point No, Easting, Northing, and Elevation with anti-collision offset."
+          },
+          {
+            "command": "XYZ2PT",
+            "description": "Creates 3D AutoCAD POINT objects from manually entered or pasted Easting, Northing, and Elevation coordinates."
+          },
+          {
+            "command": "CSV2SURV",
+            "description": "Imports thousands of survey points from CSV/TXT with automatic column detection and layered annotation."
+          },
+          {
+            "command": "RENUMBERPT",
+            "description": "Batch renumbers survey points sorted by geometric position (Left-Right, Right-Left, Top-Bottom, Bottom-Top)."
+          }
+        ]
+      },
+      {
+        "title": "Topography",
+        "commands": [
+          {
+            "command": "SPOTLVL",
+            "description": "Generates formatted spot height and reduced level (RL) annotations from survey points with customizable prefix."
+          },
+          {
+            "command": "CONTOURPREP",
+            "description": "Extracts XYZ mesh data, builds terrain TIN intervals, and separates Major and Minor contour layers."
+          },
+          {
+            "command": "CONTOURLBL",
+            "description": "Labels contour polylines with their true elevation oriented along polyline tangents."
+          }
+        ]
+      },
+      {
+        "title": "Traverse & COGO",
+        "commands": [
+          {
+            "command": "TRAVERSE",
+            "description": "Closed traverse solver with Bowditch/Compass rule adjustment, linear misclosure, precision, and formatted AutoCAD table."
+          },
+          {
+            "command": "SURVBD",
+            "description": "Calculates Horizontal Distance, Slope Distance, Bearing (DMS), Azimuth, Delta E, and Delta N between two points."
+          },
+          {
+            "command": "SURVDIM",
+            "description": "Automatically creates aligned survey dimensions along boundary lines and polylines with smart offset sides."
+          }
+        ]
+      },
+      {
+        "title": "Road & Corridor",
+        "commands": [
+          {
+            "command": "ROADCH",
+            "description": "Generates road stationing, chainage ticks, and formatted labels (CH 0+000, CH 0+020) along alignment polylines."
+          },
+          {
+            "command": "CHOFFSET",
+            "description": "Calculates exact stationing and Left/Right offset of survey points relative to an alignment centerline polyline."
+          },
+          {
+            "command": "XSECTION",
+            "description": "Generates road survey cross-section ground profiles, datum RL, offsets, and level labels in clean sheet tiles."
+          },
+          {
+            "command": "LPROFILE",
+            "description": "Plots road alignment longitudinal ground profile with horizontal/vertical grids, chainage axis, and RL bands."
+          }
+        ]
+      },
+      {
+        "title": "Parcel & Tables",
+        "commands": [
+          {
+            "command": "BNDRYINFO",
+            "description": "Analyzes closed cadastral boundary polylines, calculates Area (m², Hectares, Acres), Perimeter, and vertex tables."
+          },
+          {
+            "command": "COORDTBL",
+            "description": "Generates professional AutoCAD TABLE entities with Point No, Easting, Northing, Elevation, and Description."
+          }
+        ]
+      },
+      {
+        "title": "QC & Suite",
+        "commands": [
+          {
+            "command": "QCPOINTS",
+            "description": "Scans drawing for duplicate coordinates, co-located points within tolerance, zero elevations, and outliers."
+          },
+          {
+            "command": "SURVLAYERS",
+            "description": "Creates and manages standard civil survey CAD layers with standard ACI colors, linetypes, and lineweights."
+          },
+          {
+            "command": "SURVEYQC",
+            "description": "Deep drawing audit identifying zero-length lines, unclosed boundaries, overlapping text, and unreferenced survey objects."
+          },
+          {
+            "command": "SURVEYPRO",
+            "description": "The ultimate all-in-one suite command presenting an interactive menu & DCL dialog to run all 19 survey tools seamlessly."
+          }
         ]
       }
     ]

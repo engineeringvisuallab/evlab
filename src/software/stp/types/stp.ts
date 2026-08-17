@@ -181,7 +181,6 @@ export interface QualityRatios {
   bodToCod: number;
   codToTkn: number;
   bodToTp: number;
-  bodToTkn: number;
   vssToTss: number;
   alkToTkn: number;
   biodegradability: 'HIGHLY_BIODEGRADABLE' | 'MODERATE' | 'REFRACTORY_TOXIC';
@@ -530,6 +529,9 @@ export interface ScenarioState {
   subsystemOverrides: Record<string, string>; // Subsystem -> Selected Technology ID
   designBasis: DesignBasis;
   influentQuality: InfluentQuality;
+  sewerNetwork?: import('./sewer').SewerNetworkState;
+  preliminaryPrimary?: import('./preliminaryPrimary').PreliminaryPrimaryState;
+  biological?: import('./biological').BiologicalTreatmentState;
   processNodes: ProcessUnitNode[];
   totalFootprintM2: number;
   totalCapexUSD: number;

@@ -13,6 +13,9 @@ import { DashboardPanel } from './components/DashboardPanel';
 import { DesignBasisPanel } from './components/DesignBasisPanel';
 import { WastewaterQualityPanel } from './components/WastewaterQualityPanel';
 import { ParameterRegistryPanel } from './components/ParameterRegistryPanel';
+import { SewerNetworkPanel } from './components/SewerNetworkPanel';
+import { PreliminaryTreatmentPanel } from './components/PreliminaryTreatmentPanel';
+import { PrimaryTreatmentPanel } from './components/PrimaryTreatmentPanel';
 import { ScenariosAlternativesPanel } from './components/ScenariosAlternativesPanel';
 import { CalculationsInspectorPanel } from './components/CalculationsInspectorPanel';
 import { ValidationAuditPanel } from './components/ValidationAuditPanel';
@@ -87,8 +90,20 @@ export default function StpApp() {
           />
         )}
 
+        {activeTab === 'SEWER_NETWORK' && (
+          <SewerNetworkPanel project={project} onUpdateProject={handleUpdateProject} />
+        )}
+
         {activeTab === 'WASTEWATER_QUALITY' && (
           <WastewaterQualityPanel project={project} onUpdateProject={handleUpdateProject} />
+        )}
+
+        {activeTab === 'PRELIMINARY_TREATMENT' && (
+          <PreliminaryTreatmentPanel project={project} onUpdateProject={handleUpdateProject} />
+        )}
+
+        {activeTab === 'PRIMARY_TREATMENT' && (
+          <PrimaryTreatmentPanel project={project} onUpdateProject={handleUpdateProject} />
         )}
 
         {activeTab === 'PARAMETER_REGISTRY' && <ParameterRegistryPanel project={project} />}

@@ -28,6 +28,16 @@ const AdminPage = lazy(() =>
   import('@/pages/AdminPage').then((m) => ({ default: m.AdminPage }))
 )
 
+// EV Software — additive entry point into the existing tool ecosystem via
+// EV Software Core. Does not replace /software; existing tool routes below
+// are untouched.
+const EVSoftwareLandingPage = lazy(() =>
+  import('@/pages/EVSoftwareLandingPage').then((m) => ({ default: m.EVSoftwareLandingPage }))
+)
+const EVSoftwareWorkspacePage = lazy(() =>
+  import('@/pages/EVSoftwareWorkspacePage').then((m) => ({ default: m.EVSoftwareWorkspacePage }))
+)
+
 const TOOL_LOADING_LABEL: Record<string, string> = {
   wtp: 'Loading EVLab WTP Design…',
   stp: 'Loading EVLab STP Design…',
@@ -178,6 +188,31 @@ function AppShell() {
               onNavigateHome={() => navigate('/software')}
               onOpenTool={(route) => navigate(`/software/${route}`)}
             />
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
+  if (isActivePath(path, '/ev-software')) {
+    const isWorkspace = path === '/ev-software/workspace'
+    return (
+      <div className="flex min-h-screen flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]">
+        <Navbar />
+        <main className="flex-1">
+          <Suspense
+            fallback={
+              <div className="w-full h-96 flex items-center justify-center text-[var(--text-muted)] font-mono text-sm">
+                Loading EV Software…
+              </div>
+            }
+          >
+            {isWorkspace ? (
+              <EVSoftwareWorkspacePage onOpenTool={(route) => navigate(`/software/${route}`)} />
+            ) : (
+              <EVSoftwareLandingPage onEnterWorkspace={() => navigate('/ev-software/workspace')} />
+            )}
           </Suspense>
         </main>
         <Footer />

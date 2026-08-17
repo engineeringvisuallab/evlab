@@ -6,6 +6,8 @@
 
 import { ScenarioState, ProcessAlternative, DesignBasis, InfluentQuality } from '../types/stp';
 import { IDGenerator } from './idGenerator';
+import { SewerNetworkEngine } from './sewerNetworkEngine';
+import { PreliminaryPrimaryMasterEngine } from './preliminaryPrimaryMasterEngine';
 
 export const PROCESS_ALTERNATIVE_CATALOG: Record<string, ProcessAlternative> = {
   // 1. Biological Alternatives
@@ -216,6 +218,8 @@ export class ScenarioEngine {
       },
       designBasis,
       influentQuality,
+      sewerNetwork: SewerNetworkEngine.createDefaultNetwork(designBasis.peakFlowLps || 175),
+      preliminaryPrimary: undefined, // Populated during master project initialization / runAllCalculations
       processNodes: [],
       totalFootprintM2: 8500,
       totalCapexUSD: 14500000,

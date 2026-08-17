@@ -272,4 +272,65 @@ export class DesignBasisEngine {
       },
     };
   }
+
+  /**
+   * Factory providing standard default municipal design basis configuration.
+   */
+  public static createDefaultBasis(): DesignBasis {
+    return {
+      presentYear: 2026,
+      presentPopulation: 50000,
+      selectedPopMethod: 'GEOMETRIC',
+      censusHistory: [
+        { year: 1996, population: 22000 },
+        { year: 2006, population: 31000 },
+        { year: 2016, population: 41000 },
+        { year: 2026, population: 50000 },
+      ],
+      growthRatePct: 2.5,
+      designHorizonYears: 30,
+      intermediateHorizonYears: 15,
+      designPopulation: 104877,
+      intermediatePopulation: 72400,
+      immediatePopulation: 50000,
+      servedPopulationPct: 90,
+      sewerageCoveragePct: 85,
+      perCapitaWaterDemandLpd: 135,
+      domesticDemandM3d: 11326,
+      commercialDemandM3d: 500,
+      institutionalDemandM3d: 0,
+      industrialDemandM3d: 1000,
+      nrwPct: 20,
+      sewerageReturnFactor: 0.80,
+      domesticReturnFactor: 0.80,
+      commercialReturnFactor: 0.80,
+      industrialReturnFactor: 0.85,
+      infiltrationConfig: {
+        method: 'PIPE_LENGTH',
+        pipeLengthKm: 45,
+        rateLpsKm: 0.33,
+        catchmentAreaHa: 450,
+        rateLhaDay: 2800,
+        perCapitaLpd: 15,
+        rainInflowPct: 20,
+        seasonalFactor: 1.0,
+        designInfiltrationLps: 15.0,
+        designInflowLps: 25.0,
+      },
+      infiltrationAllowanceLpsKm: 15.0,
+      inflowAllowancePct: 10,
+      peakingMethod: 'HARMON',
+      seasonalPeakFactor: 1.15,
+      hourlyPeakFactor: 2.25,
+      diurnalProfileType: 'RESIDENTIAL',
+      industrialProfiles: [],
+      adwfM3d: 12826,
+      awwfM3d: 14750,
+      pdwfM3d: 28858,
+      pwwfM3d: 30154,
+      minFlowM3d: 4500,
+      peakFlowLps: 349.0,
+      stages: [],
+    };
+  }
 }

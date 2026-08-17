@@ -20,6 +20,8 @@ interface DashboardProps {
   validations: ValidationResult[];
   onNavigateTab: (tab: any) => void;
   onOpenAiAssistant?: () => void;
+  /** Global Engineering Transparency Mode flag (not yet consumed here; reserved for future [fx] field affordances). */
+  transparencyMode?: boolean;
 }
 
 export const DashboardView: React.FC<DashboardProps> = ({
@@ -52,6 +54,13 @@ export const DashboardView: React.FC<DashboardProps> = ({
           </div>
 
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => onNavigateTab('liveSimulation')}
+              className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs rounded-xl shadow-lg border border-emerald-400/40 transition flex items-center gap-2"
+            >
+              <Activity className="w-4 h-4 text-emerald-200 animate-pulse" />
+              <span>⚡ Live Flow Simulation</span>
+            </button>
             <button
               onClick={onOpenAiAssistant}
               className="px-4 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-cyan-950/80 border border-cyan-400/30 transition flex items-center gap-2"

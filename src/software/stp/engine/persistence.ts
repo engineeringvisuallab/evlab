@@ -185,7 +185,6 @@ export class PersistenceEngine {
         bodToCod: 0.555,
         codToTkn: 10.0,
         bodToTp: 31.25,
-        bodToTkn: 25.0,
         vssToTss: 0.8,
         alkToTkn: 5.55,
         biodegradability: 'HIGHLY_BIODEGRADABLE',
