@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, Compass, Layers, RotateCcw, Box, Upload } from 'lucide-react';
-import { UELEViewMode, UELESystemCategoryMeta, UELELayer } from '../../types/adminUele';
+import { UELEViewMode, UELESystemCategoryMeta, UELELayer } from '../../types/uele';
 import { GISFeature } from '../../data/sherpur-gis-data';
 import { UELE2DMap } from './UELE2DMap';
 import { UELE3DView } from './UELE3DView';

@@ -1,6 +1,6 @@
 import shp from 'shpjs';
 import { GISFeature, GISFeatureCollection, GISFeatureProperties } from '../data/sherpur-gis-data';
-import { UELESystemCategory, UELELayer } from '../types/adminUele';
+import { UELESystemCategory, UELELayer } from '../types/uele';
 
 export interface ImportGISResult {
   success: boolean;

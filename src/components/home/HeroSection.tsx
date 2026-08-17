@@ -3,6 +3,7 @@ import {
   Compass,
   Layers,
   ArrowRight,
+  Hexagon,
   Sparkles,
   Activity,
   Cpu,

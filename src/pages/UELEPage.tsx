@@ -1,367 +1,373 @@
-import React, { useState, useMemo, Suspense, lazy } from 'react'
-import { UELEObject, UELEHotspot, UELEComponent } from '@/types/uele'
-import ueleObjectsData from '@/data/uele-objects.json'
-import { EnvironmentSelector, UELEZoneFilter } from '@/components/uele/EnvironmentSelector'
-import { MasterEngineeringMap2D } from '@/components/uele/MasterEngineeringMap2D'
-import { ObjectInspector } from '@/components/uele/ObjectInspector'
-import { Container } from '@/components/shared/Container'
-import { Badge } from '@/components/shared/Badge'
-import { Button } from '@/components/shared/Button'
-import { SectionHeader } from '@/components/shared/SectionHeader'
-import { Card } from '@/components/shared/Card'
-import { useRouter } from '@/context/RouterContext'
+import React, { useState, useEffect, useMemo } from 'react';
+import { UELEViewMode, UELESystemCategoryMeta, UELELayer } from '../types/uele';
+import { UELE_SYSTEM_CATEGORIES, DEFAULT_UELE_LAYERS } from '../data/uele-categories';
+import { INITIAL_SHERPUR_GIS_DATASET, GISFeatureCollection, GISFeature } from '../data/sherpur-gis-data';
+import { ImportGISResult } from '../utils/gisImporter';
+import { loadCustomGISData, saveCustomGISLayer, deleteCustomGISLayer, clearAllCustomGISLayers } from '../utils/gisStorage';
+import { UELEViewport } from '../components/uele/UELEViewport';
+import { UELEInspectorShell } from '../components/uele/UELEInspectorShell';
+import { UELELayersDrawer } from '../components/uele/UELELayersDrawer';
+import { UELEImportModal } from '../components/uele/UELEImportModal';
+import { Container } from '../components/shared/Container';
+import { Badge } from '../components/shared/Badge';
+import { Button } from '../components/shared/Button';
+import { SectionHeader } from '../components/shared/SectionHeader';
+import { Card } from '../components/shared/Card';
 import {
   ArrowLeft,
-  Box,
-  Search,
   Map,
-  CheckCircle2,
-  Workflow,
-  ChevronRight,
   Globe,
+  Box,
+  CheckCircle2,
+  Sparkles,
   Upload,
-} from 'lucide-react'
+  Database,
+  ShieldCheck,
+} from 'lucide-react';
 
-// Lazy-loaded: pulls in three.js / @react-three for the 3D view, so it's
-// only downloaded when a visitor actually opts into GIS import mode.
-const GISImportWorkspace = lazy(() =>
-  import('@/components/uele/GISImportWorkspace').then((m) => ({
-    default: m.GISImportWorkspace,
-  }))
-)
+interface UELEPageProps {
+  onNavigateHome: () => void;
+  onNavigateToRoadmap: (roadmapId?: string) => void;
+}
 
-type UELEPageMode = 'catalog' | 'gis-import'
+export const UELEPage: React.FC<UELEPageProps> = ({
+  onNavigateHome,
+  onNavigateToRoadmap,
+}) => {
+  const [viewMode, setViewMode] = useState<UELEViewMode>('2d');
+  const [activeCategoryFocus, setActiveCategoryFocus] = useState<string | null>(null);
+  const [activeBasemapId, setActiveBasemapId] = useState<string>('esri-satellite');
+  const [layers, setLayers] = useState<UELELayer[]>(DEFAULT_UELE_LAYERS);
+  const [gisDataset, setGisDataset] = useState<GISFeatureCollection>(INITIAL_SHERPUR_GIS_DATASET);
+  const [selectedFeatureId, setSelectedFeatureId] = useState<string | null>(null);
+  const [isLayersDrawerOpen, setIsLayersDrawerOpen] = useState<boolean>(false);
+  const [isImportModalOpen, setIsImportModalOpen] = useState<boolean>(false);
+  const [customLayersCount, setCustomLayersCount] = useState<number>(0);
 
-export const UELEPage: React.FC = () => {
-  const { navigate } = useRouter()
-
-  const [pageMode, setPageMode] = useState<UELEPageMode>('catalog')
-  const [currentEnv, setCurrentEnv] = useState<UELEZoneFilter>('all')
-  const [selectedObjectId, setSelectedObjectId] = useState<string | null>('raw-water-intake')
-  const [selectedComponentId, setSelectedComponentId] = useState<string | null>(null)
-  const [selectedHotspot, setSelectedHotspot] = useState<UELEHotspot | null>(null)
-  const [searchQuery, setSearchQuery] = useState<string>('')
-
-  const allObjects: UELEObject[] = ueleObjectsData as UELEObject[]
-
-  const handleNavigateHome = () => navigate('/')
-  const handleNavigateToRoadmap = (roadmapId?: string) =>
-    navigate(roadmapId ? `/career-roadmap/${roadmapId}` : '/career-roadmap')
-
-  // Environment Counts mapping
-  const envCounts = useMemo(() => {
-    const counts: Record<string, number> = {}
-    allObjects.forEach((obj) => {
-      counts[obj.environment] = (counts[obj.environment] || 0) + 1
-    })
-    return counts
-  }, [allObjects])
-
-  // Catalog Objects filtered by current zone filter & search query
-  const catalogObjects = useMemo(() => {
-    return allObjects.filter((obj) => {
-      const matchEnv = currentEnv === 'all' || obj.environment === currentEnv
-      const matchSearch =
-        searchQuery === '' ||
-        obj.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        obj.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        obj.disciplines.some((d) => d.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        obj.components.some((c) => c.name.toLowerCase().includes(searchQuery.toLowerCase()))
-      return matchEnv && matchSearch
-    })
-  }, [allObjects, currentEnv, searchQuery])
-
-  // Selected Object instance
-  const selectedObject = useMemo(() => {
-    if (!selectedObjectId) return null
-    return allObjects.find((obj) => obj.id === selectedObjectId) || null
-  }, [allObjects, selectedObjectId])
-
-  // Handlers
-  const handleSelectObject = (obj: UELEObject) => {
-    setSelectedObjectId(obj.id)
-    setSelectedComponentId(null)
-    setSelectedHotspot(null)
-  }
-
-  const handleSelectComponent = (obj: UELEObject, comp: UELEComponent) => {
-    setSelectedObjectId(obj.id)
-    setSelectedComponentId(comp.id)
-    setSelectedHotspot(null)
-  }
-
-  const handleSelectHotspot = (obj: UELEObject, hs: UELEHotspot) => {
-    setSelectedObjectId(obj.id)
-    setSelectedComponentId(hs.componentId || null)
-    setSelectedHotspot(hs)
-  }
-
-  const handleNavigateToObject = (objectId: string) => {
-    const target = allObjects.find((o) => o.id === objectId)
-    if (target) {
-      if (currentEnv !== 'all' && target.environment !== currentEnv) {
-        setCurrentEnv(target.environment as UELEZoneFilter)
+  // Load saved custom GIS layers permanently from IndexedDB on startup
+  useEffect(() => {
+    let isMounted = true;
+    async function hydrateCustomGIS() {
+      try {
+        const stored = await loadCustomGISData();
+        if (isMounted && stored.layers.length > 0) {
+          setLayers((prev) => [...stored.layers, ...prev]);
+          setGisDataset((prev) => ({
+            ...prev,
+            features: [...stored.features, ...prev.features],
+          }));
+          setCustomLayersCount(stored.layers.length);
+        }
+      } catch (err) {
+        console.error('Error loading stored GIS layers:', err);
       }
-      setSelectedObjectId(target.id)
-      setSelectedComponentId(null)
-      setSelectedHotspot(null)
     }
-  }
+    hydrateCustomGIS();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
-  // Water World Process Pipeline steps
-  const waterWorldProcessPipeline = [
-    { id: 'raw-water-intake', label: '1. Raw Intake' },
-    { id: 'raw-water-pumping-station', label: '2. Low-Lift Pumps' },
-    { id: 'coagulation-flocculation-basin', label: '3. Flocculation' },
-    { id: 'sedimentation-clarifier-tank', label: '4. Clarifier' },
-    { id: 'rapid-sand-filter-unit', label: '5. Sand Filter' },
-    { id: 'clear-well-disinfection-unit', label: '6. Clear Well' },
-    { id: 'elevated-water-storage-tower', label: '7. Elevated Tower' },
-    { id: 'distribution-pump-house', label: '8. Booster House' },
-  ]
+  // Sync state from URL hash query parameters (#uele?focus=smart-city&mode=3d)
+  useEffect(() => {
+    const parseHashParams = () => {
+      const hash = window.location.hash;
+      if (hash.includes('?')) {
+        const queryStr = hash.split('?')[1];
+        const params = new URLSearchParams(queryStr);
+
+        const focus = params.get('focus');
+        if (focus) {
+          setActiveCategoryFocus(focus);
+        }
+
+        const mode = params.get('mode');
+        if (mode === '2d' || mode === '3d') {
+          setViewMode(mode);
+        }
+      }
+    };
+
+    parseHashParams();
+    window.addEventListener('hashchange', parseHashParams);
+    return () => window.removeEventListener('hashchange', parseHashParams);
+  }, []);
+
+  // Category Meta object
+  const selectedCategoryMeta = useMemo(() => {
+    if (!activeCategoryFocus) return null;
+    return (
+      UELE_SYSTEM_CATEGORIES.find((cat) => cat.id === activeCategoryFocus) || null
+    );
+  }, [activeCategoryFocus]);
+
+  // Selected GIS Feature object
+  const selectedFeature = useMemo(() => {
+    if (!selectedFeatureId) return null;
+    return gisDataset.features.find((f) => f.id === selectedFeatureId) || null;
+  }, [selectedFeatureId, gisDataset]);
+
+  // Feature counts per layer calculation
+  const featureCountsByLayer = useMemo(() => {
+    const map: Record<string, number> = {};
+    gisDataset.features.forEach((f) => {
+      const lId = f.properties.layerId;
+      map[lId] = (map[lId] || 0) + 1;
+    });
+    return map;
+  }, [gisDataset]);
+
+  // Layer Toggling Handlers
+  const handleToggleLayer = (layerId: string) => {
+    setLayers((prev) =>
+      prev.map((l) => (l.id === layerId ? { ...l, visible: !l.visible } : l))
+    );
+  };
+
+  const handleResetLayers = () => {
+    setLayers(DEFAULT_UELE_LAYERS);
+  };
+
+  const handleRemoveLayer = async (layerId: string) => {
+    setLayers((prev) => prev.filter((l) => l.id !== layerId));
+    setGisDataset((prev) => ({
+      ...prev,
+      features: prev.features.filter((f) => f.properties.layerId !== layerId),
+    }));
+    if (selectedFeature?.properties.layerId === layerId) {
+      setSelectedFeatureId(null);
+    }
+    setCustomLayersCount((prev) => Math.max(0, prev - 1));
+
+    // Permanently remove from browser storage
+    await deleteCustomGISLayer(layerId);
+  };
+
+  const handleImportSuccess = async (result: ImportGISResult) => {
+    // Add new imported layer
+    setLayers((prev) => [result.layer, ...prev]);
+
+    // Append imported features to master GIS dataset
+    setGisDataset((prev) => ({
+      ...prev,
+      features: [...result.featureCollection.features, ...prev.features],
+    }));
+
+    // Select the first imported feature
+    if (result.featureCollection.features.length > 0) {
+      setSelectedFeatureId(result.featureCollection.features[0].id);
+    }
+
+    setCustomLayersCount((prev) => prev + 1);
+
+    // Save permanently in IndexedDB
+    await saveCustomGISLayer(result.layer, result.featureCollection.features);
+  };
+
+  const handleResetView = () => {
+    setViewMode('2d');
+    setActiveCategoryFocus(null);
+    setSelectedFeatureId(null);
+    window.location.hash = '#uele';
+  };
+
+  const handleCategorySelect = (catId: string) => {
+    if (activeCategoryFocus === catId) {
+      setActiveCategoryFocus(null);
+      window.location.hash = '#uele';
+      // Reset layers visibility
+      setLayers((prev) => prev.map((l) => ({ ...l, visible: true })));
+    } else {
+      setActiveCategoryFocus(catId);
+      window.location.hash = `#uele?focus=${catId}`;
+      // Filter layer visibility to match category
+      setLayers((prev) =>
+        prev.map((l) => ({
+          ...l,
+          visible: (l.category as string) === catId || (l.category as string) === 'administrative',
+        }))
+      );
+    }
+  };
 
   return (
     <Container size="xl" className="py-8 space-y-6">
-      {/* Top Header Navigation */}
+      {/* 1. TOP NAVIGATION HEADER BAR */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <Button
           variant="outline"
           size="sm"
           leftIcon={<ArrowLeft className="w-4 h-4" />}
-          onClick={handleNavigateHome}
+          onClick={onNavigateHome}
         >
           Back to Master Homepage
         </Button>
 
         <div className="flex items-center gap-2 flex-wrap">
-          <div className="flex items-center gap-1 bg-[var(--bg-elevated)] p-1 rounded-xl border border-[var(--border-color)]">
-            <button
-              type="button"
-              onClick={() => setPageMode('catalog')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                pageMode === 'catalog'
-                  ? 'bg-emerald-500 text-slate-950'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-              }`}
-            >
-              Facility Catalog
-            </button>
-            <button
-              type="button"
-              onClick={() => setPageMode('gis-import')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                pageMode === 'gis-import'
-                  ? 'bg-cyan-500 text-slate-950'
-                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-              }`}
-            >
-              <Upload className="w-3.5 h-3.5" />
-              Live GIS Import
-            </button>
-          </div>
+          <a
+            href="#admin"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-white shadow-lg shadow-cyan-900/30 transition-all"
+          >
+            <ShieldCheck className="w-4 h-4 text-cyan-200" />
+            <span>Central EVLab Admin Panel</span>
+          </a>
+
+          <Button
+            variant="cyan"
+            size="sm"
+            leftIcon={<Upload className="w-4 h-4" />}
+            onClick={() => setIsImportModalOpen(true)}
+          >
+            Import GIS Data
+          </Button>
+
           <Button
             variant="roadmap"
             size="sm"
             leftIcon={<Map className="w-4 h-4" />}
-            onClick={() => handleNavigateToRoadmap()}
+            onClick={() => onNavigateToRoadmap()}
           >
             Switch to Career Roadmap
           </Button>
+
           <Badge variant="emerald" icon={<Globe className="w-3.5 h-3.5 text-emerald-400" />}>
-            LIVE GIS & 3D MAP — SHERPUR, BOGURA ACTIVE
+            REAL GIS SMART COUNTRY MAP ACTIVE
           </Badge>
+
+          {customLayersCount > 0 && (
+            <Badge variant="purple" icon={<Database className="w-3.5 h-3.5 text-purple-400" />}>
+              {customLayersCount} Global Saved Layer{customLayersCount > 1 ? 's' : ''} (Server Sync)
+            </Badge>
+          )}
         </div>
       </div>
 
-      {pageMode === 'gis-import' ? (
-        <>
-          <SectionHeader
-            badge="UELE Phase 02 — GIS Engineering Engine"
-            badgeVariant="cyan"
-            title="UELE — Real GIS Smart Country Map & Spatial Data Engine"
-            description="Sherpur study area (Bogura, Bangladesh) with satellite basemaps, 2D/3D synchronized vector geometries, and a client-side Shapefile/GeoJSON importer & engineering inspector."
-          />
-          <Suspense
-            fallback={
-              <div className="w-full h-[540px] flex items-center justify-center bg-slate-950 text-slate-400 font-mono text-sm rounded-3xl border border-emerald-500/30">
-                Loading Live GIS Import workspace…
-              </div>
-            }
-          >
-            <GISImportWorkspace onNavigateToRoadmap={handleNavigateToRoadmap} />
-          </Suspense>
-        </>
-      ) : (
-        <>
+      {/* 2. SECTION HEADER */}
       <SectionHeader
-        badge="Stage 06 — Live GIS Satellite & 3D Engineering Map"
+        badge="UELE Phase 02 — GIS Engineering Engine"
         badgeVariant="emerald"
-        title="UELE — Ultimate Engineering Learning Ecosystem"
-        description="Interactive GIS satellite and 3D map system centered on Sherpur, Bogura. Toggle seamlessly between 2D Satellite View, 3D Map View, and CAD Blueprints like Google Maps."
+        title="UELE — Real GIS Smart Country Map & Spatial Data Engine"
+        description="Sherpur study area (Bogura, Bangladesh) with satellite basemaps, 2D/3D synchronized vector geometries, client-side Shapefile/GeoJSON importer & engineering inspector."
       />
 
-      {/* Zone / Category Filter Bar */}
-      <EnvironmentSelector
-        currentEnv={currentEnv}
-        onSelectEnv={(env) => {
-          setCurrentEnv(env)
-          setSelectedComponentId(null)
-          setSelectedHotspot(null)
-          if (env !== 'all') {
-            const firstInEnv = allObjects.find((o) => o.environment === env)
-            if (firstInEnv) {
-              setSelectedObjectId(firstInEnv.id)
-            }
-          }
-        }}
-        envCounts={envCounts}
-        totalObjectsCount={allObjects.length}
-      />
-
-      {/* Sequential Water Treatment Pipeline Shortcuts */}
-      <div className="bg-[var(--bg-surface)] p-3 rounded-2xl border border-emerald-500/30 shadow-lg space-y-2">
-        <div className="flex items-center justify-between px-1">
-          <span className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5 uppercase">
-            <Workflow className="w-4 h-4 text-emerald-400" />
-            <span>Water Treatment Process Pipeline (Sherpur WTP)</span>
+      {/* 3. CATEGORY FOCUS SELECTOR PILLS */}
+      <div className="space-y-2 font-mono">
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-[var(--text-secondary)] uppercase font-bold flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Select System Category Focus ({UELE_SYSTEM_CATEGORIES.length})</span>
           </span>
-          <span className="text-[11px] font-mono text-[var(--text-muted)] hidden sm:inline">
-            Click a stage to inspect its engineering parameters & 3D model
-          </span>
+          {activeCategoryFocus && (
+            <button
+              onClick={() => handleCategorySelect(activeCategoryFocus)}
+              className="text-cyan-400 hover:underline cursor-pointer"
+            >
+              Clear Filter
+            </button>
+          )}
         </div>
 
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
-          {waterWorldProcessPipeline.map((step, idx) => {
-            const isSel = selectedObjectId === step.id
+        <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
+          {UELE_SYSTEM_CATEGORIES.map((cat) => {
+            const isSelected = activeCategoryFocus === cat.id;
+
             return (
-              <React.Fragment key={step.id}>
-                <button
-                  onClick={() => handleNavigateToObject(step.id)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold whitespace-nowrap transition-all duration-150 border flex items-center gap-1.5 cursor-pointer ${
-                    isSel
-                      ? 'bg-emerald-950/60 border-emerald-500 text-emerald-300 ring-1 ring-emerald-500/40 shadow-md'
-                      : 'bg-[var(--bg-elevated)] border-[var(--border-color)] text-[var(--text-secondary)] hover:border-emerald-500/40 hover:text-[var(--text-primary)]'
-                  }`}
-                >
-                  <span>{step.label}</span>
-                </button>
-                {idx < waterWorldProcessPipeline.length - 1 && (
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0" />
-                )}
-              </React.Fragment>
-            )
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => handleCategorySelect(cat.id)}
+                className={`px-3.5 py-2 rounded-2xl text-xs font-bold transition-all duration-200 flex items-center space-x-2 whitespace-nowrap cursor-pointer border ${
+                  isSelected
+                    ? 'bg-cyan-500 text-slate-950 border-cyan-400 shadow-md scale-105'
+                    : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] border-[var(--border-color)] hover:border-cyan-500/50 hover:text-[var(--text-primary)]'
+                }`}
+              >
+                <span>{cat.title}</span>
+                {isSelected && <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />}
+              </button>
+            );
           })}
         </div>
       </div>
 
-      {/* UNIFIED GIS SATELLITE & 3D MAP VIEWER */}
-      <MasterEngineeringMap2D
-        objects={allObjects}
-        selectedObject={selectedObject}
-        selectedComponentId={selectedComponentId}
-        selectedHotspot={selectedHotspot}
-        onSelectObject={handleSelectObject}
-        onSelectComponent={handleSelectComponent}
-        onSelectHotspot={handleSelectHotspot}
-        onNavigateToRoadmap={handleNavigateToRoadmap}
-        currentEnv={currentEnv}
-        onSelectEnv={(env) => setCurrentEnv(env as UELEZoneFilter)}
-      />
-
-      {/* LOWER SECTION: OBJECT INSPECTOR & FACILITIES CATALOG */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start pt-2">
-        {/* Left Column (2 Cols): Selected Object Detailed Inspector */}
+      {/* 4. MAIN WORKSPACE: VIEWPORT (LEFT 2 COLS) + INSPECTOR / LAYERS (RIGHT 1 COL) */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+        {/* Left (2 Columns): Main Viewport Canvas (2D Plan & 3D View) */}
         <div className="lg:col-span-2 space-y-4">
-          <ObjectInspector
-            selectedObject={selectedObject}
-            selectedComponentId={selectedComponentId}
-            selectedHotspot={selectedHotspot}
-            onClose={() => {
-              setSelectedObjectId(null)
-              setSelectedComponentId(null)
-              setSelectedHotspot(null)
+          <UELEViewport
+            viewMode={viewMode}
+            onViewModeChange={(m) => {
+              setViewMode(m);
+              window.location.hash = `#uele?${activeCategoryFocus ? `focus=${activeCategoryFocus}&` : ''}mode=${m}`;
             }}
-            onSelectObject={handleSelectObject}
-            onSelectComponent={handleSelectComponent}
-            onFocusCamera={(obj, compId) => {
-              setSelectedObjectId(obj.id)
-              setSelectedComponentId(compId || null)
-            }}
-            onNavigateToRoadmap={(rmId) => {
-              handleNavigateToRoadmap(rmId)
-            }}
-            onNavigateToObject={handleNavigateToObject}
+            selectedCategory={selectedCategoryMeta}
+            features={gisDataset.features}
+            layers={layers}
+            selectedFeatureId={selectedFeatureId}
+            onSelectFeature={(fId) => setSelectedFeatureId(fId)}
+            activeBasemapId={activeBasemapId}
+            onBasemapChange={(bmId) => setActiveBasemapId(bmId)}
+            onToggleLayersDrawer={() => setIsLayersDrawerOpen((prev) => !prev)}
+            onOpenImportModal={() => setIsImportModalOpen(true)}
+            onResetView={handleResetView}
           />
         </div>
 
-        {/* Right Column (1 Col): Search & Facilities Catalog */}
-        <div className="lg:col-span-1 space-y-4">
-          <Card padding="md" className="space-y-3">
-            <div className="flex items-center justify-between border-b pb-2">
-              <h4 className="text-xs font-mono font-bold uppercase text-[var(--text-secondary)] flex items-center gap-1.5">
-                <Box className="w-4 h-4 text-emerald-400" />
-                <span>Facilities Catalog ({catalogObjects.length})</span>
-              </h4>
-              {currentEnv !== 'all' && (
-                <button
-                  onClick={() => setCurrentEnv('all')}
-                  className="text-[10px] text-emerald-400 hover:underline lowercase font-mono cursor-pointer"
-                >
-                  show all zones
-                </button>
-              )}
-            </div>
+        {/* Right (1 Column): Inspector Shell & Layers Panel Drawer */}
+        <div className="lg:col-span-1 space-y-4 font-mono">
+          {/* Layers Drawer Panel (if toggled open) */}
+          {isLayersDrawerOpen && (
+            <UELELayersDrawer
+              layers={layers}
+              onToggleLayer={handleToggleLayer}
+              onResetLayers={handleResetLayers}
+              onRemoveLayer={handleRemoveLayer}
+              onOpenImportModal={() => setIsImportModalOpen(true)}
+              onClose={() => setIsLayersDrawerOpen(false)}
+              featureCountsByLayer={featureCountsByLayer}
+            />
+          )}
 
-            {/* Search Input */}
-            <div className="relative">
-              <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search facility name or process..."
-                className="w-full bg-[var(--bg-elevated)] text-xs text-[var(--text-primary)] pl-8 pr-3 py-1.5 rounded-xl border border-[var(--border-color)] focus:outline-none focus:border-emerald-500 transition-colors font-mono"
-              />
-            </div>
+          {/* Reusable Right Information Panel Inspector Shell */}
+          <UELEInspectorShell
+            selectedFeature={selectedFeature}
+            selectedCategory={selectedCategoryMeta}
+            onNavigateToRoadmap={onNavigateToRoadmap}
+            onClose={() => setSelectedFeatureId(null)}
+          />
 
-            {/* List of Catalog Objects */}
-            <div className="space-y-1.5 max-h-[360px] overflow-y-auto pr-1">
-              {catalogObjects.length === 0 ? (
-                <p className="text-xs text-[var(--text-muted)] italic p-2">
-                  No engineering facilities match your search criteria.
+          {/* Category Summary Card (if a focus category is active) */}
+          {selectedCategoryMeta && (
+            <Card padding="md" className="space-y-3 bg-[var(--bg-elevated)]/40 border border-cyan-500/20">
+              <div className="flex items-center space-x-2 border-b border-[var(--border-color)] pb-2">
+                <Box className="w-4 h-4 text-cyan-400" />
+                <h4 className="font-bold text-xs text-[var(--text-primary)] uppercase">
+                  Category Focus Details
+                </h4>
+              </div>
+              <div className="space-y-1.5 text-xs">
+                <div className="font-bold text-cyan-400">{selectedCategoryMeta.title}</div>
+                <p className="text-[var(--text-secondary)] leading-relaxed">
+                  {selectedCategoryMeta.shortDescription}
                 </p>
-              ) : (
-                catalogObjects.map((obj) => {
-                  const isSel = selectedObjectId === obj.id
-                  return (
-                    <div
-                      key={obj.id}
-                      onClick={() => handleSelectObject(obj)}
-                      className={`w-full p-2.5 rounded-xl border text-left cursor-pointer transition-all duration-150 flex items-center justify-between ${
-                        isSel
-                          ? 'bg-emerald-950/40 border-emerald-500 text-white font-semibold shadow-md'
-                          : 'bg-[var(--bg-elevated)]/60 border-[var(--border-color)] hover:border-emerald-500/30 text-[var(--text-primary)]'
-                      }`}
-                    >
-                      <div className="space-y-0.5">
-                        <div className="text-xs font-mono font-bold leading-tight">{obj.name}</div>
-                        <div className="text-[10px] text-[var(--text-muted)] flex items-center gap-2 font-mono">
-                          <span>{obj.components.length} components</span>
-                          <span>•</span>
-                          <span className="text-emerald-400">{obj.environment}</span>
-                        </div>
-                      </div>
-                      {isSel && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />}
-                    </div>
-                  )
-                })
-              )}
-            </div>
-          </Card>
+                {selectedCategoryMeta.systems && (
+                  <div className="pt-2 text-[11px] text-[var(--text-muted)]">
+                    <span className="text-[var(--text-secondary)] font-bold">Key Subsystems:</span>{' '}
+                    {selectedCategoryMeta.systems.join(', ')}
+                  </div>
+                )}
+              </div>
+            </Card>
+          )}
         </div>
       </div>
-        </>
-      )}
+
+      {/* 5. GIS DATA IMPORT MODAL */}
+      <UELEImportModal
+        isOpen={isImportModalOpen}
+        onClose={() => setIsImportModalOpen(false)}
+        onImportSuccess={handleImportSuccess}
+      />
     </Container>
-  )
-}
+  );
+};

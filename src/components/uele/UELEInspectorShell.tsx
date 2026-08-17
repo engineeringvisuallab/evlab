@@ -14,7 +14,7 @@ import {
   Table,
   MapPin,
 } from 'lucide-react';
-import { UELEFacility, UELESystemCategoryMeta } from '../../types/adminUele';
+import { UELEFacility, UELESystemCategoryMeta } from '../../types/uele';
 import { GISFeature } from '../../data/sherpur-gis-data';
 import { Card } from '../shared/Card';
 import { Badge } from '../shared/Badge';

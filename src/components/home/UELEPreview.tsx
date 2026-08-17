@@ -1,94 +1,114 @@
-import React, { useState } from 'react';
-import { Layers, ArrowRight, Building2, Droplets, Zap, Sparkles, Box, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import {
+  Building2,
+  Home,
+  Wheat,
+  Droplets,
+  Zap,
+  Truck,
+  Layers,
+  Factory,
+  Trees,
+  Globe,
+  Box,
+  FolderGit2,
+  ArrowRight,
+  Map,
+  Compass,
+  Sparkles,
+} from 'lucide-react';
 import { SectionHeader } from '../shared/SectionHeader';
 import { Card } from '../shared/Card';
 import { Badge } from '../shared/Badge';
 import { Button } from '../shared/Button';
-
-// Import actual Stage 01 UELE objects data
-import ueleObjectsData from '../../data/uele-objects.json';
+import { UELE_SYSTEM_CATEGORIES } from '../../data/uele-categories';
+import { UELESystemCategory } from '../../types/uele';
 
 export interface UELEPreviewProps {
-  onNavigate: (sectionId: string) => void;
+  onNavigate: (sectionId: string, paramOrFieldId?: string) => void;
 }
 
+// Icon mapping helper
+const categoryIcons: Record<string, React.ElementType> = {
+  Building2,
+  Home,
+  Wheat,
+  Droplets,
+  Zap,
+  Truck,
+  Layers,
+  Factory,
+  Trees,
+  Globe,
+  Box,
+  FolderGit2,
+};
+
 export const UELEPreview: React.FC<UELEPreviewProps> = ({ onNavigate }) => {
-  const [activeEnv, setActiveEnv] = useState<string>('water-world');
-
-  const environments = [
-    { id: 'water-world', name: 'Water World', icon: Droplets, color: 'blue', desc: 'Water treatment plants, intake structures, reservoirs & pipe networks' },
-    { id: 'smart-city', name: 'Smart City', icon: Building2, color: 'emerald', desc: 'Integrated urban infrastructure, BIM, roads, drainage & utilities' },
-    { id: 'industrial-world', name: 'Industrial World', icon: Zap, color: 'amber', desc: 'Power substations, industrial plants, tanks, conveyors & SCADA' },
-    { id: 'infrastructure', name: 'Infrastructure', icon: Layers, color: 'purple', desc: 'Bridges, highways, railways, tunnels & structural systems' },
-    { id: 'natural-world', name: 'Natural World', icon: Sparkles, color: 'cyan', desc: 'Rivers, agricultural systems, terrain, coastal & environmental' },
-  ];
-
-  // Filter or show object details for activeEnv
-  const currentEnv = environments.find((e) => e.id === activeEnv) || environments[0];
+  const handleCardClick = (catId: UELESystemCategory) => {
+    onNavigate('uele', `focus=${catId}`);
+  };
 
   return (
     <section id="uele-section" className="py-12 lg:py-16 border-t border-[var(--border-color)] bg-[var(--bg-elevated)]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        {/* SECTION HEADER & PRIMARY ACTION BUTTONS */}
         <SectionHeader
-          badge="UELE 3D Ecosystem"
+          badge="UELE Entry Portal"
           badgeVariant="emerald"
-          title="Explore Engineering Through the Real World."
-          description="From a water treatment plant to a smart city, from an industrial facility to a village — explore the physical engineering systems behind the built world around us."
+          title="Ultimate Engineering Learning Ecosystem"
+          description="Explore a connected engineering world through maps, 3D models, engineering data and learning resources."
           action={
-            <Button
-              variant="uele"
-              size="md"
-              leftIcon={<Layers className="w-4 h-4" />}
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-              onClick={() => onNavigate('uele')}
-            >
-              Enter UELE 3D Ecosystem
-            </Button>
+            <div className="flex items-center gap-2 flex-wrap">
+              <Button
+                variant="outline"
+                size="sm"
+                leftIcon={<Map className="w-4 h-4 text-cyan-400" />}
+                onClick={() => onNavigate('uele', 'mode=2d')}
+              >
+                VIEW 2D MAP
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                leftIcon={<Compass className="w-4 h-4 text-emerald-400" />}
+                onClick={() => onNavigate('uele', 'mode=3d')}
+              >
+                VIEW 3D WORLD
+              </Button>
+              <Button
+                variant="uele"
+                size="md"
+                leftIcon={<Sparkles className="w-4 h-4" />}
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+                onClick={() => onNavigate('uele')}
+              >
+                EXPLORE UELE
+              </Button>
+            </div>
           }
         />
 
-        {/* Environment Pills Selector */}
-        <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
-          {environments.map((env) => {
-            const Icon = env.icon;
-            const isActive = activeEnv === env.id;
+        {/* FEATURE CARDS CONTAINER / MINI VIEWER PORTAL */}
+        <div className="rounded-3xl bg-[var(--bg-surface)] border border-emerald-500/30 p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+          {/* Subtle Ambient Engineering Backdrop Grid */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
-            return (
-              <button
-                key={env.id}
-                type="button"
-                onClick={() => setActiveEnv(env.id)}
-                className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center space-x-2 whitespace-nowrap cursor-pointer border ${
-                  isActive
-                    ? 'bg-[var(--accent-emerald)] text-white border-[var(--accent-emerald)] shadow-md'
-                    : 'bg-[var(--bg-surface)] text-[var(--text-secondary)] border-[var(--border-color)] hover:border-[var(--accent-emerald)] hover:text-[var(--text-primary)]'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span>{env.name}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Environment Interactive Preview Box */}
-        <div className="rounded-3xl bg-[var(--bg-surface)] border border-[var(--accent-emerald)]/30 p-6 sm:p-8 space-y-6 shadow-xl relative overflow-hidden">
-          {/* Subtle Ambient Background */}
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-[var(--accent-emerald-bg)] rounded-full blur-3xl pointer-events-none opacity-50" />
-
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border-color)] pb-6">
+          {/* Banner Header inside Portal Box */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border-color)] pb-5">
             <div className="space-y-1">
               <div className="flex items-center space-x-2">
-                <Badge variant="emerald" icon={<Box className="w-3 h-3" />}>
-                  {currentEnv.name} Environment
+                <Badge variant="emerald" icon={<Globe className="w-3.5 h-3.5 text-emerald-400" />}>
+                  Connected Engineering Country
                 </Badge>
-                <span className="text-xs font-mono text-[var(--text-muted)]">3D Interactive Canvas</span>
+                <span className="text-xs font-mono text-[var(--text-muted)]">12 Major Systems Available</span>
               </div>
-              <h3 className="text-2xl font-extrabold text-[var(--text-primary)]">
-                {currentEnv.name} Preview
+              <h3 className="text-2xl font-black text-[var(--text-primary)] font-mono tracking-tight">
+                ULTIMATE ENGINEERING WORLD
               </h3>
               <p className="text-sm text-[var(--text-secondary)] max-w-2xl">
-                {currentEnv.desc}
+                Select an engineering domain below to launch directly into the main UELE map and explore its 2D GIS and 3D digital engineering layers.
               </p>
             </div>
 
@@ -98,68 +118,54 @@ export const UELEPreview: React.FC<UELEPreviewProps> = ({ onNavigate }) => {
               rightIcon={<ArrowRight className="w-4 h-4" />}
               onClick={() => onNavigate('uele')}
             >
-              Launch Environment
+              LAUNCH FULL MAP
             </Button>
           </div>
 
-          {/* Objects Showcase Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {ueleObjectsData.map((obj) => (
-              <Card
-                key={obj.id}
-                variant="uele"
-                hoverable
-                padding="md"
-                className="space-y-3 cursor-pointer group"
-                onClick={() => onNavigate('uele')}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-xl bg-[var(--accent-emerald-bg)] text-[var(--accent-emerald)]">
-                    <Box className="w-4 h-4" />
+          {/* 12 VISUALLY ATTRACTIVE FEATURE CARDS GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {UELE_SYSTEM_CATEGORIES.map((cat) => {
+              const IconComponent = (categoryIcons[cat.iconName] || Globe) as React.ComponentType<{ className?: string }>;
+
+              return (
+                <Card
+                  key={cat.id}
+                  variant="uele"
+                  hoverable
+                  padding="md"
+                  className="space-y-3 cursor-pointer group transition-all duration-200 hover:-translate-y-1 hover:border-emerald-500/60 bg-[var(--bg-elevated)]/40 relative overflow-hidden"
+                  onClick={() => handleCardClick(cat.id)}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    {cat.badge && (
+                      <Badge variant="emerald" size="sm">
+                        {cat.badge}
+                      </Badge>
+                    )}
                   </div>
-                  {obj.comingSoon ? (
-                    <Badge variant="amber" size="sm">In Development</Badge>
-                  ) : (
-                    <Badge variant="emerald" size="sm" icon={<CheckCircle2 className="w-3 h-3" />}>
-                      Interactive 3D
-                    </Badge>
+
+                  <div>
+                    <h4 className="font-extrabold text-base text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors font-mono flex items-center justify-between">
+                      <span>{cat.title}</span>
+                      <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-emerald-400 -translate-x-2 group-hover:translate-x-0 transition-transform" />
+                    </h4>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed mt-1.5 line-clamp-2">
+                      {cat.shortDescription}
+                    </p>
+                  </div>
+
+                  {cat.systems && cat.systems.length > 0 && (
+                    <div className="pt-2 border-t border-[var(--border-color)]/60 flex items-center gap-1.5 overflow-x-auto text-[10px] font-mono text-[var(--text-muted)] scrollbar-none">
+                      <span className="text-emerald-400 font-semibold shrink-0">Subsystems:</span>
+                      <span className="truncate">{cat.systems.slice(0, 2).join(' • ')}</span>
+                    </div>
                   )}
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-base text-[var(--text-primary)] group-hover:text-[var(--accent-emerald)] transition-colors">
-                    {obj.name}
-                  </h4>
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed mt-1 line-clamp-2">
-                    {obj.description}
-                  </p>
-                </div>
-
-                {obj.components && obj.components.length > 0 && (
-                  <div className="pt-2 border-t border-[var(--border-color)] text-[11px] font-mono text-[var(--text-muted)]">
-                    {obj.components.length} Sub-Components (Intake, Filter, Basin)
-                  </div>
-                )}
-              </Card>
-            ))}
-
-            {/* Placeholder Upcoming Object Card */}
-            <Card
-              variant="outline"
-              padding="md"
-              className="border-dashed space-y-3 flex flex-col justify-center items-center text-center p-6 bg-[var(--bg-elevated)]/40"
-            >
-              <div className="p-3 rounded-full bg-[var(--bg-elevated)] text-[var(--text-muted)]">
-                <Layers className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="font-bold text-sm text-[var(--text-primary)]">More Objects Loading...</p>
-                <p className="text-xs text-[var(--text-muted)] mt-1">
-                  Substations, Bridges, Pumping Stations & Water Networks in pipeline.
-                </p>
-              </div>
-              <Badge variant="muted" size="sm">Stage 06 3D Engine</Badge>
-            </Card>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </div>

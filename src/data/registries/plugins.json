@@ -1,4 +1,78 @@
 {
+  "autocad-helper": {
+    "id": "autocad-helper",
+    "name": "AutoCAD Helper",
+    "description": "EVLab's all-in-one AutoCAD productivity plugin — one install unlocks 24 category-wise organized tools for survey/point work, text & annotation, layer selection, and layout & sheet management. No setup beyond APPLOAD; type AH anytime for the full command menu.",
+    "hostSoftware": [
+      "AutoCAD",
+      "Civil 3D"
+    ],
+    "version": "1.0",
+    "author": "EVLab Tools",
+    "price": "Free",
+    "downloadUrl": "/downloads/autocad-helper.zip",
+    "fileName": "autocad-helper.zip",
+    "fileSize": "9 KB",
+    "installNote": "APPLOAD দিয়ে AutoCAD_Helper.lsp লোড করুন, তারপর AH টাইপ করলেই সব কমান্ডের লিস্ট দেখা যাবে।",
+    "tags": [
+      "AutoCAD",
+      "AutoLISP",
+      "Survey",
+      "Drafting",
+      "Productivity",
+      "Combined Plugin"
+    ],
+    "categories": [
+      {
+        "title": "Survey & Point Tools",
+        "titleBn": "সার্ভে ও পয়েন্ট টুলস",
+        "commands": [
+          { "command": "FPOINT", "description": "Places a donut marker (survey point) at a picked location with a chosen diameter." },
+          { "command": "FPSTYLE", "description": "Switches the drawing's point style to a filled circle." },
+          { "command": "PFILL", "description": "Turns selected POINT entities into filled, colored survey markers." },
+          { "command": "PCT", "description": "Places text (RL, chainage, etc.) at each selected POINT location." },
+          { "command": "PTB", "description": "Inserts a chosen block at every selected POINT location, with progress feedback." },
+          { "command": "PTBL", "description": "Fast, no-dialog version of block-at-point insertion." }
+        ]
+      },
+      {
+        "title": "Text & Annotation Tools",
+        "titleBn": "টেক্সট ও অ্যানোটেশন টুলস",
+        "commands": [
+          { "command": "T110", "description": "Changes the picked text/mtext content to \"110\"." },
+          { "command": "CH110", "description": "Finds \"90\" inside a selection of text/mtext and replaces it with \"110\"." },
+          { "command": "UL", "description": "Underlines the selected text or mtext." },
+          { "command": "JTO", "description": "Builds an underlined \"A to B\" label from two picked text values." },
+          { "command": "LPEP", "description": "Writes a chosen label into every selected circle." }
+        ]
+      },
+      {
+        "title": "Layer Tools",
+        "titleBn": "লেয়ার টুলস",
+        "commands": [
+          { "command": "SDLW", "description": "Lists the layers found in a selection and lets you isolate objects on one of them." }
+        ]
+      },
+      {
+        "title": "Layout & Sheet Management Tools",
+        "titleBn": "লেআউট ও শীট ম্যানেজমেন্ট টুলস",
+        "commands": [
+          { "command": "ACAD", "description": "Sets every layout except Model to the DWG To PDF.pc3 / acad.ctb plot style." },
+          { "command": "CTBACA", "description": "Sets every layout, including Model, to the DWG To PDF.pc3 / acad.ctb plot style." },
+          { "command": "CLRLAYTXT", "description": "Deletes stray text/mtext across all layouts (block text is left untouched)." },
+          { "command": "FFFVPFIND", "description": "Finds a text string anywhere in the drawing, zooms to it, and selects it." },
+          { "command": "LAYREN", "description": "Renames layouts with a chosen prefix and running serial number." },
+          { "command": "LAYSORTNUM", "description": "Reorders layout tabs by the number embedded in each layout name." },
+          { "command": "NEXTLAY", "description": "Jumps to the next layout tab, wrapping back to the first at the end." },
+          { "command": "NSYNC", "description": "Rotates a north-sign block to match its viewport's twist angle." },
+          { "command": "SSSCOPY", "description": "Duplicates the current numbered layout (e.g. (01)) as the next serial." },
+          { "command": "SHNO", "description": "Drops in a dynamic sheet-number field tied to the current layout name." },
+          { "command": "SNO-DRWNO", "description": "Combines a sheet serial and drawing number into one label." },
+          { "command": "VPLOCKALL", "description": "Locks or unlocks every viewport across all layouts at once." }
+        ]
+      }
+    ]
+  },
   "civil3d-booster": {
     "id": "civil3d-booster",
     "name": "Civil 3D Booster",
@@ -51,39 +125,39 @@
   },
   "hec-ras-controller-plugin": {
     "id": "hec-ras-controller-plugin",
+    "title": "HEC-RAS Controller Automation & Python Scripting Tool",
+    "summary": "Automation script library and COM interface for batch running HEC-RAS 1D/2D models, Monte Carlo sensitivity runs, and GIS output exporting.",
     "category": "Modelling Plugin",
     "tags": [
       "HEC-RAS Controller",
       "Python",
       "Automation",
       "Monte Carlo"
-    ],
-    "name": "HEC-RAS Controller Automation & Python Scripting Tool",
-    "description": "Automation script library and COM interface for batch running HEC-RAS 1D/2D models, Monte Carlo sensitivity runs, and GIS output exporting."
+    ]
   },
   "qgis-geoprocessing-python-plugin": {
     "id": "qgis-geoprocessing-python-plugin",
+    "title": "QGIS GeoProcessing & Survey Data Import Python Plugin",
+    "summary": "Custom PyQGIS plugin for direct import of total station field raw files, automated traverse plotting, and coordinate transformation.",
     "category": "GIS Plugins",
     "tags": [
       "QGIS Plugin",
       "PyQGIS",
       "Traverse Import",
       "Python"
-    ],
-    "name": "QGIS GeoProcessing & Survey Data Import Python Plugin",
-    "description": "Custom PyQGIS plugin for direct import of total station field raw files, automated traverse plotting, and coordinate transformation."
+    ]
   },
   "bridge-section-property-calculator": {
     "id": "bridge-section-property-calculator",
+    "title": "Bridge Composite Section Property & Prestress Loss Calculator",
+    "summary": "Utility plugin for calculating composite section properties, cracked section properties, and prestress losses.",
     "category": "Bridge Analysis Plugins",
     "tags": [
       "Section Properties",
       "Prestress Loss",
       "Composite Action",
       "Calculator"
-    ],
-    "name": "Bridge Composite Section Property & Prestress Loss Calculator",
-    "description": "Utility plugin for calculating composite section properties, cracked section properties, and prestress losses."
+    ]
   },
   "tunnel-parametric-bim-plugin": {
     "id": "tunnel-parametric-bim-plugin",

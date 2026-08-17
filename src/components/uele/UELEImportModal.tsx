@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Upload, FileCode, CheckCircle2, AlertTriangle, X, Layers, Sparkles } from 'lucide-react';
 import { importShapefileZip, importGeoJSONFile, ImportGISResult } from '../../utils/gisImporter';
 import { UELE_SYSTEM_CATEGORIES } from '../../data/uele-categories';
-import { UELESystemCategory } from '../../types/adminUele';
+import { UELESystemCategory } from '../../types/uele';
 import { Button } from '../shared/Button';
 import { Badge } from '../shared/Badge';
 

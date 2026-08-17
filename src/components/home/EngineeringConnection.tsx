@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight, Compass } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ChevronRight, Compass, Layers } from 'lucide-react';
 import { SectionHeader } from '../shared/SectionHeader';
 import { Badge } from '../shared/Badge';
 

@@ -26,24 +26,26 @@
   },
   "rubble-mound-breakwater-cross-section-drawing": {
     "id": "rubble-mound-breakwater-cross-section-drawing",
+    "title": "Standard Rubble-Mound Breakwater Cross Section Drawing",
     "category": "Coastal Engineering CAD",
-    "name": "Standard Rubble-Mound Breakwater Cross Section Drawing",
-    "description": "CAD detail drawing showing primary rock/concrete armor unit placement, underlayer, core rock fill, toe apron scour protection, and crest wall details."
+    "summary": "CAD detail drawing showing primary rock/concrete armor unit placement, underlayer, core rock fill, toe apron scour protection, and crest wall details."
   },
   "riverbank-revetment-geobag-drawing": {
     "id": "riverbank-revetment-geobag-drawing",
+    "title": "Standard Riverbank Geobag & CC Block Revetment Cross-Section Drawing",
+    "summary": "Detailed CAD drawing showing geo-textile filter placement, geobag stacking slope (1:2), toe launching apron, and top embankment crest.",
     "category": "River Construction Drawing",
     "tags": [
       "CAD Drawing",
       "Geobags",
       "Revetment",
       "Launching Apron"
-    ],
-    "name": "Standard Riverbank Geobag & CC Block Revetment Cross-Section Drawing",
-    "description": "Detailed CAD drawing showing geo-textile filter placement, geobag stacking slope (1:2), toe launching apron, and top embankment crest."
+    ]
   },
   "groyne-guide-bund-cross-section-drawing": {
     "id": "groyne-guide-bund-cross-section-drawing",
+    "title": "Standard Permeable/Impermeable Groyne & Guide Bund Layout Plan",
+    "summary": "Engineering drawing depicting groyne shank cross-section, stone riprap head armor, launching apron envelope, and guide bund curve radii.",
     "category": "River Training Drawing",
     "tags": [
       "CAD Drawing",
@@ -51,57 +53,55 @@
       "Spur",
       "Guide Bund",
       "Layout Plan"
-    ],
-    "name": "Standard Permeable/Impermeable Groyne & Guide Bund Layout Plan",
-    "description": "Engineering drawing depicting groyne shank cross-section, stone riprap head armor, launching apron envelope, and guide bund curve radii."
+    ]
   },
   "topographic-survey-map-drawing": {
     "id": "topographic-survey-map-drawing",
+    "title": "Civil Infrastructure Topographic Base Survey Map CAD Sheet",
+    "summary": "Sample engineering CAD sheet showing spot elevations, contour lines, breaklines, control bench markers, and boundary lines.",
     "category": "Survey Drawings",
     "tags": [
       "CAD Drawing",
       "Topography",
       "Contours",
       "Base Map"
-    ],
-    "name": "Civil Infrastructure Topographic Base Survey Map CAD Sheet",
-    "description": "Sample engineering CAD sheet showing spot elevations, contour lines, breaklines, control bench markers, and boundary lines."
+    ]
   },
   "asbuilt-construction-layout-drawing": {
     "id": "asbuilt-construction-layout-drawing",
+    "title": "As-Built Foundation & Structural Column Grid Layout Drawing",
+    "summary": "As-built verification drawing overlaying designed column grids with surveyed field locations and tolerance deviation callouts.",
     "category": "As-Built Drawings",
     "tags": [
       "As-Built",
       "Grid Layout",
       "CAD Sheet",
       "Tolerance"
-    ],
-    "name": "As-Built Foundation & Structural Column Grid Layout Drawing",
-    "description": "As-built verification drawing overlaying designed column grids with surveyed field locations and tolerance deviation callouts."
+    ]
   },
   "prestressed-concrete-girder-bridge-drawing": {
     "id": "prestressed-concrete-girder-bridge-drawing",
+    "title": "Prestressed Concrete I-Girder Bridge Drawing Package",
+    "summary": "Standard engineering drawing package for a precast prestressed concrete I-girder bridge.",
     "category": "Bridge Construction Drawings",
     "tags": [
       "Bridge Drawings",
       "Prestressed Concrete",
       "Girders",
       "CAD"
-    ],
-    "name": "Prestressed Concrete I-Girder Bridge Drawing Package",
-    "description": "Standard engineering drawing package for a precast prestressed concrete I-girder bridge."
+    ]
   },
   "bridge-bearing-expansion-joint-drawing": {
     "id": "bridge-bearing-expansion-joint-drawing",
+    "title": "Pot Bearing & Modular Expansion Joint Standard Details",
+    "summary": "Detailed construction drawing showing pot bearings and modular expansion joint assemblies.",
     "category": "Bridge Component Drawings",
     "tags": [
       "Bearings",
       "Expansion Joints",
       "Pot Bearings",
       "Details"
-    ],
-    "name": "Pot Bearing & Modular Expansion Joint Standard Details",
-    "description": "Detailed construction drawing showing pot bearings and modular expansion joint assemblies."
+    ]
   },
   "tunnel-cross-section-lining-drawing": {
     "id": "tunnel-cross-section-lining-drawing",

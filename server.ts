@@ -181,10 +181,14 @@ async function startServer() {
   // Helper: Read Admin Database
   const readAdminDatabase = () => {
     try {
-      if (!fs.existsSync(ADMIN_DB_FILE)) return null;
-      return JSON.parse(fs.readFileSync(ADMIN_DB_FILE, 'utf-8'));
+      if (!fs.existsSync(ADMIN_DB_FILE)) return { admins: [], settings: {}, auditLogs: [] };
+      const data = JSON.parse(fs.readFileSync(ADMIN_DB_FILE, 'utf-8'));
+      if (!data.admins || !Array.isArray(data.admins)) data.admins = [];
+      if (!data.settings) data.settings = {};
+      if (!data.auditLogs) data.auditLogs = [];
+      return data;
     } catch {
-      return null;
+      return { admins: [], settings: {}, auditLogs: [] };
     }
   };
 
@@ -296,115 +300,120 @@ async function startServer() {
 
   // 1. Admin Login (Admin ID + Password)
   app.post('/api/admin/auth/login', async (req, res) => {
-    const { admin_id, password } = req.body;
-    if (!admin_id || !password) {
-      return res.status(400).json({ error: 'Admin ID and Password are required.' });
-    }
-
-    const cleanAdminId = admin_id.trim();
-    const adminDb = readAdminDatabase() || { admins: [], settings: {} };
-    const adminIndex = adminDb.admins.findIndex(
-      (a: any) =>
-        a.admin_id.toUpperCase() === cleanAdminId.toUpperCase() ||
-        (a.email && a.email.toLowerCase() === cleanAdminId.toLowerCase())
-    );
-
-    if (adminIndex === -1) {
-      addAuditLog('Login Failed', cleanAdminId, 'Auth', cleanAdminId, 'Invalid Admin ID or Email entered.');
-      return res.status(401).json({ error: 'Invalid Admin ID or Password.' });
-    }
-
-    const admin = adminDb.admins[adminIndex];
-    const now = Date.now();
-
-    // Deactivated account check
-    if (admin.status === 'inactive') {
-      return res.status(403).json({ error: 'This administrator account is deactivated. Please contact Super Admin.' });
-    }
-
-    // Lockout check
-    if (admin.locked_until) {
-      const lockTime = new Date(admin.locked_until).getTime();
-      if (now < lockTime) {
-        const remainingMins = Math.ceil((lockTime - now) / 60000);
-        return res.status(423).json({
-          error: `Account locked due to consecutive failed attempts. Try again in ${remainingMins} minute(s).`,
-        });
-      } else {
-        // Lock expired -> reset status
-        admin.status = 'active';
-        admin.failed_attempts = 0;
-        admin.locked_until = '';
+    try {
+      const { admin_id, password } = req.body || {};
+      if (!admin_id || !password) {
+        return res.status(400).json({ error: 'Admin ID and Password are required.' });
       }
-    }
 
-    // Compare Password Hash (check raw input & trimmed input)
-    const inputHash = hashPassword(password);
-    const inputHashTrimmed = hashPassword(password.trim());
-    if (inputHash !== admin.password_hash && inputHashTrimmed !== admin.password_hash) {
-      admin.failed_attempts = (admin.failed_attempts || 0) + 1;
-      const maxFailed = adminDb.settings?.maxFailedAttempts || 5;
+      const cleanAdminId = String(admin_id).trim();
+      const adminDb = readAdminDatabase();
+      const adminIndex = adminDb.admins.findIndex(
+        (a: any) =>
+          a.admin_id.toUpperCase() === cleanAdminId.toUpperCase() ||
+          (a.email && a.email.toLowerCase() === cleanAdminId.toLowerCase())
+      );
 
-      if (admin.failed_attempts >= maxFailed) {
-        admin.status = 'locked';
-        const lockoutMins = adminDb.settings?.lockoutMinutes || 15;
-        admin.locked_until = new Date(now + lockoutMins * 60 * 1000).toISOString();
-        writeAdminDatabase(adminDb);
-
-        addAuditLog('Account Locked', admin.admin_id, 'Auth', admin.admin_id, `Failed login limit reached (${maxFailed}). Account locked for ${lockoutMins} minutes.`);
-
-        return res.status(423).json({
-          error: `Maximum ${maxFailed} failed attempts exceeded. Account locked temporarily for ${lockoutMins} minutes.`,
-        });
-      } else {
-        writeAdminDatabase(adminDb);
-        addAuditLog('Login Failed', admin.admin_id, 'Auth', admin.admin_id, `Incorrect password. Failed attempt ${admin.failed_attempts}/${maxFailed}`);
-        const remaining = maxFailed - admin.failed_attempts;
-        return res.status(401).json({
-          error: `Invalid Admin ID or Password. (${remaining} attempt(s) remaining before account lockout)`,
-        });
+      if (adminIndex === -1) {
+        addAuditLog('Login Failed', cleanAdminId, 'Auth', cleanAdminId, 'Invalid Admin ID or Email entered.');
+        return res.status(401).json({ error: 'Invalid Admin ID or Password.' });
       }
-    }
 
-    // Successful Login!
-    admin.failed_attempts = 0;
-    admin.locked_until = '';
-    admin.status = 'active';
-    admin.last_login = new Date(now).toISOString();
-    writeAdminDatabase(adminDb);
+      const admin = adminDb.admins[adminIndex];
+      const now = Date.now();
 
-    // Create session
-    const token = `evl-adm-${crypto.randomBytes(24).toString('hex')}`;
-    const sessionHours = adminDb.settings?.sessionHours || 8;
-    const sessionExpiresAt = now + sessionHours * 60 * 60 * 1000;
+      // Deactivated account check
+      if (admin.status === 'inactive') {
+        return res.status(403).json({ error: 'This administrator account is deactivated. Please contact Super Admin.' });
+      }
 
-    const sessionRecord: AdminSessionRecord = {
-      token,
-      admin_id: admin.admin_id,
-      name: admin.name,
-      email: admin.email,
-      role: admin.role,
-      createdAt: now,
-      expiresAt: sessionExpiresAt,
-    };
+      // Lockout check
+      if (admin.locked_until) {
+        const lockTime = new Date(admin.locked_until).getTime();
+        if (now < lockTime) {
+          const remainingMins = Math.ceil((lockTime - now) / 60000);
+          return res.status(423).json({
+            error: `Account locked due to consecutive failed attempts. Try again in ${remainingMins} minute(s).`,
+          });
+        } else {
+          // Lock expired -> reset status
+          admin.status = 'active';
+          admin.failed_attempts = 0;
+          admin.locked_until = '';
+        }
+      }
 
-    activeSessions.set(token, sessionRecord);
+      // Compare Password Hash (check raw input & trimmed input)
+      const inputHash = hashPassword(String(password));
+      const inputHashTrimmed = hashPassword(String(password).trim());
+      if (inputHash !== admin.password_hash && inputHashTrimmed !== admin.password_hash) {
+        admin.failed_attempts = (admin.failed_attempts || 0) + 1;
+        const maxFailed = adminDb.settings?.maxFailedAttempts || 5;
 
-    addAuditLog('Login Successful', admin.admin_id, 'Auth', admin.admin_id, `Authenticated successfully as [${admin.role}].`);
+        if (admin.failed_attempts >= maxFailed) {
+          admin.status = 'locked';
+          const lockoutMins = adminDb.settings?.lockoutMinutes || 15;
+          admin.locked_until = new Date(now + lockoutMins * 60 * 1000).toISOString();
+          writeAdminDatabase(adminDb);
 
-    res.json({
-      success: true,
-      authenticated: true,
-      session: {
+          addAuditLog('Account Locked', admin.admin_id, 'Auth', admin.admin_id, `Failed login limit reached (${maxFailed}). Account locked for ${lockoutMins} minutes.`);
+
+          return res.status(423).json({
+            error: `Maximum ${maxFailed} failed attempts exceeded. Account locked temporarily for ${lockoutMins} minutes.`,
+          });
+        } else {
+          writeAdminDatabase(adminDb);
+          addAuditLog('Login Failed', admin.admin_id, 'Auth', admin.admin_id, `Incorrect password. Failed attempt ${admin.failed_attempts}/${maxFailed}`);
+          const remaining = maxFailed - admin.failed_attempts;
+          return res.status(401).json({
+            error: `Invalid Admin ID or Password. (${remaining} attempt(s) remaining before account lockout)`,
+          });
+        }
+      }
+
+      // Successful Login!
+      admin.failed_attempts = 0;
+      admin.locked_until = '';
+      admin.status = 'active';
+      admin.last_login = new Date(now).toISOString();
+      writeAdminDatabase(adminDb);
+
+      // Create session
+      const token = `evl-adm-${crypto.randomBytes(24).toString('hex')}`;
+      const sessionHours = adminDb.settings?.sessionHours || 8;
+      const sessionExpiresAt = now + sessionHours * 60 * 60 * 1000;
+
+      const sessionRecord: AdminSessionRecord = {
         token,
         admin_id: admin.admin_id,
         name: admin.name,
         email: admin.email,
         role: admin.role,
-        createdAt: new Date(now).toISOString(),
-        expiresAt: new Date(sessionExpiresAt).toISOString(),
-      },
-    });
+        createdAt: now,
+        expiresAt: sessionExpiresAt,
+      };
+
+      activeSessions.set(token, sessionRecord);
+
+      addAuditLog('Login Successful', admin.admin_id, 'Auth', admin.admin_id, `Authenticated successfully as [${admin.role}].`);
+
+      return res.json({
+        success: true,
+        authenticated: true,
+        session: {
+          token,
+          admin_id: admin.admin_id,
+          name: admin.name,
+          email: admin.email,
+          role: admin.role,
+          createdAt: new Date(now).toISOString(),
+          expiresAt: new Date(sessionExpiresAt).toISOString(),
+        },
+      });
+    } catch (err: any) {
+      console.error('[Admin Login Error]:', err);
+      return res.status(500).json({ error: err?.message || 'Server error during authentication.' });
+    }
   });
 
   // 2. Verify Session
@@ -927,6 +936,20 @@ async function startServer() {
     } catch {
       res.status(500).json({ error: 'Failed to delete GIS layer.' });
     }
+  });
+
+  // Catch-all for unhandled /api routes to prevent HTML responses
+  app.all('/api/*', (req, res) => {
+    res.status(404).json({ error: `API endpoint not found: ${req.method} ${req.path}` });
+  });
+
+  // Global error handler for /api routes
+  app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    if (req.path.startsWith('/api')) {
+      console.error('[API Internal Error]:', err);
+      return res.status(500).json({ error: err?.message || 'Internal Server Error' });
+    }
+    next(err);
   });
 
   // Vite Middleware for Development Mode

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AdminUELEComponent, UELEFacility, UELEPublicationStatus } from '../../../types/adminUele';
+import { UELEComponent, UELEFacility, UELEPublicationStatus } from '../../../types/uele';
 import { FullUELEDatabase, UELEAdminService } from '../../../services/ueleAdminService';
 import { Button } from '../../shared/Button';
 import { Badge } from '../../shared/Badge';
@@ -28,7 +28,7 @@ export const AdminComponentManager: React.FC<AdminComponentManagerProps> = ({
   database,
   onRefreshDatabase,
 }) => {
-  const [selectedComp, setSelectedComp] = useState<AdminUELEComponent | null>(null);
+  const [selectedComp, setSelectedComp] = useState<UELEComponent | null>(null);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [saving, setSaving] = useState<boolean>(false);
@@ -38,7 +38,7 @@ export const AdminComponentManager: React.FC<AdminComponentManagerProps> = ({
   const [previewMode, setPreviewMode] = useState<'2d' | '3d'>('3d');
 
   // Form state
-  const [formData, setFormData] = useState<Partial<AdminUELEComponent>>({
+  const [formData, setFormData] = useState<Partial<UELEComponent>>({
     name: '',
     facilityId: '',
     description: '',
@@ -61,7 +61,7 @@ export const AdminComponentManager: React.FC<AdminComponentManagerProps> = ({
     setIsEditing(true);
   };
 
-  const handleStartEdit = (comp: AdminUELEComponent) => {
+  const handleStartEdit = (comp: UELEComponent) => {
     setSelectedComp(comp);
     setFormData({
       ...comp,
@@ -81,7 +81,7 @@ export const AdminComponentManager: React.FC<AdminComponentManagerProps> = ({
     setSaving(true);
     setErrorMsg('');
     try {
-      const compToSave: AdminUELEComponent = {
+      const compToSave: UELEComponent = {
         id: formData.id || `comp-${Date.now()}`,
         facilityId: formData.facilityId || '',
         parentComponentId: formData.parentComponentId || '',

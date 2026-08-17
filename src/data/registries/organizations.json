@@ -240,7 +240,7 @@
     "id": "bwdb",
     "name": "Bangladesh Water Development Board",
     "type": "Government Authority",
-    "description": "Principal government agency responsible for coastal polders, flood embankments, riverbank protection, and water resource management in Bangladesh."
+    "summary": "Principal government agency responsible for coastal polders, flood embankments, riverbank protection, and water resource management in Bangladesh."
   },
   "dphe": {
     "id": "dphe",
@@ -298,7 +298,7 @@
     "id": "usace",
     "name": "US Army Corps of Engineers (USACE)",
     "type": "Federal Engineering Agency",
-    "description": "Premier engineering organization setting global technical standards in coastal hydrodynamics, navigation, breakwaters, and flood risk management."
+    "summary": "Premier engineering organization setting global technical standards in coastal hydrodynamics, navigation, breakwaters, and flood risk management."
   },
   "doe-bangladesh": {
     "id": "doe-bangladesh",
@@ -472,7 +472,7 @@
     "type": "Municipal Government / Local Authority",
     "country": "Bangladesh",
     "website": "https://dncc.gov.bd",
-    "description": "Local government municipal corporations responsible for civic services, local roads, storm drainage, solid waste management, and streetscape in Dhaka."
+    "summary": "Local government municipal corporations responsible for civic services, local roads, storm drainage, solid waste management, and streetscape in Dhaka."
   },
   "rajuk": {
     "id": "rajuk",
@@ -480,7 +480,7 @@
     "type": "Urban Planning & Capital Development Authority",
     "country": "Bangladesh",
     "website": "http://www.rajuk.gov.bd",
-    "description": "Capital development authority responsible for urban master planning, land development, and municipal infrastructure approval in greater Dhaka."
+    "summary": "Capital development authority responsible for urban master planning, land development, and municipal infrastructure approval in greater Dhaka."
   },
   "un-habitat": {
     "id": "un-habitat",
@@ -488,7 +488,7 @@
     "type": "International Urban Development Organization",
     "country": "International",
     "website": "https://unhabitat.org",
-    "description": "United Nations agency promoting socially and environmentally sustainable human settlements and sustainable urban infrastructure worldwide."
+    "summary": "United Nations agency promoting socially and environmentally sustainable human settlements and sustainable urban infrastructure worldwide."
   },
   "apwa-org": {
     "id": "apwa-org",
@@ -496,40 +496,42 @@
     "type": "Professional Public Works Association",
     "country": "USA / International",
     "website": "https://www.apwa.org",
-    "description": "Global association promoting professional excellence in public works, municipal engineering, utility management, and municipal operations."
+    "summary": "Global association promoting professional excellence in public works, municipal engineering, utility management, and municipal operations."
   },
   "biwta": {
     "id": "biwta",
     "name": "Bangladesh Inland Water Transport Authority",
     "type": "Government Authority",
-    "description": "Government authority managing inland and coastal navigation channels, dredging operations, hydrographic surveying, and river ports."
+    "summary": "Government authority managing inland and coastal navigation channels, dredging operations, hydrographic surveying, and river ports."
   },
   "cpa-chattogram-port": {
     "id": "cpa-chattogram-port",
     "name": "Chattogram Port Authority",
     "type": "Port Authority",
-    "description": "Premier seaport authority managing maritime cargo, container terminals, and port infrastructure in Chattogram, Bangladesh."
+    "summary": "Premier seaport authority managing maritime cargo, container terminals, and port infrastructure in Chattogram, Bangladesh."
   },
   "payra-port-authority": {
     "id": "payra-port-authority",
     "name": "Payra Port Authority",
     "type": "Port Authority",
-    "description": "Autonomous port authority developing and operating deep-water seaport facilities in Patuakhali, Bangladesh."
+    "summary": "Autonomous port authority developing and operating deep-water seaport facilities in Patuakhali, Bangladesh."
   },
   "mongla-port-authority": {
     "id": "mongla-port-authority",
     "name": "Mongla Port Authority",
     "type": "Port Authority",
-    "description": "Port authority operating the second largest seaport in Bangladesh, serving southwestern trade and industrial corridors."
+    "summary": "Port authority operating the second largest seaport in Bangladesh, serving southwestern trade and industrial corridors."
   },
   "pianc-org": {
     "id": "pianc-org",
     "name": "PIANC (World Association for Waterborne Transport Infrastructure)",
     "type": "International Technical Association",
-    "description": "Global non-political organization providing guidance for sustainable waterborne transport infrastructure, ports, and navigation channels."
+    "summary": "Global non-political organization providing guidance for sustainable waterborne transport infrastructure, ports, and navigation channels."
   },
   "survey-of-bangladesh": {
     "id": "survey-of-bangladesh",
+    "title": "Survey of Bangladesh (SOB)",
+    "summary": "National mapping agency of Bangladesh responsible for national geodetic control networks, topographic mapping, aerial photography, and NSDI.",
     "type": "National Mapping Agency",
     "location": "Dhaka, Bangladesh",
     "tags": [
@@ -537,12 +539,12 @@
       "Survey of Bangladesh",
       "National Mapping",
       "Geodesy"
-    ],
-    "name": "Survey of Bangladesh (SOB)",
-    "description": "National mapping agency of Bangladesh responsible for national geodetic control networks, topographic mapping, aerial photography, and NSDI."
+    ]
   },
   "sparrso": {
     "id": "sparrso",
+    "title": "Bangladesh Space Research and Remote Sensing Organization (SPARRSO)",
+    "summary": "State agency promoting peaceful applications of space tech, satellite remote sensing, GIS, and disaster monitoring in Bangladesh.",
     "type": "Space & Remote Sensing Agency",
     "location": "Dhaka, Bangladesh",
     "tags": [
@@ -550,12 +552,12 @@
       "Remote Sensing",
       "Satellite Imagery",
       "Bangladesh"
-    ],
-    "name": "Bangladesh Space Research and Remote Sensing Organization (SPARRSO)",
-    "description": "State agency promoting peaceful applications of space tech, satellite remote sensing, GIS, and disaster monitoring in Bangladesh."
+    ]
   },
   "fig-org": {
     "id": "fig-org",
+    "title": "International Federation of Surveyors (FIG)",
+    "summary": "UN-recognized global non-governmental organization representing the interests of surveyors and geomaticians worldwide.",
     "type": "International Professional Federation",
     "location": "Copenhagen, Denmark",
     "tags": [
@@ -563,12 +565,12 @@
       "Surveying",
       "Global Federation",
       "Cadastral"
-    ],
-    "name": "International Federation of Surveyors (FIG)",
-    "description": "UN-recognized global non-governmental organization representing the interests of surveyors and geomaticians worldwide."
+    ]
   },
   "isprs": {
     "id": "isprs",
+    "title": "International Society for Photogrammetry and Remote Sensing (ISPRS)",
+    "summary": "Non-governmental organization devoted to the development of international cooperation for the advancement of photogrammetry, remote sensing, and spatial sciences.",
     "type": "International Scientific Society",
     "location": "Global",
     "tags": [
@@ -576,12 +578,12 @@
       "Photogrammetry",
       "Remote Sensing",
       "Spatial Information"
-    ],
-    "name": "International Society for Photogrammetry and Remote Sensing (ISPRS)",
-    "description": "Non-governmental organization devoted to the development of international cooperation for the advancement of photogrammetry, remote sensing, and spatial sciences."
+    ]
   },
   "ogc": {
     "id": "ogc",
+    "title": "Open Geospatial Consortium (OGC)",
+    "summary": "International consensus standards organization comprising commercial, government, and academic members defining location data standards.",
     "type": "Standards Consortium",
     "location": "Wayland, MA, USA",
     "tags": [
@@ -590,12 +592,12 @@
       "GeoTIFF",
       "WMS",
       "WFS"
-    ],
-    "name": "Open Geospatial Consortium (OGC)",
-    "description": "International consensus standards organization comprising commercial, government, and academic members defining location data standards."
+    ]
   },
   "iho": {
     "id": "iho",
+    "title": "International Hydrographic Organization (IHO)",
+    "summary": "Intergovernmental organization that ensures all world seas, oceans, and navigable waters are properly surveyed and charted.",
     "type": "Intergovernmental Organization",
     "location": "Monaco",
     "tags": [
@@ -603,12 +605,12 @@
       "Hydrography",
       "Nautical Charting",
       "S-44"
-    ],
-    "name": "International Hydrographic Organization (IHO)",
-    "description": "Intergovernmental organization that ensures all world seas, oceans, and navigable waters are properly surveyed and charted."
+    ]
   },
   "asprs": {
     "id": "asprs",
+    "title": "American Society for Photogrammetry and Remote Sensing (ASPRS)",
+    "summary": "Scientific association serving professionals in photogrammetry, remote sensing, geographic information systems, and supporting technologies.",
     "type": "Professional Association",
     "location": "Bethesda, MD, USA",
     "tags": [
@@ -616,12 +618,12 @@
       "Photogrammetry",
       "LiDAR Accuracy",
       "Remote Sensing"
-    ],
-    "name": "American Society for Photogrammetry and Remote Sensing (ASPRS)",
-    "description": "Scientific association serving professionals in photogrammetry, remote sensing, geographic information systems, and supporting technologies."
+    ]
   },
   "bangladesh-bridge-authority": {
     "id": "bangladesh-bridge-authority",
+    "title": "Bangladesh Bridge Authority (BBA)",
+    "summary": "Government authority responsible for constructing and managing major bridges, tunnels, and elevated expressways in Bangladesh.",
     "type": "Government Authority",
     "category": "Bridge & Transport Authority",
     "tags": [
@@ -629,12 +631,12 @@
       "Bangladesh",
       "Bridge Authority",
       "Padma Bridge"
-    ],
-    "name": "Bangladesh Bridge Authority (BBA)",
-    "description": "Government authority responsible for constructing and managing major bridges, tunnels, and elevated expressways in Bangladesh."
+    ]
   },
   "roads-and-highways-department-bba": {
     "id": "roads-and-highways-department-bba",
+    "title": "Roads and Highways Department (RHD) Bangladesh",
+    "summary": "Primary road and bridge infrastructure authority under the Ministry of Road Transport and Bridges in Bangladesh.",
     "type": "Government Department",
     "category": "Transport Infrastructure",
     "tags": [
@@ -642,12 +644,12 @@
       "Roads & Highways",
       "Bangladesh",
       "Bridges"
-    ],
-    "name": "Roads and Highways Department (RHD) Bangladesh",
-    "description": "Primary road and bridge infrastructure authority under the Ministry of Road Transport and Bridges in Bangladesh."
+    ]
   },
   "iabse": {
     "id": "iabse",
+    "title": "International Association for Bridge and Structural Engineering (IABSE)",
+    "summary": "Global professional association promoting structural engineering knowledge exchange for bridges and structures.",
     "type": "Professional Association",
     "category": "Bridge Engineering Society",
     "tags": [
@@ -655,12 +657,12 @@
       "Bridge Engineering",
       "Structural Engineering",
       "Global"
-    ],
-    "name": "International Association for Bridge and Structural Engineering (IABSE)",
-    "description": "Global professional association promoting structural engineering knowledge exchange for bridges and structures."
+    ]
   },
   "fhwa": {
     "id": "fhwa",
+    "title": "Federal Highway Administration (FHWA)",
+    "summary": "Agency within the US Department of Transportation providing leadership in highway and bridge technology and standards.",
     "type": "Government Agency",
     "category": "Highway & Bridge Authority",
     "tags": [
@@ -668,12 +670,12 @@
       "Bridge Standards",
       "HEC Circulars",
       "Inspection"
-    ],
-    "name": "Federal Highway Administration (FHWA)",
-    "description": "Agency within the US Department of Transportation providing leadership in highway and bridge technology and standards."
+    ]
   },
   "aashto-org": {
     "id": "aashto-org",
+    "title": "American Association of State Highway and Transportation Officials (AASHTO)",
+    "summary": "Nonprofit association representing state transportation departments and setting primary bridge design codes.",
     "type": "Standards Organization",
     "category": "Transportation Standards",
     "tags": [
@@ -681,21 +683,19 @@
       "Bridge Codes",
       "LRFD",
       "Standards"
-    ],
-    "name": "American Association of State Highway and Transportation Officials (AASHTO)",
-    "description": "Nonprofit association representing state transportation departments and setting primary bridge design codes."
+    ]
   },
   "arema-org": {
     "id": "arema-org",
+    "title": "American Railway Engineering and Maintenance-of-Way Association (AREMA)",
+    "summary": "Professional association developing technical standards for railway infrastructure and railway bridge design.",
     "type": "Professional Association",
     "category": "Railway Engineering",
     "tags": [
       "AREMA",
       "Railway Bridges",
       "Railway Standards"
-    ],
-    "name": "American Railway Engineering and Maintenance-of-Way Association (AREMA)",
-    "description": "Professional association developing technical standards for railway infrastructure and railway bridge design."
+    ]
   },
   "ita-aites": {
     "id": "ita-aites",
@@ -813,32 +813,28 @@
     "type": "Standards Body"
   },
   "astm-org": {
+    "title": "ASTM International",
+    "summary": "Globally recognized standards organization that develops technical standards for pavement materials, testing methods, and PCI evaluation.",
     "type": "Standards Organization",
-    "website": "https://www.astm.org",
-    "name": "ASTM International",
-    "description": "Globally recognized standards organization that develops technical standards for pavement materials, testing methods, and PCI evaluation.",
-    "id": "astm-org"
+    "website": "https://www.astm.org"
   },
   "isap-org": {
+    "title": "International Society for Asphalt Pavements (ISAP)",
+    "summary": "Global professional association advancing asphalt pavement technology, research, design, and sustainable paving practices.",
     "type": "Professional Society",
-    "website": "https://asphalt.org",
-    "name": "International Society for Asphalt Pavements (ISAP)",
-    "description": "Global professional association advancing asphalt pavement technology, research, design, and sustainable paving practices.",
-    "id": "isap-org"
+    "website": "https://asphalt.org"
   },
   "acpa-org": {
+    "title": "American Concrete Pavement Association (ACPA)",
+    "summary": "National organization representing concrete pavement design, construction, research, and rehabilitation practices.",
     "type": "Industry Association",
-    "website": "https://www.acpa.org",
-    "name": "American Concrete Pavement Association (ACPA)",
-    "description": "National organization representing concrete pavement design, construction, research, and rehabilitation practices.",
-    "id": "acpa-org"
+    "website": "https://www.acpa.org"
   },
   "napa-org": {
+    "title": "National Asphalt Pavement Association (NAPA)",
+    "summary": "Trade association representing asphalt pavement producers and paving contractors in the US.",
     "type": "Industry Association",
-    "website": "https://www.asphaltpavement.org",
-    "name": "National Asphalt Pavement Association (NAPA)",
-    "description": "Trade association representing asphalt pavement producers and paving contractors in the US.",
-    "id": "napa-org"
+    "website": "https://www.asphaltpavement.org"
   },
   "eeri-org": {
     "id": "eeri-org",
@@ -981,6 +977,268 @@
       "IWM",
       "Water Modeling",
       "Flood Simulation"
+    ]
+  },
+  "asce-construction-institute": {
+    "id": "asce-construction-institute",
+    "name": "ASCE Construction Institute (CI)",
+    "description": "Specialized institute within the American Society of Civil Engineers dedicated to advancing construction engineering and management.",
+    "type": "Professional Institution",
+    "tags": [
+      "ASCE",
+      "Construction Institute",
+      "Civil Engineering"
+    ]
+  },
+  "rics": {
+    "id": "rics",
+    "name": "Royal Institution of Chartered Surveyors (RICS)",
+    "description": "Global professional body promoting and enforcing the highest qualifications and standards in land, real estate, construction, and infrastructure.",
+    "type": "Professional Institution",
+    "tags": [
+      "RICS",
+      "Quantity Surveying",
+      "Chartered Surveyor",
+      "Standards"
+    ]
+  },
+  "aiqs": {
+    "id": "aiqs",
+    "name": "Australian Institute of Quantity Surveyors (AIQS)",
+    "description": "Professional body representing quantity surveyors and cost managers across the Asia-Pacific region.",
+    "type": "Professional Institution",
+    "tags": [
+      "AIQS",
+      "Quantity Surveying",
+      "Cost Management"
+    ]
+  },
+  "bppa-bangladesh": {
+    "id": "bppa-bangladesh",
+    "name": "Bangladesh Public Procurement Authority (BPPA)",
+    "description": "Apex government authority (formerly CPTU) governing public procurement policies, e-GP systems, and procurement rules in Bangladesh.",
+    "type": "Government Authority",
+    "tags": [
+      "BPPA",
+      "CPTU",
+      "e-GP",
+      "Public Procurement",
+      "Bangladesh"
+    ]
+  },
+  "nec-org": {
+    "id": "nec-org",
+    "name": "NEC Contracts (New Engineering Contract)",
+    "description": "Organization managing the NEC suite of standard contracts promoting collaboration and project management efficiency.",
+    "type": "Contract Body",
+    "tags": [
+      "NEC",
+      "NEC4",
+      "Contracts",
+      "ICE"
+    ]
+  },
+  "scl-society-of-construction-law": {
+    "id": "scl-society-of-construction-law",
+    "name": "Society of Construction Law (SCL)",
+    "description": "International organization promoting education and research in the field of construction law, delay protocols, and dispute resolution.",
+    "type": "Professional Society",
+    "tags": [
+      "SCL",
+      "Construction Law",
+      "Delay Protocol",
+      "Dispute Resolution"
+    ]
+  },
+  "ciarb": {
+    "id": "ciarb",
+    "name": "Chartered Institute of Arbitrators (CIArb)",
+    "description": "Global professional body for alternative dispute resolution, commercial arbitration, and adjudication.",
+    "type": "Professional Institution",
+    "tags": [
+      "CIArb",
+      "Arbitration",
+      "Dispute Resolution",
+      "Mediation"
+    ]
+  },
+  "asq-american-society-for-quality": {
+    "id": "asq-american-society-for-quality",
+    "name": "American Society for Quality (ASQ)",
+    "description": "Global community of quality professionals providing certifications, standards, and QA/QC frameworks.",
+    "type": "Professional Society",
+    "tags": [
+      "ASQ",
+      "Quality Management",
+      "QA/QC",
+      "Six Sigma"
+    ]
+  },
+  "iosh": {
+    "id": "iosh",
+    "name": "Institution of Occupational Safety and Health (IOSH)",
+    "description": "Chartered body and largest membership organization for safety and health professionals worldwide.",
+    "type": "Professional Body",
+    "tags": [
+      "IOSH",
+      "Safety",
+      "HSE",
+      "Occupational Health"
+    ]
+  },
+  "nsc-national-safety-council": {
+    "id": "nsc-national-safety-council",
+    "name": "National Safety Council (NSC)",
+    "description": "Nonprofit organization dedicated to eliminating preventable deaths and injuries on job sites and public spaces.",
+    "type": "Safety Organization",
+    "tags": [
+      "NSC",
+      "Safety",
+      "Accident Prevention"
+    ]
+  },
+  "nebosh": {
+    "id": "nebosh",
+    "name": "National Examination Board in Occupational Safety and Health (NEBOSH)",
+    "description": "Global examination board providing world-recognized qualifications in occupational health, safety, and environmental management.",
+    "type": "Awarding Body",
+    "tags": [
+      "NEBOSH",
+      "Safety Certification",
+      "HSE",
+      "Diploma"
+    ]
+  },
+  "twf-temporary-works-forum": {
+    "id": "twf-temporary-works-forum",
+    "name": "Temporary Works Forum (TWf)",
+    "description": "Industry body encouraging open discussion and best practices in temporary works engineering, falsework, and formwork safety.",
+    "type": "Industry Body",
+    "tags": [
+      "TWf",
+      "Temporary Works",
+      "Falsework",
+      "BS 5975"
+    ]
+  },
+  "aed-associated-equipment-distributors": {
+    "id": "aed-associated-equipment-distributors",
+    "name": "Associated Equipment Distributors (AED)",
+    "description": "International trade association representing companies involved in the distribution, rental, and servicing of heavy construction equipment.",
+    "type": "Trade Association",
+    "tags": [
+      "AED",
+      "Equipment",
+      "Heavy Machinery",
+      "Plant Distribution"
+    ]
+  },
+  "cilt-chartered-institute-of-logistics": {
+    "id": "cilt-chartered-institute-of-logistics",
+    "name": "Chartered Institute of Logistics and Transport (CILT)",
+    "description": "Professional body for individuals associated with logistics, supply chain, and transport operations worldwide.",
+    "type": "Professional Institution",
+    "tags": [
+      "CILT",
+      "Logistics",
+      "Supply Chain",
+      "Transport"
+    ]
+  },
+  "apics": {
+    "id": "apics",
+    "name": "Association for Supply Chain Management (ASCM / APICS)",
+    "description": "Global authority for supply chain and inventory management certifications and operational standards.",
+    "type": "Professional Association",
+    "tags": [
+      "APICS",
+      "ASCM",
+      "Supply Chain",
+      "Inventory"
+    ]
+  },
+  "ctbuh-council-on-tall-buildings": {
+    "id": "ctbuh-council-on-tall-buildings",
+    "name": "Council on Tall Buildings and Urban Habitat (CTBUH)",
+    "description": "Global non-profit organization focused on the design, construction, and operation of tall buildings and future cities.",
+    "type": "International Council",
+    "tags": [
+      "CTBUH",
+      "High-Rise",
+      "Tall Buildings",
+      "Superstructures"
+    ]
+  },
+  "usgbc": {
+    "id": "usgbc",
+    "name": "U.S. Green Building Council (USGBC)",
+    "description": "Organization committed to a sustainable future through cost-efficient and energy-saving green buildings (LEED rating system).",
+    "type": "Non-Profit Organization",
+    "tags": [
+      "USGBC",
+      "LEED",
+      "Green Building",
+      "Sustainability"
+    ]
+  },
+  "wgbc-world-green-building-council": {
+    "id": "wgbc-world-green-building-council",
+    "name": "World Green Building Council (WorldGBC)",
+    "description": "Global network of national Green Building Councils transforming the building and construction sector towards net zero carbon.",
+    "type": "Global Council",
+    "tags": [
+      "WorldGBC",
+      "Net Zero",
+      "Sustainability",
+      "Green Building"
+    ]
+  },
+  "bre-group": {
+    "id": "bre-group",
+    "name": "Building Research Establishment (BRE Group)",
+    "description": "Multi-disciplinary building science centre operating the BREEAM environmental assessment and certification standard.",
+    "type": "Research & Certification Body",
+    "tags": [
+      "BRE",
+      "BREEAM",
+      "Building Science",
+      "Sustainability"
+    ]
+  },
+  "lean-construction-institute": {
+    "id": "lean-construction-institute",
+    "name": "Lean Construction Institute (LCI)",
+    "description": "Non-profit organization dedicated to transforming the built environment through lean principles, Last Planner System, and waste reduction.",
+    "type": "Industry Institute",
+    "tags": [
+      "LCI",
+      "Lean Construction",
+      "Last Planner",
+      "Pull Planning"
+    ]
+  },
+  "design-build-institute-of-america-dbia": {
+    "id": "design-build-institute-of-america-dbia",
+    "name": "Design-Build Institute of America (DBIA)",
+    "description": "Association promoting the value and best practices of design-build and integrated project delivery across the AEC industry.",
+    "type": "Professional Institute",
+    "tags": [
+      "DBIA",
+      "Design-Build",
+      "Integrated Delivery",
+      "AEC"
+    ]
+  },
+  "buildingsmart": {
+    "id": "buildingsmart",
+    "name": "buildingSMART International",
+    "description": "Worldwide authority driving the digital transformation of the built asset industry through open BIM data standards (IFC / BCF).",
+    "type": "International Standards Body",
+    "tags": [
+      "buildingSMART",
+      "OpenBIM",
+      "IFC",
+      "Digital Construction"
     ]
   }
 }

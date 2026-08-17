@@ -1,4 +1,4 @@
-import { UELESystemCategoryMeta, UELELayer } from '../types/adminUele';
+import { UELESystemCategoryMeta, UELELayer } from '../types/uele';
 
 export const UELE_SYSTEM_CATEGORIES: UELESystemCategoryMeta[] = [
   {

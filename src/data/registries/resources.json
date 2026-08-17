@@ -232,109 +232,111 @@
   },
   "aace-cost-engineering-handbook": {
     "id": "aace-cost-engineering-handbook",
+    "title": "AACE Professional Cost Engineering & Estimation Handbook",
+    "summary": "Comprehensive manual covering cost estimation methodologies, contingency evaluation, earned value management, and cost control.",
     "type": "Handbook",
-    "author": "AACE International",
-    "name": "AACE Professional Cost Engineering & Estimation Handbook",
-    "description": "Comprehensive manual covering cost estimation methodologies, contingency evaluation, earned value management, and cost control."
+    "author": "AACE International"
   },
   "fidic-red-book-contract-guide": {
     "id": "fidic-red-book-contract-guide",
+    "title": "FIDIC Contract Administration & Claims Management Guide",
+    "summary": "Practical guidance on employer/contractor obligations, engineer instructions, variation valuation, and dispute adjudication procedures.",
     "type": "Guidebook",
-    "author": "FIDIC Secretariat",
-    "name": "FIDIC Contract Administration & Claims Management Guide",
-    "description": "Practical guidance on employer/contractor obligations, engineer instructions, variation valuation, and dispute adjudication procedures."
+    "author": "FIDIC Secretariat"
   },
   "primavera-p6-user-guide-resource": {
     "id": "primavera-p6-user-guide-resource",
+    "title": "Primavera P6 Construction Project Scheduling Manual",
+    "summary": "Complete technical user guide detailing P6 database setup, activity linking, resource curves, threshold monitoring, and reporting.",
     "type": "User Manual",
-    "author": "Oracle Construction Engineering",
-    "name": "Primavera P6 Construction Project Scheduling Manual",
-    "description": "Complete technical user guide detailing P6 database setup, activity linking, resource curves, threshold monitoring, and reporting."
+    "author": "Oracle Construction Engineering"
   },
   "construction-safety-osha-pocket-guide": {
     "id": "construction-safety-osha-pocket-guide",
+    "title": "OSHA Site Safety & Hazard Identification Handbook",
+    "summary": "Essential field reference guide for construction site hazard controls, scaffolding requirements, excavation shoring, and personal protective equipment.",
     "type": "Safety Manual",
-    "author": "OSHA",
-    "name": "OSHA Site Safety & Hazard Identification Handbook",
-    "description": "Essential field reference guide for construction site hazard controls, scaffolding requirements, excavation shoring, and personal protective equipment."
+    "author": "OSHA"
   },
   "lged-urban-infrastructure-design-manual": {
     "id": "lged-urban-infrastructure-design-manual",
+    "title": "LGED Urban Infrastructure Design & Maintenance Manual",
     "author": "Local Government Engineering Department (LGED)",
     "type": "Design Manual",
-    "name": "LGED Urban Infrastructure Design & Maintenance Manual",
-    "description": "Standard technical guidance document detailing geometric road design, storm drainage sizing, and market facility guidelines for urban municipalities."
+    "summary": "Standard technical guidance document detailing geometric road design, storm drainage sizing, and market facility guidelines for urban municipalities."
   },
   "apwa-public-works-management-handbook": {
     "id": "apwa-public-works-management-handbook",
+    "title": "APWA Public Works Management & Operations Handbook",
     "author": "American Public Works Association (APWA)",
     "type": "Handbook",
-    "name": "APWA Public Works Management & Operations Handbook",
-    "description": "Comprehensive reference guide covering public works leadership, municipal utility management, street maintenance, and emergency operations."
+    "summary": "Comprehensive reference guide covering public works leadership, municipal utility management, street maintenance, and emergency operations."
   },
   "iso-55000-asset-management-guidelines-resource": {
     "id": "iso-55000-asset-management-guidelines-resource",
+    "title": "ISO 55000 Asset Management Principles & Implementation Guide",
     "author": "ISO / IAM",
     "type": "Standard Guidance",
-    "name": "ISO 55000 Asset Management Principles & Implementation Guide",
-    "description": "Implementation handbook for municipal authorities to institute asset management policy, strategic asset plans, and condition rating systems."
+    "summary": "Implementation handbook for municipal authorities to institute asset management policy, strategic asset plans, and condition rating systems."
   },
   "usace-cem-handbook-resource": {
     "id": "usace-cem-handbook-resource",
+    "title": "USACE Coastal Engineering Manual (CEM) Technical Reference Series",
     "type": "Engineering Manual",
-    "name": "USACE Coastal Engineering Manual (CEM) Technical Reference Series",
-    "description": "Comprehensive 6-part technical reference manual covering coastal hydrodynamics, coastal geology, sediment transport, and coastal structure design."
+    "summary": "Comprehensive 6-part technical reference manual covering coastal hydrodynamics, coastal geology, sediment transport, and coastal structure design."
   },
   "ciria-rock-manual-resource": {
     "id": "ciria-rock-manual-resource",
+    "title": "CIRIA C683 The Rock Manual Engineering Reference Guide",
     "type": "Technical Guide",
-    "name": "CIRIA C683 The Rock Manual Engineering Reference Guide",
-    "description": "The international benchmark guide for designing and constructing rock armor structures in coastal and hydraulic engineering."
+    "summary": "The international benchmark guide for designing and constructing rock armor structures in coastal and hydraulic engineering."
   },
   "pianc-maritime-reports-resource": {
     "id": "pianc-maritime-reports-resource",
+    "title": "PIANC Technical Reports on Navigation Channels & Port Design",
     "type": "Technical Standard Collection",
-    "name": "PIANC Technical Reports on Navigation Channels & Port Design",
-    "description": "Collection of technical reports setting global guidelines for fairway dimensions, container terminal layouts, and fender design."
+    "summary": "Collection of technical reports setting global guidelines for fairway dimensions, container terminal layouts, and fender design."
   },
   "river-engineering-handbook": {
     "id": "river-engineering-handbook",
+    "title": "Principles and Practice of River Engineering (Handbook)",
+    "summary": "Comprehensive reference manual detailing fluvial geomorphology, river hydraulics, sediment transport, and river training structures.",
     "author": "Petersen & Chang",
     "category": "Reference Manual",
     "tags": [
       "River Engineering",
       "Handbook",
       "Reference"
-    ],
-    "name": "Principles and Practice of River Engineering (Handbook)",
-    "description": "Comprehensive reference manual detailing fluvial geomorphology, river hydraulics, sediment transport, and river training structures."
+    ]
   },
   "usace-river-hydraulics-manual": {
     "id": "usace-river-hydraulics-manual",
+    "title": "USACE River Hydraulics & Channel Stability Engineering Manual",
+    "summary": "US Army Corps of Engineers benchmark technical manual for open channel hydraulics and river channel stability evaluation.",
     "author": "USACE",
     "category": "Engineering Manual",
     "tags": [
       "USACE",
       "EM 1110-2-1601",
       "River Hydraulics"
-    ],
-    "name": "USACE River Hydraulics & Channel Stability Engineering Manual",
-    "description": "US Army Corps of Engineers benchmark technical manual for open channel hydraulics and river channel stability evaluation."
+    ]
   },
   "bridge-scour-manual-hec18": {
     "id": "bridge-scour-manual-hec18",
+    "title": "FHWA HEC-18 Reference Manual — Evaluating Scour at Bridges",
+    "summary": "Fifth edition FHWA reference guidelines for bridge scour analysis, local pier scour equations, and field testing.",
     "author": "Federal Highway Administration",
     "category": "Technical Reference",
     "tags": [
       "FHWA",
       "HEC-18",
       "Bridge Scour"
-    ],
-    "name": "FHWA HEC-18 Reference Manual — Evaluating Scour at Bridges",
-    "description": "Fifth edition FHWA reference guidelines for bridge scour analysis, local pier scour equations, and field testing."
+    ]
   },
   "geodesy-gnss-surveying-handbook": {
     "id": "geodesy-gnss-surveying-handbook",
+    "title": "Geodesy, GNSS & High-Precision Surveying Engineering Handbook",
+    "summary": "Reference handbook detailing physical geodesy, coordinate reference systems, least squares adjustment, and multi-constellation GNSS principles.",
     "type": "Reference Handbook",
     "url": "https://www.fig.net/resources/publications/",
     "tags": [
@@ -342,12 +344,12 @@
       "GNSS",
       "Surveying Handbook",
       "Least Squares"
-    ],
-    "name": "Geodesy, GNSS & High-Precision Surveying Engineering Handbook",
-    "description": "Reference handbook detailing physical geodesy, coordinate reference systems, least squares adjustment, and multi-constellation GNSS principles."
+    ]
   },
   "gis-spatial-analysis-principles-manual": {
     "id": "gis-spatial-analysis-principles-manual",
+    "title": "GIS, Spatial Database & Geostatistical Analysis Manual",
+    "summary": "Guide covering spatial data models, PostGIS database queries, vector/raster overlay algorithms, and spatial kriging statistics.",
     "type": "Technical Manual",
     "url": "https://www.ogc.org/standards/",
     "tags": [
@@ -355,12 +357,12 @@
       "PostGIS",
       "Geostatistics",
       "Spatial Analysis"
-    ],
-    "name": "GIS, Spatial Database & Geostatistical Analysis Manual",
-    "description": "Guide covering spatial data models, PostGIS database queries, vector/raster overlay algorithms, and spatial kriging statistics."
+    ]
   },
   "uav-photogrammetry-lidar-best-practices-guide": {
     "id": "uav-photogrammetry-lidar-best-practices-guide",
+    "title": "UAV Photogrammetry & Laser Scanning Accuracy & Best Practices Guide",
+    "summary": "ASPRS-aligned guidelines for drone flight parameters, GCP configuration, ground sample distance (GSD), and point cloud scan-to-BIM modeling.",
     "type": "Best Practices Guide",
     "url": "https://www.asprs.org/standards-guidelines",
     "tags": [
@@ -368,12 +370,12 @@
       "LiDAR",
       "Photogrammetry",
       "ASPRS Accuracy"
-    ],
-    "name": "UAV Photogrammetry & Laser Scanning Accuracy & Best Practices Guide",
-    "description": "ASPRS-aligned guidelines for drone flight parameters, GCP configuration, ground sample distance (GSD), and point cloud scan-to-BIM modeling."
+    ]
   },
   "aashto-lrfd-bridge-design-specs-manual": {
     "id": "aashto-lrfd-bridge-design-specs-manual",
+    "title": "AASHTO LRFD Bridge Design Specifications Manual",
+    "summary": "Official AASHTO LRFD Bridge Design Specifications manual and design examples.",
     "type": "Design Specification Manual",
     "category": "Bridge Structural Design",
     "tags": [
@@ -381,12 +383,12 @@
       "LRFD",
       "Bridge Specifications",
       "Design Manual"
-    ],
-    "name": "AASHTO LRFD Bridge Design Specifications Manual",
-    "description": "Official AASHTO LRFD Bridge Design Specifications manual and design examples."
+    ]
   },
   "fhwa-bridge-inspector-reference-manual": {
     "id": "fhwa-bridge-inspector-reference-manual",
+    "title": "FHWA Bridge Inspector's Reference Manual (BIRM)",
+    "summary": "Comprehensive reference manual for bridge safety inspectors covering defects, inspection procedures, and rating.",
     "type": "Field Inspection Manual",
     "category": "Bridge Inspection",
     "tags": [
@@ -394,12 +396,12 @@
       "BIRM",
       "Bridge Inspection",
       "Condition Rating"
-    ],
-    "name": "FHWA Bridge Inspector's Reference Manual (BIRM)",
-    "description": "Comprehensive reference manual for bridge safety inspectors covering defects, inspection procedures, and rating."
+    ]
   },
   "bridge-engineering-handbook-waisang": {
     "id": "bridge-engineering-handbook-waisang",
+    "title": "Bridge Engineering Handbook (Wai-Fah Chen & Lian Duan)",
+    "summary": "Definitive multi-volume reference handbook covering superstructures, substructures, construction, and maintenance.",
     "type": "Reference Handbook",
     "category": "Bridge Engineering Textbook",
     "tags": [
@@ -407,9 +409,7 @@
       "Wai-Fah Chen",
       "Superstructure",
       "Substructure"
-    ],
-    "name": "Bridge Engineering Handbook (Wai-Fah Chen & Lian Duan)",
-    "description": "Definitive multi-volume reference handbook covering superstructures, substructures, construction, and maintenance."
+    ]
   },
   "ita-tunnel-design-guidelines-resource": {
     "id": "ita-tunnel-design-guidelines-resource",
@@ -461,13 +461,13 @@
   },
   "who-water-supply-guidelines": {
     "id": "who-water-supply-guidelines",
-    "description": "International guidelines for safe drinking water quality standards, distribution safety plans, and pressure management.",
-    "name": "WHO Guidelines for Drinking-Water Quality & Municipal Distribution"
+    "title": "WHO Guidelines for Drinking-Water Quality & Municipal Distribution",
+    "description": "International guidelines for safe drinking water quality standards, distribution safety plans, and pressure management."
   },
   "world-bank-urban-resilience-guide": {
     "id": "world-bank-urban-resilience-guide",
-    "description": "Framework for integrating climate change adaptation, flood mitigation, and green infrastructure into municipal planning.",
-    "name": "World Bank Guide to Climate Resilient Urban Infrastructure"
+    "title": "World Bank Guide to Climate Resilient Urban Infrastructure",
+    "description": "Framework for integrating climate change adaptation, flood mitigation, and green infrastructure into municipal planning."
   },
   "world-bank-infrastructure-guidelines": {
     "id": "world-bank-infrastructure-guidelines",
@@ -506,28 +506,24 @@
     "type": "Implementation Guide"
   },
   "aashto-pavement-design-guide-resource": {
-    "format": "Technical Manual",
-    "name": "AASHTO Guide for Design of Pavement Structures",
-    "description": "Definitive design manual for empirical structural design of flexible and rigid highway pavements.",
-    "id": "aashto-pavement-design-guide-resource"
+    "title": "AASHTO Guide for Design of Pavement Structures",
+    "summary": "Definitive design manual for empirical structural design of flexible and rigid highway pavements.",
+    "format": "Technical Manual"
   },
   "fhwa-pavement-distress-identification-manual": {
-    "format": "Field Guide",
-    "name": "FHWA Distress Identification Manual for LTPP Project",
-    "description": "Standard visual reference guide for identifying, measuring, and classifying asphalt and concrete pavement distresses.",
-    "id": "fhwa-pavement-distress-identification-manual"
+    "title": "FHWA Distress Identification Manual for LTPP Project",
+    "summary": "Standard visual reference guide for identifying, measuring, and classifying asphalt and concrete pavement distresses.",
+    "format": "Field Guide"
   },
   "rhd-pavement-design-standards-manual": {
-    "format": "Design Specification",
-    "name": "RHD Pavement Structural Design Manual & Specifications",
-    "description": "Official guidelines for flexible and rigid pavement design, subgrade support requirements, and pavement material standards in Bangladesh.",
-    "id": "rhd-pavement-design-standards-manual"
+    "title": "RHD Pavement Structural Design Manual & Specifications",
+    "summary": "Official guidelines for flexible and rigid pavement design, subgrade support requirements, and pavement material standards in Bangladesh.",
+    "format": "Design Specification"
   },
   "hdm4-analytical-framework-guide": {
-    "format": "Reference Manual",
-    "name": "HDM-4 Analytical Framework & Pavement Management Guide",
-    "description": "Comprehensive reference on HDM-4 road deterioration models, vehicle operating cost (VOC) calculations, and lifecycle economic optimization.",
-    "id": "hdm4-analytical-framework-guide"
+    "title": "HDM-4 Analytical Framework & Pavement Management Guide",
+    "summary": "Comprehensive reference on HDM-4 road deterioration models, vehicle operating cost (VOC) calculations, and lifecycle economic optimization.",
+    "format": "Reference Manual"
   },
   "earthquake-engineering-design-handbook": {
     "id": "earthquake-engineering-design-handbook",
@@ -875,6 +871,419 @@
       "Resilience Economics",
       "Capital Allocation",
       "Cost-Benefit"
+    ]
+  },
+  "construction-methods-management-handbook": {
+    "id": "construction-methods-management-handbook",
+    "name": "Construction Methods and Management Handbook (Nunnally)",
+    "description": "Standard engineering reference manual covering earthmoving equipment, formwork design, cranes, concrete placing, and site safety.",
+    "type": "Engineering Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Construction Methods",
+      "Equipment",
+      "Formwork",
+      "Reference Manual"
+    ]
+  },
+  "aace-recommended-practice-scheduling-guide": {
+    "id": "aace-recommended-practice-scheduling-guide",
+    "name": "AACE Planning & Scheduling Recommended Practice Guide",
+    "description": "Comprehensive technical guidelines on CPM schedule architecture, schedule levels 1 to 5, and logic density verification.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "AACE",
+      "CPM Scheduling",
+      "Recommended Practice",
+      "Primavera P6"
+    ]
+  },
+  "evm-project-controls-handbook": {
+    "id": "evm-project-controls-handbook",
+    "name": "Earned Value Management & Project Controls Implementation Handbook",
+    "description": "Practical manual detailing performance measurement baselines, EVM formulas, cost variance forecasting, and change control.",
+    "type": "Technical Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "EVM",
+      "Project Controls",
+      "Earned Value",
+      "Cost Control"
+    ]
+  },
+  "pwd-bangladesh-schedule-of-rates-manual": {
+    "id": "pwd-bangladesh-schedule-of-rates-manual",
+    "name": "PWD Bangladesh Schedule of Rates & Analysis Book",
+    "description": "Official technical rate analysis manual establishing standard labor constants, material mortar mixes, and unit rates in Bangladesh.",
+    "type": "Government Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "PWD",
+      "Schedule of Rates",
+      "Unit Rates",
+      "Bangladesh",
+      "Costing"
+    ]
+  },
+  "cesmm4-handbook-measurement-guide": {
+    "id": "cesmm4-handbook-measurement-guide",
+    "name": "CESMM4 Handbook: A Guide to Civil Engineering Standard Method of Measurement",
+    "description": "Authoritative clause-by-clause commentary on measuring earthworks, concrete, piling, pipework, and roadworks for civil engineering contracts.",
+    "type": "Reference Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "CESMM4",
+      "Quantity Surveying",
+      "Measurement",
+      "ICE",
+      "BOQ"
+    ]
+  },
+  "rics-black-book-guidance-notes": {
+    "id": "rics-black-book-guidance-notes",
+    "name": "RICS Guidance Notes: Commercial Management in Construction (Black Book)",
+    "description": "Suite of RICS professional standards covering interim valuations, retention, cost reporting, loss and expense, and final accounts.",
+    "type": "Professional Guidance",
+    "fileFormat": "PDF",
+    "tags": [
+      "RICS",
+      "Black Book",
+      "Commercial Management",
+      "Quantity Surveying"
+    ]
+  },
+  "bppa-public-procurement-act-manual": {
+    "id": "bppa-public-procurement-act-manual",
+    "name": "Public Procurement Rules (PPR) & e-GP User Manual (Bangladesh)",
+    "description": "Official statutory guidelines and tender documentation manuals for government procurement and electronic tendering in Bangladesh.",
+    "type": "Statutory Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "BPPA",
+      "PPR",
+      "e-GP",
+      "Procurement",
+      "Bangladesh"
+    ]
+  },
+  "scl-delay-and-disruption-protocol-handbook": {
+    "id": "scl-delay-and-disruption-protocol-handbook",
+    "name": "SCL Delay and Disruption Protocol 2nd Edition Guidance Manual",
+    "description": "Essential guidance on concurrent delay, float ownership, record keeping, time impact analysis, and global claims avoidance.",
+    "type": "Legal & Technical Protocol",
+    "fileFormat": "PDF",
+    "tags": [
+      "SCL Protocol",
+      "Delay Analysis",
+      "EOT",
+      "Disruption",
+      "Claims"
+    ]
+  },
+  "iso-31000-risk-management-handbook": {
+    "id": "iso-31000-risk-management-handbook",
+    "name": "ISO 31000 Risk Management Principles & Guidelines Handbook",
+    "description": "Comprehensive guide to establishing enterprise and project risk management frameworks, risk identification, and mitigation controls.",
+    "type": "Standard Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "ISO 31000",
+      "Risk Management",
+      "Risk Register",
+      "Governance"
+    ]
+  },
+  "construction-quality-management-handbook": {
+    "id": "construction-quality-management-handbook",
+    "name": "Construction Quality Management & QA/QC Field Manual",
+    "description": "Field guide covering Project Quality Plans, non-conformance management, concrete sampling protocols, and inspection checklists.",
+    "type": "Technical Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "QA/QC",
+      "Quality Management",
+      "Field Manual",
+      "ITP"
+    ]
+  },
+  "itp-templates-guidelines-manual": {
+    "id": "itp-templates-guidelines-manual",
+    "name": "Inspection & Test Plan (ITP) Standard Templates & Guidelines Manual",
+    "description": "Standardized collection of editable ITP matrices covering earthworks, structural concrete, steel fabrication, and building envelopes.",
+    "type": "Template Library",
+    "fileFormat": "PDF / XLSX",
+    "tags": [
+      "ITP",
+      "Inspection",
+      "Hold Points",
+      "QA/QC",
+      "Templates"
+    ]
+  },
+  "iso-45001-safety-management-handbook": {
+    "id": "iso-45001-safety-management-handbook",
+    "name": "ISO 45001 Occupational Health & Safety Management Implementation Handbook",
+    "description": "Step-by-step implementation guide for establishing an audited safety management system on major construction projects.",
+    "type": "Standard Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "ISO 45001",
+      "OHSMS",
+      "Site Safety",
+      "HSE"
+    ]
+  },
+  "bs-5975-temporary-works-handbook": {
+    "id": "bs-5975-temporary-works-handbook",
+    "name": "BS 5975:2019 Temporary Works Design & Procedural Control Guide",
+    "description": "Practical handbook detailing temporary works coordinator (TWC) responsibilities, design checks, and falsework safety calculations.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "BS 5975",
+      "Temporary Works",
+      "Falsework",
+      "Shoring",
+      "TWC"
+    ]
+  },
+  "aci-347-formwork-guide": {
+    "id": "aci-347-formwork-guide",
+    "name": "ACI 347R Guide to Formwork for Concrete Reference Document",
+    "description": "Definitive American Concrete Institute guide on lateral pressure on formwork, safety factors, and shoring/reshoring procedures.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "ACI 347",
+      "Formwork",
+      "Concrete Pressure",
+      "Falsework"
+    ]
+  },
+  "caterpillar-performance-handbook-resource": {
+    "id": "caterpillar-performance-handbook-resource",
+    "name": "Caterpillar Performance Handbook (Edition 50)",
+    "description": "The definitive industry benchmark for heavy earthmoving machinery production curves, bucket capacities, cycle times, and owning/operating costs.",
+    "type": "Industry Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Caterpillar",
+      "Equipment",
+      "Cycle Times",
+      "Earthmoving",
+      "Productivity"
+    ]
+  },
+  "construction-equipment-management-handbook": {
+    "id": "construction-equipment-management-handbook",
+    "name": "Construction Equipment Management for Engineers, Estimators, and Owners (Peurifoy)",
+    "description": "Classic textbook covering heavy machinery selection, excavating equipment, cranes, soil compaction, and fleet economics.",
+    "type": "Engineering Textbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Peurifoy",
+      "Equipment Management",
+      "Machinery",
+      "Earthmoving"
+    ]
+  },
+  "site-engineer-field-handbook": {
+    "id": "site-engineer-field-handbook",
+    "name": "The Site Engineer Field Handbook",
+    "description": "Field reference guide covering setting out math, daily inspection checklists, concrete batching supervision, rebar checking, and site records.",
+    "type": "Field Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Site Engineer",
+      "Field Handbook",
+      "Setting Out",
+      "Supervision"
+    ]
+  },
+  "construction-supervision-guidelines-manual": {
+    "id": "construction-supervision-guidelines-manual",
+    "name": "Construction Supervision & Quality Assurance Guidelines",
+    "description": "Standard operating procedures for supervising engineers on government and institutional infrastructure contracts.",
+    "type": "Technical Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "Supervision",
+      "Resident Engineer",
+      "QA/QC",
+      "Field Guide"
+    ]
+  },
+  "construction-logistics-planning-guide": {
+    "id": "construction-logistics-planning-guide",
+    "name": "Construction Site Logistics Planning & Delivery Staging Guide",
+    "description": "Operational handbook detailing site traffic management, gate access booking, laydown area optimization, and crane hook coordination.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "Logistics",
+      "Site Layout",
+      "Traffic Management",
+      "Laydown"
+    ]
+  },
+  "site-materials-management-handbook": {
+    "id": "site-materials-management-handbook",
+    "name": "Site Materials Management & Scrap Minimization Handbook",
+    "description": "Practical manual for tracking raw materials, warehouse inventory controls, steel cutting optimization, and scrap audit metrics.",
+    "type": "Field Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "Materials Management",
+      "Inventory",
+      "Scrap Reduction",
+      "Wastage"
+    ]
+  },
+  "building-construction-handbook-chudley": {
+    "id": "building-construction-handbook-chudley",
+    "name": "Building Construction Handbook (Chudley & Greeno)",
+    "description": "Essential architectural and structural construction textbook detailing building substructure, superstructure, finishes, and MEP services.",
+    "type": "Textbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Building Construction",
+      "Chudley",
+      "Superstructure",
+      "Finishes"
+    ]
+  },
+  "highrise-building-construction-manual": {
+    "id": "highrise-building-construction-manual",
+    "name": "High-Rise Building Construction & Core Wall Engineering Manual",
+    "description": "Technical guide covering self-climbing formwork, high-strength concrete pumping, vertical transportation, and wind deflection control.",
+    "type": "Technical Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "High-Rise",
+      "Tall Buildings",
+      "Jump-Form",
+      "Superstructure"
+    ]
+  },
+  "heavy-civil-construction-handbook": {
+    "id": "heavy-civil-construction-handbook",
+    "name": "Heavy Civil Construction Engineering Handbook",
+    "description": "Comprehensive reference covering highway earthworks, segmental bridge erection, deep diaphragm walls, and marine port construction.",
+    "type": "Engineering Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Heavy Civil",
+      "Infrastructure",
+      "Highways",
+      "Bridges",
+      "Marine"
+    ]
+  },
+  "rhd-construction-specifications-manual": {
+    "id": "rhd-construction-specifications-manual",
+    "name": "RHD Technical Specifications & Construction Manual (Bangladesh)",
+    "description": "Official technical specifications manual for highway embankment construction, sub-base, bituminous paving, and bridge structures.",
+    "type": "Government Manual",
+    "fileFormat": "PDF",
+    "tags": [
+      "RHD",
+      "Highways",
+      "Pavement",
+      "Bridges",
+      "Bangladesh"
+    ]
+  },
+  "aace-progress-measurement-recommended-practice": {
+    "id": "aace-progress-measurement-recommended-practice",
+    "name": "AACE RP 25R-03: Progress Measurement & Rules of Credit Guide",
+    "description": "Technical standard defining physical percent complete methods, weighted milestone tables, and earned schedule calculations.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "AACE",
+      "Progress Measurement",
+      "Rules of Credit",
+      "S-Curve"
+    ]
+  },
+  "project-kpi-performance-handbook": {
+    "id": "project-kpi-performance-handbook",
+    "name": "Construction Key Performance Indicators (KPIs) & Dashboard Handbook",
+    "description": "Practical guide for designing executive construction dashboards, tracking cost/schedule variance, and establishing safety lead indicators.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "KPIs",
+      "Dashboards",
+      "Power BI",
+      "Performance Metrics"
+    ]
+  },
+  "sustainable-construction-handbook-kibert": {
+    "id": "sustainable-construction-handbook-kibert",
+    "name": "Sustainable Construction: Green Building Design and Delivery (Charles Kibert)",
+    "description": "Definitive textbook on green building delivery, LEED certification, closed-loop material cycles, and ecological construction practices.",
+    "type": "Textbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Sustainable Construction",
+      "Green Building",
+      "LEED",
+      "Circular Economy"
+    ]
+  },
+  "green-building-construction-site-guide": {
+    "id": "green-building-construction-site-guide",
+    "name": "Green Building Construction Site Operations & LEED BD+C Guide",
+    "description": "Field manual for achieving LEED construction credits: construction waste management, indoor air quality management, and erosion control.",
+    "type": "Technical Guide",
+    "fileFormat": "PDF",
+    "tags": [
+      "LEED BD+C",
+      "Green Building",
+      "Waste Diversion",
+      "Erosion Control"
+    ]
+  },
+  "lean-construction-handbook": {
+    "id": "lean-construction-handbook",
+    "name": "Lean Construction Implementation Handbook & Last Planner Guide",
+    "description": "Field handbook detailing Last Planner System deployment, pull planning facilitation, 6-week lookahead make-ready planning, and root cause analysis.",
+    "type": "Technical Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "Lean Construction",
+      "Last Planner",
+      "Pull Planning",
+      "PPC"
+    ]
+  },
+  "dbia-design-build-manual-of-practice": {
+    "id": "dbia-design-build-manual-of-practice",
+    "name": "DBIA Design-Build Manual of Practice",
+    "description": "Comprehensive professional manual covering procurement, contracting, design management, and execution of Design-Build projects.",
+    "type": "Manual of Practice",
+    "fileFormat": "PDF",
+    "tags": [
+      "DBIA",
+      "Design-Build",
+      "Integrated Delivery",
+      "Procurement"
+    ]
+  },
+  "vdc-handbook-construction-management": {
+    "id": "vdc-handbook-construction-management",
+    "name": "Virtual Design and Construction (VDC) Project Execution Handbook",
+    "description": "Guide to implementing 4D scheduling in SYNCHRO, 5D cost integration, digital field tablets, and ISO 19650 Common Data Environments.",
+    "type": "Technical Handbook",
+    "fileFormat": "PDF",
+    "tags": [
+      "VDC",
+      "4D BIM",
+      "5D BIM",
+      "Synchro",
+      "ISO 19650"
     ]
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layers, Eye, EyeOff, Upload, Trash2, Maximize2, Globe, Sparkles } from 'lucide-react';
-import { UELELayer } from '../../types/adminUele';
+import { UELELayer } from '../../types/uele';
 import { Card } from '../shared/Card';
 import { Badge } from '../shared/Badge';
 import { Button } from '../shared/Button';

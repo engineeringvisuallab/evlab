@@ -48,9 +48,9 @@ export const Badge: React.FC<BadgeProps> = ({
     amber:
       'bg-[var(--accent-warning-bg)] text-[var(--accent-warning)] border border-[var(--accent-warning)]/20',
     rose:
-      'bg-[var(--accent-rose-bg)] text-[var(--accent-rose)] border border-[var(--accent-rose)]/20',
+      'bg-rose-500/10 text-rose-400 border border-rose-500/20',
     slate:
-      'bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-color)]',
+      'bg-slate-800 text-slate-300 border border-slate-700',
     outline:
       'bg-transparent text-[var(--text-secondary)] border border-[var(--border-color)]',
     muted:

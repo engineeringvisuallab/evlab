@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UELEFacility, UELE3DModel, UELELayer } from '../../../types/adminUele';
+import { UELEFacility, UELE3DModel, UELELayer } from '../../../types/uele';
 import { UELE2DMap } from '../../uele/UELE2DMap';
 import { UELE3DView } from '../../uele/UELE3DView';
 import { Button } from '../../shared/Button';

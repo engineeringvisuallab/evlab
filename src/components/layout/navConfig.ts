@@ -1,7 +1,5 @@
-import type { EcosystemSection } from '@/types/ecosystem'
-
 export interface NavSection {
-  section: EcosystemSection
+  section: string
   label: string
   path: string
 }

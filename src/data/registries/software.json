@@ -580,83 +580,85 @@
   },
   "bentley-openutilities": {
     "id": "bentley-openutilities",
+    "title": "Bentley OpenUtilities",
     "category": "Utility Engineering",
     "description": "Smart spatial GIS and CAD solution for designing and managing electricity, gas, water, and district utility networks.",
     "pricing": "Commercial / Enterprise",
     "platforms": [
       "Windows"
-    ],
-    "name": "Bentley OpenUtilities"
+    ]
   },
   "cityengine": {
     "id": "cityengine",
+    "title": "Esri CityEngine",
     "category": "3D Urban Modeling",
     "description": "Advanced 3D procedural modeling software for creating urban digital twins, cityscapes, and spatial master plans.",
     "pricing": "Commercial",
     "platforms": [
       "Windows",
       "macOS"
-    ],
-    "name": "Esri CityEngine"
+    ]
   },
   "delft3d": {
     "id": "delft3d",
     "name": "Delft3D",
     "vendor": "Deltares",
     "category": "Morphodynamic & Hydrodynamic Modelling",
+    "summary": "3D/2D modeling suite for hydrodynamics, sediment transport, morphology, water quality, and waves in rivers, estuaries, and coasts.",
     "title": "Delft3D (Deltares)",
     "tags": [
       "Delft3D",
       "Morphodynamics",
       "Sediment Transport",
       "2D/3D Hydraulics"
-    ],
-    "description": "3D/2D modeling suite for hydrodynamics, sediment transport, morphology, water quality, and waves in rivers, estuaries, and coasts."
+    ]
   },
   "mike21": {
     "id": "mike21",
     "name": "MIKE 21",
     "vendor": "DHI",
     "category": "Coastal & Marine Modelling",
-    "description": "DHI's 2D free-surface flow modeling system for coastal hydrodynamics, waves, sediment transport, and marine water quality."
+    "summary": "DHI's 2D free-surface flow modeling system for coastal hydrodynamics, waves, sediment transport, and marine water quality."
   },
   "swan-wave": {
     "id": "swan-wave",
     "name": "SWAN Wave Model",
     "vendor": "TU Delft / Open Source",
     "category": "Nearshore Wave Simulation",
-    "description": "Third-generation spectral wave model for estimating wave transformation parameters in coastal waters, estuaries, and lakes."
+    "summary": "Third-generation spectral wave model for estimating wave transformation parameters in coastal waters, estuaries, and lakes."
   },
   "xbeach": {
     "id": "xbeach",
     "name": "XBeach",
     "vendor": "Deltares / TU Delft",
     "category": "Nearshore Storm Impact & Morphodynamics",
-    "description": "2D numerical model for wave propagation, long waves, dune erosion, overwash, and breaching during extreme storm conditions."
+    "summary": "2D numerical model for wave propagation, long waves, dune erosion, overwash, and breaching during extreme storm conditions."
   },
   "adcirc": {
     "id": "adcirc",
     "name": "ADCIRC",
     "vendor": "UNC / USACE / Open Source",
     "category": "Ocean Circulation & Storm Surge",
-    "description": "High-resolution coastal ocean circulation model for tropical cyclone storm surge, astronomical tides, and coastal inundation."
+    "summary": "High-resolution coastal ocean circulation model for tropical cyclone storm surge, astronomical tides, and coastal inundation."
   },
   "telemac": {
     "id": "telemac",
     "name": "TELEMAC-MASCARET",
     "vendor": "Consortium TELEMAC / Open Source",
     "category": "Hydrodynamics & Sediment Transport",
-    "description": "Open-source 2D/3D finite-element hydrodynamic and sediment transport simulation system for coastal and river engineering."
+    "summary": "Open-source 2D/3D finite-element hydrodynamic and sediment transport simulation system for coastal and river engineering."
   },
   "plaxis-2d-3d": {
     "id": "plaxis-2d-3d",
     "name": "PLAXIS 2D/3D",
     "vendor": "Bentley Systems",
     "category": "Geotechnical Finite Element Analysis",
-    "description": "Finite element software suite for geotechnical stability, soft soil consolidation, and quay wall soil-structure interaction."
+    "summary": "Finite element software suite for geotechnical stability, soft soil consolidation, and quay wall soil-structure interaction."
   },
   "telemac-2d": {
     "id": "telemac-2d",
+    "title": "TELEMAC-2D / SISYPHE",
+    "summary": "Open-source finite element hydrodynamics and sediment transport simulation system for free surface flows.",
     "vendor": "TELEMAC-MASCARET Consortium",
     "category": "Hydrodynamic Simulation",
     "tags": [
@@ -664,12 +666,12 @@
       "SISYPHE",
       "Finite Element",
       "Sediment Transport"
-    ],
-    "name": "TELEMAC-2D / SISYPHE",
-    "description": "Open-source finite element hydrodynamics and sediment transport simulation system for free surface flows."
+    ]
   },
   "qgis-river-tools": {
     "id": "qgis-river-tools",
+    "title": "QGIS River Metrics & Crayfish Plugin",
+    "summary": "Open-source GIS tools and mesh viewer plugins for river morphology analysis, DEM processing, and 2D hydraulic result visualization.",
     "vendor": "Open Source GIS Community",
     "category": "GIS & Spatial Analytics",
     "tags": [
@@ -677,12 +679,12 @@
       "Crayfish",
       "River GIS",
       "DEM"
-    ],
-    "name": "QGIS River Metrics & Crayfish Plugin",
-    "description": "Open-source GIS tools and mesh viewer plugins for river morphology analysis, DEM processing, and 2D hydraulic result visualization."
+    ]
   },
   "arcgis-pro-hydro": {
     "id": "arcgis-pro-hydro",
+    "title": "ArcGIS Pro ArcHydro Tools",
+    "summary": "Esri GIS extension for terrain processing, watershed delineation, channel profile generation, and floodplain mapping.",
     "vendor": "Esri",
     "category": "GIS Hydraulics",
     "tags": [
@@ -690,12 +692,12 @@
       "ArcHydro",
       "Watershed",
       "Floodplain GIS"
-    ],
-    "name": "ArcGIS Pro ArcHydro Tools",
-    "description": "Esri GIS extension for terrain processing, watershed delineation, channel profile generation, and floodplain mapping."
+    ]
   },
   "civil3d-river-and-flood": {
     "id": "civil3d-river-and-flood",
+    "title": "Autodesk Civil 3D River & Flood Module",
+    "summary": "Civil engineering design module for automated bridge waterway design, cross-section extraction, and HEC-RAS interoperability.",
     "vendor": "Autodesk",
     "category": "Civil & Hydraulic Design",
     "tags": [
@@ -703,12 +705,12 @@
       "HEC-RAS Link",
       "Bridge Waterway",
       "Cross Sections"
-    ],
-    "name": "Autodesk Civil 3D River & Flood Module",
-    "description": "Civil engineering design module for automated bridge waterway design, cross-section extraction, and HEC-RAS interoperability."
+    ]
   },
   "python": {
     "id": "python",
+    "title": "Python (NumPy, SciPy, PyRAS, GeoPandas)",
+    "summary": "Programming language and scientific ecosystem widely used for hydraulic data scripting, automated HEC-RAS execution, and GIS spatial processing.",
     "vendor": "Python Software Foundation",
     "category": "Programming & Scientific Computing",
     "tags": [
@@ -717,24 +719,24 @@
       "GeoPandas",
       "Scripting",
       "Data Science"
-    ],
-    "name": "Python (NumPy, SciPy, PyRAS, GeoPandas)",
-    "description": "Programming language and scientific ecosystem widely used for hydraulic data scripting, automated HEC-RAS execution, and GIS spatial processing."
+    ]
   },
   "matlab": {
     "id": "matlab",
+    "title": "MATLAB (MathWorks)",
+    "summary": "High-level programming environment for numerical computing, matrix calculations, and 3D fluid flow visualization.",
     "vendor": "MathWorks",
     "category": "Numerical Computing & Analytics",
     "tags": [
       "MATLAB",
       "Numerical Analysis",
       "Data Visualization"
-    ],
-    "name": "MATLAB (MathWorks)",
-    "description": "High-level programming environment for numerical computing, matrix calculations, and 3D fluid flow visualization."
+    ]
   },
   "trimble-business-center": {
     "id": "trimble-business-center",
+    "title": "Trimble Business Center (TBC)",
+    "summary": "Complete office software for processing and analyzing optical, GNSS, photogrammetric, and LiDAR survey data.",
     "vendor": "Trimble",
     "category": "Survey Data Processing",
     "tags": [
@@ -742,12 +744,12 @@
       "Trimble",
       "GNSS Processing",
       "Surveying"
-    ],
-    "name": "Trimble Business Center (TBC)",
-    "description": "Complete office software for processing and analyzing optical, GNSS, photogrammetric, and LiDAR survey data."
+    ]
   },
   "leica-infinity": {
     "id": "leica-infinity",
+    "title": "Leica Infinity",
+    "summary": "Geospatial office software suite for processing, combining, and analyzing total station, leveling, GNSS, and drone survey data.",
     "vendor": "Leica Geosystems",
     "category": "Survey Data Processing",
     "tags": [
@@ -755,12 +757,12 @@
       "Infinity",
       "Survey Processing",
       "Traverse"
-    ],
-    "name": "Leica Infinity",
-    "description": "Geospatial office software suite for processing, combining, and analyzing total station, leveling, GNSS, and drone survey data."
+    ]
   },
   "pix4d": {
     "id": "pix4d",
+    "title": "Pix4Dmapper & Pix4Dmatic",
+    "summary": "Professional photogrammetry software for drone mapping, generating georeferenced orthomosaics, 3D point clouds, and DSMs.",
     "vendor": "Pix4D",
     "category": "UAV Photogrammetry",
     "tags": [
@@ -768,12 +770,12 @@
       "Photogrammetry",
       "UAV",
       "Drone Mapping"
-    ],
-    "name": "Pix4Dmapper & Pix4Dmatic",
-    "description": "Professional photogrammetry software for drone mapping, generating georeferenced orthomosaics, 3D point clouds, and DSMs."
+    ]
   },
   "agisoft-metashape": {
     "id": "agisoft-metashape",
+    "title": "Agisoft Metashape",
+    "summary": "Stand-alone software performing photogrammetric processing of digital images and generating 3D spatial data.",
     "vendor": "Agisoft",
     "category": "UAV Photogrammetry",
     "tags": [
@@ -781,12 +783,12 @@
       "Metashape",
       "3D Reconstruction",
       "Point Cloud"
-    ],
-    "name": "Agisoft Metashape",
-    "description": "Stand-alone software performing photogrammetric processing of digital images and generating 3D spatial data."
+    ]
   },
   "dji-terra": {
     "id": "dji-terra",
+    "title": "DJI Terra",
+    "summary": "3D model reconstruction software developed for DJI drones to convert mission flight data into digital maps and 3D models.",
     "vendor": "DJI",
     "category": "UAV Mapping",
     "tags": [
@@ -794,12 +796,12 @@
       "Terra",
       "Drone Mapping",
       "Orthomosaic"
-    ],
-    "name": "DJI Terra",
-    "description": "3D model reconstruction software developed for DJI drones to convert mission flight data into digital maps and 3D models."
+    ]
   },
   "erdas-imagine": {
     "id": "erdas-imagine",
+    "title": "ERDAS IMAGINE",
+    "summary": "Image processing software package that allows users to process satellite imagery, perform optical classification, and remote sensing analytics.",
     "vendor": "Hexagon Geospatial",
     "category": "Remote Sensing",
     "tags": [
@@ -807,12 +809,12 @@
       "Remote Sensing",
       "Satellite Imagery",
       "Image Classification"
-    ],
-    "name": "ERDAS IMAGINE",
-    "description": "Image processing software package that allows users to process satellite imagery, perform optical classification, and remote sensing analytics."
+    ]
   },
   "envi": {
     "id": "envi",
+    "title": "NV5 ENVI",
+    "summary": "Advanced image processing and analysis software used by remote sensing professionals to extract information from geospatial imagery.",
     "vendor": "NV5 Geospatial",
     "category": "Remote Sensing",
     "tags": [
@@ -820,12 +822,12 @@
       "Remote Sensing",
       "Hyperspectral",
       "Multispectral"
-    ],
-    "name": "NV5 ENVI",
-    "description": "Advanced image processing and analysis software used by remote sensing professionals to extract information from geospatial imagery."
+    ]
   },
   "cloudcompare": {
     "id": "cloudcompare",
+    "title": "CloudCompare 3D Point Cloud Processing",
+    "summary": "Open-source 3D point cloud and triangular mesh processing software for reality capture and bridge scanning.",
     "vendor": "Open Source",
     "category": "Point Cloud & Reality Capture",
     "tags": [
@@ -833,12 +835,12 @@
       "Point Cloud",
       "3D Scanning",
       "LiDAR"
-    ],
-    "name": "CloudCompare 3D Point Cloud Processing",
-    "description": "Open-source 3D point cloud and triangular mesh processing software for reality capture and bridge scanning."
+    ]
   },
   "autodesk-recap": {
     "id": "autodesk-recap",
+    "title": "Autodesk ReCap Pro",
+    "summary": "Reality capture and 3D scanning software for converting laser scans and drone photos into point clouds.",
     "vendor": "Autodesk",
     "category": "Reality Capture & Photogrammetry",
     "tags": [
@@ -846,12 +848,12 @@
       "ReCap",
       "Point Cloud",
       "Photogrammetry"
-    ],
-    "name": "Autodesk ReCap Pro",
-    "description": "Reality capture and 3D scanning software for converting laser scans and drone photos into point clouds."
+    ]
   },
   "hypack": {
     "id": "hypack",
+    "title": "HYPACK Hydrographic Survey Software",
+    "summary": "Industry-standard hydrographic survey software used worldwide for singlebeam, multibeam, side scan sonar, and dredging support.",
     "vendor": "Xylem / HYPACK",
     "category": "Hydrographic Surveying",
     "tags": [
@@ -859,12 +861,12 @@
       "Hydrography",
       "Bathymetry",
       "Multibeam"
-    ],
-    "name": "HYPACK Hydrographic Survey Software",
-    "description": "Industry-standard hydrographic survey software used worldwide for singlebeam, multibeam, side scan sonar, and dredging support."
+    ]
   },
   "qps-qimera": {
     "id": "qps-qimera",
+    "title": "QPS Qimera",
+    "summary": "Easy-to-use bathymetric processing software designed to process multibeam echosounder data cleanly and rapidly.",
     "vendor": "QPS",
     "category": "Hydrographic Processing",
     "tags": [
@@ -872,12 +874,12 @@
       "QPS",
       "Multibeam",
       "Bathymetry"
-    ],
-    "name": "QPS Qimera",
-    "description": "Easy-to-use bathymetric processing software designed to process multibeam echosounder data cleanly and rapidly."
+    ]
   },
   "r": {
     "id": "r",
+    "title": "R Project for Statistical Computing",
+    "summary": "Open-source programming language and environment for spatial statistics, geostatistics, and spatial data science.",
     "vendor": "R Foundation for Statistical Computing",
     "category": "Statistical & Spatial Analytics",
     "tags": [
@@ -885,12 +887,12 @@
       "Geostatistics",
       "Spatial Analytics",
       "Data Science"
-    ],
-    "name": "R Project for Statistical Computing",
-    "description": "Open-source programming language and environment for spatial statistics, geostatistics, and spatial data science."
+    ]
   },
   "csibridge": {
     "id": "csibridge",
+    "title": "CSiBridge",
+    "summary": "Specialized structural analysis, rating, and design software for bridge structures by Computers and Structures, Inc.",
     "vendor": "Computers and Structures, Inc. (CSI)",
     "category": "Bridge Structural Engineering",
     "tags": [
@@ -898,12 +900,12 @@
       "CSI",
       "Bridge Analysis",
       "AASHTO Design"
-    ],
-    "name": "CSiBridge",
-    "description": "Specialized structural analysis, rating, and design software for bridge structures by Computers and Structures, Inc."
+    ]
   },
   "sofistik": {
     "id": "sofistik",
+    "title": "SOFiSTiK Bridge Engineering Suite",
+    "summary": "Advanced finite element analysis and BIM software suite for complex bridge design and construction staging.",
     "vendor": "SOFiSTiK AG",
     "category": "Bridge FEM & Structural Analysis",
     "tags": [
@@ -911,12 +913,12 @@
       "FEA",
       "Bridge Design",
       "Construction Staging"
-    ],
-    "name": "SOFiSTiK Bridge Engineering Suite",
-    "description": "Advanced finite element analysis and BIM software suite for complex bridge design and construction staging."
+    ]
   },
   "lusas": {
     "id": "lusas",
+    "title": "LUSAS Bridge Analysis",
+    "summary": "Finite element analysis software for bridge engineering, structural analysis, and dynamic assessment.",
     "vendor": "LUSAS",
     "category": "Bridge Structural FEA",
     "tags": [
@@ -924,12 +926,12 @@
       "Bridge FEA",
       "Nonlinear Analysis",
       "Dynamic Analysis"
-    ],
-    "name": "LUSAS Bridge Analysis",
-    "description": "Finite element analysis software for bridge engineering, structural analysis, and dynamic assessment."
+    ]
   },
   "openbridge-modeler": {
     "id": "openbridge-modeler",
+    "title": "Bentley OpenBridge Modeler",
+    "summary": "Bentley software for 3D parametric modeling, geometry control, and BIM workflow for bridge infrastructure.",
     "vendor": "Bentley Systems",
     "category": "Bridge BIM & Parametric Design",
     "tags": [
@@ -937,12 +939,12 @@
       "Bentley",
       "3D Modeling",
       "BIM"
-    ],
-    "name": "Bentley OpenBridge Modeler",
-    "description": "Bentley software for 3D parametric modeling, geometry control, and BIM workflow for bridge infrastructure."
+    ]
   },
   "openbridge-designer": {
     "id": "openbridge-designer",
+    "title": "Bentley OpenBridge Designer",
+    "summary": "Integrated Bentley application combining 3D bridge modeling with analytical design engines.",
     "vendor": "Bentley Systems",
     "category": "Integrated Bridge Design & Modeling",
     "tags": [
@@ -950,9 +952,7 @@
       "Bentley",
       "Analytical Design",
       "BIM Integration"
-    ],
-    "name": "Bentley OpenBridge Designer",
-    "description": "Integrated Bentley application combining 3D bridge modeling with analytical design engines."
+    ]
   },
   "opentunnel-designer": {
     "id": "opentunnel-designer",
@@ -996,8 +996,8 @@
   },
   "bentley-openroads": {
     "id": "bentley-openroads",
-    "description": "3D civil design software for road networks, corridor modeling, drainage, and site infrastructure.",
-    "name": "Bentley OpenRoads Designer"
+    "title": "Bentley OpenRoads Designer",
+    "description": "3D civil design software for road networks, corridor modeling, drainage, and site infrastructure."
   },
   "rhino-grasshopper": {
     "id": "rhino-grasshopper",
@@ -1016,16 +1016,14 @@
     "url": "https://www.oracle.com/construction-engineering/primavera-p6"
   },
   "aashtoware-pavement-me": {
-    "category": "Transportation & Civil Engineering",
-    "name": "AASHTOWare Pavement ME Design",
-    "description": "AASHTO standard software for mechanistic-empirical pavement structural design and performance prediction for flexible, rigid, and composite pavements.",
-    "id": "aashtoware-pavement-me"
+    "title": "AASHTOWare Pavement ME Design",
+    "summary": "AASHTO standard software for mechanistic-empirical pavement structural design and performance prediction for flexible, rigid, and composite pavements.",
+    "category": "Transportation & Civil Engineering"
   },
   "kenpave": {
-    "category": "Civil Engineering",
-    "name": "KENPAVE (KENLAYER & KENSLABS)",
-    "description": "Flexible and rigid pavement structural analysis software for stress, strain, deformation, and damage evaluation under wheel loads.",
-    "id": "kenpave"
+    "title": "KENPAVE (KENLAYER & KENSLABS)",
+    "summary": "Flexible and rigid pavement structural analysis software for stress, strain, deformation, and damage evaluation under wheel loads.",
+    "category": "Civil Engineering"
   },
   "seismosignal": {
     "id": "seismosignal",
@@ -1144,6 +1142,338 @@
     "category": "Seismic Hazard & Risk",
     "vendor": "GEM Foundation",
     "url": "https://www.globalquakemodel.org/openquake",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "synchro-4d": {
+    "id": "synchro-4d",
+    "name": "Bentley SYNCHRO 4D",
+    "description": "Leading 4D construction scheduling and virtual project simulation platform integrating CAD/BIM models directly with CPM schedules.",
+    "category": "BIM & Project Management",
+    "vendor": "Bentley Systems",
+    "url": "https://www.bentley.com/software/synchro/",
+    "courseIds": [
+      "4d-5d-bim-navisworks-synchro-course"
+    ],
+    "pluginIds": []
+  },
+  "power-bi": {
+    "id": "power-bi",
+    "name": "Microsoft Power BI",
+    "description": "Business intelligence and data visualization tool used for interactive construction project performance dashboards, cost analytics, and schedule tracking.",
+    "category": "Data & Analytics",
+    "vendor": "Microsoft",
+    "url": "https://powerbi.microsoft.com",
+    "courseIds": [
+      "construction-progress-monitoring-powerbi-course"
+    ],
+    "pluginIds": []
+  },
+  "prism-g2": {
+    "id": "prism-g2",
+    "name": "ARES PRISM G2",
+    "description": "Enterprise project controls software for managing capital project costs, earned value, contracts, change management, and forecasting.",
+    "category": "Project Controls",
+    "vendor": "ARES PRISM",
+    "url": "https://www.aresprism.com",
+    "courseIds": [
+      "project-controls-evm-masterclass"
+    ],
+    "pluginIds": []
+  },
+  "candy-ccsl": {
+    "id": "candy-ccsl",
+    "name": "RIB Candy (CCSL)",
+    "description": "Specialized construction estimating, unit rate pricing, and project planning software widely used by major civil engineering contractors.",
+    "category": "Cost & Estimating",
+    "vendor": "RIB Software",
+    "url": "https://www.rib-software.com/candy",
+    "courseIds": [
+      "construction-cost-estimating-rate-analysis-course"
+    ],
+    "pluginIds": []
+  },
+  "planon": {
+    "id": "planon",
+    "name": "Planon Integrated Software",
+    "description": "Integrated workplace and facility management system for capital project handover, asset tracking, and maintenance operations.",
+    "category": "Asset & Project Management",
+    "vendor": "Planon",
+    "url": "https://planonsoftware.com",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "aconex": {
+    "id": "aconex",
+    "name": "Oracle Aconex",
+    "description": "Secure cloud-based Common Data Environment (CDE) for construction project information, document management, workflows, and RFI tracking.",
+    "category": "Document & Project Management",
+    "vendor": "Oracle",
+    "url": "https://www.oracle.com/construction-engineering/aconex/",
+    "courseIds": [
+      "construction-contracts-procurement-masterclass"
+    ],
+    "pluginIds": []
+  },
+  "procore": {
+    "id": "procore",
+    "name": "Procore",
+    "description": "All-in-one construction management platform connecting project teams, daily logs, RFIs, submittals, quality/safety inspections, and financials.",
+    "category": "Construction Management",
+    "vendor": "Procore Technologies",
+    "url": "https://www.procore.com",
+    "courseIds": [
+      "site-engineering-construction-supervision-course"
+    ],
+    "pluginIds": []
+  },
+  "sharepoint": {
+    "id": "sharepoint",
+    "name": "Microsoft SharePoint",
+    "description": "Collaborative intranet and document management system used for project team document libraries, transmittals, and workflow automation.",
+    "category": "Collaboration & Documents",
+    "vendor": "Microsoft",
+    "url": "https://www.microsoft.com/sharepoint",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "acumen-fuse": {
+    "id": "acumen-fuse",
+    "name": "Deltek Acumen Fuse",
+    "description": "Advanced schedule diagnostics and delay analytics software that assesses schedule logic quality, float integrity, and DCMA 14-point compliance.",
+    "category": "Project Controls & Scheduling",
+    "vendor": "Deltek",
+    "url": "https://www.deltek.com/en/products/project-and-portfolio-management/acumen/acumen-fuse",
+    "courseIds": [
+      "forensic-delay-analysis-scl-protocol-course"
+    ],
+    "pluginIds": []
+  },
+  "primavera-risk-analysis": {
+    "id": "primavera-risk-analysis",
+    "name": "Oracle Primavera Risk Analysis (Pertmaster)",
+    "description": "Full lifecycle risk analytics tool integrating schedule and cost risk modeling with Monte Carlo simulation and risk register management.",
+    "category": "Risk Management",
+    "vendor": "Oracle",
+    "url": "https://www.oracle.com/construction-engineering/primavera-risk-analysis/",
+    "courseIds": [
+      "construction-risk-management-monte-carlo-course"
+    ],
+    "pluginIds": []
+  },
+  "palisade-at-risk": {
+    "id": "palisade-at-risk",
+    "name": "@RISK by Lumivero (Palisade)",
+    "description": "Excel add-in for probabilistic risk analysis and Monte Carlo simulation across construction cost estimates and cash flow models.",
+    "category": "Risk & Financial Modeling",
+    "vendor": "Lumivero",
+    "url": "https://lumivero.com/products/risk/",
+    "courseIds": [
+      "construction-risk-management-monte-carlo-course"
+    ],
+    "pluginIds": []
+  },
+  "safetyculture-iauditor": {
+    "id": "safetyculture-iauditor",
+    "name": "SafetyCulture (iAuditor)",
+    "description": "Mobile-first inspection platform for site safety checklists, toolbox talks, risk assessments, and real-time incident logging.",
+    "category": "HSE & Quality",
+    "vendor": "SafetyCulture",
+    "url": "https://safetyculture.com",
+    "courseIds": [
+      "construction-qaqc-hse-management-course"
+    ],
+    "pluginIds": []
+  },
+  "caterpillar-fleet-production-software": {
+    "id": "caterpillar-fleet-production-software",
+    "name": "Cat MineStar / Fleet Production & Cost Software",
+    "description": "Heavy machinery fleet sizing, earthmoving cycle-time simulation, and fuel/payload optimization software.",
+    "category": "Equipment & Fleet",
+    "vendor": "Caterpillar Inc.",
+    "url": "https://www.cat.com",
+    "courseIds": [
+      "construction-equipment-productivity-fleet-course"
+    ],
+    "pluginIds": []
+  },
+  "telematics-fleet-platforms": {
+    "id": "telematics-fleet-platforms",
+    "name": "OEM Equipment Telematics & Fleet IoT Platforms",
+    "description": "IoT-enabled telematics dashboards (Cat VisionLink, Komatsu KOMTRAX) monitoring machine runtime, idle hours, fuel burn, and geo-fencing.",
+    "category": "Equipment & Fleet",
+    "vendor": "Various OEMs",
+    "url": "https://www.visionlink.com",
+    "courseIds": [
+      "construction-equipment-productivity-fleet-course"
+    ],
+    "pluginIds": []
+  },
+  "sap-erp-materials-management": {
+    "id": "sap-erp-materials-management",
+    "name": "SAP ERP Materials Management (SAP MM)",
+    "description": "Enterprise resource planning module for managing construction material requisitions, purchase orders, goods receipts, and warehouse inventory.",
+    "category": "ERP & Supply Chain",
+    "vendor": "SAP SE",
+    "url": "https://www.sap.com",
+    "courseIds": [
+      "materials-management-inventory-control-course"
+    ],
+    "pluginIds": []
+  },
+  "tilas-linear-scheduling": {
+    "id": "tilas-linear-scheduling",
+    "name": "TILOS Linear Project Management",
+    "description": "Time-location (Time-Chainage) scheduling software specifically developed for linear infrastructure projects such as highways, railways, pipelines, and tunnels.",
+    "category": "Linear Project Scheduling",
+    "vendor": "Trimble",
+    "url": "https://tilos.org",
+    "courseIds": [
+      "heavy-civil-infrastructure-construction-course"
+    ],
+    "pluginIds": []
+  },
+  "autodesk-insight": {
+    "id": "autodesk-insight",
+    "name": "Autodesk Insight & Carbon Analytics",
+    "description": "Building performance and carbon analytics tool integrated with Revit for evaluating embodied carbon and operational energy efficiency.",
+    "category": "Sustainability & Energy",
+    "vendor": "Autodesk",
+    "url": "https://insight.autodesk.com",
+    "courseIds": [
+      "sustainable-construction-leed-breeam-course"
+    ],
+    "pluginIds": []
+  },
+  "one-click-lca": {
+    "id": "one-click-lca",
+    "name": "One Click LCA",
+    "description": "Automated Life Cycle Assessment and embodied carbon calculation software for construction projects, LEED/BREEAM certification, and EPD compliance.",
+    "category": "Sustainability & Carbon",
+    "vendor": "One Click LCA Ltd",
+    "url": "https://www.oneclicklca.com",
+    "courseIds": [
+      "low-carbon-construction-materials-course"
+    ],
+    "pluginIds": []
+  },
+  "etap": {
+    "id": "etap",
+    "name": "ETAP",
+    "description": "Enterprise electrical power system analysis software for load flow, short circuit, arc flash, transient stability, and protection coordination.",
+    "category": "Power System Analysis",
+    "vendor": "Operation Technology, Inc. / Schneider Electric",
+    "url": "https://etap.com",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "pscad": {
+    "id": "pscad",
+    "name": "PSCAD / EMTDC",
+    "description": "Electromagnetic transient simulation software for power systems, power electronics, HVDC, FACTS, and renewables.",
+    "category": "Transient Simulation",
+    "vendor": "Manitoba Hydro International",
+    "url": "https://www.pscad.com",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "digsilent-powerfactory": {
+    "id": "digsilent-powerfactory",
+    "name": "DIgSILENT PowerFactory",
+    "description": "Leading power system analysis software for generation, transmission, distribution, and industrial networks.",
+    "category": "Power System Analysis",
+    "vendor": "DIgSILENT GmbH",
+    "url": "https://www.digsilent.de",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "simulink": {
+    "id": "simulink",
+    "name": "Simulink / Simscape Electrical",
+    "description": "Block diagram environment for multi-domain simulation and model-based design of power electronics, electric drives, and control systems.",
+    "category": "Modeling & Simulation",
+    "vendor": "MathWorks",
+    "url": "https://www.mathworks.com/products/simulink.html",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "plecs": {
+    "id": "plecs",
+    "name": "PLECS",
+    "description": "High-speed simulation tool for power electronic systems, converters, electric drives, and microgrids.",
+    "category": "Power Electronics Simulation",
+    "vendor": "Plexim",
+    "url": "https://www.plexim.com",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "autocad-electrical": {
+    "id": "autocad-electrical",
+    "name": "AutoCAD Electrical",
+    "description": "AutoCAD for electrical designers with purpose-built electrical schematic and panel design toolsets.",
+    "category": "Electrical CAD",
+    "vendor": "Autodesk",
+    "url": "https://www.autodesk.com/products/autocad/included-toolsets/autocad-electrical",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "pvsyst": {
+    "id": "pvsyst",
+    "name": "PVsyst",
+    "description": "Industry-standard software package for studying, sizing, and data analysis of complete solar photovoltaic systems.",
+    "category": "Solar Energy Engineering",
+    "vendor": "PVsyst SA",
+    "url": "https://www.pvsyst.com",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "homer-pro": {
+    "id": "homer-pro",
+    "name": "HOMER Pro",
+    "description": "Global standard for microgrid and distributed energy resource (DER) optimization and economic feasibility modeling.",
+    "category": "Microgrid & Renewable Optimization",
+    "vendor": "HOMER Energy / UL Solutions",
+    "url": "https://www.homerenergy.com",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "multisim": {
+    "id": "multisim",
+    "name": "NI Multisim",
+    "description": "SPICE simulation environment for analog, digital, and power electronics circuit design and analysis.",
+    "category": "Circuit Simulation",
+    "vendor": "National Instruments",
+    "url": "https://www.ni.com/en-us/shop/electronic-test-instrumentation/application-software-for-electronic-test-and-instrumentation-category/what-is-multisim.html",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "ansys-maxwell": {
+    "id": "ansys-maxwell",
+    "name": "ANSYS Maxwell",
+    "description": "Low-frequency electromagnetic field simulation software for the design of electric machines, transformers, and actuators.",
+    "category": "Electromagnetic FEA",
+    "vendor": "ANSYS, Inc.",
+    "url": "https://www.ansys.com/products/electronics/ansys-maxwell",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "dialux-evo": {
+    "id": "dialux-evo",
+    "name": "DIALux evo",
+    "description": "Comprehensive lighting design software for professional indoor, outdoor, and emergency electrical lighting calculations.",
+    "category": "Lighting Design & Calculation",
+    "vendor": "DIAL GmbH",
+    "url": "https://www.dialux.com",
+    "courseIds": [],
+    "pluginIds": []
+  },
+  "altium-designer": {
+    "id": "altium-designer",
+    "name": "Altium Designer",
+    "description": "High-end PCB design and electronic schematic capture software for embedded electrical hardware and power modules.",
+    "category": "PCB & Hardware Design",
+    "vendor": "Altium",
+    "url": "https://www.altium.com",
     "courseIds": [],
     "pluginIds": []
   }

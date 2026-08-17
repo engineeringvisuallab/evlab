@@ -801,6 +801,8 @@
   },
   "construction-scheduling-skill": {
     "id": "construction-scheduling-skill",
+    "title": "Primavera P6 & MS Project Scheduling",
+    "summary": "Developing baseline construction schedules, logic linking, resource allocation, critical path analysis, and progress updates.",
     "category": "Planning & Scheduling",
     "tags": [
       "Scheduling",
@@ -808,12 +810,12 @@
       "MS Project",
       "CPM",
       "Baseline"
-    ],
-    "name": "Primavera P6 & MS Project Scheduling",
-    "description": "Developing baseline construction schedules, logic linking, resource allocation, critical path analysis, and progress updates."
+    ]
   },
   "quantity-takeoff-boq-skill": {
     "id": "quantity-takeoff-boq-skill",
+    "title": "Quantity Takeoff & BOQ Preparation",
+    "summary": "Extracting quantities from structural/architectural drawings, applying measurement rules (POMI/NRM), and compiling structured BOQs.",
     "category": "Cost & Quantity",
     "tags": [
       "Quantity Takeoff",
@@ -821,48 +823,48 @@
       "CostX",
       "Bluebeam",
       "Measurement"
-    ],
-    "name": "Quantity Takeoff & BOQ Preparation",
-    "description": "Extracting quantities from structural/architectural drawings, applying measurement rules (POMI/NRM), and compiling structured BOQs."
+    ]
   },
   "cost-estimation-unit-rate-skill": {
     "id": "cost-estimation-unit-rate-skill",
+    "title": "Unit Rate Cost Estimation",
+    "summary": "Analyzing labor rates, material prices, equipment outputs, overheads, and markup to build detailed cost estimates.",
     "category": "Cost & Quantity",
     "tags": [
       "Cost Estimation",
       "Rate Analysis",
       "Pricing",
       "Overheads"
-    ],
-    "name": "Unit Rate Cost Estimation",
-    "description": "Analyzing labor rates, material prices, equipment outputs, overheads, and markup to build detailed cost estimates."
+    ]
   },
   "contract-administration-skill": {
     "id": "contract-administration-skill",
+    "title": "Contract Administration & Variation Order Management",
+    "summary": "Administering contract terms, drafting formal notices, processing variation orders, and certifying monthly contractor payments.",
     "category": "Contracts & Law",
     "tags": [
       "Contract Administration",
       "FIDIC",
       "Variations",
       "Notices"
-    ],
-    "name": "Contract Administration & Variation Order Management",
-    "description": "Administering contract terms, drafting formal notices, processing variation orders, and certifying monthly contractor payments."
+    ]
   },
   "site-management-supervision-skill": {
     "id": "site-management-supervision-skill",
+    "title": "Site Supervision & Field Execution Management",
+    "summary": "Directing daily site operations, coordinating subcontractors, managing site logistics, and enforcing work method statements.",
     "category": "Site Operations",
     "tags": [
       "Site Supervision",
       "Field Operations",
       "Logistics",
       "Coordination"
-    ],
-    "name": "Site Supervision & Field Execution Management",
-    "description": "Directing daily site operations, coordinating subcontractors, managing site logistics, and enforcing work method statements."
+    ]
   },
   "construction-qaqc-inspection-skill": {
     "id": "construction-qaqc-inspection-skill",
+    "title": "QA/QC Inspection & Test Plan (ITP) Execution",
+    "summary": "Conducting field inspections, executing ITP hold points, witnessing laboratory material tests, and issuing NCRs.",
     "category": "Quality & Safety",
     "tags": [
       "QA/QC",
@@ -870,12 +872,12 @@
       "Material Testing",
       "NCR",
       "Inspection"
-    ],
-    "name": "QA/QC Inspection & Test Plan (ITP) Execution",
-    "description": "Conducting field inspections, executing ITP hold points, witnessing laboratory material tests, and issuing NCRs."
+    ]
   },
   "site-hse-risk-assessment-skill": {
     "id": "site-hse-risk-assessment-skill",
+    "title": "Job Safety Analysis & Site HSE Auditing",
+    "summary": "Performing risk assessments, issuing work permits, auditing field safety compliance, and leading toolbox talks.",
     "category": "Quality & Safety",
     "tags": [
       "HSE",
@@ -883,24 +885,24 @@
       "Work Permit",
       "Safety Audit",
       "Toolbox Talk"
-    ],
-    "name": "Job Safety Analysis & Site HSE Auditing",
-    "description": "Performing risk assessments, issuing work permits, auditing field safety compliance, and leading toolbox talks."
+    ]
   },
   "delay-analysis-claims-skill": {
     "id": "delay-analysis-claims-skill",
+    "title": "Forensic Delay Analysis & EOT Claims Preparation",
+    "summary": "Performing time impact analysis, identifying excusable vs compensable delays, and compiling Extension of Time (EOT) claim packages.",
     "category": "Risk & Claims",
     "tags": [
       "Delay Analysis",
       "EOT Claims",
       "Time Impact",
       "Quantum"
-    ],
-    "name": "Forensic Delay Analysis & EOT Claims Preparation",
-    "description": "Performing time impact analysis, identifying excusable vs compensable delays, and compiling Extension of Time (EOT) claim packages."
+    ]
   },
   "bim-coordination-4d-5d-skill": {
     "id": "bim-coordination-4d-5d-skill",
+    "title": "4D/5D BIM Coordination & Clash Detection",
+    "summary": "Integrating CPM schedules with 3D models in Navisworks/Synchro, detecting spatial clashes, and simulating construction sequence.",
     "category": "Digital Engineering",
     "tags": [
       "BIM",
@@ -908,331 +910,331 @@
       "4D Simulation",
       "5D Cost",
       "Clash Detection"
-    ],
-    "name": "4D/5D BIM Coordination & Clash Detection",
-    "description": "Integrating CPM schedules with 3D models in Navisworks/Synchro, detecting spatial clashes, and simulating construction sequence."
+    ]
   },
   "equipment-productivity-planning-skill": {
     "id": "equipment-productivity-planning-skill",
+    "title": "Heavy Construction Equipment Productivity Planning",
+    "summary": "Calculating equipment production rates, sizing earthmoving fleets, planning crane heavy lifts, and managing operating costs.",
     "category": "Construction Methods",
     "tags": [
       "Equipment",
       "Fleet Management",
       "Crane Lifting",
       "Productivity"
-    ],
-    "name": "Heavy Construction Equipment Productivity Planning",
-    "description": "Calculating equipment production rates, sizing earthmoving fleets, planning crane heavy lifts, and managing operating costs."
+    ]
   },
   "lean-pull-planning-skill": {
     "id": "lean-pull-planning-skill",
+    "title": "Last Planner System & Pull Planning Execution",
+    "summary": "Facilitating weekly pull planning sessions, managing constraint logs, and driving continuous improvement in field throughput.",
     "category": "Management",
     "tags": [
       "Lean Construction",
       "Pull Planning",
       "Constraint Management",
       "PPC"
-    ],
-    "name": "Last Planner System & Pull Planning Execution",
-    "description": "Facilitating weekly pull planning sessions, managing constraint logs, and driving continuous improvement in field throughput."
+    ]
   },
   "municipal-infrastructure-planning-skill": {
     "id": "municipal-infrastructure-planning-skill",
+    "title": "Municipal Infrastructure Master Planning & Demand Forecasting",
+    "summary": "Capability to forecast urban growth infrastructure demand, formulate capital improvement plans, and draft municipal utility master plans.",
     "category": "Municipal Planning",
-    "level": "Advanced",
-    "name": "Municipal Infrastructure Master Planning & Demand Forecasting",
-    "description": "Capability to forecast urban growth infrastructure demand, formulate capital improvement plans, and draft municipal utility master plans."
+    "level": "Advanced"
   },
   "utility-conflict-analysis-coordination-skill": {
     "id": "utility-conflict-analysis-coordination-skill",
+    "title": "Underground Utility Conflict Analysis & Corridor Design",
+    "summary": "Skill in analyzing subsurface utility clashes using GIS and CAD, designing shared utility duct banks, and negotiating right-of-way relocations.",
     "category": "Utility Engineering",
-    "level": "Advanced",
-    "name": "Underground Utility Conflict Analysis & Corridor Design",
-    "description": "Skill in analyzing subsurface utility clashes using GIS and CAD, designing shared utility duct banks, and negotiating right-of-way relocations."
+    "level": "Advanced"
   },
   "urban-drainage-network-design-skill": {
     "id": "urban-drainage-network-design-skill",
+    "title": "Urban Storm Drainage Network & SUDS Modeling",
+    "summary": "Proficiency in designing urban storm sewers, detention basins, bioswales, and box culverts using EPA SWMM and Civil 3D.",
     "category": "Urban Water",
-    "level": "Advanced",
-    "name": "Urban Storm Drainage Network & SUDS Modeling",
-    "description": "Proficiency in designing urban storm sewers, detention basins, bioswales, and box culverts using EPA SWMM and Civil 3D."
+    "level": "Advanced"
   },
   "municipal-gis-mapping-analytics-skill": {
     "id": "municipal-gis-mapping-analytics-skill",
+    "title": "Municipal Spatial Data Infrastructure & GIS Mapping",
+    "summary": "Skill in developing enterprise municipal GIS databases, spatial network analytics, asset geocoding, and web GIS dashboarding.",
     "category": "GIS & Mapping",
-    "level": "Advanced",
-    "name": "Municipal Spatial Data Infrastructure & GIS Mapping",
-    "description": "Skill in developing enterprise municipal GIS databases, spatial network analytics, asset geocoding, and web GIS dashboarding."
+    "level": "Advanced"
   },
   "infrastructure-asset-condition-assessment-skill": {
     "id": "infrastructure-asset-condition-assessment-skill",
+    "title": "Infrastructure Condition Assessment & Rating Systems",
+    "summary": "Ability to evaluate civil infrastructure asset decay, conduct Pavement Condition Index (PCI) and CCTV pipe inspections, and score risk criticality.",
     "category": "Asset Management",
-    "level": "Intermediate",
-    "name": "Infrastructure Condition Assessment & Rating Systems",
-    "description": "Ability to evaluate civil infrastructure asset decay, conduct Pavement Condition Index (PCI) and CCTV pipe inspections, and score risk criticality."
+    "level": "Intermediate"
   },
   "trenchless-pipeline-rehabilitation-skill": {
     "id": "trenchless-pipeline-rehabilitation-skill",
+    "title": "Trenchless Pipeline Rehabilitation & Microtunneling Design",
+    "summary": "Proficiency in selecting and specifying cured-in-place pipe (CIPP), pipe bursting, sliplining, and microtunneling execution for municipal networks.",
     "category": "Pipeline Engineering",
-    "level": "Advanced",
-    "name": "Trenchless Pipeline Rehabilitation & Microtunneling Design",
-    "description": "Proficiency in selecting and specifying cured-in-place pipe (CIPP), pipe bursting, sliplining, and microtunneling execution for municipal networks."
+    "level": "Advanced"
   },
   "urban-streetscape-accessibility-design-skill": {
     "id": "urban-streetscape-accessibility-design-skill",
+    "title": "Urban Streetscape & Universal Accessibility Design",
+    "summary": "Skill in designing pedestrian plazas, tactile paving, universal access ramps, green street infrastructure, and street furniture layouts.",
     "category": "Urban Design",
-    "level": "Intermediate",
-    "name": "Urban Streetscape & Universal Accessibility Design",
-    "description": "Skill in designing pedestrian plazas, tactile paving, universal access ramps, green street infrastructure, and street furniture layouts."
+    "level": "Intermediate"
   },
   "climate-resilient-infrastructure-design-skill": {
     "id": "climate-resilient-infrastructure-design-skill",
+    "title": "Climate-Resilient Infrastructure & Sponge City Design",
+    "summary": "Ability to integrate nature-based solutions, permeable pavements, urban wetlands, and sea-level flood barriers into city infrastructure plans.",
     "category": "Urban Resilience",
-    "level": "Advanced",
-    "name": "Climate-Resilient Infrastructure & Sponge City Design",
-    "description": "Ability to integrate nature-based solutions, permeable pavements, urban wetlands, and sea-level flood barriers into city infrastructure plans."
+    "level": "Advanced"
   },
   "coastal-hydrodynamic-modelling-skill": {
     "id": "coastal-hydrodynamic-modelling-skill",
+    "title": "Coastal Hydrodynamic & Flow Modelling",
     "category": "Coastal Engineering",
-    "name": "Coastal Hydrodynamic & Flow Modelling",
-    "description": "Setting up, calibrating, and executing 2D/3D coastal hydrodynamic flow models using Delft3D, MIKE 21, or TELEMAC."
+    "summary": "Setting up, calibrating, and executing 2D/3D coastal hydrodynamic flow models using Delft3D, MIKE 21, or TELEMAC."
   },
   "wave-transformation-analysis-skill": {
     "id": "wave-transformation-analysis-skill",
+    "title": "Nearshore Wave Transformation & Spectral Analysis",
     "category": "Coastal Engineering",
-    "name": "Nearshore Wave Transformation & Spectral Analysis",
-    "description": "Simulating nearshore wave shoaling, refraction, diffraction, and spectral wave energy transformation using SWAN."
+    "summary": "Simulating nearshore wave shoaling, refraction, diffraction, and spectral wave energy transformation using SWAN."
   },
   "tidal-harmonic-analysis-skill": {
     "id": "tidal-harmonic-analysis-skill",
+    "title": "Tidal Harmonic Analysis & Tidal Prism Calculation",
     "category": "Coastal Engineering",
-    "name": "Tidal Harmonic Analysis & Tidal Prism Calculation",
-    "description": "Analyzing water level records to derive tidal constituents, predicting astronomical tides, and calculating estuarine tidal prism."
+    "summary": "Analyzing water level records to derive tidal constituents, predicting astronomical tides, and calculating estuarine tidal prism."
   },
   "shoreline-change-mapping-skill": {
     "id": "shoreline-change-mapping-skill",
+    "title": "Shoreline Change Mapping & Trend Analysis",
     "category": "Coastal Engineering",
-    "name": "Shoreline Change Mapping & Trend Analysis",
-    "description": "Mapping historical shoreline positions from aerial/satellite imagery and computing long-term erosion rates in GIS."
+    "summary": "Mapping historical shoreline positions from aerial/satellite imagery and computing long-term erosion rates in GIS."
   },
   "longshore-sediment-transport-skill": {
     "id": "longshore-sediment-transport-skill",
+    "title": "Longshore Sediment Transport Calculation",
     "category": "Coastal Engineering",
-    "name": "Longshore Sediment Transport Calculation",
-    "description": "Computing volumetric drift rates using CERC, Kamphuis, and van Rijn equations for coastal sediment budget analysis."
+    "summary": "Computing volumetric drift rates using CERC, Kamphuis, and van Rijn equations for coastal sediment budget analysis."
   },
   "coastal-revetment-design-skill": {
     "id": "coastal-revetment-design-skill",
+    "title": "Coastal Revetment & Armor Sizing Design",
     "category": "Coastal Engineering",
-    "name": "Coastal Revetment & Armor Sizing Design",
-    "description": "Designing rock armor and concrete block revetments, sizing filter layers, and detailing toe scour protection."
+    "summary": "Designing rock armor and concrete block revetments, sizing filter layers, and detailing toe scour protection."
   },
   "breakwater-hydraulic-stability-skill": {
     "id": "breakwater-hydraulic-stability-skill",
+    "title": "Breakwater Armor Stability & Overtopping Sizing",
     "category": "Coastal Engineering",
-    "name": "Breakwater Armor Stability & Overtopping Sizing",
-    "description": "Calculating breakwater armor unit weight (Hudson & van der Meer) and assessing wave overtopping discharges per CIRIA Rock Manual."
+    "summary": "Calculating breakwater armor unit weight (Hudson & van der Meer) and assessing wave overtopping discharges per CIRIA Rock Manual."
   },
   "groyne-field-layout-skill": {
     "id": "groyne-field-layout-skill",
+    "title": "Groyne Field Layout & Shoreline Stabilization",
     "category": "Coastal Engineering",
-    "name": "Groyne Field Layout & Shoreline Stabilization",
-    "description": "Designing groyne length, spacing, crest height, and orientation to trap longshore drift while preventing downdrift erosion."
+    "summary": "Designing groyne length, spacing, crest height, and orientation to trap longshore drift while preventing downdrift erosion."
   },
   "storm-surge-modelling-skill": {
     "id": "storm-surge-modelling-skill",
+    "title": "Storm Surge & Inundation Hazard Simulation",
     "category": "Coastal Engineering",
-    "name": "Storm Surge & Inundation Hazard Simulation",
-    "description": "Simulating tropical cyclone wind-driven storm surge, wave setup, and coastal inundation using ADCIRC or Delft3D."
+    "summary": "Simulating tropical cyclone wind-driven storm surge, wave setup, and coastal inundation using ADCIRC or Delft3D."
   },
   "port-layout-planning-skill": {
     "id": "port-layout-planning-skill",
+    "title": "Port Layout Planning & PIANC Dimensioning",
     "category": "Coastal Engineering",
-    "name": "Port Layout Planning & PIANC Dimensioning",
-    "description": "Dimensioning port navigation channels, turning basins, berth lengths, and terminal layouts according to PIANC guidelines."
+    "summary": "Dimensioning port navigation channels, turning basins, berth lengths, and terminal layouts according to PIANC guidelines."
   },
   "quay-wall-structural-design-skill": {
     "id": "quay-wall-structural-design-skill",
+    "title": "Quay Wall Structural & Geotechnical Design",
     "category": "Coastal Engineering",
-    "name": "Quay Wall Structural & Geotechnical Design",
-    "description": "Structural design and soil-structure interaction analysis for gravity caisson, sheet-pile, and combi-wall quay structures."
+    "summary": "Structural design and soil-structure interaction analysis for gravity caisson, sheet-pile, and combi-wall quay structures."
   },
   "navigation-channel-design-skill": {
     "id": "navigation-channel-design-skill",
+    "title": "Navigation Channel Design & Alignment",
     "category": "Coastal Engineering",
-    "name": "Navigation Channel Design & Alignment",
-    "description": "Designing fairway alignment, channel depth allowances, squatt, wave response, and channel width according to PIANC standards."
+    "summary": "Designing fairway alignment, channel depth allowances, squatt, wave response, and channel width according to PIANC standards."
   },
   "dredging-volume-planning-skill": {
     "id": "dredging-volume-planning-skill",
+    "title": "Dredging Volume Sizing & Equipment Selection",
     "category": "Coastal Engineering",
-    "name": "Dredging Volume Sizing & Equipment Selection",
-    "description": "Estimating capital/maintenance dredging volumes, cut depths, cycle times, and selecting TSHD or CSD dredger equipment."
+    "summary": "Estimating capital/maintenance dredging volumes, cut depths, cycle times, and selecting TSHD or CSD dredger equipment."
   },
   "marine-piling-inspection-skill": {
     "id": "marine-piling-inspection-skill",
+    "title": "Marine Piling & Underwater Construction QA/QC",
     "category": "Coastal Engineering",
-    "name": "Marine Piling & Underwater Construction QA/QC",
-    "description": "Inspecting driven steel tubular piles, dynamic load testing (PDA), tremie underwater concreting, and cathodic protection."
+    "summary": "Inspecting driven steel tubular piles, dynamic load testing (PDA), tremie underwater concreting, and cathodic protection."
   },
   "coastal-gis-bathymetry-processing-skill": {
     "id": "coastal-gis-bathymetry-processing-skill",
+    "title": "Coastal GIS & Bathymetric Sonar Data Processing",
     "category": "Coastal Engineering",
-    "name": "Coastal GIS & Bathymetric Sonar Data Processing",
-    "description": "Processing singlebeam/multibeam bathymetric sonar data, interpolating coastal terrain, and modeling 3D seabed surfaces."
+    "summary": "Processing singlebeam/multibeam bathymetric sonar data, interpolating coastal terrain, and modeling 3D seabed surfaces."
   },
   "coastal-resilience-assessment-skill": {
     "id": "coastal-resilience-assessment-skill",
+    "title": "Coastal Resilience & Climate Vulnerability Assessment",
     "category": "Coastal Engineering",
-    "name": "Coastal Resilience & Climate Vulnerability Assessment",
-    "description": "Evaluating coastal asset exposure under IPCC sea level rise projections and designing hybrid green-gray adaptation measures."
+    "summary": "Evaluating coastal asset exposure under IPCC sea level rise projections and designing hybrid green-gray adaptation measures."
   },
   "open-channel-flow-analysis": {
     "id": "open-channel-flow-analysis",
+    "title": "Open Channel Flow Analysis",
+    "summary": "Ability to calculate normal depth, critical depth, flow velocity, and water surface profiles in natural and artificial channels.",
     "category": "River Analysis",
     "tags": [
       "Open Channel",
       "Manning Formula",
       "GVF",
       "Hydraulics"
-    ],
-    "name": "Open Channel Flow Analysis",
-    "description": "Ability to calculate normal depth, critical depth, flow velocity, and water surface profiles in natural and artificial channels."
+    ]
   },
   "fluvial-morphology-analysis": {
     "id": "fluvial-morphology-analysis",
+    "title": "Fluvial Morphology & Bankline Analysis",
+    "summary": "Skills in analyzing historical satellite imagery, bed bathymetry, meander migration rates, and predicting channel shift.",
     "category": "River Analysis",
     "tags": [
       "Morphology",
       "Meander Migration",
       "GIS",
       "Remote Sensing"
-    ],
-    "name": "Fluvial Morphology & Bankline Analysis",
-    "description": "Skills in analyzing historical satellite imagery, bed bathymetry, meander migration rates, and predicting channel shift."
+    ]
   },
   "sediment-transport-calculation": {
     "id": "sediment-transport-calculation",
+    "title": "Sediment Transport Calculation & Budgeting",
+    "summary": "Capability to calculate bed load and suspended load transport rates using Engelund-Hansen, Meyer-Peter Müller, and Ackers-White equations.",
     "category": "River Analysis",
     "tags": [
       "Sediment Transport",
       "Bed Load",
       "Suspended Load",
       "Rating Curve"
-    ],
-    "name": "Sediment Transport Calculation & Budgeting",
-    "description": "Capability to calculate bed load and suspended load transport rates using Engelund-Hansen, Meyer-Peter Müller, and Ackers-White equations."
+    ]
   },
   "riverbank-protection-design": {
     "id": "riverbank-protection-design",
+    "title": "Riverbank Protection Structure Design",
+    "summary": "Proficiency in designing CC block mattresses, geobag revetments, riprap slope armoring, and launching apron thickness/width.",
     "category": "Design & Engineering",
     "tags": [
       "Bank Protection",
       "Geobags",
       "Revetment",
       "Launching Apron"
-    ],
-    "name": "Riverbank Protection Structure Design",
-    "description": "Proficiency in designing CC block mattresses, geobag revetments, riprap slope armoring, and launching apron thickness/width."
+    ]
   },
   "river-training-design": {
     "id": "river-training-design",
+    "title": "River Training & Groyne System Design",
+    "summary": "Expertise in sizing and configuring groynes, spurs, guide bunds, and porcupine screens to direct river flow and protect banks.",
     "category": "Design & Engineering",
     "tags": [
       "River Training",
       "Groynes",
       "Spurs",
       "Guide Bunds"
-    ],
-    "name": "River Training & Groyne System Design",
-    "description": "Expertise in sizing and configuring groynes, spurs, guide bunds, and porcupine screens to direct river flow and protect banks."
+    ]
   },
   "floodplain-conveyance-modelling": {
     "id": "floodplain-conveyance-modelling",
+    "title": "Floodplain Conveyance & Inundation Modelling",
+    "summary": "Ability to map flood depths, flood velocity vectors, inundation extents, and flood hazard categories across river floodplains.",
     "category": "River Analysis",
     "tags": [
       "Floodplain",
       "Inundation",
       "Hazard Mapping",
       "HEC-RAS"
-    ],
-    "name": "Floodplain Conveyance & Inundation Modelling",
-    "description": "Ability to map flood depths, flood velocity vectors, inundation extents, and flood hazard categories across river floodplains."
+    ]
   },
   "bridge-scour-analysis": {
     "id": "bridge-scour-analysis",
+    "title": "Bridge Scour & Hydraulic Opening Sizing",
+    "summary": "Skill in performing pier scour, contraction scour, and abutment scour calculations according to FHWA HEC-18 guidelines.",
     "category": "River Analysis",
     "tags": [
       "Bridge Scour",
       "Pier Scour",
       "HEC-18",
       "Afflux"
-    ],
-    "name": "Bridge Scour & Hydraulic Opening Sizing",
-    "description": "Skill in performing pier scour, contraction scour, and abutment scour calculations according to FHWA HEC-18 guidelines."
+    ]
   },
   "cofferdam-diversion-design": {
     "id": "cofferdam-diversion-design",
+    "title": "Cofferdam & Temporary River Diversion Design",
+    "summary": "Competency in sizing diversion channels, cofferdam heights, and hydraulic risk management during in-stream bridge/dam construction.",
     "category": "Construction Hydraulics",
     "tags": [
       "Cofferdam",
       "River Diversion",
       "Construction Hydraulics"
-    ],
-    "name": "Cofferdam & Temporary River Diversion Design",
-    "description": "Competency in sizing diversion channels, cofferdam heights, and hydraulic risk management during in-stream bridge/dam construction."
+    ]
   },
   "reservoir-routing-analysis": {
     "id": "reservoir-routing-analysis",
+    "title": "Reservoir Flood Routing & Spillway Sizing",
+    "summary": "Skill in performing level-pool reservoir flood routing (Modified Puls method) and sizing spillway energy dissipators.",
     "category": "Hydraulic Design",
     "tags": [
       "Reservoir Routing",
       "Spillway",
       "Energy Dissipator",
       "Flood Routing"
-    ],
-    "name": "Reservoir Flood Routing & Spillway Sizing",
-    "description": "Skill in performing level-pool reservoir flood routing (Modified Puls method) and sizing spillway energy dissipators."
+    ]
   },
   "canal-hydraulic-sizing": {
     "id": "canal-hydraulic-sizing",
+    "title": "Irrigation Canal Sizing & Regulator Design",
+    "summary": "Proficiency in sizing canal cross-sections, calculating seepage losses, designing canal linings, and sizing drop structures.",
     "category": "Hydraulic Design",
     "tags": [
       "Canal Design",
       "Regulator",
       "Cross Drainage",
       "Canal Lining"
-    ],
-    "name": "Irrigation Canal Sizing & Regulator Design",
-    "description": "Proficiency in sizing canal cross-sections, calculating seepage losses, designing canal linings, and sizing drop structures."
+    ]
   },
   "inland-waterway-design": {
     "id": "inland-waterway-design",
+    "title": "Inland Waterway Fairway & Dredging Design",
+    "summary": "Skill in determining navigation channel dimensions, turning basin diameters, and calculating capital and maintenance dredging volumes.",
     "category": "Navigation Engineering",
     "tags": [
       "Inland Waterway",
       "Navigation Channel",
       "Dredging Volume",
       "PIANC"
-    ],
-    "name": "Inland Waterway Fairway & Dredging Design",
-    "description": "Skill in determining navigation channel dimensions, turning basin diameters, and calculating capital and maintenance dredging volumes."
+    ]
   },
   "river-restoration-design": {
     "id": "river-restoration-design",
+    "title": "River Restoration & Eco-Hydraulic Design",
+    "summary": "Ability to design bioengineered riverbanks, natural meander geometries, fish passes, and calculate environmental flows.",
     "category": "Eco-Hydraulics",
     "tags": [
       "River Restoration",
       "Bioengineering",
       "Fish Pass",
       "E-Flows"
-    ],
-    "name": "River Restoration & Eco-Hydraulic Design",
-    "description": "Ability to design bioengineered riverbanks, natural meander geometries, fish passes, and calculate environmental flows."
+    ]
   },
   "1d-2d-hydrodynamic-modelling": {
     "id": "1d-2d-hydrodynamic-modelling",
+    "title": "1D/2D Hydrodynamic Numerical Modelling",
+    "summary": "Expert skill in setting up, calibrating, and validating 1D/2D unsteady flow models in HEC-RAS, MIKE 21, and Delft3D.",
     "category": "Numerical Modelling",
     "tags": [
       "1D/2D Modelling",
@@ -1240,106 +1242,106 @@
       "MIKE 21",
       "Delft3D",
       "Hydrodynamics"
-    ],
-    "name": "1D/2D Hydrodynamic Numerical Modelling",
-    "description": "Expert skill in setting up, calibrating, and validating 1D/2D unsteady flow models in HEC-RAS, MIKE 21, and Delft3D."
+    ]
   },
   "bathymetric-adcp-data-analysis": {
     "id": "bathymetric-adcp-data-analysis",
+    "title": "Bathymetric & ADCP Hydrographic Data Processing",
+    "summary": "Proficiency in processing ADCP transect flow measurements, echosounder bed elevation data, and constructing bathymetric DEMs.",
     "category": "Survey & Data",
     "tags": [
       "ADCP",
       "Bathymetry",
       "Hydrographic Survey",
       "DEM"
-    ],
-    "name": "Bathymetric & ADCP Hydrographic Data Processing",
-    "description": "Proficiency in processing ADCP transect flow measurements, echosounder bed elevation data, and constructing bathymetric DEMs."
+    ]
   },
   "river-gis-mapping": {
     "id": "river-gis-mapping",
+    "title": "River GIS & Terrain Analysis",
+    "summary": "Capability to perform spatial analysis of river networks, channel slope extraction, floodplain DEM processing, and temporal bankline overlay.",
     "category": "GIS & Spatial",
     "tags": [
       "River GIS",
       "QGIS",
       "ArcGIS",
       "DEM Processing"
-    ],
-    "name": "River GIS & Terrain Analysis",
-    "description": "Capability to perform spatial analysis of river networks, channel slope extraction, floodplain DEM processing, and temporal bankline overlay."
+    ]
   },
   "climate-resilient-river-design": {
     "id": "climate-resilient-river-design",
+    "title": "Climate-Resilient River Infrastructure Sizing",
+    "summary": "Competency in integrating climate projection ensembles into hydrologic/hydraulic design safety factors and adaptive infrastructure plans.",
     "category": "Resilience Engineering",
     "tags": [
       "Climate Resilience",
       "Extreme Flood",
       "Adaptive Design"
-    ],
-    "name": "Climate-Resilient River Infrastructure Sizing",
-    "description": "Competency in integrating climate projection ensembles into hydrologic/hydraulic design safety factors and adaptive infrastructure plans."
+    ]
   },
   "land-surveying-field-skill": {
     "id": "land-surveying-field-skill",
+    "title": "Land Surveying Field Operation & Traverse Adjustment",
+    "summary": "Ability to set up surveying instruments, run closed and open traverses, measure angles and distances, and perform compass and Bowditch mathematical corrections.",
     "category": "Field Surveying",
     "tags": [
       "Land Surveying",
       "Traverse",
       "Bowditch",
       "Leveling"
-    ],
-    "name": "Land Surveying Field Operation & Traverse Adjustment",
-    "description": "Ability to set up surveying instruments, run closed and open traverses, measure angles and distances, and perform compass and Bowditch mathematical corrections."
+    ]
   },
   "engineering-construction-setting-out-skill": {
     "id": "engineering-construction-setting-out-skill",
+    "title": "Engineering Setting Out & Construction Staking",
+    "summary": "Competency in transferring CAD design coordinates to field ground locations for building grids, foundation piles, columns, roads, and utilities.",
     "category": "Engineering Surveying",
     "tags": [
       "Setting Out",
       "Staking",
       "CAD",
       "Construction Layout"
-    ],
-    "name": "Engineering Setting Out & Construction Staking",
-    "description": "Competency in transferring CAD design coordinates to field ground locations for building grids, foundation piles, columns, roads, and utilities."
+    ]
   },
   "geodetic-control-network-adjustment-skill": {
     "id": "geodetic-control-network-adjustment-skill",
+    "title": "Geodetic Control Network Design & Least Squares Adjustment",
+    "summary": "Designing high-precision primary and secondary control networks and applying least squares rigor to adjust horizontal and vertical coordinates.",
     "category": "Geodesy",
     "tags": [
       "Least Squares",
       "Geodetic Control",
       "Coordinate Adjustment"
-    ],
-    "name": "Geodetic Control Network Design & Least Squares Adjustment",
-    "description": "Designing high-precision primary and secondary control networks and applying least squares rigor to adjust horizontal and vertical coordinates."
+    ]
   },
   "gnss-rtk-ppk-surveying-skill": {
     "id": "gnss-rtk-ppk-surveying-skill",
+    "title": "GNSS RTK & PPK High-Precision Surveying",
+    "summary": "Operating multi-frequency GNSS receivers in Real-Time Kinematic (RTK) and Post-Processed Kinematic (PPK) modes with CORS corrections.",
     "category": "Satellite Positioning",
     "tags": [
       "GNSS",
       "RTK",
       "PPK",
       "GPS"
-    ],
-    "name": "GNSS RTK & PPK High-Precision Surveying",
-    "description": "Operating multi-frequency GNSS receivers in Real-Time Kinematic (RTK) and Post-Processed Kinematic (PPK) modes with CORS corrections."
+    ]
   },
   "total-station-traverse-adjustment-skill": {
     "id": "total-station-traverse-adjustment-skill",
+    "title": "Robotic Total Station & Traverse Data Processing",
+    "summary": "Operating robotic total stations, executing reflectorless surveys, and downloading field raw data into desktop software for processing.",
     "category": "Field Instruments",
     "tags": [
       "Total Station",
       "Robotic",
       "EDM",
       "Data Processing"
-    ],
-    "name": "Robotic Total Station & Traverse Data Processing",
-    "description": "Operating robotic total stations, executing reflectorless surveys, and downloading field raw data into desktop software for processing."
+    ]
   },
   "topographic-dtm-dem-modeling-skill": {
     "id": "topographic-dtm-dem-modeling-skill",
+    "title": "Topographic Data Processing & DTM/DEM Surface Modelling",
+    "summary": "Transforming survey point clouds and spot elevations into TIN surfaces, generating contours, and modeling terrain in Civil 3D and ArcGIS.",
     "category": "Terrain Modelling",
     "tags": [
       "Topography",
@@ -1347,24 +1349,24 @@
       "DTM",
       "Contours",
       "TIN"
-    ],
-    "name": "Topographic Data Processing & DTM/DEM Surface Modelling",
-    "description": "Transforming survey point clouds and spot elevations into TIN surfaces, generating contours, and modeling terrain in Civil 3D and ArcGIS."
+    ]
   },
   "hydrographic-bathymetric-processing-skill": {
     "id": "hydrographic-bathymetric-processing-skill",
+    "title": "Hydrographic Data Acquisition & Bathymetric Sounding Processing",
+    "summary": "Operating singlebeam/multibeam echosounders, applying sound velocity and tide corrections, and cleaning seabed point clouds in HYPACK/Qimera.",
     "category": "Hydrographic Surveying",
     "tags": [
       "Bathymetry",
       "Multibeam",
       "HYPACK",
       "Hydrography"
-    ],
-    "name": "Hydrographic Data Acquisition & Bathymetric Sounding Processing",
-    "description": "Operating singlebeam/multibeam echosounders, applying sound velocity and tide corrections, and cleaning seabed point clouds in HYPACK/Qimera."
+    ]
   },
   "photogrammetry-uav-mapping-skill": {
     "id": "photogrammetry-uav-mapping-skill",
+    "title": "UAV Survey Flight Operations & Photogrammetric Processing",
+    "summary": "Planning drone missions, placing GCPs, processing imagery in Pix4D or Agisoft Metashape, and producing georeferenced orthomosaics and DSMs.",
     "category": "UAV & Photogrammetry",
     "tags": [
       "UAV",
@@ -1372,12 +1374,12 @@
       "Pix4D",
       "Metashape",
       "Orthomosaic"
-    ],
-    "name": "UAV Survey Flight Operations & Photogrammetric Processing",
-    "description": "Planning drone missions, placing GCPs, processing imagery in Pix4D or Agisoft Metashape, and producing georeferenced orthomosaics and DSMs."
+    ]
   },
   "remote-sensing-image-classification-skill": {
     "id": "remote-sensing-image-classification-skill",
+    "title": "Satellite Remote Sensing & Multispectral Image Processing",
+    "summary": "Processing Sentinel/Landsat imagery, performing supervised/unsupervised classifications, calculating band ratios, and detecting land cover changes.",
     "category": "Remote Sensing",
     "tags": [
       "Remote Sensing",
@@ -1385,12 +1387,12 @@
       "ERDAS",
       "Classification",
       "Satellite"
-    ],
-    "name": "Satellite Remote Sensing & Multispectral Image Processing",
-    "description": "Processing Sentinel/Landsat imagery, performing supervised/unsupervised classifications, calculating band ratios, and detecting land cover changes."
+    ]
   },
   "lidar-point-cloud-processing-skill": {
     "id": "lidar-point-cloud-processing-skill",
+    "title": "LiDAR Point Cloud Filtering, Ground Extraction & Scan-to-BIM",
+    "summary": "Importing laser scan data, registering multiple setups, filtering noise, classifying ground points, and generating 3D CAD/BIM models.",
     "category": "LiDAR & Point Clouds",
     "tags": [
       "LiDAR",
@@ -1398,24 +1400,24 @@
       "ReCap",
       "Point Cloud",
       "Scan-to-BIM"
-    ],
-    "name": "LiDAR Point Cloud Filtering, Ground Extraction & Scan-to-BIM",
-    "description": "Importing laser scan data, registering multiple setups, filtering noise, classifying ground points, and generating 3D CAD/BIM models."
+    ]
   },
   "mobile-mapping-slam-skill": {
     "id": "mobile-mapping-slam-skill",
+    "title": "Mobile Mapping Data Capture & SLAM Processing",
+    "summary": "Managing vehicle mobile mapping systems, aligning trajectories with GNSS/IMU data, and extracting linear street assets.",
     "category": "Mobile Mapping",
     "tags": [
       "Mobile Mapping",
       "SLAM",
       "Trajectory",
       "Asset Extraction"
-    ],
-    "name": "Mobile Mapping Data Capture & SLAM Processing",
-    "description": "Managing vehicle mobile mapping systems, aligning trajectories with GNSS/IMU data, and extracting linear street assets."
+    ]
   },
   "gis-spatial-analysis-database-skill": {
     "id": "gis-spatial-analysis-database-skill",
+    "title": "GIS Spatial Analytics, Vector/Raster Operations & Geodatabases",
+    "summary": "Conducting advanced spatial overlays, proximity analysis, spatial joins, raster algebra, and managing spatial databases in ArcGIS Pro and QGIS.",
     "category": "GIS",
     "tags": [
       "GIS",
@@ -1423,36 +1425,36 @@
       "QGIS",
       "Geodatabase",
       "Spatial Overlay"
-    ],
-    "name": "GIS Spatial Analytics, Vector/Raster Operations & Geodatabases",
-    "description": "Conducting advanced spatial overlays, proximity analysis, spatial joins, raster algebra, and managing spatial databases in ArcGIS Pro and QGIS."
+    ]
   },
   "spatial-data-science-geostatistics-skill": {
     "id": "spatial-data-science-geostatistics-skill",
+    "title": "Spatial Data Science, Geostatistics & Interpolation",
+    "summary": "Applying kriging, IDW interpolation, spatial autocorrelation (Moran's I), and spatial regression modeling on geospatial datasets.",
     "category": "Spatial Data Science",
     "tags": [
       "Geostatistics",
       "Kriging",
       "Spatial Analytics",
       "Data Science"
-    ],
-    "name": "Spatial Data Science, Geostatistics & Interpolation",
-    "description": "Applying kriging, IDW interpolation, spatial autocorrelation (Moran's I), and spatial regression modeling on geospatial datasets."
+    ]
   },
   "structural-deformation-monitoring-skill": {
     "id": "structural-deformation-monitoring-skill",
+    "title": "Precision Surveying for Deformation & Structural Health Monitoring",
+    "summary": "Installing deformation prisms, executing high-precision differential leveling, analyzing time-series displacements of dams, bridges, and tunnels.",
     "category": "Deformation Monitoring",
     "tags": [
       "Deformation",
       "Prisms",
       "Leveling",
       "Structural Health"
-    ],
-    "name": "Precision Surveying for Deformation & Structural Health Monitoring",
-    "description": "Installing deformation prisms, executing high-precision differential leveling, analyzing time-series displacements of dams, bridges, and tunnels."
+    ]
   },
   "geospatial-python-gis-automation-skill": {
     "id": "geospatial-python-gis-automation-skill",
+    "title": "Geospatial Python Programming & GIS Automation",
+    "summary": "Writing Python scripts utilizing GeoPandas, Shapely, PyProj, ArcPy, and PyQGIS to automate geospatial workflows and spatial analysis.",
     "category": "GeoPython",
     "tags": [
       "Python",
@@ -1460,24 +1462,24 @@
       "Shapely",
       "ArcPy",
       "Automation"
-    ],
-    "name": "Geospatial Python Programming & GIS Automation",
-    "description": "Writing Python scripts utilizing GeoPandas, Shapely, PyProj, ArcPy, and PyQGIS to automate geospatial workflows and spatial analysis."
+    ]
   },
   "geospatial-ai-feature-extraction-skill": {
     "id": "geospatial-ai-feature-extraction-skill",
+    "title": "Geospatial AI (GeoAI) & Computer Vision Feature Extraction",
+    "summary": "Deploying convolutional neural networks (CNNs) and deep learning models to automatically detect buildings, roads, and trees from remote sensing images.",
     "category": "Geospatial AI",
     "tags": [
       "GeoAI",
       "Deep Learning",
       "Computer Vision",
       "Building Extraction"
-    ],
-    "name": "Geospatial AI (GeoAI) & Computer Vision Feature Extraction",
-    "description": "Deploying convolutional neural networks (CNNs) and deep learning models to automatically detect buildings, roads, and trees from remote sensing images."
+    ]
   },
   "3d-geospatial-digital-twin-skill": {
     "id": "3d-geospatial-digital-twin-skill",
+    "title": "3D Geospatial Digital Twin & BIM-GIS Integration",
+    "summary": "Integrating IFC BIM models with geospatial GIS layers, converting scan data to 3D tiles, and building Web GIS dashboards.",
     "category": "Digital Twin",
     "tags": [
       "Digital Twin",
@@ -1485,165 +1487,163 @@
       "Cesium",
       "3D Tiles",
       "Smart Cities"
-    ],
-    "name": "3D Geospatial Digital Twin & BIM-GIS Integration",
-    "description": "Integrating IFC BIM models with geospatial GIS layers, converting scan data to 3D tiles, and building Web GIS dashboards."
+    ]
   },
   "bridge-structural-analysis": {
     "id": "bridge-structural-analysis",
+    "title": "Bridge Structural Analysis",
+    "summary": "Performing 2D/3D structural analysis, influence line analysis, finite element modeling, and dynamic response calculations.",
     "category": "Structural Analysis",
     "tags": [
       "Bridge Analysis",
       "FEM",
       "Influence Lines",
       "Dynamic Analysis"
-    ],
-    "name": "Bridge Structural Analysis",
-    "description": "Performing 2D/3D structural analysis, influence line analysis, finite element modeling, and dynamic response calculations."
+    ]
   },
   "bridge-design": {
     "id": "bridge-design",
+    "title": "Bridge Structural Design",
+    "summary": "Designing bridge superstructures, substructures, and foundations in compliance with AASHTO LRFD and regional standards.",
     "category": "Bridge Design",
     "tags": [
       "Bridge Design",
       "AASHTO LRFD",
       "Superstructure",
       "Substructure"
-    ],
-    "name": "Bridge Structural Design",
-    "description": "Designing bridge superstructures, substructures, and foundations in compliance with AASHTO LRFD and regional standards."
+    ]
   },
   "prestressed-bridge-design": {
     "id": "prestressed-bridge-design",
+    "title": "Prestressed Concrete Bridge Design",
+    "summary": "Calculating prestress losses, tendon profiles, flexural/shear capacity, and serviceability limits for concrete bridges.",
     "category": "Bridge Design",
     "tags": [
       "Prestressed Concrete",
       "Tendon Profiling",
       "Prestress Loss",
       "AASHTO"
-    ],
-    "name": "Prestressed Concrete Bridge Design",
-    "description": "Calculating prestress losses, tendon profiles, flexural/shear capacity, and serviceability limits for concrete bridges."
+    ]
   },
   "steel-bridge-design": {
     "id": "steel-bridge-design",
+    "title": "Steel Bridge Design",
+    "summary": "Designing steel plate/box girders, cross frames, splices, composite deck interactions, and fatigue details.",
     "category": "Bridge Design",
     "tags": [
       "Steel Bridges",
       "Composite Design",
       "Plate Girders",
       "Fatigue"
-    ],
-    "name": "Steel Bridge Design",
-    "description": "Designing steel plate/box girders, cross frames, splices, composite deck interactions, and fatigue details."
+    ]
   },
   "bridge-foundation-design": {
     "id": "bridge-foundation-design",
+    "title": "Bridge Foundation Design",
+    "summary": "Designing deep pile groups, well foundations, caissons, pier caps, and abutments under heavy bridge loads.",
     "category": "Geotechnical & Foundation",
     "tags": [
       "Foundation Design",
       "Piles",
       "Caissons",
       "Pier Caps"
-    ],
-    "name": "Bridge Foundation Design",
-    "description": "Designing deep pile groups, well foundations, caissons, pier caps, and abutments under heavy bridge loads."
+    ]
   },
   "bridge-load-rating": {
     "id": "bridge-load-rating",
+    "title": "Bridge Load Rating & Evaluation",
+    "summary": "Evaluating live-load capacity, operating/inventory ratings, and permit load evaluations for existing bridges.",
     "category": "Bridge Maintenance",
     "tags": [
       "Load Rating",
       "Capacity Evaluation",
       "Permit Loads",
       "AASHTO MBE"
-    ],
-    "name": "Bridge Load Rating & Evaluation",
-    "description": "Evaluating live-load capacity, operating/inventory ratings, and permit load evaluations for existing bridges."
+    ]
   },
   "bridge-inspection-assessment": {
     "id": "bridge-inspection-assessment",
+    "title": "Bridge Safety Inspection & Condition Assessment",
+    "summary": "Executing routine, principal, and element-level bridge inspections using NDT tools and condition rating matrices.",
     "category": "Bridge Inspection",
     "tags": [
       "Bridge Inspection",
       "NDT",
       "Condition Rating",
       "Defect Mapping"
-    ],
-    "name": "Bridge Safety Inspection & Condition Assessment",
-    "description": "Executing routine, principal, and element-level bridge inspections using NDT tools and condition rating matrices."
+    ]
   },
   "bridge-rehabilitation-design": {
     "id": "bridge-rehabilitation-design",
+    "title": "Bridge Repair & Rehabilitation Design",
+    "summary": "Designing structural strengthening, FRP jacketing, bearing replacements, and deck overlays.",
     "category": "Bridge Maintenance",
     "tags": [
       "Rehabilitation",
       "FRP Strengthening",
       "Bearing Replacement",
       "Repair"
-    ],
-    "name": "Bridge Repair & Rehabilitation Design",
-    "description": "Designing structural strengthening, FRP jacketing, bearing replacements, and deck overlays."
+    ]
   },
   "seismic-bridge-design": {
     "id": "seismic-bridge-design",
+    "title": "Seismic Bridge Design & Isolation",
+    "summary": "Applying response spectrum analysis, time-history analysis, seismic isolation, and ductility details.",
     "category": "Seismic Engineering",
     "tags": [
       "Seismic Design",
       "Seismic Isolation",
       "Dynamic Analysis",
       "Ductility"
-    ],
-    "name": "Seismic Bridge Design & Isolation",
-    "description": "Applying response spectrum analysis, time-history analysis, seismic isolation, and ductility details."
+    ]
   },
   "bridge-fem-modelling": {
     "id": "bridge-fem-modelling",
+    "title": "3D Bridge Finite Element Modelling",
+    "summary": "Creating detailed finite element models in MIDAS Civil, CSiBridge, or SAP2000 for line-element and shell analysis.",
     "category": "Structural Modelling",
     "tags": [
       "MIDAS Civil",
       "CSiBridge",
       "3D FEM",
       "Grillage"
-    ],
-    "name": "3D Bridge Finite Element Modelling",
-    "description": "Creating detailed finite element models in MIDAS Civil, CSiBridge, or SAP2000 for line-element and shell analysis."
+    ]
   },
   "bridge-construction-engineering": {
     "id": "bridge-construction-engineering",
+    "title": "Bridge Construction Engineering",
+    "summary": "Developing erection sequences, temporary falsework design, segment geometry control, and launching calculations.",
     "category": "Construction Engineering",
     "tags": [
       "Construction Engineering",
       "Erection Sequence",
       "Falsework",
       "Launching"
-    ],
-    "name": "Bridge Construction Engineering",
-    "description": "Developing erection sequences, temporary falsework design, segment geometry control, and launching calculations."
+    ]
   },
   "structural-health-monitoring-analysis": {
     "id": "structural-health-monitoring-analysis",
+    "title": "Structural Health Monitoring Data Analysis",
+    "summary": "Analyzing sensor data, modal parameters, temperature effects, and structural response metrics from SHM networks.",
     "category": "Digital Engineering",
     "tags": [
       "SHM",
       "Data Analysis",
       "Sensor Networks",
       "Modal Parameters"
-    ],
-    "name": "Structural Health Monitoring Data Analysis",
-    "description": "Analyzing sensor data, modal parameters, temperature effects, and structural response metrics from SHM networks."
+    ]
   },
   "bridge-bim-modelling": {
     "id": "bridge-bim-modelling",
+    "title": "Bridge BIM & Parametric Modelling",
+    "summary": "Creating 3D parametric bridge models, rebar/tendon detailing, and clash detection in OpenBridge or Revit.",
     "category": "BIM & Digital Engineering",
     "tags": [
       "Bridge BIM",
       "OpenBridge",
       "Revit",
       "Parametric Modelling"
-    ],
-    "name": "Bridge BIM & Parametric Modelling",
-    "description": "Creating 3D parametric bridge models, rebar/tendon detailing, and clash detection in OpenBridge or Revit."
+    ]
   },
   "tunnel-feasibility-alignment-design": {
     "id": "tunnel-feasibility-alignment-design",
@@ -1824,53 +1824,53 @@
   },
   "municipal-water-network-planning-skill": {
     "id": "municipal-water-network-planning-skill",
-    "description": "Skills in hydraulic modeling of municipal water supply networks, pressure zoning, DMA design, and fire flow distribution.",
-    "name": "Municipal Water Network Planning"
+    "title": "Municipal Water Network Planning",
+    "description": "Skills in hydraulic modeling of municipal water supply networks, pressure zoning, DMA design, and fire flow distribution."
   },
   "sewer-network-planning-skill": {
     "id": "sewer-network-planning-skill",
-    "description": "Ability to design gravity sewer networks, pump lift stations, force mains, and perform hydraulic capacity evaluations.",
-    "name": "Sewer Network Planning & Design"
+    "title": "Sewer Network Planning & Design",
+    "description": "Ability to design gravity sewer networks, pump lift stations, force mains, and perform hydraulic capacity evaluations."
   },
   "solid-waste-infrastructure-planning-skill": {
     "id": "solid-waste-infrastructure-planning-skill",
-    "description": "Skills in designing waste transfer stations, collection route optimization, recycling facility layouts, and sanitary landfill liners.",
-    "name": "Solid Waste Infrastructure Planning"
+    "title": "Solid Waste Infrastructure Planning",
+    "description": "Skills in designing waste transfer stations, collection route optimization, recycling facility layouts, and sanitary landfill liners."
   },
   "urban-utility-mapping-skill": {
     "id": "urban-utility-mapping-skill",
-    "description": "Proficiency in applying ASCE 38 SUE standards, ground penetrating radar (GPR) interpretation, and underground utility mapping.",
-    "name": "Urban Utility Mapping & SUE Surveying"
+    "title": "Urban Utility Mapping & SUE Surveying",
+    "description": "Proficiency in applying ASCE 38 SUE standards, ground penetrating radar (GPR) interpretation, and underground utility mapping."
   },
   "urban-flood-management-modelling-skill": {
     "id": "urban-flood-management-modelling-skill",
-    "description": "Skills in 1D/2D coupled urban flood modeling, designing flood barriers, pump stations, and detention storage.",
-    "name": "Urban Flood Management & Hydrodynamic Modelling"
+    "title": "Urban Flood Management & Hydrodynamic Modelling",
+    "description": "Skills in 1D/2D coupled urban flood modeling, designing flood barriers, pump stations, and detention storage."
   },
   "smart-city-iot-planning-skill": {
     "id": "smart-city-iot-planning-skill",
-    "description": "Capability to design urban sensor network topologies, automated metering infrastructure (AMI), and smart lighting systems.",
-    "name": "Smart City & IoT Infrastructure Planning"
+    "title": "Smart City & IoT Infrastructure Planning",
+    "description": "Capability to design urban sensor network topologies, automated metering infrastructure (AMI), and smart lighting systems."
   },
   "digital-twin-development-skill": {
     "id": "digital-twin-development-skill",
-    "description": "Proficiency in fusing BIM models with GIS spatial data to create interactive 3D digital twins for urban infrastructure monitoring.",
-    "name": "3D Infrastructure Digital Twin Development"
+    "title": "3D Infrastructure Digital Twin Development",
+    "description": "Proficiency in fusing BIM models with GIS spatial data to create interactive 3D digital twins for urban infrastructure monitoring."
   },
   "infrastructure-lifecycle-costing-skill": {
     "id": "infrastructure-lifecycle-costing-skill",
-    "description": "Skills in calculating total cost of ownership (TCO), economic benefit-cost ratios, and formulating municipal Capital Improvement Programs.",
-    "name": "Infrastructure Lifecycle Costing & CIP Planning"
+    "title": "Infrastructure Lifecycle Costing & CIP Planning",
+    "description": "Skills in calculating total cost of ownership (TCO), economic benefit-cost ratios, and formulating municipal Capital Improvement Programs."
   },
   "streetscape-design-accessibility-skill": {
     "id": "streetscape-design-accessibility-skill",
-    "description": "Ability to design accessible pedestrian pathways, complete streetscapes, tactile paving, curb ramps, and public space amenities.",
-    "name": "Streetscape & Universal Accessibility Design"
+    "title": "Streetscape & Universal Accessibility Design",
+    "description": "Ability to design accessible pedestrian pathways, complete streetscapes, tactile paving, curb ramps, and public space amenities."
   },
   "trenchless-rehabilitation-design-skill": {
     "id": "trenchless-rehabilitation-design-skill",
-    "description": "Capability to specify CIPP liners, microtunneling drives, horizontal directional drilling (HDD), and pipe bursting methods.",
-    "name": "Trenchless Pipe Rehabilitation Design"
+    "title": "Trenchless Pipe Rehabilitation Design",
+    "description": "Capability to specify CIPP liners, microtunneling drives, horizontal directional drilling (HDD), and pipe bursting methods."
   },
   "infrastructure-planning-skill": {
     "id": "infrastructure-planning-skill",
@@ -2103,112 +2103,94 @@
     ]
   },
   "pavement-structural-design-skill": {
-    "category": "Civil Engineering",
-    "name": "Pavement Structural Design",
-    "description": "Executing structural thickness design for flexible, rigid, and composite pavements using AASHTO empirical and mechanistic methodologies.",
-    "id": "pavement-structural-design-skill"
+    "title": "Pavement Structural Design",
+    "summary": "Executing structural thickness design for flexible, rigid, and composite pavements using AASHTO empirical and mechanistic methodologies.",
+    "category": "Civil Engineering"
   },
   "flexible-pavement-design-skill": {
-    "category": "Civil Engineering",
-    "name": "Flexible Pavement Structural Design",
-    "description": "Determining layer thicknesses for HMA binder, base, and subbase layers based on subgrade support and cumulative design traffic.",
-    "id": "flexible-pavement-design-skill"
+    "title": "Flexible Pavement Structural Design",
+    "summary": "Determining layer thicknesses for HMA binder, base, and subbase layers based on subgrade support and cumulative design traffic.",
+    "category": "Civil Engineering"
   },
   "rigid-pavement-design-skill": {
-    "category": "Civil Engineering",
-    "name": "Rigid Concrete Pavement Design",
-    "description": "Designing jointed plain concrete pavement (JPCP) and CRCP slabs, joint spacing, dowel bar sizing, and tie bar reinforcement.",
-    "id": "rigid-pavement-design-skill"
+    "title": "Rigid Concrete Pavement Design",
+    "summary": "Designing jointed plain concrete pavement (JPCP) and CRCP slabs, joint spacing, dowel bar sizing, and tie bar reinforcement.",
+    "category": "Civil Engineering"
   },
   "composite-pavement-design-skill": {
-    "category": "Civil Engineering",
-    "name": "Composite Pavement Interface Design",
-    "description": "Engineering AC overlays on rigid pavement and composite pavement interlayers to mitigate reflective cracking and bond failure.",
-    "id": "composite-pavement-design-skill"
+    "title": "Composite Pavement Interface Design",
+    "summary": "Engineering AC overlays on rigid pavement and composite pavement interlayers to mitigate reflective cracking and bond failure.",
+    "category": "Civil Engineering"
   },
   "asphalt-mix-design-superpave-skill": {
-    "category": "Civil Engineering",
-    "name": "Superpave Asphalt Mix Design",
-    "description": "Conducting aggregate blending, gyratory compaction, volumetric calculations, binder content optimization, and moisture susceptibility TSR testing.",
-    "id": "asphalt-mix-design-superpave-skill"
+    "title": "Superpave Asphalt Mix Design",
+    "summary": "Conducting aggregate blending, gyratory compaction, volumetric calculations, binder content optimization, and moisture susceptibility TSR testing.",
+    "category": "Civil Engineering"
   },
   "pavement-materials-testing-skill": {
-    "category": "Civil Engineering",
-    "name": "Pavement Materials Laboratory & Field Testing",
-    "description": "Testing asphalt binder ductility/viscosity, aggregate impact/abrasion values, subgrade CBR, dynamic modulus, and concrete flexural beam strength.",
-    "id": "pavement-materials-testing-skill"
+    "title": "Pavement Materials Laboratory & Field Testing",
+    "summary": "Testing asphalt binder ductility/viscosity, aggregate impact/abrasion values, subgrade CBR, dynamic modulus, and concrete flexural beam strength.",
+    "category": "Civil Engineering"
   },
   "me-pavement-design-skill": {
-    "category": "Civil Engineering",
-    "name": "Mechanistic-Empirical Pavement Design & Simulation",
-    "description": "Modeling pavement structural response, stress-strain fields, and cumulative fatigue/rutting damage using AASHTOWare Pavement ME Design.",
-    "id": "me-pavement-design-skill"
+    "title": "Mechanistic-Empirical Pavement Design & Simulation",
+    "summary": "Modeling pavement structural response, stress-strain fields, and cumulative fatigue/rutting damage using AASHTOWare Pavement ME Design.",
+    "category": "Civil Engineering"
   },
   "traffic-loading-esal-calculation-skill": {
-    "category": "Civil Engineering",
-    "name": "Traffic Loading & Axle Load Spectra Calculation",
-    "description": "Converting vehicle classification counts and weigh-in-motion data into ESALs and axle load spectra for structural pavement design.",
-    "id": "traffic-loading-esal-calculation-skill"
+    "title": "Traffic Loading & Axle Load Spectra Calculation",
+    "summary": "Converting vehicle classification counts and weigh-in-motion data into ESALs and axle load spectra for structural pavement design.",
+    "category": "Civil Engineering"
   },
   "subgrade-cbr-resilient-modulus-skill": {
-    "category": "Civil Engineering",
-    "name": "Subgrade Evaluation & CBR/Resilient Modulus Testing",
-    "description": "Determining soil classification, laboratory CBR, field plate load tests, and estimating subgrade resilient modulus for pavement design.",
-    "id": "subgrade-cbr-resilient-modulus-skill"
+    "title": "Subgrade Evaluation & CBR/Resilient Modulus Testing",
+    "summary": "Determining soil classification, laboratory CBR, field plate load tests, and estimating subgrade resilient modulus for pavement design.",
+    "category": "Civil Engineering"
   },
   "pavement-drainage-design-skill": {
-    "category": "Civil Engineering",
-    "name": "Pavement Subsurface Drainage Design",
-    "description": "Designing permeable base drainage layers, longitudinal edge drains, collector pipes, and estimating pavement drainage coefficients.",
-    "id": "pavement-drainage-design-skill"
+    "title": "Pavement Subsurface Drainage Design",
+    "summary": "Designing permeable base drainage layers, longitudinal edge drains, collector pipes, and estimating pavement drainage coefficients.",
+    "category": "Civil Engineering"
   },
   "pavement-construction-inspection-skill": {
-    "category": "Civil Engineering",
-    "name": "Pavement Construction & Laydown Inspection",
-    "description": "Inspecting subgrade compaction, aggregate base grading, asphalt paving temperature/laydown, concrete slipform paving, and joint sawing.",
-    "id": "pavement-construction-inspection-skill"
+    "title": "Pavement Construction & Laydown Inspection",
+    "summary": "Inspecting subgrade compaction, aggregate base grading, asphalt paving temperature/laydown, concrete slipform paving, and joint sawing.",
+    "category": "Civil Engineering"
   },
   "pavement-qa-qc-density-testing-skill": {
-    "category": "Civil Engineering",
-    "name": "Pavement Quality Control & Field Density Testing",
-    "description": "Performing non-destructive density measurements, core density verification, concrete slump/air testing, and IRI smoothness compliance testing.",
-    "id": "pavement-qa-qc-density-testing-skill"
+    "title": "Pavement Quality Control & Field Density Testing",
+    "summary": "Performing non-destructive density measurements, core density verification, concrete slump/air testing, and IRI smoothness compliance testing.",
+    "category": "Civil Engineering"
   },
   "pavement-condition-index-pci-skill": {
-    "category": "Civil Engineering",
-    "name": "Pavement Condition Index (PCI) Rating & Mapping",
-    "description": "Conducting ASTM D6433 visual distress surveys, calculating deduct values, computing PCI scores, and mapping pavement network condition.",
-    "id": "pavement-condition-index-pci-skill"
+    "title": "Pavement Condition Index (PCI) Rating & Mapping",
+    "summary": "Conducting ASTM D6433 visual distress surveys, calculating deduct values, computing PCI scores, and mapping pavement network condition.",
+    "category": "Civil Engineering"
   },
   "pavement-distress-diagnostics-skill": {
-    "category": "Civil Engineering",
-    "name": "Pavement Distress Diagnosis & Failure Root Cause Analysis",
-    "description": "Diagnosing structural vs functional distresses, identifying stripping, subgrade failure, pumping, thermal cracking, and recommending remediation.",
-    "id": "pavement-distress-diagnostics-skill"
+    "title": "Pavement Distress Diagnosis & Failure Root Cause Analysis",
+    "summary": "Diagnosing structural vs functional distresses, identifying stripping, subgrade failure, pumping, thermal cracking, and recommending remediation.",
+    "category": "Civil Engineering"
   },
   "overlay-design-fwd-backcalculation-skill": {
-    "category": "Civil Engineering",
-    "name": "Pavement Structural Backcalculation & Overlay Design",
-    "description": "Analyzing Falling Weight Deflectometer (FWD) deflection basins, backcalculating layer moduli, and calculating required asphalt/concrete overlay thickness.",
-    "id": "overlay-design-fwd-backcalculation-skill"
+    "title": "Pavement Structural Backcalculation & Overlay Design",
+    "summary": "Analyzing Falling Weight Deflectometer (FWD) deflection basins, backcalculating layer moduli, and calculating required asphalt/concrete overlay thickness.",
+    "category": "Civil Engineering"
   },
   "pavement-management-hdm4-skill": {
-    "category": "Civil Engineering",
-    "name": "HDM-4 Pavement Management & Lifecycle Cost Modeling",
-    "description": "Utilizing HDM-4 and PMS software to model network pavement deterioration, optimize maintenance strategies, and perform LCCA.",
-    "id": "pavement-management-hdm4-skill"
+    "title": "HDM-4 Pavement Management & Lifecycle Cost Modeling",
+    "summary": "Utilizing HDM-4 and PMS software to model network pavement deterioration, optimize maintenance strategies, and perform LCCA.",
+    "category": "Civil Engineering"
   },
   "sustainable-recycled-asphalt-rap-skill": {
-    "category": "Civil Engineering",
-    "name": "Recycled Asphalt Pavement (RAP) & Sustainable Mix Engineering",
-    "description": "Designing high-RAP asphalt mixes, warm-mix asphalt additives, cold in-place recycling, and evaluating life-cycle environmental impacts.",
-    "id": "sustainable-recycled-asphalt-rap-skill"
+    "title": "Recycled Asphalt Pavement (RAP) & Sustainable Mix Engineering",
+    "summary": "Designing high-RAP asphalt mixes, warm-mix asphalt additives, cold in-place recycling, and evaluating life-cycle environmental impacts.",
+    "category": "Civil Engineering"
   },
   "smart-pavement-sensor-data-analytics-skill": {
-    "category": "Civil Engineering",
-    "name": "Smart Pavement Telemetry & AI Distress Analytics",
-    "description": "Processing embedded pavement strain/temperature sensor data and deploying AI computer vision algorithms for automated distress detection.",
-    "id": "smart-pavement-sensor-data-analytics-skill"
+    "title": "Smart Pavement Telemetry & AI Distress Analytics",
+    "summary": "Processing embedded pavement strain/temperature sensor data and deploying AI computer vision algorithms for automated distress detection.",
+    "category": "Civil Engineering"
   },
   "seismic-design": {
     "id": "seismic-design",
@@ -2681,6 +2663,574 @@
       "Resilience Economics",
       "Cost-Benefit",
       "Life-Cycle"
+    ]
+  },
+  "construction-engineering-planning-skill": {
+    "id": "construction-engineering-planning-skill",
+    "name": "Construction Engineering & Methods Planning",
+    "description": "Formulating constructability reviews, construction sequencing, field engineering methods, and operational work plans.",
+    "category": "Construction Engineering",
+    "tags": [
+      "Constructability",
+      "Methods Planning",
+      "Site Engineering"
+    ]
+  },
+  "construction-methods-analysis-skill": {
+    "id": "construction-methods-analysis-skill",
+    "name": "Construction Methods & Sequencing Analysis",
+    "description": "Analyzing alternative construction methodologies, cycle times, structural integrity during assembly, and site installation schemes.",
+    "category": "Analysis & Simulation",
+    "tags": [
+      "Construction Methods",
+      "Sequencing",
+      "Cycle Times"
+    ]
+  },
+  "construction-productivity-analysis-skill": {
+    "id": "construction-productivity-analysis-skill",
+    "name": "Construction Labor & Equipment Productivity Analysis",
+    "description": "Conducting activity sampling, measuring standard work rates per man-hour/machine-hour, and identifying production bottlenecks.",
+    "category": "Project Management",
+    "tags": [
+      "Productivity",
+      "Work Sampling",
+      "Crew Output",
+      "Efficiency"
+    ]
+  },
+  "cpm-network-analysis-skill": {
+    "id": "cpm-network-analysis-skill",
+    "name": "CPM Network Logic & Critical Path Analysis",
+    "description": "Building precedence diagramming networks, calculating forward/backward passes, identifying driving relationships, and resolving logic constraints.",
+    "category": "Project Management",
+    "tags": [
+      "CPM",
+      "Primavera P6",
+      "Critical Path",
+      "Network Logic"
+    ]
+  },
+  "resource-loading-leveling-skill": {
+    "id": "resource-loading-leveling-skill",
+    "name": "Resource Loading, Leveling & Allocation",
+    "description": "Assigning manpower trades, equipment fleets, and materials to schedule activities, profiling resource peaks, and leveling resource over-allocations.",
+    "category": "Project Management",
+    "tags": [
+      "Resource Loading",
+      "Leveling",
+      "Manpower Histograms",
+      "Primavera P6"
+    ]
+  },
+  "earned-value-management-skill": {
+    "id": "earned-value-management-skill",
+    "name": "Earned Value Management (EVM) Analysis",
+    "description": "Calculating Planned Value (PV), Earned Value (EV), Actual Cost (AC), CPI, SPI, and calculating cost/schedule completion forecasts (EAC/ETC).",
+    "category": "Project Management",
+    "tags": [
+      "EVM",
+      "Earned Value",
+      "CPI",
+      "SPI",
+      "Cost Control"
+    ]
+  },
+  "project-controls-reporting-skill": {
+    "id": "project-controls-reporting-skill",
+    "name": "Integrated Project Controls Reporting",
+    "description": "Compiling monthly executive project control packs, variance analysis reports, risk-adjusted forecasting, and multi-project dashboard analytics.",
+    "category": "Project Management",
+    "tags": [
+      "Project Controls",
+      "Reporting",
+      "Dashboards",
+      "Variance Analysis"
+    ]
+  },
+  "cost-schedule-integration-skill": {
+    "id": "cost-schedule-integration-skill",
+    "name": "Cost & Schedule Baseline Integration",
+    "description": "Mapping Cost Breakdown Structures (CBS) to Work Breakdown Structures (WBS) to establish a synchronized cost-loaded baseline.",
+    "category": "Project Management",
+    "tags": [
+      "CBS",
+      "WBS",
+      "Cost Loading",
+      "Integration"
+    ]
+  },
+  "rate-analysis-breakdown-skill": {
+    "id": "rate-analysis-breakdown-skill",
+    "name": "Unit Rate Analysis & Cost Breakdown",
+    "description": "Synthesizing labor craft rates, material landed costs, equipment hourly costs, subcontractor quotes, overheads, and contractor profit margins.",
+    "category": "Cost & Commercial",
+    "tags": [
+      "Rate Analysis",
+      "Estimating",
+      "Unit Cost",
+      "PWD Schedule"
+    ]
+  },
+  "interim-valuation-measurement-skill": {
+    "id": "interim-valuation-measurement-skill",
+    "name": "Interim Valuation & Payment Certification",
+    "description": "Conducting on-site measurement of completed works, verifying contractor monthly payment applications, and drafting Interim Payment Certificates (IPC).",
+    "category": "Cost & Commercial",
+    "tags": [
+      "Interim Valuation",
+      "IPC",
+      "Measurement",
+      "Payment Application"
+    ]
+  },
+  "variation-measurement-valuation-skill": {
+    "id": "variation-measurement-valuation-skill",
+    "name": "Variation Measurement & Valuation",
+    "description": "Measuring scope deviations against baseline tender drawings, establishing star rates, negotiating contractor variation proposals, and tracking change logs.",
+    "category": "Cost & Commercial",
+    "tags": [
+      "Variations",
+      "Change Orders",
+      "Valuation",
+      "Star Rates"
+    ]
+  },
+  "tender-bid-evaluation-skill": {
+    "id": "tender-bid-evaluation-skill",
+    "name": "Tender Document Assembly & Bid Evaluation",
+    "description": "Compiling instruction to tenderers, technical specifications, conditions of contract, conducting technical scoring, and financial bid comparisons.",
+    "category": "Cost & Commercial",
+    "tags": [
+      "Tendering",
+      "Bid Evaluation",
+      "Procurement",
+      "PPR"
+    ]
+  },
+  "procurement-strategy-development-skill": {
+    "id": "procurement-strategy-development-skill",
+    "name": "Procurement Strategy & Packaging",
+    "description": "Developing project procurement plans, evaluating delivery models (Design-Build vs EPC vs Traditional), and determining risk allocation frameworks.",
+    "category": "Cost & Commercial",
+    "tags": [
+      "Procurement Strategy",
+      "Contract Packaging",
+      "Delivery Models"
+    ]
+  },
+  "disruption-quantum-analysis-skill": {
+    "id": "disruption-quantum-analysis-skill",
+    "name": "Disruption & Loss/Expense Quantum Analysis",
+    "description": "Quantifying construction disruption using Measured Mile analysis, baseline comparison, unabsorbed head-office overheads (Hudson/Emden/Eichleay formulas).",
+    "category": "Cost & Commercial",
+    "tags": [
+      "Disruption",
+      "Measured Mile",
+      "Quantum",
+      "Loss and Expense"
+    ]
+  },
+  "claims-preparation-defense-skill": {
+    "id": "claims-preparation-defense-skill",
+    "name": "Construction Claims Preparation & Defense",
+    "description": "Drafting comprehensive claim narratives detailing contractual entitlement, causal nexus, delay substantiation, and defending claims against client counterclaims.",
+    "category": "Cost & Commercial",
+    "tags": [
+      "Claims",
+      "Claim Defense",
+      "Entitlement",
+      "EOT"
+    ]
+  },
+  "construction-risk-assessment-skill": {
+    "id": "construction-risk-assessment-skill",
+    "name": "Construction Risk Assessment & Register Management",
+    "description": "Facilitating multi-disciplinary risk workshops, formulating risk breakdown structures, qualitative risk matrices, and developing action mitigation plans.",
+    "category": "Project Management",
+    "tags": [
+      "Risk Assessment",
+      "Risk Register",
+      "ISO 31000",
+      "Mitigation"
+    ]
+  },
+  "monte-carlo-schedule-cost-risk-skill": {
+    "id": "monte-carlo-schedule-cost-risk-skill",
+    "name": "Monte Carlo Schedule & Cost Risk Simulation",
+    "description": "Applying 3-point duration/cost probability distributions (Beta, Triangular), running Monte Carlo iterations, and determining P80 project contingency reserves.",
+    "category": "Analysis & Simulation",
+    "tags": [
+      "Monte Carlo",
+      "Risk Simulation",
+      "Primavera Risk",
+      "P80 Contingency"
+    ]
+  },
+  "risk-register-mitigation-planning-skill": {
+    "id": "risk-register-mitigation-planning-skill",
+    "name": "Risk Register Tracking & Mitigation Planning",
+    "description": "Maintaining living project risk registers, tracking risk trigger events, residual risk scoring, and assigning clear risk ownership across project teams.",
+    "category": "Project Management",
+    "tags": [
+      "Risk Register",
+      "Mitigation",
+      "Trigger Events",
+      "Risk Control"
+    ]
+  },
+  "itp-preparation-execution-skill": {
+    "id": "itp-preparation-execution-skill",
+    "name": "Inspection & Test Plan (ITP) Preparation & Execution",
+    "description": "Defining hold, witness, and review points for civil works, aligning testing frequencies with technical specifications, and managing inspection sign-offs.",
+    "category": "Quality & Safety",
+    "tags": [
+      "ITP",
+      "Hold Points",
+      "QA/QC",
+      "Inspection"
+    ]
+  },
+  "ncr-investigation-corrective-action-skill": {
+    "id": "ncr-investigation-corrective-action-skill",
+    "name": "Non-Conformance Reporting (NCR) & Root Cause Analysis",
+    "description": "Issuing site NCRs, conducting 5-Why and Ishikawa root cause investigations, reviewing structural repair methodologies, and closing out corrective actions.",
+    "category": "Quality & Safety",
+    "tags": [
+      "NCR",
+      "Root Cause Analysis",
+      "Corrective Action",
+      "QA/QC"
+    ]
+  },
+  "job-safety-analysis-jsa-skill": {
+    "id": "job-safety-analysis-jsa-skill",
+    "name": "Job Safety Analysis (JSA) & Safe Work Method Statements",
+    "description": "Breaking down site activities into sequence steps, identifying hazardous conditions, and prescribing mandatory PPE, safety controls, and toolbox talks.",
+    "category": "Quality & Safety",
+    "tags": [
+      "JSA",
+      "SWMS",
+      "Site Safety",
+      "HSE",
+      "Toolbox Talks"
+    ]
+  },
+  "permit-to-work-ptw-management-skill": {
+    "id": "permit-to-work-ptw-management-skill",
+    "name": "Permit-to-Work (PTW) Site Safety Protocols",
+    "description": "Managing strict authorization and safety isolation permits for hot work, deep excavation entry, confined spaces, heavy lifting, and night operations.",
+    "category": "Quality & Safety",
+    "tags": [
+      "PTW",
+      "Permit to Work",
+      "Confined Space",
+      "Hot Work",
+      "Safety"
+    ]
+  },
+  "temporary-works-engineering-skill": {
+    "id": "temporary-works-engineering-skill",
+    "name": "Temporary Works Design & Procedural Management",
+    "description": "Designing and checking shoring systems, cofferdams, working platforms, falsework towers, and enforcing BS 5975 temporary works coordinator procedures.",
+    "category": "Design & Detailing",
+    "tags": [
+      "Temporary Works",
+      "BS 5975",
+      "Shoring",
+      "Falsework",
+      "Cofferdams"
+    ]
+  },
+  "formwork-falsework-design-skill": {
+    "id": "formwork-falsework-design-skill",
+    "name": "Formwork & Falsework Structural Design",
+    "description": "Calculating timber/steel waler bending moments, tie-rod tensile forces, concrete rate-of-pour limits, and modular aluminum formwork cycles.",
+    "category": "Design & Detailing",
+    "tags": [
+      "Formwork",
+      "Falsework",
+      "ACI 347",
+      "Shoring Towers"
+    ]
+  },
+  "lifting-rigging-planning-skill": {
+    "id": "lifting-rigging-planning-skill",
+    "name": "Heavy Lifting & Crane Rigging Planning",
+    "description": "Designing tandem crane lift geometries, calculating crane ground bearing pressures, selecting spreader bars, slings, and rigging gear configurations.",
+    "category": "Construction Engineering",
+    "tags": [
+      "Rigging",
+      "Crane Lift Plan",
+      "Heavy Lifting",
+      "Ground Bearing Pressure"
+    ]
+  },
+  "equipment-selection-fleet-sizing-skill": {
+    "id": "equipment-selection-fleet-sizing-skill",
+    "name": "Heavy Machinery Selection & Fleet Sizing",
+    "description": "Matching earthmoving loader capacities to hauler truck fleets, calculating required fleet numbers based on mass-haul balances, and equipment sizing.",
+    "category": "Construction Engineering",
+    "tags": [
+      "Equipment Selection",
+      "Fleet Sizing",
+      "Earthmoving",
+      "Mass Haul"
+    ]
+  },
+  "machinery-cycle-time-analysis-skill": {
+    "id": "machinery-cycle-time-analysis-skill",
+    "name": "Machinery Cycle Time & Production Analysis",
+    "description": "Measuring loading, hauling, dumping, and return cycle times to calculate realistic hourly production volumes (m3/hr) and hourly fleet costs.",
+    "category": "Analysis & Simulation",
+    "tags": [
+      "Cycle Time",
+      "Production Rate",
+      "Haulage",
+      "Equipment Output"
+    ]
+  },
+  "daily-site-reporting-inspection-skill": {
+    "id": "daily-site-reporting-inspection-skill",
+    "name": "Daily Site Diary & Inspection Management",
+    "description": "Maintaining detailed site records of workforce headcount, weather impacts, equipment downtime, ongoing activities, and managing site inspection requests.",
+    "category": "Project Management",
+    "tags": [
+      "Daily Log",
+      "Site Diary",
+      "Inspection Requests",
+      "Site Supervision"
+    ]
+  },
+  "construction-logistics-planning-skill": {
+    "id": "construction-logistics-planning-skill",
+    "name": "Site Logistics & Master Staging Planning",
+    "description": "Creating site layout mobilization drawings, material delivery holding zones, gate access scheduling, and on-site internal traffic flow management.",
+    "category": "Project Management",
+    "tags": [
+      "Logistics",
+      "Site Layout",
+      "Staging",
+      "Traffic Flow"
+    ]
+  },
+  "material-demand-forecasting-inventory-skill": {
+    "id": "material-demand-forecasting-inventory-skill",
+    "name": "Material Demand Forecasting & Inventory Control",
+    "description": "Converting 3-week lookahead schedules into material procurement call-offs, tracking warehouse buffer stock, and avoiding site material shortages.",
+    "category": "Cost & Commercial",
+    "tags": [
+      "Materials Planning",
+      "Inventory",
+      "Procurement Call-Off",
+      "Lookahead"
+    ]
+  },
+  "site-laydown-traffic-management-skill": {
+    "id": "site-laydown-traffic-management-skill",
+    "name": "Site Laydown & Traffic Management",
+    "description": "Designing secure material storage yards, hazardous chemical storage protocols, heavy vehicle turning radiuses, and pedestrian-plant segregation.",
+    "category": "Quality & Safety",
+    "tags": [
+      "Laydown Area",
+      "Site Traffic",
+      "Segregation",
+      "Logistics"
+    ]
+  },
+  "superstructure-construction-execution-skill": {
+    "id": "superstructure-construction-execution-skill",
+    "name": "Building Superstructure Construction Execution",
+    "description": "Directing multi-story concrete pour cycles, rebar placement supervision, post-tensioning stressing, and structural steel framing assembly.",
+    "category": "Construction Engineering",
+    "tags": [
+      "Superstructure",
+      "Concrete Casting",
+      "Steel Erection",
+      "Post-Tensioning"
+    ]
+  },
+  "mep-clash-coordination-supervision-skill": {
+    "id": "mep-clash-coordination-supervision-skill",
+    "name": "MEP Services Clash Coordination & Field Supervision",
+    "description": "Coordinating builder work sleeves, MEP pipe/duct penetrations, vertical riser installation, and electrical distribution board rough-ins on site.",
+    "category": "Construction Engineering",
+    "tags": [
+      "MEP",
+      "Clash Resolution",
+      "Sleeves",
+      "Building Services"
+    ]
+  },
+  "building-envelope-facade-inspection-skill": {
+    "id": "building-envelope-facade-inspection-skill",
+    "name": "Building Envelope & Façade Quality Inspection",
+    "description": "Supervising unitized curtain wall erection, exterior waterproofing membrane installation, window water penetration testing, and thermal insulation QA.",
+    "category": "Quality & Safety",
+    "tags": [
+      "Facade",
+      "Curtain Wall",
+      "Waterproofing",
+      "Building Envelope"
+    ]
+  },
+  "infrastructure-construction-planning-skill": {
+    "id": "infrastructure-construction-planning-skill",
+    "name": "Infrastructure Construction Planning & Execution",
+    "description": "Developing phase staging for linear roadworks, bridge superstructure launching, culvert installations, utility diversions, and public traffic diversions.",
+    "category": "Construction Engineering",
+    "tags": [
+      "Infrastructure",
+      "Highways",
+      "Bridges",
+      "Linear Projects",
+      "Traffic Diversion"
+    ]
+  },
+  "heavy-civil-site-execution-skill": {
+    "id": "heavy-civil-site-execution-skill",
+    "name": "Heavy Civil Works Site Execution",
+    "description": "Executing major earthworks, rock blasting, deep foundation diaphragm walls, segmental bridge launching, and marine piling operations.",
+    "category": "Construction Engineering",
+    "tags": [
+      "Heavy Civil",
+      "Diaphragm Wall",
+      "Marine Piling",
+      "Segmental Launching"
+    ]
+  },
+  "linear-project-construction-management-skill": {
+    "id": "linear-project-construction-management-skill",
+    "name": "Linear Project Scheduling & Location-Based Management",
+    "description": "Applying Time-Chainage diagrams and Line of Balance (LOB) techniques to highway paving, pipeline trenching, and railway track laying progress.",
+    "category": "Project Management",
+    "tags": [
+      "Time Chainage",
+      "Line of Balance",
+      "Linear Projects",
+      "Highway Construction"
+    ]
+  },
+  "physical-progress-measurement-skill": {
+    "id": "physical-progress-measurement-skill",
+    "name": "Physical Progress Measurement & Rules of Credit",
+    "description": "Establishing weighted physical progress milestones, auditing contractor progress claims against installed quantities, and updating progress S-curves.",
+    "category": "Project Management",
+    "tags": [
+      "Physical Progress",
+      "Rules of Credit",
+      "S-Curve",
+      "Quantity Installed"
+    ]
+  },
+  "project-kpi-dashboard-analytics-skill": {
+    "id": "project-kpi-dashboard-analytics-skill",
+    "name": "Project KPI Dashboard Design & Analytics",
+    "description": "Building automated visual dashboards in Power BI/Excel displaying schedule variance, cost overrun risks, safety incident rates, and productivity trends.",
+    "category": "Project Management",
+    "tags": [
+      "Power BI",
+      "Dashboards",
+      "KPIs",
+      "Analytics",
+      "Project Controls"
+    ]
+  },
+  "construction-trend-forecasting-skill": {
+    "id": "construction-trend-forecasting-skill",
+    "name": "Construction Trend Forecasting & Early Warning",
+    "description": "Extrapolating historical burn rates, predicting project completion dates, and establishing proactive early warning indicators for management intervention.",
+    "category": "Project Management",
+    "tags": [
+      "Forecasting",
+      "Burn Rate",
+      "Early Warning",
+      "Trend Analysis"
+    ]
+  },
+  "sustainable-construction-management-skill": {
+    "id": "sustainable-construction-management-skill",
+    "name": "Sustainable Construction Operations & Compliance",
+    "description": "Executing construction environmental management plans (CEMP), dust suppression, stormwater sediment basins, low-VOC tracking, and eco-auditing.",
+    "category": "Quality & Safety",
+    "tags": [
+      "Sustainability",
+      "CEMP",
+      "Erosion Control",
+      "LEED Construction"
+    ]
+  },
+  "construction-waste-diversion-skill": {
+    "id": "construction-waste-diversion-skill",
+    "name": "Construction Waste Diversion & Recycling Management",
+    "description": "Setting up on-site material sorting stations, partnering with certified recycling facilities, and tracking waste diversion percentages from landfills.",
+    "category": "Quality & Safety",
+    "tags": [
+      "Waste Diversion",
+      "Recycling",
+      "SWMP",
+      "Circular Site"
+    ]
+  },
+  "embodied-carbon-tracking-construction-skill": {
+    "id": "embodied-carbon-tracking-construction-skill",
+    "name": "Embodied Carbon Tracking during Construction",
+    "description": "Quantifying carbon emissions from fuel burned by site plant, transport logistics, and specifying low-carbon cementitious concrete mix designs (GGBS/PFA).",
+    "category": "Analysis & Simulation",
+    "tags": [
+      "Embodied Carbon",
+      "Carbon Tracking",
+      "Low-Carbon Concrete",
+      "LCA"
+    ]
+  },
+  "design-build-epc-management-skill": {
+    "id": "design-build-epc-management-skill",
+    "name": "Design-Build & EPC Project Management",
+    "description": "Managing single-point responsibility delivery, integrating design engineering with procurement and site construction, and value engineering.",
+    "category": "Project Management",
+    "tags": [
+      "Design-Build",
+      "EPC",
+      "Value Engineering",
+      "Single Point Responsibility"
+    ]
+  },
+  "modular-prefabrication-planning-skill": {
+    "id": "modular-prefabrication-planning-skill",
+    "name": "Modular & Off-Site Prefabrication Planning",
+    "description": "Planning factory manufacturing schedules, transport dimensional permits, and heavy crane erection sequences for volumetric modular building units.",
+    "category": "Construction Engineering",
+    "tags": [
+      "Modular",
+      "Prefabrication",
+      "Off-Site",
+      "DfMA",
+      "Erection"
+    ]
+  },
+  "vdc-model-based-coordination-skill": {
+    "id": "vdc-model-based-coordination-skill",
+    "name": "VDC Model-Based Field Coordination",
+    "description": "Conducting 3D multidisciplinary coordination meetings, managing clash matrixes, and pushing resolved federated models to field tablet devices.",
+    "category": "CAD & BIM",
+    "tags": [
+      "VDC",
+      "Clash Detection",
+      "Navisworks",
+      "Model Coordination"
+    ]
+  },
+  "cde-digital-site-management-skill": {
+    "id": "cde-digital-site-management-skill",
+    "name": "Common Data Environment (CDE) & Digital Site Records",
+    "description": "Administering ISO 19650 workflows within Autodesk Construction Cloud/Aconex, managing drawing revisions, field RFIs, and digital punch lists.",
+    "category": "CAD & BIM",
+    "tags": [
+      "CDE",
+      "ISO 19650",
+      "Autodesk Construction Cloud",
+      "Digital Punch List"
     ]
   }
 }

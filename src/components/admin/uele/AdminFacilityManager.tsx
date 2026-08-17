@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { UELEFacility, UELE3DModel, UELESystemCategory, UELEPublicationStatus, AdminUELEParameter } from '../../../types/adminUele';
+import { UELEFacility, UELE3DModel, UELESystemCategory, UELEPublicationStatus, UELEParameter } from '../../../types/uele';
 import { FullUELEDatabase, UELEAdminService } from '../../../services/ueleAdminService';
 import { Button } from '../../shared/Button';
 import { Badge } from '../../shared/Badge';
@@ -197,7 +197,7 @@ export const AdminFacilityManager: React.FC<AdminFacilityManagerProps> = ({
 
   const handleAddParameter = () => {
     if (!paramName.trim()) return;
-    const newParam: AdminUELEParameter = {
+    const newParam: UELEParameter = {
       id: `param-${Date.now()}`,
       name: paramName.trim(),
       value: paramVal.trim() || 'N/A',

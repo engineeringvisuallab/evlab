@@ -46,6 +46,51 @@
   "models3D": [],
   "auditLogs": [
     {
+      "id": "audit-1786615465894-8dsn",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T10:04:25.894Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786615461837-0bgr",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T10:04:21.837Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 1/5"
+    },
+    {
+      "id": "audit-1786615457973-egtk",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T10:04:17.973Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786613193450-e5gw",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:26:33.450Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786613145267-kxok",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:25:45.267Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 1/5"
+    },
+    {
       "id": "audit-1786612009175-2xrf",
       "action": "Login Successful",
       "userEmail": "EVL-ADMIN-001",

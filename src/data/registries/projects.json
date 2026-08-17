@@ -257,19 +257,19 @@
   },
   "purbachal-smart-city-infrastructure-project": {
     "id": "purbachal-smart-city-infrastructure-project",
+    "title": "Purbachal Smart City Infrastructure & High-Rise Construction",
+    "summary": "Major urban development megaproject involving deep foundations, high-rise structural execution, utility network construction, and site logistics.",
     "category": "Building & Urban Infrastructure",
     "location": "Dhaka, Bangladesh",
-    "client": "RAJUK / Government of Bangladesh",
-    "name": "Purbachal Smart City Infrastructure & High-Rise Construction",
-    "description": "Major urban development megaproject involving deep foundations, high-rise structural execution, utility network construction, and site logistics."
+    "client": "RAJUK / Government of Bangladesh"
   },
   "pylons-bangladesh-railway-megaproject": {
     "id": "pylons-bangladesh-railway-megaproject",
+    "title": "Dhaka-Cox's Bazar Railway Construction Megaproject",
+    "summary": "Large-scale linear infrastructure project featuring earthworks, ballast/track laying, bridge construction, signaling systems, and station buildings.",
     "category": "Transportation & Rail",
     "location": "Bangladesh",
-    "client": "Bangladesh Railway",
-    "name": "Dhaka-Cox's Bazar Railway Construction Megaproject",
-    "description": "Large-scale linear infrastructure project featuring earthworks, ballast/track laying, bridge construction, signaling systems, and station buildings."
+    "client": "Bangladesh Railway"
   },
   "dhaka-urban-resilience-project": {
     "id": "dhaka-urban-resilience-project",
@@ -312,30 +312,32 @@
   },
   "bangladesh-coastal-embankment-improvement-project": {
     "id": "bangladesh-coastal-embankment-improvement-project",
+    "title": "Coastal Embankment Improvement Project (CEIP)",
     "location": "Coastal Belt, Bangladesh",
-    "name": "Coastal Embankment Improvement Project (CEIP)",
-    "description": "BWDB mega-project rehabilitating coastal polders, upgrading embankments, and building storm-surge resistant sluice gates across cyclone-vulnerable coastal districts."
+    "summary": "BWDB mega-project rehabilitating coastal polders, upgrading embankments, and building storm-surge resistant sluice gates across cyclone-vulnerable coastal districts."
   },
   "payra-deep-sea-port-dredging-project": {
     "id": "payra-deep-sea-port-dredging-project",
+    "title": "Payra Deep Sea Port Capital Dredging & Navigation Fairway Project",
     "location": "Patuakhali, Bangladesh",
-    "name": "Payra Deep Sea Port Capital Dredging & Navigation Fairway Project",
-    "description": "Capital dredging of the Rabnabad channel to create a deep-water fairway, berth basins, and navigation infrastructure for large ocean vessels."
+    "summary": "Capital dredging of the Rabnabad channel to create a deep-water fairway, berth basins, and navigation infrastructure for large ocean vessels."
   },
   "chattogram-port-bay-terminal-project": {
     "id": "chattogram-port-bay-terminal-project",
+    "title": "Chattogram Port Bay Terminal & Offshore Breakwater Project",
     "location": "Chattogram, Bangladesh",
-    "name": "Chattogram Port Bay Terminal & Offshore Breakwater Project",
-    "description": "Construction of a new bay terminal outside the Karnaphuli river, featuring offshore breakwaters, deep-water quay walls, and automated container yards."
+    "summary": "Construction of a new bay terminal outside the Karnaphuli river, featuring offshore breakwaters, deep-water quay walls, and automated container yards."
   },
   "mongla-port-dredging-channel-project": {
     "id": "mongla-port-dredging-channel-project",
+    "title": "Pashur Channel Dredging & Mongla Port Capacity Expansion Project",
     "location": "Mongla, Bangladesh",
-    "name": "Pashur Channel Dredging & Mongla Port Capacity Expansion Project",
-    "description": "Capital and maintenance dredging of the Pashur river channel to enable deep-draft vessel movement to Mongla Port."
+    "summary": "Capital and maintenance dredging of the Pashur river channel to enable deep-draft vessel movement to Mongla Port."
   },
   "jamuna-river-bank-protection-project": {
     "id": "jamuna-river-bank-protection-project",
+    "title": "Jamuna River Bank Protection & Sector Development Project",
+    "summary": "Major Asian Development Bank (ADB) and BWDB river training program featuring innovative geobag revetments and long groynes along the braided Jamuna River.",
     "location": "Sirajganj & Tangail, Bangladesh",
     "category": "Mega River Engineering Project",
     "tags": [
@@ -344,12 +346,12 @@
       "Geobags",
       "River Training",
       "Braided River"
-    ],
-    "name": "Jamuna River Bank Protection & Sector Development Project",
-    "description": "Major Asian Development Bank (ADB) and BWDB river training program featuring innovative geobag revetments and long groynes along the braided Jamuna River."
+    ]
   },
   "meghna-river-dredging-bank-protection-project": {
     "id": "meghna-river-dredging-bank-protection-project",
+    "title": "Meghna River Capital Dredging & Bank Protection Works",
+    "summary": "Large-scale river channel dredging and revetment construction project to preserve navigation draft and protect riverbanks from tidal river erosion.",
     "location": "Chandpur & Bhola, Bangladesh",
     "category": "River Navigation & Protection",
     "tags": [
@@ -358,12 +360,12 @@
       "Navigation Channel",
       "BIWTA",
       "BWDB"
-    ],
-    "name": "Meghna River Capital Dredging & Bank Protection Works",
-    "description": "Large-scale river channel dredging and revetment construction project to preserve navigation draft and protect riverbanks from tidal river erosion."
+    ]
   },
   "gorai-river-restoration-project": {
     "id": "gorai-river-restoration-project",
+    "title": "Gorai River Flow Restoration & Dredging Project",
+    "summary": "Ecological river restoration project aiming to restore dry-season freshwater flows from the Ganges into the Gorai distributary to combat salinity intrusion.",
     "location": "Kushtia & Southwestern Region, Bangladesh",
     "category": "River Restoration",
     "tags": [
@@ -371,12 +373,12 @@
       "Freshwater Flow",
       "Salinity Control",
       "Dredging"
-    ],
-    "name": "Gorai River Flow Restoration & Dredging Project",
-    "description": "Ecological river restoration project aiming to restore dry-season freshwater flows from the Ganges into the Gorai distributary to combat salinity intrusion."
+    ]
   },
   "bangladesh-river-bank-improvement-program": {
     "id": "bangladesh-river-bank-improvement-program",
+    "title": "Bangladesh Flood & Riverbank Erosion Risk Management Investment Program",
+    "summary": "World Bank & ADB co-financed integrated program for flood embankments, climate-resilient bank revetments, and community flood adaptation.",
     "location": "Upper & Central Ganges-Brahmaputra Basins, Bangladesh",
     "category": "Integrated Basin Management",
     "tags": [
@@ -385,48 +387,48 @@
       "BWDB",
       "Flood Protection",
       "Climate Resilience"
-    ],
-    "name": "Bangladesh Flood & Riverbank Erosion Risk Management Investment Program",
-    "description": "World Bank & ADB co-financed integrated program for flood embankments, climate-resilient bank revetments, and community flood adaptation."
+    ]
   },
   "padma-bridge-geodetic-deformation-monitoring-project": {
     "id": "padma-bridge-geodetic-deformation-monitoring-project",
+    "title": "Padma Multipurpose Bridge High-Precision Geodetic Control & Deformation Monitoring",
+    "summary": "Multi-year precision geodetic network, GNSS continuous station monitoring, and pier settlement leveling across the Padma River.",
     "category": "Geodetic & Structural Monitoring",
     "tags": [
       "Padma Bridge",
       "Deformation Monitoring",
       "Geodesy",
       "GNSS"
-    ],
-    "name": "Padma Multipurpose Bridge High-Precision Geodetic Control & Deformation Monitoring",
-    "description": "Multi-year precision geodetic network, GNSS continuous station monitoring, and pier settlement leveling across the Padma River."
+    ]
   },
   "dhaka-metro-rail-asbuilt-tunnel-survey-project": {
     "id": "dhaka-metro-rail-asbuilt-tunnel-survey-project",
+    "title": "Dhaka Metro Rail (MRT Line-6) 3D Laser Scanning & As-Built Tunnel Verification",
+    "summary": "Mobile laser scanning and terrestrial scan-to-BIM modeling of elevated viaducts, station structures, and alignment track layouts.",
     "category": "Laser Scanning & Construction Survey",
     "tags": [
       "MRT Line 6",
       "Laser Scanning",
       "Scan-to-BIM",
       "As-Built"
-    ],
-    "name": "Dhaka Metro Rail (MRT Line-6) 3D Laser Scanning & As-Built Tunnel Verification",
-    "description": "Mobile laser scanning and terrestrial scan-to-BIM modeling of elevated viaducts, station structures, and alignment track layouts."
+    ]
   },
   "bangladesh-national-spatial-data-infrastructure-nsdi": {
     "id": "bangladesh-national-spatial-data-infrastructure-nsdi",
+    "title": "Bangladesh National Spatial Data Infrastructure (NSDI) & Geoportal",
+    "summary": "Inter-agency geospatial data sharing infrastructure led by Survey of Bangladesh, standardizing national digital base maps and metadata.",
     "category": "GIS & Spatial Data Infrastructure",
     "tags": [
       "NSDI",
       "Survey of Bangladesh",
       "Geoportal",
       "GIS"
-    ],
-    "name": "Bangladesh National Spatial Data Infrastructure (NSDI) & Geoportal",
-    "description": "Inter-agency geospatial data sharing infrastructure led by Survey of Bangladesh, standardizing national digital base maps and metadata."
+    ]
   },
   "padma-river-multibeam-bathymetric-charting-project": {
     "id": "padma-river-multibeam-bathymetric-charting-project",
+    "title": "Padma & Meghna River Morphological Hydrographic & Bathymetric Charting",
+    "summary": "High-resolution multibeam bathymetry, ADCP current profiling, and seabed sediment sampling for navigation channel maintenance and bridge scour monitoring.",
     "category": "Hydrographic & Bathymetric Survey",
     "tags": [
       "Padma River",
@@ -434,24 +436,24 @@
       "Hydrography",
       "Bathymetry",
       "BIWTA"
-    ],
-    "name": "Padma & Meghna River Morphological Hydrographic & Bathymetric Charting",
-    "description": "High-resolution multibeam bathymetry, ADCP current profiling, and seabed sediment sampling for navigation channel maintenance and bridge scour monitoring."
+    ]
   },
   "dhaka-elevated-expressway-uav-reality-capture-project": {
     "id": "dhaka-elevated-expressway-uav-reality-capture-project",
+    "title": "Dhaka Elevated Expressway UAV Reality Capture & Corridor Mapping",
+    "summary": "Drone photogrammetric mapping, orthomosaic generation, and progress reality capture across the 19km urban highway corridor.",
     "category": "UAV & Reality Capture",
     "tags": [
       "Dhaka Elevated Expressway",
       "UAV",
       "Drone Mapping",
       "Reality Capture"
-    ],
-    "name": "Dhaka Elevated Expressway UAV Reality Capture & Corridor Mapping",
-    "description": "Drone photogrammetric mapping, orthomosaic generation, and progress reality capture across the 19km urban highway corridor."
+    ]
   },
   "jamuna-bangabandhu-bridge-project": {
     "id": "jamuna-bangabandhu-bridge-project",
+    "title": "Jamuna Bangabandhu Multipurpose Bridge Project",
+    "summary": "Multipurpose 4.8 km bridge across the Jamuna River connecting eastern and western Bangladesh.",
     "location": "Sirajganj - Tangail, Bangladesh",
     "category": "Mega Bridge Infrastructure",
     "tags": [
@@ -459,12 +461,12 @@
       "Multipurpose",
       "Long-Span",
       "Deep Foundations"
-    ],
-    "name": "Jamuna Bangabandhu Multipurpose Bridge Project",
-    "description": "Multipurpose 4.8 km bridge across the Jamuna River connecting eastern and western Bangladesh."
+    ]
   },
   "padma-bridge-rail-link-project": {
     "id": "padma-bridge-rail-link-project",
+    "title": "Padma Bridge Rail Link Megaproject",
+    "summary": "169 km railway corridor project connecting Dhaka to Jessore via the Padma Multipurpose Bridge viaducts.",
     "location": "Dhaka - Jessore, Bangladesh",
     "category": "Railway Bridge & Viaduct Infrastructure",
     "tags": [
@@ -472,12 +474,12 @@
       "Railway Viaduct",
       "Megaproject",
       "Bangladesh Railway"
-    ],
-    "name": "Padma Bridge Rail Link Megaproject",
-    "description": "169 km railway corridor project connecting Dhaka to Jessore via the Padma Multipurpose Bridge viaducts."
+    ]
   },
   "roopsa-railway-bridge-project": {
     "id": "roopsa-railway-bridge-project",
+    "title": "Rupsha Railway Bridge Construction Project",
+    "summary": "5.13 km railway bridge project over the Rupsha River in Khulna, Bangladesh featuring deep pile foundations.",
     "location": "Khulna, Bangladesh",
     "category": "Railway Bridge Engineering",
     "tags": [
@@ -485,12 +487,12 @@
       "Railway Bridge",
       "Deep Piles",
       "Khulna"
-    ],
-    "name": "Rupsha Railway Bridge Construction Project",
-    "description": "5.13 km railway bridge project over the Rupsha River in Khulna, Bangladesh featuring deep pile foundations."
+    ]
   },
   "bangabandhu-railway-bridge-project": {
     "id": "bangabandhu-railway-bridge-project",
+    "title": "Bangabandhu Sheikh Mujib Railway Bridge Project",
+    "summary": "4.8 km dedicated dual-gauge railway steel truss bridge over the Jamuna River parallel to Bangabandhu Bridge.",
     "location": "Jamuna River, Bangladesh",
     "category": "Mega Railway Steel Bridge",
     "tags": [
@@ -498,9 +500,7 @@
       "Steel Truss",
       "Dual Gauge",
       "Jamuna"
-    ],
-    "name": "Bangabandhu Sheikh Mujib Railway Bridge Project",
-    "description": "4.8 km dedicated dual-gauge railway steel truss bridge over the Jamuna River parallel to Bangabandhu Bridge."
+    ]
   },
   "mrt-line-1-underground-tunnel-project": {
     "id": "mrt-line-1-underground-tunnel-project",
@@ -581,13 +581,13 @@
   },
   "narayanganj-urban-water-supply-project": {
     "id": "narayanganj-urban-water-supply-project",
-    "description": "Bulk water transmission main, district metering zone formation, surface water treatment interface, and pipeline distribution network.",
-    "name": "Narayanganj Municipal Water Supply Expansion"
+    "title": "Narayanganj Municipal Water Supply Expansion",
+    "description": "Bulk water transmission main, district metering zone formation, surface water treatment interface, and pipeline distribution network."
   },
   "khulna-solid-waste-treatment-plant": {
     "id": "khulna-solid-waste-treatment-plant",
-    "description": "Municipal compost plant, materials recovery facility, and fecal sludge treatment plant serving Khulna Metropolitan Area.",
-    "name": "Khulna Integrated Waste Processing & Recycling Plant"
+    "title": "Khulna Integrated Waste Processing & Recycling Plant",
+    "description": "Municipal compost plant, materials recovery facility, and fecal sludge treatment plant serving Khulna Metropolitan Area."
   },
   "dhaka-metro-rail-line-6-project": {
     "id": "dhaka-metro-rail-line-6-project",
@@ -644,22 +644,19 @@
     "client": "BWDB / World Bank"
   },
   "dhaka-mymensingh-highway-4-laning-pavement-project": {
-    "category": "Highway Infrastructure",
-    "name": "Dhaka-Mymensingh Highway 4-Laning Heavy-Duty Pavement Project",
-    "description": "Major national corridor upgrading project featuring modified bitumen asphalt concrete, stone-matrix asphalt surfacing, and reinforced granular base layers.",
-    "id": "dhaka-mymensingh-highway-4-laning-pavement-project"
+    "title": "Dhaka-Mymensingh Highway 4-Laning Heavy-Duty Pavement Project",
+    "summary": "Major national corridor upgrading project featuring modified bitumen asphalt concrete, stone-matrix asphalt surfacing, and reinforced granular base layers.",
+    "category": "Highway Infrastructure"
   },
   "joydebpur-elenga-n-702-highway-rehabilitation-project": {
-    "category": "Highway Infrastructure",
-    "name": "Joydebpur-Elenga Highway Pavement Rehabilitation Project",
-    "description": "Heavy-duty flexible pavement rehabilitation project involving deep milling, cold in-place recycling (CIR), and polymer-modified asphalt overlays.",
-    "id": "joydebpur-elenga-n-702-highway-rehabilitation-project"
+    "title": "Joydebpur-Elenga Highway Pavement Rehabilitation Project",
+    "summary": "Heavy-duty flexible pavement rehabilitation project involving deep milling, cold in-place recycling (CIR), and polymer-modified asphalt overlays.",
+    "category": "Highway Infrastructure"
   },
   "hatirjheel-expressway-composite-pavement-project": {
-    "category": "Urban Transportation Infrastructure",
-    "name": "Hatirjheel Expressway Composite & Urban Pavement System",
-    "description": "Urban expressway project incorporating composite pavement structures, permeable friction courses for stormwater drainage, and silent asphalt technology.",
-    "id": "hatirjheel-expressway-composite-pavement-project"
+    "title": "Hatirjheel Expressway Composite & Urban Pavement System",
+    "summary": "Urban expressway project incorporating composite pavement structures, permeable friction courses for stormwater drainage, and silent asphalt technology.",
+    "category": "Urban Transportation Infrastructure"
   },
   "bangladesh-multipurpose-disaster-shelter-project": {
     "id": "bangladesh-multipurpose-disaster-shelter-project",

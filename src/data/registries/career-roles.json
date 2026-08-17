@@ -889,77 +889,79 @@
   },
   "construction-manager": {
     "id": "construction-manager",
+    "title": "Construction Manager",
+    "summary": "Oversees day-to-day site execution, contractor management, schedule adherence, quality assurance, safety, and operational budget.",
     "department": "Site Operations",
-    "level": "Senior Management",
-    "name": "Construction Manager",
-    "description": "Oversees day-to-day site execution, contractor management, schedule adherence, quality assurance, safety, and operational budget."
+    "level": "Senior Management"
   },
   "construction-project-manager": {
     "id": "construction-project-manager",
+    "title": "Construction Project Manager",
+    "summary": "Leads overall construction project delivery from tendering to handover, managing cost, time, scope, contracts, stakeholders, and risks.",
     "department": "Project Management",
-    "level": "Executive / Director",
-    "name": "Construction Project Manager",
-    "description": "Leads overall construction project delivery from tendering to handover, managing cost, time, scope, contracts, stakeholders, and risks."
+    "level": "Executive / Director"
   },
   "site-engineer": {
     "id": "site-engineer",
+    "title": "Site / Construction Engineer",
+    "summary": "Directs daily site operations, supervises labor and subcontractors, verifies structural work compliance, and maintains site records.",
     "department": "Site Operations",
-    "level": "Mid-Level",
-    "name": "Site / Construction Engineer",
-    "description": "Directs daily site operations, supervises labor and subcontractors, verifies structural work compliance, and maintains site records."
+    "level": "Mid-Level"
   },
   "planning-scheduling-engineer": {
     "id": "planning-scheduling-engineer",
+    "title": "Planning & Scheduling Engineer",
+    "summary": "Develops and updates CPM schedules in Primavera P6, tracks progress, conducts delay analysis, and generates project control reports.",
     "department": "Project Controls",
-    "level": "Mid-Level",
-    "name": "Planning & Scheduling Engineer",
-    "description": "Develops and updates CPM schedules in Primavera P6, tracks progress, conducts delay analysis, and generates project control reports."
+    "level": "Mid-Level"
   },
   "quantity-surveyor-cost-engineer": {
     "id": "quantity-surveyor-cost-engineer",
+    "title": "Quantity Surveyor / Cost Engineer",
+    "summary": "Responsible for material quantity takeoffs, BOQ preparation, interim valuation certificates, variation pricing, and cost control.",
     "department": "Commercial & Cost",
-    "level": "Mid-Level",
-    "name": "Quantity Surveyor / Cost Engineer",
-    "description": "Responsible for material quantity takeoffs, BOQ preparation, interim valuation certificates, variation pricing, and cost control."
+    "level": "Mid-Level"
   },
   "procurement-contract-engineer": {
     "id": "procurement-contract-engineer",
+    "title": "Procurement & Contract Engineer",
+    "summary": "Manages tender preparation, vendor selection, subcontract negotiation, FIDIC contract administration, and variation processing.",
     "department": "Contracts & Commercial",
-    "level": "Mid-Level",
-    "name": "Procurement & Contract Engineer",
-    "description": "Manages tender preparation, vendor selection, subcontract negotiation, FIDIC contract administration, and variation processing."
+    "level": "Mid-Level"
   },
   "construction-qaqc-engineer": {
     "id": "construction-qaqc-engineer",
+    "title": "Construction QA/QC Engineer",
+    "summary": "Enforces quality plans, conducts field inspections, reviews material submittals, oversees lab testing, and resolves non-conformances.",
     "department": "Quality Management",
-    "level": "Mid-Level",
-    "name": "Construction QA/QC Engineer",
-    "description": "Enforces quality plans, conducts field inspections, reviews material submittals, oversees lab testing, and resolves non-conformances."
+    "level": "Mid-Level"
   },
   "construction-hse-engineer": {
     "id": "construction-hse-engineer",
+    "title": "Construction Health & Safety (HSE) Engineer",
+    "summary": "Establishes site safety protocols, conducts job hazard assessments, issues work permits, and enforces OSHA/ISO 45001 compliance.",
     "department": "HSE",
-    "level": "Mid-Level",
-    "name": "Construction Health & Safety (HSE) Engineer",
-    "description": "Establishes site safety protocols, conducts job hazard assessments, issues work permits, and enforces OSHA/ISO 45001 compliance."
+    "level": "Mid-Level"
   },
   "claims-delay-analyst": {
     "id": "claims-delay-analyst",
+    "title": "Forensic Delay & Claims Analyst",
+    "summary": "Specializes in schedule forensic analysis, delay event quantification, Extension of Time (EOT) claim packages, and dispute resolution.",
     "department": "Commercial & Claims",
-    "level": "Senior / Specialist",
-    "name": "Forensic Delay & Claims Analyst",
-    "description": "Specializes in schedule forensic analysis, delay event quantification, Extension of Time (EOT) claim packages, and dispute resolution."
+    "level": "Senior / Specialist"
   },
   "construction-bim-coordinator": {
     "id": "construction-bim-coordinator",
+    "title": "Digital Construction & BIM Coordinator",
+    "summary": "Coordinates 3D/4D/5D BIM models, manages spatial clash detection, integrates schedules with Navisworks/Synchro, and maintains CDE.",
     "department": "Digital Engineering",
-    "level": "Mid-Level",
-    "name": "Digital Construction & BIM Coordinator",
-    "description": "Coordinates 3D/4D/5D BIM models, manages spatial clash detection, integrates schedules with Navisworks/Synchro, and maintains CDE."
+    "level": "Mid-Level"
   },
   "municipal-engineer": {
     "id": "municipal-engineer",
+    "title": "Municipal & Urban Infrastructure Engineer",
     "department": "Public Works / Municipal Engineering",
+    "summary": "Engineers responsible for planning, designing, constructing, and maintaining public municipal infrastructure including local roads, drainage, water supply, and public amenities.",
     "responsibilities": [
       "Design urban roads, storm sewers, and public facility infrastructure",
       "Coordinate underground utility works with telecom, power, and gas agencies",
@@ -971,13 +973,13 @@
       "Civil 3D",
       "Urban Drainage",
       "Utility Coordination"
-    ],
-    "name": "Municipal & Urban Infrastructure Engineer",
-    "description": "Engineers responsible for planning, designing, constructing, and maintaining public municipal infrastructure including local roads, drainage, water supply, and public amenities."
+    ]
   },
   "urban-infrastructure-planner": {
     "id": "urban-infrastructure-planner",
+    "title": "Urban Infrastructure Master Planner",
     "department": "Urban Planning & Development Authority",
+    "summary": "Specialists who formulate citywide infrastructure master plans, forecast utility demands, draft capital improvement budgets, and align infrastructure with land-use plans.",
     "responsibilities": [
       "Prepare municipal infrastructure capital improvement plans (CIP)",
       "Assess long-range water, drainage, and waste capacity requirements",
@@ -989,13 +991,13 @@
       "ArcGIS",
       "Demographic Demand Modeling",
       "Capital Improvement Programming"
-    ],
-    "name": "Urban Infrastructure Master Planner",
-    "description": "Specialists who formulate citywide infrastructure master plans, forecast utility demands, draft capital improvement budgets, and align infrastructure with land-use plans."
+    ]
   },
   "utility-coordination-engineer": {
     "id": "utility-coordination-engineer",
+    "title": "Underground Utility & Corridor Coordination Engineer",
     "department": "Utility Management / Right-of-Way",
+    "summary": "Engineers specialized in subsurface utility engineering (SUE), utility mapping, multi-agency clash resolution, and right-of-way corridor allocation.",
     "responsibilities": [
       "Manage ASCE 38 subsurface utility surveys and GPR field investigations",
       "Build 3D subsurface utility CAD corridor models and perform clash audits",
@@ -1007,13 +1009,13 @@
       "Utility Clash Analysis",
       "GPR Survey Interpretation",
       "CAD / GIS Integration"
-    ],
-    "name": "Underground Utility & Corridor Coordination Engineer",
-    "description": "Engineers specialized in subsurface utility engineering (SUE), utility mapping, multi-agency clash resolution, and right-of-way corridor allocation."
+    ]
   },
   "municipal-asset-manager": {
     "id": "municipal-asset-manager",
+    "title": "Municipal Infrastructure Asset Manager",
     "department": "Asset Management & Operations",
+    "summary": "Professionals who oversee municipal asset registers, establish ISO 55000 asset management frameworks, execute condition audits, and plan capital renewals.",
     "responsibilities": [
       "Maintain municipal GIS asset register for roads, drains, and utilities",
       "Develop asset decay curves and condition rating inspection standards",
@@ -1025,13 +1027,13 @@
       "Infrastructure Asset Management",
       "Condition Rating Audits",
       "Life Cycle Costing"
-    ],
-    "name": "Municipal Infrastructure Asset Manager",
-    "description": "Professionals who oversee municipal asset registers, establish ISO 55000 asset management frameworks, execute condition audits, and plan capital renewals."
+    ]
   },
   "municipal-gis-specialist": {
     "id": "municipal-gis-specialist",
+    "title": "Municipal GIS & Urban Spatial Data Specialist",
     "department": "GIS & Information Technology",
+    "summary": "Experts in designing, deploying, and maintaining enterprise spatial data infrastructure (SDI), utility geodatabases, and municipal web maps.",
     "responsibilities": [
       "Manage citywide enterprise GIS database for land parcels, roads, and utilities",
       "Develop mobile GIS applications for field inspector asset data entry",
@@ -1043,13 +1045,13 @@
       "QGIS",
       "Enterprise Geodatabase",
       "Web GIS & Python"
-    ],
-    "name": "Municipal GIS & Urban Spatial Data Specialist",
-    "description": "Experts in designing, deploying, and maintaining enterprise spatial data infrastructure (SDI), utility geodatabases, and municipal web maps."
+    ]
   },
   "smart-city-infrastructure-engineer": {
     "id": "smart-city-infrastructure-engineer",
+    "title": "Smart City & Connected Infrastructure Engineer",
     "department": "Smart Infrastructure & Innovation",
+    "summary": "Engineers who integrate IoT sensors, smart street lighting networks, automated telemetry, and digital twins into municipal infrastructure operations.",
     "responsibilities": [
       "Design smart street lighting mesh communication networks and sensors",
       "Deploy IoT water level and flow telemetry sensors across storm drains",
@@ -1061,13 +1063,13 @@
       "Smart Infrastructure",
       "Urban Telemetry",
       "SCADA & Web Dashboards"
-    ],
-    "name": "Smart City & Connected Infrastructure Engineer",
-    "description": "Engineers who integrate IoT sensors, smart street lighting networks, automated telemetry, and digital twins into municipal infrastructure operations."
+    ]
   },
   "urban-resilience-engineer": {
     "id": "urban-resilience-engineer",
+    "title": "Urban Resilience & Climate Adaptation Engineer",
     "department": "Resilience & Environment",
+    "summary": "Specialists who design climate-adapted urban infrastructure, sponge city drainage systems, urban heat mitigation, and disaster backup utilities.",
     "responsibilities": [
       "Conduct urban climate risk and flood vulnerability spatial mapping",
       "Design nature-based solutions including bioswales, rain gardens, and wetlands",
@@ -1079,108 +1081,108 @@
       "Sponge City / SUDS",
       "Nature-Based Solutions",
       "Urban Flood Resilience"
-    ],
-    "name": "Urban Resilience & Climate Adaptation Engineer",
-    "description": "Specialists who design climate-adapted urban infrastructure, sponge city drainage systems, urban heat mitigation, and disaster backup utilities."
+    ]
   },
   "coastal-engineer": {
     "id": "coastal-engineer",
+    "title": "Coastal Engineer",
     "category": "Coastal Engineering",
-    "name": "Coastal Engineer",
-    "description": "Specialist civil engineer designing coastal protection structures, analyzing wave dynamics, and managing shoreline processes."
+    "summary": "Specialist civil engineer designing coastal protection structures, analyzing wave dynamics, and managing shoreline processes."
   },
   "port-harbor-engineer": {
     "id": "port-harbor-engineer",
+    "title": "Port & Harbor Civil Engineer",
     "category": "Coastal Engineering",
-    "name": "Port & Harbor Civil Engineer",
-    "description": "Civil engineer specializing in port master planning, quay wall structural engineering, jetties, berthing dolphins, and harbor layouts."
+    "summary": "Civil engineer specializing in port master planning, quay wall structural engineering, jetties, berthing dolphins, and harbor layouts."
   },
   "dredging-navigation-engineer": {
     "id": "dredging-navigation-engineer",
+    "title": "Dredging & Navigation Engineer",
     "category": "Coastal Engineering",
-    "name": "Dredging & Navigation Engineer",
-    "description": "Maritime engineer managing navigation channel design, capital dredging projects, dredger fleet selection, and spoil management."
+    "summary": "Maritime engineer managing navigation channel design, capital dredging projects, dredger fleet selection, and spoil management."
   },
   "coastal-modelling-engineer": {
     "id": "coastal-modelling-engineer",
+    "title": "Coastal Hydrodynamic & Wave Modelling Specialist",
     "category": "Coastal Engineering",
-    "name": "Coastal Hydrodynamic & Wave Modelling Specialist",
-    "description": "Specialist engineer creating 2D/3D numerical models of coastal currents, wave transformation, storm surge, and sediment transport."
+    "summary": "Specialist engineer creating 2D/3D numerical models of coastal currents, wave transformation, storm surge, and sediment transport."
   },
   "coastal-protection-engineer": {
     "id": "coastal-protection-engineer",
+    "title": "Coastal Protection & Revetment Engineer",
     "category": "Coastal Engineering",
-    "name": "Coastal Protection & Revetment Engineer",
-    "description": "Engineer dedicated to designing breakwaters, revetments, seawalls, coastal dikes, and beach nourishment protection systems."
+    "summary": "Engineer dedicated to designing breakwaters, revetments, seawalls, coastal dikes, and beach nourishment protection systems."
   },
   "coastal-resilience-specialist": {
     "id": "coastal-resilience-specialist",
+    "title": "Coastal Resilience & Climate Adaptation Specialist",
     "category": "Coastal Engineering",
-    "name": "Coastal Resilience & Climate Adaptation Specialist",
-    "description": "Specialist evaluating sea level rise vulnerabilities, designing nature-based shoreline defenses, and implementing adaptive coastal plans."
+    "summary": "Specialist evaluating sea level rise vulnerabilities, designing nature-based shoreline defenses, and implementing adaptive coastal plans."
   },
   "river-hydraulics-engineer": {
     "id": "river-hydraulics-engineer",
+    "title": "River Hydraulics & Open Channel Engineer",
+    "summary": "Specialist responsible for open channel flow calculations, backwater profiling, energy dissipation design, and river channel hydraulic sizing.",
     "category": "River Engineering",
     "tags": [
       "River Hydraulics",
       "Open Channel",
       "Flow Analysis",
       "Manning"
-    ],
-    "name": "River Hydraulics & Open Channel Engineer",
-    "description": "Specialist responsible for open channel flow calculations, backwater profiling, energy dissipation design, and river channel hydraulic sizing."
+    ]
   },
   "river-morphology-specialist": {
     "id": "river-morphology-specialist",
+    "title": "River Morphology & Fluvial Geomorphologist",
+    "summary": "Expert analyzing river planform changes, meander migration rates, bed aggradation/degradation, and long-term river stability.",
     "category": "Fluvial Science",
     "tags": [
       "River Morphology",
       "Fluvial Geomorphology",
       "Meander",
       "Sediment"
-    ],
-    "name": "River Morphology & Fluvial Geomorphologist",
-    "description": "Expert analyzing river planform changes, meander migration rates, bed aggradation/degradation, and long-term river stability."
+    ]
   },
   "riverbank-protection-engineer": {
     "id": "riverbank-protection-engineer",
+    "title": "Riverbank Protection & Revetment Engineer",
+    "summary": "Professional specializing in geobag revetments, CC block mattresses, slope stability, launching aprons, and erosion hotspot protection.",
     "category": "Structural River Engineering",
     "tags": [
       "Bank Protection",
       "Revetment",
       "Geobags",
       "Launching Apron"
-    ],
-    "name": "Riverbank Protection & Revetment Engineer",
-    "description": "Professional specializing in geobag revetments, CC block mattresses, slope stability, launching aprons, and erosion hotspot protection."
+    ]
   },
   "river-training-engineer": {
     "id": "river-training-engineer",
+    "title": "River Training & Channel Stabilization Engineer",
+    "summary": "Specialist designing groynes, spurs, guide bunds, porcupine screens, and channel alignment schemes for river training.",
     "category": "River Engineering",
     "tags": [
       "River Training",
       "Groynes",
       "Spurs",
       "Guide Bunds"
-    ],
-    "name": "River Training & Channel Stabilization Engineer",
-    "description": "Specialist designing groynes, spurs, guide bunds, porcupine screens, and channel alignment schemes for river training."
+    ]
   },
   "bridge-hydraulics-scour-engineer": {
     "id": "bridge-hydraulics-scour-engineer",
+    "title": "Bridge Hydraulics & Scour Specialist",
+    "summary": "Engineer computing waterway opening clearances, bridge afflux, pier/contraction scour depths, and designing scour countermeasures.",
     "category": "Bridge & Infrastructure",
     "tags": [
       "Bridge Scour",
       "Pier Scour",
       "HEC-18",
       "Afflux"
-    ],
-    "name": "Bridge Hydraulics & Scour Specialist",
-    "description": "Engineer computing waterway opening clearances, bridge afflux, pier/contraction scour depths, and designing scour countermeasures."
+    ]
   },
   "inland-waterway-engineer": {
     "id": "inland-waterway-engineer",
+    "title": "Inland Waterway & Dredging Engineer",
+    "summary": "Professional managing navigation fairway design, draft clearance maintenance, vessel turning basins, and river dredging operations.",
     "category": "Waterway Transport",
     "tags": [
       "Inland Waterway",
@@ -1188,96 +1190,96 @@
       "Dredging",
       "BIWTA",
       "PIANC"
-    ],
-    "name": "Inland Waterway & Dredging Engineer",
-    "description": "Professional managing navigation fairway design, draft clearance maintenance, vessel turning basins, and river dredging operations."
+    ]
   },
   "river-restoration-engineer": {
     "id": "river-restoration-engineer",
+    "title": "River Restoration & Bioengineering Specialist",
+    "summary": "Practitioner implementing nature-based bank protection, riparian habitat restoration, fish passes, and environmental flow regimes.",
     "category": "Eco-Hydraulics",
     "tags": [
       "River Restoration",
       "Bioengineering",
       "Eco-Hydraulics",
       "E-Flows"
-    ],
-    "name": "River Restoration & Bioengineering Specialist",
-    "description": "Practitioner implementing nature-based bank protection, riparian habitat restoration, fish passes, and environmental flow regimes."
+    ]
   },
   "river-basin-engineer": {
     "id": "river-basin-engineer",
+    "title": "River Basin Master Planner & IWRM Specialist",
+    "summary": "Senior consultant leading integrated river basin water resources planning, transboundary river agreements, and basin-wide flood strategies.",
     "category": "Basin Governance",
     "tags": [
       "River Basin",
       "IWRM",
       "Transboundary Water",
       "Master Planning"
-    ],
-    "name": "River Basin Master Planner & IWRM Specialist",
-    "description": "Senior consultant leading integrated river basin water resources planning, transboundary river agreements, and basin-wide flood strategies."
+    ]
   },
   "land-surveyor": {
     "id": "land-surveyor",
+    "title": "Professional Land Surveyor",
+    "summary": "Executes boundary demarcation, parcel mapping, land subdivision, property records, and cadastral field surveys.",
     "department": "Geomatics & Land Administration",
     "tags": [
       "Land Surveyor",
       "Cadastral",
       "Boundary",
       "Field Survey"
-    ],
-    "name": "Professional Land Surveyor",
-    "description": "Executes boundary demarcation, parcel mapping, land subdivision, property records, and cadastral field surveys."
+    ]
   },
   "engineering-surveyor": {
     "id": "engineering-surveyor",
+    "title": "Engineering & Alignment Surveyor",
+    "summary": "Specializes in site topography, road route alignment, civil infrastructure control networks, and volume measurements.",
     "department": "Civil Infrastructure Engineering",
     "tags": [
       "Engineering Surveyor",
       "Alignment",
       "Civil 3D",
       "Setting Out"
-    ],
-    "name": "Engineering & Alignment Surveyor",
-    "description": "Specializes in site topography, road route alignment, civil infrastructure control networks, and volume measurements."
+    ]
   },
   "construction-surveyor": {
     "id": "construction-surveyor",
+    "title": "Construction Layout & Staking Surveyor",
+    "summary": "Responsible for building grid setting out, foundation positioning, structural alignment, and as-built verification on site.",
     "department": "Construction Management",
     "tags": [
       "Construction Surveyor",
       "Setting Out",
       "Staking",
       "As-Built"
-    ],
-    "name": "Construction Layout & Staking Surveyor",
-    "description": "Responsible for building grid setting out, foundation positioning, structural alignment, and as-built verification on site."
+    ]
   },
   "geodetic-surveyor": {
     "id": "geodetic-surveyor",
+    "title": "Geodetic Survey Engineer / Geodesist",
+    "summary": "Establishes primary national/regional geodetic control networks, datum transformations, CORS management, and high-precision positioning.",
     "department": "Geodesy & Satellite Positioning",
     "tags": [
       "Geodesist",
       "Geodetic Control",
       "GNSS",
       "CORS"
-    ],
-    "name": "Geodetic Survey Engineer / Geodesist",
-    "description": "Establishes primary national/regional geodetic control networks, datum transformations, CORS management, and high-precision positioning."
+    ]
   },
   "geomatics-engineer": {
     "id": "geomatics-engineer",
+    "title": "Geomatics Engineer",
+    "summary": "Combines surveying engineering, spatial data processing, GIS, remote sensing, and 3D reality capture into integrated civil solutions.",
     "department": "Geomatics Engineering",
     "tags": [
       "Geomatics Engineer",
       "GIS",
       "Surveying",
       "Remote Sensing"
-    ],
-    "name": "Geomatics Engineer",
-    "description": "Combines surveying engineering, spatial data processing, GIS, remote sensing, and 3D reality capture into integrated civil solutions."
+    ]
   },
   "gis-engineer-analyst": {
     "id": "gis-engineer-analyst",
+    "title": "GIS Engineer / Spatial Analyst",
+    "summary": "Develops geodatabases, performs spatial overlay and network analytics, builds Web GIS web apps, and manages enterprise GIS systems.",
     "department": "GIS & Spatial Analytics",
     "tags": [
       "GIS Engineer",
@@ -1285,12 +1287,12 @@
       "QGIS",
       "PostGIS",
       "Web GIS"
-    ],
-    "name": "GIS Engineer / Spatial Analyst",
-    "description": "Develops geodatabases, performs spatial overlay and network analytics, builds Web GIS web apps, and manages enterprise GIS systems."
+    ]
   },
   "remote-sensing-specialist": {
     "id": "remote-sensing-specialist",
+    "title": "Remote Sensing & Earth Observation Specialist",
+    "summary": "Analyzes satellite multispectral/radar imagery, conducts land cover classification, environmental monitoring, and change detection.",
     "department": "Remote Sensing & Space Applications",
     "tags": [
       "Remote Sensing",
@@ -1298,12 +1300,12 @@
       "SAR",
       "ENVI",
       "SPARRSO"
-    ],
-    "name": "Remote Sensing & Earth Observation Specialist",
-    "description": "Analyzes satellite multispectral/radar imagery, conducts land cover classification, environmental monitoring, and change detection."
+    ]
   },
   "photogrammetrist-uav-specialist": {
     "id": "photogrammetrist-uav-specialist",
+    "title": "Photogrammetrist & UAV Drone Mapping Specialist",
+    "summary": "Plans drone survey flights, processes aerial photography, generates orthomosaics, point clouds, and DTMs for engineering projects.",
     "department": "Photogrammetry & UAV Mapping",
     "tags": [
       "Photogrammetrist",
@@ -1311,36 +1313,36 @@
       "Drone Mapping",
       "Pix4D",
       "Metashape"
-    ],
-    "name": "Photogrammetrist & UAV Drone Mapping Specialist",
-    "description": "Plans drone survey flights, processes aerial photography, generates orthomosaics, point clouds, and DTMs for engineering projects."
+    ]
   },
   "hydrographic-surveyor": {
     "id": "hydrographic-surveyor",
+    "title": "Hydrographic & Bathymetric Surveyor",
+    "summary": "Executes offshore, river, and harbor bathymetric surveys using multibeam echosounders, acoustic positioning, and nautical charting tools.",
     "department": "Hydrographic & Coastal Engineering",
     "tags": [
       "Hydrographic Surveyor",
       "Bathymetry",
       "Multibeam",
       "HYPACK"
-    ],
-    "name": "Hydrographic & Bathymetric Surveyor",
-    "description": "Executes offshore, river, and harbor bathymetric surveys using multibeam echosounders, acoustic positioning, and nautical charting tools."
+    ]
   },
   "lidar-point-cloud-specialist": {
     "id": "lidar-point-cloud-specialist",
+    "title": "LiDAR & 3D Point Cloud Processing Specialist",
+    "summary": "Processes airborne, terrestrial, and mobile laser scan data, performs ground classification, and converts point clouds to BIM geometry.",
     "department": "3D Reality Capture & LiDAR",
     "tags": [
       "LiDAR Specialist",
       "Point Cloud",
       "Scan-to-BIM",
       "Laser Scanning"
-    ],
-    "name": "LiDAR & 3D Point Cloud Processing Specialist",
-    "description": "Processes airborne, terrestrial, and mobile laser scan data, performs ground classification, and converts point clouds to BIM geometry."
+    ]
   },
   "geospatial-data-scientist-ai": {
     "id": "geospatial-data-scientist-ai",
+    "title": "Geospatial Data Scientist / GeoAI Engineer",
+    "summary": "Applies machine learning, computer vision, and spatial statistics to automatically analyze large satellite, drone, and vector spatial datasets.",
     "department": "Spatial Data Science & AI",
     "tags": [
       "GeoAI",
@@ -1348,12 +1350,12 @@
       "Machine Learning",
       "Python",
       "Computer Vision"
-    ],
-    "name": "Geospatial Data Scientist / GeoAI Engineer",
-    "description": "Applies machine learning, computer vision, and spatial statistics to automatically analyze large satellite, drone, and vector spatial datasets."
+    ]
   },
   "geospatial-digital-twin-engineer": {
     "id": "geospatial-digital-twin-engineer",
+    "title": "Geospatial Digital Twin & Smart Cities Specialist",
+    "summary": "Builds integrated 3D BIM-GIS city platforms, real-time spatial dashboards, and digital twin environments for infrastructure asset management.",
     "department": "Digital Twin & Smart Cities",
     "tags": [
       "Digital Twin",
@@ -1361,24 +1363,24 @@
       "Smart Cities",
       "Cesium",
       "3D GIS"
-    ],
-    "name": "Geospatial Digital Twin & Smart Cities Specialist",
-    "description": "Builds integrated 3D BIM-GIS city platforms, real-time spatial dashboards, and digital twin environments for infrastructure asset management."
+    ]
   },
   "bridge-engineer": {
     "id": "bridge-engineer",
+    "title": "Bridge Engineer",
+    "summary": "Civil engineer specializing in the planning, design, analysis, construction, and maintenance of bridge structures.",
     "department": "Bridge Engineering",
     "category": "Engineering Practice",
     "tags": [
       "Bridge Engineer",
       "Civil Engineering",
       "Structural Design"
-    ],
-    "name": "Bridge Engineer",
-    "description": "Civil engineer specializing in the planning, design, analysis, construction, and maintenance of bridge structures."
+    ]
   },
   "bridge-design-engineer": {
     "id": "bridge-design-engineer",
+    "title": "Bridge Design Specialist",
+    "summary": "Structural engineer focused on superstructure, substructure, and foundation design calculations for bridges.",
     "department": "Bridge Structural Design",
     "category": "Engineering Practice",
     "tags": [
@@ -1386,12 +1388,12 @@
       "AASHTO LRFD",
       "Superstructure",
       "Substructure"
-    ],
-    "name": "Bridge Design Specialist",
-    "description": "Structural engineer focused on superstructure, substructure, and foundation design calculations for bridges."
+    ]
   },
   "bridge-construction-engineer": {
     "id": "bridge-construction-engineer",
+    "title": "Bridge Construction Engineer",
+    "summary": "Site engineer responsible for managing bridge construction, temporary works, segment erection, and QA/QC.",
     "department": "Bridge Construction",
     "category": "Construction Management",
     "tags": [
@@ -1399,12 +1401,12 @@
       "Erection",
       "Falsework",
       "QA/QC"
-    ],
-    "name": "Bridge Construction Engineer",
-    "description": "Site engineer responsible for managing bridge construction, temporary works, segment erection, and QA/QC."
+    ]
   },
   "bridge-inspection-engineer": {
     "id": "bridge-inspection-engineer",
+    "title": "Bridge Inspection Engineer",
+    "summary": "Certified engineer conducting field condition assessments, non-destructive testing, and defect logging on bridges.",
     "department": "Bridge Asset Management",
     "category": "Inspection & Maintenance",
     "tags": [
@@ -1412,12 +1414,12 @@
       "Condition Rating",
       "NDT",
       "Defect Mapping"
-    ],
-    "name": "Bridge Inspection Engineer",
-    "description": "Certified engineer conducting field condition assessments, non-destructive testing, and defect logging on bridges."
+    ]
   },
   "bridge-rehabilitation-engineer": {
     "id": "bridge-rehabilitation-engineer",
+    "title": "Bridge Rehabilitation & Repair Engineer",
+    "summary": "Specialist in structural repair, FRP strengthening, load rating, and retrofitting aging bridge assets.",
     "department": "Bridge Maintenance",
     "category": "Rehabilitation & Repair",
     "tags": [
@@ -1425,24 +1427,24 @@
       "FRP Strengthening",
       "Load Rating",
       "Repair"
-    ],
-    "name": "Bridge Rehabilitation & Repair Engineer",
-    "description": "Specialist in structural repair, FRP strengthening, load rating, and retrofitting aging bridge assets."
+    ]
   },
   "bridge-seismic-engineer": {
     "id": "bridge-seismic-engineer",
+    "title": "Bridge Seismic Engineer",
+    "summary": "Specialist in earthquake-resistant design, dynamic response analysis, and seismic isolation for bridges.",
     "department": "Seismic & Structural Dynamics",
     "category": "Engineering Practice",
     "tags": [
       "Bridge Seismic",
       "Seismic Isolation",
       "Dynamic Analysis"
-    ],
-    "name": "Bridge Seismic Engineer",
-    "description": "Specialist in earthquake-resistant design, dynamic response analysis, and seismic isolation for bridges."
+    ]
   },
   "bridge-bim-modelling-engineer": {
     "id": "bridge-bim-modelling-engineer",
+    "title": "Bridge BIM & Digital Engineer",
+    "summary": "Digital engineering specialist creating parametric 3D bridge models, rebar detailing, and scan-to-BIM digital twins.",
     "department": "Digital Engineering",
     "category": "BIM & Digital Engineering",
     "tags": [
@@ -1450,12 +1452,12 @@
       "OpenBridge",
       "Revit",
       "Digital Twin"
-    ],
-    "name": "Bridge BIM & Digital Engineer",
-    "description": "Digital engineering specialist creating parametric 3D bridge models, rebar detailing, and scan-to-BIM digital twins."
+    ]
   },
   "structural-health-monitoring-engineer": {
     "id": "structural-health-monitoring-engineer",
+    "title": "Structural Health Monitoring (SHM) Engineer",
+    "summary": "Specialist in sensor networks, telemetry, vibration/strain monitoring, and health assessment of major bridges.",
     "department": "Digital Engineering & Monitoring",
     "category": "Engineering Practice",
     "tags": [
@@ -1463,12 +1465,12 @@
       "Sensor Networks",
       "Vibration Monitoring",
       "Telemetry"
-    ],
-    "name": "Structural Health Monitoring (SHM) Engineer",
-    "description": "Specialist in sensor networks, telemetry, vibration/strain monitoring, and health assessment of major bridges."
+    ]
   },
   "bridge-asset-manager": {
     "id": "bridge-asset-manager",
+    "title": "Bridge Asset Manager",
+    "summary": "Infrastructure manager overseeing bridge databases, life-cycle prioritization, maintenance budgets, and risk strategies.",
     "department": "Infrastructure Asset Management",
     "category": "Management",
     "tags": [
@@ -1476,9 +1478,7 @@
       "BMS",
       "LCCA",
       "Resilience"
-    ],
-    "name": "Bridge Asset Manager",
-    "description": "Infrastructure manager overseeing bridge databases, life-cycle prioritization, maintenance budgets, and risk strategies."
+    ]
   },
   "tunnel-engineer": {
     "id": "tunnel-engineer",
@@ -1675,23 +1675,23 @@
   },
   "municipal-water-engineer": {
     "id": "municipal-water-engineer",
-    "description": "Designs and manages municipal water distribution networks, pressure zones, pumping stations, and DMA water loss reduction.",
-    "name": "Municipal Water Supply Engineer"
+    "title": "Municipal Water Supply Engineer",
+    "description": "Designs and manages municipal water distribution networks, pressure zones, pumping stations, and DMA water loss reduction."
   },
   "urban-drainage-engineer": {
     "id": "urban-drainage-engineer",
-    "description": "Engineers urban storm drainage channels, culverts, detention ponds, and hydrodynamic flood mitigation systems.",
-    "name": "Urban Drainage & Stormwater Engineer"
+    "title": "Urban Drainage & Stormwater Engineer",
+    "description": "Engineers urban storm drainage channels, culverts, detention ponds, and hydrodynamic flood mitigation systems."
   },
   "sewerage-engineer": {
     "id": "sewerage-engineer",
-    "description": "Designs municipal gravity sewers, lift stations, force mains, and decentralized wastewater collection infrastructure.",
-    "name": "Sewerage & Sanitation Engineer"
+    "title": "Sewerage & Sanitation Engineer",
+    "description": "Designs municipal gravity sewers, lift stations, force mains, and decentralized wastewater collection infrastructure."
   },
   "infrastructure-project-manager": {
     "id": "infrastructure-project-manager",
-    "description": "Oversees public works construction contracts, budget execution, multi-stakeholder coordination, and municipal project delivery.",
-    "name": "Municipal Infrastructure Project Manager"
+    "title": "Municipal Infrastructure Project Manager",
+    "description": "Oversees public works construction contracts, budget execution, multi-stakeholder coordination, and municipal project delivery."
   },
   "infrastructure-planning-engineer": {
     "id": "infrastructure-planning-engineer",
@@ -1874,46 +1874,39 @@
     ]
   },
   "flexible-pavement-design-engineer": {
-    "category": "Civil Engineering",
-    "name": "Flexible Pavement Design Engineer",
-    "description": "Specialist responsible for structural design, asphalt layer optimization, subgrade evaluation, and empirical/ME design for asphalt pavements.",
-    "id": "flexible-pavement-design-engineer"
+    "title": "Flexible Pavement Design Engineer",
+    "summary": "Specialist responsible for structural design, asphalt layer optimization, subgrade evaluation, and empirical/ME design for asphalt pavements.",
+    "category": "Civil Engineering"
   },
   "rigid-pavement-specialist": {
-    "category": "Civil Engineering",
-    "name": "Rigid Concrete Pavement Specialist",
-    "description": "Engineer focused on jointed concrete pavement and CRCP slab thickness, joint sealant design, load transfer dowel bars, and concrete materials.",
-    "id": "rigid-pavement-specialist"
+    "title": "Rigid Concrete Pavement Specialist",
+    "summary": "Engineer focused on jointed concrete pavement and CRCP slab thickness, joint sealant design, load transfer dowel bars, and concrete materials.",
+    "category": "Civil Engineering"
   },
   "pavement-materials-engineer": {
-    "category": "Civil & Materials Engineering",
-    "name": "Pavement Materials & Mix Design Engineer",
-    "description": "Engineer leading laboratory testing of asphalt binders, aggregates, concrete mixes, subgrade soils, and Superpave mix design compliance.",
-    "id": "pavement-materials-engineer"
+    "title": "Pavement Materials & Mix Design Engineer",
+    "summary": "Engineer leading laboratory testing of asphalt binders, aggregates, concrete mixes, subgrade soils, and Superpave mix design compliance.",
+    "category": "Civil & Materials Engineering"
   },
   "asphalt-technology-specialist": {
-    "category": "Pavement & Materials Engineering",
-    "name": "Asphalt Paving & Bituminous Technology Specialist",
-    "description": "Expert specializing in hot mix asphalt production, polymer modification, warm mix technologies, RAP recycling, and paving laydown QA/QC.",
-    "id": "asphalt-technology-specialist"
+    "title": "Asphalt Paving & Bituminous Technology Specialist",
+    "summary": "Expert specializing in hot mix asphalt production, polymer modification, warm mix technologies, RAP recycling, and paving laydown QA/QC.",
+    "category": "Pavement & Materials Engineering"
   },
   "pavement-evaluation-fwd-engineer": {
-    "category": "Civil Engineering",
-    "name": "Pavement Evaluation & Structural Testing Engineer",
-    "description": "Field engineer specializing in Falling Weight Deflectometer (FWD) testing, backcalculation, pavement profile indexing (IRI), and PCI survey management.",
-    "id": "pavement-evaluation-fwd-engineer"
+    "title": "Pavement Evaluation & Structural Testing Engineer",
+    "summary": "Field engineer specializing in Falling Weight Deflectometer (FWD) testing, backcalculation, pavement profile indexing (IRI), and PCI survey management.",
+    "category": "Civil Engineering"
   },
   "pavement-asset-management-engineer": {
-    "category": "Infrastructure Management",
-    "name": "Pavement Asset Management & PMS Engineer",
-    "description": "Engineer responsible for managing network pavement databases, HDM-4 deterioration modeling, remaining service life analysis, and multi-year maintenance budgeting.",
-    "id": "pavement-asset-management-engineer"
+    "title": "Pavement Asset Management & PMS Engineer",
+    "summary": "Engineer responsible for managing network pavement databases, HDM-4 deterioration modeling, remaining service life analysis, and multi-year maintenance budgeting.",
+    "category": "Infrastructure Management"
   },
   "road-maintenance-rehabilitation-engineer": {
-    "category": "Civil Engineering",
-    "name": "Road Maintenance & Pavement Rehabilitation Engineer",
-    "description": "Engineer directing pavement resurfacing, asphalt overlays, crack sealing, pavement recycling, and structural retrofitting of aging road networks.",
-    "id": "road-maintenance-rehabilitation-engineer"
+    "title": "Road Maintenance & Pavement Rehabilitation Engineer",
+    "summary": "Engineer directing pavement resurfacing, asphalt overlays, crack sealing, pavement recycling, and structural retrofitting of aging road networks.",
+    "category": "Civil Engineering"
   },
   "seismic-engineer": {
     "id": "seismic-engineer",
@@ -2304,6 +2297,746 @@
       "Consulting",
       "Disaster Risk",
       "Advisory"
+    ]
+  },
+  "construction-engineer": {
+    "id": "construction-engineer",
+    "name": "Construction Engineer",
+    "description": "Professional engineer managing field operations, temporary works, construction methods, and technical compliance on site.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Interpret design drawings and review constructability on site",
+      "Draft construction method statements and temporary works schemes",
+      "Supervise field construction activities and verify tolerance compliance",
+      "Coordinate with client consultants, subcontractors, and material vendors"
+    ],
+    "tags": [
+      "Civil Engineering",
+      "Construction",
+      "Site Operations",
+      "Engineering"
+    ]
+  },
+  "project-controls-manager": {
+    "id": "project-controls-manager",
+    "name": "Project Controls Manager",
+    "description": "Senior manager responsible for integrated scheduling, cost control, Earned Value Management, risk modeling, and executive project governance.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Establish project performance measurement baselines (P6 / EVM)",
+      "Oversee monthly cost variance analysis and schedule delay diagnostics",
+      "Manage quantitative risk simulations and contingency allocations",
+      "Deliver executive status dashboards and forecasting to project directors"
+    ],
+    "tags": [
+      "Project Controls",
+      "EVM",
+      "Cost Control",
+      "Primavera P6",
+      "Governance"
+    ]
+  },
+  "project-controls-engineer": {
+    "id": "project-controls-engineer",
+    "name": "Project Controls Engineer",
+    "description": "Engineer specializing in tracking physical progress, calculating earned value metrics, monitoring cost commitments, and updating progress S-curves.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Maintain integrated cost and schedule baseline models",
+      "Calculate monthly CPI, SPI, CV, SV, and estimate at completion (EAC)",
+      "Analyze subcontractor progress claims and verify installed quantities",
+      "Build automated Power BI progress dashboards"
+    ],
+    "tags": [
+      "Project Controls",
+      "EVM",
+      "Scheduling",
+      "Cost Control",
+      "Power BI"
+    ]
+  },
+  "cost-engineer": {
+    "id": "cost-engineer",
+    "name": "Cost Engineer",
+    "description": "Professional engineer focused on capital project cost estimation, budgeting, commitment tracking, and cost forecasting.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Build detailed unit-rate cost estimates for civil and structural packages",
+      "Track project commitments, cash flow outlays, and cost variances",
+      "Perform rate analysis and price project change orders",
+      "Develop project lifecycle cost models and cost closure reconciliations"
+    ],
+    "tags": [
+      "Cost Engineering",
+      "Estimating",
+      "Budgeting",
+      "Cash Flow"
+    ]
+  },
+  "estimation-engineer": {
+    "id": "estimation-engineer",
+    "name": "Estimation Engineer",
+    "description": "Tender engineer responsible for quantity takeoff, unit rate buildup, subcontractor quote evaluation, and tender bid preparation.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Extract 2D/3D quantities from blueprints using CostX and Bluebeam",
+      "Calculate direct and indirect costs, preliminaries, and plant rates",
+      "Solicit quotations from material suppliers and specialist subcontractors",
+      "Prepare tender submission documents and pricing schedules"
+    ],
+    "tags": [
+      "Estimation",
+      "Tendering",
+      "Quantity Takeoff",
+      "CostX",
+      "Bidding"
+    ]
+  },
+  "quantity-surveyor": {
+    "id": "quantity-surveyor",
+    "name": "Quantity Surveyor (QS)",
+    "description": "Commercial professional managing construction contract sums, measurement, interim valuations, change orders, and final accounts.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Prepare itemized Bills of Quantities (BOQ) adhering to CESMM4/NRM2",
+      "Conduct joint site measurements and certify monthly interim payments",
+      "Value variation change orders and negotiate claim settlements",
+      "Prepare final accounts and negotiate commercial contract closeout"
+    ],
+    "tags": [
+      "Quantity Surveying",
+      "BOQ",
+      "Interim Valuation",
+      "Commercial",
+      "RICS"
+    ]
+  },
+  "senior-quantity-surveyor": {
+    "id": "senior-quantity-surveyor",
+    "name": "Senior Quantity Surveyor (SQS)",
+    "description": "Senior commercial lead overseeing procurement strategy, major subcontract packages, dispute avoidance, and overall project profitability.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Lead project commercial team and enforce procurement governance",
+      "Draft customized subcontract agreements and manage contractual notices",
+      "Oversee high-value variation negotiations and EOT claim quantum",
+      "Report monthly project cost-value reconciliation (CVR) to board executives"
+    ],
+    "tags": [
+      "Senior QS",
+      "Commercial Management",
+      "Procurement",
+      "CVR",
+      "RICS"
+    ]
+  },
+  "contract-administrator": {
+    "id": "contract-administrator",
+    "name": "Contract Administrator",
+    "description": "Specialist managing the formal administration of construction contracts, correspondence, instructions, and contractual compliance.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Administer FIDIC / NEC / PPR contract clauses and official communications",
+      "Track compliance with contractual time bars and notice requirements",
+      "Process engineer instructions, variation requests, and payment certificates",
+      "Maintain comprehensive contemporaneous records for risk mitigation"
+    ],
+    "tags": [
+      "Contract Administration",
+      "FIDIC",
+      "NEC",
+      "PPR",
+      "Legal"
+    ]
+  },
+  "contracts-manager": {
+    "id": "contracts-manager",
+    "name": "Contracts Manager",
+    "description": "Senior executive managing the legal and commercial lifecycle of major infrastructure contracts, risk strategy, and dispute resolution.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Formulate contract terms, conditions of subcontract, and joint venture pacts",
+      "Direct the defense and prosecution of time extension and quantum claims",
+      "Represent organization in DAAB hearings, mediation, and arbitration",
+      "Oversee contract risk reviews across all operational business units"
+    ],
+    "tags": [
+      "Contracts Manager",
+      "FIDIC",
+      "Dispute Resolution",
+      "Arbitration",
+      "Claims"
+    ]
+  },
+  "procurement-engineer": {
+    "id": "procurement-engineer",
+    "name": "Procurement Engineer",
+    "description": "Engineer managing supplier prequalification, material requisition packages, commercial negotiations, and delivery expediting.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Source and evaluate vendors for construction materials and equipment",
+      "Issue requests for quotations (RFQ) and prepare commercial bid comparisons",
+      "Negotiate purchase order terms, payment milestones, and warranty conditions",
+      "Expedite vendor manufacturing and coordinate factory acceptance testing"
+    ],
+    "tags": [
+      "Procurement",
+      "Supply Chain",
+      "Vendor Management",
+      "RFQ",
+      "Commercial"
+    ]
+  },
+  "claims-consultant": {
+    "id": "claims-consultant",
+    "name": "Construction Claims Consultant",
+    "description": "Specialist consultant providing independent forensic delay analysis, loss and expense quantum calculations, and expert dispute testimony.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct retrospective critical path delay analysis following SCL Protocol",
+      "Quantify disruption, unabsorbed overheads, and acceleration costs",
+      "Draft comprehensive claim narratives and expert rebuttal reports",
+      "Provide technical and quantum expert witness support in arbitration"
+    ],
+    "tags": [
+      "Claims Consultant",
+      "Delay Analysis",
+      "Quantum",
+      "SCL Protocol",
+      "Expert Witness"
+    ]
+  },
+  "risk-manager": {
+    "id": "risk-manager",
+    "name": "Construction Risk Manager",
+    "description": "Professional managing enterprise and project-level risk identification, Monte Carlo modeling, risk registers, and mitigation strategies.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Facilitate project risk identification and qualitative evaluation workshops",
+      "Perform Monte Carlo quantitative schedule and cost risk simulations",
+      "Develop risk mitigation action plans and monitor residual risk exposure",
+      "Report project risk profiles and contingency adequacy to executive sponsors"
+    ],
+    "tags": [
+      "Risk Manager",
+      "Monte Carlo",
+      "ISO 31000",
+      "Risk Register",
+      "Contingency"
+    ]
+  },
+  "qaqc-manager": {
+    "id": "qaqc-manager",
+    "name": "QA/QC Manager",
+    "description": "Quality management leader establishing quality assurance systems, project quality plans, inspection testing regimes, and ISO 9001 compliance.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Author and enforce the Project Quality Management Plan (PQMP)",
+      "Oversee site inspection and test plans (ITP) and independent laboratory testing",
+      "Manage non-conformance reporting (NCR) and corrective action closeouts",
+      "Perform internal quality audits and maintain ISO 9001 certification standards"
+    ],
+    "tags": [
+      "QA/QC Manager",
+      "ISO 9001",
+      "Quality Assurance",
+      "ITP",
+      "Auditing"
+    ]
+  },
+  "materials-inspection-engineer": {
+    "id": "materials-inspection-engineer",
+    "name": "Materials & Inspection Engineer",
+    "description": "Engineer specializing in laboratory and on-site testing of concrete, soils, asphalt, steel reinforcement, and structural welding.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Supervise field soil compaction, concrete slump, and cube sampling tests",
+      "Review mill test certificates, welding NDT reports, and aggregate gradations",
+      "Inspect incoming site deliveries against approved material sample submittals",
+      "Witness third-party laboratory tensile and compressive strength testing"
+    ],
+    "tags": [
+      "Materials Testing",
+      "Inspection",
+      "Concrete Testing",
+      "ASTM",
+      "QA/QC"
+    ]
+  },
+  "safety-manager": {
+    "id": "safety-manager",
+    "name": "Health, Safety & Environment (HSE) Manager",
+    "description": "Senior safety professional directing site HSE policy, risk control, emergency preparedness, ISO 45001 compliance, and zero-accident culture.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Develop and implement the Project HSE Management Plan and site safety rules",
+      "Conduct high-risk activity safety audits (deep excavation, lifting, working at height)",
+      "Direct incident root cause investigations and regulatory safety reporting",
+      "Lead site safety committees and drive behavioral safety programs"
+    ],
+    "tags": [
+      "HSE Manager",
+      "ISO 45001",
+      "Site Safety",
+      "OSHA",
+      "Risk Control"
+    ]
+  },
+  "site-safety-officer": {
+    "id": "site-safety-officer",
+    "name": "Site Safety Officer",
+    "description": "Field officer responsible for daily safety inspections, toolbox talks, permit-to-work issuance, and enforcing PPE compliance on site.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct daily site hazard inspections and correct unsafe worker practices",
+      "Verify and sign Permit-to-Work (PTW) checklists for hazardous operations",
+      "Deliver daily morning toolbox safety briefings to site labor gangs",
+      "Inspect scaffolding, electrical panels, excavation shoring, and PPE gear"
+    ],
+    "tags": [
+      "Safety Officer",
+      "HSE",
+      "Toolbox Talks",
+      "PTW",
+      "Site Inspection"
+    ]
+  },
+  "temporary-works-coordinator": {
+    "id": "temporary-works-coordinator",
+    "name": "Temporary Works Coordinator (TWC)",
+    "description": "Designated structural engineer managing procedural checks, design reviews, and permits-to-load for all temporary works under BS 5975.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Maintain the project Temporary Works Register across all subcontractors",
+      "Coordinate independent structural design checks (Cat 1/2/3) for falsework/shoring",
+      "Inspect installed temporary structures prior to concrete pours or loading",
+      "Issue formal written Permits-to-Load and Permits-to-Dismantle"
+    ],
+    "tags": [
+      "Temporary Works",
+      "TWC",
+      "BS 5975",
+      "Falsework",
+      "Permit to Load"
+    ]
+  },
+  "construction-methods-engineer": {
+    "id": "construction-methods-engineer",
+    "name": "Construction Methods Engineer",
+    "description": "Engineer designing erection methodologies, heavy crane rigging schemes, launching gantries, and specialized construction sequences.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Develop detailed Construction Method Statements (CMS) and rigging drawings",
+      "Calculate crane outrigger ground bearing pressures and lifting clearances",
+      "Design specialized formwork, cofferdams, and bridge launching sequences",
+      "Optimize construction cycle times through mechanized method innovations"
+    ],
+    "tags": [
+      "Methods Engineer",
+      "Rigging",
+      "Crane Lift",
+      "Constructability",
+      "Sequencing"
+    ]
+  },
+  "equipment-fleet-manager": {
+    "id": "equipment-fleet-manager",
+    "name": "Construction Equipment & Fleet Manager",
+    "description": "Professional managing heavy plant procurement, site deployment, preventative maintenance, telematics tracking, and equipment economics.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Manage fleet availability, mobilization schedules, and operator staffing",
+      "Track machinery telematics (engine run hours, idle time, fuel consumption)",
+      "Establish preventative maintenance schedules and site repair workshops",
+      "Analyze owning and operating (O&O) hourly costs and equipment utilization rates"
+    ],
+    "tags": [
+      "Fleet Manager",
+      "Equipment",
+      "Telematics",
+      "Plant Maintenance",
+      "Machinery"
+    ]
+  },
+  "construction-productivity-engineer": {
+    "id": "construction-productivity-engineer",
+    "name": "Construction Productivity Engineer",
+    "description": "Industrial/civil engineer analyzing on-site labor and equipment production rates, identifying process bottlenecks, and improving site efficiency.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Conduct time-and-motion studies and activity work sampling on site",
+      "Calculate actual production outputs per crew-hour and machine-hour",
+      "Identify material handling delays, idle time, and logistics bottlenecks",
+      "Implement lean construction techniques to maximize productive work hours"
+    ],
+    "tags": [
+      "Productivity",
+      "Work Sampling",
+      "Time and Motion",
+      "Lean",
+      "Efficiency"
+    ]
+  },
+  "senior-site-engineer": {
+    "id": "senior-site-engineer",
+    "name": "Senior Site Engineer",
+    "description": "Experienced field engineer overseeing site section engineers, trade contractors, daily work execution, and consultant inspection sign-offs.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Direct daily field operations across structural, architectural, and civil packages",
+      "Resolve technical engineering clashes and coordinate with consultant inspectors",
+      "Enforce site quality control, safety compliance, and schedule milestones",
+      "Manage section site engineers, surveyors, and field foremen"
+    ],
+    "tags": [
+      "Senior Site Engineer",
+      "Site Management",
+      "Field Operations",
+      "Supervision"
+    ]
+  },
+  "construction-superintendent": {
+    "id": "construction-superintendent",
+    "name": "Construction Superintendent",
+    "description": "Senior field operational leader directing all craft trades, subcontractors, machinery logistics, and daily site production.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Lead all field construction execution and daily subcontractor coordination",
+      "Ensure adherence to project schedule, quality standards, and HSE regulations",
+      "Manage site labor allocation, plant utilization, and material deliveries",
+      "Conduct daily production coordination meetings with trade superintendents"
+    ],
+    "tags": [
+      "Superintendent",
+      "Field Leader",
+      "Site Operations",
+      "Subcontractors"
+    ]
+  },
+  "construction-logistics-manager": {
+    "id": "construction-logistics-manager",
+    "name": "Construction Logistics Manager",
+    "description": "Logistics professional managing site access gates, laydown yards, delivery booking systems, crane hook-time, and traffic circulation.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Formulate and enforce the Site Master Logistics & Traffic Management Plan",
+      "Operate digital delivery booking portals to schedule offloading slots",
+      "Allocate laydown storage zones and manage tower crane hook-time priorities",
+      "Coordinate municipal traffic police permits and oversize load deliveries"
+    ],
+    "tags": [
+      "Logistics Manager",
+      "Site Layout",
+      "Traffic Management",
+      "Laydown",
+      "Supply Chain"
+    ]
+  },
+  "materials-manager": {
+    "id": "materials-manager",
+    "name": "Construction Materials Manager",
+    "description": "Manager overseeing site warehouse inventory, material requisition tracking, batching plant feedstocks, and material wastage audits.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Direct central site storage yards, warehousing, and inventory reconciliation",
+      "Track raw material consumption (rebar, cement, aggregates, structural steel)",
+      "Manage supplier call-offs in coordination with lookahead construction schedules",
+      "Implement scrap reduction protocols and monitor material wastage percentages"
+    ],
+    "tags": [
+      "Materials Manager",
+      "Inventory",
+      "Warehousing",
+      "Supply Chain",
+      "Wastage"
+    ]
+  },
+  "site-logistics-engineer": {
+    "id": "site-logistics-engineer",
+    "name": "Site Logistics Engineer",
+    "description": "Field engineer planning temporary access roads, offloading zones, crane lifting corridors, and staging areas on active construction sites.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Produce detailed CAD site layout drawings for each construction phase",
+      "Plan temporary site haul roads, drainage ditches, and heavy vehicle turning paths",
+      "Coordinate material deliveries directly to tower crane and hoist pickup points",
+      "Enforce pedestrian and mobile plant segregation barriers on site"
+    ],
+    "tags": [
+      "Logistics Engineer",
+      "Site Layout",
+      "CAD",
+      "Traffic Staging",
+      "Field Planning"
+    ]
+  },
+  "building-construction-engineer": {
+    "id": "building-construction-engineer",
+    "name": "Building Construction Engineer",
+    "description": "Engineer specializing in commercial building construction, RC frames, post-tensioned slabs, structural steel framing, and interior fit-out.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Supervise multi-story reinforced concrete casting and post-tensioning cycles",
+      "Direct structural steel framing erection, torque tightening, and fireproofing",
+      "Coordinate architectural finishing packages, masonry, and facade cladding",
+      "Ensure compliance with BNBC / ACI structural codes and architectural specs"
+    ],
+    "tags": [
+      "Building Construction",
+      "Superstructure",
+      "RC Frame",
+      "Steel Erection",
+      "BNBC"
+    ]
+  },
+  "superstructure-project-manager": {
+    "id": "superstructure-project-manager",
+    "name": "Superstructure Project Manager",
+    "description": "Project manager leading the structural core and shell delivery of high-rise commercial, residential, and institutional buildings.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Lead the end-to-end execution of core wall, floor slab, and frame construction",
+      "Manage high-capacity concrete pumping, climbing formwork, and tower crane operations",
+      "Drive floor cycle turnaround times and track cost/schedule milestones",
+      "Coordinate structural handover to facade and MEP fit-out contractors"
+    ],
+    "tags": [
+      "Superstructure PM",
+      "High-Rise",
+      "Concrete Core",
+      "Project Management"
+    ]
+  },
+  "mep-construction-coordinator": {
+    "id": "mep-construction-coordinator",
+    "name": "MEP Construction Coordinator",
+    "description": "Engineer coordinating mechanical, electrical, and plumbing installations with the civil/structural builder works on site.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Review composite MEP coordinated shop drawings and builder work sleeve layouts",
+      "Coordinate electrical conduit rough-ins and plumbing pipe embeds prior to concrete casting",
+      "Supervise plant room equipment rigging, piping installation, and duct erection",
+      "Witness pressure testing, insulation tests, and system commissioning trials"
+    ],
+    "tags": [
+      "MEP Coordinator",
+      "Building Services",
+      "HVAC",
+      "Plumbing",
+      "Electrical",
+      "Clash"
+    ]
+  },
+  "heavy-civil-project-manager": {
+    "id": "heavy-civil-project-manager",
+    "name": "Heavy Civil Project Manager",
+    "description": "Senior project manager directing large-scale civil infrastructure projects including highways, bridges, tunnels, ports, and rail corridors.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Direct overall delivery of major infrastructure contracts (FIDIC Red/Silver)",
+      "Manage major earthmoving, deep foundations, viaducts, and paving operations",
+      "Maintain government client relations, environmental permits, and right-of-way access",
+      "Lead cross-functional team of commercial, technical, and site managers"
+    ],
+    "tags": [
+      "Heavy Civil PM",
+      "Infrastructure",
+      "FIDIC",
+      "Highways",
+      "Bridges",
+      "Rail"
+    ]
+  },
+  "highway-resident-engineer": {
+    "id": "highway-resident-engineer",
+    "name": "Highway Resident Engineer",
+    "description": "Senior supervising consultant engineer responsible for quality assurance, contract administration, and technical sign-offs on highway works.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Administer FIDIC / RHD highway construction contracts on behalf of the client",
+      "Inspect subgrade preparation, aggregate base layers, and asphalt concrete paving",
+      "Approve contractor method statements, test reports, and interim payment certificates",
+      "Manage public traffic diversion schemes and highway safety compliance"
+    ],
+    "tags": [
+      "Resident Engineer",
+      "Highway Engineering",
+      "RHD",
+      "Asphalt Paving",
+      "FIDIC"
+    ]
+  },
+  "progress-monitoring-engineer": {
+    "id": "progress-monitoring-engineer",
+    "name": "Progress Monitoring & Reporting Engineer",
+    "description": "Engineer specializing in physical progress audits, rules of credit calculations, earned schedule analytics, and visual project dashboards.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Audit contractor weekly physical progress against installed bill of quantities",
+      "Calculate earned percent complete using predefined rules-of-credit weighting",
+      "Update cumulative progress S-curves and analyze schedule slippages",
+      "Create interactive visual KPI dashboards in Power BI for executive reporting"
+    ],
+    "tags": [
+      "Progress Monitoring",
+      "Rules of Credit",
+      "S-Curve",
+      "Power BI",
+      "KPIs"
+    ]
+  },
+  "sustainable-construction-manager": {
+    "id": "sustainable-construction-manager",
+    "name": "Sustainable Construction Manager",
+    "description": "Sustainability manager directing green building certification compliance, low-carbon materials deployment, and circular site operations.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Direct LEED / BREEAM construction credits and sustainable site practices",
+      "Oversee low-carbon concrete mixes and embodied carbon tracking on site",
+      "Manage site waste segregation and achieve high landfill diversion rates (>80%)",
+      "Conduct environmental audits on erosion control, dust, and energy usage"
+    ],
+    "tags": [
+      "Sustainability Manager",
+      "LEED",
+      "BREEAM",
+      "Circular Site",
+      "Low Carbon"
+    ]
+  },
+  "environmental-compliance-officer": {
+    "id": "environmental-compliance-officer",
+    "name": "Environmental Compliance Officer",
+    "description": "Officer monitoring construction environmental management plans (CEMP), water runoff quality, dust emissions, noise limits, and waste disposal.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Perform regular environmental sampling for turbidity, airborne particulates, and noise",
+      "Inspect stormwater silt fences, sedimentation ponds, and chemical storage bunds",
+      "Track compliance with Department of Environment (DoE) statutory clearance permits",
+      "Maintain waste transfer notes and oversee hazardous waste disposal contractors"
+    ],
+    "tags": [
+      "Environmental Officer",
+      "CEMP",
+      "DoE",
+      "Water Runoff",
+      "Dust Control"
+    ]
+  },
+  "green-building-coordinator": {
+    "id": "green-building-coordinator",
+    "name": "Green Building Coordinator",
+    "description": "Coordinator gathering material environmental product declarations (EPDs), indoor air quality testing data, and green building audit evidence.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Collect and verify manufacturer EPDs and low-VOC product compliance certificates",
+      "Manage construction indoor air quality (IAQ) management plans during building fit-out",
+      "Compile digital documentation credit submittals for USGBC LEED / BREEAM portals",
+      "Conduct green building briefings for site engineering and procurement teams"
+    ],
+    "tags": [
+      "Green Building",
+      "LEED Coordinator",
+      "EPD",
+      "Low-VOC",
+      "Sustainability"
+    ]
+  },
+  "construction-innovation-manager": {
+    "id": "construction-innovation-manager",
+    "name": "Construction Innovation Manager",
+    "description": "Leader driving adoption of Modern Methods of Construction (MMC), modular prefabrication, digital twins, and site robotics.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Evaluate and introduce emerging construction technologies and industrialized methods",
+      "Lead Design for Manufacture and Assembly (DfMA) optimization across projects",
+      "Pilot reality capture (drones, 360 cameras, laser scanning) and IoT telemetry on sites",
+      "Train project teams on industrialized prefabrication and advanced delivery methods"
+    ],
+    "tags": [
+      "Innovation Manager",
+      "MMC",
+      "DfMA",
+      "Modular",
+      "Industrialized Construction"
+    ]
+  },
+  "epc-project-manager": {
+    "id": "epc-project-manager",
+    "name": "EPC Project Manager",
+    "description": "Senior project manager directing turnkey Engineering, Procurement, and Construction (EPC) delivery with single-point total accountability.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Direct integrated engineering design, international procurement, and site construction",
+      "Manage lump-sum turnkey contract obligations under FIDIC Silver Book conditions",
+      "Oversee plant equipment manufacturing, factory testing, shipping, and customs clearance",
+      "Drive cold/hot commissioning trials, reliability runs, and commercial handover"
+    ],
+    "tags": [
+      "EPC PM",
+      "Turnkey",
+      "FIDIC Silver",
+      "Design-Build",
+      "Commissioning"
+    ]
+  },
+  "lean-construction-champion": {
+    "id": "lean-construction-champion",
+    "name": "Lean Construction Champion",
+    "description": "Specialist implementing the Last Planner System (LPS), pull planning sessions, 5S site organization, and continuous waste reduction.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Facilitate milestone pull planning workshops with subcontractors and trade foremen",
+      "Coach project teams on 6-week lookahead make-ready planning and constraint removal",
+      "Track weekly Percent Plan Complete (PPC) and lead root cause variance reviews",
+      "Implement 5S visual management and standardize lean site workflows"
+    ],
+    "tags": [
+      "Lean Champion",
+      "Last Planner",
+      "Pull Planning",
+      "PPC",
+      "5S",
+      "Lean Construction"
+    ]
+  },
+  "vdc-manager": {
+    "id": "vdc-manager",
+    "name": "Virtual Design & Construction (VDC) Manager",
+    "description": "Digital leader integrating 3D BIM models, 4D time simulation, 5D cost databases, and reality capture into field construction management.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Author and enforce the Project BIM Execution Plan (BEP) adhering to ISO 19650",
+      "Direct multi-disciplinary 3D coordination and automated clash resolution workflows",
+      "Oversee 4D construction schedule simulations in SYNCHRO 4D / Navisworks",
+      "Integrate reality capture point clouds and drone photogrammetry with design models"
+    ],
+    "tags": [
+      "VDC Manager",
+      "4D BIM",
+      "5D BIM",
+      "ISO 19650",
+      "Digital Construction"
+    ]
+  },
+  "digital-construction-engineer": {
+    "id": "digital-construction-engineer",
+    "name": "Digital Construction Engineer",
+    "description": "Engineer managing on-site digital tools, field tablet BIM access, digital punch lists, drone surveys, and Common Data Environment administration.",
+    "demand": "High Demand",
+    "responsibilities": [
+      "Deploy federated BIM models and coordinated shop drawings to field tablet devices",
+      "Manage digital QA/QC inspection forms, RFIs, and punch lists in Procore / ACC",
+      "Conduct drone aerial surveys to calculate cut/fill earthwork volumes",
+      "Train site engineers and foremen on digital field tools and 3D model navigation"
+    ],
+    "tags": [
+      "Digital Engineer",
+      "Field BIM",
+      "Procore",
+      "ACC",
+      "Drone Survey",
+      "VDC"
     ]
   }
 }

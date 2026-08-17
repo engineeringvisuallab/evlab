@@ -481,166 +481,168 @@
   },
   "fidic-red-book": {
     "id": "fidic-red-book",
+    "title": "FIDIC Conditions of Contract for Construction (Red Book)",
     "code": "FIDIC Red Book",
     "organization": "FIDIC",
-    "category": "Contracts",
-    "name": "FIDIC Conditions of Contract for Construction (Red Book)",
-    "description": "Standard international conditions of contract for building and engineering works designed by the Employer."
+    "summary": "Standard international conditions of contract for building and engineering works designed by the Employer.",
+    "category": "Contracts"
   },
   "nec4-ecc": {
     "id": "nec4-ecc",
+    "title": "NEC4 Engineering and Construction Contract",
     "code": "NEC4 ECC",
     "organization": "Institution of Civil Engineers (ICE)",
-    "category": "Contracts",
-    "name": "NEC4 Engineering and Construction Contract",
-    "description": "Modern collaborative contract suite fostering partner-style project management and proactive risk control."
+    "summary": "Modern collaborative contract suite fostering partner-style project management and proactive risk control.",
+    "category": "Contracts"
   },
   "iso-9001-qms": {
     "id": "iso-9001-qms",
+    "title": "ISO 9001: Quality Management Systems",
     "code": "ISO 9001:2015",
     "organization": "ISO",
-    "category": "Quality",
-    "name": "ISO 9001: Quality Management Systems",
-    "description": "International standard specifying requirements for quality management systems across construction organizational processes."
+    "summary": "International standard specifying requirements for quality management systems across construction organizational processes.",
+    "category": "Quality"
   },
   "iso-45001-ohsms": {
     "id": "iso-45001-ohsms",
+    "title": "ISO 45001: Occupational Health and Safety Management Systems",
     "code": "ISO 45001:2018",
     "organization": "ISO",
-    "category": "Safety",
-    "name": "ISO 45001: Occupational Health and Safety Management Systems",
-    "description": "Global standard providing framework to improve employee safety, reduce workplace risks, and create safer working conditions."
+    "summary": "Global standard providing framework to improve employee safety, reduce workplace risks, and create safer working conditions.",
+    "category": "Safety"
   },
   "iso-19650-bim": {
     "id": "iso-19650-bim",
+    "title": "ISO 19650: Organization and Digitization of Information (BIM)",
     "code": "ISO 19650-1/2",
     "organization": "ISO",
-    "category": "BIM & Digital",
-    "name": "ISO 19650: Organization and Digitization of Information (BIM)",
-    "description": "International standards for managing information over the whole life cycle of a built asset using Building Information Modelling."
+    "summary": "International standards for managing information over the whole life cycle of a built asset using Building Information Modelling.",
+    "category": "BIM & Digital"
   },
   "aace-recommended-practices": {
     "id": "aace-recommended-practices",
+    "title": "AACE International Recommended Practices for Cost Engineering & Risk",
     "code": "AACE RPs",
     "organization": "AACE International",
-    "category": "Cost & Risk",
-    "name": "AACE International Recommended Practices for Cost Engineering & Risk",
-    "description": "Technical reference guidelines for total cost management, estimating accuracy classification, and forensic schedule analysis."
+    "summary": "Technical reference guidelines for total cost management, estimating accuracy classification, and forensic schedule analysis.",
+    "category": "Cost & Risk"
   },
   "osha-construction-standards": {
     "id": "osha-construction-standards",
+    "title": "OSHA 29 CFR 1926 Safety and Health Regulations for Construction",
     "code": "29 CFR 1926",
     "organization": "OSHA",
-    "category": "Safety",
-    "name": "OSHA 29 CFR 1926 Safety and Health Regulations for Construction",
-    "description": "Federal safety standards governing site scaffolding, fall protection, excavation shoring, hazard communication, and cranes."
+    "summary": "Federal safety standards governing site scaffolding, fall protection, excavation shoring, hazard communication, and cranes.",
+    "category": "Safety"
   },
   "bangladesh-public-works-specifications": {
     "id": "bangladesh-public-works-specifications",
+    "title": "PWD / RHD / LGED Standard Specifications for Building & Infrastructure Works",
     "code": "PWD/RHD Specs",
     "organization": "PWD / RHD / LGED Bangladesh",
-    "category": "Specifications",
-    "name": "PWD / RHD / LGED Standard Specifications for Building & Infrastructure Works",
-    "description": "Official national technical specifications and schedule of rates governing public sector construction projects in Bangladesh."
+    "summary": "Official national technical specifications and schedule of rates governing public sector construction projects in Bangladesh.",
+    "category": "Specifications"
   },
   "iso-55000-asset-management": {
     "id": "iso-55000-asset-management",
     "code": "ISO 55000 / 55001",
+    "title": "ISO 55000 Asset Management — Overview, Principles and Terminology",
     "organization": "ISO",
-    "scope": "Asset Management",
-    "name": "ISO 55000 Asset Management — Overview, Principles and Terminology",
-    "description": "International standard outlining principles, management system requirements, and best practices for managing physical infrastructure assets."
+    "summary": "International standard outlining principles, management system requirements, and best practices for managing physical infrastructure assets.",
+    "scope": "Asset Management"
   },
   "lged-municipal-infrastructure-design-guidelines": {
     "id": "lged-municipal-infrastructure-design-guidelines",
     "code": "LGED-MIDG",
+    "title": "LGED Guidelines for Planning & Design of Municipal Infrastructure",
     "organization": "LGED Bangladesh",
-    "scope": "Municipal Engineering",
-    "name": "LGED Guidelines for Planning & Design of Municipal Infrastructure",
-    "description": "Technical design standards and guidelines for pourashava and city corporation roads, drainage, public markets, and utility facilities."
+    "summary": "Technical design standards and guidelines for pourashava and city corporation roads, drainage, public markets, and utility facilities.",
+    "scope": "Municipal Engineering"
   },
   "iso-37120-smart-sustainable-cities": {
     "id": "iso-37120-smart-sustainable-cities",
     "code": "ISO 37120",
+    "title": "ISO 37120 Sustainable Cities and Communities — Indicators for City Services and Quality of Life",
     "organization": "ISO",
-    "scope": "Smart Cities",
-    "name": "ISO 37120 Sustainable Cities and Communities — Indicators for City Services and Quality of Life",
-    "description": "Standard defining key performance metrics for municipal water, waste, energy, governance, shelter, and urban mobility infrastructure."
+    "summary": "Standard defining key performance metrics for municipal water, waste, energy, governance, shelter, and urban mobility infrastructure.",
+    "scope": "Smart Cities"
   },
   "asce-38-sue-standards": {
     "id": "asce-38-sue-standards",
     "code": "ASCE 38-22",
+    "title": "Standard Guideline for Investigating and Documenting Existing Subsurface Utilities",
     "organization": "ASCE",
-    "scope": "Utility Engineering",
-    "name": "Standard Guideline for Investigating and Documenting Existing Subsurface Utilities",
-    "description": "Defines quality levels (QL-A, QL-B, QL-C, QL-D) for utility identification, surface geophysical location, and vacuum excavation test-pitting."
+    "summary": "Defines quality levels (QL-A, QL-B, QL-C, QL-D) for utility identification, surface geophysical location, and vacuum excavation test-pitting.",
+    "scope": "Utility Engineering"
   },
   "bangladesh-urban-building-planning-rules": {
     "id": "bangladesh-urban-building-planning-rules",
     "code": "RAJUK / BNBC Urban Rules",
+    "title": "Bangladesh Private Residential Land Development Rules & Municipal Infrastructure Codes",
     "organization": "RAJUK / Ministry of Housing",
-    "scope": "Urban Planning",
-    "name": "Bangladesh Private Residential Land Development Rules & Municipal Infrastructure Codes",
-    "description": "Statutory rules governing road widths, utility setbacks, open space ratios, and drainage connectivity for urban developments."
+    "summary": "Statutory rules governing road widths, utility setbacks, open space ratios, and drainage connectivity for urban developments.",
+    "scope": "Urban Planning"
   },
   "mutcd-standards": {
     "id": "mutcd-standards",
     "code": "MUTCD",
+    "title": "Manual on Uniform Traffic Control Devices for Streets and Highways",
     "organization": "FHWA / AASHTO",
-    "scope": "Traffic Engineering",
-    "name": "Manual on Uniform Traffic Control Devices for Streets and Highways",
-    "description": "Standard for traffic control devices including road markings, traffic signs, signals, and pedestrian signals on all public streets and highways."
+    "summary": "Standard for traffic control devices including road markings, traffic signs, signals, and pedestrian signals on all public streets and highways.",
+    "scope": "Traffic Engineering"
   },
   "pianc-standards": {
     "id": "pianc-standards",
     "code": "PIANC Guidelines",
+    "title": "PIANC International Guidelines for Maritime Infrastructure & Port Engineering",
     "organization": "PIANC",
-    "scope": "Maritime Engineering",
-    "name": "PIANC International Guidelines for Maritime Infrastructure & Port Engineering",
-    "description": "Global technical standards for port layout, navigation channels, container terminals, berthing dolphins, and dredging management."
+    "summary": "Global technical standards for port layout, navigation channels, container terminals, berthing dolphins, and dredging management.",
+    "scope": "Maritime Engineering"
   },
   "usace-coastal-engineering-manual": {
     "id": "usace-coastal-engineering-manual",
     "code": "USACE CEM EM 1110-2-1100",
+    "title": "USACE Coastal Engineering Manual",
     "organization": "US Army Corps of Engineers",
-    "scope": "Coastal Engineering",
-    "name": "USACE Coastal Engineering Manual",
-    "description": "Comprehensive engineering manual covering coastal hydrodynamics, wave transformation, sediment transport, and coastal structure design."
+    "summary": "Comprehensive engineering manual covering coastal hydrodynamics, wave transformation, sediment transport, and coastal structure design.",
+    "scope": "Coastal Engineering"
   },
   "ciria-rock-manual": {
     "id": "ciria-rock-manual",
     "code": "CIRIA C683",
+    "title": "The Rock Manual: The Use of Rock in Hydraulic Engineering",
     "organization": "CIRIA / CUR / CETMEF",
-    "scope": "Hydraulic & Coastal Engineering",
-    "name": "The Rock Manual: The Use of Rock in Hydraulic Engineering",
-    "description": "Definitive international guidance on using rock armor stone in breakwaters, revetments, coastal dikes, and scour protection."
+    "summary": "Definitive international guidance on using rock armor stone in breakwaters, revetments, coastal dikes, and scour protection.",
+    "scope": "Hydraulic & Coastal Engineering"
   },
   "bs-6349": {
     "id": "bs-6349",
     "code": "BS 6349",
+    "title": "Maritime Works Code of Practice",
     "organization": "BSI",
-    "scope": "Maritime Structural Engineering",
-    "name": "Maritime Works Code of Practice",
-    "description": "British Standard code of practice for design of quays, jetties, piers, dolphins, breakwaters, and maritime structures."
+    "summary": "British Standard code of practice for design of quays, jetties, piers, dolphins, breakwaters, and maritime structures.",
+    "scope": "Maritime Structural Engineering"
   },
   "bangladesh-coastal-polder-standards": {
     "id": "bangladesh-coastal-polder-standards",
     "code": "BWDB Coastal Guidelines",
+    "title": "BWDB Coastal Polder & Embankment Design Guidelines",
     "organization": "BWDB",
-    "scope": "Coastal Protection & Water Resources",
-    "name": "BWDB Coastal Polder & Embankment Design Guidelines",
-    "description": "Technical design standards for coastal polders, cyclone surge embankments, sluice structures, and revetments in southern Bangladesh."
+    "summary": "Technical design standards for coastal polders, cyclone surge embankments, sluice structures, and revetments in southern Bangladesh.",
+    "scope": "Coastal Protection & Water Resources"
   },
   "biwta-navigation-standards": {
     "id": "biwta-navigation-standards",
     "code": "BIWTA Standards",
+    "title": "BIWTA Inland & Coastal Navigation Technical Standards",
     "organization": "BIWTA",
-    "scope": "Navigation & Waterways",
-    "name": "BIWTA Inland & Coastal Navigation Technical Standards",
-    "description": "Technical standards for dredging, hydrographic surveying, beacon aids to navigation, and river port landing infrastructure."
+    "summary": "Technical standards for dredging, hydrographic surveying, beacon aids to navigation, and river port landing infrastructure.",
+    "scope": "Navigation & Waterways"
   },
   "usace-em-1110-2-1601": {
     "id": "usace-em-1110-2-1601",
+    "title": "USACE EM 1110-2-1601 — Hydraulic Design of Flood Control Channels",
+    "summary": "US Army Corps of Engineers manual providing technical guidance for the hydraulic design of open flood control channels, levees, and revetments.",
     "organization": "USACE",
     "category": "Hydraulic Design Standard",
     "tags": [
@@ -648,12 +650,12 @@
       "Flood Control",
       "Channel Design",
       "EM 1110-2-1601"
-    ],
-    "name": "USACE EM 1110-2-1601 — Hydraulic Design of Flood Control Channels",
-    "description": "US Army Corps of Engineers manual providing technical guidance for the hydraulic design of open flood control channels, levees, and revetments."
+    ]
   },
   "usace-em-1110-2-1418": {
     "id": "usace-em-1110-2-1418",
+    "title": "USACE EM 1110-2-1418 — Channel Stability Assessment in River Training",
+    "summary": "Guidelines for evaluating alluvial river channel stability, sediment balance, and river training works effectiveness.",
     "organization": "USACE",
     "category": "River Engineering Standard",
     "tags": [
@@ -661,12 +663,12 @@
       "Channel Stability",
       "River Training",
       "EM 1110-2-1418"
-    ],
-    "name": "USACE EM 1110-2-1418 — Channel Stability Assessment in River Training",
-    "description": "Guidelines for evaluating alluvial river channel stability, sediment balance, and river training works effectiveness."
+    ]
   },
   "fhwa-hec-18": {
     "id": "fhwa-hec-18",
+    "title": "FHWA HEC-18 — Evaluating Scour at Bridges",
+    "summary": "Federal Highway Administration comprehensive standard for computing contraction scour, local pier scour, and total scour at bridge crossings.",
     "organization": "FHWA",
     "category": "Bridge Hydraulics Standard",
     "tags": [
@@ -674,12 +676,12 @@
       "HEC-18",
       "Bridge Scour",
       "Pier Scour"
-    ],
-    "name": "FHWA HEC-18 — Evaluating Scour at Bridges",
-    "description": "Federal Highway Administration comprehensive standard for computing contraction scour, local pier scour, and total scour at bridge crossings."
+    ]
   },
   "fhwa-hec-23": {
     "id": "fhwa-hec-23",
+    "title": "FHWA HEC-23 — Bridge Scour and Stream Instability Countermeasures",
+    "summary": "FHWA design guidelines for selecting and sizing bridge scour countermeasures including riprap, guide banks, and artifical spur dikes.",
     "organization": "FHWA",
     "category": "Bridge Scour Standard",
     "tags": [
@@ -687,12 +689,12 @@
       "HEC-23",
       "Scour Countermeasures",
       "Riprap"
-    ],
-    "name": "FHWA HEC-23 — Bridge Scour and Stream Instability Countermeasures",
-    "description": "FHWA design guidelines for selecting and sizing bridge scour countermeasures including riprap, guide banks, and artifical spur dikes."
+    ]
   },
   "pianc-inland-waterways": {
     "id": "pianc-inland-waterways",
+    "title": "PIANC Guidelines for Design of Inland Navigation Waterways",
+    "summary": "International guidelines for sizing inland navigation channel widths, water depths, lock dimensions, and turning basins.",
     "organization": "PIANC",
     "category": "Navigation Standard",
     "tags": [
@@ -700,12 +702,12 @@
       "Inland Navigation",
       "Fairway Design",
       "Waterways"
-    ],
-    "name": "PIANC Guidelines for Design of Inland Navigation Waterways",
-    "description": "International guidelines for sizing inland navigation channel widths, water depths, lock dimensions, and turning basins."
+    ]
   },
   "bwdb-riverbank-protection-manual": {
     "id": "bwdb-riverbank-protection-manual",
+    "title": "BWDB Standard Design Guidelines for Riverbank Protection",
+    "summary": "Bangladesh Water Development Board design criteria for geobag revetments, CC block sloping aprons, and launching aprons in braided rivers.",
     "organization": "BWDB",
     "category": "National River Guidelines",
     "tags": [
@@ -714,12 +716,12 @@
       "Geobags",
       "Launching Apron",
       "Bangladesh"
-    ],
-    "name": "BWDB Standard Design Guidelines for Riverbank Protection",
-    "description": "Bangladesh Water Development Board design criteria for geobag revetments, CC block sloping aprons, and launching aprons in braided rivers."
+    ]
   },
   "iso-19100-geographic-information": {
     "id": "iso-19100-geographic-information",
+    "title": "ISO 19100 Series Geographic Information Standards",
+    "summary": "International standardization suite covering geographic data modeling, spatial schema, metadata (ISO 19115), land administration (LADM - ISO 19152), and coordinate reference systems (ISO 19111).",
     "organization": "ISO/TC 211",
     "category": "Geospatial Standards",
     "tags": [
@@ -728,12 +730,12 @@
       "LADM",
       "Metadata",
       "Geospatial"
-    ],
-    "name": "ISO 19100 Series Geographic Information Standards",
-    "description": "International standardization suite covering geographic data modeling, spatial schema, metadata (ISO 19115), land administration (LADM - ISO 19152), and coordinate reference systems (ISO 19111)."
+    ]
   },
   "ogc-standards": {
     "id": "ogc-standards",
+    "title": "OGC Open Geospatial Standards (WMS, WFS, CityGML, GeoTIFF)",
+    "summary": "Interoperability consensus standards for web map services (WMS/WMTS), web feature services (WFS), CityGML 3D city models, and Cloud-Optimized GeoTIFF (COG).",
     "organization": "Open Geospatial Consortium (OGC)",
     "category": "Web & 3D GIS Standards",
     "tags": [
@@ -742,12 +744,12 @@
       "WFS",
       "CityGML",
       "GeoTIFF"
-    ],
-    "name": "OGC Open Geospatial Standards (WMS, WFS, CityGML, GeoTIFF)",
-    "description": "Interoperability consensus standards for web map services (WMS/WMTS), web feature services (WFS), CityGML 3D city models, and Cloud-Optimized GeoTIFF (COG)."
+    ]
   },
   "asprs-positional-accuracy-standards": {
     "id": "asprs-positional-accuracy-standards",
+    "title": "ASPRS Positional Accuracy Standards for Digital Geospatial Data",
+    "summary": "Standard guidelines defining horizontal and vertical accuracy metrics, RMS errors, and ground sample distance (GSD) thresholds for orthoimagery, elevation models, and LiDAR point clouds.",
     "organization": "ASPRS",
     "category": "Survey Accuracy Standards",
     "tags": [
@@ -756,24 +758,24 @@
       "RMSE",
       "GSD",
       "LiDAR Accuracy"
-    ],
-    "name": "ASPRS Positional Accuracy Standards for Digital Geospatial Data",
-    "description": "Standard guidelines defining horizontal and vertical accuracy metrics, RMS errors, and ground sample distance (GSD) thresholds for orthoimagery, elevation models, and LiDAR point clouds."
+    ]
   },
   "fig-survey-guidelines": {
     "id": "fig-survey-guidelines",
+    "title": "FIG Standards & Cadastral Survey Guidelines",
+    "summary": "International guidelines for land administration, cadastral boundary demarcation, deformation monitoring, and ethical professional surveying practices.",
     "organization": "FIG",
     "category": "Land Survey Standards",
     "tags": [
       "FIG",
       "Cadastral Standards",
       "Professional Surveying"
-    ],
-    "name": "FIG Standards & Cadastral Survey Guidelines",
-    "description": "International guidelines for land administration, cadastral boundary demarcation, deformation monitoring, and ethical professional surveying practices."
+    ]
   },
   "iho-s-44-standards": {
     "id": "iho-s-44-standards",
+    "title": "IHO S-44 Standards for Hydrographic Surveys",
+    "summary": "International Hydrographic Organization standards defining safety of navigation survey orders (Special, Order 1a/1b, Order 2) and total allowable vertical/horizontal uncertainties.",
     "organization": "IHO",
     "category": "Hydrographic Standards",
     "tags": [
@@ -781,12 +783,12 @@
       "S-44",
       "Hydrography",
       "Bathymetric Accuracy"
-    ],
-    "name": "IHO S-44 Standards for Hydrographic Surveys",
-    "description": "International Hydrographic Organization standards defining safety of navigation survey orders (Special, Order 1a/1b, Order 2) and total allowable vertical/horizontal uncertainties."
+    ]
   },
   "sob-surveying-specifications": {
     "id": "sob-surveying-specifications",
+    "title": "Survey of Bangladesh National Mapping & Geodetic Specifications",
+    "summary": "National geodetic reference framework standards, Bangladesh Transverse Mercator (BTM) projection rules, and topographic mapping guidelines.",
     "organization": "Survey of Bangladesh",
     "category": "National Mapping Specifications",
     "tags": [
@@ -794,12 +796,12 @@
       "Bangladesh",
       "BTM Projection",
       "Geodetic Standards"
-    ],
-    "name": "Survey of Bangladesh National Mapping & Geodetic Specifications",
-    "description": "National geodetic reference framework standards, Bangladesh Transverse Mercator (BTM) projection rules, and topographic mapping guidelines."
+    ]
   },
   "aashto-lrfd-bridge-design": {
     "id": "aashto-lrfd-bridge-design",
+    "title": "AASHTO LRFD Bridge Design Specifications",
+    "summary": "Primary international standard for highway bridge structural design using Load and Resistance Factor Design (LRFD).",
     "organization": "AASHTO",
     "category": "Bridge Structural Design",
     "tags": [
@@ -807,12 +809,12 @@
       "LRFD",
       "Bridge Design",
       "Highway Bridges"
-    ],
-    "name": "AASHTO LRFD Bridge Design Specifications",
-    "description": "Primary international standard for highway bridge structural design using Load and Resistance Factor Design (LRFD)."
+    ]
   },
   "aashto-guide-spec-seismic-bridge": {
     "id": "aashto-guide-spec-seismic-bridge",
+    "title": "AASHTO Guide Specifications for LRFD Seismic Bridge Design",
+    "summary": "Standard specifications for earthquake-resistant design and displacement-based seismic evaluation of bridges.",
     "organization": "AASHTO",
     "category": "Bridge Seismic Design",
     "tags": [
@@ -820,12 +822,12 @@
       "Seismic Design",
       "Displacement-Based",
       "Bridges"
-    ],
-    "name": "AASHTO Guide Specifications for LRFD Seismic Bridge Design",
-    "description": "Standard specifications for earthquake-resistant design and displacement-based seismic evaluation of bridges."
+    ]
   },
   "aashto-manual-bridge-evaluation": {
     "id": "aashto-manual-bridge-evaluation",
+    "title": "AASHTO Manual for Bridge Evaluation (MBE)",
+    "summary": "Standard for safety inspection, condition assessment, load rating, and capacity evaluation of existing bridges.",
     "organization": "AASHTO",
     "category": "Bridge Inspection & Load Rating",
     "tags": [
@@ -833,12 +835,12 @@
       "Bridge Inspection",
       "Load Rating",
       "Condition Assessment"
-    ],
-    "name": "AASHTO Manual for Bridge Evaluation (MBE)",
-    "description": "Standard for safety inspection, condition assessment, load rating, and capacity evaluation of existing bridges."
+    ]
   },
   "fhwa-hec-18-bridge-scour": {
     "id": "fhwa-hec-18-bridge-scour",
+    "title": "FHWA HEC-18: Evaluating Scour at Bridges",
+    "summary": "Federal Highway Administration guidance circular for calculating contraction, pier, and abutment scour.",
     "organization": "FHWA",
     "category": "Bridge Hydraulics & Scour",
     "tags": [
@@ -846,12 +848,12 @@
       "HEC-18",
       "Scour",
       "Bridge Hydraulics"
-    ],
-    "name": "FHWA HEC-18: Evaluating Scour at Bridges",
-    "description": "Federal Highway Administration guidance circular for calculating contraction, pier, and abutment scour."
+    ]
   },
   "arema-manual-railway-engineering": {
     "id": "arema-manual-railway-engineering",
+    "title": "AREMA Manual for Railway Engineering",
+    "summary": "Standard for railway bridge structural design, timber/steel/concrete structures, and railway loadings.",
     "organization": "AREMA",
     "category": "Railway Bridge Engineering",
     "tags": [
@@ -859,12 +861,12 @@
       "Railway Bridges",
       "Railway Design",
       "Cooper E-80"
-    ],
-    "name": "AREMA Manual for Railway Engineering",
-    "description": "Standard for railway bridge structural design, timber/steel/concrete structures, and railway loadings."
+    ]
   },
   "eurocode-1991-2-bridge-loads": {
     "id": "eurocode-1991-2-bridge-loads",
+    "title": "EN 1991-2 Eurocode 1: Actions on Structures - Traffic Loads on Bridges",
+    "summary": "European standard defining traffic load models, dynamic effects, and centrifugal actions on road and rail bridges.",
     "organization": "CEN European Committee for Standardization",
     "category": "Bridge Loading Standards",
     "tags": [
@@ -872,12 +874,12 @@
       "EN 1991-2",
       "Traffic Loads",
       "Bridge Loading"
-    ],
-    "name": "EN 1991-2 Eurocode 1: Actions on Structures - Traffic Loads on Bridges",
-    "description": "European standard defining traffic load models, dynamic effects, and centrifugal actions on road and rail bridges."
+    ]
   },
   "rhd-bridge-design-standard": {
     "id": "rhd-bridge-design-standard",
+    "title": "RHD Bangladesh Bridge Design Standard & Guidelines",
+    "summary": "Roads and Highways Department standards for bridge design, clearance envelopes, and material specifications in Bangladesh.",
     "organization": "Roads and Highways Department (RHD)",
     "category": "National Bridge Standards",
     "tags": [
@@ -885,9 +887,7 @@
       "Bangladesh",
       "Bridge Standards",
       "Roads & Highways"
-    ],
-    "name": "RHD Bangladesh Bridge Design Standard & Guidelines",
-    "description": "Roads and Highways Department standards for bridge design, clearance envelopes, and material specifications in Bangladesh."
+    ]
   },
   "ita-guidelines-tunnel-design": {
     "id": "ita-guidelines-tunnel-design",
@@ -995,28 +995,28 @@
   },
   "epa-stormwater-management-guidelines": {
     "id": "epa-stormwater-management-guidelines",
-    "description": "Best management practices (BMP) and design criteria for low-impact development and urban stormwater control.",
-    "name": "US EPA Urban Stormwater Management Guidelines"
+    "title": "US EPA Urban Stormwater Management Guidelines",
+    "description": "Best management practices (BMP) and design criteria for low-impact development and urban stormwater control."
   },
   "aashto-urban-street-design-guide": {
     "id": "aashto-urban-street-design-guide",
-    "description": "Guidelines for geometric design of urban streets, multi-modal transport, and complete street infrastructure.",
-    "name": "AASHTO Urban Street Design Guide"
+    "title": "AASHTO Urban Street Design Guide",
+    "description": "Guidelines for geometric design of urban streets, multi-modal transport, and complete street infrastructure."
   },
   "awwa-water-standards": {
     "id": "awwa-water-standards",
-    "description": "American Water Works Association standards for municipal water distribution mains, valve placement, and water quality protection.",
-    "name": "AWWA Water Supply & Pressure Standards"
+    "title": "AWWA Water Supply & Pressure Standards",
+    "description": "American Water Works Association standards for municipal water distribution mains, valve placement, and water quality protection."
   },
   "who-water-supply-guidelines": {
     "id": "who-water-supply-guidelines",
-    "description": "World Health Organization guidelines for drinking water safety, residual disinfection, and distribution network hygiene.",
-    "name": "WHO Guidelines for Drinking-Water Quality & Municipal Distribution"
+    "title": "WHO Guidelines for Drinking-Water Quality & Municipal Distribution",
+    "description": "World Health Organization guidelines for drinking water safety, residual disinfection, and distribution network hygiene."
   },
   "bnbc-plumbing-sanitation-code": {
     "id": "bnbc-plumbing-sanitation-code",
-    "description": "Bangladesh National Building Code (BNBC) regulations for municipal water connections, drainage, and building sanitation interfaces.",
-    "name": "BNBC Plumbing & Sanitation Code"
+    "title": "BNBC Plumbing & Sanitation Code",
+    "description": "Bangladesh National Building Code (BNBC) regulations for municipal water connections, drainage, and building sanitation interfaces."
   },
   "aashto-policy-geometric-design": {
     "id": "aashto-policy-geometric-design",
@@ -1115,28 +1115,24 @@
     "country": "International"
   },
   "aashto-mechanistic-empirical-pavement-design-guide": {
-    "category": "Transportation & Pavement Engineering",
-    "name": "AASHTO Mechanistic-Empirical Pavement Design Guide (MEPDG)",
-    "description": "Standard guide for mechanistic-empirical design of new and rehabilitated pavement structures.",
-    "id": "aashto-mechanistic-empirical-pavement-design-guide"
+    "title": "AASHTO Mechanistic-Empirical Pavement Design Guide (MEPDG)",
+    "summary": "Standard guide for mechanistic-empirical design of new and rehabilitated pavement structures.",
+    "category": "Transportation & Pavement Engineering"
   },
   "aashto-t166-t209-asphalt-testing-standards": {
-    "category": "Materials & Pavement Testing",
-    "name": "AASHTO T 166 / T 209 Asphalt Mixture Test Standards",
-    "description": "Standard specifications for bulk and maximum theoretical specific gravity and density of compacted asphalt mixtures.",
-    "id": "aashto-t166-t209-asphalt-testing-standards"
+    "title": "AASHTO T 166 / T 209 Asphalt Mixture Test Standards",
+    "summary": "Standard specifications for bulk and maximum theoretical specific gravity and density of compacted asphalt mixtures.",
+    "category": "Materials & Pavement Testing"
   },
   "astm-d6433-pci-standard": {
-    "category": "Pavement Evaluation & Asset Management",
-    "name": "ASTM D6433 Standard Practice for Roads and Parking Lots Pavement Condition Index Surveys",
-    "description": "Standard method for quantifying pavement condition based on visual identification and severity grading of pavement distresses.",
-    "id": "astm-d6433-pci-standard"
+    "title": "ASTM D6433 Standard Practice for Roads and Parking Lots Pavement Condition Index Surveys",
+    "summary": "Standard method for quantifying pavement condition based on visual identification and severity grading of pavement distresses.",
+    "category": "Pavement Evaluation & Asset Management"
   },
   "rhd-pavement-design-manual-standard": {
-    "category": "National Infrastructure Standards",
-    "name": "RHD Pavement Design Manual & Specifications",
-    "description": "Standard pavement structural design manual, materials specifications, and mix design guidelines by Roads and Highways Department Bangladesh.",
-    "id": "rhd-pavement-design-manual-standard"
+    "title": "RHD Pavement Design Manual & Specifications",
+    "summary": "Standard pavement structural design manual, materials specifications, and mix design guidelines by Roads and Highways Department Bangladesh.",
+    "category": "National Infrastructure Standards"
   },
   "fema-p58-standard": {
     "id": "fema-p58-standard",
@@ -1331,6 +1327,650 @@
       "Extreme Loads",
       "ASCE 7",
       "Tsunami"
+    ]
+  },
+  "aace-scheduling-standards": {
+    "id": "aace-scheduling-standards",
+    "name": "AACE International Planning & Scheduling Recommended Practices",
+    "description": "Professional practice guidelines covering schedule development, CPM network analysis, and schedule level-of-detail standards.",
+    "code": "AACE RP 23R-02 / 24R-03",
+    "organization": "AACE International",
+    "country": "International",
+    "tags": [
+      "AACE",
+      "CPM Scheduling",
+      "Recommended Practice"
+    ]
+  },
+  "iso-21500-project-management": {
+    "id": "iso-21500-project-management",
+    "name": "ISO 21500: Guidance on Project Management",
+    "description": "International standard providing overarching concepts and processes for project management governance.",
+    "code": "ISO 21500:2021",
+    "organization": "ISO",
+    "country": "International",
+    "tags": [
+      "ISO 21500",
+      "Project Management",
+      "Governance"
+    ]
+  },
+  "ciob-time-cost-management": {
+    "id": "ciob-time-cost-management",
+    "name": "CIOB Code of Practice for Project Management & Scheduling",
+    "description": "Chartered Institute of Building code of practice for managing time, cost, and risk on complex construction projects.",
+    "code": "CIOB COP 5th Ed",
+    "organization": "CIOB",
+    "country": "UK / International",
+    "tags": [
+      "CIOB",
+      "Code of Practice",
+      "Time Management",
+      "Project Management"
+    ]
+  },
+  "aace-international-evm-standards": {
+    "id": "aace-international-evm-standards",
+    "name": "AACE RP 82R-13: Earned Value Management (EVM) Practice",
+    "description": "Standardized principles for establishing performance measurement baselines and executing earned value project controls.",
+    "code": "AACE RP 82R-13",
+    "organization": "AACE International",
+    "country": "International",
+    "tags": [
+      "AACE",
+      "EVM",
+      "Earned Value",
+      "Project Controls"
+    ]
+  },
+  "pmi-pmbok-framework": {
+    "id": "pmi-pmbok-framework",
+    "name": "PMI Project Management Body of Knowledge (PMBOK Guide)",
+    "description": "Global framework establishing performance domains, delivery principles, and process groups for capital projects.",
+    "code": "PMBOK 7th Edition",
+    "organization": "PMI",
+    "country": "International",
+    "tags": [
+      "PMI",
+      "PMBOK",
+      "PMP",
+      "Project Governance"
+    ]
+  },
+  "iso-21502-project-management": {
+    "id": "iso-21502-project-management",
+    "name": "ISO 21502: Project, Programme and Portfolio Management",
+    "description": "Standard providing guidance on project management practices, planning, monitoring, and control across project lifecycles.",
+    "code": "ISO 21502:2020",
+    "organization": "ISO",
+    "country": "International",
+    "tags": [
+      "ISO 21502",
+      "Project Controls",
+      "Monitoring"
+    ]
+  },
+  "aace-cost-estimating-standards": {
+    "id": "aace-cost-estimating-standards",
+    "name": "AACE RP 17R-97: Cost Estimate Classification System",
+    "description": "System defining Class 1 to Class 5 construction estimate maturity, accuracy ranges, and expected deliverables.",
+    "code": "AACE RP 17R-97 / 18R-97",
+    "organization": "AACE International",
+    "country": "International",
+    "tags": [
+      "AACE",
+      "Cost Estimating",
+      "Class 1-5",
+      "Estimate Accuracy"
+    ]
+  },
+  "nrm-measurement-standards": {
+    "id": "nrm-measurement-standards",
+    "name": "RICS New Rules of Measurement (NRM)",
+    "description": "Suite of measurement rules providing a standardized basis for estimating, BOQ preparation, and asset cost management.",
+    "code": "RICS NRM 1 / 2 / 3",
+    "organization": "RICS",
+    "country": "UK / International",
+    "tags": [
+      "RICS",
+      "NRM",
+      "Measurement Rules",
+      "BOQ"
+    ]
+  },
+  "pwd-schedule-of-rates": {
+    "id": "pwd-schedule-of-rates",
+    "name": "PWD Bangladesh Schedule of Rates (SOR)",
+    "description": "Official schedule of labor, material, and equipment unit rates utilized for government project cost estimates and tender evaluations.",
+    "code": "PWD SOR 2022",
+    "organization": "Public Works Department (PWD)",
+    "country": "Bangladesh",
+    "tags": [
+      "PWD",
+      "Schedule of Rates",
+      "Unit Rates",
+      "Bangladesh"
+    ]
+  },
+  "cesmm4-civil-engineering-measurement": {
+    "id": "cesmm4-civil-engineering-measurement",
+    "name": "CESMM4: Civil Engineering Standard Method of Measurement",
+    "description": "Standardized measurement methodology for civil engineering works published by the Institution of Civil Engineers.",
+    "code": "CESMM4",
+    "organization": "ICE",
+    "country": "International",
+    "tags": [
+      "CESMM4",
+      "ICE",
+      "Civil Measurement",
+      "BOQ"
+    ]
+  },
+  "rics-nrm2-measurement-rules": {
+    "id": "rics-nrm2-measurement-rules",
+    "name": "RICS NRM 2: Detailed Measurement for Building Works",
+    "description": "Definitive guidance for drafting itemized bills of quantities and work package breakdowns for building projects.",
+    "code": "NRM 2",
+    "organization": "RICS",
+    "country": "UK / International",
+    "tags": [
+      "RICS",
+      "NRM 2",
+      "Bills of Quantities",
+      "Measurement"
+    ]
+  },
+  "pomi-principles-of-measurement": {
+    "id": "pomi-principles-of-measurement",
+    "name": "Principles of Measurement (International) for Building Works (POMI)",
+    "description": "International standard of measurement for building and civil works developed for international contracts.",
+    "code": "POMI",
+    "organization": "RICS",
+    "country": "International",
+    "tags": [
+      "POMI",
+      "International Measurement",
+      "Quantity Surveying"
+    ]
+  },
+  "fidic-yellow-book": {
+    "id": "fidic-yellow-book",
+    "name": "FIDIC Conditions of Contract for Plant and Design-Build (Yellow Book)",
+    "description": "Standard contract conditions for contractor-designed electrical/mechanical plant and building/engineering works.",
+    "code": "FIDIC Yellow Book 2017",
+    "organization": "FIDIC",
+    "country": "International",
+    "tags": [
+      "FIDIC",
+      "Yellow Book",
+      "Design-Build",
+      "Plant"
+    ]
+  },
+  "fidic-silver-book": {
+    "id": "fidic-silver-book",
+    "name": "FIDIC Conditions of Contract for EPC/Turnkey Projects (Silver Book)",
+    "description": "Standard form of contract for EPC/Turnkey projects placing higher risk and certainty of final price/time upon the contractor.",
+    "code": "FIDIC Silver Book 2017",
+    "organization": "FIDIC",
+    "country": "International",
+    "tags": [
+      "FIDIC",
+      "Silver Book",
+      "EPC",
+      "Turnkey"
+    ]
+  },
+  "bangladesh-public-procurement-rules-ppr": {
+    "id": "bangladesh-public-procurement-rules-ppr",
+    "name": "Bangladesh Public Procurement Act & Rules (PPA/PPR)",
+    "description": "Statutory rules governing all government procurement, e-GP tendering, contractor qualification, and contract administration in Bangladesh.",
+    "code": "PPA 2006 / PPR 2008",
+    "organization": "BPPA (formerly CPTU)",
+    "country": "Bangladesh",
+    "tags": [
+      "PPR",
+      "PPA",
+      "e-GP",
+      "Procurement Rules",
+      "Bangladesh"
+    ]
+  },
+  "scl-delay-and-disruption-protocol": {
+    "id": "scl-delay-and-disruption-protocol",
+    "name": "Society of Construction Law (SCL) Delay and Disruption Protocol",
+    "description": "Leading international protocol providing objective guidance on delay analysis, concurrency, records keeping, and disruption quantification.",
+    "code": "SCL Protocol 2nd Edition",
+    "organization": "Society of Construction Law",
+    "country": "International",
+    "tags": [
+      "SCL Protocol",
+      "Delay Analysis",
+      "Disruption",
+      "EOT Claims"
+    ]
+  },
+  "aace-rp-29r-03-forensic-schedule-analysis": {
+    "id": "aace-rp-29r-03-forensic-schedule-analysis",
+    "name": "AACE RP 29R-03: Forensic Schedule Analysis",
+    "description": "Standardized taxonomy and technical validation protocol for retrospective critical path delay analysis methods.",
+    "code": "AACE RP 29R-03",
+    "organization": "AACE International",
+    "country": "International",
+    "tags": [
+      "AACE",
+      "Forensic Schedule",
+      "Delay Analysis",
+      "MIP"
+    ]
+  },
+  "fidic-dispute-adjudication-rules": {
+    "id": "fidic-dispute-adjudication-rules",
+    "name": "FIDIC Dispute Avoidance/Adjudication Board (DAAB) Rules",
+    "description": "Procedural rules governing regular DAAB site visits, informal advisory opinions, and binding dispute determinations.",
+    "code": "FIDIC DAAB Rules",
+    "organization": "FIDIC",
+    "country": "International",
+    "tags": [
+      "FIDIC",
+      "DAAB",
+      "Dispute Resolution",
+      "Adjudication"
+    ]
+  },
+  "pmi-practice-standard-project-risk": {
+    "id": "pmi-practice-standard-project-risk",
+    "name": "PMI Practice Standard for Project Risk Management",
+    "description": "Standard framework detailing qualitative risk matrices, quantitative Monte Carlo simulations, and risk response strategies.",
+    "code": "PMI Risk Standard",
+    "organization": "PMI",
+    "country": "International",
+    "tags": [
+      "PMI",
+      "Risk Management",
+      "Risk Strategy"
+    ]
+  },
+  "aace-rp-40r-08-contingency-estimating": {
+    "id": "aace-rp-40r-08-contingency-estimating",
+    "name": "AACE RP 40R-08: Contingency Estimating - General Principles",
+    "description": "Principles for establishing statistical and parametric cost and schedule contingency reserves on capital engineering projects.",
+    "code": "AACE RP 40R-08",
+    "organization": "AACE International",
+    "country": "International",
+    "tags": [
+      "AACE",
+      "Contingency",
+      "Cost Risk",
+      "Parametric Risk"
+    ]
+  },
+  "astm-construction-standards": {
+    "id": "astm-construction-standards",
+    "name": "ASTM International Construction Materials Standards",
+    "description": "Standard test methods and specifications for Portland cement, ready-mixed concrete, structural steel, aggregates, and soil compaction.",
+    "code": "ASTM C39 / C143 / A36 / D1557",
+    "organization": "ASTM International",
+    "country": "USA / International",
+    "tags": [
+      "ASTM",
+      "Materials Testing",
+      "Concrete Testing",
+      "Steel"
+    ]
+  },
+  "bs-en-standards": {
+    "id": "bs-en-standards",
+    "name": "British & European Construction Standards (BS EN)",
+    "description": "Harmonized standards for concrete specification (BS EN 206), structural steel fabrication (BS EN 1090), and earthworks execution.",
+    "code": "BS EN 206 / 1090 / 1992",
+    "organization": "BSI / CEN",
+    "country": "UK / Europe",
+    "tags": [
+      "BS EN",
+      "Concrete Specification",
+      "Eurocodes",
+      "Fabrication"
+    ]
+  },
+  "pwd-bangladesh-specifications": {
+    "id": "pwd-bangladesh-specifications",
+    "name": "PWD Standard Specifications for Civil Works",
+    "description": "Technical requirements for earthworks, brickwork, reinforced concrete, plastering, plumbing, and structural finishes in Bangladesh.",
+    "code": "PWD Civil Specs",
+    "organization": "Public Works Department",
+    "country": "Bangladesh",
+    "tags": [
+      "PWD",
+      "Civil Specs",
+      "Bangladesh Standards"
+    ]
+  },
+  "bnbc-construction-safety-provisions": {
+    "id": "bnbc-construction-safety-provisions",
+    "name": "BNBC Part 7: Construction Practices and Safety",
+    "description": "Mandatory Bangladesh National Building Code regulations governing scaffold erection, excavation shoring, hoist safety, and worker protection.",
+    "code": "BNBC 2020 Part 7",
+    "organization": "HBRI / Ministry of Housing",
+    "country": "Bangladesh",
+    "tags": [
+      "BNBC",
+      "Construction Safety",
+      "Building Code",
+      "Bangladesh"
+    ]
+  },
+  "bs-5975-temporary-works": {
+    "id": "bs-5975-temporary-works",
+    "name": "BS 5975: Code of Practice for Temporary Works Procedures",
+    "description": "Authoritative code of practice for the procedural control of temporary works and the structural design of falsework and formwork.",
+    "code": "BS 5975:2019",
+    "organization": "BSI",
+    "country": "UK / International",
+    "tags": [
+      "BS 5975",
+      "Temporary Works",
+      "TWC",
+      "Falsework",
+      "Shoring"
+    ]
+  },
+  "aci-347-formwork-for-concrete": {
+    "id": "aci-347-formwork-for-concrete",
+    "name": "ACI 347R: Guide to Formwork for Concrete",
+    "description": "American Concrete Institute comprehensive design guide for formwork lateral pressure, shoring capacity, deflection limits, and safety factors.",
+    "code": "ACI 347R-14",
+    "organization": "American Concrete Institute (ACI)",
+    "country": "USA / International",
+    "tags": [
+      "ACI 347",
+      "Formwork",
+      "Concrete Pressure",
+      "Shoring"
+    ]
+  },
+  "osha-scaffolding-shoring-standards": {
+    "id": "osha-scaffolding-shoring-standards",
+    "name": "OSHA 1926 Subpart L & P: Scaffolds and Excavations",
+    "description": "US federal occupational safety regulations governing scaffold capacity, guardrails, trench shoring, sloping, and protective systems.",
+    "code": "29 CFR 1926 Subpart L/P",
+    "organization": "OSHA",
+    "country": "USA / International",
+    "tags": [
+      "OSHA",
+      "Scaffolds",
+      "Excavations",
+      "Trench Safety"
+    ]
+  },
+  "iso-equipment-standards": {
+    "id": "iso-equipment-standards",
+    "name": "ISO Earth-Moving Machinery & Crane Standards",
+    "description": "International safety and performance standards governing mobile cranes, excavators, loaders, roll-over protective structures (ROPS), and falling-object protective structures (FOPS).",
+    "code": "ISO 3471 / ISO 4301",
+    "organization": "ISO",
+    "country": "International",
+    "tags": [
+      "ISO",
+      "Machinery Standards",
+      "Cranes",
+      "ROPS",
+      "Earthmoving"
+    ]
+  },
+  "caterpillar-performance-handbook-standards": {
+    "id": "caterpillar-performance-handbook-standards",
+    "name": "Caterpillar Performance Handbook Standards",
+    "description": "Industry-standard benchmarks for earthmoving machine production rates, cycle time calculation formulas, fuel burn estimates, and hourly operating costs.",
+    "code": "Cat Performance Handbook Ed 50",
+    "organization": "Caterpillar",
+    "country": "International",
+    "tags": [
+      "Caterpillar",
+      "Equipment Standards",
+      "Cycle Times",
+      "Production Rates"
+    ]
+  },
+  "sae-construction-machinery-standards": {
+    "id": "sae-construction-machinery-standards",
+    "name": "SAE Standards for Construction and Industrial Machinery",
+    "description": "Society of Automotive Engineers technical standards covering bucket capacities, braking performance, and stability ratings for off-road machinery.",
+    "code": "SAE J1153 / J742",
+    "organization": "SAE International",
+    "country": "International",
+    "tags": [
+      "SAE",
+      "Machinery",
+      "Bucket Capacity",
+      "Braking"
+    ]
+  },
+  "rhd-specifications": {
+    "id": "rhd-specifications",
+    "name": "RHD Standard Specifications for Roads and Bridges",
+    "description": "Standard technical specifications issued by the Roads and Highways Department of Bangladesh for pavement layers, embankments, and bridge structures.",
+    "code": "RHD Specs 2014",
+    "organization": "Roads and Highways Department (RHD)",
+    "country": "Bangladesh",
+    "tags": [
+      "RHD",
+      "Roads",
+      "Bridges",
+      "Highway Specs",
+      "Bangladesh"
+    ]
+  },
+  "lged-specifications": {
+    "id": "lged-specifications",
+    "name": "LGED Standard Specifications for Rural Infrastructure",
+    "description": "Technical specifications for rural roads, culverts, small bridges, and community growth centers issued by the Local Government Engineering Department.",
+    "code": "LGED Specs 2019",
+    "organization": "LGED",
+    "country": "Bangladesh",
+    "tags": [
+      "LGED",
+      "Rural Roads",
+      "Culverts",
+      "Bangladesh"
+    ]
+  },
+  "iso-28000-supply-chain-security": {
+    "id": "iso-28000-supply-chain-security",
+    "name": "ISO 28000: Security Management Systems for the Supply Chain",
+    "description": "Requirements for managing risks, logistics integrity, and traceability across complex construction material supply chains.",
+    "code": "ISO 28000:2022",
+    "organization": "ISO",
+    "country": "International",
+    "tags": [
+      "ISO 28000",
+      "Supply Chain",
+      "Logistics",
+      "Material Security"
+    ]
+  },
+  "ciob-logistics-standards": {
+    "id": "ciob-logistics-standards",
+    "name": "CIOB Construction Logistics Best Practice Guidelines",
+    "description": "Guidelines on site master staging, traffic consolidation centers, environmental delivery windows, and off-site prefabrication staging.",
+    "code": "CIOB Logistics Guide",
+    "organization": "CIOB",
+    "country": "UK / International",
+    "tags": [
+      "CIOB",
+      "Logistics",
+      "Site Traffic",
+      "Consolidation"
+    ]
+  },
+  "ashrae-standards": {
+    "id": "ashrae-standards",
+    "name": "ASHRAE Building Services Standards",
+    "description": "Standards for ventilation, thermal comfort, and energy conservation across commercial building HVAC systems.",
+    "code": "ASHRAE 62.1 / 90.1",
+    "organization": "ASHRAE",
+    "country": "USA / International",
+    "tags": [
+      "ASHRAE",
+      "MEP",
+      "HVAC",
+      "Building Services"
+    ]
+  },
+  "rhd-standard-specifications": {
+    "id": "rhd-standard-specifications",
+    "name": "RHD Technical Specifications for Major Infrastructure Projects",
+    "description": "Comprehensive specification guidelines for sub-base, dense bituminous macadam, prestressed concrete girders, and pile foundations.",
+    "code": "RHD Infrastructure Specs",
+    "organization": "Roads and Highways Department (RHD)",
+    "country": "Bangladesh",
+    "tags": [
+      "RHD",
+      "Highway Infrastructure",
+      "Pavement",
+      "Bridges"
+    ]
+  },
+  "arena-railway-standards": {
+    "id": "arena-railway-standards",
+    "name": "AREMA Manual for Railway Engineering",
+    "description": "American Railway Engineering and Maintenance-of-Way Association standards for track construction, ballast, signaling, and viaduct bridges.",
+    "code": "AREMA 2022",
+    "organization": "AREMA",
+    "country": "USA / International",
+    "tags": [
+      "AREMA",
+      "Railway",
+      "Track Construction",
+      "Viaduct"
+    ]
+  },
+  "aace-rp-25r-03-progress-measurement": {
+    "id": "aace-rp-25r-03-progress-measurement",
+    "name": "AACE RP 25R-03: Estimating and Progress Measurement",
+    "description": "Recommended practice establishing rules of credit, work package weighting, and physical completion tracking.",
+    "code": "AACE RP 25R-03",
+    "organization": "AACE International",
+    "country": "International",
+    "tags": [
+      "AACE",
+      "Progress Measurement",
+      "Rules of Credit",
+      "S-Curve"
+    ]
+  },
+  "pmi-project-performance-metrics": {
+    "id": "pmi-project-performance-metrics",
+    "name": "PMI Standard for Project Performance Measurement",
+    "description": "Guideline defining key project performance metrics, variance thresholds, and executive status dashboards.",
+    "code": "PMI Performance Practice",
+    "organization": "PMI",
+    "country": "International",
+    "tags": [
+      "PMI",
+      "Performance Metrics",
+      "KPIs",
+      "Dashboards"
+    ]
+  },
+  "leed-v4-construction-standards": {
+    "id": "leed-v4-construction-standards",
+    "name": "USGBC LEED v4.1 Building Design & Construction Guidelines",
+    "description": "Rating criteria for construction waste management, indoor air quality during construction, low-emitting materials, and sustainable site operations.",
+    "code": "LEED BD+C v4.1",
+    "organization": "USGBC",
+    "country": "USA / International",
+    "tags": [
+      "LEED",
+      "Green Building",
+      "Construction Waste",
+      "Sustainability"
+    ]
+  },
+  "breeam-construction-criteria": {
+    "id": "breeam-construction-criteria",
+    "name": "BREEAM International New Construction Standard",
+    "description": "Environmental assessment method evaluating responsible sourcing, site timber procurement, and energy/water consumption during construction.",
+    "code": "BREEAM 2016",
+    "organization": "BRE Group",
+    "country": "UK / International",
+    "tags": [
+      "BREEAM",
+      "Sustainability",
+      "Responsible Sourcing",
+      "Construction"
+    ]
+  },
+  "en-15978-sustainability": {
+    "id": "en-15978-sustainability",
+    "name": "EN 15978: Sustainability of Construction Works - Life Cycle Assessment",
+    "description": "Standard calculation method for evaluating the environmental performance of buildings across Stages A1-A5 (production and construction process).",
+    "code": "EN 15978:2011",
+    "organization": "CEN",
+    "country": "Europe / International",
+    "tags": [
+      "EN 15978",
+      "LCA",
+      "Embodied Carbon",
+      "Stage A1-A5"
+    ]
+  },
+  "aia-ipd-contract-agreements": {
+    "id": "aia-ipd-contract-agreements",
+    "name": "AIA C191: Standard Form Multi-Party Agreement for IPD",
+    "description": "Standard multi-party contract uniting owner, architect, and general contractor under shared risk/reward and collaborative design-to-build principles.",
+    "code": "AIA C191-2009",
+    "organization": "AIA",
+    "country": "USA / International",
+    "tags": [
+      "AIA",
+      "IPD",
+      "Collaborative Contracting",
+      "Multi-Party"
+    ]
+  },
+  "lean-construction-institute-lps-standards": {
+    "id": "lean-construction-institute-lps-standards",
+    "name": "LCI Last Planner System (LPS) Standard Practice Guide",
+    "description": "Standard protocol for master scheduling, phase pull planning, 6-week lookahead make-ready planning, weekly work plans, and Percent Plan Complete (PPC).",
+    "code": "LCI LPS Guide",
+    "organization": "Lean Construction Institute (LCI)",
+    "country": "USA / International",
+    "tags": [
+      "LPS",
+      "Last Planner",
+      "Lean Construction",
+      "Pull Planning",
+      "PPC"
+    ]
+  },
+  "building-smart-ifc-standards": {
+    "id": "building-smart-ifc-standards",
+    "name": "buildingSMART Industry Foundation Classes (IFC) Standards",
+    "description": "Open neutral data exchange standards enabling vendor-agnostic BIM interoperability between design, 4D scheduling, and construction tools.",
+    "code": "IFC 4.3 / ISO 16739",
+    "organization": "buildingSMART",
+    "country": "International",
+    "tags": [
+      "IFC",
+      "OpenBIM",
+      "buildingSMART",
+      "Interoperability"
+    ]
+  },
+  "pas-1192-construction-bim": {
+    "id": "pas-1192-construction-bim",
+    "name": "PAS 1192-2: Specification for Information Management for the Capital/Delivery Phase",
+    "description": "Foundational specification for BIM Level 2 delivery, Employer Information Requirements (EIR), and BIM Execution Plans (BEP).",
+    "code": "PAS 1192-2:2013",
+    "organization": "BSI",
+    "country": "UK / International",
+    "tags": [
+      "PAS 1192",
+      "BIM",
+      "BEP",
+      "EIR",
+      "Digital Construction"
     ]
   }
 }

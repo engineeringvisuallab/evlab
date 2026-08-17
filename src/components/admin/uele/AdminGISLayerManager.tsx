@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UELELayer, UELEGISLayerStyle, UELEPublicationStatus } from '../../../types/adminUele';
+import { UELELayer, UELEGISLayerStyle, UELEPublicationStatus } from '../../../types/uele';
 import { FullUELEDatabase, UELEAdminService } from '../../../services/ueleAdminService';
 import { importShapefileZip, importGeoJSONFile } from '../../../utils/gisImporter';
 import { Button } from '../../shared/Button';

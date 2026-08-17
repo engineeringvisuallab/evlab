@@ -1,27 +1,31 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Compass, ArrowLeft, RotateCcw } from 'lucide-react';
-import { Container } from '@/components/shared/Container';
-import { SectionHeader } from '@/components/shared/SectionHeader';
-import { Breadcrumbs } from '@/components/shared/Breadcrumbs';
-import type { BreadcrumbItem } from '@/components/shared/Breadcrumbs';
-import { Badge } from '@/components/shared/Badge';
-import { Button } from '@/components/shared/Button';
-import { StepBar } from '@/components/roadmap/StepBar';
-import { RoadmapNodeCard } from '@/components/roadmap/RoadmapNodeCard';
-import { RoadmapSearch } from '@/components/roadmap/RoadmapSearch';
-import { RoadmapDetailCard } from '@/components/roadmap/RoadmapDetailCard';
-import type { RoadmapNode, RoadmapTree } from '@/types/roadmap';
-import { useRouter } from '@/context/RouterContext'
-import { isActivePath } from '@/utils/router'
+import { Compass, ArrowLeft, RotateCcw, Sparkles, Filter, Search } from 'lucide-react';
+import { Container } from '../components/shared/Container';
+import { SectionHeader } from '../components/shared/SectionHeader';
+import { Breadcrumbs, BreadcrumbItem } from '../components/shared/Breadcrumbs';
+import { Badge } from '../components/shared/Badge';
+import { Button } from '../components/shared/Button';
+import { StepBar } from '../components/roadmap/StepBar';
+import { RoadmapNodeCard } from '../components/roadmap/RoadmapNodeCard';
+import { RoadmapSearch } from '../components/roadmap/RoadmapSearch';
+import { RoadmapDetailCard } from '../components/roadmap/RoadmapDetailCard';
+import { RoadmapNode } from '../types/roadmap';
 
 // Import Stage 01 tree data
-import roadmapTreeData from '@/data/roadmap-tree.json';
+import roadmapTreeData from '../data/roadmap-tree.json';
 
-const ROADMAP_BASE = '/career-roadmap';
+export interface RoadmapPageProps {
+  initialFieldId?: string | null;
+  onNavigateHome?: () => void;
+  onNavigateToUele?: (ueleId: string) => void;
+}
 
-export const RoadmapPage: React.FC = () => {
-  const treeNodes = roadmapTreeData as RoadmapTree;
-  const { path, navigate } = useRouter();
+export const RoadmapPage: React.FC<RoadmapPageProps> = ({
+  initialFieldId,
+  onNavigateHome,
+  onNavigateToUele,
+}) => {
+  const treeNodes = roadmapTreeData as RoadmapNode[];
 
   // Roadmap Navigation State
   const [selectedField, setSelectedField] = useState<RoadmapNode | null>(null);
@@ -32,42 +36,100 @@ export const RoadmapPage: React.FC = () => {
   // Search Query
   const [searchQuery, setSearchQuery] = useState('');
 
-  // 1. Sync selection state with the URL path whenever it changes (back/forward, direct links, our navigate() calls)
+  // Helper to resolve field node including aliases
+  const findFieldNode = (id: string | null | undefined): RoadmapNode | null => {
+    if (!id) return null;
+    return (
+      treeNodes.find(
+        (n) =>
+          n.id === id ||
+          (id === 'civil' && n.id === 'civil-engineering') ||
+          (id === 'civil-engineering' && n.id === 'civil') ||
+          (id === 'electrical' && n.id === 'electrical-engineering') ||
+          (id === 'electrical-engineering' && n.id === 'electrical') ||
+          (id === 'mechanical' && n.id === 'mechanical-engineering') ||
+          (id === 'mechanical-engineering' && n.id === 'mechanical')
+      ) || null
+    );
+  };
+
+  // 1. Sync with hash / initialFieldId on mount and location changes
   useEffect(() => {
-    if (!isActivePath(path, ROADMAP_BASE)) return;
+    const parseHashAndSetState = () => {
+      const hash = window.location.hash.replace('#', '');
 
-    const parts = path
-      .slice(ROADMAP_BASE.length)
-      .split('/')
-      .filter(Boolean);
-    const [fieldId, branchId, specId, areaId] = parts;
+      // Check if hash starts with career-roadmap or roadmap
+      if (hash.startsWith('career-roadmap') || hash.startsWith('roadmap')) {
+        const parts = hash.split('/').filter(Boolean);
+        // parts[0] is 'career-roadmap', parts[1] is fieldId, parts[2] is branchId, etc.
+        const fieldId = parts[1] || initialFieldId;
+        const branchId = parts[2];
+        const specId = parts[3];
+        const areaId = parts[4];
 
-    const field = fieldId ? treeNodes.find((n) => n.id === fieldId) || null : null;
-    setSelectedField(field);
+        if (fieldId) {
+          const field = findFieldNode(fieldId);
+          setSelectedField(field);
 
-    const branch = field && branchId ? field.children?.find((b) => b.id === branchId) || null : null;
-    setSelectedBranch(branch);
+          if (field && branchId && field.children) {
+            const branch = field.children.find((b) => b.id === branchId) || null;
+            setSelectedBranch(branch);
 
-    const spec = branch && specId ? branch.children?.find((s) => s.id === specId) || null : null;
-    setSelectedSpec(spec);
+            if (branch && specId && branch.children) {
+              const spec = branch.children.find((s) => s.id === specId) || null;
+              setSelectedSpec(spec);
 
-    const area = spec && areaId ? spec.children?.find((a) => a.id === areaId) || null : null;
-    setSelectedArea(area);
-  }, [path, treeNodes]);
+              if (spec && areaId && spec.children) {
+                const area = spec.children.find((a) => a.id === areaId) || null;
+                setSelectedArea(area);
+              } else {
+                setSelectedArea(null);
+              }
+            } else {
+              setSelectedSpec(null);
+              setSelectedArea(null);
+            }
+          } else {
+            setSelectedBranch(null);
+            setSelectedSpec(null);
+            setSelectedArea(null);
+          }
+        }
+      } else if (initialFieldId) {
+        const field = findFieldNode(initialFieldId);
+        if (field) {
+          setSelectedField(field);
+        }
+      }
+    };
 
-  // Push a new URL path whenever the selection changes
-  const updatePath = (
+    parseHashAndSetState();
+
+    window.addEventListener('hashchange', parseHashAndSetState);
+    window.addEventListener('popstate', parseHashAndSetState);
+    return () => {
+      window.removeEventListener('hashchange', parseHashAndSetState);
+      window.removeEventListener('popstate', parseHashAndSetState);
+    };
+  }, [initialFieldId]);
+
+  // Update URL Hash whenever selections change
+  const updateHash = (
     field: RoadmapNode | null,
     branch: RoadmapNode | null,
     spec: RoadmapNode | null,
     area: RoadmapNode | null
   ) => {
-    const parts = [ROADMAP_BASE];
+    const parts = ['career-roadmap'];
     if (field) parts.push(field.id);
     if (branch) parts.push(branch.id);
     if (spec) parts.push(spec.id);
     if (area) parts.push(area.id);
-    navigate(parts.join('/'));
+
+    const newHash = '#' + parts.join('/');
+    if (window.location.hash !== newHash) {
+      window.history.pushState(null, '', newHash);
+    }
   };
 
   // Selection Handlers
@@ -76,25 +138,25 @@ export const RoadmapPage: React.FC = () => {
     setSelectedBranch(null);
     setSelectedSpec(null);
     setSelectedArea(null);
-    updatePath(field, null, null, null);
+    updateHash(field, null, null, null);
   };
 
   const handleSelectBranch = (branch: RoadmapNode) => {
     setSelectedBranch(branch);
     setSelectedSpec(null);
     setSelectedArea(null);
-    updatePath(selectedField, branch, null, null);
+    updateHash(selectedField, branch, null, null);
   };
 
   const handleSelectSpec = (spec: RoadmapNode) => {
     setSelectedSpec(spec);
     setSelectedArea(null);
-    updatePath(selectedField, selectedBranch, spec, null);
+    updateHash(selectedField, selectedBranch, spec, null);
   };
 
   const handleSelectArea = (area: RoadmapNode) => {
     setSelectedArea(area);
-    updatePath(selectedField, selectedBranch, selectedSpec, area);
+    updateHash(selectedField, selectedBranch, selectedSpec, area);
   };
 
   const handleReset = () => {
@@ -103,7 +165,7 @@ export const RoadmapPage: React.FC = () => {
     setSelectedSpec(null);
     setSelectedArea(null);
     setSearchQuery('');
-    updatePath(null, null, null, null);
+    updateHash(null, null, null, null);
   };
 
   // StepBar Click Handler
@@ -113,19 +175,19 @@ export const RoadmapPage: React.FC = () => {
       setSelectedBranch(null);
       setSelectedSpec(null);
       setSelectedArea(null);
-      updatePath(null, null, null, null);
+      updateHash(null, null, null, null);
     } else if (stepNumber === 2) {
       setSelectedBranch(null);
       setSelectedSpec(null);
       setSelectedArea(null);
-      updatePath(selectedField, null, null, null);
+      updateHash(selectedField, null, null, null);
     } else if (stepNumber === 3) {
       setSelectedSpec(null);
       setSelectedArea(null);
-      updatePath(selectedField, selectedBranch, null, null);
+      updateHash(selectedField, selectedBranch, null, null);
     } else if (stepNumber === 4) {
       setSelectedArea(null);
-      updatePath(selectedField, selectedBranch, selectedSpec, null);
+      updateHash(selectedField, selectedBranch, selectedSpec, null);
     }
   };
 
@@ -145,34 +207,6 @@ export const RoadmapPage: React.FC = () => {
     if (selectedField) return selectedField.children || [];
     return treeNodes;
   }, [selectedField, selectedBranch, selectedSpec, treeNodes]);
-
-  // The deepest selected node that has NO children is a terminal / leaf node and
-  // should render its full detail card — even if it isn't technically an "area"
-  // (e.g. a specialization like Wastewater & Sewerage with real relations but no
-  // further sub-areas yet). This avoids a dead-end empty grid for real content.
-  const terminalNode = useMemo(() => {
-    if (selectedArea) return selectedArea;
-    if (selectedSpec && (!selectedSpec.children || selectedSpec.children.length === 0)) return selectedSpec;
-    if (selectedBranch && (!selectedBranch.children || selectedBranch.children.length === 0)) return selectedBranch;
-    if (selectedField && (!selectedField.children || selectedField.children.length === 0)) return selectedField;
-    return null;
-  }, [selectedField, selectedBranch, selectedSpec, selectedArea]);
-
-  const goBackFromTerminal = () => {
-    if (selectedArea) {
-      setSelectedArea(null);
-      updatePath(selectedField, selectedBranch, selectedSpec, null);
-    } else if (selectedSpec && terminalNode?.id === selectedSpec.id) {
-      setSelectedSpec(null);
-      updatePath(selectedField, selectedBranch, null, null);
-    } else if (selectedBranch && terminalNode?.id === selectedBranch.id) {
-      setSelectedBranch(null);
-      updatePath(selectedField, null, null, null);
-    } else if (selectedField && terminalNode?.id === selectedField.id) {
-      setSelectedField(null);
-      updatePath(null, null, null, null);
-    }
-  };
 
   // Search Filtered Options
   const filteredOptions = useMemo(() => {
@@ -235,7 +269,7 @@ export const RoadmapPage: React.FC = () => {
     const items: BreadcrumbItem[] = [
       {
         label: 'Career Roadmap',
-        href: ROADMAP_BASE,
+        href: '#career-roadmap',
         active: !selectedField,
       },
     ];
@@ -243,7 +277,7 @@ export const RoadmapPage: React.FC = () => {
     if (selectedField) {
       items.push({
         label: selectedField.title,
-        href: `${ROADMAP_BASE}/${selectedField.id}`,
+        href: `#career-roadmap/${selectedField.id}`,
         active: !selectedBranch,
       });
     }
@@ -251,7 +285,7 @@ export const RoadmapPage: React.FC = () => {
     if (selectedBranch) {
       items.push({
         label: selectedBranch.title,
-        href: `${ROADMAP_BASE}/${selectedField?.id}/${selectedBranch.id}`,
+        href: `#career-roadmap/${selectedField?.id}/${selectedBranch.id}`,
         active: !selectedSpec,
       });
     }
@@ -259,7 +293,7 @@ export const RoadmapPage: React.FC = () => {
     if (selectedSpec) {
       items.push({
         label: selectedSpec.title,
-        href: `${ROADMAP_BASE}/${selectedField?.id}/${selectedBranch?.id}/${selectedSpec.id}`,
+        href: `#career-roadmap/${selectedField?.id}/${selectedBranch?.id}/${selectedSpec.id}`,
         active: !selectedArea,
       });
     }
@@ -267,7 +301,7 @@ export const RoadmapPage: React.FC = () => {
     if (selectedArea) {
       items.push({
         label: selectedArea.title,
-        href: `${ROADMAP_BASE}/${selectedField?.id}/${selectedBranch?.id}/${selectedSpec?.id}/${selectedArea.id}`,
+        href: `#career-roadmap/${selectedField?.id}/${selectedBranch?.id}/${selectedSpec?.id}/${selectedArea.id}`,
         active: true,
       });
     }
@@ -277,12 +311,12 @@ export const RoadmapPage: React.FC = () => {
 
   // Handle Breadcrumb navigation clicks
   const handleBreadcrumbNavigate = (href?: string) => {
-    if (!href || href === ROADMAP_BASE || href === '/') {
+    if (!href || href === '#career-roadmap' || href === '/') {
       handleReset();
       return;
     }
 
-    const parts = href.replace(`${ROADMAP_BASE}/`, '').split('/');
+    const parts = href.replace('#career-roadmap/', '').split('/');
     const fieldId = parts[0];
     const branchId = parts[1];
     const specId = parts[2];
@@ -318,20 +352,20 @@ export const RoadmapPage: React.FC = () => {
 
   // Section Titles based on current step
   const currentStepTitle = useMemo(() => {
-    if (terminalNode) return terminalNode.title;
+    if (selectedArea) return selectedArea.title;
     if (selectedSpec) return `Choose Focus Area within ${selectedSpec.title}`;
     if (selectedBranch) return `Choose Specialization within ${selectedBranch.title}`;
     if (selectedField) return `Choose Branch within ${selectedField.title}`;
     return 'CHOOSE YOUR ENGINEERING FIELD';
-  }, [terminalNode, selectedField, selectedBranch, selectedSpec]);
+  }, [selectedField, selectedBranch, selectedSpec, selectedArea]);
 
   const currentStepDescription = useMemo(() => {
-    if (terminalNode) return terminalNode.summary || 'Selected engineering path details and ecosystem connections.';
+    if (selectedArea) return selectedArea.summary || 'Selected Focus Area details and ecosystem connections.';
     if (selectedSpec) return 'Select a specific technical focus area to pinpoint your career target.';
     if (selectedBranch) return 'Choose a specialized engineering domain to narrow down your focus.';
     if (selectedField) return 'Explore major engineering branches available in this discipline.';
     return 'Your engineering career starts with one decision. Choose the field you want to explore and build your roadmap from there.';
-  }, [terminalNode, selectedField, selectedBranch, selectedSpec]);
+  }, [selectedField, selectedBranch, selectedSpec, selectedArea]);
 
   return (
     <Container size="xl" className="py-8 sm:py-12 space-y-8">
@@ -343,7 +377,7 @@ export const RoadmapPage: React.FC = () => {
             showHome
             onNavigate={(href) => {
               if (href === '/') {
-                navigate('/');
+                if (onNavigateHome) onNavigateHome();
               } else {
                 handleBreadcrumbNavigate(href);
               }
@@ -362,14 +396,16 @@ export const RoadmapPage: React.FC = () => {
               Reset Roadmap
             </Button>
           )}
-          <Button
-            variant="outline"
-            size="sm"
-            leftIcon={<ArrowLeft className="w-3.5 h-3.5" />}
-            onClick={() => navigate('/')}
-          >
-            Master Homepage
-          </Button>
+          {onNavigateHome && (
+            <Button
+              variant="outline"
+              size="sm"
+              leftIcon={<ArrowLeft className="w-3.5 h-3.5" />}
+              onClick={onNavigateHome}
+            >
+              Master Homepage
+            </Button>
+          )}
         </div>
       </div>
 
@@ -388,8 +424,8 @@ export const RoadmapPage: React.FC = () => {
       {/* Main Section Header */}
       <SectionHeader
         badge={
-          terminalNode
-            ? 'DETAIL VIEW'
+          selectedArea
+            ? 'STEP 4 • FOCUS AREA DETAIL'
             : selectedSpec
             ? 'STEP 4 • SELECT FOCUS AREA'
             : selectedBranch
@@ -404,7 +440,7 @@ export const RoadmapPage: React.FC = () => {
       />
 
       {/* Search Input Box */}
-      {!terminalNode && (
+      {!selectedArea && (
         <RoadmapSearch
           query={searchQuery}
           onQueryChange={setSearchQuery}
@@ -470,17 +506,20 @@ export const RoadmapPage: React.FC = () => {
         </div>
       )}
 
-      {/* TERMINAL DETAIL VIEW (any selected level that has no further children) */}
-      {terminalNode ? (
+      {/* STEP 4 DETAIL VIEW (Selected Area or Terminal Node) */}
+      {selectedArea ? (
         <RoadmapDetailCard
-          node={terminalNode}
+          node={selectedArea}
           parentPath={{
             field: selectedField || undefined,
             branch: selectedBranch || undefined,
-            specialization: selectedSpec && selectedSpec.id !== terminalNode.id ? selectedSpec : undefined,
+            specialization: selectedSpec || undefined,
           }}
-          onBack={goBackFromTerminal}
-          onNavigateToUele={() => navigate('/uele')}
+          onBack={() => {
+            setSelectedArea(null);
+            updateHash(selectedField, selectedBranch, selectedSpec, null);
+          }}
+          onNavigateToUele={onNavigateToUele}
         />
       ) : (
         /* STANDARD LEVEL GRID VIEW (Step 1, Step 2, Step 3, or Step 4 options) */
@@ -513,7 +552,7 @@ export const RoadmapPage: React.FC = () => {
                       else if (selectedBranch) setSelectedBranch(null);
                       else if (selectedField) {
                         setSelectedField(null);
-                        updatePath(null, null, null, null);
+                        updateHash(null, null, null, null);
                       }
                     }}
                   >

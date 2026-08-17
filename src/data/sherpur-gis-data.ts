@@ -1,4 +1,4 @@
-import { UELESystemCategory } from '../types/adminUele';
+import { UELESystemCategory } from '../types/uele';
 
 export interface GISFeatureProperties {
   id: string;

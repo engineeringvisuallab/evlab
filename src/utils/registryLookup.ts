@@ -1,36 +1,14 @@
-import type { RegistryItemBase, Registry } from '@/types/registry';
+import knowledgeRegistry from '../data/registries/knowledge.json';
+import softwareRegistry from '../data/registries/software.json';
+import standardsRegistry from '../data/registries/standards.json';
+import coursesRegistry from '../data/registries/courses.json';
+import careerRolesRegistry from '../data/registries/career-roles.json';
+import skillsRegistry from '../data/registries/skills.json';
+import resourcesRegistry from '../data/registries/resources.json';
+
 import type { RoadmapNode, RoadmapTree } from '@/types/roadmap';
-import type { UeleVideo } from '@/types/uele';
 
-import knowledgeRegistry from '@/data/registries/knowledge.json';
-import softwareRegistry from '@/data/registries/software.json';
-import standardsRegistry from '@/data/registries/standards.json';
-import coursesRegistry from '@/data/registries/courses.json';
-import careerRolesRegistry from '@/data/registries/career-roles.json';
-import skillsRegistry from '@/data/registries/skills.json';
-import resourcesRegistry from '@/data/registries/resources.json';
-import videosRegistry from '@/data/uele/videos.json';
-
-/** Look up a single item in a registry by ID. Returns undefined if not found. */
-export function lookupRegistryItem<T extends RegistryItemBase>(
-  registry: Registry<T>,
-  id: string
-): T | undefined {
-  return registry[id];
-}
-
-/** Resolve an array of IDs against a registry, silently dropping any that don't exist. */
-export function resolveRegistryItems<T extends RegistryItemBase>(
-  registry: Registry<T>,
-  ids: string[] | undefined
-): T[] {
-  if (!ids || ids.length === 0) return [];
-  return ids
-    .map((id) => registry[id])
-    .filter((item): item is T => Boolean(item));
-}
-
-/** Flatten a roadmap tree into a single array of nodes (depth-first). */
+/** Flatten a roadmap tree into a single array of nodes (depth-first). Used by CommandPalette search. */
 export function flattenRoadmapTree(tree: RoadmapTree): RoadmapNode[] {
   const result: RoadmapNode[] = [];
   const visit = (nodes: RoadmapNode[]) => {
@@ -50,7 +28,7 @@ export function findRoadmapNode(tree: RoadmapTree, id: string): RoadmapNode | un
   return flattenRoadmapTree(tree).find((node) => node.id === id);
 }
 
-/** Find the ancestor chain (breadcrumb path) for a given roadmap node ID. */
+/** Find the ancestor chain (breadcrumb path) for a given roadmap node ID. Used by CommandPalette search. */
 export function findRoadmapPath(tree: RoadmapTree, id: string): RoadmapNode[] {
   const path: RoadmapNode[] = [];
   const visit = (nodes: RoadmapNode[], trail: RoadmapNode[]): boolean => {
@@ -69,65 +47,6 @@ export function findRoadmapPath(tree: RoadmapTree, id: string): RoadmapNode[] {
   visit(tree, []);
   return path;
 }
-
-export interface DataIntegrityReport {
-  duplicateRoadmapIds: string[];
-  duplicateRegistryIds: Record<string, string[]>;
-  brokenRelations: Array<{ nodeId: string; field: string; missingId: string }>;
-}
-
-/**
- * Validates roadmap-tree.json against the registries per Stage 01 Data
- * Integrity Rules: no duplicate node IDs, no duplicate registry IDs, and
- * every relation ID must resolve to a real registry entry.
- */
-export function validateDataIntegrity(
-  tree: RoadmapTree,
-  registries: Record<string, Registry<RegistryItemBase>>
-): DataIntegrityReport {
-  const nodes = flattenRoadmapTree(tree);
-
-  // Duplicate roadmap node IDs
-  const seen = new Set<string>();
-  const duplicateRoadmapIds: string[] = [];
-  for (const node of nodes) {
-    if (seen.has(node.id)) duplicateRoadmapIds.push(node.id);
-    seen.add(node.id);
-  }
-
-  // Duplicate registry IDs (shouldn't be possible with object keys, but
-  // checks for id-field mismatches against the key).
-  const duplicateRegistryIds: Record<string, string[]> = {};
-  for (const [registryName, registry] of Object.entries(registries)) {
-    const mismatches = Object.entries(registry)
-      .filter(([key, item]) => item.id !== key)
-      .map(([key]) => key);
-    if (mismatches.length > 0) duplicateRegistryIds[registryName] = mismatches;
-  }
-
-  // Broken relations
-  const brokenRelations: Array<{ nodeId: string; field: string; missingId: string }> = [];
-  for (const node of nodes) {
-    if (!node.relations) continue;
-    for (const [field, ids] of Object.entries(node.relations)) {
-      const registry = registries[field];
-      if (!registry || !ids) continue;
-      for (const relId of ids as string[]) {
-        if (!registry[relId]) {
-          brokenRelations.push({ nodeId: node.id, field, missingId: relId });
-        }
-      }
-    }
-  }
-
-  return { duplicateRoadmapIds, duplicateRegistryIds, brokenRelations };
-}
-
-/* ------------------------------------------------------------------ */
-/*  UELE registry getters — used by the UELE Object Inspector to      */
-/*  resolve knowledge / skill / software / standard / course /        */
-/*  resource / video IDs referenced on a UELE object or component.    */
-/* ------------------------------------------------------------------ */
 
 export interface RegistryItem {
   id: string;
@@ -232,27 +151,22 @@ export function getResourceItem(id: string): RegistryItem | null {
   };
 }
 
-export function getVideoItem(id: string): UeleVideo | null {
-  const item = (videosRegistry as Record<string, any>)[id];
-  if (!item) return null;
-  return item as UeleVideo;
+export function getVideoItem(id: string): RegistryItem | null {
+  return null;
 }
 
-export function getVideosForObject(objectId: string): UeleVideo[] {
-  const all = Object.values(videosRegistry as Record<string, UeleVideo>);
-  return all.filter((v) => v.objectIds && v.objectIds.includes(objectId));
+export function getVideosForObject(objectId: string): RegistryItem[] {
+  return [];
 }
 
-export function getVideosForComponent(componentId: string): UeleVideo[] {
-  const all = Object.values(videosRegistry as Record<string, UeleVideo>);
-  return all.filter((v) => v.componentIds && v.componentIds.includes(componentId));
+export function getVideosForComponent(componentId: string): RegistryItem[] {
+  return [];
 }
 
-export function getVideosForSoftware(softwareId: string): UeleVideo[] {
-  const all = Object.values(videosRegistry as Record<string, UeleVideo>);
-  return all.filter((v) => v.softwareIds && v.softwareIds.includes(softwareId));
+export function getVideosForSoftware(softwareId: string): RegistryItem[] {
+  return [];
 }
 
-export function getAllVideos(): UeleVideo[] {
-  return Object.values(videosRegistry as Record<string, UeleVideo>);
+export function getAllVideos(): RegistryItem[] {
+  return [];
 }

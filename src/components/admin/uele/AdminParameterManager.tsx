@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AdminUELEParameter, UELEPublicationStatus } from '../../../types/adminUele';
+import { UELEParameter, UELEPublicationStatus } from '../../../types/uele';
 import { FullUELEDatabase, UELEAdminService } from '../../../services/ueleAdminService';
 import { Button } from '../../shared/Button';
 import { Badge } from '../../shared/Badge';
@@ -29,7 +29,7 @@ export const AdminParameterManager: React.FC<AdminParameterManagerProps> = ({
   const [saving, setSaving] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
 
-  const [formData, setFormData] = useState<Partial<AdminUELEParameter & { facilityId?: string }>>({
+  const [formData, setFormData] = useState<Partial<UELEParameter & { facilityId?: string }>>({
     name: '',
     value: '',
     unit: '',
@@ -50,7 +50,7 @@ export const AdminParameterManager: React.FC<AdminParameterManagerProps> = ({
     setIsEditing(true);
   };
 
-  const handleStartEdit = (p: AdminUELEParameter) => {
+  const handleStartEdit = (p: UELEParameter) => {
     setFormData(p);
     setIsEditing(true);
   };

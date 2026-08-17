@@ -1,16 +1,6 @@
 import React from 'react';
 
-export type ButtonVariant =
-  | 'primary'
-  | 'secondary'
-  | 'outline'
-  | 'ghost'
-  | 'roadmap'
-  | 'uele'
-  | 'amber'
-  | 'cyan'
-  | 'emerald'
-  | 'rose';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'roadmap' | 'uele' | 'cyan' | 'emerald' | 'amber';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -62,14 +52,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         'bg-[var(--accent-purple)] hover:bg-[var(--accent-purple-hover)] text-white shadow-sm hover:shadow-[var(--glow-purple)] border border-transparent font-semibold',
       uele:
         'bg-[var(--accent-emerald)] hover:bg-[var(--accent-emerald-hover)] text-white shadow-sm hover:shadow-[var(--glow-emerald)] border border-transparent font-semibold',
-      amber:
-        'bg-[var(--accent-amber)] hover:brightness-95 text-white shadow-sm border border-transparent font-semibold',
       cyan:
-        'bg-[var(--accent-cyan)] hover:brightness-95 text-white shadow-sm border border-transparent font-semibold',
+        'bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold shadow-sm border border-transparent',
       emerald:
-        'bg-[var(--accent-emerald)] hover:bg-[var(--accent-emerald-hover)] text-white shadow-sm border border-transparent font-semibold',
-      rose:
-        'bg-[var(--accent-rose)] hover:bg-[var(--accent-rose-hover)] text-white shadow-sm border border-transparent font-semibold',
+        'bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold shadow-sm border border-transparent',
+      amber:
+        'bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-sm border border-transparent',
     };
 
     const widthStyle = fullWidth ? 'w-full' : '';

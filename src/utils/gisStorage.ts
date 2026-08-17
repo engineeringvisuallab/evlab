@@ -1,4 +1,4 @@
-import { UELELayer } from '../types/adminUele';
+import { UELELayer } from '../types/uele';
 import { GISFeature } from '../data/sherpur-gis-data';
 
 const DB_NAME = 'EVLab_GIS_Storage';

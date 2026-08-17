@@ -26,69 +26,69 @@
   },
   "coastal-revetment-design-calculation-template": {
     "id": "coastal-revetment-design-calculation-template",
+    "title": "Coastal Revetment & Armor Sizing Excel Design Sheet",
     "category": "Coastal Calculation Template",
-    "name": "Coastal Revetment & Armor Sizing Excel Design Sheet",
-    "description": "Engineering spreadsheet for wave runup estimation, Hudson and van der Meer armor stone sizing, geotextile filter design, and toe scour depth calculations."
+    "summary": "Engineering spreadsheet for wave runup estimation, Hudson and van der Meer armor stone sizing, geotextile filter design, and toe scour depth calculations."
   },
   "open-channel-gvf-calculation-sheet": {
     "id": "open-channel-gvf-calculation-sheet",
+    "title": "Gradually Varied Flow (GVF) Backwater Profile Calculation Sheet",
+    "summary": "Excel template for computing M1, M2, S1, S2 water surface profiles using Direct Step and Standard Step numerical integration methods.",
     "category": "Hydraulic Calculation Spreadsheet",
     "tags": [
       "Excel Template",
       "GVF",
       "Backwater Profile",
       "Direct Step Method"
-    ],
-    "name": "Gradually Varied Flow (GVF) Backwater Profile Calculation Sheet",
-    "description": "Excel template for computing M1, M2, S1, S2 water surface profiles using Direct Step and Standard Step numerical integration methods."
+    ]
   },
   "bridge-scour-computation-template": {
     "id": "bridge-scour-computation-template",
+    "title": "FHWA HEC-18 Bridge Scour Computation Template",
+    "summary": "Automated spreadsheet for calculating contraction scour, CSU local pier scour equation, and total design scour depth plot.",
     "category": "Bridge Scour Worksheet",
     "tags": [
       "Excel Template",
       "HEC-18",
       "Pier Scour",
       "Contraction Scour"
-    ],
-    "name": "FHWA HEC-18 Bridge Scour Computation Template",
-    "description": "Automated spreadsheet for calculating contraction scour, CSU local pier scour equation, and total design scour depth plot."
+    ]
   },
   "field-survey-data-computation-template": {
     "id": "field-survey-data-computation-template",
+    "title": "Field Survey Traverse Computation & Leveling Adjustment Spreadsheet Template",
+    "summary": "Automated Excel spreadsheet for Bowditch traverse adjustments, angular error checks, and differential leveling misclosure corrections.",
     "category": "Computation Templates",
     "tags": [
       "Excel Template",
       "Traverse",
       "Bowditch",
       "Leveling"
-    ],
-    "name": "Field Survey Traverse Computation & Leveling Adjustment Spreadsheet Template",
-    "description": "Automated Excel spreadsheet for Bowditch traverse adjustments, angular error checks, and differential leveling misclosure corrections."
+    ]
   },
   "uav-flight-plan-qaqc-report-template": {
     "id": "uav-flight-plan-qaqc-report-template",
+    "title": "UAV Survey Flight Mission Plan & GCP QA/QC Report Template",
+    "summary": "Standardized report template for logging drone flight parameters, camera calibration, GCP residual errors, and RMSE accuracy checks.",
     "category": "UAV QA/QC Templates",
     "tags": [
       "UAV Template",
       "GCP",
       "RMSE",
       "QAQC Report"
-    ],
-    "name": "UAV Survey Flight Mission Plan & GCP QA/QC Report Template",
-    "description": "Standardized report template for logging drone flight parameters, camera calibration, GCP residual errors, and RMSE accuracy checks."
+    ]
   },
   "bridge-load-rating-calculation-template": {
     "id": "bridge-load-rating-calculation-template",
+    "title": "Bridge Load Rating & Live Load Capacity Spreadsheet Template",
+    "summary": "Spreadsheet template for calculating inventory and operating load ratings of concrete and steel girders.",
     "category": "Bridge Structural Templates",
     "tags": [
       "Load Rating",
       "Spreadsheet",
       "AASHTO MBE",
       "Girders"
-    ],
-    "name": "Bridge Load Rating & Live Load Capacity Spreadsheet Template",
-    "description": "Spreadsheet template for calculating inventory and operating load ratings of concrete and steel girders."
+    ]
   },
   "tunnel-feasibility-assessment-template": {
     "id": "tunnel-feasibility-assessment-template",

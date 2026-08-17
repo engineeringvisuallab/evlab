@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UELENetwork, UELEPublicationStatus } from '../../../types/adminUele';
+import { UELENetwork, UELEPublicationStatus } from '../../../types/uele';
 import { FullUELEDatabase, UELEAdminService } from '../../../services/ueleAdminService';
 import { Button } from '../../shared/Button';
 import { Badge } from '../../shared/Badge';

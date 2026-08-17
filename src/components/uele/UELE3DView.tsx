@@ -1,11 +1,10 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Html, Grid } from '@react-three/drei';
+import { OrbitControls, Html, Grid as ThreeGrid } from '@react-three/drei';
 import * as THREE from 'three';
 import { GISFeature } from '../../data/sherpur-gis-data';
-import { UELELayer } from '../../types/adminUele';
-import { Box, Compass, RotateCcw, Eye, Navigation, Layers } from 'lucide-react';
-import { Button } from '../shared/Button';
+import { UELELayer } from '../../types/uele';
+import { Box, Compass, RotateCcw, ZoomIn, ZoomOut, Grid3x3, Layers } from 'lucide-react';
 
 // Convert WGS84 (Lat, Lng, Elevation) to 3D World Coordinates (X, Y, Z in meters)
 export function latLngTo3D(
@@ -42,7 +41,7 @@ const PointFeatureMesh: React.FC<{
     feature.properties.elevation || 0
   );
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (meshRef.current && isSelected) {
       meshRef.current.rotation.y += delta * 1.5;
     }
@@ -92,7 +91,7 @@ const PointFeatureMesh: React.FC<{
 
       {/* HTML Floating Label */}
       {(isSelected || hovered) && (
-        <Html position={[0, 15, 0]} center distanceFactor={150}>
+        <Html position={[0, 15, 0]} center distanceFactor={250}>
           <div className="bg-slate-900/90 border border-cyan-400 p-2 rounded-xl text-xs font-mono text-white whitespace-nowrap shadow-2xl pointer-events-none">
             <div className="font-bold text-cyan-300">{feature.properties.name}</div>
             <div className="text-[10px] text-slate-400">
@@ -210,12 +209,42 @@ export const UELE3DView: React.FC<UELE3DViewProps> = ({
   onResetView,
 }) => {
   const orbitControlsRef = useRef<any>(null);
+  const [gridMode, setGridMode] = useState<'cyber' | 'dense' | 'minimal' | 'off'>('cyber');
   const visibleLayerIds = new Set(layers.filter((l) => l.visible).map((l) => l.id));
   const visibleFeatures = features.filter((f) => visibleLayerIds.has(f.properties.layerId));
 
+  const cycleGridMode = () => {
+    setGridMode((prev) => {
+      if (prev === 'cyber') return 'dense';
+      if (prev === 'dense') return 'minimal';
+      if (prev === 'minimal') return 'off';
+      return 'cyber';
+    });
+  };
+
+  // Focus on selected feature when changed
+  useEffect(() => {
+    if (!selectedFeatureId || !orbitControlsRef.current) return;
+    const feat = features.find((f) => f.id === selectedFeatureId);
+    if (feat) {
+      let targetPos: [number, number, number] = [0, 0, 0];
+      if (feat.properties.lat && feat.properties.lng) {
+        targetPos = latLngTo3D(feat.properties.lat, feat.properties.lng, feat.properties.elevation || 0);
+      } else if (feat.geometry.coordinates && Array.isArray(feat.geometry.coordinates)) {
+        const c = feat.geometry.coordinates[0];
+        if (Array.isArray(c) && typeof c[0] === 'number') {
+          targetPos = latLngTo3D(c[1], c[0], 0);
+        }
+      }
+      orbitControlsRef.current.target.set(targetPos[0], targetPos[1], targetPos[2]);
+      orbitControlsRef.current.update();
+    }
+  }, [selectedFeatureId, features]);
+
   const handleTopView = () => {
     if (orbitControlsRef.current) {
-      orbitControlsRef.current.object.position.set(0, 800, 0);
+      // z set to 0.1 to prevent exact Y-axis gimbal lock on top-down view
+      orbitControlsRef.current.object.position.set(0, 4000, 0.1);
       orbitControlsRef.current.target.set(0, 0, 0);
       orbitControlsRef.current.update();
     }
@@ -223,44 +252,112 @@ export const UELE3DView: React.FC<UELE3DViewProps> = ({
 
   const handleIsometricView = () => {
     if (orbitControlsRef.current) {
-      orbitControlsRef.current.object.position.set(400, 400, 400);
+      orbitControlsRef.current.object.position.set(1200, 1000, 1200);
       orbitControlsRef.current.target.set(0, 0, 0);
       orbitControlsRef.current.update();
     }
   };
 
+  const handleZoomIn = () => {
+    if (orbitControlsRef.current) {
+      const controls = orbitControlsRef.current;
+      const cam = controls.object;
+      const target = controls.target;
+      const vec = new THREE.Vector3().subVectors(cam.position, target);
+      vec.multiplyScalar(0.7); // 30% closer
+      cam.position.copy(target).add(vec);
+      controls.update();
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (orbitControlsRef.current) {
+      const controls = orbitControlsRef.current;
+      const cam = controls.object;
+      const target = controls.target;
+      const vec = new THREE.Vector3().subVectors(cam.position, target);
+      vec.multiplyScalar(1.4); // 40% further away
+      cam.position.copy(target).add(vec);
+      controls.update();
+    }
+  };
+
+  const handleResetCamera = () => {
+    if (orbitControlsRef.current) {
+      orbitControlsRef.current.object.position.set(1200, 1000, 1200);
+      orbitControlsRef.current.target.set(0, 0, 0);
+      orbitControlsRef.current.update();
+    }
+    onResetView();
+  };
+
   return (
     <div className="relative w-full h-full min-h-[500px] bg-slate-950 overflow-hidden font-mono select-none">
-      {/* 1. Canvas 3D Viewport */}
+      {/* 1. Canvas 3D Viewport with extended camera frustum to prevent distance clipping */}
       <Canvas
-        camera={{ position: [350, 250, 350], fov: 50, near: 1, far: 5000 }}
+        camera={{ position: [1200, 1000, 1200], fov: 50, near: 0.1, far: 100000 }}
         className="w-full h-full"
       >
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[200, 400, 200]} intensity={1.2} />
-        <pointLight position={[-200, 200, -200]} intensity={0.5} />
+        <color attach="background" args={['#020617']} />
+        <fog attach="fog" args={['#020617', 25000, 90000]} />
 
-        {/* Orbit Controls */}
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[1000, 2000, 1000]} intensity={1.3} />
+        <pointLight position={[-1000, 1000, -1000]} intensity={0.6} />
+
+        {/* Orbit Controls with extended distance bounds */}
         <OrbitControls
           ref={orbitControlsRef}
           enableDamping
           dampingFactor={0.05}
-          maxPolarAngle={Math.PI / 2 - 0.05}
-          minDistance={10}
-          maxDistance={3000}
+          maxPolarAngle={Math.PI / 2 - 0.01}
+          minPolarAngle={0.01}
+          minDistance={1}
+          maxDistance={50000}
         />
 
-        {/* Ground Terrain Grid */}
-        <Grid
-          args={[3000, 3000]}
-          cellSize={50}
-          cellThickness={1}
-          cellColor="#1e293b"
-          sectionSize={200}
-          sectionThickness={1.5}
-          sectionColor="#06b6d4"
-          fadeDistance={2500}
-        />
+        {/* Ground Terrain Grid based on selected gridMode */}
+        {gridMode === 'cyber' && (
+          <ThreeGrid
+            args={[50000, 50000]}
+            cellSize={50}
+            cellThickness={1}
+            cellColor="#1e293b"
+            sectionSize={500}
+            sectionThickness={2}
+            sectionColor="#06b6d4"
+            fadeDistance={45000}
+            fadeStrength={1}
+          />
+        )}
+
+        {gridMode === 'dense' && (
+          <ThreeGrid
+            args={[50000, 50000]}
+            cellSize={20}
+            cellThickness={1}
+            cellColor="#064e3b"
+            sectionSize={100}
+            sectionThickness={2}
+            sectionColor="#10b981"
+            fadeDistance={45000}
+            fadeStrength={1}
+          />
+        )}
+
+        {gridMode === 'minimal' && (
+          <ThreeGrid
+            args={[50000, 50000]}
+            cellSize={100}
+            cellThickness={1}
+            cellColor="#0f172a"
+            sectionSize={1000}
+            sectionThickness={1.5}
+            sectionColor="#334155"
+            fadeDistance={45000}
+            fadeStrength={1}
+          />
+        )}
 
         {/* Render Features */}
         {visibleFeatures.map((feature) => {
@@ -314,8 +411,45 @@ export const UELE3DView: React.FC<UELE3DViewProps> = ({
       {/* 2. Floating View Camera HUD Controls */}
       <div className="absolute top-4 right-4 z-10 flex flex-col space-y-2">
         <button
+          onClick={handleZoomIn}
+          title="Zoom In"
+          className="p-2 rounded-xl bg-slate-900/90 hover:bg-cyan-500 border border-slate-700 text-slate-200 hover:text-slate-950 font-bold shadow-lg transition-all cursor-pointer flex items-center justify-center"
+        >
+          <ZoomIn className="w-4 h-4" />
+        </button>
+
+        <button
+          onClick={handleZoomOut}
+          title="Zoom Out"
+          className="p-2 rounded-xl bg-slate-900/90 hover:bg-cyan-500 border border-slate-700 text-slate-200 hover:text-slate-950 font-bold shadow-lg transition-all cursor-pointer flex items-center justify-center"
+        >
+          <ZoomOut className="w-4 h-4" />
+        </button>
+
+        <div className="h-px bg-slate-800 my-1" />
+
+        <button
+          onClick={cycleGridMode}
+          title="Cycle 3D Grid Mode (Cyber / Dense / Minimal / Off)"
+          className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 shadow-lg transition-all cursor-pointer ${
+            gridMode === 'off'
+              ? 'bg-slate-900/90 hover:bg-slate-800 border-slate-700 text-slate-500'
+              : gridMode === 'cyber'
+              ? 'bg-slate-900/90 hover:bg-cyan-500/20 border-cyan-500/50 text-cyan-400'
+              : gridMode === 'dense'
+              ? 'bg-slate-900/90 hover:bg-emerald-500/20 border-emerald-500/50 text-emerald-400'
+              : 'bg-slate-900/90 hover:bg-slate-700 border-slate-600 text-slate-300'
+          }`}
+        >
+          <Grid3x3 className="w-3.5 h-3.5" />
+          <span>
+            Grid: {gridMode === 'cyber' ? 'Cyber' : gridMode === 'dense' ? 'Dense' : gridMode === 'minimal' ? 'Minimal' : 'Off'}
+          </span>
+        </button>
+
+        <button
           onClick={handleTopView}
-          title="2.5D Top View"
+          title="High-Altitude Top-Down View"
           className="px-3 py-1.5 rounded-xl bg-slate-900/90 hover:bg-emerald-500 border border-slate-700 text-xs text-slate-200 hover:text-slate-950 font-bold flex items-center space-x-1.5 shadow-lg transition-all cursor-pointer"
         >
           <Compass className="w-3.5 h-3.5" />
@@ -330,16 +464,26 @@ export const UELE3DView: React.FC<UELE3DViewProps> = ({
           <Box className="w-3.5 h-3.5" />
           <span>Isometric</span>
         </button>
+
+        <button
+          onClick={handleResetCamera}
+          title="Reset Camera View"
+          className="px-3 py-1.5 rounded-xl bg-slate-900/90 hover:bg-amber-500 border border-slate-700 text-xs text-slate-200 hover:text-slate-950 font-bold flex items-center space-x-1.5 shadow-lg transition-all cursor-pointer"
+        >
+          <RotateCcw className="w-3.5 h-3.5" />
+          <span>Reset</span>
+        </button>
       </div>
 
       {/* 3. Bottom HUD Details */}
       <div className="absolute bottom-4 left-4 z-10 font-mono text-[10px] text-slate-300 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800 flex items-center space-x-3 shadow-lg">
         <span className="text-emerald-400 font-bold">3D SPATIAL ORBIT CANVAS</span>
         <span>•</span>
-        <span>ORIGIN: 24.6800° N, 89.4100° E</span>
+        <span className="text-cyan-400 font-semibold">GRID: {gridMode.toUpperCase()}</span>
         <span>•</span>
-        <span className="text-cyan-400 font-semibold">1 UNIT = 1 METER</span>
+        <span>FAR PLANE: 100,000 M</span>
       </div>
     </div>
   );
 };
+

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Compass,
   Layers,
   Cpu,
   BookOpen,
@@ -10,11 +11,13 @@ import {
   Sparkles,
   ArrowLeft,
   CheckCircle2,
+  Info,
 } from 'lucide-react';
 import { Card } from '../shared/Card';
 import { Badge } from '../shared/Badge';
 import { Button } from '../shared/Button';
-import type { RoadmapNode } from '@/types/roadmap';
+import { RoadmapNode } from '../../types/roadmap';
+import { ExpandableSoftwareItem } from './ExpandableSoftwareItem';
 
 export interface RoadmapDetailCardProps {
   node: RoadmapNode;
@@ -44,13 +47,8 @@ export const RoadmapDetailCard: React.FC<RoadmapDetailCardProps> = ({
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="purple" icon={<Layers className="w-3.5 h-3.5" />}>
-                {node.kind ? node.kind.toUpperCase() : 'FOCUS AREA'} REACHED
+                STEP 4 • FOCUS AREA REACHED
               </Badge>
-              {node.comingSoon && (
-                <Badge variant="amber" icon={<Sparkles className="w-3.5 h-3.5" />}>
-                  Coming Soon
-                </Badge>
-              )}
               <span className="text-xs font-mono text-[var(--text-muted)]">Node ID: {node.id}</span>
             </div>
 
@@ -70,7 +68,7 @@ export const RoadmapDetailCard: React.FC<RoadmapDetailCardProps> = ({
             onClick={onBack}
             className="shrink-0 self-start sm:self-center"
           >
-            Go Back
+            Back to Specializations
           </Button>
         </div>
 
@@ -108,20 +106,29 @@ export const RoadmapDetailCard: React.FC<RoadmapDetailCardProps> = ({
           </div>
         </div>
 
-        {/* Relations & Connections Preview Bar */}
-        {node.comingSoon ? (
-          <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-[var(--accent-warning)]/40 bg-[var(--accent-warning-bg)]/30 p-8 text-center">
-            <Sparkles className="h-6 w-6 text-[var(--accent-warning)]" />
-            <h3 className="text-sm font-bold text-[var(--text-primary)]">
-              {node.title} is being built out
-            </h3>
-            <p className="max-w-md text-xs text-[var(--text-secondary)]">
-              This engineering discipline is on the EVLab roadmap but its detailed knowledge,
-              skills, software, and career content hasn't been added yet. Civil Engineering is
-              fully detailed today — check back as more fields are completed.
-            </p>
+        {/* Connected Software Tools Section (Interactive Hover-Expandable) */}
+        {rel.software && rel.software.length > 0 && (
+          <div className="p-4 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-color)] space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <Cpu className="w-4 h-4 text-[var(--accent-cyan)]" />
+                <h3 className="text-xs font-bold font-mono uppercase tracking-wider text-[var(--text-primary)]">
+                  Connected Software Tools
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-[var(--text-muted)]">
+                {rel.software.length} Software • Hover name to inspect
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {rel.software.map((softId) => (
+                <ExpandableSoftwareItem key={softId} softwareId={softId} />
+              ))}
+            </div>
           </div>
-        ) : (
+        )}
+
+        {/* Relations & Connections Preview Bar */}
         <div className="space-y-3">
           <h3 className="text-sm font-bold text-[var(--text-primary)] font-mono uppercase tracking-wider">
             Connected Ecosystem Assets
@@ -195,7 +202,6 @@ export const RoadmapDetailCard: React.FC<RoadmapDetailCardProps> = ({
             </div>
           </div>
         </div>
-        )}
 
         {/* UELE Connection Link if present */}
         {node.ueleLink && (
@@ -263,3 +269,4 @@ export const RoadmapDetailCard: React.FC<RoadmapDetailCardProps> = ({
     </div>
   );
 };
+

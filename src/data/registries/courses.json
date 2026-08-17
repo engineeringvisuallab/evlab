@@ -351,83 +351,85 @@
   },
   "primavera-p6-construction-scheduling-course": {
     "id": "primavera-p6-construction-scheduling-course",
+    "title": "Primavera P6 Professional Masterclass for Construction Scheduling",
+    "summary": "Comprehensive training on CPM scheduling, WBS creation, resource loading, baseline management, and progress updating in Primavera P6.",
     "provider": "EVLab / Oracle Partner Training",
-    "level": "Intermediate to Advanced",
-    "name": "Primavera P6 Professional Masterclass for Construction Scheduling",
-    "description": "Comprehensive training on CPM scheduling, WBS creation, resource loading, baseline management, and progress updating in Primavera P6."
+    "level": "Intermediate to Advanced"
   },
   "quantity-takeoff-costx-boq-course": {
     "id": "quantity-takeoff-costx-boq-course",
+    "title": "Quantity Surveying & CostX Takeoff Masterclass",
+    "summary": "Practical course covering 2D and 3D BIM quantity extraction, measurement standards, rate analysis, and automated BOQ generation.",
     "provider": "EVLab / iTWO Academy",
-    "level": "Intermediate",
-    "name": "Quantity Surveying & CostX Takeoff Masterclass",
-    "description": "Practical course covering 2D and 3D BIM quantity extraction, measurement standards, rate analysis, and automated BOQ generation."
+    "level": "Intermediate"
   },
   "fidic-contract-claims-delay-course": {
     "id": "fidic-contract-claims-delay-course",
+    "title": "FIDIC Contract Management, Claims & Delay Analysis",
+    "summary": "Professional course on administering FIDIC Red/Yellow Books, drafting variation notices, and performing forensic delay analysis for EOT claims.",
     "provider": "EVLab / FIDIC Academy",
-    "level": "Advanced",
-    "name": "FIDIC Contract Management, Claims & Delay Analysis",
-    "description": "Professional course on administering FIDIC Red/Yellow Books, drafting variation notices, and performing forensic delay analysis for EOT claims."
+    "level": "Advanced"
   },
   "construction-qaqc-hse-management-course": {
     "id": "construction-qaqc-hse-management-course",
+    "title": "Site QA/QC & HSE Safety Management Certification",
+    "summary": "Field management course on Inspection Test Plans (ITPs), material quality testing, job safety analysis (JSA), and OSHA compliance.",
     "provider": "EVLab / Safety Council",
-    "level": "Intermediate",
-    "name": "Site QA/QC & HSE Safety Management Certification",
-    "description": "Field management course on Inspection Test Plans (ITPs), material quality testing, job safety analysis (JSA), and OSHA compliance."
+    "level": "Intermediate"
   },
   "4d-5d-bim-navisworks-synchro-course": {
     "id": "4d-5d-bim-navisworks-synchro-course",
+    "title": "4D/5D BIM Construction Simulation with Navisworks & Synchro",
+    "summary": "Hands-on training on linking Primavera P6 schedules with Revit/Navisworks models for 4D visual sequencing and 5D cost forecasting.",
     "provider": "EVLab / Autodesk Partner",
-    "level": "Advanced",
-    "name": "4D/5D BIM Construction Simulation with Navisworks & Synchro",
-    "description": "Hands-on training on linking Primavera P6 schedules with Revit/Navisworks models for 4D visual sequencing and 5D cost forecasting."
+    "level": "Advanced"
   },
   "qgis-arcgis-municipal-utility-mapping-course": {
     "id": "qgis-arcgis-municipal-utility-mapping-course",
+    "title": "QGIS & ArcGIS Masterclass for Municipal Utility Mapping",
     "provider": "EVLab Learning / Professional GIS Institute",
     "level": "Intermediate",
     "duration": "6 Weeks",
-    "name": "QGIS & ArcGIS Masterclass for Municipal Utility Mapping",
-    "description": "Comprehensive course covering geodatabase creation, subsurface utility mapping, mobile GIS field collection, and web GIS dashboarding."
+    "summary": "Comprehensive course covering geodatabase creation, subsurface utility mapping, mobile GIS field collection, and web GIS dashboarding."
   },
   "iso-55000-municipal-asset-management-course": {
     "id": "iso-55000-municipal-asset-management-course",
+    "title": "ISO 55000 Municipal Asset Management Professional Certification",
     "provider": "Institute of Public Works Engineering / IAM",
     "level": "Advanced",
     "duration": "4 Weeks",
-    "name": "ISO 55000 Municipal Asset Management Professional Certification",
-    "description": "Professional training on setting up ISO 55001 compliant municipal asset registers, condition rating scoring, and capital renewal programming."
+    "summary": "Professional training on setting up ISO 55001 compliant municipal asset registers, condition rating scoring, and capital renewal programming."
   },
   "smart-cities-iot-infrastructure-course": {
     "id": "smart-cities-iot-infrastructure-course",
+    "title": "Smart Cities & Connected Urban Infrastructure Engineering",
     "provider": "EVLab Learning / Smart Infrastructure Academy",
     "level": "Advanced",
     "duration": "5 Weeks",
-    "name": "Smart Cities & Connected Urban Infrastructure Engineering",
-    "description": "In-depth course on smart street lighting networks, IoT water telemetry, smart waste monitoring, and urban digital twin integration."
+    "summary": "In-depth course on smart street lighting networks, IoT water telemetry, smart waste monitoring, and urban digital twin integration."
   },
   "coastal-engineering-hydrodynamics-course": {
     "id": "coastal-engineering-hydrodynamics-course",
+    "title": "Coastal Engineering, Wave Mechanics & Hydrodynamics Masterclass",
     "provider": "EVLab / DelftX",
-    "name": "Coastal Engineering, Wave Mechanics & Hydrodynamics Masterclass",
-    "description": "Comprehensive professional course covering coastal physical oceanography, wave transformation, tides, sediment transport, and coastal structure design."
+    "summary": "Comprehensive professional course covering coastal physical oceanography, wave transformation, tides, sediment transport, and coastal structure design."
   },
   "delft3d-mike21-coastal-modelling-course": {
     "id": "delft3d-mike21-coastal-modelling-course",
+    "title": "Numerical Coastal Modelling with Delft3D & MIKE 21",
     "provider": "Deltares / DHI Academy",
-    "name": "Numerical Coastal Modelling with Delft3D & MIKE 21",
-    "description": "Hands-on numerical modeling training on 2D/3D hydrodynamic flow, wave simulation, storm surge modeling, and morphodynamics."
+    "summary": "Hands-on numerical modeling training on 2D/3D hydrodynamic flow, wave simulation, storm surge modeling, and morphodynamics."
   },
   "port-planning-breakwater-design-course": {
     "id": "port-planning-breakwater-design-course",
+    "title": "Port Terminal Layout, Breakwaters & Maritime Structural Design",
     "provider": "PIANC / EVLab",
-    "name": "Port Terminal Layout, Breakwaters & Maritime Structural Design",
-    "description": "Advanced engineering course covering PIANC port layout principles, rubble-mound breakwaters, caisson quays, and capital dredging."
+    "summary": "Advanced engineering course covering PIANC port layout principles, rubble-mound breakwaters, caisson quays, and capital dredging."
   },
   "river-hydraulics-open-channel-course": {
     "id": "river-hydraulics-open-channel-course",
+    "title": "Advanced River Hydraulics & Open Channel Flow Course",
+    "summary": "Comprehensive academic and professional training course covering uniform/non-uniform flow, GVF backwater profiles, and hydraulic structures.",
     "provider": "BUET / IHE Delft",
     "category": "Hydraulic Education",
     "tags": [
@@ -435,12 +437,12 @@
       "Open Channel",
       "BUET",
       "IHE Delft"
-    ],
-    "name": "Advanced River Hydraulics & Open Channel Flow Course",
-    "description": "Comprehensive academic and professional training course covering uniform/non-uniform flow, GVF backwater profiles, and hydraulic structures."
+    ]
   },
   "fluvial-morphology-sediment-course": {
     "id": "fluvial-morphology-sediment-course",
+    "title": "Fluvial Geomorphology & Sediment Transport Masterclass",
+    "summary": "Specialized course on river channel mechanics, sediment transport formulations, meander migration, and morphodynamic modelling.",
     "provider": "IWM / Deltares Academy",
     "category": "Fluvial Science",
     "tags": [
@@ -448,12 +450,12 @@
       "Sediment Transport",
       "IWM",
       "Deltares"
-    ],
-    "name": "Fluvial Geomorphology & Sediment Transport Masterclass",
-    "description": "Specialized course on river channel mechanics, sediment transport formulations, meander migration, and morphodynamic modelling."
+    ]
   },
   "riverbank-protection-training-course": {
     "id": "riverbank-protection-training-course",
+    "title": "Riverbank Protection & River Training Works Professional Course",
+    "summary": "Practical engineering course focused on BWDB standards for geobags, CC blocks, launching aprons, groynes, and guide bunds.",
     "provider": "BWDB Training Institute / CEGIS",
     "category": "Professional Engineering Training",
     "tags": [
@@ -461,12 +463,12 @@
       "Bank Protection",
       "Geobags",
       "River Training"
-    ],
-    "name": "Riverbank Protection & River Training Works Professional Course",
-    "description": "Practical engineering course focused on BWDB standards for geobags, CC blocks, launching aprons, groynes, and guide bunds."
+    ]
   },
   "bridge-scour-analysis-course": {
     "id": "bridge-scour-analysis-course",
+    "title": "Bridge Hydraulics & FHWA HEC-18 Scour Analysis Course",
+    "summary": "Training module on calculating pier scour, contraction scour, total scour depth, and designing riprap scour countermeasures.",
     "provider": "ASCE / FHWA",
     "category": "Infrastructure Education",
     "tags": [
@@ -474,12 +476,12 @@
       "HEC-18",
       "ASCE",
       "FHWA"
-    ],
-    "name": "Bridge Hydraulics & FHWA HEC-18 Scour Analysis Course",
-    "description": "Training module on calculating pier scour, contraction scour, total scour depth, and designing riprap scour countermeasures."
+    ]
   },
   "engineering-surveying-gnss-total-station-course": {
     "id": "engineering-surveying-gnss-total-station-course",
+    "title": "Engineering Surveying, GNSS RTK & Total Station Field Practice",
+    "summary": "Comprehensive hands-on course covering total station traverse, RTK GNSS setup, Civil 3D layout, and engineering site setting out.",
     "provider": "Geomatics Professional Institute",
     "level": "Intermediate",
     "tags": [
@@ -487,12 +489,12 @@
       "GNSS",
       "Setting Out",
       "Civil 3D"
-    ],
-    "name": "Engineering Surveying, GNSS RTK & Total Station Field Practice",
-    "description": "Comprehensive hands-on course covering total station traverse, RTK GNSS setup, Civil 3D layout, and engineering site setting out."
+    ]
   },
   "gis-spatial-analysis-arcgis-qgis-course": {
     "id": "gis-spatial-analysis-arcgis-qgis-course",
+    "title": "GIS & Spatial Analysis Masterclass in ArcGIS Pro & QGIS",
+    "summary": "Practical course on geodatabase creation, vector/raster spatial overlays, network routing, and geostatistics for infrastructure applications.",
     "provider": "Geospatial Training Center",
     "level": "Intermediate",
     "tags": [
@@ -500,12 +502,12 @@
       "ArcGIS Pro",
       "QGIS",
       "Spatial Analysis"
-    ],
-    "name": "GIS & Spatial Analysis Masterclass in ArcGIS Pro & QGIS",
-    "description": "Practical course on geodatabase creation, vector/raster spatial overlays, network routing, and geostatistics for infrastructure applications."
+    ]
   },
   "uav-photogrammetry-lidar-processing-course": {
     "id": "uav-photogrammetry-lidar-processing-course",
+    "title": "UAV Drone Photogrammetry & LiDAR Point Cloud Processing",
+    "summary": "Covers drone flight mission planning, GCP survey, Pix4D orthomosaic creation, and CloudCompare LiDAR point cloud filtering.",
     "provider": "Drone Mapping Academy",
     "level": "Advanced",
     "tags": [
@@ -514,12 +516,12 @@
       "LiDAR",
       "Pix4D",
       "Point Cloud"
-    ],
-    "name": "UAV Drone Photogrammetry & LiDAR Point Cloud Processing",
-    "description": "Covers drone flight mission planning, GCP survey, Pix4D orthomosaic creation, and CloudCompare LiDAR point cloud filtering."
+    ]
   },
   "hydrographic-bathymetric-surveying-course": {
     "id": "hydrographic-bathymetric-surveying-course",
+    "title": "Hydrographic & Bathymetric Surveying in HYPACK & Qimera",
+    "summary": "In-depth training on multibeam echosounder calibration, tide correction, sound velocity profiling, and nautical chart production.",
     "provider": "Hydrographic Training Institute",
     "level": "Advanced",
     "tags": [
@@ -527,12 +529,12 @@
       "Bathymetry",
       "HYPACK",
       "Multibeam"
-    ],
-    "name": "Hydrographic & Bathymetric Surveying in HYPACK & Qimera",
-    "description": "In-depth training on multibeam echosounder calibration, tide correction, sound velocity profiling, and nautical chart production."
+    ]
   },
   "python-for-geospatial-data-science-ai-course": {
     "id": "python-for-geospatial-data-science-ai-course",
+    "title": "Geospatial Python, GeoPandas & Deep Learning for Spatial Data Science",
+    "summary": "Automating GIS tasks with GeoPandas, Shapely, PyTorch, and building GeoAI models for satellite image feature extraction.",
     "provider": "GeoAI Developers Hub",
     "level": "Advanced",
     "tags": [
@@ -540,12 +542,12 @@
       "GeoPandas",
       "GeoAI",
       "Deep Learning"
-    ],
-    "name": "Geospatial Python, GeoPandas & Deep Learning for Spatial Data Science",
-    "description": "Automating GIS tasks with GeoPandas, Shapely, PyTorch, and building GeoAI models for satellite image feature extraction."
+    ]
   },
   "bridge-engineering-fundamentals-course": {
     "id": "bridge-engineering-fundamentals-course",
+    "title": "Bridge Engineering Fundamentals & Structural Systems",
+    "summary": "Comprehensive course on bridge components, structural behavior, load distribution, and design principles.",
     "provider": "EVLab & Industry Partners",
     "category": "Bridge Engineering",
     "tags": [
@@ -553,12 +555,12 @@
       "Fundamentals",
       "AASHTO",
       "Structural Systems"
-    ],
-    "name": "Bridge Engineering Fundamentals & Structural Systems",
-    "description": "Comprehensive course on bridge components, structural behavior, load distribution, and design principles."
+    ]
   },
   "aashto-lrfd-bridge-design-course": {
     "id": "aashto-lrfd-bridge-design-course",
+    "title": "AASHTO LRFD Bridge Design Masterclass",
+    "summary": "Professional course covering the AASHTO LRFD specifications for concrete and steel bridges.",
     "provider": "Professional Development Series",
     "category": "Bridge Structural Design",
     "tags": [
@@ -566,24 +568,24 @@
       "Bridge Design",
       "Concrete Bridges",
       "Steel Bridges"
-    ],
-    "name": "AASHTO LRFD Bridge Design Masterclass",
-    "description": "Professional course covering the AASHTO LRFD specifications for concrete and steel bridges."
+    ]
   },
   "prestressed-concrete-bridge-design-course": {
     "id": "prestressed-concrete-bridge-design-course",
+    "title": "Prestressed Concrete Bridge Design & Detailing",
+    "summary": "In-depth course on pre-tensioned and post-tensioned bridge girder and segmental deck design.",
     "provider": "Structural Engineering Institute",
     "category": "Prestressed Concrete Design",
     "tags": [
       "Prestressed Concrete",
       "Bridge Design",
       "Post-Tensioning"
-    ],
-    "name": "Prestressed Concrete Bridge Design & Detailing",
-    "description": "In-depth course on pre-tensioned and post-tensioned bridge girder and segmental deck design."
+    ]
   },
   "midas-civil-bridge-modelling-course": {
     "id": "midas-civil-bridge-modelling-course",
+    "title": "MIDAS Civil 3D Bridge FEA & Construction Staging",
+    "summary": "Hands-on training in 3D finite element modeling, dynamic analysis, and stage construction in MIDAS Civil.",
     "provider": "MIDAS IT Training",
     "category": "Bridge FEA & Software",
     "tags": [
@@ -591,12 +593,12 @@
       "FEA",
       "Bridge Modeling",
       "Stage Construction"
-    ],
-    "name": "MIDAS Civil 3D Bridge FEA & Construction Staging",
-    "description": "Hands-on training in 3D finite element modeling, dynamic analysis, and stage construction in MIDAS Civil."
+    ]
   },
   "csibridge-modelling-design-course": {
     "id": "csibridge-modelling-design-course",
+    "title": "CSiBridge Automated Bridge Design & Rating Course",
+    "summary": "Practical course on automated bridge geometry, live-load analysis, and design using CSiBridge.",
     "provider": "CSI Education Partner",
     "category": "Bridge Software & Design",
     "tags": [
@@ -604,12 +606,12 @@
       "CSI",
       "Bridge Analysis",
       "Load Rating"
-    ],
-    "name": "CSiBridge Automated Bridge Design & Rating Course",
-    "description": "Practical course on automated bridge geometry, live-load analysis, and design using CSiBridge."
+    ]
   },
   "bridge-inspection-rating-course": {
     "id": "bridge-inspection-rating-course",
+    "title": "Bridge Safety Inspection & Load Rating Certification Course",
+    "summary": "FHWA-compliant bridge safety inspection, condition rating, and load capacity evaluation course.",
     "provider": "NHI / FHWA Training",
     "category": "Bridge Inspection",
     "tags": [
@@ -617,9 +619,7 @@
       "FHWA",
       "Load Rating",
       "Condition Assessment"
-    ],
-    "name": "Bridge Safety Inspection & Load Rating Certification Course",
-    "description": "FHWA-compliant bridge safety inspection, condition rating, and load capacity evaluation course."
+    ]
   },
   "tunnel-engineering-fundamentals-course": {
     "id": "tunnel-engineering-fundamentals-course",
@@ -756,18 +756,18 @@
   },
   "municipal-engineering-fundamentals-course": {
     "id": "municipal-engineering-fundamentals-course",
-    "description": "Comprehensive course covering urban utility planning, municipal road design, stormwater drainage, and municipal asset management.",
-    "name": "Municipal Infrastructure & Public Works Engineering Masterclass"
+    "title": "Municipal Infrastructure & Public Works Engineering Masterclass",
+    "description": "Comprehensive course covering urban utility planning, municipal road design, stormwater drainage, and municipal asset management."
   },
   "urban-drainage-swmm-modelling-course": {
     "id": "urban-drainage-swmm-modelling-course",
-    "description": "Hands-on training in hydrologic/hydraulic modeling of urban storm sewers, detention ponds, and flood mitigation using EPA SWMM.",
-    "name": "Urban Drainage & SWMM Hydrodynamic Modelling Course"
+    "title": "Urban Drainage & SWMM Hydrodynamic Modelling Course",
+    "description": "Hands-on training in hydrologic/hydraulic modeling of urban storm sewers, detention ponds, and flood mitigation using EPA SWMM."
   },
   "municipal-water-network-design-course": {
     "id": "municipal-water-network-design-course",
-    "description": "Practical modeling course on designing water distribution networks, pressure zoning, DMA loss reduction, and booster pumps.",
-    "name": "Municipal Water Network Hydraulic Modelling in WaterCAD"
+    "title": "Municipal Water Network Hydraulic Modelling in WaterCAD",
+    "description": "Practical modeling course on designing water distribution networks, pressure zoning, DMA loss reduction, and booster pumps."
   },
   "infrastructure-planning-development-course": {
     "id": "infrastructure-planning-development-course",
@@ -850,28 +850,24 @@
     "duration": "10 Hours"
   },
   "mechanistic-empirical-pavement-design-course": {
-    "provider": "FHWA / ASCE",
-    "name": "Mechanistic-Empirical Pavement Design with AASHTOWare",
-    "description": "Comprehensive course on MEPDG theory, climate/traffic input modeling, and running AASHTOWare Pavement ME simulations.",
-    "id": "mechanistic-empirical-pavement-design-course"
+    "title": "Mechanistic-Empirical Pavement Design with AASHTOWare",
+    "summary": "Comprehensive course on MEPDG theory, climate/traffic input modeling, and running AASHTOWare Pavement ME simulations.",
+    "provider": "FHWA / ASCE"
   },
   "asphalt-superpave-mix-design-course": {
-    "provider": "Asphalt Institute / RHD",
-    "name": "Superpave Asphalt Mix Design & Volumetric Analysis",
-    "description": "Hands-on laboratory course covering aggregate consensus properties, binder PG selection, gyratory compaction, and mix performance testing.",
-    "id": "asphalt-superpave-mix-design-course"
+    "title": "Superpave Asphalt Mix Design & Volumetric Analysis",
+    "summary": "Hands-on laboratory course covering aggregate consensus properties, binder PG selection, gyratory compaction, and mix performance testing.",
+    "provider": "Asphalt Institute / RHD"
   },
   "pavement-rehabilitation-overlay-design-course": {
-    "provider": "NHI / AASHTO",
-    "name": "Pavement Structural Evaluation & Overlay Design",
-    "description": "Course covering FWD deflection basin backcalculation, remaining structural life calculation, and asphalt/concrete overlay design.",
-    "id": "pavement-rehabilitation-overlay-design-course"
+    "title": "Pavement Structural Evaluation & Overlay Design",
+    "summary": "Course covering FWD deflection basin backcalculation, remaining structural life calculation, and asphalt/concrete overlay design.",
+    "provider": "NHI / AASHTO"
   },
   "hdm4-road-asset-management-course": {
-    "provider": "World Bank / PIARC",
-    "name": "HDM-4 Road Asset Management & Pavement Management Systems",
-    "description": "Practical course on implementing HDM-4 for highway network deterioration modeling, maintenance programming, and LCCA.",
-    "id": "hdm4-road-asset-management-course"
+    "title": "HDM-4 Road Asset Management & Pavement Management Systems",
+    "summary": "Practical course on implementing HDM-4 for highway network deterioration modeling, maintenance programming, and LCCA.",
+    "provider": "World Bank / PIARC"
   },
   "earthquake-engineering-fundamentals-course": {
     "id": "earthquake-engineering-fundamentals-course",
@@ -1291,6 +1287,464 @@
       "Nature-Based Solutions",
       "Green Infrastructure",
       "Eco-Adaptation"
+    ]
+  },
+  "construction-engineering-fundamentals-course": {
+    "id": "construction-engineering-fundamentals-course",
+    "name": "Construction Engineering & Methods Masterclass",
+    "description": "Comprehensive course covering construction lifecycle execution, constructability analysis, site technology, and productivity optimization.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Beginner to Intermediate",
+    "duration": "14.5 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Construction Engineering",
+      "Site Methods",
+      "Constructability",
+      "Civil"
+    ]
+  },
+  "advanced-cpm-scheduling-masterclass": {
+    "id": "advanced-cpm-scheduling-masterclass",
+    "name": "Advanced CPM Scheduling & Critical Path Optimization",
+    "description": "In-depth training on complex network logic, resource-loaded baselines, float management, and lookahead schedule updating in Primavera P6.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate to Advanced",
+    "duration": "16.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Primavera P6",
+      "CPM Scheduling",
+      "Critical Path",
+      "Resource Loading"
+    ]
+  },
+  "project-controls-evm-masterclass": {
+    "id": "project-controls-evm-masterclass",
+    "name": "Project Controls & Earned Value Management (EVM) Certification",
+    "description": "Professional training on establishing cost-loaded baselines, calculating EVM metrics (CPI/SPI/EAC), and executive dashboard reporting.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "18.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Project Controls",
+      "EVM",
+      "Earned Value",
+      "Cost Control",
+      "AACE"
+    ]
+  },
+  "construction-cost-estimating-rate-analysis-course": {
+    "id": "construction-cost-estimating-rate-analysis-course",
+    "name": "Construction Cost Estimating & Unit Rate Analysis Masterclass",
+    "description": "Step-by-step masterclass on quantity takeoff, building up unit rates, estimating site preliminaries, and tender settlement reviews.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate",
+    "duration": "15.0 Hours",
+    "rating": 4.8,
+    "tags": [
+      "Cost Estimating",
+      "Rate Analysis",
+      "Tendering",
+      "CostX",
+      "Excel"
+    ]
+  },
+  "quantity-surveying-measurement-masterclass": {
+    "id": "quantity-surveying-measurement-masterclass",
+    "name": "Quantity Surveying & Standard Measurement Rules (CESMM4 / NRM2)",
+    "description": "Comprehensive practical course on drafting itemized BOQs, interim valuations, variation pricing, and commercial contract closeout.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate to Advanced",
+    "duration": "17.5 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Quantity Surveying",
+      "CESMM4",
+      "NRM2",
+      "BOQ",
+      "Interim Valuation"
+    ]
+  },
+  "construction-contracts-procurement-masterclass": {
+    "id": "construction-contracts-procurement-masterclass",
+    "name": "Construction Contracts & Procurement Strategy Masterclass",
+    "description": "Professional training on FIDIC suite conditions, procurement models (Design-Build, EPC), tendering procedures, and contract administration.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "16.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "FIDIC",
+      "Contracts",
+      "Procurement",
+      "Tendering",
+      "PPR"
+    ]
+  },
+  "forensic-delay-analysis-scl-protocol-course": {
+    "id": "forensic-delay-analysis-scl-protocol-course",
+    "name": "Forensic Delay Analysis & SCL Protocol Masterclass",
+    "description": "Advanced training on Time Impact Analysis, As-Built vs As-Planned, disruption quantification, and defending delay claims.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced to Expert",
+    "duration": "20.0 Hours",
+    "rating": 5,
+    "tags": [
+      "Delay Analysis",
+      "SCL Protocol",
+      "EOT",
+      "Claims",
+      "Primavera P6"
+    ]
+  },
+  "construction-risk-management-monte-carlo-course": {
+    "id": "construction-risk-management-monte-carlo-course",
+    "name": "Quantitative Construction Risk Management & Monte Carlo Simulation",
+    "description": "Hands-on course modeling schedule and cost uncertainty, building risk registers, and running simulations in Primavera Risk Analysis and @RISK.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "14.0 Hours",
+    "rating": 4.8,
+    "tags": [
+      "Risk Management",
+      "Monte Carlo",
+      "Primavera Risk",
+      "Contingency"
+    ]
+  },
+  "iso-9001-lead-auditor-construction-course": {
+    "id": "iso-9001-lead-auditor-construction-course",
+    "name": "ISO 9001 Quality Management & QA/QC Auditing for Construction",
+    "description": "Certified training on building Project Quality Plans, executing Inspection & Test Plans (ITP), and auditing site non-conformances.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate to Advanced",
+    "duration": "16.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "ISO 9001",
+      "QA/QC",
+      "ITP",
+      "Auditing",
+      "Quality Management"
+    ]
+  },
+  "nebosh-construction-safety-international-diploma": {
+    "id": "nebosh-construction-safety-international-diploma",
+    "name": "NEBOSH Health & Safety Management for Construction",
+    "description": "Internationally recognized health and safety course covering hazard identification, excavation safety, temporary works, and risk control.",
+    "provider": "NEBOSH Accredited Centre",
+    "level": "Intermediate to Advanced",
+    "duration": "40.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "NEBOSH",
+      "HSE",
+      "Site Safety",
+      "OSHA",
+      "Risk Assessment"
+    ]
+  },
+  "temporary-works-engineering-design-course": {
+    "id": "temporary-works-engineering-design-course",
+    "name": "Temporary Works Engineering & BS 5975 Procedural Control",
+    "description": "Structural design course covering falsework, shoring systems, excavation support, cofferdams, and temporary works coordinator (TWC) duties.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "18.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Temporary Works",
+      "BS 5975",
+      "Falsework",
+      "Shoring",
+      "TWC"
+    ]
+  },
+  "formwork-scaffolding-design-masterclass": {
+    "id": "formwork-scaffolding-design-masterclass",
+    "name": "Formwork & Scaffolding Systems Structural Design Masterclass",
+    "description": "Design calculations for concrete lateral pressure (ACI 347), modular aluminum/timber formwork, climbing forms, and heavy access scaffolding.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate to Advanced",
+    "duration": "15.0 Hours",
+    "rating": 4.8,
+    "tags": [
+      "Formwork",
+      "Scaffolding",
+      "ACI 347",
+      "Shoring",
+      "SAP2000"
+    ]
+  },
+  "construction-equipment-productivity-fleet-course": {
+    "id": "construction-equipment-productivity-fleet-course",
+    "name": "Construction Equipment Selection & Fleet Productivity Engineering",
+    "description": "Engineering course on machinery cycle times, mass-haul earthmoving optimization, fleet telematics, and owning & operating economics.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate",
+    "duration": "13.5 Hours",
+    "rating": 4.8,
+    "tags": [
+      "Equipment",
+      "Fleet Management",
+      "Cycle Times",
+      "Productivity",
+      "Earthmoving"
+    ]
+  },
+  "heavy-earthmoving-mechanization-course": {
+    "id": "heavy-earthmoving-mechanization-course",
+    "name": "Heavy Earthmoving & Site Mechanization Masterclass",
+    "description": "Practical training on excavator-truck fleet balancing, grader finishing, soil stabilization, and mass cut/fill logistics.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate",
+    "duration": "12.0 Hours",
+    "rating": 4.7,
+    "tags": [
+      "Earthmoving",
+      "Mechanization",
+      "Fleet Balancing",
+      "Civil Works"
+    ]
+  },
+  "site-engineering-construction-supervision-course": {
+    "id": "site-engineering-construction-supervision-course",
+    "name": "Site Engineering & Field Construction Supervision Masterclass",
+    "description": "Essential field training for site engineers: interpreting drawings, setting out, managing daily site logs, RFIs, and consultant inspections.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Beginner to Intermediate",
+    "duration": "16.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Site Engineer",
+      "Supervision",
+      "Field Operations",
+      "RFIs",
+      "Daily Logs"
+    ]
+  },
+  "construction-setting-out-field-masterclass": {
+    "id": "construction-setting-out-field-masterclass",
+    "name": "Engineering Surveying & Construction Setting Out on Site",
+    "description": "Field surveying masterclass utilizing total stations, GNSS RTK receivers, and digital levels for building control grids and earthwork profiling.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate",
+    "duration": "14.0 Hours",
+    "rating": 4.8,
+    "tags": [
+      "Setting Out",
+      "Surveying",
+      "Total Station",
+      "GNSS",
+      "Control Points"
+    ]
+  },
+  "construction-logistics-supply-chain-course": {
+    "id": "construction-logistics-supply-chain-course",
+    "name": "Construction Logistics & Site Supply Chain Management",
+    "description": "Strategic planning for site traffic access, delivery consolidation, laydown zone management, and JIT procurement staging.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate",
+    "duration": "13.0 Hours",
+    "rating": 4.8,
+    "tags": [
+      "Logistics",
+      "Supply Chain",
+      "Site Layout",
+      "JIT Delivery",
+      "Laydown"
+    ]
+  },
+  "materials-management-inventory-control-course": {
+    "id": "materials-management-inventory-control-course",
+    "name": "Site Materials Management & Warehouse Inventory Control",
+    "description": "Operational training on material requisition tracking, scrap reduction, warehouse inventory controls, and SAP MM workflows.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate",
+    "duration": "12.0 Hours",
+    "rating": 4.7,
+    "tags": [
+      "Materials Management",
+      "Inventory",
+      "Warehousing",
+      "SAP MM",
+      "Wastage"
+    ]
+  },
+  "highrise-building-construction-management-course": {
+    "id": "highrise-building-construction-management-course",
+    "name": "High-Rise Building Construction & Superstructure Management",
+    "description": "Masterclass covering jump-form core walls, post-tensioned floors, tower crane logistics, unitized facades, and vertical transportation.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "18.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "High-Rise",
+      "Superstructure",
+      "Tall Buildings",
+      "Jump-Form",
+      "Facades"
+    ]
+  },
+  "mep-coordination-commissioning-masterclass": {
+    "id": "mep-coordination-commissioning-masterclass",
+    "name": "Building MEP Coordination, Testing & Integrated Commissioning",
+    "description": "In-depth course on resolving builder work sleeves, HVAC/plumbing clashes in BIM, hydrostatic testing, and integrated commissioning.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate to Advanced",
+    "duration": "15.0 Hours",
+    "rating": 4.8,
+    "tags": [
+      "MEP Coordination",
+      "HVAC",
+      "Plumbing",
+      "Testing & Commissioning"
+    ]
+  },
+  "heavy-civil-infrastructure-construction-course": {
+    "id": "heavy-civil-infrastructure-construction-course",
+    "name": "Heavy Civil & Megaproject Infrastructure Construction",
+    "description": "Executive engineering training on delivering highways, segmental viaduct bridges, bored tunnels, deep foundations, and marine ports.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "20.0 Hours",
+    "rating": 5,
+    "tags": [
+      "Heavy Civil",
+      "Infrastructure",
+      "Highways",
+      "Bridges",
+      "Tunnels"
+    ]
+  },
+  "bridge-tunnel-highway-construction-masterclass": {
+    "id": "bridge-tunnel-highway-construction-masterclass",
+    "name": "Bridge, Tunnel & Highway Site Execution Masterclass",
+    "description": "Field execution training on balance cantilever bridge launching, asphalt paving operations, and TBM tunneling site management.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "17.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Bridges",
+      "Tunnels",
+      "Highways",
+      "Site Execution",
+      "Launching"
+    ]
+  },
+  "construction-progress-monitoring-powerbi-course": {
+    "id": "construction-progress-monitoring-powerbi-course",
+    "name": "Construction Progress Monitoring & Power BI Dashboards",
+    "description": "Hands-on training connecting P6 schedules and cost sheets to automated interactive Power BI executive reporting dashboards.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate",
+    "duration": "14.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Power BI",
+      "Dashboards",
+      "Progress Monitoring",
+      "KPIs",
+      "Primavera P6"
+    ]
+  },
+  "earned-schedule-performance-measurement-course": {
+    "id": "earned-schedule-performance-measurement-course",
+    "name": "Earned Schedule (ES) & Project Performance Analytics",
+    "description": "Advanced course on time-based earned schedule mathematics, time variance calculations, and project completion forecasting.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "12.0 Hours",
+    "rating": 4.8,
+    "tags": [
+      "Earned Schedule",
+      "ES",
+      "Performance Measurement",
+      "Forecasting"
+    ]
+  },
+  "sustainable-construction-leed-breeam-course": {
+    "id": "sustainable-construction-leed-breeam-course",
+    "name": "Sustainable Construction Management & LEED/BREEAM Implementation",
+    "description": "Comprehensive course on green site operations, construction waste diversion, low-carbon materials, and LEED BD+C certification.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate",
+    "duration": "14.5 Hours",
+    "rating": 4.9,
+    "tags": [
+      "LEED",
+      "BREEAM",
+      "Sustainable Construction",
+      "Green Building",
+      "Waste Diversion"
+    ]
+  },
+  "low-carbon-construction-materials-course": {
+    "id": "low-carbon-construction-materials-course",
+    "name": "Low-Carbon Construction Materials & Embodied Carbon LCA",
+    "description": "Technical course on supplementary cementitious materials (GGBS/PFA), recycled aggregates, timber construction, and Life Cycle Assessment.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate to Advanced",
+    "duration": "13.0 Hours",
+    "rating": 4.8,
+    "tags": [
+      "Low-Carbon Concrete",
+      "Embodied Carbon",
+      "LCA",
+      "One Click LCA",
+      "Materials"
+    ]
+  },
+  "lean-construction-last-planner-course": {
+    "id": "lean-construction-last-planner-course",
+    "name": "Lean Construction & Last Planner System (LPS) Implementation",
+    "description": "Practical training on phase pull planning, 6-week lookahead make-ready scheduling, Weekly Work Plans, and Percent Plan Complete (PPC).",
+    "provider": "EVLab Engineering Academy",
+    "level": "Intermediate to Advanced",
+    "duration": "15.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "Lean Construction",
+      "Last Planner",
+      "Pull Planning",
+      "PPC",
+      "Continuous Improvement"
+    ]
+  },
+  "epc-design-build-project-delivery-course": {
+    "id": "epc-design-build-project-delivery-course",
+    "name": "EPC & Design-Build Megaproject Delivery Masterclass",
+    "description": "Executive course on managing turnkey lump-sum EPC contracts, fast-track engineering design, global procurement, and plant commissioning.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "18.0 Hours",
+    "rating": 4.9,
+    "tags": [
+      "EPC",
+      "Design-Build",
+      "Turnkey",
+      "Commissioning",
+      "Megaprojects"
+    ]
+  },
+  "vdc-digital-construction-management-course": {
+    "id": "vdc-digital-construction-management-course",
+    "name": "Virtual Design & Construction (VDC) Management Masterclass",
+    "description": "Digital construction masterclass covering 4D SYNCHRO scheduling, model clash resolution, CDE administration, and reality capture integration.",
+    "provider": "EVLab Engineering Academy",
+    "level": "Advanced",
+    "duration": "18.5 Hours",
+    "rating": 4.9,
+    "tags": [
+      "VDC",
+      "4D BIM",
+      "5D BIM",
+      "Synchro",
+      "Digital Construction"
     ]
   }
 }

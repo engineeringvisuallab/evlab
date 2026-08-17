@@ -6,7 +6,7 @@ import {
   UELECourse,
   UELEVideo,
   UELEResource,
-} from '../../../types/adminUele';
+} from '../../../types/uele';
 import { UELESubModule } from '../../../types/admin';
 import { FullUELEDatabase, UELEAdminService } from '../../../services/ueleAdminService';
 import { Button } from '../../shared/Button';

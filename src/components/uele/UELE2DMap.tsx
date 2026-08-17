@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { GISFeature } from '../../data/sherpur-gis-data';
 import { UELE_BASEMAPS, UELEBasemapOption } from '../../data/uele-basemaps';
-import { UELELayer } from '../../types/adminUele';
+import { UELELayer } from '../../types/uele';
 import { Navigation, ZoomIn, ZoomOut, Maximize2, RotateCcw, Layers, Globe } from 'lucide-react';
 import { Button } from '../shared/Button';
 

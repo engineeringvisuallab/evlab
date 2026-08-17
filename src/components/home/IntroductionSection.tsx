@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, BookOpen, Wrench, FolderGit2, Layers, ShieldCheck } from 'lucide-react';
+import { Compass, BookOpen, Wrench, FileText, FolderGit2, Layers, Cpu, ShieldCheck } from 'lucide-react';
 import { SectionHeader } from '../shared/SectionHeader';
 import { Card } from '../shared/Card';
 

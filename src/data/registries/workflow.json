@@ -981,6 +981,8 @@
   },
   "construction-project-baseline-schedule-workflow": {
     "id": "construction-project-baseline-schedule-workflow",
+    "title": "Construction Project WBS & Baseline Schedule Development",
+    "summary": "Process for developing project WBS, defining activity relationships, resource loading, conducting CPM analysis, and finalizing the approved baseline.",
     "category": "Planning & Scheduling",
     "steps": [
       "Scope Decomposition & WBS Creation",
@@ -988,12 +990,12 @@
       "Resource Loading & Leveling",
       "CPM Schedule Calculation & Float Review",
       "Client Baseline Approval"
-    ],
-    "name": "Construction Project WBS & Baseline Schedule Development",
-    "description": "Process for developing project WBS, defining activity relationships, resource loading, conducting CPM analysis, and finalizing the approved baseline."
+    ]
   },
   "quantity-takeoff-boq-preparation-workflow": {
     "id": "quantity-takeoff-boq-preparation-workflow",
+    "title": "Quantity Takeoff & Bill of Quantities (BOQ) Preparation",
+    "summary": "Methodology for taking off material quantities from architectural/structural drawings, applying measurement standards, and compiling priced BOQs.",
     "category": "Cost & Quantity",
     "steps": [
       "Drawing & Specification Review",
@@ -1001,12 +1003,12 @@
       "Measurement Standard Mapping",
       "Unit Rate Analysis & Pricing",
       "BOQ Consolidation & Audit"
-    ],
-    "name": "Quantity Takeoff & Bill of Quantities (BOQ) Preparation",
-    "description": "Methodology for taking off material quantities from architectural/structural drawings, applying measurement standards, and compiling priced BOQs."
+    ]
   },
   "tender-bidding-contract-procurement-workflow": {
     "id": "tender-bidding-contract-procurement-workflow",
+    "title": "Tender Bidding & Contractor Procurement Workflow",
+    "summary": "End-to-end procurement process including tender documentation, pre-qualification, bid submission, commercial evaluation, and contract award.",
     "category": "Procurement & Contracts",
     "steps": [
       "Prequalification & Tender Package Issuance",
@@ -1014,12 +1016,12 @@
       "Bid Compilation & Rate Analysis",
       "Technical & Commercial Bid Evaluation",
       "Contract Negotiation & Award"
-    ],
-    "name": "Tender Bidding & Contractor Procurement Workflow",
-    "description": "End-to-end procurement process including tender documentation, pre-qualification, bid submission, commercial evaluation, and contract award."
+    ]
   },
   "construction-site-mobilization-setup-workflow": {
     "id": "construction-site-mobilization-setup-workflow",
+    "title": "Site Mobilization, Layout & Logistics Setup",
+    "summary": "Workflow for site takeover, site layout plan setup, temporary utilities connection, equipment staging, and site office mobilization.",
     "category": "Site Operations",
     "steps": [
       "Site Possession & Topographic Survey",
@@ -1027,12 +1029,12 @@
       "Temporary Power, Water & Access Setup",
       "Site Security & Perimeter Fencing",
       "Equipment & Material Staging"
-    ],
-    "name": "Site Mobilization, Layout & Logistics Setup",
-    "description": "Workflow for site takeover, site layout plan setup, temporary utilities connection, equipment staging, and site office mobilization."
+    ]
   },
   "qaqc-inspection-test-plan-workflow": {
     "id": "qaqc-inspection-test-plan-workflow",
+    "title": "Construction Quality Control & ITP Inspection Workflow",
+    "summary": "Field inspection procedure following Inspection Test Plans (ITPs), material sample testing, hold point clearance, and NCR issuance.",
     "category": "Quality & Safety",
     "steps": [
       "Method Statement & ITP Approval",
@@ -1040,12 +1042,12 @@
       "Field Work Quality Verification",
       "Consultant Hold Point Witnessing",
       "NCR Resolution & As-Built Logging"
-    ],
-    "name": "Construction Quality Control & ITP Inspection Workflow",
-    "description": "Field inspection procedure following Inspection Test Plans (ITPs), material sample testing, hold point clearance, and NCR issuance."
+    ]
   },
   "site-hse-hazard-risk-assessment-workflow": {
     "id": "site-hse-hazard-risk-assessment-workflow",
+    "title": "Site HSE Hazard Identification & Job Safety Analysis",
+    "summary": "Proactive safety procedure for hazard identification, job safety analysis (JSA) preparation, permit to work (PTW) issuance, and toolbox briefings.",
     "category": "Quality & Safety",
     "steps": [
       "Activity Hazard Identification",
@@ -1053,12 +1055,12 @@
       "Permit to Work (PTW) Issuance",
       "Toolbox Safety Meeting",
       "Continuous Site HSE Monitoring"
-    ],
-    "name": "Site HSE Hazard Identification & Job Safety Analysis",
-    "description": "Proactive safety procedure for hazard identification, job safety analysis (JSA) preparation, permit to work (PTW) issuance, and toolbox briefings."
+    ]
   },
   "forensic-delay-analysis-claims-workflow": {
     "id": "forensic-delay-analysis-claims-workflow",
+    "title": "Forensic Delay Analysis & Extension of Time (EOT) Claim Workflow",
+    "summary": "Methodology for analyzing schedule delay events, establishing causation, quantifying critical path delays, and preparing EOT contractual submissions.",
     "category": "Risk & Claims",
     "steps": [
       "Delay Event Identification & Notice Drafting",
@@ -1066,12 +1068,12 @@
       "Time Impact Analysis (TIA) Execution",
       "Excusable vs Compensable Delay Quantification",
       "Contractual EOT Claim Package Compilation"
-    ],
-    "name": "Forensic Delay Analysis & Extension of Time (EOT) Claim Workflow",
-    "description": "Methodology for analyzing schedule delay events, establishing causation, quantifying critical path delays, and preparing EOT contractual submissions."
+    ]
   },
   "4d-5d-bim-construction-integration-workflow": {
     "id": "4d-5d-bim-construction-integration-workflow",
+    "title": "4D Schedule & 5D Cost Integration in BIM Workflow",
+    "summary": "Integrating 3D BIM models with Primavera P6 CPM schedule and cost database for visual construction sequencing and cash flow forecasting.",
     "category": "Digital Engineering",
     "steps": [
       "3D BIM Model Clean-up & Tagging",
@@ -1079,12 +1081,12 @@
       "Model Element-to-Task Logic Mapping",
       "4D Construction Animation & Clash Review",
       "5D Cost Extraction & Cash Flow Simulation"
-    ],
-    "name": "4D Schedule & 5D Cost Integration in BIM Workflow",
-    "description": "Integrating 3D BIM models with Primavera P6 CPM schedule and cost database for visual construction sequencing and cash flow forecasting."
+    ]
   },
   "construction-project-closeout-handover-workflow": {
     "id": "construction-project-closeout-handover-workflow",
+    "title": "Construction Project Closeout & Commissioning Handover",
+    "summary": "Structured closeout sequence covering punch list clearance, MEP testing & commissioning, as-built documentation, final accounting, and asset handover.",
     "category": "Project Management",
     "steps": [
       "Substantial Completion & Punch List Inspection",
@@ -1092,12 +1094,12 @@
       "As-Built Drawings & O&M Manual Submission",
       "Final Account Valuation & Release of Retention",
       "Taking-Over Certificate (TOC) Issuance"
-    ],
-    "name": "Construction Project Closeout & Commissioning Handover",
-    "description": "Structured closeout sequence covering punch list clearance, MEP testing & commissioning, as-built documentation, final accounting, and asset handover."
+    ]
   },
   "last-planner-pull-planning-workflow": {
     "id": "last-planner-pull-planning-workflow",
+    "title": "Last Planner System & Production Control Workflow",
+    "summary": "Collaborative lean construction workflow combining phase pull planning, 6-week lookahead analysis, constraint removal, and weekly PPC tracking.",
     "category": "Management",
     "steps": [
       "Milestone Pull Planning Session",
@@ -1105,24 +1107,24 @@
       "Weekly Work Plan (WWP) Commitment",
       "Daily Field Standup Coordination",
       "Percent Plan Complete (PPC) Calculation & Learning"
-    ],
-    "name": "Last Planner System & Production Control Workflow",
-    "description": "Collaborative lean construction workflow combining phase pull planning, 6-week lookahead analysis, constraint removal, and weekly PPC tracking."
+    ]
   },
   "digital-construction-monitoring-workflow": {
     "id": "digital-construction-monitoring-workflow",
+    "title": "Digital Construction Field Monitoring & Automated Site Progress Tracking",
+    "summary": "Deploying drones, laser scanning, IoT site sensors, and computer vision for automated construction progress monitoring and digital twin updates.",
     "category": "Digital Engineering",
     "steps": [
       "Drone Site Scan & Point Cloud Capture",
       "BIM Model vs As-Built Point Cloud Comparison",
       "Automated Progress Deviation Analysis",
       "Digital Twin Dashboard Update"
-    ],
-    "name": "Digital Construction Field Monitoring & Automated Site Progress Tracking",
-    "description": "Deploying drones, laser scanning, IoT site sensors, and computer vision for automated construction progress monitoring and digital twin updates."
+    ]
   },
   "municipal-infrastructure-master-planning-workflow": {
     "id": "municipal-infrastructure-master-planning-workflow",
+    "title": "Municipal Infrastructure Master Planning & Capital Improvement Workflow",
+    "summary": "Structured process for compiling land use forecasts, assessing utility capacities, prioritizing projects, and drafting 10-year CIP budgets.",
     "category": "Municipal Planning",
     "steps": [
       "Urban Baseline Demographic & Land Use Survey",
@@ -1130,12 +1132,12 @@
       "Stakeholder & City Corporation Consultation",
       "Project Prioritization & Capital Cost Estimation",
       "Final Municipal CIP & Master Plan Approval"
-    ],
-    "name": "Municipal Infrastructure Master Planning & Capital Improvement Workflow",
-    "description": "Structured process for compiling land use forecasts, assessing utility capacities, prioritizing projects, and drafting 10-year CIP budgets."
+    ]
   },
   "underground-utility-mapping-conflict-analysis-workflow": {
     "id": "underground-utility-mapping-conflict-analysis-workflow",
+    "title": "Underground Utility Subsurface Mapping & Conflict Resolution Workflow",
+    "summary": "Workflow for executing Ground Penetrating Radar (GPR) surveys, establishing ASCE 38 quality levels, 3D CAD modeling, and resolving spatial clashes.",
     "category": "Utility Engineering",
     "steps": [
       "Subsurface Utility Records Collection & QL-D Mapping",
@@ -1143,12 +1145,12 @@
       "Vacuum Excavation Test Pitting & Elevation Verification (QL-A)",
       "3D Utility Corridor CAD Model Integration & Clash Matrix",
       "Utility Relocation Notice & Joint Corridor Signing"
-    ],
-    "name": "Underground Utility Subsurface Mapping & Conflict Resolution Workflow",
-    "description": "Workflow for executing Ground Penetrating Radar (GPR) surveys, establishing ASCE 38 quality levels, 3D CAD modeling, and resolving spatial clashes."
+    ]
   },
   "urban-stormwater-drainage-master-planning-workflow": {
     "id": "urban-stormwater-drainage-master-planning-workflow",
+    "title": "Urban Storm Drainage Master Planning & SWMM Hydraulic Modeling Workflow",
+    "summary": "Process for delineation of urban sub-catchments, rainfall intensity-duration-frequency (IDF) modeling, SWMM network sizing, and flood hotspot mitigation.",
     "category": "Urban Drainage",
     "steps": [
       "Sub-Catchment Delineation & Land Cover Imperviousness Mapping",
@@ -1156,12 +1158,12 @@
       "SWMM 1D/2D Hydraulic Model Construction & Calibration",
       "Box Culvert & Outfall Sizing under Tailwater Constraints",
       "Detention Pond & SUDS Green Infrastructure Placement"
-    ],
-    "name": "Urban Storm Drainage Master Planning & SWMM Hydraulic Modeling Workflow",
-    "description": "Process for delineation of urban sub-catchments, rainfall intensity-duration-frequency (IDF) modeling, SWMM network sizing, and flood hotspot mitigation."
+    ]
   },
   "municipal-water-distribution-dma-design-workflow": {
     "id": "municipal-water-distribution-dma-design-workflow",
+    "title": "Municipal Water Distribution District Metered Area (DMA) Design Workflow",
+    "summary": "Methodology for sectorizing water distribution networks into DMAs, installing boundary valves, bulk water meters, and pressure reduction valves (PRV).",
     "category": "Municipal Water",
     "steps": [
       "Network Hydraulic Skeletonization & Isolation Boundary Selection",
@@ -1169,12 +1171,12 @@
       "Bulk Flow Meter & PRV Chamber Location Design",
       "Boundary Valve Isolation Field Testing",
       "Non-Revenue Water (NRW) Baseline Telemetry Establishment"
-    ],
-    "name": "Municipal Water Distribution District Metered Area (DMA) Design Workflow",
-    "description": "Methodology for sectorizing water distribution networks into DMAs, installing boundary valves, bulk water meters, and pressure reduction valves (PRV)."
+    ]
   },
   "municipal-solid-waste-transfer-station-workflow": {
     "id": "municipal-solid-waste-transfer-station-workflow",
+    "title": "Municipal Solid Waste Route Optimization & Transfer Facility Workflow",
+    "summary": "Workflow for primary waste collection routing, secondary transfer station site selection, compaction equipment sizing, and leachate drainage design.",
     "category": "Solid Waste",
     "steps": [
       "Ward Waste Generation Rate & Density Characterization",
@@ -1182,12 +1184,12 @@
       "Secondary Transfer Station Civil & Structural Layout",
       "Waste Compactor & Refuse Collector Crane Selection",
       "Leachate Containment & Deodorization Facility Integration"
-    ],
-    "name": "Municipal Solid Waste Route Optimization & Transfer Facility Workflow",
-    "description": "Workflow for primary waste collection routing, secondary transfer station site selection, compaction equipment sizing, and leachate drainage design."
+    ]
   },
   "municipal-asset-inventory-condition-audit-workflow": {
     "id": "municipal-asset-inventory-condition-audit-workflow",
+    "title": "Municipal Infrastructure Asset Inventory & Condition Audit Workflow",
+    "summary": "Process for field GIS asset tagging, condition rating audits, calculating asset remaining useful life, and prioritizing capital renewal.",
     "category": "Asset Management",
     "steps": [
       "Mobile GIS Feature Tagging & Asset UID Generation",
@@ -1195,12 +1197,12 @@
       "Condition Scoring (Scale 1-5) & Decay Curve Mapping",
       "Risk Criticality Matrix Scoring (Probability x Consequence)",
       "5-Year Asset Rehabilitation Budget Allocation"
-    ],
-    "name": "Municipal Infrastructure Asset Inventory & Condition Audit Workflow",
-    "description": "Process for field GIS asset tagging, condition rating audits, calculating asset remaining useful life, and prioritizing capital renewal."
+    ]
   },
   "trenchless-pipe-rehabilitation-execution-workflow": {
     "id": "trenchless-pipe-rehabilitation-execution-workflow",
+    "title": "Trenchless Pipe Rehabilitation & Cured-in-Place Pipe (CIPP) Workflow",
+    "summary": "Workflow for CCTV pipe internal condition audit, resin-impregnated liner inversion, steam curing, and lateral reconnection without open excavation.",
     "category": "Pipeline Engineering",
     "steps": [
       "CCTV Inspection & Internal Structural Defect Scoring",
@@ -1208,12 +1210,12 @@
       "Resin-Impregnated Flexible Liner Water/Air Inversion",
       "Steam/UV Light Curing & Liner Hardening Verification",
       "Robotic Lateral Service Connection Cutout & Post-CCTV"
-    ],
-    "name": "Trenchless Pipe Rehabilitation & Cured-in-Place Pipe (CIPP) Workflow",
-    "description": "Workflow for CCTV pipe internal condition audit, resin-impregnated liner inversion, steam curing, and lateral reconnection without open excavation."
+    ]
   },
   "urban-digital-twin-gis-integration-workflow": {
     "id": "urban-digital-twin-gis-integration-workflow",
+    "title": "Urban Digital Twin & Municipal GIS Data Integration Workflow",
+    "summary": "Workflow for integrating 3D CityGML models, BIM infrastructure assets, GIS spatial layers, and real-time IoT sensors into a unified city digital twin.",
     "category": "Smart Infrastructure",
     "steps": [
       "3D LiDAR Point Cloud & Photogrammetric Mesh Processing",
@@ -1221,12 +1223,12 @@
       "Enterprise GIS Utility Vector Layer Geodatabase Linkage",
       "IoT Sensor MQTT/REST API Telemetry Feed Integration",
       "Real-Time 3D Web Dashboard Deployment"
-    ],
-    "name": "Urban Digital Twin & Municipal GIS Data Integration Workflow",
-    "description": "Workflow for integrating 3D CityGML models, BIM infrastructure assets, GIS spatial layers, and real-time IoT sensors into a unified city digital twin."
+    ]
   },
   "climate-resilience-assessment-workflow": {
     "id": "climate-resilience-assessment-workflow",
+    "title": "Urban Climate Vulnerability & Infrastructure Resilience Assessment Workflow",
+    "summary": "Methodology for evaluating climate hazard exposure, assessing civil asset vulnerability, prioritizing adaptation options, and designing resilient infrastructure backups.",
     "category": "Urban Resilience",
     "steps": [
       "Urban Climate Hazard Scenario Selection (Temp, Flood, Sea Level)",
@@ -1234,12 +1236,12 @@
       "Risk Scoring (Likelihood x Impact) across Municipal Wards",
       "Resilience Adaptation Option Engineering & Cost-Benefit Analysis",
       "Municipal Climate Action Plan Integration"
-    ],
-    "name": "Urban Climate Vulnerability & Infrastructure Resilience Assessment Workflow",
-    "description": "Methodology for evaluating climate hazard exposure, assessing civil asset vulnerability, prioritizing adaptation options, and designing resilient infrastructure backups."
+    ]
   },
   "coastal-hydrodynamic-wave-modelling-workflow": {
     "id": "coastal-hydrodynamic-wave-modelling-workflow",
+    "title": "Coastal Hydrodynamic & Nearshore Wave Numerical Modelling Workflow",
+    "summary": "Methodology for bathymetric grid generation, boundary condition setup, calibration against tide gauge data, and running Delft3D/MIKE 21 wave-current models.",
     "category": "Coastal Engineering",
     "steps": [
       "Metocean Data Collection (Wind, Wave, Water Levels, Currents)",
@@ -1247,12 +1249,12 @@
       "Model Setup (Delft3D / MIKE 21 Flow & Wave Modules)",
       "Calibration & Validation against Field Gauge Records",
       "Extreme Wave & Hydrodynamic Scenario Simulations"
-    ],
-    "name": "Coastal Hydrodynamic & Nearshore Wave Numerical Modelling Workflow",
-    "description": "Methodology for bathymetric grid generation, boundary condition setup, calibration against tide gauge data, and running Delft3D/MIKE 21 wave-current models."
+    ]
   },
   "shoreline-erosion-sediment-budget-workflow": {
     "id": "shoreline-erosion-sediment-budget-workflow",
+    "title": "Shoreline Erosion & Coastal Sediment Budget Analysis Workflow",
+    "summary": "Process for calculating historical shoreline change rates, quantifying longshore transport, and balancing coastal sediment cells.",
     "category": "Coastal Engineering",
     "steps": [
       "Historical Satellite & Aerial Imagery Geo-Referencing",
@@ -1260,12 +1262,12 @@
       "Longshore Transport Calculation (CERC / Kamphuis Formulas)",
       "Sediment Cell Source, Sink & Transport Budget Compilation",
       "Erosion Hotspot Identification & Shoreline Evolution Prediction"
-    ],
-    "name": "Shoreline Erosion & Coastal Sediment Budget Analysis Workflow",
-    "description": "Process for calculating historical shoreline change rates, quantifying longshore transport, and balancing coastal sediment cells."
+    ]
   },
   "rubble-mound-breakwater-design-workflow": {
     "id": "rubble-mound-breakwater-design-workflow",
+    "title": "Rubble-Mound Breakwater Hydraulic & Structural Design Workflow",
+    "summary": "Step-by-step engineering for wave climate determination, Hudson/van der Meer armor stone sizing, core/filter layering, and overtopping safety.",
     "category": "Coastal Engineering",
     "steps": [
       "Design Wave Selection (100-Year Return Period H_s)",
@@ -1273,12 +1275,12 @@
       "Underlayer, Core & Toe Scour Apron Sizing",
       "Wave Overtopping Discharge & Crest Elevation Sizing",
       "Geotechnical Slumping & Slope Stability Verification"
-    ],
-    "name": "Rubble-Mound Breakwater Hydraulic & Structural Design Workflow",
-    "description": "Step-by-step engineering for wave climate determination, Hudson/van der Meer armor stone sizing, core/filter layering, and overtopping safety."
+    ]
   },
   "coastal-revetment-seawall-design-workflow": {
     "id": "coastal-revetment-seawall-design-workflow",
+    "title": "Coastal Revetment & Seawall Protection Design Workflow",
+    "summary": "Engineering procedure for wave runup computation, revetment armor sizing, geotextile filter design, and scour toe protection.",
     "category": "Coastal Engineering",
     "steps": [
       "Water Level & Wave Runup Calculation",
@@ -1286,12 +1288,12 @@
       "Geotextile & Granular Filter Layer Sizing",
       "Toe Depth Sizing & Scour Apron Engineering",
       "Structural Stability & Wave Reflection Assessment"
-    ],
-    "name": "Coastal Revetment & Seawall Protection Design Workflow",
-    "description": "Engineering procedure for wave runup computation, revetment armor sizing, geotextile filter design, and scour toe protection."
+    ]
   },
   "storm-surge-inundation-mapping-workflow": {
     "id": "storm-surge-inundation-mapping-workflow",
+    "title": "Tropical Cyclone Storm Surge & Coastal Inundation Mapping Workflow",
+    "summary": "Workflow for simulating cyclone track wind fields, modeling ADCIRC storm surge heights, and producing GIS coastal flood inundation maps.",
     "category": "Coastal Engineering",
     "steps": [
       "Tropical Cyclone Track & Central Pressure Scenario Modeling",
@@ -1299,12 +1301,12 @@
       "High-Resolution Coastal Lidar DEM Integration",
       "Coastal Inundation Extent & Depth Mapping",
       "Evacuation Route & Polder Sluice Vulnerability Analysis"
-    ],
-    "name": "Tropical Cyclone Storm Surge & Coastal Inundation Mapping Workflow",
-    "description": "Workflow for simulating cyclone track wind fields, modeling ADCIRC storm surge heights, and producing GIS coastal flood inundation maps."
+    ]
   },
   "port-master-planning-quay-design-workflow": {
     "id": "port-master-planning-quay-design-workflow",
+    "title": "Port Terminal Layout & Quay Wall Engineering Workflow",
+    "summary": "Comprehensive workflow from maritime trade forecasting to PIANC berth layout, quay wall structural design, and berthing fenders.",
     "category": "Coastal Engineering",
     "steps": [
       "Design Vessel Fleet Sizing & Berth Capacity Planning",
@@ -1312,12 +1314,12 @@
       "Quay Wall Structural Sizing (Caisson / Combi-Wall / Sheet-Pile)",
       "Berthing Energy & Fender System Engineering",
       "Terminal Yard Layout & Heavy Load Pavement Design"
-    ],
-    "name": "Port Terminal Layout & Quay Wall Engineering Workflow",
-    "description": "Comprehensive workflow from maritime trade forecasting to PIANC berth layout, quay wall structural design, and berthing fenders."
+    ]
   },
   "navigation-channel-dredging-design-workflow": {
     "id": "navigation-channel-dredging-design-workflow",
+    "title": "Navigation Channel Design & Dredging Operations Workflow",
+    "summary": "Engineering method for designing navigation fairways, calculating dredging volumes, selecting dredger equipment, and managing dredged spoils.",
     "category": "Coastal Engineering",
     "steps": [
       "Bathymetric Survey Processing & Design Draft Sizing",
@@ -1325,12 +1327,12 @@
       "Capital Dredging Quantity Estimation in Civil 3D",
       "Dredger Equipment Selection (TSHD / CSD Operations)",
       "Dredged Material Containment / Beneficial Reuse Planning"
-    ],
-    "name": "Navigation Channel Design & Dredging Operations Workflow",
-    "description": "Engineering method for designing navigation fairways, calculating dredging volumes, selecting dredger equipment, and managing dredged spoils."
+    ]
   },
   "marine-piling-cofferdam-construction-workflow": {
     "id": "marine-piling-cofferdam-construction-workflow",
+    "title": "Marine Piling & Temporary Works Construction Workflow",
+    "summary": "Execution workflow for floating barge setup, tubular steel piling, marine cofferdam dewatering, and tremie concrete pouring.",
     "category": "Coastal Engineering",
     "steps": [
       "Marine Equipment & Jack-Up Barge Positioning",
@@ -1338,12 +1340,12 @@
       "Marine Cofferdam Installation & Dewatering",
       "Tremie Pipe Underwater Concrete Plug Pouring",
       "Superstructure Concrete Placement & Maritime QA/QC"
-    ],
-    "name": "Marine Piling & Temporary Works Construction Workflow",
-    "description": "Execution workflow for floating barge setup, tubular steel piling, marine cofferdam dewatering, and tremie concrete pouring."
+    ]
   },
   "coastal-climate-resilience-adaptation-workflow": {
     "id": "coastal-climate-resilience-adaptation-workflow",
+    "title": "Climate-Resilient Coastal Adaptation & Nature-Based Design Workflow",
+    "summary": "Workflow for integrating IPCC sea level rise projections into coastal asset management, evaluating nature-based solutions, and designing adaptive pathways.",
     "category": "Coastal Engineering",
     "steps": [
       "IPCC Sea Level Rise & Extreme Event Scenario Downscaling",
@@ -1351,273 +1353,273 @@
       "Nature-Based Solution Sizing (Mangroves / Living Shorelines)",
       "Hybrid Green-Gray Defense Option Comparison",
       "Adaptive Pathways Implementation & Monitoring Plan"
-    ],
-    "name": "Climate-Resilient Coastal Adaptation & Nature-Based Design Workflow",
-    "description": "Workflow for integrating IPCC sea level rise projections into coastal asset management, evaluating nature-based solutions, and designing adaptive pathways."
+    ]
   },
   "river-reconnaissance-survey-workflow": {
     "id": "river-reconnaissance-survey-workflow",
+    "title": "River Reconnaissance & Baseline Hydro-Morphological Survey",
+    "summary": "Field survey workflow combining historic map analysis, satellite bankline tracking, discharge measurement, and bathymetric mapping.",
     "category": "Field & Survey",
     "tags": [
       "Reconnaissance",
       "Bathymetry",
       "Hydrographic Survey",
       "ADCP"
-    ],
-    "name": "River Reconnaissance & Baseline Hydro-Morphological Survey",
-    "description": "Field survey workflow combining historic map analysis, satellite bankline tracking, discharge measurement, and bathymetric mapping."
+    ]
   },
   "riverbank-erosion-assessment-workflow": {
     "id": "riverbank-erosion-assessment-workflow",
+    "title": "Riverbank Erosion Hotspot & Vulnerability Assessment",
+    "summary": "Step-by-step workflow for classifying bank erosion vulnerability, evaluating shear stress, and designing emergency/permanent protection.",
     "category": "Erosion Analysis",
     "tags": [
       "Erosion Assessment",
       "Hotspots",
       "Bank Stability",
       "Vulnerability"
-    ],
-    "name": "Riverbank Erosion Hotspot & Vulnerability Assessment",
-    "description": "Step-by-step workflow for classifying bank erosion vulnerability, evaluating shear stress, and designing emergency/permanent protection."
+    ]
   },
   "riverbank-protection-design-workflow": {
     "id": "riverbank-protection-design-workflow",
+    "title": "Geobag & CC Block Riverbank Protection Design Workflow",
+    "summary": "Engineering workflow for sizing geobags/CC blocks, selecting geotextile filters, computing launching apron width/thickness, and stability checks.",
     "category": "Engineering Design",
     "tags": [
       "Geobags",
       "CC Blocks",
       "Revetment Design",
       "Launching Apron"
-    ],
-    "name": "Geobag & CC Block Riverbank Protection Design Workflow",
-    "description": "Engineering workflow for sizing geobags/CC blocks, selecting geotextile filters, computing launching apron width/thickness, and stability checks."
+    ]
   },
   "river-training-structures-design-workflow": {
     "id": "river-training-structures-design-workflow",
+    "title": "Groyne & Guide Bund River Training System Design Workflow",
+    "summary": "Comprehensive design process for selecting groyne spacing, orientation angle, shank length, head protection, and guide bund alignment.",
     "category": "Engineering Design",
     "tags": [
       "Groynes",
       "Spurs",
       "Guide Bunds",
       "River Training"
-    ],
-    "name": "Groyne & Guide Bund River Training System Design Workflow",
-    "description": "Comprehensive design process for selecting groyne spacing, orientation angle, shank length, head protection, and guide bund alignment."
+    ]
   },
   "bridge-scour-assessment-workflow": {
     "id": "bridge-scour-assessment-workflow",
+    "title": "Bridge Hydraulics & Total Scour Computation Workflow",
+    "summary": "Workflow following FHWA HEC-18 for calculating long-term aggradation/degradation, contraction scour, local pier scour, and scour envelope plots.",
     "category": "Bridge Engineering",
     "tags": [
       "Bridge Scour",
       "HEC-18",
       "Pier Scour",
       "Hydraulic Clearance"
-    ],
-    "name": "Bridge Hydraulics & Total Scour Computation Workflow",
-    "description": "Workflow following FHWA HEC-18 for calculating long-term aggradation/degradation, contraction scour, local pier scour, and scour envelope plots."
+    ]
   },
   "river-diversion-planning-workflow": {
     "id": "river-diversion-planning-workflow",
+    "title": "Construction Stage River Diversion & Cofferdam Sizing Workflow",
+    "summary": "Hydraulic and risk assessment workflow for selecting cofferdam return periods, channel cross-sections, and flood warning systems.",
     "category": "Construction Hydraulics",
     "tags": [
       "River Diversion",
       "Cofferdam",
       "Construction Safety"
-    ],
-    "name": "Construction Stage River Diversion & Cofferdam Sizing Workflow",
-    "description": "Hydraulic and risk assessment workflow for selecting cofferdam return periods, channel cross-sections, and flood warning systems."
+    ]
   },
   "irrigation-canal-design-workflow": {
     "id": "irrigation-canal-design-workflow",
+    "title": "Irrigation Canal Alignment & Cross-Section Design Workflow",
+    "summary": "Standard design procedure for selecting canal slopes, lining materials, head regulator capacities, and silt trap basins.",
     "category": "Hydraulic Design",
     "tags": [
       "Canal Design",
       "Lining",
       "Regulator",
       "Irrigation"
-    ],
-    "name": "Irrigation Canal Alignment & Cross-Section Design Workflow",
-    "description": "Standard design procedure for selecting canal slopes, lining materials, head regulator capacities, and silt trap basins."
+    ]
   },
   "river-restoration-planning-workflow": {
     "id": "river-restoration-planning-workflow",
+    "title": "River Restoration & Nature-Based Bioengineering Workflow",
+    "summary": "Eco-hydraulic planning workflow for restoring meander geometry, installing root wads/live stakes, and establishing environmental flow regimes.",
     "category": "Eco-Hydraulics",
     "tags": [
       "River Restoration",
       "Bioengineering",
       "Eco-Hydraulics"
-    ],
-    "name": "River Restoration & Nature-Based Bioengineering Workflow",
-    "description": "Eco-hydraulic planning workflow for restoring meander geometry, installing root wads/live stakes, and establishing environmental flow regimes."
+    ]
   },
   "1d-2d-coupled-hydraulic-modelling-workflow": {
     "id": "1d-2d-coupled-hydraulic-modelling-workflow",
+    "title": "1D/2D Hydrodynamic & Flood Inundation Modelling Workflow",
+    "summary": "Complete numerical simulation workflow in HEC-RAS 2D or MIKE FLOOD from DEM mesh generation to 1D/2D lateral weir coupling and calibration.",
     "category": "Numerical Modelling",
     "tags": [
       "1D/2D Modelling",
       "HEC-RAS 2D",
       "Mesh Generation",
       "Calibration"
-    ],
-    "name": "1D/2D Hydrodynamic & Flood Inundation Modelling Workflow",
-    "description": "Complete numerical simulation workflow in HEC-RAS 2D or MIKE FLOOD from DEM mesh generation to 1D/2D lateral weir coupling and calibration."
+    ]
   },
   "bathymetric-adcp-survey-workflow": {
     "id": "bathymetric-adcp-survey-workflow",
+    "title": "Bathymetric & ADCP Discharge Measurement Survey Workflow",
+    "summary": "Standard operating procedure for deploying ADCP transects, processing moving-bed tests, integrating GPS echosounding, and generating TIN models.",
     "category": "Field Survey",
     "tags": [
       "ADCP Survey",
       "Bathymetry",
       "Discharge Measurement",
       "TIN Mesh"
-    ],
-    "name": "Bathymetric & ADCP Discharge Measurement Survey Workflow",
-    "description": "Standard operating procedure for deploying ADCP transects, processing moving-bed tests, integrating GPS echosounding, and generating TIN models."
+    ]
   },
   "climate-resilient-river-design-workflow": {
     "id": "climate-resilient-river-design-workflow",
+    "title": "Climate-Resilient River Structure Design Workflow",
+    "summary": "Workflow for applying IPCC climate projections, non-stationary extreme flood analysis, and flexible adaptive design pathways to river assets.",
     "category": "Resilience Design",
     "tags": [
       "Climate Resilience",
       "Extreme Flood",
       "Adaptive Management"
-    ],
-    "name": "Climate-Resilient River Structure Design Workflow",
-    "description": "Workflow for applying IPCC climate projections, non-stationary extreme flood analysis, and flexible adaptive design pathways to river assets."
+    ]
   },
   "geodetic-control-network-setup-workflow": {
     "id": "geodetic-control-network-setup-workflow",
+    "title": "Geodetic Primary Control Network Establishment Workflow",
+    "summary": "Site reconnaissance, monument installation, static GNSS multi-hour data logging, CORS reference tying, baseline processing, and 3D least squares network adjustment.",
     "category": "Geodetic Workflows",
     "tags": [
       "Control Network",
       "Static GNSS",
       "Least Squares",
       "Geodesy"
-    ],
-    "name": "Geodetic Primary Control Network Establishment Workflow",
-    "description": "Site reconnaissance, monument installation, static GNSS multi-hour data logging, CORS reference tying, baseline processing, and 3D least squares network adjustment."
+    ]
   },
   "gnss-rtk-field-survey-workflow": {
     "id": "gnss-rtk-field-survey-workflow",
+    "title": "GNSS RTK & Network CORS Field Survey Workflow",
+    "summary": "Base station initialization or Network RTK cellular setup, rover calibration, feature attribute coding, coordinate boundary capture, and field QA/QC checks.",
     "category": "Field Survey Workflows",
     "tags": [
       "GNSS RTK",
       "CORS",
       "Field Coding",
       "Rover"
-    ],
-    "name": "GNSS RTK & Network CORS Field Survey Workflow",
-    "description": "Base station initialization or Network RTK cellular setup, rover calibration, feature attribute coding, coordinate boundary capture, and field QA/QC checks."
+    ]
   },
   "total-station-traverse-survey-workflow": {
     "id": "total-station-traverse-survey-workflow",
+    "title": "Total Station Traverse & Topographic Mapping Workflow",
+    "summary": "Control bench setup, backsight orientation, loop traverse closing measurement, instrument height recording, feature point sampling, and Bowditch office adjustment.",
     "category": "Field Survey Workflows",
     "tags": [
       "Total Station",
       "Traverse",
       "Topography",
       "Bowditch"
-    ],
-    "name": "Total Station Traverse & Topographic Mapping Workflow",
-    "description": "Control bench setup, backsight orientation, loop traverse closing measurement, instrument height recording, feature point sampling, and Bowditch office adjustment."
+    ]
   },
   "engineering-construction-setting-out-workflow": {
     "id": "engineering-construction-setting-out-workflow",
+    "title": "Engineering Construction Staking & Alignment Layout Workflow",
+    "summary": "CAD model coordinate extraction, field instrument upload, offset stake driving, elevation level verification, and construction tolerance sign-off.",
     "category": "Construction Survey Workflows",
     "tags": [
       "Setting Out",
       "Staking",
       "Construction Layout",
       "CAD"
-    ],
-    "name": "Engineering Construction Staking & Alignment Layout Workflow",
-    "description": "CAD model coordinate extraction, field instrument upload, offset stake driving, elevation level verification, and construction tolerance sign-off."
+    ]
   },
   "topographic-dtm-dem-generation-workflow": {
     "id": "topographic-dtm-dem-generation-workflow",
+    "title": "Topographic Field Data to Civil 3D DTM Surface Workflow",
+    "summary": "Raw survey point import, point group filtering, breakline feature inclusion, TIN surface creation, contour smoothing, and cut-fill volume computation.",
     "category": "CAD & DTM Workflows",
     "tags": [
       "Civil 3D",
       "DTM",
       "Surface Modeling",
       "Contours"
-    ],
-    "name": "Topographic Field Data to Civil 3D DTM Surface Workflow",
-    "description": "Raw survey point import, point group filtering, breakline feature inclusion, TIN surface creation, contour smoothing, and cut-fill volume computation."
+    ]
   },
   "cadastral-boundary-parcel-mapping-workflow": {
     "id": "cadastral-boundary-parcel-mapping-workflow",
+    "title": "Cadastral Boundary Demarcation & Parcel Fabric GIS Workflow",
+    "summary": "Property deed research, field boundary recovery, GNSS boundary staking, geometry topology verification, and cadastral GIS database updating.",
     "category": "Cadastral Workflows",
     "tags": [
       "Cadastral",
       "Parcel Fabric",
       "Boundaries",
       "GIS"
-    ],
-    "name": "Cadastral Boundary Demarcation & Parcel Fabric GIS Workflow",
-    "description": "Property deed research, field boundary recovery, GNSS boundary staking, geometry topology verification, and cadastral GIS database updating."
+    ]
   },
   "hydrographic-multibeam-bathymetric-survey-workflow": {
     "id": "hydrographic-multibeam-bathymetric-survey-workflow",
+    "title": "Hydrographic Multibeam Bathymetric Survey & Charting Workflow",
+    "summary": "Vessel offsets calibration, sound velocity cast execution, tide gauge sync, multibeam swath acquisition, ping cleaning in HYPACK/Qimera, and bathymetric grid export.",
     "category": "Hydrographic Workflows",
     "tags": [
       "Hydrography",
       "Multibeam",
       "HYPACK",
       "Bathymetry"
-    ],
-    "name": "Hydrographic Multibeam Bathymetric Survey & Charting Workflow",
-    "description": "Vessel offsets calibration, sound velocity cast execution, tide gauge sync, multibeam swath acquisition, ping cleaning in HYPACK/Qimera, and bathymetric grid export."
+    ]
   },
   "uav-drone-photogrammetric-mapping-workflow": {
     "id": "uav-drone-photogrammetric-mapping-workflow",
+    "title": "UAV Flight Planning to Orthomosaic & Point Cloud Processing Workflow",
+    "summary": "Flight corridor/grid setup, ground control point (GCP) surveying, autonomous drone flight, image bundle adjustment, dense point cloud generation, and orthomosaic export.",
     "category": "UAV Workflows",
     "tags": [
       "UAV",
       "Pix4D",
       "Drone Mapping",
       "Orthomosaic"
-    ],
-    "name": "UAV Flight Planning to Orthomosaic & Point Cloud Processing Workflow",
-    "description": "Flight corridor/grid setup, ground control point (GCP) surveying, autonomous drone flight, image bundle adjustment, dense point cloud generation, and orthomosaic export."
+    ]
   },
   "airborne-terrestrial-lidar-processing-workflow": {
     "id": "airborne-terrestrial-lidar-processing-workflow",
+    "title": "LiDAR Raw Laser Scan Processing to Ground Class & Scan-to-BIM Workflow",
+    "summary": "Scan registration, trajectory calibration, ground point classification, vegetation/building filtering, mesh surface creation, and BIM object modeling.",
     "category": "LiDAR Workflows",
     "tags": [
       "LiDAR",
       "Point Cloud",
       "Scan-to-BIM",
       "Classification"
-    ],
-    "name": "LiDAR Raw Laser Scan Processing to Ground Class & Scan-to-BIM Workflow",
-    "description": "Scan registration, trajectory calibration, ground point classification, vegetation/building filtering, mesh surface creation, and BIM object modeling."
+    ]
   },
   "mobile-mapping-reality-capture-workflow": {
     "id": "mobile-mapping-reality-capture-workflow",
+    "title": "Mobile LiDAR Vehicle Trajectory & Asset Inventory Extraction Workflow",
+    "summary": "Vehicle route driving with dual-head LiDAR and 360 camera, post-processing GNSS/IMU trajectory, point cloud colorization, and automated street sign/pole extraction.",
     "category": "Mobile Mapping Workflows",
     "tags": [
       "Mobile Mapping",
       "SLAM",
       "360 Camera",
       "Asset Inventory"
-    ],
-    "name": "Mobile LiDAR Vehicle Trajectory & Asset Inventory Extraction Workflow",
-    "description": "Vehicle route driving with dual-head LiDAR and 360 camera, post-processing GNSS/IMU trajectory, point cloud colorization, and automated street sign/pole extraction."
+    ]
   },
   "remote-sensing-land-cover-classification-workflow": {
     "id": "remote-sensing-land-cover-classification-workflow",
+    "title": "Satellite Remote Sensing Multispectral Image Classification Workflow",
+    "summary": "Radiometric/atmospheric calibration, ROI training sample selection, Random Forest or SVM supervised classification, accuracy confusion matrix evaluation, and map publishing.",
     "category": "Remote Sensing Workflows",
     "tags": [
       "Remote Sensing",
       "Satellite Imagery",
       "Land Cover",
       "Random Forest"
-    ],
-    "name": "Satellite Remote Sensing Multispectral Image Classification Workflow",
-    "description": "Radiometric/atmospheric calibration, ROI training sample selection, Random Forest or SVM supervised classification, accuracy confusion matrix evaluation, and map publishing."
+    ]
   },
   "gis-database-development-spatial-analysis-workflow": {
     "id": "gis-database-development-spatial-analysis-workflow",
+    "title": "Enterprise GIS Geodatabase Setup & Spatial Analysis Workflow",
+    "summary": "PostGIS spatial database setup, vector schema definition, attribute editing with domain constraints, spatial overlay analysis, and Web GIS dashboard deployment.",
     "category": "GIS Workflows",
     "tags": [
       "GIS",
@@ -1625,24 +1627,24 @@
       "ArcGIS Pro",
       "QGIS",
       "Web GIS"
-    ],
-    "name": "Enterprise GIS Geodatabase Setup & Spatial Analysis Workflow",
-    "description": "PostGIS spatial database setup, vector schema definition, attribute editing with domain constraints, spatial overlay analysis, and Web GIS dashboard deployment."
+    ]
   },
   "structural-deformation-monitoring-workflow": {
     "id": "structural-deformation-monitoring-workflow",
+    "title": "Automated Total Station & GNSS Deformation Monitoring Workflow",
+    "summary": "Prism network setup on critical structures, automated periodic total station observation, continuous GNSS baseline streaming, noise filtering, and threshold alert triggering.",
     "category": "Monitoring Workflows",
     "tags": [
       "Deformation",
       "Automated Total Station",
       "GNSS Monitoring",
       "Alert System"
-    ],
-    "name": "Automated Total Station & GNSS Deformation Monitoring Workflow",
-    "description": "Prism network setup on critical structures, automated periodic total station observation, continuous GNSS baseline streaming, noise filtering, and threshold alert triggering."
+    ]
   },
   "geospatial-ai-automated-feature-extraction-workflow": {
     "id": "geospatial-ai-automated-feature-extraction-workflow",
+    "title": "GeoAI Deep Learning Model Training & Building Footprint Extraction Workflow",
+    "summary": "High-res image tiling, bounding box/mask annotation, PyTorch U-Net model training, inference over regional orthophotos, polygon vectorization, and accuracy scoring.",
     "category": "GeoAI Workflows",
     "tags": [
       "GeoAI",
@@ -1650,12 +1652,12 @@
       "PyTorch",
       "U-Net",
       "Building Extraction"
-    ],
-    "name": "GeoAI Deep Learning Model Training & Building Footprint Extraction Workflow",
-    "description": "High-res image tiling, bounding box/mask annotation, PyTorch U-Net model training, inference over regional orthophotos, polygon vectorization, and accuracy scoring."
+    ]
   },
   "bim-gis-digital-twin-integration-workflow": {
     "id": "bim-gis-digital-twin-integration-workflow",
+    "title": "BIM IFC to 3D Web GIS Digital Twin Integration Workflow",
+    "summary": "Revit IFC model georeferencing, conversion to 3D Tiles, scene compilation in CesiumJS/iTwin, IoT real-time sensor linking, and web platform hosting.",
     "category": "Digital Twin Workflows",
     "tags": [
       "BIM-GIS",
@@ -1663,72 +1665,72 @@
       "Digital Twin",
       "3D Tiles",
       "Smart Cities"
-    ],
-    "name": "BIM IFC to 3D Web GIS Digital Twin Integration Workflow",
-    "description": "Revit IFC model georeferencing, conversion to 3D Tiles, scene compilation in CesiumJS/iTwin, IoT real-time sensor linking, and web platform hosting."
+    ]
   },
   "bridge-feasibility-site-selection-workflow": {
     "id": "bridge-feasibility-site-selection-workflow",
+    "title": "Bridge Feasibility Study & Site Selection Workflow",
+    "summary": "Multi-criteria evaluation for selecting bridge crossing alignments, span configurations, and navigation clearances.",
     "category": "Bridge Planning",
     "tags": [
       "Feasibility",
       "Site Selection",
       "Alignment",
       "Planning"
-    ],
-    "name": "Bridge Feasibility Study & Site Selection Workflow",
-    "description": "Multi-criteria evaluation for selecting bridge crossing alignments, span configurations, and navigation clearances."
+    ]
   },
   "bridge-site-investigation-survey-workflow": {
     "id": "bridge-site-investigation-survey-workflow",
+    "title": "Bridge Site Investigation & Geotechnical Survey Workflow",
+    "summary": "Comprehensive topographic, bathymetric, hydrological, and geotechnical site investigation process.",
     "category": "Bridge Site Survey",
     "tags": [
       "Site Investigation",
       "Geotechnical",
       "Bathymetry",
       "Survey"
-    ],
-    "name": "Bridge Site Investigation & Geotechnical Survey Workflow",
-    "description": "Comprehensive topographic, bathymetric, hydrological, and geotechnical site investigation process."
+    ]
   },
   "bridge-structural-scheme-selection-workflow": {
     "id": "bridge-structural-scheme-selection-workflow",
+    "title": "Bridge Structural Scheme Selection Workflow",
+    "summary": "Evaluating bridge types, span layouts, material choices, and erection methods for project requirements.",
     "category": "Bridge Design",
     "tags": [
       "Scheme Selection",
       "Structural Form",
       "Span Layout",
       "Design"
-    ],
-    "name": "Bridge Structural Scheme Selection Workflow",
-    "description": "Evaluating bridge types, span layouts, material choices, and erection methods for project requirements."
+    ]
   },
   "bridge-3d-fem-modelling-workflow": {
     "id": "bridge-3d-fem-modelling-workflow",
+    "title": "Bridge 3D Finite Element Modelling & Load Analysis Workflow",
+    "summary": "Building line-element, shell, and 3D FE models for live load distribution, construction staging, and dynamic analysis.",
     "category": "Bridge Analysis",
     "tags": [
       "3D FEM",
       "MIDAS Civil",
       "CSiBridge",
       "Load Analysis"
-    ],
-    "name": "Bridge 3D Finite Element Modelling & Load Analysis Workflow",
-    "description": "Building line-element, shell, and 3D FE models for live load distribution, construction staging, and dynamic analysis."
+    ]
   },
   "superstructure-prestressed-design-workflow": {
     "id": "superstructure-prestressed-design-workflow",
+    "title": "Prestressed Concrete Bridge Superstructure Design Workflow",
+    "summary": "Step-by-step prestressed concrete girder/deck design including loss calculations and tendon profiling.",
     "category": "Superstructure Design",
     "tags": [
       "Prestressed Concrete",
       "Superstructure",
       "Tendon Profile",
       "Design"
-    ],
-    "name": "Prestressed Concrete Bridge Superstructure Design Workflow",
-    "description": "Step-by-step prestressed concrete girder/deck design including loss calculations and tendon profiling."
+    ]
   },
   "substructure-foundation-design-workflow": {
     "id": "substructure-foundation-design-workflow",
+    "title": "Bridge Substructure & Deep Foundation Design Workflow",
+    "summary": "Designing piers, abutments, pile caps, and deep pile/well foundations under vertical, lateral, and scour conditions.",
     "category": "Substructure Design",
     "tags": [
       "Substructure",
@@ -1736,81 +1738,79 @@
       "Abutments",
       "Pile Foundations",
       "Caissons"
-    ],
-    "name": "Bridge Substructure & Deep Foundation Design Workflow",
-    "description": "Designing piers, abutments, pile caps, and deep pile/well foundations under vertical, lateral, and scour conditions."
+    ]
   },
   "scour-analysis-countermeasures-workflow": {
     "id": "scour-analysis-countermeasures-workflow",
+    "title": "Bridge Scour Analysis & Countermeasure Design Workflow",
+    "summary": "Estimating contraction, pier, and abutment scour and designing riprap or guide bund countermeasures.",
     "category": "Bridge Hydraulics",
     "tags": [
       "Scour Analysis",
       "HEC-18",
       "Countermeasures",
       "Riprap"
-    ],
-    "name": "Bridge Scour Analysis & Countermeasure Design Workflow",
-    "description": "Estimating contraction, pier, and abutment scour and designing riprap or guide bund countermeasures."
+    ]
   },
   "bridge-construction-erection-planning-workflow": {
     "id": "bridge-construction-erection-planning-workflow",
+    "title": "Bridge Construction Sequencing & Erection Planning Workflow",
+    "summary": "Developing construction sequencing, temporary works falsework, segment launching, and geometry control.",
     "category": "Bridge Construction",
     "tags": [
       "Construction Sequencing",
       "Erection Planning",
       "Falsework",
       "Geometry Control"
-    ],
-    "name": "Bridge Construction Sequencing & Erection Planning Workflow",
-    "description": "Developing construction sequencing, temporary works falsework, segment launching, and geometry control."
+    ]
   },
   "bridge-routine-principal-inspection-workflow": {
     "id": "bridge-routine-principal-inspection-workflow",
+    "title": "Bridge Routine & Principal Inspection Workflow",
+    "summary": "Systematic field inspection, defect mapping, element rating, and reporting under BMS guidelines.",
     "category": "Bridge Inspection",
     "tags": [
       "Inspection",
       "Condition Rating",
       "Defect Mapping",
       "BMS"
-    ],
-    "name": "Bridge Routine & Principal Inspection Workflow",
-    "description": "Systematic field inspection, defect mapping, element rating, and reporting under BMS guidelines."
+    ]
   },
   "bridge-load-rating-evaluation-workflow": {
     "id": "bridge-load-rating-evaluation-workflow",
+    "title": "Bridge Load Rating & Analytical Capacity Evaluation Workflow",
+    "summary": "Analytical load rating determination for existing bridges to establish safe posting limits or permit approvals.",
     "category": "Bridge Assessment",
     "tags": [
       "Load Rating",
       "MBE",
       "Capacity Evaluation",
       "Permit Loads"
-    ],
-    "name": "Bridge Load Rating & Analytical Capacity Evaluation Workflow",
-    "description": "Analytical load rating determination for existing bridges to establish safe posting limits or permit approvals."
+    ]
   },
   "bridge-rehabilitation-strengthening-workflow": {
     "id": "bridge-rehabilitation-strengthening-workflow",
+    "title": "Bridge Structural Repair & FRP Strengthening Workflow",
+    "summary": "Selecting and designing concrete repair, steel plate bonding, carbon FRP wrapping, or bearing replacement.",
     "category": "Bridge Rehabilitation",
     "tags": [
       "Rehabilitation",
       "FRP Strengthening",
       "Repair",
       "Bearing Replacement"
-    ],
-    "name": "Bridge Structural Repair & FRP Strengthening Workflow",
-    "description": "Selecting and designing concrete repair, steel plate bonding, carbon FRP wrapping, or bearing replacement."
+    ]
   },
   "bridge-shm-system-deployment-workflow": {
     "id": "bridge-shm-system-deployment-workflow",
+    "title": "Structural Health Monitoring System Deployment Workflow",
+    "summary": "Installing sensor networks, data acquisition hardware, trigger alerts, and automated reporting systems.",
     "category": "Digital Engineering",
     "tags": [
       "SHM",
       "Sensor Network",
       "Telemetry",
       "Digital Twin"
-    ],
-    "name": "Structural Health Monitoring System Deployment Workflow",
-    "description": "Installing sensor networks, data acquisition hardware, trigger alerts, and automated reporting systems."
+    ]
   },
   "tunnel-feasibility-route-selection-workflow": {
     "id": "tunnel-feasibility-route-selection-workflow",
@@ -2056,33 +2056,33 @@
   },
   "municipal-water-supply-planning-workflow": {
     "id": "municipal-water-supply-planning-workflow",
-    "description": "Demand estimation, network hydraulic modeling in WaterCAD, DMA zoning, pressure management, and reservoir sizing.",
-    "name": "Municipal Water Supply Network Planning Workflow"
+    "title": "Municipal Water Supply Network Planning Workflow",
+    "description": "Demand estimation, network hydraulic modeling in WaterCAD, DMA zoning, pressure management, and reservoir sizing."
   },
   "sewerage-network-design-workflow": {
     "id": "sewerage-network-design-workflow",
-    "description": "Sewer layout generation, self-cleansing velocity verification in SewerGEMS, pump station sizing, and force main design.",
-    "name": "Sewerage Network Design & Analysis Workflow"
+    "title": "Sewerage Network Design & Analysis Workflow",
+    "description": "Sewer layout generation, self-cleansing velocity verification in SewerGEMS, pump station sizing, and force main design."
   },
   "solid-waste-facility-planning-workflow": {
     "id": "solid-waste-facility-planning-workflow",
-    "description": "Waste generation projection, collection route modeling, transfer station site selection, MRF planning, and landfill containment design.",
-    "name": "Solid Waste Management Facility Planning Workflow"
+    "title": "Solid Waste Management Facility Planning Workflow",
+    "description": "Waste generation projection, collection route modeling, transfer station site selection, MRF planning, and landfill containment design."
   },
   "urban-flood-risk-assessment-workflow": {
     "id": "urban-flood-risk-assessment-workflow",
-    "description": "Coupled 1D/2D hydrodynamic inundation modeling, vulnerability mapping, retention basin design, and emergency response planning.",
-    "name": "Urban Flood Risk Assessment & Resilience Workflow"
+    "title": "Urban Flood Risk Assessment & Resilience Workflow",
+    "description": "Coupled 1D/2D hydrodynamic inundation modeling, vulnerability mapping, retention basin design, and emergency response planning."
   },
   "smart-city-sensor-deployment-workflow": {
     "id": "smart-city-sensor-deployment-workflow",
-    "description": "IoT sensor node placement, communication gateway setup, SCADA/data platform integration, and real-time monitoring dashboard rollout.",
-    "name": "Smart City Sensor Infrastructure Deployment Workflow"
+    "title": "Smart City Sensor Infrastructure Deployment Workflow",
+    "description": "IoT sensor node placement, communication gateway setup, SCADA/data platform integration, and real-time monitoring dashboard rollout."
   },
   "infrastructure-digital-twin-creation-workflow": {
     "id": "infrastructure-digital-twin-creation-workflow",
-    "description": "Laser scanning/photogrammetry, 3D BIM model creation, GIS georeferencing, IoT sensor data stream binding, and digital twin web portal deployment.",
-    "name": "Infrastructure Digital Twin Creation & Integration Workflow"
+    "title": "Infrastructure Digital Twin Creation & Integration Workflow",
+    "description": "Laser scanning/photogrammetry, 3D BIM model creation, GIS georeferencing, IoT sensor data stream binding, and digital twin web portal deployment."
   },
   "infrastructure-master-planning-workflow": {
     "id": "infrastructure-master-planning-workflow",
@@ -2253,52 +2253,44 @@
     ]
   },
   "flexible-pavement-structural-design-workflow": {
-    "category": "Pavement Design Workflow",
-    "name": "Flexible Pavement Structural Design Workflow",
-    "description": "Standard process for subgrade characterization, traffic ESAL estimation, layer coefficient selection, structural number calculation, and layer thickness optimization.",
-    "id": "flexible-pavement-structural-design-workflow"
+    "title": "Flexible Pavement Structural Design Workflow",
+    "summary": "Standard process for subgrade characterization, traffic ESAL estimation, layer coefficient selection, structural number calculation, and layer thickness optimization.",
+    "category": "Pavement Design Workflow"
   },
   "rigid-pavement-jpcp-crcp-design-workflow": {
-    "category": "Pavement Design Workflow",
-    "name": "Rigid Concrete Pavement Design Workflow",
-    "description": "Process for concrete slab thickness determination, joint load transfer design, dowel/tie bar sizing, and CRCP longitudinal reinforcement design.",
-    "id": "rigid-pavement-jpcp-crcp-design-workflow"
+    "title": "Rigid Concrete Pavement Design Workflow",
+    "summary": "Process for concrete slab thickness determination, joint load transfer design, dowel/tie bar sizing, and CRCP longitudinal reinforcement design.",
+    "category": "Pavement Design Workflow"
   },
   "asphalt-superpave-mix-design-workflow": {
-    "category": "Materials Testing & Paving Workflow",
-    "name": "Superpave Hot Mix Asphalt Design Workflow",
-    "description": "Sequential laboratory workflow covering aggregate gradation selection, binder PG selection, gyratory compaction, volumetric testing, and TSR moisture verification.",
-    "id": "asphalt-superpave-mix-design-workflow"
+    "title": "Superpave Hot Mix Asphalt Design Workflow",
+    "summary": "Sequential laboratory workflow covering aggregate gradation selection, binder PG selection, gyratory compaction, volumetric testing, and TSR moisture verification.",
+    "category": "Materials Testing & Paving Workflow"
   },
   "me-pavement-design-aashtoware-workflow": {
-    "category": "Pavement Analysis Workflow",
-    "name": "Mechanistic-Empirical Pavement Design Workflow",
-    "description": "Process for compiling climate files, axle load spectra, dynamic moduli, running AASHTOWare ME simulations, and verifying fatigue/rutting thresholds.",
-    "id": "me-pavement-design-aashtoware-workflow"
+    "title": "Mechanistic-Empirical Pavement Design Workflow",
+    "summary": "Process for compiling climate files, axle load spectra, dynamic moduli, running AASHTOWare ME simulations, and verifying fatigue/rutting thresholds.",
+    "category": "Pavement Analysis Workflow"
   },
   "pavement-condition-survey-fwd-pci-workflow": {
-    "category": "Pavement Evaluation Workflow",
-    "name": "Pavement Condition & FWD Structural Evaluation Workflow",
-    "description": "Field workflow for automated profiling, visual distress inventory (PCI calculation), Falling Weight Deflectometer testing, and backcalculation of subgrade moduli.",
-    "id": "pavement-condition-survey-fwd-pci-workflow"
+    "title": "Pavement Condition & FWD Structural Evaluation Workflow",
+    "summary": "Field workflow for automated profiling, visual distress inventory (PCI calculation), Falling Weight Deflectometer testing, and backcalculation of subgrade moduli.",
+    "category": "Pavement Evaluation Workflow"
   },
   "pavement-overlay-rehabilitation-design-workflow": {
-    "category": "Pavement Rehabilitation Workflow",
-    "name": "Pavement Overlay & Rehabilitation Design Workflow",
-    "description": "Process for evaluating existing pavement structural capacity, designing asphalt or concrete overlays, reflection cracking mitigation, and lifecycle costing.",
-    "id": "pavement-overlay-rehabilitation-design-workflow"
+    "title": "Pavement Overlay & Rehabilitation Design Workflow",
+    "summary": "Process for evaluating existing pavement structural capacity, designing asphalt or concrete overlays, reflection cracking mitigation, and lifecycle costing.",
+    "category": "Pavement Rehabilitation Workflow"
   },
   "pavement-asset-management-hdm4-workflow": {
-    "category": "Asset Management Workflow",
-    "name": "HDM-4 Pavement Asset Management & PMS Workflow",
-    "description": "Network-level workflow for pavement inventory data integration, deterioration modeling, multi-year maintenance prioritization, and capital budget allocation.",
-    "id": "pavement-asset-management-hdm4-workflow"
+    "title": "HDM-4 Pavement Asset Management & PMS Workflow",
+    "summary": "Network-level workflow for pavement inventory data integration, deterioration modeling, multi-year maintenance prioritization, and capital budget allocation.",
+    "category": "Asset Management Workflow"
   },
   "smart-pavement-sensor-monitoring-workflow": {
-    "category": "Smart Infrastructure Workflow",
-    "name": "Smart Pavement Telemetry & AI Inspection Workflow",
-    "description": "Workflow for deploying embedded fiber optic/strain sensors, collecting 3D laser profiler imagery, AI distress classification, and updating pavement digital twins.",
-    "id": "smart-pavement-sensor-monitoring-workflow"
+    "title": "Smart Pavement Telemetry & AI Inspection Workflow",
+    "summary": "Workflow for deploying embedded fiber optic/strain sensors, collecting 3D laser profiler imagery, AI distress classification, and updating pavement digital twins.",
+    "category": "Smart Infrastructure Workflow"
   },
   "seismic-hazard-assessment-workflow": {
     "id": "seismic-hazard-assessment-workflow",
@@ -3184,6 +3176,877 @@
       "Resilience Economics",
       "Cost-Benefit",
       "Capital Allocations"
+    ]
+  },
+  "construction-methods-engineering-workflow": {
+    "id": "construction-methods-engineering-workflow",
+    "name": "Construction Methods Engineering & Constructability Review Workflow",
+    "description": "Systematic process of analyzing permanent design drawings, identifying construction access/equipment constraints, developing method statements, and sequencing site operations.",
+    "steps": [
+      "Review design drawings and specifications for constructability hurdles",
+      "Develop temporary access and crane operating radii layout drawings",
+      "Formulate detailed Construction Method Statements (CMS)",
+      "Conduct risk assessment and submit for consultant approval",
+      "Deliver site toolbox briefing to field supervision teams"
+    ],
+    "softwareUsed": [
+      "AutoCAD",
+      "Bluebeam Revu",
+      "Excel"
+    ],
+    "tags": [
+      "Constructability",
+      "Method Statement",
+      "Site Operations"
+    ]
+  },
+  "cpm-schedule-updating-monitoring-workflow": {
+    "id": "cpm-schedule-updating-monitoring-workflow",
+    "name": "CPM Schedule Status Updating & Critical Path Monitoring Workflow",
+    "description": "Weekly and monthly cycle of gathering site actual dates, recalculating the critical path in Primavera P6, analyzing total float erosion, and generating lookahead schedules.",
+    "steps": [
+      "Gather physical progress, actual start/finish dates, and remaining durations",
+      "Import field progress data and establish new data date in Primavera P6",
+      "Recalculate CPM network schedule and inspect critical path shifts",
+      "Analyze negative float drivers and develop schedule recovery options",
+      "Publish 3-week lookahead schedule and narrative progress report"
+    ],
+    "softwareUsed": [
+      "Primavera P6",
+      "Excel"
+    ],
+    "tags": [
+      "CPM",
+      "Lookahead Schedule",
+      "Float Monitoring",
+      "Primavera P6"
+    ]
+  },
+  "earned-value-project-controls-workflow": {
+    "id": "earned-value-project-controls-workflow",
+    "name": "Earned Value Management (EVM) Project Controls Workflow",
+    "description": "Integrated control routine comparing Planned Value (PV), Earned Value (EV), and Actual Cost (AC) to determine cost/schedule indices and completion forecasts.",
+    "steps": [
+      "Synchronize Work Breakdown Structure (WBS) with Cost Breakdown Structure (CBS)",
+      "Determine physical percent complete and calculate Earned Value (EV = PV * %)",
+      "Extract actual job-cost ledger expenditures (AC) from accounting/ERP",
+      "Compute Cost Variance (CV), Schedule Variance (SV), CPI, and SPI",
+      "Perform Estimate at Completion (EAC) forecasting and publish executive dashboards"
+    ],
+    "softwareUsed": [
+      "Primavera P6",
+      "Excel",
+      "Power BI",
+      "ARES PRISM G2"
+    ],
+    "tags": [
+      "EVM",
+      "Earned Value",
+      "Project Controls",
+      "EAC",
+      "Cost Control"
+    ]
+  },
+  "construction-progress-s-curve-reporting-workflow": {
+    "id": "construction-progress-s-curve-reporting-workflow",
+    "name": "Construction Progress S-Curve Generation & Variance Reporting Workflow",
+    "description": "Step-by-step procedure to generate cumulative planned vs actual progress curves and analyze deviations.",
+    "steps": [
+      "Extract baseline early/late distribution profiles from Primavera P6",
+      "Plot weekly actual cumulative progress points against baseline envelope",
+      "Analyze slippage slivers between planned and actual curves",
+      "Draft variance explanations with mitigation action plans",
+      "Present visual dashboard to project leadership and client representatives"
+    ],
+    "softwareUsed": [
+      "Primavera P6",
+      "Excel",
+      "Power BI"
+    ],
+    "tags": [
+      "S-Curve",
+      "Progress Reporting",
+      "Variance Analysis"
+    ]
+  },
+  "construction-cost-estimating-workflow": {
+    "id": "construction-cost-estimating-workflow",
+    "name": "Construction Cost Estimating & Tender Pricing Workflow",
+    "description": "Rigorous estimation procedure from tender drawing takeoff through unit-rate buildup, subcontractor bid solicitation, risk contingency, and tender markup.",
+    "steps": [
+      "Review tender package drawings, specifications, and draft contract terms",
+      "Perform digital 2D/3D quantity takeoff in CostX / Bluebeam Revu",
+      "Build up direct unit rates for labor, materials, and equipment",
+      "Solicit and evaluate specialist subcontractor quotations",
+      "Calculate project indirect costs, site preliminaries, and management overheads",
+      "Conduct management tender settlement review and apply risk/profit markup"
+    ],
+    "softwareUsed": [
+      "CostX",
+      "Bluebeam Revu",
+      "Excel",
+      "RIB Candy"
+    ],
+    "tags": [
+      "Cost Estimating",
+      "Tendering",
+      "Quantity Takeoff",
+      "Rate Analysis"
+    ]
+  },
+  "unit-rate-analysis-costing-workflow": {
+    "id": "unit-rate-analysis-costing-workflow",
+    "name": "Detailed Unit Rate Analysis & Cost Buildup Workflow",
+    "description": "Analytical method of formulating unit prices per unit of work (e.g. $/m3 concrete, $/ton steel) based on resource productivity constants.",
+    "steps": [
+      "Establish labor gang composition and average all-in hourly wage rates",
+      "Calculate material consumption factors including standard cutting and site wastage",
+      "Determine heavy equipment hourly owning and operating (O&O) costs",
+      "Synthesize direct cost components per unit output",
+      "Apply statutory contractor overhead percentages, insurance, and profit margins"
+    ],
+    "softwareUsed": [
+      "Excel",
+      "RIB Candy",
+      "CostX"
+    ],
+    "tags": [
+      "Rate Analysis",
+      "Unit Cost",
+      "Labor Constant",
+      "Wastage"
+    ]
+  },
+  "interim-payment-certificate-valuation-workflow": {
+    "id": "interim-payment-certificate-valuation-workflow",
+    "name": "Interim Payment Certificate (IPC) Valuation & Processing Workflow",
+    "description": "Monthly commercial cycle for contractor payment submission, joint on-site measurement verification, retention deductions, and certificate issuance.",
+    "steps": [
+      "Contractor submits draft interim payment application with supporting measurement sheets",
+      "Resident Engineer and Quantity Surveyor conduct joint site measurement audit",
+      "Verify work compliance against QA/QC approvals and inspection sign-offs",
+      "Apply contract retention deductions, advance payment amortizations, and materials on site",
+      "Issue official Interim Payment Certificate (IPC) for employer disbursement"
+    ],
+    "softwareUsed": [
+      "Excel",
+      "Procore",
+      "Aconex"
+    ],
+    "tags": [
+      "IPC",
+      "Interim Valuation",
+      "Payment Certificate",
+      "Quantity Surveying"
+    ]
+  },
+  "final-account-reconciliation-workflow": {
+    "id": "final-account-reconciliation-workflow",
+    "name": "Contract Final Account Settlement & Reconciliation Workflow",
+    "description": "Comprehensive commercial closeout resolving all variation accounts, provisional sums, dayworks, claims, and final retention release.",
+    "steps": [
+      "Reconcile all approved variation change orders against baseline contract sums",
+      "Evaluate daywork sheets, prime cost sums, and provisional sum adjustments",
+      "Resolve pending claims or formalize final dispute settlement agreements",
+      "Compile finalized Statement of Final Account with supporting documentation",
+      "Execute final account discharge agreement and release final retention monies"
+    ],
+    "softwareUsed": [
+      "Excel",
+      "Aconex"
+    ],
+    "tags": [
+      "Final Account",
+      "Commercial Closeout",
+      "Retention Release",
+      "Reconciliation"
+    ]
+  },
+  "construction-contract-administration-workflow": {
+    "id": "construction-contract-administration-workflow",
+    "name": "FIDIC / Construction Contract Administration Workflow",
+    "description": "Daily and milestone administration of contractual notices, Engineer instructions, performance bonds, insurance renewals, and compliance tracking.",
+    "steps": [
+      "Establish contract administration registers (notices, instructions, submittals, bonds)",
+      "Issue timely formal notices pursuant to contract clauses (e.g. FIDIC Clause 20.1/20.2)",
+      "Process engineer site instructions and evaluate cost/time impact implications",
+      "Track compliance with advance payment bank guarantees and insurance renewals",
+      "Coordinate contract milestone completions and Taking-Over Certificate (TOC) issuance"
+    ],
+    "softwareUsed": [
+      "Aconex",
+      "Procore",
+      "SharePoint",
+      "Excel"
+    ],
+    "tags": [
+      "Contract Administration",
+      "FIDIC",
+      "Notices",
+      "Engineer Instructions"
+    ]
+  },
+  "variation-change-order-management-workflow": {
+    "id": "variation-change-order-management-workflow",
+    "name": "Variation & Change Order Management Workflow",
+    "description": "End-to-end management of scope changes from initial instruction/RFI through cost/time proposal, negotiation, and formal change order execution.",
+    "steps": [
+      "Log scope change trigger from Engineer Instruction, design revision, or site condition",
+      "Contractor submits Variation Cost & Schedule Impact Proposal within contractual time limits",
+      "Consultant Quantity Surveyor reviews rates, quantities, and schedule delay justification",
+      "Negotiate agreeable valuation using contract rates or star rates",
+      "Issue formal Variation Order (VO) amending contract sum and completion date"
+    ],
+    "softwareUsed": [
+      "Procore",
+      "Aconex",
+      "Excel"
+    ],
+    "tags": [
+      "Variations",
+      "Change Orders",
+      "Cost Impact",
+      "Scope Change"
+    ]
+  },
+  "extension-of-time-claim-workflow": {
+    "id": "extension-of-time-claim-workflow",
+    "name": "Extension of Time (EOT) Claim Preparation & Evaluation Workflow",
+    "description": "Procedure for documenting employer-risk delay events, demonstrating critical path impact, and establishing entitlement to revised completion dates.",
+    "steps": [
+      "Issue contractual Notice of Delay within required time bar (e.g., 28 days)",
+      "Maintain contemporary site records (weather, labor stoppages, access denial logs)",
+      "Perform Time Impact Analysis (TIA) inserting delay sub-network into Primavera P6 baseline",
+      "Draft comprehensive claim submission with causation narrative and supporting exhibits",
+      "Participate in Engineer determination meetings and agree upon revised completion date"
+    ],
+    "softwareUsed": [
+      "Primavera P6",
+      "Excel",
+      "Bluebeam Revu"
+    ],
+    "tags": [
+      "EOT Claim",
+      "Delay Claim",
+      "Time Impact Analysis",
+      "Contemporary Records"
+    ]
+  },
+  "dispute-adjudication-arbitration-workflow": {
+    "id": "dispute-adjudication-arbitration-workflow",
+    "name": "Dispute Avoidance, Adjudication & Arbitration Workflow",
+    "description": "Structured multi-tier escalation of construction disputes from engineer determination to DAAB adjudication and final arbitration hearing.",
+    "steps": [
+      "Formalize unresolved dispute notice following dissatisfaction with Engineer decision",
+      "Refer dispute to Dispute Avoidance/Adjudication Board (DAAB)",
+      "Exchange written statements of case, expert witness reports, and factual witness statements",
+      "Attend DAAB formal hearing and receive written binding determination",
+      "If dissatisfied, serve Notice of Dissatisfaction and initiate ICC/UNCITRAL arbitration"
+    ],
+    "softwareUsed": [
+      "SharePoint",
+      "Excel",
+      "Primavera P6"
+    ],
+    "tags": [
+      "Dispute Resolution",
+      "DAAB",
+      "Arbitration",
+      "Expert Witness"
+    ]
+  },
+  "construction-risk-assessment-mitigation-workflow": {
+    "id": "construction-risk-assessment-mitigation-workflow",
+    "name": "Construction Risk Identification & Mitigation Planning Workflow",
+    "description": "Collaborative workflow for multi-stakeholder risk identification workshops, risk register population, and mitigation action tracking.",
+    "steps": [
+      "Convene project risk workshop with engineering, commercial, and site management teams",
+      "Identify technical, commercial, environmental, and site access risk events",
+      "Score risk probability and impact using standard 5x5 risk matrices",
+      "Assign risk owners and draft concrete mitigation and contingency action plans",
+      "Review and update risk register monthly during project steering meetings"
+    ],
+    "softwareUsed": [
+      "Excel",
+      "Primavera Risk Analysis",
+      "SharePoint"
+    ],
+    "tags": [
+      "Risk Management",
+      "Risk Register",
+      "Mitigation",
+      "Risk Matrix"
+    ]
+  },
+  "quantitative-schedule-cost-risk-workflow": {
+    "id": "quantitative-schedule-cost-risk-workflow",
+    "name": "Quantitative Monte Carlo Schedule & Cost Risk Analysis Workflow",
+    "description": "Probabilistic modeling process to determine required schedule buffers and financial contingency reserves at specified confidence levels (P80).",
+    "steps": [
+      "Audit CPM schedule logic to ensure zero open ends and clean constraint modeling",
+      "Assign 3-point duration uncertainty distributions (minimum, most likely, maximum) to activities",
+      "Map project risk register discrete risk events onto the CPM logic network",
+      "Run 5,000 Monte Carlo simulation iterations in Primavera Risk Analysis",
+      "Extract P50/P80 project completion dates and calculate recommended contingency reserves"
+    ],
+    "softwareUsed": [
+      "Primavera Risk Analysis",
+      "@RISK",
+      "Primavera P6",
+      "Excel"
+    ],
+    "tags": [
+      "Monte Carlo",
+      "Risk Simulation",
+      "P80",
+      "Schedule Risk",
+      "Cost Risk"
+    ]
+  },
+  "material-submittal-approval-workflow": {
+    "id": "material-submittal-approval-workflow",
+    "name": "Material Submittal & Approval (MAS) Workflow",
+    "description": "Quality assurance cycle for contractor material sample submissions, laboratory test certificates, factory compliance audits, and consultant approval.",
+    "steps": [
+      "Contractor compiles Material Approval Request (MAR) with manufacturer compliance data",
+      "Submit third-party independent laboratory test certificates for raw materials",
+      "QA/QC engineer conducts physical inspection of material sample mockups",
+      "Consultant reviews compliance against contract technical specifications",
+      "Issue approval code (Code A: Approved, Code B: Approved with Comments, Code C: Rejected)"
+    ],
+    "softwareUsed": [
+      "Procore",
+      "Autodesk Construction Cloud",
+      "Excel"
+    ],
+    "tags": [
+      "Material Approval",
+      "MAS",
+      "QA/QC",
+      "Submittal",
+      "Specifications"
+    ]
+  },
+  "non-conformance-corrective-action-workflow": {
+    "id": "non-conformance-corrective-action-workflow",
+    "name": "Non-Conformance Report (NCR) & Corrective Action Workflow",
+    "description": "Quality control corrective cycle from defect identification through structural assessment, repair method approval, re-inspection, and closeout.",
+    "steps": [
+      "QA/QC Inspector detects site deviation or failed material test and issues formal NCR",
+      "Contractor initiates immediate containment action and halts affected work",
+      "Engineering team performs root cause analysis and drafts engineering repair methodology",
+      "Consultant reviews and approves proposed structural repair or remediation procedure",
+      "Execute repair, conduct verification testing, and obtain consultant NCR closure sign-off"
+    ],
+    "softwareUsed": [
+      "Procore",
+      "Autodesk Construction Cloud",
+      "SafetyCulture"
+    ],
+    "tags": [
+      "NCR",
+      "Corrective Action",
+      "Root Cause",
+      "QA/QC",
+      "Inspection"
+    ]
+  },
+  "permit-to-work-site-safety-workflow": {
+    "id": "permit-to-work-site-safety-workflow",
+    "name": "Permit-to-Work (PTW) & High-Risk Activity Authorization Workflow",
+    "description": "Daily site safety authorization process ensuring mandatory precautions are physically verified before hazardous work commences.",
+    "steps": [
+      "Subcontractor supervisor submits PTW application with attached Job Safety Analysis (JSA)",
+      "Site HSE Officer and Site Engineer conduct physical inspection of work location",
+      "Verify atmospheric testing (confined space), safety isolation, fire watch, or shoring integrity",
+      "Sign and issue time-limited Permit-to-Work (PTW) display copy on site",
+      "Monitor ongoing operations and execute formal permit surrender and closeout at shift end"
+    ],
+    "softwareUsed": [
+      "SafetyCulture",
+      "Procore",
+      "Excel"
+    ],
+    "tags": [
+      "PTW",
+      "Permit to Work",
+      "HSE",
+      "Site Safety",
+      "JSA"
+    ]
+  },
+  "safety-incident-investigation-workflow": {
+    "id": "safety-incident-investigation-workflow",
+    "name": "Construction Safety Incident Investigation & Reporting Workflow",
+    "description": "Protocol for emergency response, accident site preservation, root cause investigation, regulatory notification, and preventative action implementation.",
+    "steps": [
+      "Provide immediate first aid / medical response and secure the incident scene",
+      "Notify corporate HSE management and statutory labor safety authorities within required timeframe",
+      "Gather physical evidence, take scene photographs, and conduct witness interviews",
+      "Convene investigation team and apply 5-Why / Tripod Beta root cause analysis",
+      "Publish Safety Alert, implement corrective preventative controls, and hold all-hands toolbox session"
+    ],
+    "softwareUsed": [
+      "SafetyCulture",
+      "Procore",
+      "Excel"
+    ],
+    "tags": [
+      "Incident Investigation",
+      "HSE",
+      "Root Cause",
+      "Safety Alert",
+      "OSHA"
+    ]
+  },
+  "temporary-works-design-review-workflow": {
+    "id": "temporary-works-design-review-workflow",
+    "name": "Temporary Works Design, Review & Permit-to-Load Workflow",
+    "description": "Rigorous engineering control cycle for temporary structures adhering to BS 5975 procedural governance.",
+    "steps": [
+      "Appoint designated Temporary Works Coordinator (TWC) and define design brief",
+      "Temporary Works Designer prepares structural calculations and erection drawings",
+      "Independent Cat 2 / Cat 3 design check performed by independent engineer",
+      "Erect temporary works on site and inspect against design drawings and tolerances",
+      "TWC issues formal Permit-to-Load (PTL) prior to placing concrete or applying load"
+    ],
+    "softwareUsed": [
+      "SAP2000",
+      "AutoCAD",
+      "Excel",
+      "Tekla Structures"
+    ],
+    "tags": [
+      "Temporary Works",
+      "BS 5975",
+      "Permit to Load",
+      "Falsework",
+      "Shoring"
+    ]
+  },
+  "method-statement-constructability-workflow": {
+    "id": "method-statement-constructability-workflow",
+    "name": "Safe Work Method Statement (SWMS) Formulation & Approval Workflow",
+    "description": "Process of drafting, reviewing, and approving detailed technical and safety method statements for critical construction packages.",
+    "steps": [
+      "Define scope of work, plant requirements, material specifications, and access arrangements",
+      "Integrate Job Safety Analysis (JSA) and environmental mitigation measures into narrative",
+      "Submit SWMS to Supervising Consultant for technical review and compliance sign-off",
+      "Conduct pre-start briefing and obtain signatures from all executing site tradesmen",
+      "Site Engineer monitors ongoing field adherence against approved method steps"
+    ],
+    "softwareUsed": [
+      "AutoCAD",
+      "Bluebeam Revu",
+      "Excel"
+    ],
+    "tags": [
+      "SWMS",
+      "Method Statement",
+      "Constructability",
+      "Toolbox Talk"
+    ]
+  },
+  "heavy-lifting-rigging-plan-workflow": {
+    "id": "heavy-lifting-rigging-plan-workflow",
+    "name": "Heavy Lifting & Crane Rigging Plan Approval Workflow",
+    "description": "Comprehensive engineering procedure for critical tandem or heavy crane lifts ensuring soil bearing capacity and rigging safety factors.",
+    "steps": [
+      "Calculate total lifted load including hook block, spreader beams, and rigging gear",
+      "Determine crane working radius, boom length, and verify rated load chart capacity (<75%)",
+      "Calculate maximum outrigger pad reaction forces and verify ground bearing capacity",
+      "Produce CAD lift plan drawing showing swing clearances and underground utilities",
+      "Appointed Person (Lifting) inspects rigging equipment and signs lifting authorization"
+    ],
+    "softwareUsed": [
+      "AutoCAD",
+      "Excel",
+      "Bluebeam Revu"
+    ],
+    "tags": [
+      "Crane Lift Plan",
+      "Heavy Lifting",
+      "Rigging",
+      "Outrigger Pad",
+      "Ground Bearing"
+    ]
+  },
+  "construction-equipment-selection-sizing-workflow": {
+    "id": "construction-equipment-selection-sizing-workflow",
+    "name": "Construction Equipment Selection & Fleet Sizing Workflow",
+    "description": "Engineering calculation routine to match machine capacities with project volumes and schedule milestone constraints.",
+    "steps": [
+      "Extract total earthwork/material cut and fill volumes and haul distances from drawings",
+      "Select primary excavating/loading machinery and calculate theoretical cycle times",
+      "Determine number of haul trucks required to balance loader waiting time and match cycle times",
+      "Evaluate owning and operating (O&O) hourly costs including fuel burn and maintenance reserves",
+      "Finalize fleet mobilization schedule and operator deployment plan"
+    ],
+    "softwareUsed": [
+      "Excel",
+      "Cat MineStar",
+      "AutoCAD"
+    ],
+    "tags": [
+      "Equipment Selection",
+      "Fleet Sizing",
+      "Cycle Time",
+      "Earthmoving"
+    ]
+  },
+  "fleet-productivity-cycle-time-workflow": {
+    "id": "fleet-productivity-cycle-time-workflow",
+    "name": "Machinery Fleet Productivity & Cycle Time Optimization Workflow",
+    "description": "Field telematics and time-and-motion study workflow to maximize machinery payload utilization and eliminate idle time.",
+    "steps": [
+      "Collect IoT telematics data on machine engine run time, idle time, and fuel burn",
+      "Perform stopwatch field cycle time studies (load, haul, dump, return, spot)",
+      "Identify haul road rolling resistance and grade resistance bottlenecks",
+      "Reconfigure loading shovel positions and smooth haul road surfaces with graders",
+      "Report actual cubic meters moved per machine-hour and optimize unit costs"
+    ],
+    "softwareUsed": [
+      "Excel",
+      "OEM Telematics Platforms"
+    ],
+    "tags": [
+      "Productivity",
+      "Cycle Time",
+      "Telematics",
+      "Fleet Optimization"
+    ]
+  },
+  "daily-site-supervision-reporting-workflow": {
+    "id": "daily-site-supervision-reporting-workflow",
+    "name": "Daily Site Supervision, Inspection & Diary Reporting Workflow",
+    "description": "Daily operational routine for site engineers ensuring quality inspection, work coordination, and comprehensive record keeping.",
+    "steps": [
+      "Conduct morning site walkthrough and inspect previous shift handovers",
+      "Verify that workforce labor gang strengths and operating machinery match schedule",
+      "Attend site inspection requests (SIR) with consultant inspectors for completed work steps",
+      "Log weather conditions, deliveries, delays, instructions, and site safety observations",
+      "Submit standardized daily site progress report into digital project management platform"
+    ],
+    "softwareUsed": [
+      "Procore",
+      "Excel",
+      "Bluebeam Revu"
+    ],
+    "tags": [
+      "Site Supervision",
+      "Daily Report",
+      "Site Diary",
+      "Inspection"
+    ]
+  },
+  "asbuilt-drawing-verification-workflow": {
+    "id": "asbuilt-drawing-verification-workflow",
+    "name": "As-Built Drawing Field Verification & Handover Workflow",
+    "description": "Process of surveying installed work dimensions, redlining design drawings, and producing verified as-built documentation packages.",
+    "steps": [
+      "Perform high-precision total station / 3D laser scan survey of completed structural elements",
+      "Compare measured field coordinates and invert levels against approved design drawings",
+      "Mark up redline drawings highlighting verified deviations and approved field changes",
+      "Draft clean final As-Built CAD/BIM models incorporating verified field data",
+      "Obtain consultant verification stamp and archive in project Common Data Environment"
+    ],
+    "softwareUsed": [
+      "AutoCAD",
+      "Revit",
+      "Bluebeam Revu",
+      "Procore"
+    ],
+    "tags": [
+      "As-Built Drawings",
+      "Field Verification",
+      "Redlines",
+      "Survey Verification"
+    ]
+  },
+  "construction-site-logistics-layout-workflow": {
+    "id": "construction-site-logistics-layout-workflow",
+    "name": "Construction Site Logistics Layout & Mobilization Workflow",
+    "description": "Strategic planning and physical layout of site hoarding, vehicle gates, tower crane positions, batching plants, and welfare facilities.",
+    "steps": [
+      "Analyze site boundary constraints, municipal access permits, and utility connection points",
+      "Design primary and secondary site access roads, one-way loops, and wheel wash stations",
+      "Determine optimal placement for tower cranes, passenger hoists, and concrete batching units",
+      "Allocate segregated laydown zones for rebar, structural steel, precast, and MEP equipment",
+      "Publish Site Logistics Master Plan and brief all project delivery contractors"
+    ],
+    "softwareUsed": [
+      "AutoCAD",
+      "Revit",
+      "Bluebeam Revu"
+    ],
+    "tags": [
+      "Site Logistics",
+      "Mobilization",
+      "Site Layout",
+      "Laydown",
+      "Tower Cranes"
+    ]
+  },
+  "material-procurement-delivery-staging-workflow": {
+    "id": "material-procurement-delivery-staging-workflow",
+    "name": "Material Procurement, Staging & JIT Delivery Workflow",
+    "description": "Just-In-Time site delivery coordination avoiding site congestion while maintaining uninterrupted construction operations.",
+    "steps": [
+      "Generate material delivery schedules from 4-week lookahead construction plans",
+      "Issue supplier delivery call-offs and confirm precise delivery time slots",
+      "Coordinate gate pass clearances and assign dedicated offloading crane/forklift resources",
+      "Perform QA/QC incoming material receipt inspection and verify delivery dockets",
+      "Transfer materials immediately to designated point-of-use or secure staging zone"
+    ],
+    "softwareUsed": [
+      "SAP MM",
+      "Procore",
+      "Excel"
+    ],
+    "tags": [
+      "JIT Delivery",
+      "Material Staging",
+      "Supply Chain",
+      "Receipt Inspection"
+    ]
+  },
+  "highrise-building-superstructure-workflow": {
+    "id": "highrise-building-superstructure-workflow",
+    "name": "High-Rise Building Superstructure Construction Workflow",
+    "description": "Repetitive floor cycle execution workflow for core wall jump-forms, column casting, post-tensioned floor slabs, and facade installation.",
+    "steps": [
+      "Hydraulic jump of self-climbing core wall formwork system and rebar fixing",
+      "Erect falsework and deck formwork for post-tensioned floor slab",
+      "Fix reinforcement steel, post-tensioning anchorages, and embedded MEP sleeves",
+      "Pump and place high-performance concrete using dedicated concrete placing boom",
+      "Stress post-tensioning tendons upon reaching required concrete compressive strength",
+      "Install unitized curtain wall facade panels 4 to 6 floors below casting deck"
+    ],
+    "softwareUsed": [
+      "Revit",
+      "AutoCAD",
+      "Navisworks",
+      "Procore"
+    ],
+    "tags": [
+      "High-Rise",
+      "Superstructure",
+      "Jump-Form",
+      "Post-Tensioning",
+      "Core Wall"
+    ]
+  },
+  "mep-installation-commissioning-workflow": {
+    "id": "mep-installation-commissioning-workflow",
+    "name": "Building MEP Installation, Testing & Commissioning Workflow",
+    "description": "Structured execution of mechanical, electrical, and plumbing packages through rough-in, equipment setting, pressure testing, and integrated commissioning.",
+    "steps": [
+      "Verify builder work penetrations and sleeves against coordinated composite MEP drawings",
+      "Install high-level pipework, ductwork, cable trays, and drainage networks",
+      "Set major plant equipment (chillers, air handling units, transformers, pumps, generators)",
+      "Conduct hydrostatic pressure testing of pipework and insulation resistance electrical tests",
+      "Execute Testing, Adjusting, and Balancing (TAB) and integrated system commissioning"
+    ],
+    "softwareUsed": [
+      "Revit",
+      "Navisworks",
+      "Procore"
+    ],
+    "tags": [
+      "MEP",
+      "Commissioning",
+      "TAB",
+      "HVAC",
+      "Testing"
+    ]
+  },
+  "highway-paving-linear-construction-workflow": {
+    "id": "highway-paving-linear-construction-workflow",
+    "name": "Highway Earthwork & Asphalt Paving Linear Construction Workflow",
+    "description": "Continuous linear execution workflow for subgrade compaction, aggregate base course laying, prime coating, and asphalt concrete paving.",
+    "steps": [
+      "Execute mass-haul subgrade cut/fill operations and verify California Bearing Ratio (CBR)",
+      "Spread and compact aggregate base course with motor graders and vibratory rollers",
+      "Apply bituminous prime coat and verify uniform application rate",
+      "Pave Dense Bituminous Macadam (DBM) and Asphalt Concrete wearing course with asphalt pavers",
+      "Conduct continuous rolling compaction and verify density with nuclear density gauge"
+    ],
+    "softwareUsed": [
+      "Civil 3D",
+      "TILOS",
+      "Excel"
+    ],
+    "tags": [
+      "Highway Paving",
+      "Asphalt",
+      "Subgrade",
+      "Linear Construction",
+      "CBR"
+    ]
+  },
+  "construction-progress-measurement-reporting-workflow": {
+    "id": "construction-progress-measurement-reporting-workflow",
+    "name": "Physical Progress Measurement & Rules of Credit Reporting Workflow",
+    "description": "Rigorous determination of actual installed project progress based on predefined weighted step milestones.",
+    "steps": [
+      "Establish rules-of-credit weighting milestones for each construction work package",
+      "Field inspectors verify completion of milestone steps and quantity installed",
+      "Calculate earned work package progress and aggregate to total project progress",
+      "Compare actual progress against baseline planned progress curve",
+      "Generate monthly physical progress report with labor productivity indices"
+    ],
+    "softwareUsed": [
+      "Excel",
+      "Primavera P6",
+      "Power BI"
+    ],
+    "tags": [
+      "Rules of Credit",
+      "Physical Progress",
+      "Progress Reporting",
+      "Earned Progress"
+    ]
+  },
+  "project-performance-dashboard-kpi-workflow": {
+    "id": "project-performance-dashboard-kpi-workflow",
+    "name": "Project Performance Dashboard & KPI Analytics Workflow",
+    "description": "Automated data ETL pipeline connecting scheduling, cost, quality, and HSE databases into unified management visual dashboards.",
+    "steps": [
+      "Extract structured data tables from Primavera P6, ERP/Cost ledger, and safety registers",
+      "Transform and clean data tables in Power BI / Excel data models",
+      "Build interactive dashboard visuals displaying CPI, SPI, milestone forecasts, and LTIR",
+      "Publish scheduled cloud refresh and distribute automated mobile reports to stakeholders",
+      "Review KPI trends in weekly executive project steering meetings"
+    ],
+    "softwareUsed": [
+      "Power BI",
+      "Excel",
+      "Primavera P6"
+    ],
+    "tags": [
+      "Power BI",
+      "KPIs",
+      "Dashboards",
+      "Project Analytics"
+    ]
+  },
+  "sustainable-site-operations-leed-workflow": {
+    "id": "sustainable-site-operations-leed-workflow",
+    "name": "Sustainable Site Operations & LEED/BREEAM Compliance Workflow",
+    "description": "Field execution and auditing workflow for environmental protection, erosion prevention, air quality management, and green certification credits.",
+    "steps": [
+      "Implement Construction Environmental Management Plan (CEMP) and silt fence barriers",
+      "Operate truck wheel wash stations and deploy misting systems for site dust suppression",
+      "Track low-VOC paints, adhesives, and sealants used on interior finishes",
+      "Compile environmental compliance audit reports and material manufacturer EPD certificates",
+      "Submit LEED/BREEAM construction stage documentation for certification award"
+    ],
+    "softwareUsed": [
+      "Procore",
+      "Excel",
+      "One Click LCA"
+    ],
+    "tags": [
+      "LEED",
+      "Sustainability",
+      "CEMP",
+      "Erosion Control",
+      "EPD"
+    ]
+  },
+  "construction-waste-management-circular-workflow": {
+    "id": "construction-waste-management-circular-workflow",
+    "name": "Construction Waste Management & Circular Recycling Workflow",
+    "description": "Operational cycle for waste stream segregation, on-site concrete crushing, timber recycling, and landfill diversion auditing.",
+    "steps": [
+      "Draft Project Site Waste Management Plan (SWMP) establishing diversion targets (>80%)",
+      "Deploy color-coded waste segregation skips (timber, steel, concrete, general waste)",
+      "Operate mobile concrete crusher to convert rubble into secondary road sub-base material",
+      "Maintain waste transfer notes (WTN) with licensed waste management contractors",
+      "Publish monthly waste audit report calculating landfill diversion percentage"
+    ],
+    "softwareUsed": [
+      "Excel",
+      "SafetyCulture"
+    ],
+    "tags": [
+      "Waste Management",
+      "Circular Site",
+      "SWMP",
+      "Recycling",
+      "Landfill Diversion"
+    ]
+  },
+  "design-build-epc-delivery-workflow": {
+    "id": "design-build-epc-delivery-workflow",
+    "name": "Design-Build & EPC Turnkey Delivery Management Workflow",
+    "description": "Integrated management workflow linking fast-track engineering design packages directly with procurement long-lead orders and site construction.",
+    "steps": [
+      "Establish Employer Requirements (ER) baseline and Contractor Proposal compliance matrix",
+      "Execute fast-track phased engineering design deliverables aligned with construction sequence",
+      "Issue early procurement packages for long-lead mechanical and electrical equipment",
+      "Coordinate constructability and design-to-cost reviews prior to IFC drawing release",
+      "Deliver integrated construction, cold/hot commissioning, performance guarantee testing, and handover"
+    ],
+    "softwareUsed": [
+      "Autodesk Construction Cloud",
+      "Primavera P6",
+      "Aconex"
+    ],
+    "tags": [
+      "Design-Build",
+      "EPC",
+      "Turnkey",
+      "Fast-Track",
+      "Long-Lead"
+    ]
+  },
+  "modular-construction-assembly-workflow": {
+    "id": "modular-construction-assembly-workflow",
+    "name": "Modular & Off-Site Prefabrication Assembly Workflow",
+    "description": "Workflow for manufacturing 3D volumetric pods off-site, logistics transport staging, and high-speed on-site crane hook assembly.",
+    "steps": [
+      "Perform factory fabrication of volumetric steel/concrete pods including factory MEP fit-out",
+      "Conduct Factory Acceptance Testing (FAT) and QA sign-off prior to dispatch",
+      "Coordinate specialized heavy transport and route permits to construction site",
+      "Execute precision crane lifting and placement of modules onto prepared foundations",
+      "Connect structural inter-module stitch connections and vertical MEP utility risers"
+    ],
+    "softwareUsed": [
+      "Revit",
+      "Navisworks",
+      "AutoCAD",
+      "Bluebeam Revu"
+    ],
+    "tags": [
+      "Modular",
+      "Prefabrication",
+      "Off-Site",
+      "FAT",
+      "Volumetric Pods"
+    ]
+  },
+  "bim-clash-coordination-site-workflow": {
+    "id": "bim-clash-coordination-site-workflow",
+    "name": "BIM Multi-Disciplinary Clash Coordination & Field Release Workflow",
+    "description": "Weekly digital clash detection cycle federating architectural, structural, and MEP models to eliminate field clashes prior to fabrication.",
+    "steps": [
+      "Federate discipline 3D models into Autodesk Navisworks / Autodesk Construction Cloud",
+      "Run automated clash tests between structural frames, ductwork, and pipework",
+      "Filter out minor clearances and group clashes into actionable coordination issues",
+      "Host weekly virtual BIM coordination meeting with lead discipline engineers",
+      "Verify resolved models and publish coordinated shop drawings for field construction"
+    ],
+    "softwareUsed": [
+      "Navisworks",
+      "Revit",
+      "Autodesk Construction Cloud"
+    ],
+    "tags": [
+      "BIM Clash Detection",
+      "Navisworks",
+      "Model Coordination",
+      "Shop Drawings"
     ]
   }
 }

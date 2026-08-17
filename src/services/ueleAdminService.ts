@@ -1,21 +1,21 @@
 import {
   UELEWorld,
-  AdminUELERegion,
+  UELERegion,
   UELEZone,
   UELEFacility,
-  AdminUELEComponent,
+  UELEComponent,
   UELENetwork,
   UELELayer,
   UELE3DModel,
   UELEPublicationStatus,
-  AdminUELEParameter,
+  UELEParameter,
   UELELearningLink,
   UELEStandard,
   UELESoftware,
   UELECourse,
   UELEVideo,
   UELEResource,
-} from '../types/adminUele';
+} from '../types/uele';
 import { AuditLogEntry, AdminDashboardMetrics } from '../types/admin';
 import { AdminAuthService } from './adminAuthService';
 
@@ -38,14 +38,14 @@ export type UELEAdminEntityType =
 
 export interface FullUELEDatabase {
   worlds: UELEWorld[];
-  regions: AdminUELERegion[];
+  regions: UELERegion[];
   zones: UELEZone[];
   facilities: UELEFacility[];
-  components: AdminUELEComponent[];
+  components: UELEComponent[];
   networks: UELENetwork[];
   gisLayers: UELELayer[];
   models3D: UELE3DModel[];
-  parameters?: AdminUELEParameter[];
+  parameters?: UELEParameter[];
   learningLinks?: UELELearningLink[];
   standards?: UELEStandard[];
   software?: UELESoftware[];
@@ -79,7 +79,7 @@ export class UELEAdminService {
    */
   static async getPublicUELEDataset(): Promise<{
     worlds: UELEWorld[];
-    regions: AdminUELERegion[];
+    regions: UELERegion[];
     zones: UELEZone[];
     facilities: UELEFacility[];
     networks: UELENetwork[];
