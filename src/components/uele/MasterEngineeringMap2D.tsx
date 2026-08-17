@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { UELEObject, UELEComponent, UELEHotspot } from '../../types/uele';
+import { UELEObject, UELEObjectComponent, UELEHotspot } from '../../types/uele';
 import {
   Globe,
   Compass,
@@ -40,7 +40,7 @@ export interface MasterEngineeringMap2DProps {
   selectedComponentId?: string | null;
   selectedHotspot?: UELEHotspot | null;
   onSelectObject: (obj: UELEObject) => void;
-  onSelectComponent?: (obj: UELEObject, comp: UELEComponent) => void;
+  onSelectComponent?: (obj: UELEObject, comp: UELEObjectComponent) => void;
   onSelectHotspot?: (obj: UELEObject, hs: UELEHotspot) => void;
   onNavigateToRoadmap?: (roadmapId?: string) => void;
   currentEnv: string;

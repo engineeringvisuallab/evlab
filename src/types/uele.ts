@@ -369,3 +369,69 @@ export interface UELEValidationReport {
 }
 
 export type UELEViewMode = '2d' | '3d';
+
+/**
+ * UELE 2D/3D Object Inspector model.
+ * This is a richer, UI-facing representation of a facility used by the
+ * MasterEngineeringMap2D / ObjectInspector explorer components. It is
+ * intentionally more permissive than UELEFacility since it also carries
+ * legacy/extended fields (what/why/how, registry id lists, process chain).
+ */
+export interface UELEObjectComponent {
+  id: string;
+  name: string;
+  description?: string;
+  discipline?: string;
+  disciplines?: string[];
+  what?: string;
+  why?: string;
+  how?: string;
+  engineeringPurpose?: string;
+  parameters?: UELEParameter[];
+  knowledgeIds?: string[];
+  skillIds?: string[];
+  softwareIds?: string[];
+  standardIds?: string[];
+  courseIds?: string[];
+  resourceIds?: string[];
+  videoIds?: string[];
+  childComponents?: UELEObjectComponent[];
+}
+
+export interface UELEObjectProcessFlow {
+  upstream?: string[];
+  downstream?: string[];
+}
+
+export interface UELEObject {
+  id: string;
+  name: string;
+  description: string;
+  environment: string;
+  what?: string;
+  why?: string;
+  how?: string;
+  engineeringPurpose?: string;
+  parameters?: UELEParameter[];
+  disciplines?: string[];
+  knowledgeIds?: string[];
+  skillIds?: string[];
+  softwareIds?: string[];
+  standardIds?: string[];
+  courseIds?: string[];
+  resourceIds?: string[];
+  videoIds?: string[];
+  roadmapIds: string[];
+  components: UELEObjectComponent[];
+  process?: UELEObjectProcessFlow;
+  relatedObjectIds?: string[];
+  latitude?: number;
+  longitude?: number;
+}
+
+export interface UELEHotspot {
+  id: string;
+  label: string;
+  description?: string;
+  position?: [number, number, number];
+}

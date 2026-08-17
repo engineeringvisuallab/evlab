@@ -1,5 +1,5 @@
 import React from 'react';
-import { UELERegion } from '../../types/uele';
+
 import {
   Globe,
   Building2,
@@ -14,7 +14,16 @@ import {
   Compass,
 } from 'lucide-react';
 
-export type UELEZoneFilter = 'all' | UELERegion;
+export type UELEZoneFilter =
+  | 'all'
+  | 'smart-city'
+  | 'engineering-village'
+  | 'agriculture'
+  | 'water-system'
+  | 'energy-system'
+  | 'transportation'
+  | 'industrial'
+  | 'environmental';
 
 export interface RegionNavInfo {
   id: UELEZoneFilter;

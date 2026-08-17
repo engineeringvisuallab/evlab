@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UELEObject, UELEHotspot, UELEComponent, UeleVideo } from '../../types/uele';
+import { UELEObject, UELEHotspot, UELEObjectComponent } from '../../types/uele';
 import {
   getKnowledgeItem,
   getSoftwareItem,
@@ -10,6 +10,7 @@ import {
   getVideosForObject,
   getVideosForComponent,
   getVideoItem,
+  type RegistryItem as UeleVideo,
 } from '../../utils/registryLookup';
 import { Badge } from '../shared/Badge';
 import { Button } from '../shared/Button';
@@ -47,7 +48,7 @@ export interface ObjectInspectorProps {
   selectedHotspot: UELEHotspot | null;
   onClose: () => void;
   onSelectObject: (obj: UELEObject) => void;
-  onSelectComponent: (obj: UELEObject, comp: UELEComponent) => void;
+  onSelectComponent: (obj: UELEObject, comp: UELEObjectComponent) => void;
   onFocusCamera: (obj: UELEObject, compId?: string) => void;
   onNavigateToRoadmap?: (roadmapId: string) => void;
   onNavigateToObject?: (objectId: string) => void;
@@ -97,7 +98,7 @@ export const ObjectInspector: React.FC<ObjectInspectorProps> = ({
   const activeParameters = activeComponent?.parameters || selectedObject.parameters || [];
   const activeDisciplines = activeComponent?.disciplines || activeComponent?.discipline
     ? [activeComponent.discipline || 'Engineering']
-    : selectedObject.disciplines;
+    : selectedObject.disciplines || [];
 
   // Resolved Registries for Object / Component
   const knowledgeIds = activeComponent?.knowledgeIds || selectedObject.knowledgeIds || [];
