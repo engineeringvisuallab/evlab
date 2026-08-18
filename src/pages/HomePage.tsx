@@ -21,7 +21,7 @@ const SECTION_PATHS: Record<string, string> = {
   resources: '/resources',
   plugins: '/plugins',
   projects: '/projects',
-  software: '/software',
+  'ev-software': '/ev-software',
   consultancy: '/work',
   work: '/work',
   about: '/about',

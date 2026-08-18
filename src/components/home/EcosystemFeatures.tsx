@@ -38,7 +38,7 @@ export const EcosystemFeatures: React.FC<EcosystemFeaturesProps> = ({ onNavigate
       color: 'blue',
     },
     {
-      id: 'software',
+      id: 'ev-software',
       title: 'Software & Tools',
       desc: 'Discover WaterCAD, EPANET, Civil 3D, Revit, SAP2000, ETABS and MATLAB.',
       icon: Wrench,

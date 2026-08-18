@@ -12,6 +12,9 @@ import {
   X,
   Route as RouteIcon,
   Briefcase,
+  Sigma,
+  Waves,
+  Weight,
 } from 'lucide-react';
 import { Container } from '../components/shared/Container';
 import { SectionHeader } from '../components/shared/SectionHeader';
@@ -47,6 +50,45 @@ const COURSES: CourseRecord[] = Object.entries(
   coursesData as Record<string, RawCourseRecord>
 ).map(([key, raw]) => normalizeCourse(key, raw));
 const FIELDS: RoadmapNode[] = roadmapTreeData as RoadmapNode[];
+
+/** Learn > Engineering Foundations — the first Learn category (subject-wise interactive
+ *  virtual labs). More categories will be added later; this is intentionally the only
+ *  one for now. */
+interface FoundationLab {
+  id: string;
+  route: string;
+  title: string;
+  desc: string;
+  icon: typeof Sigma;
+  color: 'blue' | 'cyan' | 'purple' | 'emerald' | 'amber';
+}
+
+const ENGINEERING_FOUNDATIONS_LABS: FoundationLab[] = [
+  {
+    id: 'mechanics',
+    route: '/learn/lab/mechanics',
+    title: 'Engineering Mechanics',
+    desc: 'Statics, dynamics, trusses, beams, friction, and structural mechanics — solve, simulate, and build free-body diagrams interactively.',
+    icon: Sigma,
+    color: 'blue',
+  },
+  {
+    id: 'fluid-mechanics',
+    route: '/learn/lab/fluid-mechanics',
+    title: 'Fluid Mechanics',
+    desc: 'Hydraulics, pipe networks, Moody diagrams, HGL/EGL, and pump curves in a real-time 2D/3D flow laboratory.',
+    icon: Waves,
+    color: 'cyan',
+  },
+  {
+    id: 'strength-of-materials',
+    route: '/learn/lab/strength-of-materials',
+    title: 'Strength of Materials',
+    desc: 'Stress-strain, torsion, beam bending, Mohr\u2019s circle, and column buckling with live structural visualizations.',
+    icon: Weight,
+    color: 'purple',
+  },
+];
 
 /** Buckets EVLab's free-text course "level" strings into the standard difficulty tiers. */
 function difficultyOf(level?: string): string {
@@ -196,9 +238,47 @@ function LearnExplore({
   onOpenCourses: () => void;
   onNavigateToRoadmap: (fieldId?: string) => void;
 }) {
+  const { navigate } = useRouter();
+
   return (
     <Container size="xl" className="py-12 space-y-12">
       <BackToChoice onBack={onBack} activeLabel="Learn" otherLabel="Courses" onOther={onOpenCourses} />
+
+      <div className="space-y-5">
+        <SectionHeader
+          badge="Category · Engineering Foundations"
+          badgeVariant="cyan"
+          title="Engineering Foundations"
+          description="Interactive subject-wise virtual labs — solve, simulate, and visualize core engineering theory. More categories are added over time."
+        />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {ENGINEERING_FOUNDATIONS_LABS.map((lab) => {
+            const Icon = lab.icon;
+            return (
+              <Card
+                key={lab.id}
+                hoverable
+                padding="lg"
+                className="cursor-pointer group flex flex-col"
+                onClick={() => navigate(lab.route)}
+              >
+                <span
+                  className={`flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--accent-${lab.color}-bg)] text-[var(--accent-${lab.color})]`}
+                >
+                  <Icon size={22} />
+                </span>
+                <h3 className="mt-4 text-base font-bold text-[var(--text-primary)]">{lab.title}</h3>
+                <p className="mt-1.5 text-sm text-[var(--text-secondary)] leading-relaxed">{lab.desc}</p>
+                <span
+                  className={`mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--accent-${lab.color})]`}
+                >
+                  Open lab <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                </span>
+              </Card>
+            );
+          })}
+        </div>
+      </div>
 
       <SectionHeader
         badge="Learn"

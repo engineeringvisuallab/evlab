@@ -6,7 +6,6 @@ import { Footer } from '@/components/layout/Footer'
 import { HomePage } from '@/pages/HomePage'
 import { RoadmapPage } from '@/pages/RoadmapPage'
 import { UELEPage } from '@/pages/UELEPage'
-import { SoftwarePage } from '@/pages/SoftwarePage'
 import { PluginsPage } from '@/pages/PluginsPage'
 import { LearnPage } from '@/pages/LearnPage'
 import { PlaceholderPage } from '@/pages/PlaceholderPage'
@@ -28,6 +27,18 @@ const PlannerApp = lazy(() => import('@/software/planner/PlannerApp'))
 const AdminPage = lazy(() =>
   import('@/pages/AdminPage').then((m) => ({ default: m.AdminPage }))
 )
+
+// Learn > Engineering Foundations — standalone interactive subject labs,
+// loaded the same lazy/standalone way as the /software tools above.
+const MechanicsLab = lazy(() => import('@/learn/mechanics/MechanicsLab'))
+const FluidMechanicsLab = lazy(() => import('@/learn/fluid/FluidMechanicsLab'))
+const StrengthLab = lazy(() => import('@/learn/strength/StrengthLab'))
+
+const LAB_LOADING_LABEL: Record<string, string> = {
+  mechanics: 'Loading Engineering Mechanics Lab…',
+  'fluid-mechanics': 'Loading Fluid Mechanics Virtual Lab…',
+  'strength-of-materials': 'Loading Strength of Materials Virtual Lab…',
+}
 
 // EV Software — additive entry point into the existing tool ecosystem via
 // EV Software Core. Does not replace /software; existing tool routes below
@@ -172,6 +183,29 @@ function AppShell() {
     )
   }
 
+  const LAB_ROUTES = ['mechanics', 'fluid-mechanics', 'strength-of-materials'] as const
+  const labKey = LAB_ROUTES.find((key) => path === `/learn/lab/${key}`)
+
+  if (labKey) {
+    return (
+      <Suspense
+        fallback={
+          <div className="w-full h-screen flex items-center justify-center bg-slate-950 text-slate-400 font-mono text-sm">
+            {LAB_LOADING_LABEL[labKey]}
+          </div>
+        }
+      >
+        {labKey === 'mechanics' ? (
+          <MechanicsLab />
+        ) : labKey === 'fluid-mechanics' ? (
+          <FluidMechanicsLab />
+        ) : (
+          <StrengthLab />
+        )}
+      </Suspense>
+    )
+  }
+
   if (path === '/software/bim') {
     return (
       <div className="flex min-h-screen flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]">
@@ -185,7 +219,7 @@ function AppShell() {
             }
           >
             <BimViewerPage
-              onNavigateHome={() => navigate('/software')}
+              onNavigateHome={() => navigate('/ev-software')}
               onOpenTool={(route) => navigate(`/software/${route}`)}
             />
           </Suspense>
@@ -214,18 +248,6 @@ function AppShell() {
               <EVSoftwareLandingPage onEnterWorkspace={() => navigate('/ev-software/workspace')} />
             )}
           </Suspense>
-        </main>
-        <Footer />
-      </div>
-    )
-  }
-
-  if (isActivePath(path, '/software')) {
-    return (
-      <div className="flex min-h-screen flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]">
-        <Navbar />
-        <main className="flex-1">
-          <SoftwarePage onOpenTool={(_id, route) => navigate(`/software/${route}`)} />
         </main>
         <Footer />
       </div>
