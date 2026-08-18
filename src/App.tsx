@@ -8,6 +8,7 @@ import { RoadmapPage } from '@/pages/RoadmapPage'
 import { UELEPage } from '@/pages/UELEPage'
 import { SoftwarePage } from '@/pages/SoftwarePage'
 import { PluginsPage } from '@/pages/PluginsPage'
+import { LearnPage } from '@/pages/LearnPage'
 import { PlaceholderPage } from '@/pages/PlaceholderPage'
 import { isActivePath } from '@/utils/router'
 
@@ -50,7 +51,6 @@ const TOOL_LOADING_LABEL: Record<string, string> = {
 }
 
 const ROUTE_META: { path: string; title: string; stageNote: string }[] = [
-  { path: '/learn', title: 'Learn & Courses', stageNote: 'The course catalogue and learning paths are built in Stage 08.' },
   { path: '/resources', title: 'Resource Library', stageNote: 'CAD blocks, templates, and standards library are built in Stage 07.' },
   { path: '/projects', title: 'Projects & Case Studies', stageNote: 'The project showcase is built in Stage 09.' },
   { path: '/work', title: 'Work With EVLab', stageNote: 'The consultancy intake page is built in Stage 09.' },
@@ -226,6 +226,22 @@ function AppShell() {
         <Navbar />
         <main className="flex-1">
           <SoftwarePage onOpenTool={(_id, route) => navigate(`/software/${route}`)} />
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
+  if (isActivePath(path, '/learn')) {
+    return (
+      <div className="flex min-h-screen flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]">
+        <Navbar />
+        <main className="flex-1">
+          <LearnPage
+            onNavigateToRoadmap={(fieldId) =>
+              navigate(fieldId ? `/career-roadmap/${fieldId}` : '/career-roadmap')
+            }
+          />
         </main>
         <Footer />
       </div>

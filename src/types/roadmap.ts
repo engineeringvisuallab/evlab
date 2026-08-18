@@ -32,3 +32,29 @@ export interface RoadmapNode {
 }
 
 export type RoadmapTree = RoadmapNode[];
+
+/** Raw shape as stored in courses.json — some legacy entries use title/summary
+ *  instead of name/description, so both are accepted here and normalized on load. */
+export interface RawCourseRecord {
+  id?: string;
+  name?: string;
+  title?: string;
+  description?: string;
+  summary?: string;
+  provider?: string;
+  level?: string;
+  duration?: string;
+  rating?: number;
+  tags?: string[];
+}
+
+export interface CourseRecord {
+  id: string;
+  name: string;
+  description?: string;
+  provider?: string;
+  level?: string;
+  duration?: string;
+  rating?: number;
+  tags?: string[];
+}

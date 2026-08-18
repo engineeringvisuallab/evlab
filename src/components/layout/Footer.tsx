@@ -8,7 +8,7 @@ const FOOTER_COLUMNS: { title: string; links: { label: string; to: string }[] }[
       { label: 'Career Roadmap', to: '/career-roadmap' },
       { label: 'UELE Ecosystem', to: '/uele' },
       { label: 'Learn & Courses', to: '/learn' },
-      { label: 'Engineering Software', to: '/software' },
+      { label: 'EV Software', to: '/ev-software' },
     ],
   },
   {
