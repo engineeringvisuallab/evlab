@@ -425,7 +425,7 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
       <SectionHeader
         badge={
           selectedArea
-            ? 'STEP 4 • FOCUS AREA DETAIL'
+            ? 'STAGE 05 • DEEP CAREER MASTERY'
             : selectedSpec
             ? 'STEP 4 • SELECT FOCUS AREA'
             : selectedBranch

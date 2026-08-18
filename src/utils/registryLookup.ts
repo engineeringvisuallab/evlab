@@ -5,6 +5,12 @@ import coursesRegistry from '../data/registries/courses.json';
 import careerRolesRegistry from '../data/registries/career-roles.json';
 import skillsRegistry from '../data/registries/skills.json';
 import resourcesRegistry from '../data/registries/resources.json';
+import workflowRegistry from '../data/registries/workflow.json';
+import projectsRegistry from '../data/registries/projects.json';
+import organizationsRegistry from '../data/registries/organizations.json';
+import pluginsRegistry from '../data/registries/plugins.json';
+import drawingsRegistry from '../data/registries/drawings.json';
+import templatesRegistry from '../data/registries/templates.json';
 
 import type { RoadmapNode, RoadmapTree } from '@/types/roadmap';
 
@@ -102,6 +108,44 @@ export function getStandardItem(id: string): RegistryItem | null {
   };
 }
 
+export function getWorkflowItem(id: string): RegistryItem | null {
+  const item = (workflowRegistry as Record<string, any>)[id];
+  if (!item) return null;
+  return {
+    id,
+    name: item.name || item.title || id,
+    description: item.description || item.summary || '',
+    category: item.category || 'Engineering Workflow',
+    ...item,
+  };
+}
+
+export function getProjectItem(id: string): RegistryItem | null {
+  const item = (projectsRegistry as Record<string, any>)[id];
+  if (!item) return null;
+  return {
+    id,
+    name: item.name || item.title || id,
+    description: item.description || item.summary || '',
+    client: item.client || '',
+    location: item.location || '',
+    category: item.category || item.sector || 'Project',
+    ...item,
+  };
+}
+
+export function getOrganizationItem(id: string): RegistryItem | null {
+  const item = (organizationsRegistry as Record<string, any>)[id];
+  if (!item) return null;
+  return {
+    id,
+    name: item.name || item.title || id,
+    description: item.description || item.summary || '',
+    type: item.type || 'Engineering Society / Regulatory Body',
+    ...item,
+  };
+}
+
 export function getCourseItem(id: string): RegistryItem | null {
   const item = (coursesRegistry as Record<string, any>)[id];
   if (!item) return null;
@@ -147,6 +191,42 @@ export function getResourceItem(id: string): RegistryItem | null {
     name: item.name || item.title || id,
     description: item.description || item.summary || '',
     category: item.type || item.category || 'Technical Resource',
+    ...item,
+  };
+}
+
+export function getPluginItem(id: string): RegistryItem | null {
+  const item = (pluginsRegistry as Record<string, any>)[id];
+  if (!item) return null;
+  return {
+    id,
+    name: item.name || item.title || id,
+    description: item.description || item.summary || '',
+    category: item.category || 'Plugin / Computational Add-on',
+    ...item,
+  };
+}
+
+export function getDrawingItem(id: string): RegistryItem | null {
+  const item = (drawingsRegistry as Record<string, any>)[id];
+  if (!item) return null;
+  return {
+    id,
+    name: item.name || item.title || id,
+    description: item.description || item.summary || '',
+    category: item.category || 'Engineering Drawing',
+    ...item,
+  };
+}
+
+export function getTemplateItem(id: string): RegistryItem | null {
+  const item = (templatesRegistry as Record<string, any>)[id];
+  if (!item) return null;
+  return {
+    id,
+    name: item.name || item.title || id,
+    description: item.description || item.summary || '',
+    category: item.category || 'Engineering Template',
     ...item,
   };
 }
