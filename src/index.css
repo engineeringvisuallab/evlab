@@ -171,3 +171,35 @@ code, kbd, pre {
   background-color: var(--accent-blue-bg);
   color: var(--text-primary);
 }
+
+/*
+  Scoped utility classes used only inside Learn > Engineering Foundations >
+  Mathematics Visual Lab canvases (src/learn/mathematics). Kept separate from
+  the shared design tokens above since they're specific to that lab's grid
+  backgrounds and KaTeX formula rendering.
+*/
+.font-mono-math {
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+}
+
+.math-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.math-grid-subtle {
+  background-image:
+    linear-gradient(to right, rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.katex-display {
+  margin: 0.5em 0 !important;
+}
+
+.katex {
+  font-size: 1.05em;
+}

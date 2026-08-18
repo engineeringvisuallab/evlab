@@ -33,11 +33,17 @@ const AdminPage = lazy(() =>
 const MechanicsLab = lazy(() => import('@/learn/mechanics/MechanicsLab'))
 const FluidMechanicsLab = lazy(() => import('@/learn/fluid/FluidMechanicsLab'))
 const StrengthLab = lazy(() => import('@/learn/strength/StrengthLab'))
+const MathematicsLab = lazy(() => import('@/learn/mathematics/MathematicsLab'))
+const PhysicsLab = lazy(() => import('@/learn/physics/PhysicsLab'))
+const ChemistryLab = lazy(() => import('@/learn/chemistry/ChemistryLab'))
 
 const LAB_LOADING_LABEL: Record<string, string> = {
   mechanics: 'Loading Engineering Mechanics Lab…',
   'fluid-mechanics': 'Loading Fluid Mechanics Virtual Lab…',
   'strength-of-materials': 'Loading Strength of Materials Virtual Lab…',
+  mathematics: 'Loading Mathematics Visual Lab…',
+  physics: 'Loading Physics Virtual Laboratory…',
+  chemistry: 'Loading Chemistry Virtual Laboratory…',
 }
 
 // EV Software — additive entry point into the existing tool ecosystem via
@@ -183,7 +189,14 @@ function AppShell() {
     )
   }
 
-  const LAB_ROUTES = ['mechanics', 'fluid-mechanics', 'strength-of-materials'] as const
+  const LAB_ROUTES = [
+    'mechanics',
+    'fluid-mechanics',
+    'strength-of-materials',
+    'mathematics',
+    'physics',
+    'chemistry',
+  ] as const
   const labKey = LAB_ROUTES.find((key) => path === `/learn/lab/${key}`)
 
   if (labKey) {
@@ -199,8 +212,14 @@ function AppShell() {
           <MechanicsLab />
         ) : labKey === 'fluid-mechanics' ? (
           <FluidMechanicsLab />
-        ) : (
+        ) : labKey === 'strength-of-materials' ? (
           <StrengthLab />
+        ) : labKey === 'mathematics' ? (
+          <MathematicsLab />
+        ) : labKey === 'physics' ? (
+          <PhysicsLab />
+        ) : (
+          <ChemistryLab />
         )}
       </Suspense>
     )

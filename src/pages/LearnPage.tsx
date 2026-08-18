@@ -15,6 +15,8 @@ import {
   Sigma,
   Waves,
   Weight,
+  Orbit,
+  TestTube,
 } from 'lucide-react';
 import { Container } from '../components/shared/Container';
 import { SectionHeader } from '../components/shared/SectionHeader';
@@ -87,6 +89,30 @@ const ENGINEERING_FOUNDATIONS_LABS: FoundationLab[] = [
     desc: 'Stress-strain, torsion, beam bending, Mohr\u2019s circle, and column buckling with live structural visualizations.',
     icon: Weight,
     color: 'purple',
+  },
+  {
+    id: 'mathematics',
+    route: '/learn/lab/mathematics',
+    title: 'Mathematics Visual Lab',
+    desc: 'Algebra, calculus, trigonometry, vectors, matrices, and probability — explore every topic through interactive, hands-on visualizations.',
+    icon: Sigma,
+    color: 'emerald',
+  },
+  {
+    id: 'physics',
+    route: '/learn/lab/physics',
+    title: 'Physics Virtual Laboratory',
+    desc: 'Mechanics, motion, waves, electricity, and thermodynamics experiments with live simulation, graphing, and prediction modes.',
+    icon: Orbit,
+    color: 'blue',
+  },
+  {
+    id: 'chemistry',
+    route: '/learn/lab/chemistry',
+    title: 'Chemistry Virtual Laboratory',
+    desc: 'Titration, atomic structure, periodic trends, kinetics, equilibrium, and organic chemistry labs with molecular visualization.',
+    icon: TestTube,
+    color: 'cyan',
   },
 ];
 
