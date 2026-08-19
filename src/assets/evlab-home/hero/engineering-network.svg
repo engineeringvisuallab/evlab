@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%">
+  <defs>
+    <linearGradient id="net-line-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="net-line-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00F0FF" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="glow-strong">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Network Grid Lines -->
+  <g id="grid-mesh" opacity="0.25">
+    <path d="M 100 350 L 500 120 L 900 350 L 500 580 Z" fill="none" stroke="#38BDF8" stroke-width="1" stroke-dasharray="8 6"/>
+    <path d="M 250 350 L 500 200 L 750 350 L 500 500 Z" fill="none" stroke="#00F0FF" stroke-width="1" stroke-dasharray="4 4"/>
+  </g>
+
+  <!-- Arterial Pipeline & Power Highway Traces -->
+  <g id="arterial-lines" filter="url(#glow-strong)">
+    <!-- Water to Core -->
+    <path d="M 280 200 Q 380 230 480 280" fill="none" stroke="#00F0FF" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 4" class="ev-animated-flow"/>
+    
+    <!-- Smart City to Core -->
+    <path d="M 720 160 Q 620 220 540 280" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 4" class="ev-animated-flow"/>
+
+    <!-- Agriculture to Core -->
+    <path d="M 250 460 Q 380 430 480 340" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 6" class="ev-animated-flow"/>
+
+    <!-- Energy Grid to Core -->
+    <path d="M 820 400 Q 680 380 540 330" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5 3" class="ev-animated-flow"/>
+
+    <!-- Transportation Arterial Bridge Line -->
+    <path d="M 400 480 Q 500 400 620 460" fill="none" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Cross-Sector Direct Fibers -->
+    <path d="M 280 200 L 250 460" fill="none" stroke="#00F0FF" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+    <path d="M 720 160 L 820 400" fill="none" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
+    <path d="M 280 200 L 720 160" fill="none" stroke="#38BDF8" stroke-width="1" stroke-dasharray="10 8" opacity="0.4"/>
+  </g>
+
+  <!-- Network Interconnection Nodes -->
+  <g id="nodes">
+    <!-- Water Node -->
+    <g transform="translate(280, 200)">
+      <circle r="9" fill="#0D1B2A" stroke="#00F0FF" stroke-width="2"/>
+      <circle r="4" fill="#00F0FF" filter="drop-shadow(0 0 6px #00F0FF)"/>
+    </g>
+
+    <!-- Smart City Node -->
+    <g transform="translate(720, 160)">
+      <circle r="9" fill="#0D1B2A" stroke="#8B5CF6" stroke-width="2"/>
+      <circle r="4" fill="#8B5CF6" filter="drop-shadow(0 0 6px #8B5CF6)"/>
+    </g>
+
+    <!-- Agriculture Node -->
+    <g transform="translate(250, 460)">
+      <circle r="9" fill="#0D1B2A" stroke="#10B981" stroke-width="2"/>
+      <circle r="4" fill="#10B981" filter="drop-shadow(0 0 6px #10B981)"/>
+    </g>
+
+    <!-- Transportation Node -->
+    <g transform="translate(480, 500)">
+      <circle r="9" fill="#0D1B2A" stroke="#38BDF8" stroke-width="2"/>
+      <circle r="4" fill="#38BDF8" filter="drop-shadow(0 0 6px #38BDF8)"/>
+    </g>
+
+    <!-- Energy Node -->
+    <g transform="translate(820, 400)">
+      <circle r="9" fill="#0D1B2A" stroke="#F59E0B" stroke-width="2"/>
+      <circle r="4" fill="#F59E0B" filter="drop-shadow(0 0 6px #F59E0B)"/>
+    </g>
+
+    <!-- Core Central Ingress Nodes -->
+    <g transform="translate(480, 280)">
+      <circle r="5" fill="#00F0FF" filter="drop-shadow(0 0 8px #00F0FF)"/>
+    </g>
+    <g transform="translate(540, 280)">
+      <circle r="5" fill="#8B5CF6" filter="drop-shadow(0 0 8px #8B5CF6)"/>
+    </g>
+    <g transform="translate(510, 340)">
+      <circle r="5" fill="#10B981" filter="drop-shadow(0 0 8px #10B981)"/>
+    </g>
+  </g>
+</svg>

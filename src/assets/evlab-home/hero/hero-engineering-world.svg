@@ -1,0 +1,345 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Master Lighting & Gradients -->
+    <radialGradient id="world-radial-bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0e172a" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#070b14" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#04070e" stop-opacity="1"/>
+    </radialGradient>
+
+    <radialGradient id="island-core-glow" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.4"/>
+      <stop offset="40%" stop-color="#3b82f6" stop-opacity="0.2"/>
+      <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="cyber-cyan-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+
+    <linearGradient id="neon-cyan-beam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#083344"/>
+    </linearGradient>
+
+    <linearGradient id="purple-skyscraper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="40%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+
+    <linearGradient id="water-tank-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7dd3fc"/>
+      <stop offset="60%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#082f49"/>
+    </linearGradient>
+
+    <linearGradient id="agri-crop-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="50%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+
+    <linearGradient id="energy-solar-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+
+    <linearGradient id="industrial-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="50%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Bloom / Glow Filters -->
+    <filter id="bloom" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="high-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 1. BASE ISOMETRIC PLATFORM & ATMOSPHERE -->
+  <!-- Ambient Island Glow -->
+  <ellipse cx="600" cy="420" rx="520" ry="240" fill="url(#island-core-glow)"/>
+
+  <!-- Outer Hologram Coordinate Rings -->
+  <g opacity="0.6">
+    <ellipse cx="600" cy="430" rx="490" ry="220" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="16 8 4 8"/>
+    <ellipse cx="600" cy="430" rx="470" ry="210" stroke="#00f0ff" stroke-width="1" stroke-dasharray="6 6"/>
+    <ellipse cx="600" cy="430" rx="440" ry="195" stroke="#7c3aed" stroke-width="1" stroke-dasharray="20 10"/>
+  </g>
+
+  <!-- Main Isometric Island Landmass -->
+  <!-- Island Bottom Depth / Cliff Thickness -->
+  <path d="M 160 420 C 160 550, 1040 550, 1040 420 L 1040 460 C 1040 590, 160 590, 160 460 Z" fill="#070e1e" stroke="#1e293b" stroke-width="2"/>
+  <path d="M 160 435 C 160 565, 1040 565, 1040 435 L 1040 460 C 1040 590, 160 590, 160 460 Z" fill="#050a16" stroke="#0284c7" stroke-width="1" opacity="0.8"/>
+
+  <!-- Island Top Surface (Dark High-Tech Ground) -->
+  <ellipse cx="600" cy="420" rx="440" ry="190" fill="#091224" stroke="#00f0ff" stroke-width="2.5"/>
+  <ellipse cx="600" cy="420" rx="430" ry="182" fill="#0c172e" stroke="#38bdf8" stroke-width="1" stroke-dasharray="8 6"/>
+
+  <!-- Ground Tech Grid Lines -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.6">
+    <line x1="250" y1="420" x2="950" y2="420"/>
+    <line x1="300" y1="350" x2="900" y2="490"/>
+    <line x1="300" y1="490" x2="900" y2="350"/>
+    <line x1="600" y1="240" x2="600" y2="600"/>
+  </g>
+
+  <!-- 2. TOP RIGHT SECTOR: SMART CITY INFRASTRUCTURE -->
+  <g id="sector-smart-city" transform="translate(680, 160)">
+    <!-- Skyscraper 1 (Tallest Purple-Cyan Spire) -->
+    <g transform="translate(100, 0)">
+      <!-- Building Base -->
+      <polygon points="40,240 75,220 75,40 40,60" fill="url(#purple-skyscraper)" stroke="#a855f7" stroke-width="1.5"/>
+      <polygon points="75,220 110,240 110,60 75,40" fill="#1e1b4b" stroke="#7c3aed" stroke-width="1"/>
+      <polygon points="40,60 75,40 110,60 75,80" fill="#c084fc" opacity="0.6"/>
+      <!-- Spire / Antenna -->
+      <line x1="75" y1="40" x2="75" y2="0" stroke="#00f0ff" stroke-width="2.5" filter="url(#bloom)"/>
+      <circle cx="75" cy="0" r="3" fill="#00f0ff"/>
+      <!-- Illuminated Windows Grid -->
+      <g fill="#00f0ff" opacity="0.8">
+        <circle cx="50" cy="90" r="1.5"/><circle cx="62" cy="85" r="1.5"/>
+        <circle cx="50" cy="110" r="1.5"/><circle cx="62" cy="105" r="1.5"/>
+        <circle cx="50" cy="130" r="1.5"/><circle cx="62" cy="125" r="1.5"/>
+        <circle cx="50" cy="150" r="1.5"/><circle cx="62" cy="145" r="1.5"/>
+        <circle cx="50" cy="170" r="1.5"/><circle cx="62" cy="165" r="1.5"/>
+        <circle cx="50" cy="190" r="1.5"/><circle cx="62" cy="185" r="1.5"/>
+      </g>
+    </g>
+
+    <!-- Skyscraper 2 (Modern Angled Blue Tower) -->
+    <g transform="translate(160, 40)">
+      <polygon points="30,220 60,205 60,60 30,75" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+      <polygon points="60,205 90,220 90,75 60,60" fill="#082f49" stroke="#0369a1" stroke-width="1"/>
+      <polygon points="30,75 60,60 90,75 60,90" fill="#38bdf8" opacity="0.7"/>
+      <!-- Window light strips -->
+      <line x1="45" y1="90" x2="45" y2="200" stroke="#bae6fd" stroke-width="2" stroke-dasharray="4 6"/>
+      <line x1="75" y1="90" x2="75" y2="200" stroke="#67e8f9" stroke-width="2" stroke-dasharray="4 6"/>
+    </g>
+
+    <!-- Skyscraper 3 (Wide Glass Commercial Complex) -->
+    <g transform="translate(40, 70)">
+      <polygon points="30,200 65,180 65,90 30,110" fill="#1e293b" stroke="#00f0ff" stroke-width="1"/>
+      <polygon points="65,180 100,200 100,110 65,90" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <polygon points="30,110 65,90 100,110 65,130" fill="#00f0ff" opacity="0.4"/>
+      <!-- Glowing Blue Top Edge -->
+      <line x1="30" y1="110" x2="65" y2="90" stroke="#00f0ff" stroke-width="2" filter="url(#bloom)"/>
+      <line x1="65" y1="90" x2="100" y2="110" stroke="#00f0ff" stroke-width="2" filter="url(#bloom)"/>
+    </g>
+
+    <!-- Monorail / High-Speed Transit Track -->
+    <path d="M 20 220 Q 120 200 240 230" fill="none" stroke="#00f0ff" stroke-width="3" stroke-dasharray="6 4" filter="url(#bloom)"/>
+  </g>
+
+  <!-- 3. TOP LEFT SECTOR: WATER TREATMENT PLANT -->
+  <g id="sector-water" transform="translate(180, 180)">
+    <!-- Primary Circular Clarifier Tank 1 -->
+    <g transform="translate(40, 60)">
+      <!-- Tank Outer Cylinder -->
+      <ellipse cx="60" cy="50" rx="55" ry="25" fill="#0c2d48" stroke="#38bdf8" stroke-width="2"/>
+      <path d="M 5 50 L 5 70 C 5 85, 115 85, 115 70 L 115 50 Z" fill="#071a2e" stroke="#0284c7" stroke-width="1.5"/>
+      <!-- Glowing Water Level Inside -->
+      <ellipse cx="60" cy="48" rx="50" ry="22" fill="url(#water-tank-blue)" opacity="0.85"/>
+      <!-- Rotary Scraper Bridge Mechanism -->
+      <line x1="60" y1="48" x2="105" y2="38" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="60" y1="48" x2="15" y2="58" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="60" cy="48" r="4" fill="#00f0ff" filter="url(#bloom)"/>
+      <!-- Water ripple rings -->
+      <ellipse cx="60" cy="48" rx="30" ry="13" fill="none" stroke="#e0f2fe" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+    </g>
+
+    <!-- Secondary Aeration Tank 2 -->
+    <g transform="translate(140, 20)">
+      <ellipse cx="50" cy="40" rx="45" ry="20" fill="#0c2d48" stroke="#00f0ff" stroke-width="1.5"/>
+      <path d="M 5 40 L 5 55 C 5 70, 95 70, 95 55 L 95 40 Z" fill="#071a2e" stroke="#0284c7" stroke-width="1"/>
+      <ellipse cx="50" cy="38" rx="40" ry="17" fill="url(#water-tank-blue)" opacity="0.9"/>
+      <circle cx="50" cy="38" r="3" fill="#00f0ff"/>
+    </g>
+
+    <!-- Filtration Building & Piping Manifold -->
+    <g transform="translate(10, 130)">
+      <polygon points="10,40 50,20 90,40 50,60" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+      <polygon points="10,40 50,60 50,90 10,70" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <polygon points="50,60 90,40 90,70 50,90" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+      <!-- Connected Blue Glowing Pipes -->
+      <path d="M 80 50 L 120 70 L 150 60" fill="none" stroke="#00f0ff" stroke-width="3" stroke-linecap="round" filter="url(#bloom)"/>
+      <path d="M 50 60 L 50 110 L 100 130" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4 2"/>
+    </g>
+  </g>
+
+  <!-- 4. BOTTOM LEFT SECTOR: TRANSPORTATION & SUSPENSION BRIDGE -->
+  <g id="sector-transportation" transform="translate(200, 360)">
+    <!-- Suspension Bridge Cable Towers -->
+    <g transform="translate(40, 20)">
+      <!-- Main Bridge Deck Roadway -->
+      <path d="M 0 100 L 180 30 L 220 45 L 40 115 Z" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+      <!-- Road Center Glow Line -->
+      <line x1="20" y1="108" x2="200" y2="38" stroke="#fde047" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+      <!-- Bridge Tower 1 -->
+      <g transform="translate(60, 40)">
+        <line x1="10" y1="45" x2="10" y2="-40" stroke="#94a3b8" stroke-width="4"/>
+        <line x1="25" y1="38" x2="25" y2="-40" stroke="#64748b" stroke-width="4"/>
+        <line x1="10" y1="-40" x2="25" y2="-40" stroke="#38bdf8" stroke-width="3"/>
+        <line x1="10" y1="0" x2="25" y2="0" stroke="#0284c7" stroke-width="2"/>
+        <line x1="10" y1="-20" x2="25" y2="-20" stroke="#0284c7" stroke-width="2"/>
+        <!-- Suspension Cables -->
+        <path d="M -40 40 Q 10 -35 25 -40 Q 80 10 120 25" fill="none" stroke="#00f0ff" stroke-width="2" filter="url(#bloom)"/>
+        <!-- Vertical Stays -->
+        <line x1="-15" y1="30" x2="-15" y2="60" stroke="#38bdf8" stroke-width="1"/>
+        <line x1="0" y1="10" x2="0" y2="55" stroke="#38bdf8" stroke-width="1"/>
+        <line x1="45" y1="-15" x2="45" y2="35" stroke="#38bdf8" stroke-width="1"/>
+        <line x1="70" y1="0" x2="70" y2="28" stroke="#38bdf8" stroke-width="1"/>
+        <line x1="95" y1="12" x2="95" y2="25" stroke="#38bdf8" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 5. BOTTOM CENTER SECTOR: AGRICULTURE & IRRIGATION -->
+  <g id="sector-agriculture" transform="translate(450, 460)">
+    <!-- Farmland Contour Field (Neat crop rows with rich engineering canals) -->
+    <g transform="translate(20, 0)">
+      <!-- Main Green Isometric Field -->
+      <polygon points="10,50 120,0 220,40 110,95" fill="url(#agri-crop-green)" stroke="#22c55e" stroke-width="2"/>
+      
+      <!-- Precision Laser-Leveled Crop Rows -->
+      <g stroke="#15803d" stroke-width="2.5" opacity="0.8">
+        <line x1="30" y1="46" x2="130" y2="5"/>
+        <line x1="50" y1="55" x2="150" y2="14"/>
+        <line x1="70" y1="64" x2="170" y2="23"/>
+        <line x1="90" y1="73" x2="190" y2="32"/>
+      </g>
+
+      <!-- Center-Pivot Irrigation Sprinkler Arm -->
+      <g transform="translate(140, 35)">
+        <line x1="0" y1="0" x2="45" y2="-15" stroke="#f8fafc" stroke-width="2"/>
+        <circle cx="0" cy="0" r="3" fill="#00f0ff"/>
+        <!-- Water Spray Drops -->
+        <g stroke="#67e8f9" stroke-width="1" stroke-dasharray="2 3" opacity="0.8">
+          <line x1="15" y1="-5" x2="15" y2="10"/>
+          <line x1="30" y1="-10" x2="30" y2="8"/>
+          <line x1="45" y1="-15" x2="45" y2="5"/>
+        </g>
+      </g>
+
+      <!-- Irrigation Concrete Sluice Canal -->
+      <path d="M 0 60 L 105 105 L 180 75" fill="none" stroke="#00f0ff" stroke-width="3" filter="url(#bloom)"/>
+
+      <!-- Autonomous GPS Tractor Unit -->
+      <g transform="translate(60, 40)">
+        <rect x="0" y="0" width="14" height="8" rx="2" fill="#38bdf8" stroke="#0284c7" stroke-width="1"/>
+        <circle cx="3" cy="8" r="3" fill="#0f172a" stroke="#64748b"/>
+        <circle cx="11" cy="8" r="4" fill="#0f172a" stroke="#64748b"/>
+        <circle cx="7" cy="0" r="1.5" fill="#4ade80" filter="url(#bloom)"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 6. TOP RIGHT SECTOR: ENERGY GRID -->
+  <g id="sector-energy" transform="translate(860, 240)">
+    <!-- High Voltage Transmission Lattice Pylon -->
+    <g transform="translate(20, 0)">
+      <!-- Tower Legs -->
+      <line x1="30" y1="120" x2="45" y2="0" stroke="#cbd5e1" stroke-width="2"/>
+      <line x1="60" y1="120" x2="45" y2="0" stroke="#94a3b8" stroke-width="2"/>
+      <!-- Cross Arms -->
+      <line x1="20" y1="30" x2="70" y2="30" stroke="#e2e8f0" stroke-width="2"/>
+      <line x1="15" y1="60" x2="75" y2="60" stroke="#e2e8f0" stroke-width="2"/>
+      <!-- Bracing -->
+      <line x1="35" y1="90" x2="55" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
+      <line x1="35" y1="90" x2="55" y2="60" stroke="#64748b" stroke-width="1"/>
+      <line x1="55" y1="90" x2="35" y2="60" stroke="#64748b" stroke-width="1"/>
+      <!-- Glowing Power Line Wires -->
+      <path d="M 20 30 Q -40 50 -100 40" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 2" filter="url(#bloom)"/>
+      <path d="M 70 30 Q 120 45 160 35" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 2" filter="url(#bloom)"/>
+    </g>
+
+    <!-- Solar Photovoltaic Array Farm -->
+    <g transform="translate(60, 90)">
+      <!-- Solar Panel 1 -->
+      <polygon points="0,20 35,5 65,18 30,33" fill="url(#energy-solar-blue)" stroke="#38bdf8" stroke-width="1.5"/>
+      <line x1="18" y1="12" x2="48" y2="25" stroke="#67e8f9" stroke-width="1"/>
+      <!-- Solar Panel 2 -->
+      <polygon points="40,25 75,10 105,23 70,38" fill="url(#energy-solar-blue)" stroke="#38bdf8" stroke-width="1.5"/>
+      <line x1="58" y1="17" x2="88" y2="30" stroke="#67e8f9" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- 7. BOTTOM RIGHT SECTOR: INDUSTRIAL PLANTS & REFINERY -->
+  <g id="sector-industrial" transform="translate(800, 420)">
+    <!-- Industrial Cooling Tower 1 -->
+    <g transform="translate(30, 0)">
+      <!-- Hyperbolic Profile -->
+      <path d="M 15 80 Q 25 40 20 15 L 45 15 Q 40 40 50 80 Z" fill="url(#industrial-metal)" stroke="#94a3b8" stroke-width="1.5"/>
+      <ellipse cx="32" cy="15" rx="13" ry="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+      <!-- Steam Glow Plume -->
+      <ellipse cx="32" cy="5" rx="16" ry="7" fill="#e0f2fe" opacity="0.4" filter="url(#bloom)"/>
+    </g>
+
+    <!-- Industrial Processing Columns & Chemical Stacks -->
+    <g transform="translate(85, 10)">
+      <!-- Column 1 -->
+      <rect x="0" y="20" width="14" height="65" rx="7" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+      <line x1="0" y1="35" x2="14" y2="35" stroke="#00f0ff" stroke-width="1"/>
+      <line x1="0" y1="50" x2="14" y2="50" stroke="#00f0ff" stroke-width="1"/>
+      <!-- Column 2 -->
+      <rect x="20" y="5" width="12" height="80" rx="6" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+      <!-- Glowing Red Warning Beacon -->
+      <circle cx="26" cy="5" r="2.5" fill="#ef4444" filter="url(#bloom)"/>
+      <!-- Interconnecting Pipework -->
+      <path d="M 7 40 L -15 50 L -15 75" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+    </g>
+  </g>
+
+  <!-- 8. CENTRAL ICONIC 3D EVLAB MONOLITH & GLOWING CORE (MATCHES EXACT REFERENCE IMAGE) -->
+  <g id="central-evlab-monolith" transform="translate(490, 240)">
+    <!-- Multi-tiered Glowing Platform Rings -->
+    <ellipse cx="110" cy="180" rx="140" ry="60" fill="none" stroke="#00f0ff" stroke-width="3" filter="url(#high-glow)"/>
+    <ellipse cx="110" cy="180" rx="115" ry="48" fill="#061226" stroke="#38bdf8" stroke-width="2"/>
+    <ellipse cx="110" cy="170" rx="90" ry="38" fill="#0b1736" stroke="#a855f7" stroke-width="2"/>
+
+    <!-- Central Stepped Monolith Base -->
+    <path d="M 50 140 L 110 115 L 170 140 L 170 165 L 110 190 L 50 165 Z" fill="#09132e" stroke="#00f0ff" stroke-width="2"/>
+
+    <!-- The Iconic 3D Glowing Neon Cyan Hexagonal Cube Logo -->
+    <g transform="translate(60, 45)" filter="url(#high-glow)">
+      <!-- Isometric Cube Top Face -->
+      <polygon points="50,10 90,30 50,50 10,30" fill="#0284c7" opacity="0.8" stroke="#38bdf8" stroke-width="2"/>
+      
+      <!-- Isometric Cube Left Face -->
+      <polygon points="10,30 50,50 50,95 10,75" fill="#034d7a" stroke="#00f0ff" stroke-width="2.5"/>
+      
+      <!-- Isometric Cube Right Face -->
+      <polygon points="50,50 90,30 90,75 50,95" fill="#0c4a6e" stroke="#00f0ff" stroke-width="2.5"/>
+
+      <!-- Inner Glowing Geometric Wireframe lines forming the EVLab Monogram -->
+      <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="50" y1="10" x2="50" y2="50"/>
+        <line x1="50" y1="50" x2="90" y2="75"/>
+        <line x1="50" y1="50" x2="10" y2="75"/>
+        <path d="M 30 20 L 70 40 L 70 70" fill="none" stroke="#67e8f9" stroke-width="2.5"/>
+      </g>
+    </g>
+
+    <!-- Master Glowing "EVLab" 3D Typography on the Base -->
+    <text x="110" y="175" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="28" font-weight="900" fill="#ffffff" letter-spacing="3" filter="drop-shadow(0 0 10px #00f0ff)">
+      EV<tspan fill="#38bdf8">Lab</tspan>
+    </text>
+  </g>
+</svg>

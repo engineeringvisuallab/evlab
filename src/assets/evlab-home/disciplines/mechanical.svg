@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <radialGradient id="disc-mech-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gear-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94A3B8"/>
+      <stop offset="50%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="80" cy="125" rx="60" ry="22" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+  <ellipse cx="80" cy="125" rx="60" ry="22" fill="url(#disc-mech-glow)" opacity="0.8"/>
+  <ellipse cx="80" cy="120" rx="45" ry="16" fill="#1E293B" stroke="#00F0FF" stroke-width="1"/>
+
+  <!-- 3D Precision Spur Gear / Turbine Assembly -->
+  <g transform="translate(45, 30)">
+    <!-- Gear Body -->
+    <path d="M 35 15 L 40 22 L 48 20 L 52 28 L 60 28 L 60 38 L 68 40 L 64 48 L 70 55 L 64 62 L 68 70 L 58 72 L 52 80 L 44 78 L 38 85 L 32 85 L 26 78 L 18 80 L 12 72 L 2 70 L 6 62 L 0 55 L 6 48 L 2 40 L 12 38 L 12 28 L 20 28 L 24 20 L 32 22 Z" fill="url(#gear-metal)" stroke="#00F0FF" stroke-width="2" filter="drop-shadow(0 0 8px #00F0FF)"/>
+    <!-- Gear Hub Hole -->
+    <circle cx="35" cy="50" r="14" fill="#0A1128" stroke="#38BDF8" stroke-width="2"/>
+    <circle cx="35" cy="50" r="5" fill="#00F0FF"/>
+  </g>
+</svg>

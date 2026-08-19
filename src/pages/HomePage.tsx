@@ -1,16 +1,10 @@
 import { HeroSection } from '@/components/home/HeroSection'
-import { IntroductionSection } from '@/components/home/IntroductionSection'
-import { EngineeringFieldGrid } from '@/components/home/EngineeringFieldGrid'
-import { UELEPreview } from '@/components/home/UELEPreview'
-import { EcosystemStats } from '@/components/home/EcosystemStats'
-import { EcosystemFeatures } from '@/components/home/EcosystemFeatures'
-import { EngineeringConnection } from '@/components/home/EngineeringConnection'
-import { AudienceSection } from '@/components/home/AudienceSection'
-import { PhilosophySection } from '@/components/home/PhilosophySection'
-import { FinalCTA } from '@/components/home/FinalCTA'
+import { SixModuleCards } from '@/components/home/SixModuleCards'
+import { BottomDisciplinesNewsletter } from '@/components/home/BottomDisciplinesNewsletter'
+import { FloatingRightDock } from '@/components/layout/FloatingRightDock'
 import { useRouter } from '@/context/RouterContext'
 
-/** Maps the home components' (sectionId, fieldId) callback shape onto our path-based router. */
+/** Maps the home components' (sectionId, fieldId/param) callback shape onto our path-based router. */
 const SECTION_PATHS: Record<string, string> = {
   overview: '/',
   home: '/',
@@ -36,17 +30,11 @@ export function HomePage() {
   }
 
   return (
-    <div className="flex w-full flex-col space-y-4">
+    <div className="flex w-full flex-col bg-[#070B14] relative">
       <HeroSection onNavigate={handleNavigate} />
-      <EcosystemStats />
-      <IntroductionSection />
-      <EngineeringFieldGrid onNavigate={handleNavigate} />
-      <UELEPreview onNavigate={handleNavigate} />
-      <EcosystemFeatures onNavigate={handleNavigate} />
-      <EngineeringConnection />
-      <AudienceSection />
-      <PhilosophySection />
-      <FinalCTA onNavigate={handleNavigate} />
+      <SixModuleCards onNavigate={handleNavigate} />
+      <BottomDisciplinesNewsletter onNavigate={handleNavigate} />
+      <FloatingRightDock onNavigate={handleNavigate} />
     </div>
   )
 }

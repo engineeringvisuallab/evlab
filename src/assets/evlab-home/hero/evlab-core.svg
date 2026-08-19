@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.6"/>
+      <stop offset="40%" stop-color="#38BDF8" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#8B5CF6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pedestal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="rim-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#00F0FF"/>
+    </linearGradient>
+    <linearGradient id="logo-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <filter id="core-bloom" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Glow Background -->
+  <circle cx="200" cy="200" r="180" fill="url(#core-glow)" />
+
+  <!-- Outer Isometric Pedestal Ring Base -->
+  <g id="pedestal-base">
+    <ellipse cx="200" cy="270" rx="140" ry="45" fill="url(#pedestal-grad)" stroke="url(#rim-cyan)" stroke-width="2" opacity="0.9"/>
+    <ellipse cx="200" cy="278" rx="140" ry="45" fill="none" stroke="#00F0FF" stroke-width="1" stroke-dasharray="6 4" opacity="0.6"/>
+    <ellipse cx="200" cy="260" rx="115" ry="36" fill="#0D1527" stroke="#38BDF8" stroke-width="1.5" opacity="0.85"/>
+  </g>
+
+  <!-- Concentric Cyber Orbit Rings -->
+  <g id="orbit-rings">
+    <ellipse cx="200" cy="210" rx="160" ry="50" fill="none" stroke="#00F0FF" stroke-width="1" stroke-dasharray="12 8 4 8" opacity="0.4" transform="rotate(-5 200 210)"/>
+    <ellipse cx="200" cy="190" rx="130" ry="40" fill="none" stroke="#A855F7" stroke-width="1.5" stroke-dasharray="20 10" opacity="0.5" transform="rotate(8 200 190)"/>
+  </g>
+
+  <!-- Floating Digital Twin Hex Monolith Platform -->
+  <g id="monolith" filter="url(#core-bloom)">
+    <!-- Hexagon 3D Extrusion -->
+    <path d="M 200 110 L 260 145 L 260 215 L 200 250 L 140 215 L 140 145 Z" fill="#0B132B" stroke="#00F0FF" stroke-width="2.5" />
+    
+    <!-- Top Face of Hexagon Monolith -->
+    <polygon points="200,110 260,145 200,180 140,145" fill="url(#logo-blue)" opacity="0.4" stroke="#38BDF8" stroke-width="1.5"/>
+    
+    <!-- Left Face -->
+    <polygon points="140,145 200,180 200,250 140,215" fill="#0A1128" stroke="#1E293B" stroke-width="1"/>
+    
+    <!-- Right Face -->
+    <polygon points="200,180 260,145 260,215 200,250" fill="#101C38" stroke="#1E293B" stroke-width="1"/>
+
+    <!-- EVLab Isometric Hex Core Logo Inset -->
+    <g transform="translate(160, 130) scale(0.8)">
+      <path d="M 50 10 L 85 30 L 85 70 L 50 90 L 15 70 L 15 30 Z" fill="none" stroke="#00F0FF" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M 50 10 L 50 50 L 85 70" fill="none" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+      <path d="M 50 50 L 15 70" fill="none" stroke="#A855F7" stroke-width="4" stroke-linecap="round"/>
+      <path d="M 32 30 L 68 30" fill="none" stroke="#00F0FF" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 25 50 L 75 50" fill="none" stroke="#00F0FF" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 32 70 L 68 70" fill="none" stroke="#00F0FF" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Glowing Brand Typography -->
+    <text x="200" y="235" text-anchor="middle" font-family="'JetBrains Mono', 'Plus Jakarta Sans', monospace" font-size="20" font-weight="900" fill="#FFFFFF" letter-spacing="3" filter="drop-shadow(0 0 8px #00F0FF)">
+      EV<tspan fill="#00F0FF">Lab</tspan>
+    </text>
+  </g>
+
+  <!-- Radiating Laser Calibration Beams & Nodes -->
+  <g id="calibration-nodes">
+    <line x1="200" y1="270" x2="80" y2="330" stroke="#00F0FF" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+    <circle cx="80" cy="330" r="4" fill="#00F0FF" filter="drop-shadow(0 0 6px #00F0FF)"/>
+
+    <line x1="200" y1="270" x2="320" y2="330" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+    <circle cx="320" cy="330" r="4" fill="#8B5CF6" filter="drop-shadow(0 0 6px #8B5CF6)"/>
+
+    <line x1="200" y1="270" x2="200" y2="360" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+    <circle cx="200" cy="360" r="4" fill="#10B981" filter="drop-shadow(0 0 6px #10B981)"/>
+  </g>
+</svg>

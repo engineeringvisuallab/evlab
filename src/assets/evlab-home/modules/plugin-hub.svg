@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="mod-plug-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#8B5CF6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="plug-bloom">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="320" height="200" fill="#0A101D" rx="12"/>
+  <circle cx="160" cy="100" r="100" fill="url(#mod-plug-glow)"/>
+
+  <!-- Pedestal Base Plate -->
+  <ellipse cx="160" cy="165" rx="85" ry="24" fill="#0B1C33" stroke="#38BDF8" stroke-width="1.5"/>
+
+  <!-- Floating 3D Modular Isometric Cubes Assembly -->
+  <!-- Center Main Cube -->
+  <g transform="translate(135, 75)" filter="url(#plug-bloom)">
+    <polygon points="25,0 45,12 25,24 5,12" fill="#0284C7" stroke="#00F0FF" stroke-width="1.5"/>
+    <polygon points="5,12 25,24 25,48 5,36" fill="#0369A1" stroke="#00F0FF" stroke-width="1.5"/>
+    <polygon points="25,24 45,12 45,36 25,48" fill="#0284C7" stroke="#00F0FF" stroke-width="1.5"/>
+  </g>
+
+  <!-- Left Detached Modular Extension Cube -->
+  <g transform="translate(85, 95)">
+    <polygon points="20,0 36,10 20,20 4,10" fill="#7C3AED" stroke="#C084FC" stroke-width="1.2"/>
+    <polygon points="4,10 20,20 20,40 4,30" fill="#581C87" stroke="#C084FC" stroke-width="1.2"/>
+    <polygon points="20,20 36,10 36,30 20,40" fill="#6B21A8" stroke="#C084FC" stroke-width="1.2"/>
+  </g>
+
+  <!-- Right Detached Modular Extension Cube -->
+  <g transform="translate(195, 95)">
+    <polygon points="20,0 36,10 20,20 4,10" fill="#059669" stroke="#34D399" stroke-width="1.2"/>
+    <polygon points="4,10 20,20 20,40 4,30" fill="#064E3B" stroke="#34D399" stroke-width="1.2"/>
+    <polygon points="20,20 36,10 36,30 20,40" fill="#047857" stroke="#34D399" stroke-width="1.2"/>
+  </g>
+
+  <!-- Top Floating Power Add-on Block -->
+  <g transform="translate(140, 30)">
+    <polygon points="20,0 36,10 20,20 4,10" fill="#D97706" stroke="#FDE047" stroke-width="1.2"/>
+    <polygon points="4,10 20,20 20,40 4,30" fill="#78350F" stroke="#FDE047" stroke-width="1.2"/>
+    <polygon points="20,20 36,10 36,30 20,40" fill="#B45309" stroke="#FDE047" stroke-width="1.2"/>
+  </g>
+
+  <!-- Interconnection Laser Rays -->
+  <line x1="120" y1="110" x2="140" y2="95" stroke="#00F0FF" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <line x1="180" y1="95" x2="200" y2="110" stroke="#00F0FF" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <line x1="160" y1="65" x2="160" y2="80" stroke="#FDE047" stroke-width="1.5" stroke-dasharray="3 3"/>
+</svg>
