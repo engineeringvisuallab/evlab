@@ -5,29 +5,7 @@ import {
   Target,
   Layers,
   ArrowRight,
-  Building2,
-  Zap,
-  Wrench,
-  FlaskConical,
-  Leaf,
-  Factory,
   Cpu,
-  Code2,
-  Bot,
-  Landmark,
-  Sprout,
-  Activity,
-  Fuel,
-  Ship,
-  Rocket,
-  Car,
-  Sun,
-  Atom,
-  Radio,
-  MapPin,
-  Briefcase,
-  Shirt,
-  Boxes,
   Box,
   FileCode2,
   Sparkles,
@@ -35,6 +13,7 @@ import {
 import { Badge } from '../shared/Badge';
 import { RoadmapNode } from '../../types/roadmap';
 import { ExpandableSoftwareItem } from './ExpandableSoftwareItem';
+import { RoadmapNodeLogo } from './roadmapVisuals';
 
 export interface RoadmapNodeCardProps {
   node: RoadmapNode;
@@ -91,46 +70,6 @@ export const RoadmapNodeCard: React.FC<RoadmapNodeCardProps> = ({
     }
   };
 
-  const getKindIcon = () => {
-    const id = node.id.toLowerCase();
-    if (id.includes('civil')) return <Building2 className="w-5 h-5 text-[var(--accent-purple)]" />;
-    if (id.includes('electrical')) return <Zap className="w-5 h-5 text-[var(--accent-amber)]" />;
-    if (id.includes('mechanical')) return <Wrench className="w-5 h-5 text-[var(--accent-blue)]" />;
-    if (id.includes('chemical')) return <FlaskConical className="w-5 h-5 text-pink-400" />;
-    if (id.includes('environmental')) return <Leaf className="w-5 h-5 text-emerald-400" />;
-    if (id.includes('industrial')) return <Factory className="w-5 h-5 text-orange-400" />;
-    if (id.includes('electronics')) return <Cpu className="w-5 h-5 text-sky-400" />;
-    if (id.includes('computer')) return <Cpu className="w-5 h-5 text-indigo-400" />;
-    if (id.includes('software')) return <Code2 className="w-5 h-5 text-emerald-400" />;
-    if (id.includes('robotics')) return <Bot className="w-5 h-5 text-purple-400" />;
-    if (id.includes('architecture')) return <Landmark className="w-5 h-5 text-amber-400" />;
-    if (id.includes('agricultural')) return <Sprout className="w-5 h-5 text-lime-400" />;
-    if (id.includes('biomedical')) return <Activity className="w-5 h-5 text-rose-400" />;
-    if (id.includes('petroleum') || id.includes('mining')) return <Fuel className="w-5 h-5 text-yellow-500" />;
-    if (id.includes('marine')) return <Ship className="w-5 h-5 text-cyan-400" />;
-    if (id.includes('aerospace')) return <Rocket className="w-5 h-5 text-blue-400" />;
-    if (id.includes('automotive')) return <Car className="w-5 h-5 text-red-400" />;
-    if (id.includes('renewable')) return <Sun className="w-5 h-5 text-yellow-400" />;
-    if (id.includes('materials') || id.includes('nuclear')) return <Atom className="w-5 h-5 text-violet-400" />;
-    if (id.includes('telecommunications')) return <Radio className="w-5 h-5 text-teal-400" />;
-    if (id.includes('surveying')) return <MapPin className="w-5 h-5 text-amber-500" />;
-    if (id.includes('management')) return <Briefcase className="w-5 h-5 text-blue-300" />;
-    if (id.includes('textile')) return <Shirt className="w-5 h-5 text-fuchsia-400" />;
-    if (id.includes('other')) return <Boxes className="w-5 h-5 text-gray-400" />;
-
-    switch (kind) {
-      case 'field':
-        return <Compass className="w-5 h-5 text-[var(--accent-purple)]" />;
-      case 'branch':
-        return <GitBranch className="w-5 h-5 text-[var(--accent-blue)]" />;
-      case 'specialization':
-        return <Target className="w-5 h-5 text-[var(--accent-cyan)]" />;
-      case 'area':
-      default:
-        return <Layers className="w-5 h-5 text-[var(--accent-emerald)]" />;
-    }
-  };
-
   const getChildLabel = () => {
     if (childCount === 0) {
       return node.comingSoon ? 'Active' : 'Focus Area';
@@ -172,16 +111,19 @@ export const RoadmapNodeCard: React.FC<RoadmapNodeCardProps> = ({
       />
 
       <div className={`transition-all duration-300 ${isHovered || selected ? 'p-4 sm:p-5 space-y-3' : 'p-3.5 sm:p-4'}`}>
-        {/* Main Title - ONLY thing visible in collapsed state */}
+        {/* Main Title Row - logo is ALWAYS visible, even in the collapsed state */}
         <div className="flex items-center justify-between gap-2">
           <h3 className="text-sm sm:text-base font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-purple)] transition-colors leading-snug">
             {node.title}
           </h3>
-          <ArrowRight
-            className={`w-3.5 h-3.5 text-[var(--accent-purple)] transition-all duration-300 ${
-              isHovered ? 'translate-x-0 opacity-100' : '-translate-x-1 opacity-0'
-            }`}
-          />
+          <div className="flex items-center gap-1.5 shrink-0">
+            <RoadmapNodeLogo node={node} />
+            <ArrowRight
+              className={`w-3.5 h-3.5 text-[var(--accent-purple)] transition-all duration-300 ${
+                isHovered ? 'translate-x-0 opacity-100' : '-translate-x-1 opacity-0 w-0'
+              }`}
+            />
+          </div>
         </div>
 
         {/* EXPANDABLE COLLAPSIBLE SECTION ON HOVER (Smooth Height & Opacity Transition) */}
@@ -194,9 +136,6 @@ export const RoadmapNodeCard: React.FC<RoadmapNodeCardProps> = ({
             {/* Header Row: Icon + Badge + Child Count Pill */}
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center space-x-2">
-                <div className="p-1.5 rounded-lg bg-[var(--accent-purple-bg)] border border-[var(--accent-purple)]/30">
-                  {getKindIcon()}
-                </div>
                 {getKindBadge()}
               </div>
 
