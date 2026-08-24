@@ -167,7 +167,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 0.9;
 
     // Clear any previous child nodes and attach canvas
     while (container.firstChild) {
@@ -243,9 +243,9 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         ambientColor: 0xffe4e6, ambientIntensity: 0.5, fogColor: 0xfecdd3, fogDensity: 0.002,
       },
       day: {
-        elevation: 48, azimuth: 178, turbidity: 7, rayleigh: 2.2, mieCoefficient: 0.0045, mieDirectionalG: 0.8,
-        sunColor: 0xfff7ed, sunIntensity: 1.5, hemiSky: 0xbfe0ff, hemiGround: 0x3f5468, hemiIntensity: 0.7,
-        ambientColor: 0xdbeafe, ambientIntensity: 0.65, fogColor: 0xcde3f5, fogDensity: 0.0018,
+        elevation: 48, azimuth: 178, turbidity: 4, rayleigh: 1.2, mieCoefficient: 0.003, mieDirectionalG: 0.75,
+        sunColor: 0xfff7ed, sunIntensity: 1.0, hemiSky: 0xbfe0ff, hemiGround: 0x3f5468, hemiIntensity: 0.5,
+        ambientColor: 0xdbeafe, ambientIntensity: 0.4, fogColor: 0xcde3f5, fogDensity: 0.0018,
       },
       golden: {
         elevation: 6, azimuth: 262, turbidity: 9, rayleigh: 2.8, mieCoefficient: 0.011, mieDirectionalG: 0.88,
@@ -340,7 +340,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
 
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(initWidth, initHeight), 0.32, 0.45, 0.86);
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(initWidth, initHeight), 0.16, 0.4, 0.94);
     composer.addPass(bloomPass);
     bloomPassRef.current = bloomPass;
 
@@ -693,7 +693,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     // Overcast/rainy weather thickens the haze and mutes the bloom a touch,
     // regardless of time of day — keeps storms from looking blown out.
     if (bloomPassRef.current) {
-      bloomPassRef.current.strength = weather === 'rain' ? 0.18 : 0.32;
+      bloomPassRef.current.strength = weather === 'rain' ? 0.1 : 0.16;
     }
     if (sceneRef.current.fog instanceof THREE.FogExp2 && weather === 'rain') {
       sceneRef.current.fog.density *= 1.6;

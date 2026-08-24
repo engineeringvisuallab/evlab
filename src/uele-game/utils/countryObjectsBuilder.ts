@@ -23,7 +23,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
   const whiteMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.4, metalness: 0.2 });
   const glassBlueMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.1, metalness: 0.9, opacity: 0.9, transparent: true });
   const glassDarkMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.1, metalness: 0.95 });
-  const windowGlowMat = new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.7 });
+  const windowGlowMat = new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.35 });
   const steelMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.8, roughness: 0.3 });
   const solarCellMat = new THREE.MeshStandardMaterial({ color: 0x1e3a8a, roughness: 0.2, metalness: 0.7 });
   const waterSpillMat = new THREE.MeshStandardMaterial({ color: 0xbae6fd, roughness: 0.2, transparent: true, opacity: 0.85 });
@@ -334,7 +334,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
   const signNeon = new THREE.Mesh(
     new THREE.BoxGeometry(22, 2.2, 0.5),
-    new THREE.MeshStandardMaterial({ color: 0xf59e0b, emissive: 0xf59e0b, emissiveIntensity: 1.5 })
+    new THREE.MeshStandardMaterial({ color: 0xf59e0b, emissive: 0xf59e0b, emissiveIntensity: 0.75 })
   );
   signNeon.position.set(0, 12, 17.3);
   mallGrp.add(signNeon);
@@ -399,7 +399,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
       const lightCol = rz === -115 ? 0x22c55e : (rz === 115 ? 0xef4444 : 0xf8fafc);
       const lightPost = new THREE.Mesh(
         new THREE.CylinderGeometry(0.12, 0.12, 0.5, 6),
-        new THREE.MeshStandardMaterial({ color: lightCol, emissive: lightCol, emissiveIntensity: 1.0 })
+        new THREE.MeshStandardMaterial({ color: lightCol, emissive: lightCol, emissiveIntensity: 0.5 })
       );
       lightPost.position.set(rx, airY + 0.25, airZ + rz);
       airportGrp.add(lightPost);
@@ -715,7 +715,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     // Hanging Tungsten Bulb Light
     const bulb = new THREE.Mesh(
       new THREE.SphereGeometry(0.12, 6, 6),
-      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.5 })
+      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.75 })
     );
     bulb.position.set(0, 2.7, 0);
     stall.add(bulb);
@@ -739,7 +739,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
   const signTextStripe = new THREE.Mesh(
     new THREE.BoxGeometry(6.6, 0.6, 0.3),
-    new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.6 })
+    new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.3 })
   );
   signTextStripe.position.set(0, 2.8, 11.02);
   bazaarGrp.add(signTextStripe);
@@ -814,7 +814,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     // River Navigation Warning Beacon Light (Red / Green)
     const navLight = new THREE.Mesh(
       new THREE.SphereGeometry(0.3, 8, 8),
-      new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 1.5 })
+      new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 0.75 })
     );
     navLight.position.set(px, 1.2, brZ + 7);
     bridgeGrp.add(navLight);
@@ -889,7 +889,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
       const lightHead = new THREE.Mesh(
         new THREE.SphereGeometry(0.18, 6, 6),
-        new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.6 })
+        new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.8 })
       );
       lightHead.position.set(lx, brY + 4.9, gz);
       bridgeGrp.add(lightHead);
@@ -962,7 +962,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     portal.add(archRoof);
 
     // High-visibility Hazard Chevrons (Yellow & Black stripes)
-    const chevronMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.5 });
+    const chevronMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.25 });
     const chevron = new THREE.Mesh(new THREE.BoxGeometry(20, 0.9, 6.4), chevronMat);
     chevron.position.set(0, 13.2, 0);
     portal.add(chevron);
@@ -977,7 +977,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
     const signLed = new THREE.Mesh(
       new THREE.BoxGeometry(13, 1.4, 0.6),
-      new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 1.4 })
+      new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 0.7 })
     );
     signLed.position.set(0, 11.5, 3.22);
     portal.add(signLed);
@@ -1022,7 +1022,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     const tPt = tunCurve.getPointAt((-tx - 160) / 110);
     const lamp = new THREE.Mesh(
       new THREE.CylinderGeometry(0.2, 0.2, 1.8, 8),
-      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.8 })
+      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.9 })
     );
     lamp.rotation.z = Math.PI / 2;
     lamp.position.set(tPt.x, tunY + 6.2, tPt.z);
