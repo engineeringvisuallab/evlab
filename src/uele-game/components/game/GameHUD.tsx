@@ -372,74 +372,144 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           <div className="flex items-center justify-between w-full mb-1.5 px-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1">
               <Navigation className="w-3 h-3 text-cyan-400" />
-              <span>Mini Country Radar</span>
+              <span>Mini Country Map</span>
             </span>
           </div>
 
-          {/* SVG Map Canvas */}
-          <div className="relative w-36 h-36 bg-slate-950 rounded-xl border border-slate-800 overflow-hidden">
+          {/* SVG Map Canvas — realistic terrain-style minimap (not a sci-fi radar) */}
+          <div className="relative w-36 h-36 bg-[#5c7a4a] rounded-xl border border-slate-800 overflow-hidden">
             <svg viewBox="-400 -400 800 800" className="w-full h-full">
               <defs>
-                <radialGradient id="radarSweepGradient" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.35" />
-                  <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+                <radialGradient id="mapVignette" cx="50%" cy="50%" r="70%">
+                  <stop offset="60%" stopColor="#000000" stopOpacity="0" />
+                  <stop offset="100%" stopColor="#000000" stopOpacity="0.35" />
+                </radialGradient>
+                <linearGradient id="riverShade" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#0e5e73" />
+                  <stop offset="45%" stopColor="#2f96b4" />
+                  <stop offset="55%" stopColor="#5ec4de" />
+                  <stop offset="100%" stopColor="#0e5e73" />
+                </linearGradient>
+                <radialGradient id="youAreHereGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
                 </radialGradient>
               </defs>
 
-              {/* Faint range rings for a proper "radar" read */}
-              <circle cx="0" cy="0" r="150" fill="none" stroke="#1e293b" strokeWidth="2" />
-              <circle cx="0" cy="0" r="280" fill="none" stroke="#1e293b" strokeWidth="2" />
-              <circle cx="0" cy="0" r="400" fill="none" stroke="#0f172a" strokeWidth="2" />
+              {/* Base terrain — soft grassland fill */}
+              <rect x="-400" y="-400" width="800" height="800" fill="#5c7a4a" />
 
-              {/* Rivers */}
+              {/* Farmland patchwork (agricultural south-west) */}
+              <g opacity="0.5">
+                <rect x="-320" y="-60" width="90" height="70" rx="4" fill="#6f8f4e" />
+                <rect x="-320" y="20" width="70" height="80" rx="4" fill="#65834a" />
+                <rect x="-230" y="10" width="80" height="60" rx="4" fill="#6f8f4e" />
+              </g>
+
+              {/* Forested mountain ridge (north-west) */}
+              <g opacity="0.85">
+                <ellipse cx="-230" cy="-230" rx="120" ry="95" fill="#3f5a3a" />
+                <ellipse cx="-160" cy="-270" rx="70" ry="55" fill="#46633f" />
+                <ellipse cx="-270" cy="-160" rx="60" ry="50" fill="#3a5335" />
+              </g>
+
+              {/* Urban core tint (center) */}
+              <rect x="-40" y="-90" width="150" height="160" rx="18" fill="#8a8f7a" opacity="0.45" />
+
+              {/* Industrial zone tint (south-east) */}
+              <rect x="90" y="150" width="120" height="100" rx="10" fill="#8f7a5c" opacity="0.4" />
+
+              {/* River — natural winding blue channel */}
               <path
-                d="M 180 -220 Q 220 -100 170 0 Q 140 100 230 20 Q 260 200 160 360"
+                d="M 180 -400 Q 210 -260 175 -170 Q 140 -80 220 -10 Q 280 60 195 140 Q 150 220 200 400"
                 fill="none"
-                stroke="#0284c7"
-                strokeWidth="28"
-                opacity="0.8"
+                stroke="url(#riverShade)"
+                strokeWidth="26"
+                strokeLinecap="round"
+                opacity="0.95"
               />
-              {/* Roads */}
-              {/* Expressway N5 */}
-              <line x1="20" y1="-370" x2="20" y2="370" stroke="#64748b" strokeWidth="18" strokeLinecap="round" />
-              {/* City Boulevard */}
-              <line x1="-140" y1="-10" x2="210" y2="-10" stroke="#64748b" strokeWidth="16" />
-              {/* Airport Connector */}
-              <line x1="20" y1="100" x2="180" y2="200" stroke="#64748b" strokeWidth="14" />
-              {/* Mountain road */}
-              <path d="M 20 -10 Q -60 -100 -220 -250" fill="none" stroke="#475569" strokeWidth="12" />
+              <path
+                d="M 180 -400 Q 210 -260 175 -170 Q 140 -80 220 -10 Q 280 60 195 140 Q 150 220 200 400"
+                fill="none"
+                stroke="#bff0ff"
+                strokeWidth="4"
+                strokeLinecap="round"
+                opacity="0.5"
+              />
 
-              {/* Landmark Pins */}
-              {COUNTRY_LANDMARKS.map((lm) => (
-                <g
-                  key={lm.id}
-                  className="cursor-pointer hover:opacity-100 opacity-80 transition-opacity"
-                  onClick={() => onTeleportToLandmark && onTeleportToLandmark(lm)}
-                >
-                  <circle cx={lm.center[0]} cy={lm.center[1]} r="18" fill="#0f172a" stroke="#38bdf8" strokeWidth="3" />
-                  <text
-                    x={lm.center[0]}
-                    y={lm.center[1] + 6}
-                    textAnchor="middle"
-                    fontSize="16"
-                    className="select-none"
-                  >
-                    {lm.icon}
-                  </text>
+              {/* Roads — asphalt base + dashed centerline, like a real street map */}
+              {[
+                { d: 'M 20 -370 L 20 370', w: 16 },
+                { d: 'M -140 -10 L 210 -10', w: 14 },
+                { d: 'M 20 100 L 180 200', w: 12 },
+                { d: 'M 20 -10 Q -60 -100 -220 -250', w: 11, curve: true },
+                { d: 'M -320 -15 L 20 -10', w: 10 },
+                { d: 'M 100 150 L 210 150', w: 10 },
+              ].map((road, i) => (
+                <g key={i}>
+                  <path d={road.d} fill="none" stroke="#3f3f46" strokeWidth={road.w} strokeLinecap="round" opacity="0.9" />
+                  <path
+                    d={road.d}
+                    fill="none"
+                    stroke="#f5d24a"
+                    strokeWidth="1.6"
+                    strokeDasharray="10 8"
+                    strokeLinecap="round"
+                    opacity="0.85"
+                  />
                 </g>
               ))}
 
-              {/* Rotating radar sweep */}
-              <g className="animate-spin-slow" style={{ transformOrigin: '0px 0px' }}>
-                <path d="M 0 0 L 0 -400 A 400 400 0 0 1 283 -283 Z" fill="url(#radarSweepGradient)" />
+              {/* Landmark Pins — map-style teardrop markers, colored by category */}
+              {COUNTRY_LANDMARKS.map((lm) => {
+                const categoryColor: Record<string, string> = {
+                  city: '#64748b',
+                  mountain: '#78716c',
+                  energy: '#f59e0b',
+                  transport: '#3b82f6',
+                  water: '#0ea5e9',
+                  agriculture: '#65a30d',
+                  industry: '#ea580c',
+                };
+                const fill = categoryColor[lm.category] || '#64748b';
+                return (
+                  <g
+                    key={lm.id}
+                    className="cursor-pointer hover:opacity-100 opacity-90 transition-opacity"
+                    onClick={() => onTeleportToLandmark && onTeleportToLandmark(lm)}
+                    transform={`translate(${lm.center[0]}, ${lm.center[1]})`}
+                  >
+                    <ellipse cx="0" cy="16" rx="9" ry="3" fill="#000000" opacity="0.25" />
+                    <path
+                      d="M 0 -20 C 10 -20 17 -13 17 -4 C 17 8 0 22 0 22 C 0 22 -17 8 -17 -4 C -17 -13 -10 -20 0 -20 Z"
+                      fill={fill}
+                      stroke="#0f172a"
+                      strokeWidth="1.5"
+                    />
+                    <circle cx="0" cy="-4" r="9" fill="#0f172a" />
+                    <text x="0" y="0" textAnchor="middle" fontSize="11" className="select-none">
+                      {lm.icon}
+                    </text>
+                  </g>
+                );
+              })}
+
+              {/* "You are here" — GPS-style location dot (not a radar ping) */}
+              <g transform={`translate(${playerPosition[0]}, ${playerPosition[1]})`}>
+                <circle r="26" fill="url(#youAreHereGlow)" />
+                <circle r="9" fill="#3b82f6" opacity="0.25" className="animate-ping" />
+                <circle r="6.5" fill="#2563eb" stroke="#ffffff" strokeWidth="2.5" />
               </g>
 
-              {/* Player / Vehicle Blip */}
-              <g transform={`translate(${playerPosition[0]}, ${playerPosition[1]})`}>
-                <circle r="12" fill="#22c55e" opacity="0.4" className="animate-ping" />
-                <circle r="6" fill="#22c55e" stroke="#ffffff" strokeWidth="2" />
-              </g>
+              {/* Map vignette for depth, like a real GPS display */}
+              <rect x="-400" y="-400" width="800" height="800" fill="url(#mapVignette)" />
             </svg>
+
+            {/* Compass */}
+            <div className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-slate-950/70 border border-slate-600/60 flex items-center justify-center">
+              <span className="text-[8px] font-black text-red-400">N</span>
+            </div>
+
             {/* Glass sheen overlay */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/[0.04] via-transparent to-transparent" />
           </div>

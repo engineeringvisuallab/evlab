@@ -117,7 +117,7 @@ export const RoadmapNodeCard: React.FC<RoadmapNodeCardProps> = ({
             {node.title}
           </h3>
           <div className="flex items-center gap-1.5 shrink-0">
-            <RoadmapNodeLogo node={node} />
+            <RoadmapNodeLogo node={node} size={kind === 'field' ? 'md' : 'sm'} />
             <ArrowRight
               className={`w-3.5 h-3.5 text-[var(--accent-purple)] transition-all duration-300 ${
                 isHovered ? 'translate-x-0 opacity-100' : '-translate-x-1 opacity-0 w-0'

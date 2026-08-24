@@ -254,12 +254,13 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         ambientColor: 0xffe4e6, ambientIntensity: 0.3, fogColor: 0xfecdd3, fogDensity: 0.002, envIntensity: 0.4,
       },
       day: {
-        // Toned down from the original (turbidity 2.5, rayleigh 0.9, sunIntensity 0.8,
-        // hemi 0.32, ambient 0.22, env 0.35) — that combo + exposure 0.75 was washing
-        // the whole scene out to a flat, overexposed white-blue instead of a natural sky.
-        elevation: 48, azimuth: 178, turbidity: 1.8, rayleigh: 1.15, mieCoefficient: 0.0014, mieDirectionalG: 0.7,
-        sunColor: 0xfff3e0, sunIntensity: 0.62, hemiSky: 0xaed4f5, hemiGround: 0x3f5468, hemiIntensity: 0.24,
-        ambientColor: 0xd8e6f5, ambientIntensity: 0.16, fogColor: 0xc3dcef, fogDensity: 0.0016, envIntensity: 0.22,
+        // Further toned down (round 2) — user still found this too bright/washed
+        // vs. the golden-hour preset. Dropped rayleigh (less pale-white sky), and
+        // cut sun/hemi/ambient/env intensities another ~25-30% so midday reads as
+        // a soft natural daylight instead of a flat overexposed glare.
+        elevation: 42, azimuth: 178, turbidity: 1.5, rayleigh: 0.85, mieCoefficient: 0.0012, mieDirectionalG: 0.7,
+        sunColor: 0xfff3e0, sunIntensity: 0.46, hemiSky: 0xaed4f5, hemiGround: 0x3f5468, hemiIntensity: 0.17,
+        ambientColor: 0xd8e6f5, ambientIntensity: 0.11, fogColor: 0xc9dcec, fogDensity: 0.0012, envIntensity: 0.16,
       },
       golden: {
         elevation: 6, azimuth: 262, turbidity: 5.5, rayleigh: 1.6, mieCoefficient: 0.006, mieDirectionalG: 0.82,

@@ -56,10 +56,71 @@ import {
 } from 'lucide-react';
 import { RoadmapNode } from '../../types/roadmap';
 
+// Ultra-realistic 3D badge photos (generated art) for the 26 top-level
+// engineering fields. Vite will hash + bundle these automatically.
+import civilImg from '../../assets/roadmap-icons/civil.webp';
+import electricalImg from '../../assets/roadmap-icons/electrical.webp';
+import mechanicalImg from '../../assets/roadmap-icons/mechanical.webp';
+import chemicalImg from '../../assets/roadmap-icons/chemical.webp';
+import environmentalImg from '../../assets/roadmap-icons/environmental.webp';
+import industrialImg from '../../assets/roadmap-icons/industrial.webp';
+import electronicsImg from '../../assets/roadmap-icons/electronics.webp';
+import computerImg from '../../assets/roadmap-icons/computer.webp';
+import softwareImg from '../../assets/roadmap-icons/software.webp';
+import roboticsImg from '../../assets/roadmap-icons/robotics.webp';
+import architectureImg from '../../assets/roadmap-icons/architecture.webp';
+import agriculturalImg from '../../assets/roadmap-icons/agricultural.webp';
+import biomedicalImg from '../../assets/roadmap-icons/biomedical.webp';
+import petroleumImg from '../../assets/roadmap-icons/petroleum.webp';
+import miningImg from '../../assets/roadmap-icons/mining.webp';
+import marineImg from '../../assets/roadmap-icons/marine.webp';
+import aerospaceImg from '../../assets/roadmap-icons/aerospace.webp';
+import automotiveImg from '../../assets/roadmap-icons/automotive.webp';
+import renewableImg from '../../assets/roadmap-icons/renewable.webp';
+import materialsImg from '../../assets/roadmap-icons/materials.webp';
+import nuclearImg from '../../assets/roadmap-icons/nuclear.webp';
+import telecommunicationsImg from '../../assets/roadmap-icons/telecommunications.webp';
+import surveyingImg from '../../assets/roadmap-icons/surveying.webp';
+import managementImg from '../../assets/roadmap-icons/management.webp';
+import textileImg from '../../assets/roadmap-icons/textile.webp';
+import otherImg from '../../assets/roadmap-icons/other.webp';
+
+// Keyed the same way as FIELD_VISUALS' `match` strings below.
+const FIELD_IMAGES: Record<string, string> = {
+  civil: civilImg,
+  electrical: electricalImg,
+  mechanical: mechanicalImg,
+  chemical: chemicalImg,
+  environmental: environmentalImg,
+  industrial: industrialImg,
+  electronics: electronicsImg,
+  computer: computerImg,
+  software: softwareImg,
+  robotics: roboticsImg,
+  architecture: architectureImg,
+  agricultural: agriculturalImg,
+  biomedical: biomedicalImg,
+  petroleum: petroleumImg,
+  mining: miningImg,
+  marine: marineImg,
+  aerospace: aerospaceImg,
+  automotive: automotiveImg,
+  renewable: renewableImg,
+  materials: materialsImg,
+  nuclear: nuclearImg,
+  telecommunications: telecommunicationsImg,
+  surveying: surveyingImg,
+  management: managementImg,
+  textile: textileImg,
+  other: otherImg,
+};
+
 export interface RoadmapVisual {
   Icon: React.ComponentType<{ className?: string }>;
   /** Tailwind color token used for icon + badge tint, e.g. "purple", "amber" */
   color: string;
+  /** Ultra-realistic generated badge photo, when available (field-level nodes) */
+  image?: string;
 }
 
 // Precise mapping for the 26 top-level engineering fields.
@@ -221,7 +282,7 @@ export function getRoadmapVisual(node: Pick<RoadmapNode, 'id' | 'title' | 'kind'
 
   for (const entry of FIELD_VISUALS) {
     if (haystack.includes(entry.match)) {
-      return { Icon: entry.Icon, color: entry.color };
+      return { Icon: entry.Icon, color: entry.color, image: FIELD_IMAGES[entry.match] };
     }
   }
 
@@ -269,9 +330,27 @@ export const RoadmapNodeLogo: React.FC<{
   node: Pick<RoadmapNode, 'id' | 'title' | 'kind'>;
   size?: 'sm' | 'md';
 }> = ({ node, size = 'sm' }) => {
-  const { Icon, color } = getRoadmapVisual(node);
+  const { Icon, color, image } = getRoadmapVisual(node);
   const dimension = size === 'md' ? 'w-9 h-9' : 'w-7 h-7';
   const iconSize = size === 'md' ? 'w-4 h-4' : 'w-3.5 h-3.5';
+
+  if (image) {
+    return (
+      <div
+        className={`shrink-0 ${dimension} rounded-full border overflow-hidden ${getRoadmapBadgeClasses(
+          color
+        )}`}
+      >
+        <img
+          src={image}
+          alt=""
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={`shrink-0 ${dimension} rounded-full border flex items-center justify-center ${getRoadmapBadgeClasses(
