@@ -2,6 +2,22 @@
 @import "tailwindcss";
 @import "maplibre-gl/dist/maplibre-gl.css";
 
+@layer utilities {
+  /* Used by UELE Play's compass logo + radar sweep (src/uele-game) */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+}
+
 /* Enable class-based dark mode (toggled via ThemeContext, not just OS preference) */
 @custom-variant dark (&:where(.dark, .dark *));
 

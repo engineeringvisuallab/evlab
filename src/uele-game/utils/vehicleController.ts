@@ -141,16 +141,24 @@ export class PlayableVehicle {
 
   private buildVehicleMesh() {
     const bodyColor = this.def.bodyColor;
-    const bodyMat = new THREE.MeshStandardMaterial({
+    // Physical (clearcoat) paint — picks up real sky/environment reflections
+    // via scene.environment instead of looking like flat matte plastic.
+    const bodyMat = new THREE.MeshPhysicalMaterial({
       color: bodyColor,
-      roughness: 0.35,
-      metalness: 0.55,
+      roughness: 0.28,
+      metalness: 0.6,
+      clearcoat: 0.65,
+      clearcoatRoughness: 0.12,
+      envMapIntensity: 1.1,
     });
     const blackTrimMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.8 });
-    const glassMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, roughness: 0.1, metalness: 0.9, opacity: 0.85, transparent: true });
-    const chromeMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.15, metalness: 0.95 });
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: 0x38bdf8, roughness: 0.05, metalness: 0.1, opacity: 0.82, transparent: true,
+      transmission: 0.35, ior: 1.5, envMapIntensity: 1.2,
+    });
+    const chromeMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.1, metalness: 0.98, envMapIntensity: 1.3 });
     const tireMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.9 });
-    const rimMat = new THREE.MeshStandardMaterial({ color: 0xcfd8dc, roughness: 0.2, metalness: 0.8 });
+    const rimMat = new THREE.MeshStandardMaterial({ color: 0xcfd8dc, roughness: 0.18, metalness: 0.85, envMapIntensity: 1.2 });
 
     const createWheel = (radius = 0.42, width = 0.3): THREE.Group => {
       const wheelGrp = new THREE.Group();

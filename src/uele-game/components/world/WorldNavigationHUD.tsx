@@ -75,7 +75,7 @@ export const WorldNavigationHUD: React.FC<WorldNavigationHUDProps> = ({
   return (
     <div id="uele-navigation-hud" className="pointer-events-none absolute inset-0 flex flex-col justify-between p-4 md:p-6 overflow-hidden">
       {/* Top Header Bar */}
-      <header className="pointer-events-auto flex flex-wrap items-center justify-between gap-3 bg-slate-900/85 backdrop-blur-md border border-slate-700/60 rounded-2xl px-5 py-3 shadow-2xl text-white">
+      <header className="pointer-events-auto flex flex-wrap items-center justify-between gap-3 bg-slate-900/85 backdrop-blur-md border border-slate-700/60 rounded-2xl px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_20px_45px_-14px_rgba(0,0,0,0.65)] text-white">
         {/* Left: Brand Identity & Coordinates */}
         <div className="flex items-center gap-3.5">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 border border-cyan-300/30">
@@ -203,7 +203,7 @@ export const WorldNavigationHUD: React.FC<WorldNavigationHUDProps> = ({
 
       {/* Middle Floating District Inspector Panel (Appears when a district is selected) */}
       {activeDistInfo && (
-        <div className="pointer-events-auto self-start max-w-sm w-full bg-slate-900/90 backdrop-blur-xl border border-slate-700/70 rounded-2xl p-4 shadow-2xl text-white animate-in fade-in slide-in-from-left-4 duration-300">
+        <div className="pointer-events-auto self-start max-w-sm w-full bg-slate-900/90 backdrop-blur-xl border border-slate-700/70 rounded-2xl p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_20px_45px_-14px_rgba(0,0,0,0.65)] text-white animate-in fade-in slide-in-from-left-4 duration-300">
           <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-3">
             <div className="flex items-center gap-2.5">
               <div
@@ -284,7 +284,7 @@ export const WorldNavigationHUD: React.FC<WorldNavigationHUDProps> = ({
       )}
 
       {/* Bottom Main Action Bar */}
-      <footer className="pointer-events-auto flex flex-col md:flex-row items-center justify-between gap-3 bg-slate-900/90 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-3.5 shadow-2xl text-white">
+      <footer className="pointer-events-auto flex flex-col md:flex-row items-center justify-between gap-3 bg-slate-900/90 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_20px_45px_-14px_rgba(0,0,0,0.65)] text-white">
         {/* District Fast Navigator */}
         <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 md:pb-0 scrollbar-none">
           <span className="text-[11px] uppercase font-bold text-slate-400 px-2 hidden xl:inline">

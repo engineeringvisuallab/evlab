@@ -1,4 +1,12 @@
 import * as THREE from 'three';
+import { Sky } from 'three/examples/jsm/objects/Sky.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
+import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader.js';
 import React, { useEffect, useRef } from 'react';
 import { TimeOfDay, WeatherType } from '../../types/game';
 import { buildMiniCountryTerrain, getNearbyLandmark, LandmarkZone } from '../../utils/miniCountryTerrain';
@@ -66,6 +74,17 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   const dirLightRef = useRef<THREE.DirectionalLight | null>(null);
   const hemiLightRef = useRef<THREE.HemisphereLight | null>(null);
   const ambientLightRef = useRef<THREE.AmbientLight | null>(null);
+
+  // Realism upgrade: physically-based sky dome + baked IBL environment map,
+  // post-processing composer (bloom / anti-aliasing / vignette / output
+  // color grading), and a night starfield.
+  const composerRef = useRef<EffectComposer | null>(null);
+  const bloomPassRef = useRef<UnrealBloomPass | null>(null);
+  const skyRef = useRef<Sky | null>(null);
+  const starsRef = useRef<THREE.Points | null>(null);
+  const pmremGeneratorRef = useRef<THREE.PMREMGenerator | null>(null);
+  const envRenderTargetRef = useRef<THREE.WebGLRenderTarget | null>(null);
+  const updateSkyEnvRef = useRef<((preset: TimeOfDay) => void) | null>(null);
 
   // Props ref to keep render loop decoupled from React state churn
   const propsRef = useRef({
@@ -181,6 +200,160 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     scene.add(dirLight);
     dirLightRef.current = dirLight;
 
+    // 4B. Physically-based Sky Dome (Preetham atmospheric scattering) —
+    // replaces the flat solid-color background with a real sun-driven sky,
+    // and doubles as the source for a baked image-based-lighting (IBL)
+    // environment map so water, vehicle paint, glass & metal all pick up
+    // believable reflections instead of looking flat/matte.
+    scene.background = null;
+    scene.fog = new THREE.FogExp2(0xcde3f5, 0.0018);
+
+    const sky = new Sky();
+    sky.scale.setScalar(8000);
+    scene.add(sky);
+    skyRef.current = sky;
+
+    const pmremGenerator = new THREE.PMREMGenerator(renderer);
+    pmremGenerator.compileEquirectangularShader();
+    pmremGeneratorRef.current = pmremGenerator;
+
+    const SKY_PRESETS: Record<
+      TimeOfDay,
+      {
+        elevation: number;
+        azimuth: number;
+        turbidity: number;
+        rayleigh: number;
+        mieCoefficient: number;
+        mieDirectionalG: number;
+        sunColor: number;
+        sunIntensity: number;
+        hemiSky: number;
+        hemiGround: number;
+        hemiIntensity: number;
+        ambientColor: number;
+        ambientIntensity: number;
+        fogColor: number;
+        fogDensity: number;
+      }
+    > = {
+      dawn: {
+        elevation: 4, azimuth: 100, turbidity: 10, rayleigh: 3.2, mieCoefficient: 0.012, mieDirectionalG: 0.9,
+        sunColor: 0xfda4af, sunIntensity: 1.0, hemiSky: 0xfecdd3, hemiGround: 0x3f3350, hemiIntensity: 0.55,
+        ambientColor: 0xffe4e6, ambientIntensity: 0.5, fogColor: 0xfecdd3, fogDensity: 0.002,
+      },
+      day: {
+        elevation: 48, azimuth: 178, turbidity: 7, rayleigh: 2.2, mieCoefficient: 0.0045, mieDirectionalG: 0.8,
+        sunColor: 0xfff7ed, sunIntensity: 1.5, hemiSky: 0xbfe0ff, hemiGround: 0x3f5468, hemiIntensity: 0.7,
+        ambientColor: 0xdbeafe, ambientIntensity: 0.65, fogColor: 0xcde3f5, fogDensity: 0.0018,
+      },
+      golden: {
+        elevation: 6, azimuth: 262, turbidity: 9, rayleigh: 2.8, mieCoefficient: 0.011, mieDirectionalG: 0.88,
+        sunColor: 0xfbbf24, sunIntensity: 1.35, hemiSky: 0xfde68a, hemiGround: 0x4a2c1a, hemiIntensity: 0.6,
+        ambientColor: 0xfef3c7, ambientIntensity: 0.6, fogColor: 0xfef3c7, fogDensity: 0.0018,
+      },
+      night: {
+        elevation: -12, azimuth: 60, turbidity: 2, rayleigh: 0.6, mieCoefficient: 0.001, mieDirectionalG: 0.7,
+        sunColor: 0x38bdf8, sunIntensity: 0.25, hemiSky: 0x1e2a4a, hemiGround: 0x020617, hemiIntensity: 0.35,
+        ambientColor: 0x1e293b, ambientIntensity: 0.3, fogColor: 0x0f172a, fogDensity: 0.0028,
+      },
+    };
+
+    const sunVector = new THREE.Vector3();
+    const updateSkyEnvironment = (preset: TimeOfDay) => {
+      const cfg = SKY_PRESETS[preset];
+      const uniforms = sky.material.uniforms;
+      uniforms['turbidity'].value = cfg.turbidity;
+      uniforms['rayleigh'].value = cfg.rayleigh;
+      uniforms['mieCoefficient'].value = cfg.mieCoefficient;
+      uniforms['mieDirectionalG'].value = cfg.mieDirectionalG;
+
+      const phi = THREE.MathUtils.degToRad(90 - cfg.elevation);
+      const theta = THREE.MathUtils.degToRad(cfg.azimuth);
+      sunVector.setFromSphericalCoords(1, phi, theta);
+      uniforms['sunPosition'].value.copy(sunVector);
+
+      if (dirLightRef.current) {
+        dirLightRef.current.position.copy(sunVector).multiplyScalar(220);
+        dirLightRef.current.color.setHex(cfg.sunColor);
+        dirLightRef.current.intensity = cfg.sunIntensity;
+      }
+      if (hemiLightRef.current) {
+        hemiLightRef.current.color.setHex(cfg.hemiSky);
+        hemiLightRef.current.groundColor.setHex(cfg.hemiGround);
+        hemiLightRef.current.intensity = cfg.hemiIntensity;
+      }
+      if (ambientLightRef.current) {
+        ambientLightRef.current.color.setHex(cfg.ambientColor);
+        ambientLightRef.current.intensity = cfg.ambientIntensity;
+      }
+      scene.fog = new THREE.FogExp2(cfg.fogColor, cfg.fogDensity);
+
+      // Bake a fresh IBL environment map from the current sky so every
+      // MeshStandardMaterial / MeshPhysicalMaterial in the scene (water,
+      // car paint, chrome, glass, wet roads) reflects the current sky
+      // instead of looking flat. Cheap enough to only run on time-of-day
+      // changes (not every frame).
+      envRenderTargetRef.current?.dispose();
+      const renderTarget = pmremGenerator.fromScene(sky as unknown as THREE.Scene, 0.02);
+      envRenderTargetRef.current = renderTarget;
+      scene.environment = renderTarget.texture;
+
+      if (starsRef.current) {
+        starsRef.current.visible = preset === 'night';
+      }
+    };
+    updateSkyEnvRef.current = updateSkyEnvironment;
+    updateSkyEnvironment('day');
+
+    // 4C. Night starfield (only visible once time-of-day switches to night)
+    const starCount = 1400;
+    const starGeo = new THREE.BufferGeometry();
+    const starPos = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount; i++) {
+      const r = 3200 + Math.random() * 600;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(Math.random() * 0.85); // keep mostly above horizon
+      starPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      starPos[i * 3 + 1] = Math.abs(r * Math.cos(phi));
+      starPos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
+    }
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    const starMat = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 3.2,
+      sizeAttenuation: false,
+      transparent: true,
+      opacity: 0.85,
+      fog: false,
+    });
+    const stars = new THREE.Points(starGeo, starMat);
+    stars.visible = false;
+    scene.add(stars);
+    starsRef.current = stars;
+
+    // 4D. Post-processing composer — subtle bloom (sun glints, headlights,
+    // neon signage), SMAA anti-aliasing, a soft cinematic vignette, and a
+    // final output pass that restores correct ACES tone-mapping / color
+    // space (required whenever rendering goes through a composer instead
+    // of straight to the canvas).
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(initWidth, initHeight), 0.32, 0.45, 0.86);
+    composer.addPass(bloomPass);
+    bloomPassRef.current = bloomPass;
+
+    composer.addPass(new SMAAPass());
+
+    const vignettePass = new ShaderPass(VignetteShader);
+    vignettePass.uniforms['offset'].value = 1.05;
+    vignettePass.uniforms['darkness'].value = 1.1;
+    composer.addPass(vignettePass);
+
+    composer.addPass(new OutputPass());
+    composerRef.current = composer;
+
     // 5. Build Mini Country Terrain (800m x 800m)
     const terrain = buildMiniCountryTerrain();
     scene.add(terrain.mesh);
@@ -251,6 +424,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
         renderer.setSize(w, h);
+        composerRef.current?.setSize(w, h);
       }
     };
 
@@ -261,6 +435,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
           camera.aspect = width / height;
           camera.updateProjectionMatrix();
           renderer.setSize(width, height);
+          composerRef.current?.setSize(width, height);
         }
       }
     });
@@ -268,7 +443,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     window.addEventListener('resize', handleResize);
 
     // Initial warm render call
-    renderer.render(scene, camera);
+    composer.render();
 
     // 11. Physics & Animation Render Loop
     let animId: number;
@@ -432,7 +607,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       }
 
       // Final Frame Render
-      renderer.render(scene, camera);
+      composer.render();
       animId = requestAnimationFrame(animate);
     };
 
@@ -445,6 +620,13 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       if (renderer.domElement && container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
+      composerRef.current?.dispose();
+      envRenderTargetRef.current?.dispose();
+      pmremGeneratorRef.current?.dispose();
+      sky.geometry.dispose();
+      (sky.material as THREE.Material).dispose();
+      starGeo.dispose();
+      starMat.dispose();
       renderer.dispose();
     };
   }, []);
@@ -492,48 +674,29 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     }
   }, [teleportTarget, isDriving, onTeleportComplete]);
 
-  // Environmental Lighting & Weather Dynamics
+  // Environmental Lighting & Weather Dynamics — driven by the physically
+  // based Sky dome (sun position/color/fog/hemisphere all update together,
+  // plus the IBL environment map gets re-baked so reflections stay in sync).
   useEffect(() => {
     if (!sceneRef.current || !dirLightRef.current || !hemiLightRef.current || !ambientLightRef.current) return;
 
-    if (timeOfDay === 'dawn') {
-      sceneRef.current.background = new THREE.Color(0xfb7185);
-      sceneRef.current.fog = new THREE.FogExp2(0xfecdd3, 0.002);
-      dirLightRef.current.color.setHex(0xfda4af);
-      dirLightRef.current.intensity = 1.0;
-      dirLightRef.current.position.set(-180, 80, 100);
-      ambientLightRef.current.color.setHex(0xffe4e6);
-      ambientLightRef.current.intensity = 0.5;
-    } else if (timeOfDay === 'golden') {
-      sceneRef.current.background = new THREE.Color(0xf59e0b);
-      sceneRef.current.fog = new THREE.FogExp2(0xfef3c7, 0.0018);
-      dirLightRef.current.color.setHex(0xfbbf24);
-      dirLightRef.current.intensity = 1.3;
-      dirLightRef.current.position.set(160, 60, -140);
-      ambientLightRef.current.color.setHex(0xfef3c7);
-      ambientLightRef.current.intensity = 0.6;
-    } else if (timeOfDay === 'night') {
-      sceneRef.current.background = new THREE.Color(0x020617);
-      sceneRef.current.fog = new THREE.FogExp2(0x0f172a, 0.0028);
-      dirLightRef.current.color.setHex(0x38bdf8);
-      dirLightRef.current.intensity = 0.25;
-      dirLightRef.current.position.set(60, 180, 60);
-      ambientLightRef.current.color.setHex(0x1e293b);
-      ambientLightRef.current.intensity = 0.3;
+    updateSkyEnvRef.current?.(timeOfDay);
+
+    if (timeOfDay === 'night') {
       vehicleRef.current?.setHeadlights(true);
-    } else {
-      // Day
-      sceneRef.current.background = new THREE.Color(0x87ceeb);
-      sceneRef.current.fog = new THREE.FogExp2(0xcde3f5, 0.0018);
-      dirLightRef.current.color.setHex(0xfff7ed);
-      dirLightRef.current.intensity = 1.4;
-      dirLightRef.current.position.set(120, 220, 120);
-      ambientLightRef.current.color.setHex(0xdbeafe);
-      ambientLightRef.current.intensity = 0.65;
     }
 
     if (rainParticlesRef.current) {
       rainParticlesRef.current.visible = weather === 'rain';
+    }
+
+    // Overcast/rainy weather thickens the haze and mutes the bloom a touch,
+    // regardless of time of day — keeps storms from looking blown out.
+    if (bloomPassRef.current) {
+      bloomPassRef.current.strength = weather === 'rain' ? 0.18 : 0.32;
+    }
+    if (sceneRef.current.fog instanceof THREE.FogExp2 && weather === 'rain') {
+      sceneRef.current.fog.density *= 1.6;
     }
   }, [timeOfDay, weather]);
 
