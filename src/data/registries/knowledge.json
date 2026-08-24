@@ -1,0 +1,3534 @@
+{
+  "hydraulics": {
+    "id": "hydraulics",
+    "name": "Hydraulics & Fluid Mechanics",
+    "description": "Study of fluid behavior, hydraulic principles, pipe flow, and pressure dynamics.",
+    "discipline": "Civil Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Fluid Flow",
+      "Pipe Hydraulics",
+      "Pressure Dynamics"
+    ]
+  },
+  "fluid-mechanics": {
+    "id": "fluid-mechanics",
+    "name": "Fluid Mechanics",
+    "description": "Fundamental science governing fluids at rest and in motion.",
+    "discipline": "Civil Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Fluid Dynamics",
+      "Continuity Equation",
+      "Bernoulli Principle"
+    ]
+  },
+  "pipe-flow-dynamics": {
+    "id": "pipe-flow-dynamics",
+    "name": "Pipe Flow & Head Loss",
+    "description": "Analysis of friction loss, minor losses, and pipe roughness in pressurized conduits.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Hazen-Williams",
+      "Darcy-Weisbach",
+      "Friction Loss"
+    ]
+  },
+  "water-demand-analysis": {
+    "id": "water-demand-analysis",
+    "name": "Water Demand Analysis & Forecasting",
+    "description": "Estimating domestic, commercial, and industrial water demand patterns and peak factors.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Demand Forecasting",
+      "Peak Hour Factor",
+      "Per Capita Consumption"
+    ]
+  },
+  "water-quality-management": {
+    "id": "water-quality-management",
+    "name": "Water Quality & Disinfection",
+    "description": "Monitoring water safety parameters, turbidity, residual chlorine, and treatment standards.",
+    "discipline": "Environmental Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Chlorination",
+      "Turbidity",
+      "Water Safety"
+    ]
+  },
+  "structural-analysis": {
+    "id": "structural-analysis",
+    "name": "Structural Analysis & Mechanics",
+    "description": "Methods to compute stresses, strains, deflections, internal forces, and load paths in structural elements.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Structural Mechanics",
+      "Bending Moment",
+      "Shear Force",
+      "Load Distribution"
+    ]
+  },
+  "reinforced-concrete-design": {
+    "id": "reinforced-concrete-design",
+    "name": "Reinforced Concrete Design",
+    "description": "Design principles for flexure, shear, axial load, and torsion in reinforced concrete structures.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "RC Design",
+      "ACI 318",
+      "BNBC",
+      "Eurocode 2",
+      "Limit State Design"
+    ]
+  },
+  "steel-structure-design": {
+    "id": "steel-structure-design",
+    "name": "Structural Steel Design",
+    "description": "Design of steel beams, columns, trusses, and connections using LRFD and ASD methodologies.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Steel Design",
+      "AISC 360",
+      "Connections",
+      "Structural Steel"
+    ]
+  },
+  "prestressed-concrete": {
+    "id": "prestressed-concrete",
+    "name": "Prestressed & Post-Tensioned Concrete",
+    "description": "Principles of pre-tensioning and post-tensioning concrete to control cracking and increase span capacity.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Prestressing",
+      "Post-Tensioning",
+      "Tendon Loss",
+      "Girders"
+    ]
+  },
+  "finite-element-method": {
+    "id": "finite-element-method",
+    "name": "Finite Element Method (FEM)",
+    "description": "Numerical analysis technique for discretizing structural continuum and solving complex stress fields.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "FEM",
+      "Mesh Generation",
+      "Stress Analysis",
+      "Numerical Methods"
+    ]
+  },
+  "seismic-engineering": {
+    "id": "seismic-engineering",
+    "name": "Seismic Engineering & Earthquake Design",
+    "description": "Response spectrum analysis, equivalent lateral force procedure, and ductile detailing for earthquake resistance.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Seismic Load",
+      "Response Spectrum",
+      "Ductility",
+      "Ground Motion"
+    ]
+  },
+  "wind-engineering": {
+    "id": "wind-engineering",
+    "name": "Wind Engineering & Structural Aerodynamics",
+    "description": "Calculation of wind pressure, gust effect factors, vortex shedding, and dynamic wind response on structures.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Wind Load",
+      "ASCE 7",
+      "Gust Factor",
+      "Wind Tunnel"
+    ]
+  },
+  "soil-structure-interaction": {
+    "id": "soil-structure-interaction",
+    "name": "Soil-Structure Interaction (SSI)",
+    "description": "Coupled analysis of foundation elasticity, soil springs, and structural response under static and dynamic loads.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "SSI",
+      "Winkler Foundation",
+      "Subgrade Modulus",
+      "Mat Foundations"
+    ]
+  },
+  "structural-dynamics": {
+    "id": "structural-dynamics",
+    "name": "Structural Dynamics & Vibration Analysis",
+    "description": "Study of structural behavior under time-varying dynamic loads, natural frequencies, and mode shapes.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Eigenvalue Analysis",
+      "Mode Shapes",
+      "Damping",
+      "Dynamic Response"
+    ]
+  },
+  "structural-stability": {
+    "id": "structural-stability",
+    "name": "Structural Stability & Buckling Mechanics",
+    "description": "Euler buckling, lateral-torsional buckling, second-order (P-Delta) effects, and frame stability.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "P-Delta",
+      "Buckling",
+      "Second Order Analysis",
+      "Frame Stability"
+    ]
+  },
+  "load-path-analysis": {
+    "id": "load-path-analysis",
+    "name": "Load Path & Gravity/Lateral Load Distribution",
+    "description": "Tracking vertical gravity loads and horizontal lateral loads through diaphragms, shear walls, and frames to foundations.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Load Path",
+      "Tributary Area",
+      "Diaphragms",
+      "Lateral Force Resisting System"
+    ]
+  },
+  "structural-retrofitting": {
+    "id": "structural-retrofitting",
+    "name": "Structural Repair, Strengthening & Retrofitting",
+    "description": "Evaluation of damaged/understrength structures and design of RC jacketing, steel bracing, or FRP composite wraps.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Retrofitting",
+      "FRP Wrap",
+      "RC Jacketing",
+      "Structural Audit"
+    ]
+  },
+  "soil-mechanics": {
+    "id": "soil-mechanics",
+    "name": "Soil Mechanics & Physical Soil Properties",
+    "description": "Phase relationships, soil index properties, particle size distribution, and Atterberg limits.",
+    "discipline": "Geotechnical Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Soil Mechanics",
+      "Atterberg Limits",
+      "Phase Relationships",
+      "Moisture Content"
+    ]
+  },
+  "soil-classification": {
+    "id": "soil-classification",
+    "name": "Soil Classification Systems (USCS & AASHTO)",
+    "description": "Categorizing coarse-grained and fine-grained soils using Unified Soil Classification System and AASHTO standards.",
+    "discipline": "Geotechnical Engineering",
+    "level": "fundamental",
+    "tags": [
+      "USCS",
+      "AASHTO",
+      "Grain Size Analysis",
+      "Plasticity Index"
+    ]
+  },
+  "effective-stress": {
+    "id": "effective-stress",
+    "name": "Effective Stress Principle & Seepage Forces",
+    "description": "Terzaghi's effective stress concept, total stress, pore water pressure, and quicksand conditions.",
+    "discipline": "Geotechnical Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Effective Stress",
+      "Pore Water Pressure",
+      "Terzaghi",
+      "Seepage Force"
+    ]
+  },
+  "consolidation-settlement": {
+    "id": "consolidation-settlement",
+    "name": "Soil Consolidation & Long-Term Settlement",
+    "description": "Primary and secondary 1D consolidation theory, preconsolidation pressure, and rate of settlement.",
+    "discipline": "Geotechnical Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Consolidation",
+      "Compression Index",
+      "Preconsolidation",
+      "Settlement"
+    ]
+  },
+  "shear-strength-soil": {
+    "id": "shear-strength-soil",
+    "name": "Soil Shear Strength & Mohr-Coulomb Criterion",
+    "description": "Cohesion, friction angle, drained vs undrained shear strength, triaxial and direct shear behavior.",
+    "discipline": "Geotechnical Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Mohr-Coulomb",
+      "Shear Strength",
+      "Triaxial Test",
+      "Direct Shear",
+      "Friction Angle"
+    ]
+  },
+  "bearing-capacity": {
+    "id": "bearing-capacity",
+    "name": "Ultimate Bearing Capacity Theory",
+    "description": "Terzaghi, Meyerhof, and Hansen bearing capacity factors, shape factors, and allowable bearing pressure.",
+    "discipline": "Geotechnical Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Bearing Capacity",
+      "Terzaghi",
+      "Footing Design",
+      "Factors of Safety"
+    ]
+  },
+  "settlement-analysis": {
+    "id": "settlement-analysis",
+    "name": "Immediate & Differential Settlement Analysis",
+    "description": "Elastic immediate settlement calculations, stress distribution beneath loaded areas, and angular distortion limits.",
+    "discipline": "Geotechnical Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Settlement",
+      "Differential Settlement",
+      "Stress Distribution",
+      "Boussinesq"
+    ]
+  },
+  "groundwater-seepage": {
+    "id": "groundwater-seepage",
+    "name": "Groundwater Hydraulics & Flow Nets",
+    "description": "Darcy's law, hydraulic conductivity, flow net construction, uplift pressure, and piping control.",
+    "discipline": "Geotechnical Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Darcy Law",
+      "Flow Net",
+      "Permeability",
+      "Seepage",
+      "Piping Risk"
+    ]
+  },
+  "slope-stability-theory": {
+    "id": "slope-stability-theory",
+    "name": "Slope Stability Theory & Limit Equilibrium Methods",
+    "description": "Methods of Slices (Bishop, Fellenius, Janbu, Morgenstern-Price) for circular and non-circular slip surfaces.",
+    "discipline": "Geotechnical Engineering",
+    "level": "advanced",
+    "tags": [
+      "Slope Stability",
+      "Method of Slices",
+      "Bishop Method",
+      "Slip Surface"
+    ]
+  },
+  "foundation-mechanics": {
+    "id": "foundation-mechanics",
+    "name": "Foundation Mechanics & Subsurface Soil Interaction",
+    "description": "Soil-footing load transfer mechanisms, rigid vs flexible footings, and mat foundation contact pressure.",
+    "discipline": "Geotechnical Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Foundation Mechanics",
+      "Mat Foundation",
+      "Contact Pressure",
+      "Subgrade Modulus"
+    ]
+  },
+  "pile-mechanics": {
+    "id": "pile-mechanics",
+    "name": "Deep Foundation Mechanics & Pile Shaft/Tip Capacity",
+    "description": "Skin friction resistance, end bearing capacity, pile group action, and negative skin friction (downdrag).",
+    "discipline": "Geotechnical Engineering",
+    "level": "advanced",
+    "tags": [
+      "Pile Capacity",
+      "Skin Friction",
+      "End Bearing",
+      "Pile Groups",
+      "Negative Skin Friction"
+    ]
+  },
+  "earth-pressure-theory": {
+    "id": "earth-pressure-theory",
+    "name": "Lateral Earth Pressure Theory (Rankine & Coulomb)",
+    "description": "Active, passive, and at-rest earth pressure distributions on rigid and flexible retaining structures.",
+    "discipline": "Geotechnical Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Rankine",
+      "Coulomb",
+      "Active Pressure",
+      "Passive Pressure",
+      "Earth Retaining"
+    ]
+  },
+  "soil-dynamics": {
+    "id": "soil-dynamics",
+    "name": "Soil Dynamics & Dynamic Shear Modulus",
+    "description": "Dynamic response of soils, wave propagation, shear wave velocity, and machine foundation vibrations.",
+    "discipline": "Geotechnical Engineering",
+    "level": "advanced",
+    "tags": [
+      "Soil Dynamics",
+      "Shear Wave Velocity",
+      "Dynamic Shear Modulus",
+      "Vibration"
+    ]
+  },
+  "liquefaction": {
+    "id": "liquefaction",
+    "name": "Soil Liquefaction Assessment & Mitigation",
+    "description": "Cyclic stress ratio (CSR), cyclic resistance ratio (CRR) from SPT/CPT, and post-liquefaction settlement.",
+    "discipline": "Geotechnical Engineering",
+    "level": "advanced",
+    "tags": [
+      "Liquefaction",
+      "CSR",
+      "CRR",
+      "SPT Liquefaction",
+      "Seismic Hazard"
+    ]
+  },
+  "geotechnical-fem": {
+    "id": "geotechnical-fem",
+    "name": "Geotechnical Finite Element Modeling & Constitutive Models",
+    "description": "Mohr-Coulomb, Hardening Soil, and Soft Soil constitutive models in non-linear geotechnical FEA.",
+    "discipline": "Geotechnical Engineering",
+    "level": "advanced",
+    "tags": [
+      "PLAXIS",
+      "Geotechnical FEA",
+      "Constitutive Models",
+      "Hardening Soil"
+    ]
+  },
+  "transportation-engineering": {
+    "id": "transportation-engineering",
+    "name": "Transportation Engineering & Mobility Fundamentals",
+    "description": "Core principles governing transportation system planning, highway geometric design, traffic flow operations, and infrastructure management.",
+    "discipline": "Transportation Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Transportation",
+      "Highways",
+      "Traffic",
+      "Transit",
+      "Infrastructure"
+    ]
+  },
+  "traffic-flow-theory": {
+    "id": "traffic-flow-theory",
+    "name": "Traffic Flow Theory & Shockwave Mechanics",
+    "description": "Fundamental relationships between flow rate, speed, density, headway distributions, and bottleneck shockwave propagation.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Traffic Flow",
+      "Greenshields",
+      "Speed-Density",
+      "Headway",
+      "Shockwaves"
+    ]
+  },
+  "highway-geometric-design": {
+    "id": "highway-geometric-design",
+    "name": "Highway Geometric & Corridor Alignment Design",
+    "description": "Horizontal curves, vertical sag/crest profiles, superelevation rates, sight distances, and cross-section corridor design.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "AASHTO Green Book",
+      "Horizontal Alignment",
+      "Vertical Profile",
+      "Superelevation",
+      "Sight Distance"
+    ]
+  },
+  "transportation-planning": {
+    "id": "transportation-planning",
+    "name": "Transportation Network Planning & Urban Mobility Policy",
+    "description": "Comprehensive urban transport master planning, transit-oriented development (TOD), and multi-modal mobility policy.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Transport Planning",
+      "TOD",
+      "Urban Mobility",
+      "Master Plan",
+      "Corridor Study"
+    ]
+  },
+  "travel-demand-modeling": {
+    "id": "travel-demand-modeling",
+    "name": "4-Step Travel Demand Modeling & Origin-Destination Forecasting",
+    "description": "Mathematical modeling of Trip Generation, Trip Distribution (Gravity Model), Mode Choice (Logit), and Traffic Assignment.",
+    "discipline": "Transportation Engineering",
+    "level": "advanced",
+    "tags": [
+      "4-Step Model",
+      "Trip Generation",
+      "Gravity Model",
+      "Logit Model",
+      "Traffic Assignment"
+    ]
+  },
+  "traffic-capacity-analysis": {
+    "id": "traffic-capacity-analysis",
+    "name": "Traffic Capacity & Highway Capacity Manual (HCM) Analysis",
+    "description": "Determining operational capacity, volume-to-capacity ratios, and service volumes for freeways, highways, and urban streets.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "HCM",
+      "HCS",
+      "Capacity Analysis",
+      "V/C Ratio",
+      "Service Volume"
+    ]
+  },
+  "level-of-service": {
+    "id": "level-of-service",
+    "name": "Level of Service (LOS) & Traffic Performance Evaluation",
+    "description": "Evaluating operational performance from LOS A to F based on control delay, density, or travel speed metrics.",
+    "discipline": "Transportation Engineering",
+    "level": "fundamental",
+    "tags": [
+      "LOS",
+      "Control Delay",
+      "Traffic Congestion",
+      "Performance Measure"
+    ]
+  },
+  "intersection-design": {
+    "id": "intersection-design",
+    "name": "Intersection Geometry & Roundabout Design",
+    "description": "Design of channelized at-grade intersections, modern roundabouts, signalized junctions, and grade-separated interchanges.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Intersections",
+      "Roundabouts",
+      "Channelization",
+      "Conflict Points",
+      "Turning Radii"
+    ]
+  },
+  "road-safety": {
+    "id": "road-safety",
+    "name": "Road Safety Engineering, Collision Analytics & Auditing",
+    "description": "Quantitative crash rate evaluation, safety performance functions (SPF), collision blackspot remediation, and road safety audits.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Road Safety",
+      "Crash Analytics",
+      "Blackspots",
+      "Road Safety Audit",
+      "HSM"
+    ]
+  },
+  "pavement-engineering": {
+    "id": "pavement-engineering",
+    "name": "Pavement Structural Design & Material Mechanics",
+    "description": "Structural layer thickness design for flexible asphalt and rigid concrete pavements using AASHTO empirical and MEPDG mechanics.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "AASHTO Pavement",
+      "Flexible Pavement",
+      "Rigid Pavement",
+      "Superpave",
+      "ESAL"
+    ]
+  },
+  "public-transportation": {
+    "id": "public-transportation",
+    "name": "Public Transit Planning, Operations & BRT Systems",
+    "description": "Transit route network design, headway scheduling, Bus Rapid Transit (BRT) corridors, and passenger capacity optimization.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Public Transit",
+      "BRT",
+      "Bus Operations",
+      "Headway",
+      "Transit Capacity"
+    ]
+  },
+  "railway-engineering": {
+    "id": "railway-engineering",
+    "name": "Railway Track Alignment, Infrastructure & Signaling",
+    "description": "Track geometry, ballastless slab tracks, continuous welded rail (CWR), turnouts, and railway signaling systems.",
+    "discipline": "Transportation Engineering",
+    "level": "advanced",
+    "tags": [
+      "Railway Track",
+      "Track Geometry",
+      "CWR",
+      "Turnouts",
+      "CBTC"
+    ]
+  },
+  "airport-engineering": {
+    "id": "airport-engineering",
+    "name": "Airport Airside Layout, Runway Design & Aircraft Loading",
+    "description": "Runway orientation by wind rose analysis, taxiway geometry, airfield pavement ACN-PCN rating, and apron gate planning.",
+    "discipline": "Transportation Engineering",
+    "level": "advanced",
+    "tags": [
+      "Runway Design",
+      "Wind Rose",
+      "Taxiway",
+      "ACN-PCN",
+      "Airport Pavement"
+    ]
+  },
+  "transportation-modeling": {
+    "id": "transportation-modeling",
+    "name": "Macroscopic & Microscopic Traffic Simulation",
+    "description": "Sub-microscopic and microscopic car-following models (Vissim/Aimsun) and macroscopic regional traffic assignment (Visum/TransCAD).",
+    "discipline": "Transportation Engineering",
+    "level": "advanced",
+    "tags": [
+      "Traffic Simulation",
+      "Vissim",
+      "Visum",
+      "Car-Following",
+      "Traffic Assignment"
+    ]
+  },
+  "intelligent-transportation-systems": {
+    "id": "intelligent-transportation-systems",
+    "name": "Intelligent Transportation Systems (ITS) & Smart Mobility",
+    "description": "Advanced traffic management systems (ATMS), adaptive signal control (SCATS/SCOOT), V2X communications, and CAV infrastructure.",
+    "discipline": "Transportation Engineering",
+    "level": "advanced",
+    "tags": [
+      "ITS",
+      "ATMS",
+      "Adaptive Signals",
+      "V2X",
+      "Smart Mobility"
+    ]
+  },
+  "transport-gis": {
+    "id": "transport-gis",
+    "name": "Transport Spatial Analysis, GIS Mapping & Route Optimization",
+    "description": "Geospatial transport network modeling, isochrone accessibility analysis, origin-destination mapping, and shortest path routing.",
+    "discipline": "Transportation Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Transport GIS",
+      "Network Analysis",
+      "Isochrone",
+      "Routing",
+      "ArcGIS"
+    ]
+  },
+  "open-channel-flow": {
+    "id": "open-channel-flow",
+    "name": "Open Channel Flow Hydraulics",
+    "description": "Manning equation, Froude number, hydraulic jumps, gradually varied flow (GVF), and rapidly varied flow (RVF) in natural and artificial channels.",
+    "category": "Fluid Mechanics & Hydraulics",
+    "tags": [
+      "Hydraulics",
+      "Open Channel Flow",
+      "Manning Equation",
+      "Froude Number",
+      "Hydraulic Jump"
+    ]
+  },
+  "rainfall-runoff-modeling": {
+    "id": "rainfall-runoff-modeling",
+    "name": "Rainfall-Runoff Modeling Principles",
+    "description": "Hydrologic processes converting precipitation into catchment runoff hydrographs using SCS Curve Number, Rational Method, and Green-Ampt infiltration.",
+    "category": "Hydrology",
+    "tags": [
+      "Hydrology",
+      "Rainfall Runoff",
+      "SCS Curve Number",
+      "Rational Method",
+      "Infiltration"
+    ]
+  },
+  "flood-routing-hydraulics": {
+    "id": "flood-routing-hydraulics",
+    "name": "Flood Routing & Hydrodynamic Modeling",
+    "description": "Hydrologic reservoir routing (Muskingum, Modified Puls) and 1D/2D hydrodynamic flood wave routing using Saint-Venant equations.",
+    "category": "Hydraulics & Hydrology",
+    "tags": [
+      "Flood Routing",
+      "Saint-Venant",
+      "Hydrodynamics",
+      "1D/2D Modeling",
+      "Muskingum"
+    ]
+  },
+  "water-treatment-processes": {
+    "id": "water-treatment-processes",
+    "name": "Drinking Water Treatment Unit Operations",
+    "description": "Physicochemical principles of coagulation, flocculation, sedimentation, rapid sand filtration, membrane filtration, and chlorination disinfection.",
+    "category": "Water Treatment",
+    "tags": [
+      "Water Treatment",
+      "Coagulation",
+      "Flocculation",
+      "Filtration",
+      "Disinfection",
+      "WTP"
+    ]
+  },
+  "wastewater-treatment-processes": {
+    "id": "wastewater-treatment-processes",
+    "name": "Biological Wastewater Treatment Mechanics",
+    "description": "BOD/COD removal, activated sludge process, trickling filters, membrane bioreactors (MBR), anaerobic digestion, and biological nutrient removal.",
+    "category": "Wastewater Engineering",
+    "tags": [
+      "Wastewater Treatment",
+      "Activated Sludge",
+      "BOD Removal",
+      "MBR",
+      "Anaerobic Digestion"
+    ]
+  },
+  "sewer-hydraulics": {
+    "id": "sewer-hydraulics",
+    "name": "Gravity Sewer Hydraulics & Self-Cleansing Velocities",
+    "description": "Partially full pipe flow, self-cleansing velocity constraints, tractive force, sewer slope design, and manhole energy losses.",
+    "category": "Sewerage Engineering",
+    "tags": [
+      "Sewer Hydraulics",
+      "Gravity Sewer",
+      "Self-Cleansing Velocity",
+      "Manning Formula"
+    ]
+  },
+  "stormwater-drainage-hydraulics": {
+    "id": "stormwater-drainage-hydraulics",
+    "name": "Urban Stormwater Drainage & SUDS Principles",
+    "description": "Urban runoff hydrology, inlet interception capacity, storm sewer sizing, detention basin routing, and Sustainable Drainage Systems (SUDS/LID).",
+    "category": "Urban Drainage",
+    "tags": [
+      "Stormwater",
+      "SUDS",
+      "Urban Drainage",
+      "Detention Basin",
+      "Low Impact Development"
+    ]
+  },
+  "river-morphology-sediment": {
+    "id": "river-morphology-sediment",
+    "name": "River Morphology & Sediment Transport",
+    "description": "Alluvial river mechanics, bedload and suspended sediment transport, channel braiding, meandering, bank erosion, and pier scour.",
+    "category": "River Engineering",
+    "tags": [
+      "River Morphology",
+      "Sediment Transport",
+      "Scour Analysis",
+      "Bank Erosion",
+      "Channel Stability"
+    ]
+  },
+  "groundwater-hydraulics": {
+    "id": "groundwater-hydraulics",
+    "name": "Groundwater Flow & Aquifer Hydraulics",
+    "description": "Darcy law, hydraulic conductivity, transmissivity, storage coefficient, well drawdown cone of depression, and Dupuit-Forchheimer theory.",
+    "category": "Hydrogeology",
+    "tags": [
+      "Groundwater",
+      "Darcy Law",
+      "Aquifer Hydraulics",
+      "Well Drawdown",
+      "Transmissivity"
+    ]
+  },
+  "irrigation-hydraulics": {
+    "id": "irrigation-hydraulics",
+    "name": "Irrigation Canal & Pipe Hydraulics",
+    "description": "Crop evapotranspiration (ET0), duty, delta, canal cross-section design, unlined silt-stable canals (Lacey/Kennedy theory), and drip/sprinkler hydraulics.",
+    "category": "Irrigation Engineering",
+    "tags": [
+      "Irrigation",
+      "Crop Water Requirement",
+      "Canal Design",
+      "Drip Irrigation",
+      "Duty Delta"
+    ]
+  },
+  "dam-hydraulic-design": {
+    "id": "dam-hydraulic-design",
+    "name": "Dam Hydraulics & Spillway Capacity",
+    "description": "Probable Maximum Flood (PMF) estimation, spillway discharge rating curves, ogee crest hydraulics, flip buckets, and hydraulic jump stilling basins.",
+    "category": "Hydraulic Structures",
+    "tags": [
+      "Spillway Design",
+      "Dam Hydraulics",
+      "Stilling Basin",
+      "Probable Maximum Flood",
+      "PMF"
+    ]
+  },
+  "water-quality-modeling": {
+    "id": "water-quality-modeling",
+    "name": "Water Quality Dynamics & Modeling",
+    "description": "Streeter-Phelps dissolved oxygen sag curve, nutrient loading, eutrophication kinetics, heavy metal transport, and chlorine decay modeling.",
+    "category": "Environmental Water",
+    "tags": [
+      "Water Quality",
+      "DO Sag Curve",
+      "Streeter Phelps",
+      "Eutrophication",
+      "Chlorine Decay"
+    ]
+  },
+  "smart-water-systems": {
+    "id": "smart-water-systems",
+    "name": "Smart Water Networks & Digital Twins",
+    "description": "Real-time hydraulic telemetry, IoT pressure/flow sensors, Automated Meter Reading (AMR/AMI), SCADA integration, and hydraulic digital twins.",
+    "category": "Digital Water",
+    "tags": [
+      "Smart Water",
+      "Digital Twin",
+      "SCADA",
+      "IoT Sensors",
+      "Leak Detection",
+      "Telemetry"
+    ]
+  },
+  "water-resources-planning": {
+    "id": "water-resources-planning",
+    "name": "Water Resources System Planning & Allocation",
+    "description": "Multiobjective water allocation, yield-reliability analysis, river basin water balance, climate vulnerability assessment, and IWRM framework.",
+    "category": "Water Resources",
+    "tags": [
+      "IWRM",
+      "Water Resources",
+      "Water Balance",
+      "Yield Analysis",
+      "River Basin Planning"
+    ]
+  },
+  "environmental-chemistry": {
+    "id": "environmental-chemistry",
+    "name": "Environmental Chemistry & Mass Balance",
+    "description": "Chemical equilibrium, kinetics, mass balances, aquatic chemistry, atmospheric chemical transformations, and fate of organic/inorganic pollutants.",
+    "discipline": "Environmental Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Environmental Chemistry",
+      "Mass Balance",
+      "Reaction Kinetics",
+      "Pollutant Fate"
+    ]
+  },
+  "environmental-microbiology": {
+    "id": "environmental-microbiology",
+    "name": "Environmental Microbiology & Bio-kinetics",
+    "description": "Microbial energetics, biotransformation, enzymatic pathways, pathogen indicators, and biological reaction kinetics in environmental systems.",
+    "discipline": "Environmental Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Microbiology",
+      "Bio-kinetics",
+      "Pathogens",
+      "Biotransformation"
+    ]
+  },
+  "air-quality-dispersion": {
+    "id": "air-quality-dispersion",
+    "name": "Air Quality Engineering & Atmospheric Dispersion",
+    "description": "Atmospheric boundary layer physics, meteorological stability classes, plume rise dynamics, Gaussian dispersion modeling, and stack emissions.",
+    "discipline": "Environmental Engineering",
+    "level": "advanced",
+    "tags": [
+      "Air Quality",
+      "Dispersion",
+      "AERMOD",
+      "Stack Emissions"
+    ]
+  },
+  "solid-waste-engineering": {
+    "id": "solid-waste-engineering",
+    "name": "Solid Waste Engineering & Resource Recovery",
+    "description": "Municipal waste characterization, generation forecasting, collection logistics, material recovery facilities (MRF), composting, and waste-to-energy.",
+    "discipline": "Environmental Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Solid Waste",
+      "Recycling",
+      "Composting",
+      "Waste-to-Energy"
+    ]
+  },
+  "sanitary-landfill-design": {
+    "id": "sanitary-landfill-design",
+    "name": "Sanitary Landfill Design & Leachate Management",
+    "description": "Geomembrane composite liners, leachate generation hydraulics, landfill gas extraction, slope stability, and post-closure environmental monitoring.",
+    "discipline": "Environmental Engineering",
+    "level": "advanced",
+    "tags": [
+      "Landfill",
+      "Leachate",
+      "Geomembrane",
+      "LFG"
+    ]
+  },
+  "hazardous-waste-management-knowledge": {
+    "id": "hazardous-waste-management-knowledge",
+    "name": "Hazardous & Biohazardous Waste Management",
+    "description": "Toxicity characterization, hazardous waste transport regulations, medical waste autoclaving, chemical stabilization, and high-temperature incineration.",
+    "discipline": "Environmental Engineering",
+    "level": "advanced",
+    "tags": [
+      "Hazardous Waste",
+      "Medical Waste",
+      "Incineration",
+      "RCRA"
+    ]
+  },
+  "sanitation-fsm": {
+    "id": "sanitation-fsm",
+    "name": "Public Sanitation Systems & Fecal Sludge Management",
+    "description": "Non-sewered sanitation (NSS), pit latrines, septic tanks, fecal sludge emptying logistics, drying beds, anaerobic digestion, and reuse.",
+    "discipline": "Sanitary Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Sanitation",
+      "Fecal Sludge",
+      "FSM",
+      "On-Site Sanitation"
+    ]
+  },
+  "environmental-health-risk": {
+    "id": "environmental-health-risk",
+    "name": "Environmental Health & Exposure Risk Assessment",
+    "description": "Human exposure pathways, dose-response modeling, carcinogenic risk calculation, drinking water safety plans, and environmental hygiene.",
+    "discipline": "Environmental Health",
+    "level": "intermediate",
+    "tags": [
+      "Environmental Health",
+      "Risk Assessment",
+      "Exposure",
+      "WASH"
+    ]
+  },
+  "eia-environmental-management": {
+    "id": "eia-environmental-management",
+    "name": "Environmental Impact Assessment (EIA) & Management Plans",
+    "description": "Environmental screening, scoping, baseline data collection, impact prediction matrices, mitigation strategies, and Environmental Management Plans (EMP).",
+    "discipline": "Environmental Management",
+    "level": "intermediate",
+    "tags": [
+      "EIA",
+      "EMP",
+      "Environmental Baseline",
+      "Mitigation"
+    ]
+  },
+  "environmental-monitoring-qaqc": {
+    "id": "environmental-monitoring-qaqc",
+    "name": "Environmental Sampling, Monitoring & Laboratory QA/QC",
+    "description": "Standard sampling protocols for air/water/soil/noise, chain of custody, analytical methods (GC-MS, AAS, HPLC), and laboratory QA/QC procedures.",
+    "discipline": "Environmental Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Environmental Monitoring",
+      "Sampling",
+      "Laboratory QAQC",
+      "Spectrophotometry"
+    ]
+  },
+  "contaminated-site-hydrogeology": {
+    "id": "contaminated-site-hydrogeology",
+    "name": "Contaminated Site Assessment & Subsurface Hydrogeology",
+    "description": "Phase I & II Environmental Site Assessments (ESA), soil borings, monitoring well installation, LNAPL/DNAPL plume migration modeling.",
+    "discipline": "Environmental Geotechnics",
+    "level": "advanced",
+    "tags": [
+      "Contaminated Sites",
+      "Phase I ESA",
+      "Plume Migration",
+      "Hydrogeology"
+    ]
+  },
+  "remediation-engineering-knowledge": {
+    "id": "remediation-engineering-knowledge",
+    "name": "Site Remediation & Contaminant Cleanup Technologies",
+    "description": "In-situ chemical oxidation (ISCO), soil vapor extraction (SVE), pump-and-treat, bioremediation, phytoremediation, and electrokinetic cleanup.",
+    "discipline": "Environmental Engineering",
+    "level": "advanced",
+    "tags": [
+      "Remediation",
+      "Bioremediation",
+      "ISCO",
+      "Soil Cleanup"
+    ]
+  },
+  "industrial-environmental-engineering-knowledge": {
+    "id": "industrial-environmental-engineering-knowledge",
+    "name": "Industrial Environmental Protection & Cleaner Production",
+    "description": "In-plant waste audits, cleaner production techniques, industrial effluent neutralization, heavy metal recovery, and eco-industrial symbiosis.",
+    "discipline": "Environmental Engineering",
+    "level": "advanced",
+    "tags": [
+      "Industrial Environment",
+      "Cleaner Production",
+      "Waste Auditing",
+      "Symbiosis"
+    ]
+  },
+  "ecological-restoration-engineering": {
+    "id": "ecological-restoration-engineering",
+    "name": "Ecological Engineering & Constructed Wetlands",
+    "description": "Surface and subsurface constructed wetland hydraulics, vegetation selection, eco-hydrology, riverine habitat restoration, and ecosystem services.",
+    "discipline": "Ecological Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Constructed Wetlands",
+      "Ecological Restoration",
+      "Eco-hydrology",
+      "NbS"
+    ]
+  },
+  "climate-resilience-decarbonization": {
+    "id": "climate-resilience-decarbonization",
+    "name": "Climate Change Mitigation, Adaptation & Decarbonization",
+    "description": "Greenhouse gas (GHG) inventories, Scope 1/2/3 carbon accounting, climate vulnerability mapping, and nature-based adaptation strategies.",
+    "discipline": "Environmental Management",
+    "level": "intermediate",
+    "tags": [
+      "Climate Resilience",
+      "GHG Inventory",
+      "Decarbonization",
+      "Carbon Footprint"
+    ]
+  },
+  "life-cycle-assessment-lca": {
+    "id": "life-cycle-assessment-lca",
+    "name": "Life Cycle Assessment (LCA) & Circular Economy",
+    "description": "ISO 14040 cradle-to-grave/cradle-to-cradle inventory, impact assessment metrics (ReCiPe, TRACI), material flow analysis, and circular economy principles.",
+    "discipline": "Environmental Engineering",
+    "level": "advanced",
+    "tags": [
+      "LCA",
+      "ISO 14040",
+      "Circular Economy",
+      "Material Flow"
+    ]
+  },
+  "construction-management-knowledge": {
+    "id": "construction-management-knowledge",
+    "title": "Construction Project Management Principles",
+    "summary": "Core theories of construction project delivery, organizational structures, scope breakdown, lifecycle stages, and executive governance.",
+    "category": "Management",
+    "tags": [
+      "Construction Management",
+      "Project Lifecycle",
+      "Scope Management",
+      "Governance"
+    ]
+  },
+  "cpm-scheduling-knowledge": {
+    "id": "cpm-scheduling-knowledge",
+    "title": "Critical Path Method & Project Scheduling Theory",
+    "summary": "Mathematical formulation of activity networks, forward/backward pass, float calculations, critical path determination, and resource leveling.",
+    "category": "Planning & Scheduling",
+    "tags": [
+      "CPM",
+      "Scheduling",
+      "Float",
+      "WBS",
+      "Resource Leveling"
+    ]
+  },
+  "cost-engineering-estimation-knowledge": {
+    "id": "cost-engineering-estimation-knowledge",
+    "title": "Cost Engineering & Quantity Takeoff Principles",
+    "summary": "Principles of quantity measurement, detailed unit rate pricing, direct/indirect cost breakdown, contingency analysis, and BOQ compilation.",
+    "category": "Cost & Quantity",
+    "tags": [
+      "Cost Engineering",
+      "Quantity Takeoff",
+      "BOQ",
+      "Estimation",
+      "Valuation"
+    ]
+  },
+  "contract-administration-knowledge": {
+    "id": "contract-administration-knowledge",
+    "title": "Construction Contract Administration & Contractual Conditions",
+    "summary": "Legal frameworks, FIDIC/NEC contract clauses, variation mechanisms, extension of time protocols, and payment certification principles.",
+    "category": "Contracts & Law",
+    "tags": [
+      "Contract Administration",
+      "FIDIC",
+      "NEC",
+      "Variations",
+      "Payments"
+    ]
+  },
+  "construction-methods-technology": {
+    "id": "construction-methods-technology",
+    "title": "Construction Methods, Temporary Works & Heavy Equipment Engineering",
+    "summary": "Methodology for heavy structural erection, deep excavations, formwork/shoring design, and heavy equipment fleet productivity.",
+    "category": "Construction Methods",
+    "tags": [
+      "Construction Methods",
+      "Temporary Works",
+      "Formwork",
+      "Equipment"
+    ]
+  },
+  "construction-qaqc-management": {
+    "id": "construction-qaqc-management",
+    "title": "Construction Quality Assurance & Quality Control Systems",
+    "summary": "Quality management frameworks, inspection test plans (ITPs), material compliance, non-conformance tracking, and ISO 9001 integration.",
+    "category": "Quality & Safety",
+    "tags": [
+      "QA/QC",
+      "ITP",
+      "Material Inspection",
+      "ISO 9001",
+      "Quality Control"
+    ]
+  },
+  "construction-hse-management": {
+    "id": "construction-hse-management",
+    "title": "Construction Health, Safety & Environmental Management Systems",
+    "summary": "Site safety policies, hazard identification, job safety analysis (JSA), incident investigation, and OSHA/ISO 45001 compliance.",
+    "category": "Quality & Safety",
+    "tags": [
+      "HSE",
+      "Site Safety",
+      "JSA",
+      "OSHA",
+      "Hazard Identification"
+    ]
+  },
+  "construction-risk-claims-management": {
+    "id": "construction-risk-claims-management",
+    "title": "Construction Risk Management, Delay Analysis & Claims Engineering",
+    "summary": "Risk register quantification, forensic delay analysis methodologies (Impacted As-Planned, Time Impact, As-Built vs As-Planned), and dispute resolution.",
+    "category": "Risk & Claims",
+    "tags": [
+      "Risk Management",
+      "Delay Analysis",
+      "Claims",
+      "EOT",
+      "Disputes"
+    ]
+  },
+  "bim-digital-construction-knowledge": {
+    "id": "bim-digital-construction-knowledge",
+    "title": "BIM & Digital Construction Workflows (4D/5D BIM)",
+    "summary": "ISO 19650 standards, CDE architecture, 4D time simulation, 5D cost estimation, clash detection, and digital twin construction monitoring.",
+    "category": "Digital Engineering",
+    "tags": [
+      "BIM",
+      "4D BIM",
+      "5D BIM",
+      "ISO 19650",
+      "Digital Twin"
+    ]
+  },
+  "lean-construction-knowledge": {
+    "id": "lean-construction-knowledge",
+    "title": "Lean Construction Principles & Last Planner System",
+    "summary": "Production control in construction, elimination of site waste, pull scheduling, lookahead planning, and percent plan complete (PPC) tracking.",
+    "category": "Management",
+    "tags": [
+      "Lean Construction",
+      "Last Planner System",
+      "Pull Planning",
+      "PPC"
+    ]
+  },
+  "construction-productivity-materials": {
+    "id": "construction-productivity-materials",
+    "title": "Construction Equipment Productivity & Site Logistics",
+    "summary": "Site layout optimization, material demand forecasting, inventory warehousing, Just-in-Time delivery, and equipment cycle time analysis.",
+    "category": "Construction Methods",
+    "tags": [
+      "Logistics",
+      "Equipment Productivity",
+      "Supply Chain",
+      "Cycle Time"
+    ]
+  },
+  "municipal-engineering-principles": {
+    "id": "municipal-engineering-principles",
+    "title": "Municipal Engineering Principles & Infrastructure Governance",
+    "summary": "Core concepts of municipal public works, urban utility integration, right-of-way management, and public asset stewardship.",
+    "category": "Municipal Engineering",
+    "topics": [
+      "Public Works Engineering",
+      "Right-of-Way Coordination",
+      "Urban Infrastructure Life Cycle",
+      "Municipal Statutory Regulations"
+    ]
+  },
+  "urban-infrastructure-master-planning": {
+    "id": "urban-infrastructure-master-planning",
+    "title": "Urban Infrastructure Master Planning & Capital Improvement",
+    "summary": "Methodologies for long-range municipal growth forecasting, capital improvement programming (CIP), and utility master plan integration.",
+    "category": "Municipal Planning",
+    "topics": [
+      "Infrastructure Master Plans",
+      "Capital Improvement Programming",
+      "Service Area Capacity Assessment",
+      "Urban Growth Phasing"
+    ]
+  },
+  "urban-road-streetscape-design": {
+    "id": "urban-road-streetscape-design",
+    "title": "Urban Roads, Local Street Systems & Pedestrian Facilities Design",
+    "summary": "Engineering principles for urban arterial, collector, local street geometry, kerb and gutter design, footpaths, and public realm corridors.",
+    "category": "Urban Transportation",
+    "topics": [
+      "Urban Street Design Guidelines",
+      "Pedestrian Footpath Standards",
+      "Kerb and Gutter Design",
+      "Roadside Drainage Integration"
+    ]
+  },
+  "urban-stormwater-drainage-hydrology": {
+    "id": "urban-stormwater-drainage-hydrology",
+    "title": "Urban Stormwater Drainage Hydrology & Flood Control",
+    "summary": "Hydrologic rainfall-runoff analysis for built environments, SWMM modeling, box culvert hydraulics, and sustainable urban drainage systems (SUDS).",
+    "category": "Urban Drainage",
+    "topics": [
+      "Rational Method & SWMM Hydrology",
+      "Box Culvert & Pipe Hydraulics",
+      "Urban Detention Ponds",
+      "Sponge City SUDS Techniques"
+    ]
+  },
+  "municipal-water-sewerage-networks": {
+    "id": "municipal-water-sewerage-networks",
+    "title": "Municipal Water Supply, Sewerage & Sanitation Infrastructure",
+    "summary": "Design of piped water distribution networks, pressure zones, district metered areas (DMA), gravity sewer mains, and septage management.",
+    "category": "Municipal Water & Sanitation",
+    "topics": [
+      "Water Distribution Hydraulics",
+      "District Metered Areas (DMA)",
+      "Gravity Sewer Hydraulics",
+      "Non-Revenue Water Management"
+    ]
+  },
+  "municipal-solid-waste-management": {
+    "id": "municipal-solid-waste-management",
+    "title": "Municipal Solid Waste Management & Resource Recovery",
+    "summary": "Engineering collection routes, transfer stations, material recovery facilities (MRF), composting nodes, and sanitary landfill cell design.",
+    "category": "Solid Waste Engineering",
+    "topics": [
+      "Solid Waste Collection Logistics",
+      "Transfer Station Design",
+      "Materials Recovery & Recycling",
+      "Sanitary Landfill Hydraulics"
+    ]
+  },
+  "underground-utility-coordination-gis": {
+    "id": "underground-utility-coordination-gis",
+    "title": "Subsurface Utility Engineering (SUE) & GIS Mapping",
+    "summary": "ASCE 38 subsurface utility engineering quality levels, utility clash detection, multi-utility duct bank corridors, and utility GIS.",
+    "category": "Utility Engineering",
+    "topics": [
+      "ASCE 38 Quality Levels",
+      "Subsurface Utility Clash Analysis",
+      "Multi-Utility Duct Bank Corridors",
+      "Utility Spatial GIS Databases"
+    ]
+  },
+  "municipal-asset-management-lifecycle": {
+    "id": "municipal-asset-management-lifecycle",
+    "title": "Municipal Infrastructure Asset Management & Life Cycle Costing",
+    "summary": "ISO 55000 frameworks, infrastructure condition rating, remaining useful life estimation, risk-based maintenance, and lifecycle cost analysis.",
+    "category": "Asset Management",
+    "topics": [
+      "ISO 55000 Asset Framework",
+      "Infrastructure Condition Rating",
+      "Risk-Based Asset Prioritization",
+      "Capital Replacement Planning"
+    ]
+  },
+  "smart-city-infrastructure-iot": {
+    "id": "smart-city-infrastructure-iot",
+    "title": "Smart City Infrastructure, Sensor Networks & Urban Telemetry",
+    "summary": "IoT sensor deployment for smart street lighting, automated water metering (AMI), urban flood monitoring, and city telemetry dashboards.",
+    "category": "Smart Infrastructure",
+    "topics": [
+      "IoT Urban Sensor Networks",
+      "Smart Street Lighting Controls",
+      "Automated Meter Reading (AMI)",
+      "Urban Telemetry Integration"
+    ]
+  },
+  "climate-resilient-urban-infrastructure": {
+    "id": "climate-resilient-urban-infrastructure",
+    "title": "Climate-Resilient Urban Infrastructure & Nature-Based Systems",
+    "summary": "Strategies for climate adaptation, urban heat island mitigation, coastal urban flood barriers, bioswales, and disaster resilience planning.",
+    "category": "Urban Resilience",
+    "topics": [
+      "Climate Vulnerability Modeling",
+      "Nature-Based Infrastructure",
+      "Urban Heat Mitigation",
+      "Disaster Emergency Backup Utilities"
+    ]
+  },
+  "coastal-engineering-fundamentals": {
+    "id": "coastal-engineering-fundamentals",
+    "title": "Coastal Engineering Fundamentals & Metocean Physics",
+    "category": "Coastal Engineering",
+    "summary": "Core principles of coastal dynamics, metocean conditions, shoreline classification, astronomical tides, and physical oceanography in coastal civil design."
+  },
+  "coastal-hydrodynamics-knowledge": {
+    "id": "coastal-hydrodynamics-knowledge",
+    "title": "Coastal Hydrodynamics & Water Level Dynamics",
+    "category": "Coastal Engineering",
+    "summary": "Mechanics of shallow water flow, tidal hydrodynamics, wind-driven currents, longshore currents, and wave-current interaction."
+  },
+  "wave-mechanics-nearshore-processes": {
+    "id": "wave-mechanics-nearshore-processes",
+    "title": "Wave Mechanics & Nearshore Processes",
+    "category": "Coastal Engineering",
+    "summary": "Linear and non-linear wave theories, wave shoaling, refraction, diffraction, breaking, runup, overtopping, and wave-structure interaction."
+  },
+  "tidal-estuarine-engineering-knowledge": {
+    "id": "tidal-estuarine-engineering-knowledge",
+    "title": "Tidal & Estuarine Engineering",
+    "category": "Coastal Engineering",
+    "summary": "Tidal harmonic analysis, estuarine circulation, salinity intrusion, tidal prism dynamics, and inlet channel morphology."
+  },
+  "shoreline-beach-management-knowledge": {
+    "id": "shoreline-beach-management-knowledge",
+    "title": "Shoreline & Beach Management",
+    "category": "Coastal Engineering",
+    "summary": "Beach profile morphodynamics, equilibrium beach profiles, historical shoreline evolution, beach nourishment, and dune stabilization."
+  },
+  "coastal-erosion-sediment-transport": {
+    "id": "coastal-erosion-sediment-transport",
+    "title": "Coastal Erosion & Sediment Transport Dynamics",
+    "category": "Coastal Engineering",
+    "summary": "Longshore and cross-shore sediment transport equations, coastal sediment budgets, erosion hotspot analysis, and morphological modeling."
+  },
+  "coastal-protection-structures-knowledge": {
+    "id": "coastal-protection-structures-knowledge",
+    "title": "Coastal Protection & Revetment Engineering",
+    "category": "Coastal Engineering",
+    "summary": "Hydraulic and structural design of coastal revetments, seawalls, coastal dikes, polder embankments, and geotextile containment systems."
+  },
+  "breakwater-marine-structures-knowledge": {
+    "id": "breakwater-marine-structures-knowledge",
+    "title": "Breakwater & Marine Structures Engineering",
+    "category": "Coastal Engineering",
+    "summary": "Rubble-mound, caisson, and composite breakwaters, concrete armor units (Tetrapods, Accropodes), toe protection, and hydraulic stability."
+  },
+  "seawalls-land-reclamation-knowledge": {
+    "id": "seawalls-land-reclamation-knowledge",
+    "title": "Seawalls, Groynes & Land Reclamation",
+    "category": "Coastal Engineering",
+    "summary": "Groyne fields, artificial headlands, land reclamation engineering, hydraulic sand pumping, and reclaimed soil settlement management."
+  },
+  "storm-surge-coastal-flooding": {
+    "id": "storm-surge-coastal-flooding",
+    "title": "Storm Surge & Coastal Flood Risk Management",
+    "category": "Coastal Engineering",
+    "summary": "Tropical cyclone storm surge dynamics, wind setup, wave runup inundation mapping, surge barriers, and coastal polder sluice gates."
+  },
+  "port-harbor-engineering-knowledge": {
+    "id": "port-harbor-engineering-knowledge",
+    "title": "Port & Harbor Engineering",
+    "category": "Coastal Engineering",
+    "summary": "Port master planning, berth capacity, quay walls, jetties, piers, dolphins, fender systems, and harbor basin tranquility."
+  },
+  "marine-offshore-infrastructure-knowledge": {
+    "id": "marine-offshore-infrastructure-knowledge",
+    "title": "Marine & Offshore Civil Infrastructure",
+    "category": "Coastal Engineering",
+    "summary": "Piled wharves, offshore trestles, topside loading arms, subsea outfall landfalls, and coastal energy infrastructure foundations."
+  },
+  "dredging-navigation-engineering-knowledge": {
+    "id": "dredging-navigation-engineering-knowledge",
+    "title": "Dredging & Navigation Channel Engineering",
+    "category": "Coastal Engineering",
+    "summary": "PIANC navigation channel design, capital and maintenance dredging, TSHD/CSD dredger operations, and dredged material beneficial reuse."
+  },
+  "coastal-geotechnical-engineering-knowledge": {
+    "id": "coastal-geotechnical-engineering-knowledge",
+    "title": "Coastal Geotechnical Engineering",
+    "category": "Coastal Engineering",
+    "summary": "Geotechnical behavior of soft marine clays, consolidation, pile foundation capacity, marine soil liquefaction, and scour mechanics."
+  },
+  "marine-construction-knowledge": {
+    "id": "marine-construction-knowledge",
+    "title": "Marine Construction Engineering & Operations",
+    "category": "Coastal Engineering",
+    "summary": "Marine construction planning, barge operations, marine tubular piling, tremie underwater concreting, cofferdams, and maritime HSE."
+  },
+  "coastal-environmental-engineering-knowledge": {
+    "id": "coastal-environmental-engineering-knowledge",
+    "title": "Coastal Environmental Engineering & Ecosystems",
+    "category": "Coastal Engineering",
+    "summary": "Coastal EIA, marine turbidity plumes, sediment dispersion, mangrove restoration, living shorelines, and coastal water quality."
+  },
+  "coastal-climate-resilience-knowledge": {
+    "id": "coastal-climate-resilience-knowledge",
+    "title": "Climate Change & Coastal Resilience",
+    "category": "Coastal Engineering",
+    "summary": "Sea level rise IPCC projections, climate-adjusted wave design, nature-based coastal defense, managed retreat, and adaptive infrastructure."
+  },
+  "coastal-gis-digital-twin-knowledge": {
+    "id": "coastal-gis-digital-twin-knowledge",
+    "title": "Coastal GIS, Bathymetry & Digital Twin Engineering",
+    "category": "Coastal Engineering",
+    "summary": "Coastal spatial analysis, satellite bathymetry, multibeam sonar processing, 2D/3D hydrodynamic models, and coastal digital twins."
+  },
+  "open-channel-hydraulics": {
+    "id": "open-channel-hydraulics",
+    "title": "Open Channel Hydraulics & Flow Regimes",
+    "summary": "Principles of free-surface flow, uniform and non-uniform flow, energy and momentum equations, critical flow, and hydraulic jumps.",
+    "category": "River Engineering",
+    "tags": [
+      "Hydraulics",
+      "Open Channel",
+      "Flow Regimes",
+      "Manning Equation"
+    ]
+  },
+  "fluvial-geomorphology": {
+    "id": "fluvial-geomorphology",
+    "title": "Fluvial Geomorphology & River Mechanics",
+    "summary": "Study of river landforms, channel pattern development, meandering, braiding, bedforms, and dynamic equilibrium of alluvial channels.",
+    "category": "River Engineering",
+    "tags": [
+      "Morphology",
+      "Geomorphology",
+      "Meandering",
+      "Braiding",
+      "Alluvial Rivers"
+    ]
+  },
+  "sediment-transport-mechanics": {
+    "id": "sediment-transport-mechanics",
+    "title": "Sediment Transport Mechanics & Budgeting",
+    "summary": "Physics of bed load, suspended load, wash load, incipient motion, critical shear stress, and sediment continuity equations.",
+    "category": "River Engineering",
+    "tags": [
+      "Sediment Transport",
+      "Bed Load",
+      "Suspended Load",
+      "Shields Parameter",
+      "Exner Equation"
+    ]
+  },
+  "riverbank-erosion-mechanisms": {
+    "id": "riverbank-erosion-mechanisms",
+    "title": "Riverbank Erosion Mechanisms & Geotechnical Stability",
+    "summary": "Assessment of hydraulic shear erosion, toe scour, pore water pressure, mass bank failure, and erosion hotspot identification.",
+    "category": "River Engineering",
+    "tags": [
+      "Bank Erosion",
+      "Toe Scour",
+      "Slope Stability",
+      "Revetment",
+      "Geobags"
+    ]
+  },
+  "river-training-engineering": {
+    "id": "river-training-engineering",
+    "title": "River Training & Channel Stabilization Engineering",
+    "summary": "Design and placement of groynes, spurs, guide bunds, porcupine frames, launching aprons, and training walls for channel control.",
+    "category": "River Engineering",
+    "tags": [
+      "River Training",
+      "Groynes",
+      "Spurs",
+      "Guide Bunds",
+      "Launching Apron"
+    ]
+  },
+  "floodplain-hydraulics-conveyance": {
+    "id": "floodplain-hydraulics-conveyance",
+    "title": "Floodplain Hydraulics & Flood Conveyance Systems",
+    "summary": "Hydrodynamic analysis of river-floodplain interactions, floodways, conveyance capacity, levees, embankments, and flood routing.",
+    "category": "River Engineering",
+    "tags": [
+      "Floodplain",
+      "Flood Conveyance",
+      "Flood Routing",
+      "Levees",
+      "Flood Hazard"
+    ]
+  },
+  "bridge-scour-hydraulics": {
+    "id": "bridge-scour-hydraulics",
+    "title": "Bridge Hydraulics & Scour Engineering",
+    "summary": "Hydraulic openings, waterway design, contraction scour, pier/abutment scour, and scour protection works.",
+    "category": "Bridge Hydraulics",
+    "tags": [
+      "Bridge Hydraulics",
+      "Scour",
+      "HEC-18",
+      "Riprap",
+      "River Training"
+    ]
+  },
+  "river-diversion-cofferdam-hydraulics": {
+    "id": "river-diversion-cofferdam-hydraulics",
+    "title": "River Diversion & Cofferdam Hydraulic Systems",
+    "summary": "Hydraulic planning for temporary river diversions during construction, cofferdam sizing, bypass channels, and construction flood safety.",
+    "category": "River Engineering",
+    "tags": [
+      "River Diversion",
+      "Cofferdam",
+      "Bypass Channel",
+      "Construction Hydraulics"
+    ]
+  },
+  "canal-hydraulic-engineering": {
+    "id": "canal-hydraulic-engineering",
+    "title": "Irrigation Canal & Waterway Hydraulics",
+    "summary": "Hydraulic design of lined and unlined irrigation canals, regime theories, cross-drainage structures, regulators, and seepage control.",
+    "category": "River Engineering",
+    "tags": [
+      "Canal Hydraulics",
+      "Lining",
+      "Regulator",
+      "Cross Drainage",
+      "Seepage"
+    ]
+  },
+  "inland-waterway-navigation-engineering": {
+    "id": "inland-waterway-navigation-engineering",
+    "title": "Inland Waterway & Navigation Channel Engineering",
+    "summary": "Design of inland navigation fairways, draft clearances, vessel turning basins, navigation aids, and maintenance dredging.",
+    "category": "River Engineering",
+    "tags": [
+      "Inland Waterways",
+      "Navigation Channel",
+      "Draft Clearance",
+      "PIANC",
+      "Dredging"
+    ]
+  },
+  "river-restoration-eco-hydraulics": {
+    "id": "river-restoration-eco-hydraulics",
+    "title": "River Restoration & Eco-Hydraulic Engineering",
+    "summary": "Principles of natural channel design, environmental flow (E-flows) allocation, riparian habitat reconnection, and bioengineering.",
+    "category": "River Engineering",
+    "tags": [
+      "River Restoration",
+      "Eco-Hydraulics",
+      "Environmental Flow",
+      "Bioengineering"
+    ]
+  },
+  "river-basin-integrated-management": {
+    "id": "river-basin-integrated-management",
+    "title": "River Basin Master Planning & Integrated Water Management",
+    "summary": "Frameworks for river basin governance, transboundary water sharing, catchment sediment management, and climate-adaptive water resources.",
+    "category": "River Engineering",
+    "tags": [
+      "River Basin",
+      "IWRM",
+      "Transboundary Rivers",
+      "Catchment Management"
+    ]
+  },
+  "one-two-dimensional-hydrodynamics": {
+    "id": "one-two-dimensional-hydrodynamics",
+    "title": "1D & 2D Hydrodynamic Numerical Simulation",
+    "summary": "Numerical methods for solving Saint-Venant and Shallow Water Equations in 1D and 2D river networks and floodplains.",
+    "category": "River Engineering",
+    "tags": [
+      "1D Hydraulics",
+      "2D Hydrodynamics",
+      "Saint-Venant Equations",
+      "HEC-RAS",
+      "MIKE 21"
+    ]
+  },
+  "river-hydrographic-surveying": {
+    "id": "river-hydrographic-surveying",
+    "title": "River Hydrographic & Bathymetric Surveying",
+    "summary": "Survey techniques including single/multibeam echosounding, ADCP streamflow measurement, cross-section profiling, and drone GIS mapping.",
+    "category": "River Engineering",
+    "tags": [
+      "Bathymetry",
+      "ADCP",
+      "Cross-Section",
+      "Streamflow",
+      "Hydrographic Survey"
+    ]
+  },
+  "climate-resilient-river-engineering": {
+    "id": "climate-resilient-river-engineering",
+    "title": "Climate-Resilient River & Infrastructure Design",
+    "summary": "Adaptation methodologies for river structures under non-stationary hydrologic regimes, extreme flood risks, and sediment load shifts.",
+    "category": "River Engineering",
+    "tags": [
+      "Climate Resilience",
+      "Extreme Floods",
+      "Non-Stationary Hydrology",
+      "Adaptation"
+    ]
+  },
+  "computational-river-mechanics": {
+    "id": "computational-river-mechanics",
+    "title": "Computational River Mechanics & Digital Twins",
+    "summary": "Advanced 3D hydrodynamic modelling, AI-driven flood prediction models, digital twin river systems, and autonomous telemetry.",
+    "category": "River Engineering",
+    "tags": [
+      "Computational Hydraulics",
+      "AI Flood Prediction",
+      "Digital Twin",
+      "3D Hydraulics"
+    ]
+  },
+  "surveying-fundamentals-knowledge": {
+    "id": "surveying-fundamentals-knowledge",
+    "title": "Fundamentals of Land & Engineering Surveying",
+    "summary": "Core principles of surveying including distance, angle, elevation measurements, bearings, azimuths, field book logging, traverse computations, and error propagation.",
+    "category": "Surveying Fundamentals",
+    "tags": [
+      "Surveying",
+      "Traverse",
+      "Measurements",
+      "Error Propagation",
+      "Bearings"
+    ]
+  },
+  "engineering-construction-surveying-knowledge": {
+    "id": "engineering-construction-surveying-knowledge",
+    "title": "Engineering & Construction Surveying",
+    "summary": "Site layout, setting out, alignment, profile, cross-sectioning, foundation positioning, elevation transfer, and as-built verification for civil infrastructure.",
+    "category": "Engineering Surveying",
+    "tags": [
+      "Setting Out",
+      "Alignment",
+      "As-Built",
+      "Civil 3D",
+      "Site Control"
+    ]
+  },
+  "geodesy-coordinate-reference-systems-knowledge": {
+    "id": "geodesy-coordinate-reference-systems-knowledge",
+    "title": "Geodesy & Coordinate Reference Systems",
+    "summary": "Physical geodesy, reference ellipsoids, geodetic datums, map projections, coordinate transformations, geoid models, and national control networks.",
+    "category": "Geodesy & Positioning",
+    "tags": [
+      "Geodesy",
+      "Ellipsoid",
+      "Datum",
+      "Map Projections",
+      "Geoid"
+    ]
+  },
+  "gnss-satellite-positioning-knowledge": {
+    "id": "gnss-satellite-positioning-knowledge",
+    "title": "GNSS & Satellite Positioning Systems",
+    "summary": "Multi-constellation satellite positioning (GPS, GLONASS, Galileo, BeiDou), static, RTK, PPK, Network RTK (CORS), error sources, and PPP post-processing.",
+    "category": "Satellite Positioning",
+    "tags": [
+      "GNSS",
+      "GPS",
+      "RTK",
+      "PPK",
+      "CORS",
+      "PPP"
+    ]
+  },
+  "total-station-digital-surveying-knowledge": {
+    "id": "total-station-digital-surveying-knowledge",
+    "title": "Total Station & Electronic Distance Measurement",
+    "summary": "Electronic total station operation, EDM optics, closed/open traverse adjustments, robotic tracking, reflectorless measuring, and field-to-office data streams.",
+    "category": "Digital Field Equipment",
+    "tags": [
+      "Total Station",
+      "EDM",
+      "Robotic Surveying",
+      "Traverse Adjustment"
+    ]
+  },
+  "topographic-terrain-modelling-knowledge": {
+    "id": "topographic-terrain-modelling-knowledge",
+    "title": "Topographic & Digital Terrain Modelling (DTM/DEM)",
+    "summary": "Contour mapping, spot elevation sampling, TIN/grid surface generation, breakline integration, slope-aspect analysis, cut-fill calculations, and base mapping.",
+    "category": "Terrain Analysis",
+    "tags": [
+      "Topography",
+      "DTM",
+      "DEM",
+      "TIN",
+      "Contours",
+      "Cut-Fill"
+    ]
+  },
+  "cadastral-land-administration-knowledge": {
+    "id": "cadastral-land-administration-knowledge",
+    "title": "Cadastral Surveying & Land Administration",
+    "summary": "Boundary demarcation, parcel mapping, land subdivision, right-of-way mapping, parcel fabrics, cadastral GIS, and spatial land record systems.",
+    "category": "Cadastral Surveying",
+    "tags": [
+      "Cadastral",
+      "Parcel Mapping",
+      "Boundaries",
+      "Land Administration"
+    ]
+  },
+  "hydrographic-bathymetric-surveying-knowledge": {
+    "id": "hydrographic-bathymetric-surveying-knowledge",
+    "title": "Hydrographic & Bathymetric Surveying",
+    "summary": "Singlebeam and multibeam echo sounding, acoustic positioning, sound velocity profiling, tide corrections, seabed mapping, and nautical charting.",
+    "category": "Hydrographic Surveying",
+    "tags": [
+      "Hydrography",
+      "Bathymetry",
+      "Multibeam",
+      "Echo Sounder",
+      "Seabed Mapping"
+    ]
+  },
+  "photogrammetry-aerial-mapping-knowledge": {
+    "id": "photogrammetry-aerial-mapping-knowledge",
+    "title": "Photogrammetry & Aerial Surveying",
+    "summary": "Optical geometry, aerial triangulation, ground control points (GCP), bundle adjustment, orthophoto generation, stereo compilation, and 3D reconstruction.",
+    "category": "Photogrammetry",
+    "tags": [
+      "Photogrammetry",
+      "Bundle Adjustment",
+      "Orthophoto",
+      "GCP",
+      "Triangulation"
+    ]
+  },
+  "uav-drone-surveying-knowledge": {
+    "id": "uav-drone-surveying-knowledge",
+    "title": "UAV & Drone Survey Mapping",
+    "summary": "Drone mission flight planning, RTK/PPK drone positioning, orthomosaic stitching, DSM/DTM extraction, 3D point clouds, and corridor mapping.",
+    "category": "UAV Surveying",
+    "tags": [
+      "UAV",
+      "Drone Mapping",
+      "Orthomosaic",
+      "DSM",
+      "PPK",
+      "RTK"
+    ]
+  },
+  "remote-sensing-earth-observation-knowledge": {
+    "id": "remote-sensing-earth-observation-knowledge",
+    "title": "Remote Sensing & Earth Observation",
+    "summary": "Multispectral and hyperspectral satellite imagery, synthetic aperture radar (SAR), optical image classification, vegetation indices (NDVI), and land cover change detection.",
+    "category": "Remote Sensing",
+    "tags": [
+      "Remote Sensing",
+      "Satellite Imagery",
+      "SAR",
+      "Land Cover",
+      "NDVI"
+    ]
+  },
+  "lidar-3d-laser-scanning-knowledge": {
+    "id": "lidar-3d-laser-scanning-knowledge",
+    "title": "LiDAR & 3D Laser Scanning",
+    "summary": "Airborne, terrestrial, and mobile LiDAR sensor mechanics, time-of-flight pulses, point cloud registration, ground classification, scan-to-BIM, and feature extraction.",
+    "category": "LiDAR & Reality Capture",
+    "tags": [
+      "LiDAR",
+      "Laser Scanning",
+      "Point Cloud",
+      "Scan-to-BIM",
+      "Ground Extraction"
+    ]
+  },
+  "mobile-mapping-reality-capture-knowledge": {
+    "id": "mobile-mapping-reality-capture-knowledge",
+    "title": "Mobile Mapping Systems & Reality Capture",
+    "summary": "Vehicle-mounted mobile mapping, 360-degree georeferenced panoramic imaging, SLAM navigation, street-level asset inventory, and corridor reality capture.",
+    "category": "Mobile Mapping",
+    "tags": [
+      "Mobile Mapping",
+      "SLAM",
+      "360 Camera",
+      "Asset Inventory",
+      "Reality Capture"
+    ]
+  },
+  "gis-spatial-databases-knowledge": {
+    "id": "gis-spatial-databases-knowledge",
+    "title": "Geographic Information Systems (GIS) & Spatial Databases",
+    "summary": "Vector and raster spatial models, geodatabase architectures, spatial indexing, SQL spatial extensions (PostGIS/SDE), metadata standards, and Web GIS.",
+    "category": "GIS & Spatial Data",
+    "tags": [
+      "GIS",
+      "Spatial Database",
+      "PostGIS",
+      "Geodatabase",
+      "Web GIS"
+    ]
+  },
+  "geospatial-analysis-spatial-data-science-knowledge": {
+    "id": "geospatial-analysis-spatial-data-science-knowledge",
+    "title": "Geospatial Analysis & Spatial Data Science",
+    "summary": "Spatial overlay analysis, buffer and proximity operations, network routing, spatial statistics, kriging geostatistics, interpolation, and spatial regression.",
+    "category": "Spatial Analytics",
+    "tags": [
+      "Spatial Analysis",
+      "Geostatistics",
+      "Network Analysis",
+      "Kriging"
+    ]
+  },
+  "survey-deformation-monitoring-knowledge": {
+    "id": "survey-deformation-monitoring-knowledge",
+    "title": "Survey Deformation & Structural Health Monitoring",
+    "summary": "Sub-millimeter geodetic monitoring networks, automated total stations, GNSS displacement monitoring, InSAR satellite radar monitoring, and time-series settlement analysis.",
+    "category": "Deformation Monitoring",
+    "tags": [
+      "Deformation Monitoring",
+      "InSAR",
+      "Settlement",
+      "Automated Survey",
+      "Structural Health"
+    ]
+  },
+  "geospatial-ai-automation-knowledge": {
+    "id": "geospatial-ai-automation-knowledge",
+    "title": "Geospatial AI & Automated Mapping",
+    "summary": "Machine learning for satellite imagery segmentation, deep learning computer vision for feature extraction, AI point cloud classification, and GeoPython automation.",
+    "category": "Geospatial AI",
+    "tags": [
+      "GeoAI",
+      "Machine Learning",
+      "Computer Vision",
+      "Deep Learning",
+      "Python"
+    ]
+  },
+  "digital-twin-3d-geospatial-knowledge": {
+    "id": "digital-twin-3d-geospatial-knowledge",
+    "title": "Digital Twins & 3D Geospatial Engineering",
+    "summary": "3D city models (CityGML, 3D Tiles), BIM-GIS integration, real-time spatial asset management platforms, IoT sensor streams, and interactive 3D Web GIS.",
+    "category": "Digital Twin",
+    "tags": [
+      "Digital Twin",
+      "BIM-GIS",
+      "3D City Model",
+      "CityGML",
+      "Smart Cities"
+    ]
+  },
+  "bridge-engineering-fundamentals": {
+    "id": "bridge-engineering-fundamentals",
+    "title": "Bridge Engineering Fundamentals",
+    "summary": "Core principles, structural behavior, classification, load transfer mechanisms, and performance requirements of bridge structures.",
+    "category": "Bridge Engineering",
+    "tags": [
+      "Bridge Engineering",
+      "Fundamentals",
+      "Load Paths",
+      "Structural Systems"
+    ]
+  },
+  "bridge-structural-systems": {
+    "id": "bridge-structural-systems",
+    "title": "Bridge Structural Systems",
+    "summary": "Structural forms including beam, box girder, truss, arch, cable-stayed, suspension, extradosed, and segmental bridges.",
+    "category": "Bridge Engineering",
+    "tags": [
+      "Structural Systems",
+      "Bridge Types",
+      "Cable-Stayed",
+      "Box Girder"
+    ]
+  },
+  "bridge-load-mechanisms": {
+    "id": "bridge-load-mechanisms",
+    "title": "Bridge Load Mechanisms & Analysis",
+    "summary": "Dead loads, vehicle live loads, impact, wind, thermal, seismic, braking, fatigue, and load combinations for bridges.",
+    "category": "Bridge Analysis",
+    "tags": [
+      "Bridge Loads",
+      "Live Load",
+      "Wind Load",
+      "AASHTO LRFD"
+    ]
+  },
+  "prestressed-concrete-bridges": {
+    "id": "prestressed-concrete-bridges",
+    "title": "Prestressed Concrete Bridges",
+    "summary": "Design and behavior of pre-tensioned and post-tensioned concrete bridge girders and segmental decks.",
+    "category": "Bridge Design",
+    "tags": [
+      "Prestressed Concrete",
+      "Post-Tensioning",
+      "Girders",
+      "Segmental"
+    ]
+  },
+  "steel-composite-bridges": {
+    "id": "steel-composite-bridges",
+    "title": "Steel & Composite Bridges",
+    "summary": "Design of structural steel girders, composite concrete decks, diaphragms, and steel fatigue connections.",
+    "category": "Bridge Design",
+    "tags": [
+      "Steel Bridges",
+      "Composite Action",
+      "Plate Girders",
+      "Fatigue"
+    ]
+  },
+  "bridge-substructure-foundations": {
+    "id": "bridge-substructure-foundations",
+    "title": "Bridge Substructure & Foundations",
+    "summary": "Design of piers, abutments, pile caps, deep pile foundations, well caissons, and soil-structure interaction.",
+    "category": "Bridge Substructure",
+    "tags": [
+      "Piers",
+      "Abutments",
+      "Pile Foundations",
+      "Caissons",
+      "Scour"
+    ]
+  },
+  "bridge-bearings-expansion-joints": {
+    "id": "bridge-bearings-expansion-joints",
+    "title": "Bridge Bearings & Expansion Joints",
+    "summary": "Kinematics, design, and selection of elastomeric, pot, spherical bearings, and modular expansion joints.",
+    "category": "Bridge Components",
+    "tags": [
+      "Bearings",
+      "Pot Bearings",
+      "Expansion Joints",
+      "Kinematics"
+    ]
+  },
+  "bridge-aerodynamics-wind-engineering": {
+    "id": "bridge-aerodynamics-wind-engineering",
+    "title": "Bridge Aerodynamics & Wind Engineering",
+    "summary": "Aerodynamic stability, vortex shedding, flutter, buffeting, and wind tunnel testing for long-span bridges.",
+    "category": "Bridge Analysis",
+    "tags": [
+      "Aerodynamics",
+      "Flutter",
+      "Wind Tunnel",
+      "Long-Span Bridges"
+    ]
+  },
+  "bridge-construction-methods": {
+    "id": "bridge-construction-methods",
+    "title": "Bridge Construction Methods & Engineering",
+    "summary": "Construction techniques including cast-in-situ, precast segmental, incremental launching, and balanced cantilever erection.",
+    "category": "Bridge Construction",
+    "tags": [
+      "Construction Methods",
+      "Balanced Cantilever",
+      "Incremental Launching",
+      "Falsework"
+    ]
+  },
+  "bridge-inspection-condition-assessment": {
+    "id": "bridge-inspection-condition-assessment",
+    "title": "Bridge Inspection & Condition Assessment",
+    "summary": "Inspection protocols, defect classification, non-destructive testing, drone reality capture, and condition rating systems.",
+    "category": "Bridge Maintenance",
+    "tags": [
+      "Inspection",
+      "Condition Rating",
+      "NDT",
+      "Defect Mapping"
+    ]
+  },
+  "bridge-maintenance-rehabilitation": {
+    "id": "bridge-maintenance-rehabilitation",
+    "title": "Bridge Maintenance & Structural Rehabilitation",
+    "summary": "Repair methods, concrete/steel strengthening, carbon FRP jacketing, bearing/joint replacement, and load rating.",
+    "category": "Bridge Maintenance",
+    "tags": [
+      "Maintenance",
+      "Rehabilitation",
+      "FRP Strengthening",
+      "Load Rating"
+    ]
+  },
+  "bridge-seismic-design-isolation": {
+    "id": "bridge-seismic-design-isolation",
+    "title": "Bridge Seismic Engineering & Isolation",
+    "summary": "Ductile seismic design, dynamic analysis, seismic isolation bearings, dampers, and retrofit strategies.",
+    "category": "Bridge Seismic",
+    "tags": [
+      "Seismic Design",
+      "Seismic Isolation",
+      "Dampers",
+      "Ductility"
+    ]
+  },
+  "structural-health-monitoring-bridges": {
+    "id": "structural-health-monitoring-bridges",
+    "title": "Structural Health Monitoring (SHM) for Bridges",
+    "summary": "SHM systems, sensor technology, strain/vibration monitoring, GNSS displacement, and digital twins.",
+    "category": "Digital Engineering",
+    "tags": [
+      "SHM",
+      "Sensor Networks",
+      "Vibration Monitoring",
+      "Digital Twin"
+    ]
+  },
+  "bridge-asset-management": {
+    "id": "bridge-asset-management",
+    "title": "Bridge Asset Management & Resilience",
+    "summary": "Bridge Management Systems (BMS), life-cycle cost analysis, risk-based inspection, and climate resilience planning.",
+    "category": "Bridge Management",
+    "tags": [
+      "Asset Management",
+      "BMS",
+      "LCCA",
+      "Resilience",
+      "Risk Inspection"
+    ]
+  },
+  "tunnel-engineering-fundamentals": {
+    "id": "tunnel-engineering-fundamentals",
+    "name": "Tunnel Engineering Principles & Design Philosophy",
+    "description": "Fundamental concepts of underground space usage, tunnel classification, structural behavior, and safety standards.",
+    "discipline": "Tunnel Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Tunnels",
+      "Underground Space",
+      "Civil Engineering"
+    ]
+  },
+  "tunnel-planning-feasibility-study": {
+    "id": "tunnel-planning-feasibility-study",
+    "name": "Tunnel Corridor Planning & Feasibility Analysis",
+    "description": "Methodologies for route alignment selection, portal location, constructability, environmental impact, and cost-benefit analysis.",
+    "discipline": "Tunnel Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Feasibility",
+      "Alignment",
+      "Planning"
+    ]
+  },
+  "tunnel-geotechnical-investigation": {
+    "id": "tunnel-geotechnical-investigation",
+    "name": "Geotechnical & Geological Site Investigation for Tunnels",
+    "description": "Borehole core logging, in-situ permeability/stress testing, geophysical profiling, and hydrogeological mapping for tunnels.",
+    "discipline": "Tunnel Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Site Investigation",
+      "Geology",
+      "Boreholes"
+    ]
+  },
+  "rock-mass-classification-systems": {
+    "id": "rock-mass-classification-systems",
+    "name": "Rock Mass Classification Systems (RMR, Q-system, GSI)",
+    "description": "Quantitative classification of jointed rock masses using Rock Mass Rating (RMR), Barton Q-system, and Geological Strength Index (GSI).",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "Rock Mechanics",
+      "RMR",
+      "Q-System",
+      "GSI"
+    ]
+  },
+  "tunnel-alignment-geometric-design": {
+    "id": "tunnel-alignment-geometric-design",
+    "name": "Tunnel Horizontal/Vertical Alignment & Clearance Design",
+    "description": "Geometric design of tunnel curves, gradients, vehicle dynamic envelopes, railway gauges, and portal transition zones.",
+    "discipline": "Tunnel Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Alignment",
+      "Clearance",
+      "Geometric Design"
+    ]
+  },
+  "conventional-natm-sem-tunnelling": {
+    "id": "conventional-natm-sem-tunnelling",
+    "name": "Conventional Tunnelling & Sequential Excavation Method (NATM/SEM)",
+    "description": "Principles of the New Austrian Tunnelling Method (NATM) and Sequential Excavation Method (SEM) using shotcrete and rock bolts.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "NATM",
+      "SEM",
+      "Conventional Tunnelling"
+    ]
+  },
+  "tbm-mechanized-tunnelling": {
+    "id": "tbm-mechanized-tunnelling",
+    "name": "Tunnel Boring Machine (TBM) Operations & Mechanized Tunnelling",
+    "description": "Mechanized shield excavation using Earth Pressure Balance (EPB), Slurry, Hard Rock, and Dual-mode TBMs.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "TBM",
+      "EPB",
+      "Slurry TBM",
+      "Mechanized Tunnelling"
+    ]
+  },
+  "drill-and-blast-tunnelling": {
+    "id": "drill-and-blast-tunnelling",
+    "name": "Drill & Blast Tunnelling Principles & Blast Design",
+    "description": "Rock excavation using drill patterns, explosive charge calculation, smooth blasting, presplitting, and vibration control.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "Drill and Blast",
+      "Explosives",
+      "Smooth Blasting"
+    ]
+  },
+  "cut-and-cover-immersed-tunnels": {
+    "id": "cut-and-cover-immersed-tunnels",
+    "name": "Cut-and-Cover & Immersed Tunnel Engineering",
+    "description": "Design and construction of shallow urban cut-and-cover box structures and underwater precast immersed tunnel elements.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "Cut and Cover",
+      "Immersed Tunnel",
+      "Retaining Walls"
+    ]
+  },
+  "tunnel-structural-lining-design": {
+    "id": "tunnel-structural-lining-design",
+    "name": "Tunnel Concrete & Segmental Lining Structural Design",
+    "description": "Structural design of primary shotcrete, secondary cast-in-place, and precast segmental ring linings under ground loads.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "Segmental Lining",
+      "Shotcrete",
+      "Structural Design"
+    ]
+  },
+  "tunnel-ground-support-stabilization": {
+    "id": "tunnel-ground-support-stabilization",
+    "name": "Ground Support, Rock Bolting & Shotcrete Engineering",
+    "description": "Selection and structural sizing of rock bolts, anchors, steel ribs, lattice girders, wire mesh, and forepoling umbrellas.",
+    "discipline": "Tunnel Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Rock Bolts",
+      "Shotcrete",
+      "Forepoling",
+      "Ground Support"
+    ]
+  },
+  "tunnel-waterproofing-drainage-systems": {
+    "id": "tunnel-waterproofing-drainage-systems",
+    "name": "Tunnel Waterproofing Membranes & Drainage Systems",
+    "description": "Hydrological design comparing tanked vs. drained tunnels, flexible sheet membranes, waterstops, invert channels, and sumps.",
+    "discipline": "Tunnel Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Waterproofing",
+      "Membranes",
+      "Drainage",
+      "Sump Systems"
+    ]
+  },
+  "tunnel-ventilation-fire-life-safety": {
+    "id": "tunnel-ventilation-fire-life-safety",
+    "name": "Tunnel Ventilation, Smoke Control & Fire Life Safety",
+    "description": "Aerodynamic and thermodynamic design of longitudinal/transverse jet fan ventilation, smoke extraction, and evacuation cross-passages.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "Ventilation",
+      "Jet Fans",
+      "Smoke Control",
+      "NFPA 502"
+    ]
+  },
+  "tunnel-construction-project-management": {
+    "id": "tunnel-construction-project-management",
+    "name": "Tunnel Construction Logistics, Costing & Safety Management",
+    "description": "Underground construction planning, muck spoil haulage, TBM assembly/disassembly, HSE, QA/QC, and Geotechnical Baseline Reports (GBR).",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "Construction Management",
+      "Logistics",
+      "GBR",
+      "HSE"
+    ]
+  },
+  "tunnel-instrumentation-monitoring": {
+    "id": "tunnel-instrumentation-monitoring",
+    "name": "Tunnel Deformation Instrumentation & Convergence Monitoring",
+    "description": "Measurement of crown settlement, wall convergence, ground movements, piezometric pressures, and real-time telemetry.",
+    "discipline": "Tunnel Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Instrumentation",
+      "Convergence",
+      "Monitoring",
+      "SHM"
+    ]
+  },
+  "tunnel-inspection-rehabilitation-maintenance": {
+    "id": "tunnel-inspection-rehabilitation-maintenance",
+    "name": "Tunnel Structural Inspection & Rehabilitation Engineering",
+    "description": "Routine condition grading, GPR scanning, cracking/leakage mapping, chemical grouting, and FRP lining reinforcement.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "Inspection",
+      "Rehabilitation",
+      "Grouting",
+      "Condition Assessment"
+    ]
+  },
+  "tunnel-bim-digital-twin": {
+    "id": "tunnel-bim-digital-twin",
+    "name": "Tunnel BIM, 3D Point Cloud Scan & Digital Twin Engineering",
+    "description": "Parametric 3D tunnel alignment modeling, LiDAR point cloud processing, 4D construction simulation, and digital twin management.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "BIM",
+      "Digital Twin",
+      "LiDAR",
+      "4D Simulation"
+    ]
+  },
+  "seismic-resilient-tunnel-design": {
+    "id": "seismic-resilient-tunnel-design",
+    "name": "Seismic Resilience & Extreme Event Tunnel Design",
+    "description": "Analysis of seismic racking/ovaling deformation, soil-structure interaction during earthquakes, and flood defense barriers.",
+    "discipline": "Tunnel Engineering",
+    "level": "advanced",
+    "tags": [
+      "Seismic Design",
+      "Earthquake",
+      "Resilience",
+      "Soil-Structure Interaction"
+    ]
+  },
+  "urban-drainage-hydraulics": {
+    "id": "urban-drainage-hydraulics",
+    "title": "Urban Drainage Hydraulics & Hydrology",
+    "description": "Hydrologic modeling of urban catchment runoff, hydraulic design of stormwater channels, conduits, detention ponds, and inlets."
+  },
+  "municipal-water-distribution-design": {
+    "id": "municipal-water-distribution-design",
+    "title": "Municipal Water Distribution Design",
+    "description": "Pressure zone distribution, pipe network hydraulics, district metering areas (DMA), pump stations, and storage reservoirs."
+  },
+  "sewerage-system-design": {
+    "id": "sewerage-system-design",
+    "title": "Sewerage System Engineering",
+    "description": "Gravity sewer design, self-cleansing velocity hydraulics, sewage lift stations, force mains, and decentralized wastewater systems."
+  },
+  "solid-waste-management-engineering": {
+    "id": "solid-waste-management-engineering",
+    "title": "Solid Waste Infrastructure Engineering",
+    "description": "Routing optimization, waste transfer stations, materials recovery facilities (MRF), sanitary landfill containment, and waste-to-energy systems."
+  },
+  "urban-flood-risk-modelling": {
+    "id": "urban-flood-risk-modelling",
+    "title": "Urban Flood Risk & Resilience Modelling",
+    "description": "Hydrodynamic inundation modeling, urban flood mitigation barriers, stormwater detention, and climate resilience strategies."
+  },
+  "smart-city-iot-infrastructure": {
+    "id": "smart-city-iot-infrastructure",
+    "title": "Smart City IoT & Sensor Infrastructure",
+    "description": "IoT sensor deployment, smart water/power metering, automated traffic sensing, smart street lighting, and connected municipal platforms."
+  },
+  "municipal-gis-spatial-analysis": {
+    "id": "municipal-gis-spatial-analysis",
+    "title": "Municipal GIS & Spatial Analysis",
+    "description": "Geospatial database modeling, sub-surface utility mapping, urban land-use overlay, and spatial asset management."
+  },
+  "trenchless-infrastructure-rehabilitation": {
+    "id": "trenchless-infrastructure-rehabilitation",
+    "title": "Trenchless Infrastructure Rehabilitation",
+    "description": "Cured-in-place pipe (CIPP), horizontal directional drilling (HDD), pipe bursting, microtunneling, and trenchless pipe replacement."
+  },
+  "urban-streetscape-public-realm": {
+    "id": "urban-streetscape-public-realm",
+    "title": "Urban Public Realm & Streetscape Design",
+    "description": "Pedestrian plazas, accessible sidewalks, universal design, street greening, barrier-free access, and urban public realm engineering."
+  },
+  "infrastructure-digital-twin-bim-gis": {
+    "id": "infrastructure-digital-twin-bim-gis",
+    "title": "Infrastructure Digital Twin & BIM-GIS",
+    "description": "3D urban digital twins, BIM-GIS integration, real-time IoT monitoring, predictive maintenance analytics, and city-scale data modeling."
+  },
+  "capital-improvement-planning-economics": {
+    "id": "capital-improvement-planning-economics",
+    "title": "Capital Improvement Planning & Municipal Economics",
+    "description": "Infrastructure investment prioritization, capital budgeting, lifecycle economics, tariff structures, and municipal finance."
+  },
+  "sustainable-green-infrastructure": {
+    "id": "sustainable-green-infrastructure",
+    "title": "Climate-Resilient & Green Infrastructure",
+    "description": "Low-impact development (LID), sponge city concepts, nature-based solutions, green roofs, permeable pavements, and climate adaptation."
+  },
+  "infrastructure-master-planning": {
+    "id": "infrastructure-master-planning",
+    "name": "Infrastructure Master Planning",
+    "description": "Principles of national and regional infrastructure master planning, capacity forecasting, and multi-sector growth coordination.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Planning",
+      "Infrastructure",
+      "Master Plan"
+    ]
+  },
+  "infrastructure-design-principles": {
+    "id": "infrastructure-design-principles",
+    "name": "Infrastructure Design Principles",
+    "description": "Engineering design criteria, technical standards, interdisciplinary design coordination, and constructability for civil infrastructure.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Design",
+      "Infrastructure",
+      "Engineering Criteria"
+    ]
+  },
+  "multidisciplinary-design-coordination": {
+    "id": "multidisciplinary-design-coordination",
+    "name": "Multidisciplinary Design Coordination",
+    "description": "Cross-disciplinary design integration across civil, structural, MEP, geotechnical, and environmental engineering.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Multidisciplinary",
+      "Coordination",
+      "BIM"
+    ]
+  },
+  "infrastructure-systems-architecture": {
+    "id": "infrastructure-systems-architecture",
+    "name": "Infrastructure Systems Architecture",
+    "description": "Systems engineering principles applied to complex civil infrastructure systems, functional decomposition, and interface requirements.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Systems Engineering",
+      "Architecture",
+      "Interfaces"
+    ]
+  },
+  "infrastructure-dependency-interoperability": {
+    "id": "infrastructure-dependency-interoperability",
+    "name": "Infrastructure Dependency & Interoperability",
+    "description": "Evaluating physical and digital interdependencies across power, transport, water, and telecom infrastructure networks.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Dependencies",
+      "Interoperability",
+      "Network Dynamics"
+    ]
+  },
+  "transportation-infrastructure-planning": {
+    "id": "transportation-infrastructure-planning",
+    "name": "Transportation Infrastructure Planning",
+    "description": "Planning and engineering multi-modal transport networks, corridor selection, alignment optimization, and traffic demand forecasting.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Transportation",
+      "Corridor Planning",
+      "Highways"
+    ]
+  },
+  "open-channel-pipe-flow-hydraulics": {
+    "id": "open-channel-pipe-flow-hydraulics",
+    "name": "Open Channel & Pipe Flow Hydraulics",
+    "description": "Fundamental fluid mechanics for gravity and pressurized water transmission systems, open channel flow, and surge analysis.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Hydraulics",
+      "Pipe Flow",
+      "Open Channel"
+    ]
+  },
+  "infrastructure-construction-management": {
+    "id": "infrastructure-construction-management",
+    "name": "Infrastructure Construction Management",
+    "description": "Planning, executing, and controlling heavy civil infrastructure construction projects, QA/QC, and contractor management.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Construction Management",
+      "Execution",
+      "QA/QC"
+    ]
+  },
+  "heavy-civil-construction-methods": {
+    "id": "heavy-civil-construction-methods",
+    "name": "Heavy Civil Construction Methods",
+    "description": "Equipment logistics, temporary works design, deep excavation shoring, earthmoving, and heavy structural erection methods.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Heavy Civil",
+      "Construction Methods",
+      "Temporary Works"
+    ]
+  },
+  "infrastructure-rehabilitation-techniques": {
+    "id": "infrastructure-rehabilitation-techniques",
+    "name": "Infrastructure Rehabilitation Techniques",
+    "description": "Repair, retrofitting, structural strengthening, trenchless lining, and extension of service life for aging civil infrastructure.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Rehabilitation",
+      "Retrofit",
+      "Repair"
+    ]
+  },
+  "infrastructure-inspection-condition-assessment": {
+    "id": "infrastructure-inspection-condition-assessment",
+    "name": "Infrastructure Inspection & Condition Assessment",
+    "description": "Methods for visual, non-destructive, and diagnostic condition evaluation of civil infrastructure assets.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Inspection",
+      "Condition Rating",
+      "NDT"
+    ]
+  },
+  "structural-health-monitoring-principles": {
+    "id": "structural-health-monitoring-principles",
+    "name": "Structural Health Monitoring Principles",
+    "description": "Principles of continuous telemetry, sensor instrumentation, modal parameter tracking, and damage detection in structures.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "SHM",
+      "Sensors",
+      "Monitoring"
+    ]
+  },
+  "infrastructure-resilience-climate-adaptation": {
+    "id": "infrastructure-resilience-climate-adaptation",
+    "name": "Infrastructure Resilience & Climate Adaptation",
+    "description": "Designing infrastructure systems to withstand extreme weather, sea-level rise, earthquakes, and climate change shocks.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Resilience",
+      "Climate Adaptation",
+      "Disaster Mitigation"
+    ]
+  },
+  "lifecycle-environmental-impact-assessment": {
+    "id": "lifecycle-environmental-impact-assessment",
+    "name": "Lifecycle Environmental Impact Assessment",
+    "description": "Quantifying embodied carbon, resource depletion, and environmental impacts across the full lifecycle of infrastructure.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "LCA",
+      "Sustainability",
+      "Embodied Carbon"
+    ]
+  },
+  "infrastructure-bim-cde-standards": {
+    "id": "infrastructure-bim-cde-standards",
+    "name": "Infrastructure BIM & CDE Standards",
+    "description": "ISO 19650 standards for information management, Common Data Environment (CDE) architecture, and 3D/4D/5D infrastructure BIM.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "BIM",
+      "ISO 19650",
+      "CDE"
+    ]
+  },
+  "infrastructure-lifecycle-economics": {
+    "id": "infrastructure-lifecycle-economics",
+    "name": "Infrastructure Lifecycle Economics",
+    "description": "Economic evaluation, lifecycle cost analysis (LCCA), capital improvement planning, and tariff/revenue structuring.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Economics",
+      "LCCA",
+      "Capital Planning"
+    ]
+  },
+  "pavement-engineering-fundamentals": {
+    "title": "Pavement Engineering Fundamentals",
+    "summary": "Core principles of pavement classification, functional and structural requirements, pavement component layers, life-cycle performance, and stress distribution mechanisms.",
+    "category": "Civil Engineering"
+  },
+  "flexible-pavement-mechanics": {
+    "title": "Flexible Pavement Structural Behavior & Mechanics",
+    "summary": "Multilayer elastic theory, surface asphalt deformation, granular base load spreading, subgrade strain responses, and flexible pavement distress initiation.",
+    "category": "Civil Engineering"
+  },
+  "rigid-pavement-mechanics": {
+    "title": "Rigid Pavement Slab Mechanics & Jointing",
+    "summary": "Concrete slab Westergaard stress analysis, temperature curling and warping stresses, joint load transfer efficiency, dowel/tie bar action, and Continuously Reinforced Concrete Pavements (CRCP).",
+    "category": "Civil Engineering"
+  },
+  "composite-pavement-systems": {
+    "title": "Composite Pavement Systems & Rehabilitation Interfaces",
+    "summary": "Interlayer stress transfer, reflection cracking mitigation, asphalt overlay over concrete (AC/PCC), unbonded/bonded concrete overlays, and joint matching mechanics.",
+    "category": "Civil Engineering"
+  },
+  "pavement-materials-characterization": {
+    "title": "Pavement Materials Characterization & Testing",
+    "summary": "Resilient modulus (Mr), dynamic modulus (|E*|), indirect tensile strength, flexural strength of pavement concrete, and subgrade soil compaction characteristics.",
+    "category": "Civil Engineering"
+  },
+  "asphalt-mixture-volumetrics-design": {
+    "title": "Asphalt Mixture Volumetric Design & Superpave Technology",
+    "summary": "Superpave binder grading (PG), aggregate consensus properties, VMA/VFA volumetric balance, gyratory compaction, moisture susceptibility (TSR), and rutting resistance.",
+    "category": "Civil Engineering"
+  },
+  "pavement-structural-design-principles": {
+    "title": "Pavement Structural Design Principles & Reliability",
+    "summary": "Structural layer coefficient methodology, design serviceability index (PSI), reliability factors, subgrade support characterization, and structural number (SN) determination.",
+    "category": "Civil Engineering"
+  },
+  "mechanistic-empirical-pavement-analysis": {
+    "title": "Mechanistic-Empirical Pavement Analysis & Damage Modeling",
+    "summary": "Mechanistic strain computations at critical layer interfaces, incremental damage accumulation, transfer functions for fatigue cracking, rutting, thermal cracking, and faulting.",
+    "category": "Civil Engineering"
+  },
+  "pavement-traffic-axle-loading-analysis": {
+    "title": "Pavement Traffic Loading & Axle Spectra Analysis",
+    "summary": "Equivalent Single Axle Load (ESAL) factors, weigh-in-motion (WIM) data processing, axle load spectra distributions, truck traffic growth projections, and directional distribution.",
+    "category": "Civil Engineering"
+  },
+  "pavement-subgrade-geotechnics": {
+    "title": "Pavement Subgrade Geotechnics & Soil Improvement",
+    "summary": "California Bearing Ratio (CBR) testing, resilient modulus estimation, expansive subgrade stabilization (lime, cement, fly ash), geosynthetic subgrade reinforcement, and frost heave.",
+    "category": "Civil Engineering"
+  },
+  "pavement-subsurface-drainage-hydraulics": {
+    "title": "Pavement Subsurface Drainage & Hydraulic Design",
+    "summary": "Permeable base layers, edge drain networks, groundwater table control, pavement infiltration estimation, geotextile filter design, and moisture-induced damage prevention.",
+    "category": "Civil Engineering"
+  },
+  "pavement-construction-paving-technology": {
+    "title": "Pavement Construction & Paving Equipment Technology",
+    "summary": "Subgrade preparation, aggregate base placement, hot mix asphalt (HMA) laydown and compaction, slipform concrete paving, joint sawing, and thermal imaging during paving.",
+    "category": "Civil Engineering"
+  },
+  "pavement-quality-control-quality-assurance": {
+    "title": "Pavement Construction QA/QC & Material Acceptance",
+    "summary": "Nuclear density gauge and non-nuclear density testing, asphalt core extraction, concrete cylinder testing, International Roughness Index (IRI) smoothness acceptance, and pay adjustment factors.",
+    "category": "Civil Engineering"
+  },
+  "pavement-condition-distress-evaluation": {
+    "title": "Pavement Distress Identification & Condition Surveying",
+    "summary": "Pavement Condition Index (PCI) rating methodology (ASTM D6433), distress classification (cracking, deformation, surface defects), automated 3D laser profiling, and Falling Weight Deflectometer (FWD) structural testing.",
+    "category": "Civil Engineering"
+  },
+  "pavement-maintenance-rehabilitation-strategies": {
+    "title": "Pavement Maintenance & Rehabilitation Decision Frameworks",
+    "summary": "Preventive maintenance timing, fog seals, chip seals, micro-surfacing, crack sealing, partial/full-depth patching, structural asphalt overlays, and mill-and-fill strategies.",
+    "category": "Civil Engineering"
+  },
+  "pavement-distress-mechanisms-failure-analysis": {
+    "title": "Pavement Distress Mechanisms & Failure Diagnostics",
+    "summary": "Bottom-up and top-down fatigue cracking, moisture stripping, plastic flow rutting, low-temperature thermal cracking, alkali-silica reaction (ASR) in concrete, joint faulting, and pumping.",
+    "category": "Civil Engineering"
+  },
+  "overlay-design-pavement-strengthening": {
+    "title": "Overlay Design & Pavement Structural Rehabilitation",
+    "summary": "Nondestructive structural testing (FWD backcalculation), effective pavement thickness method, asphalt overlay design over flexible/rigid pavements, unbonded concrete overlay design, and stress-absorbing membrane interlayers (SAMI).",
+    "category": "Civil Engineering"
+  },
+  "pavement-management-systems-pms": {
+    "title": "Pavement Management Systems (PMS) & Asset Optimization",
+    "summary": "Network-level PMS database architecture, HDM-4 deterioration modeling, multi-year budget prioritization, remaining service life (RSL) estimation, and lifecycle cost analysis (LCCA).",
+    "category": "Civil Engineering"
+  },
+  "sustainable-resilient-pavements": {
+    "title": "Sustainable Pavements & Climate Resilience",
+    "summary": "Reclaimed Asphalt Pavement (RAP) recycling, Warm Mix Asphalt (WMA), cold in-place recycling (CIR), permeable friction courses, pavement carbon footprint LCA, and flood-resilient pavement design.",
+    "category": "Civil Engineering"
+  },
+  "smart-pavements-digital-twins": {
+    "title": "Smart Pavement Infrastructure & Digital Twins",
+    "summary": "Embedded strain sensors and weigh-in-motion sensors, computer vision AI distress recognition, GIS-integrated pavement digital twins, acoustic health monitoring, and predictive maintenance algorithms.",
+    "category": "Civil Engineering"
+  },
+  "earthquake-hazard-fundamentals": {
+    "id": "earthquake-hazard-fundamentals",
+    "name": "Earthquake Hazard Fundamentals",
+    "description": "Fundamental principles of earthquake mechanics, faulting, ground shaking hazards, and exposure assessment.",
+    "discipline": "Civil Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Earthquake Engineering",
+      "Seismic Hazard",
+      "Geology"
+    ]
+  },
+  "seismology": {
+    "id": "seismology",
+    "name": "Seismology & Plate Tectonics",
+    "description": "Study of earthquake generation sources, fault rupture dynamics, plate boundary movement, and seismic wave mechanics.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Seismology",
+      "Fault Mechanics",
+      "Geophysics"
+    ]
+  },
+  "seismic-wave-propagation": {
+    "id": "seismic-wave-propagation",
+    "name": "Seismic Wave Propagation",
+    "description": "Physics of P-waves, S-waves, Rayleigh waves, and Love waves propagating through geological strata.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Seismic Waves",
+      "Geophysics",
+      "Wave Mechanics"
+    ]
+  },
+  "seismic-hazard-analysis": {
+    "id": "seismic-hazard-analysis",
+    "name": "Seismic Hazard Analysis (PSHA & DSHA)",
+    "description": "Probabilistic and deterministic methods for evaluating ground shaking hazard parameters and recurrence intervals.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "PSHA",
+      "DSHA",
+      "Seismic Hazard"
+    ]
+  },
+  "seismic-risk-vulnerability": {
+    "id": "seismic-risk-vulnerability",
+    "name": "Seismic Risk & Structural Vulnerability",
+    "description": "Evaluation of building exposure, fragility curves, potential physical damage, economic loss, and casualty risk.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Seismic Risk",
+      "Fragility Curves",
+      "Loss Estimation"
+    ]
+  },
+  "ground-motion-mechanics": {
+    "id": "ground-motion-mechanics",
+    "name": "Ground Motion Mechanics & Characterization",
+    "description": "Analysis of peak ground acceleration (PGA), response spectra, frequency content, and strong motion duration.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Ground Motion",
+      "Response Spectrum",
+      "Accelerogram"
+    ]
+  },
+  "geotechnical-earthquake-engineering": {
+    "id": "geotechnical-earthquake-engineering",
+    "name": "Geotechnical Earthquake Engineering",
+    "description": "Dynamic response of soils, soil-structure interaction, slope stability, and ground failure during seismic events.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Geotechnical Engineering",
+      "Soil Dynamics",
+      "Liquefaction"
+    ]
+  },
+  "seismic-site-response": {
+    "id": "seismic-site-response",
+    "name": "Seismic Site Response & Amplification",
+    "description": "Local soil profile modification of bedrock earthquake motion through wave propagation and resonant soil layers.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Site Response",
+      "Soil Amplification",
+      "Vs30"
+    ]
+  },
+  "seismic-analysis": {
+    "id": "seismic-analysis",
+    "name": "Structural Seismic Analysis",
+    "description": "Methods for determining structural response to dynamic earthquake loads, including static, response spectrum, and time-history analysis.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Structural Analysis",
+      "Seismic Loads",
+      "Dynamics"
+    ]
+  },
+  "seismic-design": {
+    "id": "seismic-design",
+    "name": "Earthquake-Resistant Structural Design",
+    "description": "Principles of designing structures to safely withstand seismic forces through strength, stiffness, ductility, and redundancy.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Seismic Design",
+      "Ductility",
+      "Capacity Design"
+    ]
+  },
+  "capacity-design-principles": {
+    "id": "capacity-design-principles",
+    "name": "Capacity Design Philosophy",
+    "description": "Structural design approach ensuring controlled plastic hinge formation in designated ductile zones while preventing brittle failure mechanisms.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Capacity Design",
+      "Plastic Hinge",
+      "Ductility"
+    ]
+  },
+  "rc-seismic-design": {
+    "id": "rc-seismic-design",
+    "name": "Seismic Design of Reinforced Concrete",
+    "description": "Ductile detailing and proportioning of reinforced concrete moment frames, shear walls, and dual systems under seismic loads.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Reinforced Concrete",
+      "Seismic Design",
+      "ACI 318"
+    ]
+  },
+  "steel-seismic-design": {
+    "id": "steel-seismic-design",
+    "name": "Seismic Design of Steel Structures",
+    "description": "Design and detailing of steel moment frames, braced frames, and buckling-restrained systems for high seismic performance.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Steel Design",
+      "Braced Frames",
+      "AISC 341"
+    ]
+  },
+  "masonry-seismic-design": {
+    "id": "masonry-seismic-design",
+    "name": "Seismic Design of Masonry Structures",
+    "description": "Behavior and strengthening of unreinforced, reinforced, and confined masonry wall systems under earthquake loading.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Masonry Design",
+      "Confined Masonry",
+      "Seismic Design"
+    ]
+  },
+  "seismic-foundation-design": {
+    "id": "seismic-foundation-design",
+    "name": "Seismic Design of Foundations",
+    "description": "Geotechnical and structural design of shallow and deep foundations subject to dynamic earthquake overturning moments and shear forces.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Foundations",
+      "Piles",
+      "Seismic Design"
+    ]
+  },
+  "seismic-isolation-systems": {
+    "id": "seismic-isolation-systems",
+    "name": "Seismic Base Isolation Systems",
+    "description": "Decoupling superstructures from ground shaking using elastomeric rubber bearings and friction pendulum sliding isolators.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Base Isolation",
+      "Elastomeric Bearings",
+      "Damping"
+    ]
+  },
+  "structural-control-systems": {
+    "id": "structural-control-systems",
+    "name": "Structural Vibration Control Systems",
+    "description": "Passive, semi-active, and active dynamic control devices, including tuned mass dampers and viscous dampers for response attenuation.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Structural Control",
+      "Dampers",
+      "Vibration Control"
+    ]
+  },
+  "post-earthquake-assessment": {
+    "id": "post-earthquake-assessment",
+    "name": "Post-Earthquake Damage Assessment",
+    "description": "Inspection, safety tagging, residual capacity evaluation, and emergency shoring protocols for earthquake-damaged structures.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Damage Assessment",
+      "ATC-20",
+      "Safety Tagging"
+    ]
+  },
+  "performance-based-seismic-design": {
+    "id": "performance-based-seismic-design",
+    "name": "Performance-Based Seismic Design (PBSD)",
+    "description": "Explicit engineering methodology targeting specific performance states (Immediate Occupancy, Life Safety, Collapse Prevention) under defined earthquake hazards.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "PBSD",
+      "FEMA P-58",
+      "Target Performance"
+    ]
+  },
+  "seismic-resilience-infrastructure": {
+    "id": "seismic-resilience-infrastructure",
+    "name": "Seismic Infrastructure Resilience",
+    "description": "Strategies to minimize operational downtime, ensure rapid functional recovery, and safeguard critical municipal infrastructure networks after major quakes.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Resilience",
+      "Functional Recovery",
+      "Infrastructure"
+    ]
+  },
+  "disaster-risk-reduction-principles": {
+    "id": "disaster-risk-reduction-principles",
+    "name": "Disaster Risk Reduction (DRR) Principles",
+    "description": "Foundational principles of identifying, assessing, and reducing natural disaster risks through risk-informed civil engineering.",
+    "discipline": "Civil Engineering",
+    "level": "fundamental",
+    "tags": [
+      "DRR",
+      "Disaster Management",
+      "Risk Reduction"
+    ]
+  },
+  "multi-hazard-risk-assessment-knowledge": {
+    "id": "multi-hazard-risk-assessment-knowledge",
+    "name": "Multi-Hazard Risk & Cascading Disaster Mechanics",
+    "description": "Analysis of overlapping hazards, compound risk scenarios, and secondary domino effects across interconnected physical systems.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Multi-Hazard",
+      "Cascading Risk",
+      "Risk Assessment"
+    ]
+  },
+  "flood-risk-management-knowledge": {
+    "id": "flood-risk-management-knowledge",
+    "name": "Flood Risk Management & Hydraulic Hazard Mitigation",
+    "description": "Mechanics of riverine, pluvial, and surge flooding, flood hazard modeling, structural defenses, and non-structural flood plain management.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Flood Risk",
+      "Hydraulic Hazards",
+      "Flood Mitigation"
+    ]
+  },
+  "cyclone-storm-surge-resilience": {
+    "id": "cyclone-storm-surge-resilience",
+    "name": "Cyclone Mechanics & Storm Surge Defense",
+    "description": "Meteorological hydrodynamic forces, coastal storm surges, wind loads, surge barrier engineering, and cyclone shelter infrastructure.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Cyclone",
+      "Storm Surge",
+      "Coastal Defense"
+    ]
+  },
+  "climate-change-adaptation-principles": {
+    "id": "climate-change-adaptation-principles",
+    "name": "Climate Change Adaptation & Impact Projection",
+    "description": "Downscaling climate projection models, sea-level rise forecasting, temperature extreme trends, and adaptive civil infrastructure design.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Climate Change",
+      "Adaptation",
+      "Climate Projections"
+    ]
+  },
+  "critical-infrastructure-resilience-knowledge": {
+    "id": "critical-infrastructure-resilience-knowledge",
+    "name": "Critical Infrastructure Resilience & System Interdependencies",
+    "description": "Network robustness, vulnerability cascading pathways, functional service continuity, and emergency redundancy across essential lifelines.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Critical Infrastructure",
+      "Resilience",
+      "Interdependency"
+    ]
+  },
+  "resilient-transport-network-systems": {
+    "id": "resilient-transport-network-systems",
+    "name": "Resilient Transport Network & Redundancy Design",
+    "description": "Hardening roads, bridges, railways, and ports against severe weather and geophysical hazards while maintaining emergency evacuation routes.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Transport Networks",
+      "Resilience",
+      "Evacuation Routes"
+    ]
+  },
+  "resilient-water-sanitation-systems": {
+    "id": "resilient-water-sanitation-systems",
+    "name": "Resilient Water Supply & Public Sanitation Systems",
+    "description": "Protecting potable water treatment plants, distribution pipelines, sewer networks, and pumping stations during extreme flood events.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Water Supply",
+      "Sanitation",
+      "Flood Resilience"
+    ]
+  },
+  "urban-disaster-resilience-knowledge": {
+    "id": "urban-disaster-resilience-knowledge",
+    "name": "Urban Disaster Vulnerability & Spatial Resilience",
+    "description": "Urban exposure analysis, high-density informal settlement risk, urban heat islands, flash flooding, and spatial emergency planning.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Urban Resilience",
+      "Spatial Planning",
+      "City Vulnerability"
+    ]
+  },
+  "community-infrastructure-resilience-knowledge": {
+    "id": "community-infrastructure-resilience-knowledge",
+    "name": "Community Resilience & Essential Facility Protection",
+    "description": "Siting, structural hardening, and operational continuity of emergency shelters, hospitals, schools, and civic centers during disasters.",
+    "discipline": "Civil Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Community Resilience",
+      "Public Facilities",
+      "Emergency Shelters"
+    ]
+  },
+  "extreme-event-structural-robustness": {
+    "id": "extreme-event-structural-robustness",
+    "name": "Structural Robustness & Extreme-Load Vulnerability",
+    "description": "Principles of preventing progressive collapse, resisting blast/tsunami/extreme wind loads, and maintaining key structural redundancy.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Structural Robustness",
+      "Extreme Loads",
+      "Progressive Collapse"
+    ]
+  },
+  "landslide-ground-hazard-mitigation": {
+    "id": "landslide-ground-hazard-mitigation",
+    "name": "Landslide Dynamics & Ground Failure Mitigation",
+    "description": "Mechanics of rainfall-induced landslides, mudflows, soil erosion, debris torrents, and engineered slope stabilization structures.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Landslides",
+      "Slope Stability",
+      "Ground Failure"
+    ]
+  },
+  "coastal-riverine-morphology-resilience": {
+    "id": "coastal-riverine-morphology-resilience",
+    "name": "Coastal & Riverine Morphology & Shoreline Defense",
+    "description": "Sediment transport mechanics, riverbank erosion dynamics, coastal retreat, revetments, groins, and nature-based shoreline stabilization.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Coastal Engineering",
+      "Riverbank Erosion",
+      "Shoreline Defense"
+    ]
+  },
+  "resilience-master-planning-knowledge": {
+    "id": "resilience-master-planning-knowledge",
+    "name": "Disaster-Resilient Master Planning & Capital Allocations",
+    "description": "Strategic integration of hazard exposure risk into municipal zoning laws, infrastructure master plans, and long-term capital investments.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Master Planning",
+      "Urban Governance",
+      "Capital Allocation"
+    ]
+  },
+  "emergency-infrastructure-logistics-knowledge": {
+    "id": "emergency-infrastructure-logistics-knowledge",
+    "name": "Emergency Infrastructure & Humanitarian Disaster Logistics",
+    "description": "Rapid deployment of modular bridges, temporary water purification units, field hospitals, emergency power, and emergency access logistics.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Emergency Infrastructure",
+      "Disaster Logistics",
+      "Rapid Deployment"
+    ]
+  },
+  "post-disaster-reconstruction-build-back-better": {
+    "id": "post-disaster-reconstruction-build-back-better",
+    "name": "Post-Disaster Recovery & Build-Back-Better Principles",
+    "description": "Frameworks for rapid structural damage inspection, residual capacity assessment, disaster loss mapping, and resilient reconstruction.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Build Back Better",
+      "Post-Disaster",
+      "Reconstruction"
+    ]
+  },
+  "disaster-geospatial-analytics-remote-sensing": {
+    "id": "disaster-geospatial-analytics-remote-sensing",
+    "name": "Disaster GIS, Remote Sensing & Hazard Exposure Mapping",
+    "description": "Satellite imagery analysis, SAR flood mapping, UAV damage scanning, spatial overlay modeling, and interactive hazard dashboards.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Disaster GIS",
+      "Remote Sensing",
+      "Exposure Mapping"
+    ]
+  },
+  "early-warning-iot-disaster-monitoring": {
+    "id": "early-warning-iot-disaster-monitoring",
+    "name": "Early Warning Systems, Hazard IoT & Sensor Dashboards",
+    "description": "Telemetry sensor networks, river water level gauges, weather radar alerts, automated siren triggers, and real-time decision support systems.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Early Warning",
+      "IoT Sensors",
+      "Real-Time Monitoring"
+    ]
+  },
+  "nature-based-solutions-green-infrastructure": {
+    "id": "nature-based-solutions-green-infrastructure",
+    "name": "Nature-Based Solutions & Ecosystem-Based Adaptation",
+    "description": "Engineered mangrove belts, wetland restoration, bioswales, retention basins, and hybrid gray-green hazard protection infrastructure.",
+    "discipline": "Civil Engineering",
+    "level": "core",
+    "tags": [
+      "Nature-Based Solutions",
+      "Green Infrastructure",
+      "Eco-Adaptation"
+    ]
+  },
+  "resilience-economics-loss-estimation": {
+    "id": "resilience-economics-loss-estimation",
+    "name": "Resilience Economics, Life-Cycle Costing & Loss Quantification",
+    "description": "Cost-benefit analysis of resilience investments, probabilistic direct/indirect economic loss calculation, and disaster risk insurance interfaces.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Resilience Economics",
+      "Loss Estimation",
+      "Cost-Benefit"
+    ]
+  },
+  "construction-engineering-principles-knowledge": {
+    "id": "construction-engineering-principles-knowledge",
+    "name": "Construction Engineering Principles & Methods",
+    "description": "Fundamental engineering principles governing construction operations, constructability, site technology, sequencing, and production systems.",
+    "discipline": "Civil Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Construction Engineering",
+      "Constructability",
+      "Production Systems"
+    ]
+  },
+  "project-controls-evm-knowledge": {
+    "id": "project-controls-evm-knowledge",
+    "name": "Project Controls & Earned Value Management (EVM)",
+    "description": "Performance measurement baselines, Earned Value metrics (CPI, SPI, EAC, VAC), trend forecasting, and executive project governance.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Project Controls",
+      "EVM",
+      "Earned Value",
+      "Cost Control"
+    ]
+  },
+  "quantity-surveying-knowledge": {
+    "id": "quantity-surveying-knowledge",
+    "name": "Quantity Surveying & Commercial Management",
+    "description": "Principles of construction measurement, Bill of Quantities (BOQ) preparation, valuation of interim certificates, variations, and final accounts.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Quantity Surveying",
+      "Measurement",
+      "BOQ",
+      "Interim Valuation"
+    ]
+  },
+  "construction-economics-knowledge": {
+    "id": "construction-economics-knowledge",
+    "name": "Construction Economics & Financial Feasibility",
+    "description": "Capital expenditure planning, project cash flow modeling, escalation indexing, contingency reserves, and lifecycle cost economics.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Economics",
+      "Cash Flow",
+      "Financial Feasibility",
+      "Escalation"
+    ]
+  },
+  "construction-procurement-systems-knowledge": {
+    "id": "construction-procurement-systems-knowledge",
+    "name": "Construction Procurement Systems & Tendering",
+    "description": "Procurement methods (Traditional, Design-Build, EPC, EPCM, IPD, PPP), tendering procedures, evaluation criteria, and contract packaging.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Procurement",
+      "Tendering",
+      "Design-Build",
+      "EPC",
+      "PPR"
+    ]
+  },
+  "fidic-contract-conditions-knowledge": {
+    "id": "fidic-contract-conditions-knowledge",
+    "name": "FIDIC Suite of Standard Construction Contracts",
+    "description": "Detailed clauses of FIDIC Red, Yellow, Silver, and Gold Books governing risk allocation, employer requirements, time for completion, and claims.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "FIDIC",
+      "Red Book",
+      "Yellow Book",
+      "Silver Book",
+      "International Contracts"
+    ]
+  },
+  "forensic-delay-analysis-knowledge": {
+    "id": "forensic-delay-analysis-knowledge",
+    "name": "Forensic Schedule Delay Analysis",
+    "description": "Delay analysis methodologies (Impacted As-Planned, Time Impact Analysis, As-Built vs As-Planned, Windows Analysis), concurrent delay, and pacing.",
+    "discipline": "Civil Engineering",
+    "level": "specialized",
+    "tags": [
+      "Delay Analysis",
+      "Forensic Scheduling",
+      "SCL Protocol",
+      "EOT Claims"
+    ]
+  },
+  "dispute-resolution-arbitration-knowledge": {
+    "id": "dispute-resolution-arbitration-knowledge",
+    "name": "Dispute Avoidance, Adjudication & Arbitration",
+    "description": "Multi-tier dispute resolution, Dispute Avoidance/Adjudication Boards (DAAB), mediation, statutory adjudication, and international commercial arbitration.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Dispute Resolution",
+      "Arbitration",
+      "DAAB",
+      "Mediation",
+      "CIArb"
+    ]
+  },
+  "quantitative-risk-analysis-knowledge": {
+    "id": "quantitative-risk-analysis-knowledge",
+    "name": "Quantitative Schedule & Cost Risk Modeling",
+    "description": "Monte Carlo probabilistic simulation, Latin Hypercube sampling, probability distributions, risk tornado charts, and confidence interval sizing.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Risk Modeling",
+      "Monte Carlo",
+      "Quantitative Risk",
+      "Contingency"
+    ]
+  },
+  "project-uncertainty-management-knowledge": {
+    "id": "project-uncertainty-management-knowledge",
+    "name": "Project Uncertainty & Strategic Risk Governance",
+    "description": "Systemic risk governance, risk registers, qualitative risk matrices, sensitivity analysis, and organizational risk tolerance strategies.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Risk Management",
+      "Risk Register",
+      "ISO 31000",
+      "Risk Governance"
+    ]
+  },
+  "materials-testing-standards-knowledge": {
+    "id": "materials-testing-standards-knowledge",
+    "name": "Construction Materials Quality Testing & Standards",
+    "description": "Laboratory and field test procedures for concrete, steel, aggregates, soils, asphalt, cementitious grout, and non-destructive testing (NDT).",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Materials Testing",
+      "QA/QC",
+      "ASTM",
+      "BS EN",
+      "Concrete Testing"
+    ]
+  },
+  "iso-9001-qms-knowledge": {
+    "id": "iso-9001-qms-knowledge",
+    "name": "Quality Management Systems (ISO 9001) in Construction",
+    "description": "Quality planning, standard operating procedures, non-conformance logging, internal auditing, and continual quality improvement.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "ISO 9001",
+      "QMS",
+      "Quality Management",
+      "Auditing"
+    ]
+  },
+  "occupational-safety-hazard-control-knowledge": {
+    "id": "occupational-safety-hazard-control-knowledge",
+    "name": "Construction Occupational Safety & Hazard Control",
+    "description": "Hierarchy of hazard control, fall protection, excavation collapse prevention, heavy lifting safety, scaffolding inspection, and electrical safety.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Site Safety",
+      "OSHA",
+      "HSE",
+      "Hazard Control",
+      "Fall Protection"
+    ]
+  },
+  "iso-45001-ohsms-knowledge": {
+    "id": "iso-45001-ohsms-knowledge",
+    "name": "Occupational Health and Safety Systems (ISO 45001)",
+    "description": "Structure of ISO 45001 safety management systems, safety leadership, emergency response planning, and incident root cause analysis.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "ISO 45001",
+      "OHSMS",
+      "Health & Safety",
+      "Safety Management"
+    ]
+  },
+  "temporary-works-design-knowledge": {
+    "id": "temporary-works-design-knowledge",
+    "name": "Temporary Works Design & Procedural Control",
+    "description": "Design codes, structural stability, loading criteria, and BS 5975 procedural control for temporary works, shoring, falsework, and working platforms.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Temporary Works",
+      "BS 5975",
+      "Falsework",
+      "Shoring",
+      "Structural Stability"
+    ]
+  },
+  "formwork-scaffolding-engineering-knowledge": {
+    "id": "formwork-scaffolding-engineering-knowledge",
+    "name": "Formwork & Scaffolding Engineering Systems",
+    "description": "Concrete lateral pressure calculations, formwork panel selection, modular scaffold capacity, climbing formwork, and stripping strength criteria.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Formwork",
+      "Scaffolding",
+      "Falsework",
+      "ACI 347",
+      "Modular Shoring"
+    ]
+  },
+  "construction-equipment-fleet-knowledge": {
+    "id": "construction-equipment-fleet-knowledge",
+    "name": "Heavy Construction Equipment & Fleet Optimization",
+    "description": "Equipment classification, payload matching, scraper/excavator/truck balancing, fleet telematics, and maintenance scheduling.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Equipment",
+      "Fleet Management",
+      "Machinery",
+      "Earthmoving"
+    ]
+  },
+  "heavy-machinery-cycle-time-economics": {
+    "id": "heavy-machinery-cycle-time-economics",
+    "name": "Machinery Cycle Times & Owning/Operating Economics",
+    "description": "Cycle time calculations, bucket fill factors, rolling resistance, grade resistance, depreciation, fuel consumption, and hourly operating costs.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Cycle Time",
+      "Equipment Economics",
+      "Production Rates",
+      "Cost per M3"
+    ]
+  },
+  "site-supervision-best-practices": {
+    "id": "site-supervision-best-practices",
+    "name": "Site Engineering Supervision & Field Coordination",
+    "description": "Daily site diary logging, method statement execution, contractor interface management, site inspection requests (RFI/SIR), and as-built markups.",
+    "discipline": "Civil Engineering",
+    "level": "fundamental",
+    "tags": [
+      "Site Supervision",
+      "Site Engineer",
+      "RFI",
+      "Daily Logs",
+      "Method Statements"
+    ]
+  },
+  "construction-logistics-supply-chain-knowledge": {
+    "id": "construction-logistics-supply-chain-knowledge",
+    "name": "Construction Site Logistics & Supply Chain Systems",
+    "description": "Site access traffic routing, off-site consolidation centers, laydown zone staging, crane hook-time booking, and material delivery sequencing.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Logistics",
+      "Supply Chain",
+      "Laydown",
+      "Site Access",
+      "JIT Delivery"
+    ]
+  },
+  "materials-management-inventory-knowledge": {
+    "id": "materials-management-inventory-knowledge",
+    "name": "Materials Management & Site Inventory Control",
+    "description": "Material procurement schedules, minimum-maximum reorder levels, warehouse storage conditions, inventory reconciliation, and wastage tracking.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Materials Management",
+      "Inventory",
+      "Warehousing",
+      "Waste Tracking"
+    ]
+  },
+  "manpower-planning-productivity-knowledge": {
+    "id": "manpower-planning-productivity-knowledge",
+    "name": "Construction Workforce Planning & Crew Productivity",
+    "description": "Trade gang sizing, labor productivity curves, learning curve effects, overtime productivity loss factors, and craft skill training on site.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Manpower Planning",
+      "Labor Productivity",
+      "Crew Sizing",
+      "Workforce"
+    ]
+  },
+  "building-construction-technology-knowledge": {
+    "id": "building-construction-technology-knowledge",
+    "name": "Building Construction Technology & Superstructures",
+    "description": "Superstructure construction sequencing, cast-in-place concrete, post-tensioned slabs, structural steel framing, precast facades, and waterproofing.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Building Construction",
+      "Superstructure",
+      "Concrete Framing",
+      "Steel Erection"
+    ]
+  },
+  "highrise-structural-construction-knowledge": {
+    "id": "highrise-structural-construction-knowledge",
+    "name": "Tall Building & High-Rise Construction Engineering",
+    "description": "Jump-form and self-climbing core wall systems, high-altitude concrete pumping, vertical transportation logistics, and wind/differential shortening.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "High-Rise",
+      "Tall Buildings",
+      "Self-Climbing Formwork",
+      "Core Walls"
+    ]
+  },
+  "mep-coordination-commissioning-knowledge": {
+    "id": "mep-coordination-commissioning-knowledge",
+    "name": "Building MEP Services Coordination & Commissioning",
+    "description": "HVAC, plumbing, electrical, and fire protection spatial clash resolution, plant room installation, testing, balancing, and integrated commissioning.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "MEP Coordination",
+      "HVAC",
+      "Plumbing",
+      "Testing & Commissioning"
+    ]
+  },
+  "construction-progress-measurement-knowledge": {
+    "id": "construction-progress-measurement-knowledge",
+    "name": "Physical Construction Progress Measurement",
+    "description": "Rules of credit, weighted milestone methods, physical percent complete determination, progress curves, and earned schedule analytics.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Progress Measurement",
+      "Rules of Credit",
+      "S-Curve",
+      "Percent Complete"
+    ]
+  },
+  "project-performance-kpi-knowledge": {
+    "id": "project-performance-kpi-knowledge",
+    "name": "Construction Performance Indicators & Reporting",
+    "description": "Development of site KPIs, dashboard analytics, manpower histogram tracking, equipment utilization metrics, and executive project status reporting.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "KPIs",
+      "Performance Metrics",
+      "Dashboards",
+      "Power BI",
+      "Reporting"
+    ]
+  },
+  "earned-schedule-analysis-knowledge": {
+    "id": "earned-schedule-analysis-knowledge",
+    "name": "Earned Schedule (ES) & Time-Based Performance Analytics",
+    "description": "Earned Schedule theory, Schedule Performance Index (SPI_t), time variance calculations, and completion date forecasting methodologies.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "Earned Schedule",
+      "ES",
+      "Schedule Forecasting",
+      "Time Variance"
+    ]
+  },
+  "sustainable-construction-green-building-knowledge": {
+    "id": "sustainable-construction-green-building-knowledge",
+    "name": "Sustainable Construction & Green Building Practices",
+    "description": "LEED/BREEAM construction credits, low-carbon materials, recycled aggregate deployment, dust and stormwater erosion prevention, and energy auditing.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Sustainability",
+      "Green Building",
+      "LEED",
+      "BREEAM",
+      "Low-Carbon"
+    ]
+  },
+  "construction-waste-circular-economy-knowledge": {
+    "id": "construction-waste-circular-economy-knowledge",
+    "name": "Construction Waste Minimization & Circular Site Practices",
+    "description": "Site waste management plans (SWMP), material segregation, recycling protocols, circular deconstruction, and landfill diversion auditing.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Waste Minimization",
+      "Circular Economy",
+      "SWMP",
+      "Recycling",
+      "Diversion"
+    ]
+  },
+  "climate-resilient-construction-knowledge": {
+    "id": "climate-resilient-construction-knowledge",
+    "name": "Climate-Resilient Construction & Extreme Weather Adaptation",
+    "description": "Construction adaptation for heavy monsoon flooding, extreme heat conditions, cyclone resilience during site assembly, and durable material specification.",
+    "discipline": "Civil Engineering",
+    "level": "intermediate",
+    "tags": [
+      "Climate Resilience",
+      "Monsoon Construction",
+      "Weather Adaptation",
+      "Durability"
+    ]
+  },
+  "modern-methods-of-construction-mmc-knowledge": {
+    "id": "modern-methods-of-construction-mmc-knowledge",
+    "name": "Modern Methods of Construction (MMC) & Off-Site Prefabrication",
+    "description": "Design for Manufacture and Assembly (DfMA), 2D panelized systems, 3D volumetric modular pods, and factory precast assembly lines.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "MMC",
+      "DfMA",
+      "Modular Construction",
+      "Prefabrication",
+      "Off-Site"
+    ]
+  },
+  "integrated-project-delivery-epc-knowledge": {
+    "id": "integrated-project-delivery-epc-knowledge",
+    "name": "Integrated Project Delivery (IPD) & EPC Contract Models",
+    "description": "Collaborative contracting models, multi-party agreements, shared risk-reward mechanisms, Target Cost Contracting (TCC), and EPC/Turnkey delivery.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "IPD",
+      "EPC",
+      "Turnkey",
+      "Target Cost",
+      "Collaborative Contracting"
+    ]
+  },
+  "vdc-construction-management-knowledge": {
+    "id": "vdc-construction-management-knowledge",
+    "name": "Virtual Design & Construction (VDC) Frameworks",
+    "description": "Integration of digital building information models, multi-disciplinary clash resolution, 4D simulation, and real-time field data capture.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "VDC",
+      "Virtual Design",
+      "BIM",
+      "Digital Construction",
+      "4D BIM"
+    ]
+  },
+  "4d-5d-bim-integration-knowledge": {
+    "id": "4d-5d-bim-integration-knowledge",
+    "name": "4D Time & 5D Cost BIM Integration Methodologies",
+    "description": "Linking 3D BIM geometry with Primavera/MS Project schedules (4D) and CostX/estimating databases (5D) for dynamic visual cost and progress modeling.",
+    "discipline": "Civil Engineering",
+    "level": "advanced",
+    "tags": [
+      "4D BIM",
+      "5D BIM",
+      "Synchro",
+      "Navisworks",
+      "Cost Integration"
+    ]
+  }
+}

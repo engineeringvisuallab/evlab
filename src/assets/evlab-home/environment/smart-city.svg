@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="city-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#38BDF8" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tower-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#3B0764"/>
+    </linearGradient>
+    <linearGradient id="tower-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#082F49"/>
+    </linearGradient>
+    <filter id="city-bloom">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="500" height="400" fill="#0A101D" rx="16"/>
+  <circle cx="250" cy="200" r="180" fill="url(#city-glow)"/>
+
+  <!-- Pedestal Foundation Base -->
+  <ellipse cx="250" cy="290" rx="190" ry="75" fill="#15132A" stroke="#8B5CF6" stroke-width="2"/>
+  <ellipse cx="250" cy="275" rx="160" ry="60" fill="#1E1B4B" stroke="#C084FC" stroke-width="1.5"/>
+
+  <!-- Central Spire Tower -->
+  <g transform="translate(225, 40)">
+    <polygon points="25,0 45,15 45,210 25,225 5,210 5,15" fill="url(#tower-purple)" stroke="#E9D5FF" stroke-width="1.5"/>
+    <polygon points="25,0 45,15 25,225" fill="#9333EA" opacity="0.6"/>
+    <line x1="25" y1="0" x2="25" y2="-25" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="25" cy="-25" r="4" fill="#00F0FF" filter="url(#city-bloom)"/>
+    <!-- Window Rows -->
+    <line x1="15" y1="60" x2="35" y2="60" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="2 3"/>
+    <line x1="15" y1="100" x2="35" y2="100" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="2 3"/>
+    <line x1="15" y1="140" x2="35" y2="140" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="2 3"/>
+    <line x1="15" y1="180" x2="35" y2="180" stroke="#00F0FF" stroke-width="2" stroke-dasharray="2 3"/>
+  </g>
+
+  <!-- Left Tower -->
+  <g transform="translate(140, 100)">
+    <polygon points="25,0 45,15 45,160 25,170 5,160 5,15" fill="url(#tower-cyan)" stroke="#38BDF8" stroke-width="1.2"/>
+    <polygon points="25,0 45,15 25,170" fill="#0284C7" opacity="0.6"/>
+    <line x1="25" y1="0" x2="25" y2="-15" stroke="#38BDF8" stroke-width="2"/>
+    <circle cx="25" cy="-15" r="3" fill="#38BDF8"/>
+  </g>
+
+  <!-- Right Tower -->
+  <g transform="translate(310, 110)">
+    <polygon points="25,0 45,15 45,150 25,160 5,150 5,15" fill="url(#tower-purple)" stroke="#C084FC" stroke-width="1.2"/>
+    <polygon points="25,0 45,15 25,160" fill="#7C3AED" opacity="0.6"/>
+    <line x1="25" y1="0" x2="25" y2="-15" stroke="#C084FC" stroke-width="2"/>
+    <circle cx="25" cy="-15" r="3" fill="#C084FC"/>
+  </g>
+
+  <!-- Stepped Building Blocks & Skybridges -->
+  <path d="M 185 160 L 225 160 L 225 170 L 185 170 Z" fill="#38BDF8" opacity="0.8" stroke="#00F0FF" stroke-width="1"/>
+  <path d="M 270 170 L 310 170 L 310 180 L 270 180 Z" fill="#C084FC" opacity="0.8" stroke="#A855F7" stroke-width="1"/>
+
+  <!-- Connected Smart Mobility Street Grid -->
+  <path d="M 80 270 Q 250 230 420 270" fill="none" stroke="#00F0FF" stroke-width="3" stroke-dasharray="6 4" filter="url(#city-bloom)"/>
+</svg>

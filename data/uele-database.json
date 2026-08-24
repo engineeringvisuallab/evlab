@@ -1,0 +1,211 @@
+{
+  "worlds": [
+    {
+      "id": "world-sherpur-master",
+      "name": "Sherpur Smart Country Master World",
+      "tagline": "Digital Twin Master Ecosystem",
+      "description": "Master regional boundary encompassing urban, rural, hydrological, and agricultural engineering zones.",
+      "status": "published",
+      "centerLat": 24.68,
+      "centerLng": 89.41,
+      "crs": "EPSG:4326",
+      "createdAt": "2026-08-13T08:12:30.538Z",
+      "updatedAt": "2026-08-13T08:12:30.539Z"
+    }
+  ],
+  "regions": [],
+  "zones": [],
+  "facilities": [],
+  "components": [],
+  "networks": [],
+  "gisLayers": [
+    {
+      "id": "shp-1786611870992-4ptoc",
+      "name": "Project Area Shapefile",
+      "category": "gis-digital-engineering",
+      "color": "#06b6d4",
+      "visible": true,
+      "type": "geojson",
+      "description": "Shapefile Layer (22 features) — Project Area Shapefile.zip",
+      "status": "published",
+      "style": {
+        "color": "#06b6d4",
+        "strokeWidth": 2,
+        "fillOpacity": 0.3,
+        "pointSize": 6,
+        "labelVisible": true,
+        "opacity": 1,
+        "minZoom": 1,
+        "maxZoom": 20
+      },
+      "featureCount": 22,
+      "updatedAt": "2026-08-13T09:04:34.209Z",
+      "createdAt": "2026-08-13T09:04:34.209Z"
+    }
+  ],
+  "models3D": [],
+  "auditLogs": [
+    {
+      "id": "audit-1786615465894-8dsn",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T10:04:25.894Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786615461837-0bgr",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T10:04:21.837Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 1/5"
+    },
+    {
+      "id": "audit-1786615457973-egtk",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T10:04:17.973Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786613193450-e5gw",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:26:33.450Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786613145267-kxok",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:25:45.267Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 1/5"
+    },
+    {
+      "id": "audit-1786612009175-2xrf",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:06:49.175Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786612006701-esf7",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:06:46.701Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786611884823-d5oj",
+      "action": "Logout",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:04:44.823Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Admin logged out."
+    },
+    {
+      "id": "audit-1786611874209-4g2a",
+      "action": "Created Entity",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:04:34.209Z",
+      "objectType": "gisLayer",
+      "objectId": "shp-1786611870992-4ptoc",
+      "details": "Saved gisLayer \"Project Area Shapefile\" with status [published]."
+    },
+    {
+      "id": "audit-1786611829459-gdaw",
+      "action": "Login Successful",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:03:49.459Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin]."
+    },
+    {
+      "id": "audit-1786611810470-40jk",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:03:30.470Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 3/5"
+    },
+    {
+      "id": "audit-1786611792164-wu22",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:03:12.164Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 2/5"
+    },
+    {
+      "id": "audit-1786611771857-v883",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T09:02:51.857Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 1/5"
+    },
+    {
+      "id": "audit-1786610396622-gt9a",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T08:39:56.622Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 2/5"
+    },
+    {
+      "id": "audit-1786610393608-3gxp",
+      "action": "Login Failed",
+      "userEmail": "EVL-ADMIN-001",
+      "timestamp": "2026-08-13T08:39:53.608Z",
+      "objectType": "Auth",
+      "objectId": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 1/5"
+    },
+    {
+      "id": "audit-1786608995500-60pi",
+      "action": "Admin Login",
+      "userEmail": "engineering.visual.lab@gmail.com",
+      "timestamp": "2026-08-13T08:16:35.500Z",
+      "objectType": "Auth",
+      "objectId": "Session",
+      "details": "Successfully authenticated via email OTP verification."
+    },
+    {
+      "id": "audit-1786608919776-t882",
+      "action": "Admin Login",
+      "userEmail": "engineering.visual.lab@gmail.com",
+      "timestamp": "2026-08-13T08:15:19.776Z",
+      "objectType": "Auth",
+      "objectId": "Session",
+      "details": "Successfully authenticated via email OTP verification."
+    },
+    {
+      "id": "log-1",
+      "action": "System Initialized",
+      "userEmail": "engineering.visual.lab@gmail.com",
+      "timestamp": "2026-08-13T08:12:30.539Z",
+      "objectType": "System",
+      "objectId": "world-sherpur-master",
+      "details": "Central EVLab Admin Panel & UELE Database initialized."
+    }
+  ]
+}

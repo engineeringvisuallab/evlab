@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <radialGradient id="disc-water-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="disc-water-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Glowing Pedestal Disk -->
+  <ellipse cx="80" cy="125" rx="60" ry="22" fill="#0A192F" stroke="#00F0FF" stroke-width="1.5"/>
+  <ellipse cx="80" cy="125" rx="60" ry="22" fill="url(#disc-water-glow)" opacity="0.8"/>
+  <ellipse cx="80" cy="120" rx="45" ry="16" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+
+  <!-- Miniature 3D Water Droplet & Clarifier Ring -->
+  <g transform="translate(45, 30)">
+    <!-- Clarifier Base Ring -->
+    <ellipse cx="35" cy="70" rx="32" ry="14" fill="#0369A1" stroke="#00F0FF" stroke-width="2"/>
+    <ellipse cx="35" cy="70" rx="12" ry="5" fill="#082F49" stroke="#38BDF8" stroke-width="1"/>
+    
+    <!-- Floating 3D Water Crystal Droplet -->
+    <path d="M 35 15 C 35 15 58 45 58 60 C 58 72 47 80 35 80 C 23 80 12 72 12 60 C 12 45 35 15 35 15 Z" fill="url(#disc-water-grad)" stroke="#00F0FF" stroke-width="2" filter="drop-shadow(0 0 8px #00F0FF)"/>
+    <path d="M 35 25 C 35 25 22 48 22 60 C 22 68 28 74 35 74" fill="none" stroke="#BAE6FD" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

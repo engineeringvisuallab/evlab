@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="mod-acad-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#00F0FF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="acad-bloom">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="320" height="200" fill="#0A101D" rx="12"/>
+  <circle cx="160" cy="100" r="100" fill="url(#mod-acad-glow)"/>
+
+  <!-- Stepped Academy Podium Base -->
+  <polygon points="60,165 160,135 260,165 160,190" fill="#09261E" stroke="#10B981" stroke-width="1.8"/>
+  <polygon points="90,145 160,125 230,145 160,165" fill="#0F3D32" stroke="#34D399" stroke-width="1.5"/>
+
+  <!-- 3D Mortarboard Cap / Engineering Academy Symbol -->
+  <g transform="translate(110, 50)">
+    <!-- Rhombus Cap Top -->
+    <polygon points="50,10 95,28 50,46 5,28" fill="#1E293B" stroke="#00F0FF" stroke-width="2" filter="url(#acad-bloom)"/>
+    <polygon points="50,15 88,30 50,42 12,30" fill="#047857" stroke="#34D399" stroke-width="1.2"/>
+    
+    <!-- Skull Cap Base -->
+    <path d="M 25 36 L 25 50 Q 50 65 75 50 L 75 36" fill="#064E3B" stroke="#10B981" stroke-width="1.5"/>
+    
+    <!-- Tassel Ribbon & Bobble -->
+    <path d="M 50 28 Q 75 30 85 45 L 85 62" fill="none" stroke="#FDE047" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="85" cy="64" r="3" fill="#FDE047" filter="url(#acad-bloom)"/>
+    <circle cx="50" cy="28" r="3" fill="#00F0FF"/>
+  </g>
+
+  <!-- Left Stack of Engineering Handbooks -->
+  <g transform="translate(45, 110)">
+    <polygon points="10,25 40,15 65,25 35,35" fill="#1E293B" stroke="#38BDF8" stroke-width="1.2"/>
+    <polygon points="10,25 35,35 35,42 10,32" fill="#0284C7" stroke="#38BDF8" stroke-width="1"/>
+    <polygon points="10,15 40,5 65,15 35,25" fill="#1E293B" stroke="#10B981" stroke-width="1.2"/>
+    <polygon points="10,15 35,25 35,32 10,22" fill="#047857" stroke="#10B981" stroke-width="1"/>
+  </g>
+
+  <!-- Right Floating Certificate Badge -->
+  <g transform="translate(230, 95)">
+    <circle cx="25" cy="25" r="20" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8" filter="url(#acad-bloom)"/>
+    <polygon points="25,12 28,20 37,20 30,25 33,34 25,29 17,34 20,25 13,20 22,20" fill="#FDE047"/>
+  </g>
+</svg>
