@@ -23,8 +23,8 @@ export function buildTrafficSystem(getElevationAt: (x: number, z: number) => num
   const tireMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.9 });
   const wheelHubMat = new THREE.MeshStandardMaterial({ color: 0xcbd5e1, metalness: 0.8 });
   const glassMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, roughness: 0.1, metalness: 0.9, transparent: true, opacity: 0.85 });
-  const headlightGlow = new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.2 });
-  const taillightGlow = new THREE.MeshStandardMaterial({ color: 0xef4444, emissive: 0xef4444, emissiveIntensity: 1.2 });
+  const headlightGlow = new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.6 });
+  const taillightGlow = new THREE.MeshStandardMaterial({ color: 0xef4444, emissive: 0xef4444, emissiveIntensity: 0.6 });
 
   // 1. Vehicle Builders
   const createLocalBus = (colorHex: number): { group: THREE.Group; wheels: THREE.Mesh[]; headlights: THREE.Mesh[] } => {
