@@ -8,6 +8,7 @@ import { UELEViewport } from '../components/uele/UELEViewport';
 import { UELEInspectorShell } from '../components/uele/UELEInspectorShell';
 import { UELELayersDrawer } from '../components/uele/UELELayersDrawer';
 import { UELEImportModal } from '../components/uele/UELEImportModal';
+import { navigate as goTo } from '../utils/router';
 import { Container } from '../components/shared/Container';
 import { Badge } from '../components/shared/Badge';
 import { Button } from '../components/shared/Button';
@@ -23,6 +24,7 @@ import {
   Upload,
   Database,
   ShieldCheck,
+  Gamepad2,
 } from 'lucide-react';
 
 interface UELEPageProps {
@@ -219,6 +221,15 @@ export const UELEPage: React.FC<UELEPageProps> = ({
             onClick={() => setIsImportModalOpen(true)}
           >
             Import GIS Data
+          </Button>
+
+          <Button
+            variant="emerald"
+            size="sm"
+            leftIcon={<Gamepad2 className="w-4 h-4" />}
+            onClick={() => goTo('/uele/play')}
+          >
+            Play UELE — The Engineering World
           </Button>
 
           <Button

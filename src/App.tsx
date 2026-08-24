@@ -30,6 +30,14 @@ const AdminPage = lazy(() =>
   import('@/pages/AdminPage').then((m) => ({ default: m.AdminPage }))
 )
 
+// UELE — The Engineering World: the playable open-world 3D simulation
+// game (drivable vehicles, missions, boss challenges, skill tree, build
+// mode), ported in as-is from its own AI-Studio project. Fully separate
+// from the GIS-based real-project UELE viewer above — the game lives at
+// /uele/play and does not touch /uele's Sherpur GIS data, layers, or
+// import/admin pipeline in any way.
+const UELEGameApp = lazy(() => import('@/uele-game/UELEGameApp'))
+
 // Learn > Engineering Foundations — standalone interactive subject labs,
 // loaded the same lazy/standalone way as the /software tools above.
 const MechanicsLab = lazy(() => import('@/learn/mechanics/MechanicsLab'))
@@ -115,6 +123,24 @@ function AppShell() {
         </main>
         <Footer />
       </div>
+    )
+  }
+
+  // UELE Play — the open-world 3D game. Full-screen, no Navbar/Footer
+  // chrome (same treatment as the standalone /software/* tools below),
+  // since the game owns its own HUD and viewport. Checked before the
+  // generic /uele match so it doesn't get swallowed by UELEPage.
+  if (path === '/uele/play') {
+    return (
+      <Suspense
+        fallback={
+          <div className="w-full h-screen flex items-center justify-center bg-slate-950 text-slate-400 font-mono text-sm">
+            Loading UELE — The Engineering World…
+          </div>
+        }
+      >
+        <UELEGameApp />
+      </Suspense>
     )
   }
 
