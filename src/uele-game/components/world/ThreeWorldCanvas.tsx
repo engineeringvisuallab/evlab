@@ -167,7 +167,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 0.9;
+    renderer.toneMappingExposure = 0.75;
 
     // Clear any previous child nodes and attach canvas
     while (container.firstChild) {
@@ -235,27 +235,28 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         ambientIntensity: number;
         fogColor: number;
         fogDensity: number;
+        envIntensity: number;
       }
     > = {
       dawn: {
-        elevation: 4, azimuth: 100, turbidity: 10, rayleigh: 3.2, mieCoefficient: 0.012, mieDirectionalG: 0.9,
-        sunColor: 0xfda4af, sunIntensity: 1.0, hemiSky: 0xfecdd3, hemiGround: 0x3f3350, hemiIntensity: 0.55,
-        ambientColor: 0xffe4e6, ambientIntensity: 0.5, fogColor: 0xfecdd3, fogDensity: 0.002,
+        elevation: 4, azimuth: 100, turbidity: 6, rayleigh: 1.8, mieCoefficient: 0.006, mieDirectionalG: 0.85,
+        sunColor: 0xfda4af, sunIntensity: 0.75, hemiSky: 0xfecdd3, hemiGround: 0x3f3350, hemiIntensity: 0.35,
+        ambientColor: 0xffe4e6, ambientIntensity: 0.3, fogColor: 0xfecdd3, fogDensity: 0.002, envIntensity: 0.4,
       },
       day: {
-        elevation: 48, azimuth: 178, turbidity: 4, rayleigh: 1.2, mieCoefficient: 0.003, mieDirectionalG: 0.75,
-        sunColor: 0xfff7ed, sunIntensity: 1.0, hemiSky: 0xbfe0ff, hemiGround: 0x3f5468, hemiIntensity: 0.5,
-        ambientColor: 0xdbeafe, ambientIntensity: 0.4, fogColor: 0xcde3f5, fogDensity: 0.0018,
+        elevation: 48, azimuth: 178, turbidity: 2.5, rayleigh: 0.9, mieCoefficient: 0.0018, mieDirectionalG: 0.7,
+        sunColor: 0xfff7ed, sunIntensity: 0.8, hemiSky: 0xbfe0ff, hemiGround: 0x3f5468, hemiIntensity: 0.32,
+        ambientColor: 0xdbeafe, ambientIntensity: 0.22, fogColor: 0xcde3f5, fogDensity: 0.0018, envIntensity: 0.35,
       },
       golden: {
-        elevation: 6, azimuth: 262, turbidity: 9, rayleigh: 2.8, mieCoefficient: 0.011, mieDirectionalG: 0.88,
-        sunColor: 0xfbbf24, sunIntensity: 1.35, hemiSky: 0xfde68a, hemiGround: 0x4a2c1a, hemiIntensity: 0.6,
-        ambientColor: 0xfef3c7, ambientIntensity: 0.6, fogColor: 0xfef3c7, fogDensity: 0.0018,
+        elevation: 6, azimuth: 262, turbidity: 5.5, rayleigh: 1.6, mieCoefficient: 0.006, mieDirectionalG: 0.82,
+        sunColor: 0xfbbf24, sunIntensity: 0.95, hemiSky: 0xfde68a, hemiGround: 0x4a2c1a, hemiIntensity: 0.38,
+        ambientColor: 0xfef3c7, ambientIntensity: 0.35, fogColor: 0xfef3c7, fogDensity: 0.0018, envIntensity: 0.4,
       },
       night: {
         elevation: -12, azimuth: 60, turbidity: 2, rayleigh: 0.6, mieCoefficient: 0.001, mieDirectionalG: 0.7,
-        sunColor: 0x38bdf8, sunIntensity: 0.25, hemiSky: 0x1e2a4a, hemiGround: 0x020617, hemiIntensity: 0.35,
-        ambientColor: 0x1e293b, ambientIntensity: 0.3, fogColor: 0x0f172a, fogDensity: 0.0028,
+        sunColor: 0x38bdf8, sunIntensity: 0.2, hemiSky: 0x1e2a4a, hemiGround: 0x020617, hemiIntensity: 0.28,
+        ambientColor: 0x1e293b, ambientIntensity: 0.22, fogColor: 0x0f172a, fogDensity: 0.0028, envIntensity: 0.15,
       },
     };
 
@@ -298,6 +299,11 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       const renderTarget = pmremGenerator.fromScene(sky as unknown as THREE.Scene, 0.02);
       envRenderTargetRef.current = renderTarget;
       scene.environment = renderTarget.texture;
+      // Without this, the baked sky IBL lights every material at full
+      // strength ON TOP of the sun/hemi/ambient lights above, which is
+      // what was washing the whole scene out to white. Scaling it down
+      // keeps reflections/ambient fill subtle instead of a second sun.
+      scene.environmentIntensity = cfg.envIntensity;
 
       if (starsRef.current) {
         starsRef.current.visible = preset === 'night';
@@ -340,7 +346,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
 
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(initWidth, initHeight), 0.16, 0.4, 0.94);
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(initWidth, initHeight), 0.07, 0.3, 0.98);
     composer.addPass(bloomPass);
     bloomPassRef.current = bloomPass;
 
@@ -693,7 +699,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     // Overcast/rainy weather thickens the haze and mutes the bloom a touch,
     // regardless of time of day — keeps storms from looking blown out.
     if (bloomPassRef.current) {
-      bloomPassRef.current.strength = weather === 'rain' ? 0.1 : 0.16;
+      bloomPassRef.current.strength = weather === 'rain' ? 0.04 : 0.07;
     }
     if (sceneRef.current.fog instanceof THREE.FogExp2 && weather === 'rain') {
       sceneRef.current.fog.density *= 1.6;
