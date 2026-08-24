@@ -167,7 +167,9 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 0.75;
+    // Lowered from 0.75 — the old value was blowing out the sky dome and any
+    // light-colored surfaces (tin roofs, concrete, white flowers) to near-white.
+    renderer.toneMappingExposure = 0.62;
 
     // Clear any previous child nodes and attach canvas
     while (container.firstChild) {
@@ -192,12 +194,20 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     dirLight.shadow.mapSize.width = 2048;
     dirLight.shadow.mapSize.height = 2048;
     dirLight.shadow.camera.near = 10;
-    dirLight.shadow.camera.far = 650;
-    dirLight.shadow.camera.left = -180;
-    dirLight.shadow.camera.right = 180;
-    dirLight.shadow.camera.top = 180;
-    dirLight.shadow.camera.bottom = -180;
+    dirLight.shadow.camera.far = 420;
+    // Tight frustum (recentred on the player every frame below) instead of a
+    // huge fixed box around world origin — a fixed ±180 box left the hills
+    // (~x:-240, z:-270) and other far corners of the 800x800m map completely
+    // outside the shadow frustum, so nothing there ever received a shadow
+    // and those areas rendered flat/fully-lit ("extra light") vs. the center.
+    dirLight.shadow.camera.left = -130;
+    dirLight.shadow.camera.right = 130;
+    dirLight.shadow.camera.top = 130;
+    dirLight.shadow.camera.bottom = -130;
+    dirLight.shadow.bias = -0.0003;
+    dirLight.shadow.normalBias = 0.02;
     scene.add(dirLight);
+    scene.add(dirLight.target);
     dirLightRef.current = dirLight;
 
     // 4B. Physically-based Sky Dome (Preetham atmospheric scattering) —
@@ -244,9 +254,12 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         ambientColor: 0xffe4e6, ambientIntensity: 0.3, fogColor: 0xfecdd3, fogDensity: 0.002, envIntensity: 0.4,
       },
       day: {
-        elevation: 48, azimuth: 178, turbidity: 2.5, rayleigh: 0.9, mieCoefficient: 0.0018, mieDirectionalG: 0.7,
-        sunColor: 0xfff7ed, sunIntensity: 0.8, hemiSky: 0xbfe0ff, hemiGround: 0x3f5468, hemiIntensity: 0.32,
-        ambientColor: 0xdbeafe, ambientIntensity: 0.22, fogColor: 0xcde3f5, fogDensity: 0.0018, envIntensity: 0.35,
+        // Toned down from the original (turbidity 2.5, rayleigh 0.9, sunIntensity 0.8,
+        // hemi 0.32, ambient 0.22, env 0.35) — that combo + exposure 0.75 was washing
+        // the whole scene out to a flat, overexposed white-blue instead of a natural sky.
+        elevation: 48, azimuth: 178, turbidity: 1.8, rayleigh: 1.15, mieCoefficient: 0.0014, mieDirectionalG: 0.7,
+        sunColor: 0xfff3e0, sunIntensity: 0.62, hemiSky: 0xaed4f5, hemiGround: 0x3f5468, hemiIntensity: 0.24,
+        ambientColor: 0xd8e6f5, ambientIntensity: 0.16, fogColor: 0xc3dcef, fogDensity: 0.0016, envIntensity: 0.22,
       },
       golden: {
         elevation: 6, azimuth: 262, turbidity: 5.5, rayleigh: 1.6, mieCoefficient: 0.006, mieDirectionalG: 0.82,
@@ -275,6 +288,10 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       uniforms['sunPosition'].value.copy(sunVector);
 
       if (dirLightRef.current) {
+        // Position is relative to the light's target (recentred on the
+        // player every frame in the animate loop), so this only needs to
+        // set the *offset* — the actual world position gets re-applied
+        // around the player position each frame below.
         dirLightRef.current.position.copy(sunVector).multiplyScalar(220);
         dirLightRef.current.color.setHex(cfg.sunColor);
         dirLightRef.current.intensity = cfg.sunIntensity;
@@ -522,6 +539,22 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
 
         // 3. DYNAMIC CAMERA FOLLOW RIG
         const targetPos = currentProps.isDriving ? activeVehicle.state.position : activeChar.state.position;
+
+        // Recentre the sun's shadow frustum on the player every frame,
+        // keeping the same sun angle (sunVector). This is what actually
+        // fixes shadows (and therefore lighting contrast) on the hills,
+        // grass fields, and any spot far from world origin — previously
+        // the shadow camera was a fixed box around (0,0,0) so distant
+        // terrain never got a shadow and looked flat/over-lit.
+        if (dirLightRef.current) {
+          const sunOffset = sunVector.clone().multiplyScalar(220);
+          dirLightRef.current.position.set(
+            targetPos.x + sunOffset.x,
+            sunOffset.y,
+            targetPos.z + sunOffset.z
+          );
+          dirLightRef.current.target.position.set(targetPos.x, 0, targetPos.z);
+        }
 
         if (currentProps.cameraView === 'chase' && currentProps.isDriving) {
           // Chase Cam

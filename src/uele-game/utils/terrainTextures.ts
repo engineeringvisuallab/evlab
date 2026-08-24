@@ -259,6 +259,123 @@ export function createBrickWallTexture(): THREE.CanvasTexture {
   return texture;
 }
 
+// 6b. Tree Bark Texture (vertical fissured bark, works for palm & broadleaf trunks)
+export function createBarkTexture(tone: 'palm' | 'broadleaf' = 'broadleaf'): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas');
+  canvas.width = 256;
+  canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return new THREE.CanvasTexture(canvas);
+
+  const palette = tone === 'palm'
+    ? { bg: '#6b5a44', dark: '#40331f', light: '#8a7154' }
+    : { bg: '#4a3728', dark: '#2b1e14', light: '#63493494' };
+
+  ctx.fillStyle = palette.bg;
+  ctx.fillRect(0, 0, 256, 256);
+
+  // Base noise for rough bark grain
+  const imgData = ctx.getImageData(0, 0, 256, 256);
+  const data = imgData.data;
+  for (let i = 0; i < data.length; i += 4) {
+    const n = (Math.random() - 0.5) * 26;
+    data[i] = Math.min(255, Math.max(0, data[i] + n));
+    data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + n * 0.9));
+    data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + n * 0.7));
+  }
+  ctx.putImageData(imgData, 0, 0);
+
+  // Vertical fissures / ridges typical of tree bark
+  for (let i = 0; i < 60; i++) {
+    const x = Math.random() * 256;
+    ctx.strokeStyle = Math.random() > 0.5 ? palette.dark : palette.light;
+    ctx.globalAlpha = 0.25 + Math.random() * 0.3;
+    ctx.lineWidth = 1 + Math.random() * 2.5;
+    ctx.beginPath();
+    let cx = x;
+    ctx.moveTo(cx, 0);
+    for (let y = 8; y <= 256; y += 8) {
+      cx += (Math.random() - 0.5) * 6;
+      ctx.lineTo(cx, y);
+    }
+    ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+
+  // Horizontal growth rings for palm (fibrous banding)
+  if (tone === 'palm') {
+    ctx.strokeStyle = 'rgba(0,0,0,0.2)';
+    ctx.lineWidth = 2;
+    for (let y = 0; y < 256; y += 14) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(256, y);
+      ctx.stroke();
+    }
+  }
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.RepeatWrapping;
+  texture.repeat.set(2, 3);
+  return texture;
+}
+
+// 6c. Leaf Cluster Texture — mottled canopy foliage with visible individual leaf dabs
+// and soft alpha falloff at the edges so foliage clumps read as organic, not geometric.
+export function createLeafClusterTexture(baseHex: string, darkHex: string, lightHex: string): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas');
+  canvas.width = 256;
+  canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return new THREE.CanvasTexture(canvas);
+
+  ctx.clearRect(0, 0, 256, 256);
+
+  // Soft circular mask so the cluster fades at the silhouette edge
+  const cx = 128, cy = 128, r = 120;
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.clip();
+
+  ctx.fillStyle = baseHex;
+  ctx.fillRect(0, 0, 256, 256);
+
+  // Individual leaf dabs for organic mottled texture
+  for (let i = 0; i < 420; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * r;
+    const lx = cx + Math.cos(angle) * dist;
+    const ly = cy + Math.sin(angle) * dist;
+    const size = 3 + Math.random() * 7;
+    ctx.fillStyle = Math.random() > 0.5 ? darkHex : lightHex;
+    ctx.globalAlpha = 0.35 + Math.random() * 0.4;
+    ctx.beginPath();
+    ctx.ellipse(lx, ly, size, size * 0.6, angle, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  ctx.restore();
+
+  // Radial fade toward the edge for a soft, non-geometric silhouette.
+  // Fade starts late (0.8r) so most of the cluster stays opaque — this is
+  // mapped onto solid canopy geometry, so a wide fade zone would alpha-cut
+  // large holes that expose the (also-shaded) inside faces of the mesh.
+  const fade = ctx.createRadialGradient(cx, cy, r * 0.8, cx, cy, r);
+  fade.addColorStop(0, 'rgba(0,0,0,0)');
+  fade.addColorStop(1, 'rgba(0,0,0,1)');
+  ctx.globalCompositeOperation = 'destination-out';
+  ctx.fillStyle = fade;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.globalCompositeOperation = 'source-over';
+
+  const texture = new THREE.CanvasTexture(canvas);
+  return texture;
+}
+
 // 6. Water Normal Bump Map
 export function createWaterNormalMap(): THREE.CanvasTexture {
   const canvas = document.createElement('canvas');
