@@ -33,8 +33,8 @@ class AudioEngine {
     return this.isMuted;
   }
 
-  // Continuous Dynamic Car Engine Sound
-  public updateEngineSound(rpmNormalized: number, isDriving: boolean) {
+  // Continuous Dynamic Engine / Helicopter Rotor Sound
+  public updateEngineSound(rpmNormalized: number, isDriving: boolean, isHelicopter = false) {
     if (this.isMuted || !isDriving) {
       if (this.engineRunning && this.engineGain && this.ctx) {
         this.engineGain.gain.setTargetAtTime(0, this.ctx.currentTime, 0.1);
@@ -50,13 +50,13 @@ class AudioEngine {
         this.engineOsc = this.ctx.createOscillator();
         this.engineGain = this.ctx.createGain();
 
-        this.engineOsc.type = 'sawtooth';
-        this.engineOsc.frequency.setValueAtTime(45, this.ctx.currentTime);
+        this.engineOsc.type = isHelicopter ? 'triangle' : 'sawtooth';
+        this.engineOsc.frequency.setValueAtTime(isHelicopter ? 28 : 45, this.ctx.currentTime);
         this.engineGain.gain.setValueAtTime(0.04, this.ctx.currentTime);
 
         const filter = this.ctx.createBiquadFilter();
         filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(380, this.ctx.currentTime);
+        filter.frequency.setValueAtTime(isHelicopter ? 220 : 380, this.ctx.currentTime);
 
         this.engineOsc.connect(filter);
         filter.connect(this.engineGain);
@@ -70,10 +70,17 @@ class AudioEngine {
     }
 
     if (this.engineOsc && this.engineGain && this.ctx) {
-      const targetFreq = 42 + rpmNormalized * 110;
-      const targetVol = 0.03 + rpmNormalized * 0.05;
-      this.engineOsc.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.06);
-      this.engineGain.gain.setTargetAtTime(targetVol, this.ctx.currentTime, 0.06);
+      if (isHelicopter) {
+        const targetFreq = 24 + rpmNormalized * 40;
+        const targetVol = 0.04 + rpmNormalized * 0.05;
+        this.engineOsc.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.05);
+        this.engineGain.gain.setTargetAtTime(targetVol, this.ctx.currentTime, 0.05);
+      } else {
+        const targetFreq = 42 + rpmNormalized * 110;
+        const targetVol = 0.03 + rpmNormalized * 0.05;
+        this.engineOsc.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.06);
+        this.engineGain.gain.setTargetAtTime(targetVol, this.ctx.currentTime, 0.06);
+      }
     }
   }
 
@@ -312,6 +319,121 @@ class AudioEngine {
       osc.start(start);
       osc.stop(start + 0.4);
     });
+  }
+
+  // Locomotive Two-Tone Train Horn
+  public playTrainHorn() {
+    if (this.isMuted) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    const frequencies = [311.13, 370.0, 466.16]; // Eb4, F#4, Bb4
+
+    frequencies.forEach((freq) => {
+      if (!this.ctx) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.linearRampToValueAtTime(0.12, now + 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1400, now);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 1.2);
+    });
+  }
+
+  // Metro MRT Platform & Door Chime
+  public playMetroChime() {
+    if (this.isMuted) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    const notes = [659.25, 830.61, 987.77, 1318.5]; // E5, G#5, B5, E6
+    notes.forEach((freq, i) => {
+      if (!this.ctx) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      const start = this.ctx.currentTime + i * 0.12;
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, start);
+
+      gain.gain.setValueAtTime(0.12, start);
+      gain.gain.exponentialRampToValueAtTime(0.001, start + 0.6);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(start);
+      osc.stop(start + 0.6);
+    });
+  }
+
+  // Railway Level Crossing Warning Bell
+  public playCrossingBell() {
+    if (this.isMuted) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(880, now);
+    osc.frequency.exponentialRampToValueAtTime(820, now + 0.15);
+
+    gain.gain.setValueAtTime(0.1, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.15);
+  }
+
+  // Train Air Brake Release Hiss
+  public playAirBrake() {
+    if (this.isMuted) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(180, now);
+    osc.frequency.exponentialRampToValueAtTime(60, now + 0.5);
+
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(800, now);
+    filter.Q.setValueAtTime(3.0, now);
+
+    gain.gain.setValueAtTime(0.08, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.5);
   }
 }
 

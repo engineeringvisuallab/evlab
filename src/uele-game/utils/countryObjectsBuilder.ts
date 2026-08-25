@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import { createAsphaltTexture, createCorrugatedTinTexture, createBrickWallTexture } from './terrainTextures';
+import { buildRichInfrastructure } from './richInfrastructureBuilder';
+import { buildCountryExpansion } from './countryExpansionBuilder';
 
 export interface CountrySceneObjects {
   group: THREE.Group;
@@ -23,7 +25,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
   const whiteMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.4, metalness: 0.2 });
   const glassBlueMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.1, metalness: 0.9, opacity: 0.9, transparent: true });
   const glassDarkMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.1, metalness: 0.95 });
-  const windowGlowMat = new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.35 });
+  const windowGlowMat = new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.7 });
   const steelMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.8, roughness: 0.3 });
   const solarCellMat = new THREE.MeshStandardMaterial({ color: 0x1e3a8a, roughness: 0.2, metalness: 0.7 });
   const waterSpillMat = new THREE.MeshStandardMaterial({ color: 0xbae6fd, roughness: 0.2, transparent: true, opacity: 0.85 });
@@ -162,7 +164,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
   group.add(damGrp);
 
   // =========================================================================
-  // 3. SMART CITY CORE (High-density Skyscrapers & Towers at (20, -10))
+  // 3. SMART CITY CORE (High-density Skyscrapers & Towers across an Expanded Urban Grid)
   // =========================================================================
   interface CityBuildingDef {
     bx: number;
@@ -173,23 +175,33 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     style: 'glass' | 'concrete' | 'tower' | 'stepped';
   }
 
+  // Spacious, decluttered city layout with wide avenues and distinct districts
   const cityBuildingsData: CityBuildingDef[] = [
-    { bx: 0, bz: -30, bw: 22, bd: 22, bh: 68, style: 'glass' },
-    { bx: 32, bz: -30, bw: 18, bd: 20, bh: 52, style: 'stepped' },
-    { bx: -28, bz: -30, bw: 16, bd: 16, bh: 44, style: 'concrete' },
-    { bx: 0, bz: 15, bw: 24, bd: 20, bh: 78, style: 'tower' },
-    { bx: 35, bz: 15, bw: 20, bd: 18, bh: 58, style: 'glass' },
-    { bx: -32, bz: 15, bw: 18, bd: 22, bh: 48, style: 'stepped' },
-    { bx: 65, bz: -10, bw: 16, bd: 26, bh: 42, style: 'concrete' },
-    { bx: -65, bz: -10, bw: 22, bd: 18, bh: 50, style: 'glass' },
-    { bx: 0, bz: -70, bw: 20, bd: 18, bh: 46, style: 'concrete' },
-    { bx: 30, bz: -70, bw: 18, bd: 16, bh: 38, style: 'glass' },
-    { bx: -30, bz: -70, bw: 16, bd: 16, bh: 34, style: 'stepped' },
-    { bx: 65, bz: -60, bw: 18, bd: 18, bh: 36, style: 'concrete' },
-    { bx: -65, bz: -60, bw: 20, bd: 18, bh: 40, style: 'tower' },
-    { bx: 0, bz: 55, bw: 20, bd: 20, bh: 54, style: 'glass' },
-    { bx: 35, bz: 55, bw: 18, bd: 18, bh: 42, style: 'stepped' },
-    { bx: -35, bz: 55, bw: 22, bd: 16, bh: 38, style: 'concrete' },
+    // Central Financial District (Wide 40m avenue separation)
+    { bx: -45, bz: -60, bw: 24, bd: 24, bh: 72, style: 'glass' },
+    { bx: 45, bz: -60, bw: 22, bd: 22, bh: 64, style: 'stepped' },
+    { bx: -45, bz: 40, bw: 26, bd: 24, bh: 84, style: 'tower' },
+    { bx: 45, bz: 40, bw: 22, bd: 20, bh: 60, style: 'glass' },
+
+    // East Innovation & IT Tech Hub (Set back with plazas)
+    { bx: 110, bz: -50, bw: 20, bd: 24, bh: 48, style: 'stepped' },
+    { bx: 110, bz: 30, bw: 22, bd: 22, bh: 54, style: 'glass' },
+    { bx: 155, bz: -10, bw: 18, bd: 26, bh: 42, style: 'concrete' },
+
+    // West Waterfront Marina Commercial Row
+    { bx: -110, bz: -50, bw: 24, bd: 20, bh: 52, style: 'concrete' },
+    { bx: -110, bz: 30, bw: 22, bd: 22, bh: 58, style: 'stepped' },
+    { bx: -155, bz: -10, bw: 20, bd: 24, bh: 46, style: 'glass' },
+
+    // North Civic & Administrative Towers
+    { bx: -50, bz: -130, bw: 22, bd: 22, bh: 50, style: 'concrete' },
+    { bx: 50, bz: -130, bw: 24, bd: 20, bh: 56, style: 'tower' },
+    { bx: 0, bz: -170, bw: 26, bd: 26, bh: 68, style: 'glass' },
+
+    // South Gateway & University Tech Zone
+    { bx: -50, bz: 110, bw: 22, bd: 22, bh: 44, style: 'stepped' },
+    { bx: 50, bz: 110, bw: 24, bd: 20, bh: 48, style: 'glass' },
+    { bx: 0, bz: 150, bw: 20, bd: 22, bh: 40, style: 'concrete' },
   ];
 
   cityBuildingsData.forEach(({ bx, bz, bw, bd, bh, style }) => {
@@ -334,7 +346,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
   const signNeon = new THREE.Mesh(
     new THREE.BoxGeometry(22, 2.2, 0.5),
-    new THREE.MeshStandardMaterial({ color: 0xf59e0b, emissive: 0xf59e0b, emissiveIntensity: 0.75 })
+    new THREE.MeshStandardMaterial({ color: 0xf59e0b, emissive: 0xf59e0b, emissiveIntensity: 1.5 })
   );
   signNeon.position.set(0, 12, 17.3);
   mallGrp.add(signNeon);
@@ -399,7 +411,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
       const lightCol = rz === -115 ? 0x22c55e : (rz === 115 ? 0xef4444 : 0xf8fafc);
       const lightPost = new THREE.Mesh(
         new THREE.CylinderGeometry(0.12, 0.12, 0.5, 6),
-        new THREE.MeshStandardMaterial({ color: lightCol, emissive: lightCol, emissiveIntensity: 0.5 })
+        new THREE.MeshStandardMaterial({ color: lightCol, emissive: lightCol, emissiveIntensity: 1.0 })
       );
       lightPost.position.set(rx, airY + 0.25, airZ + rz);
       airportGrp.add(lightPost);
@@ -715,7 +727,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     // Hanging Tungsten Bulb Light
     const bulb = new THREE.Mesh(
       new THREE.SphereGeometry(0.12, 6, 6),
-      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.75 })
+      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.5 })
     );
     bulb.position.set(0, 2.7, 0);
     stall.add(bulb);
@@ -739,7 +751,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
   const signTextStripe = new THREE.Mesh(
     new THREE.BoxGeometry(6.6, 0.6, 0.3),
-    new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.3 })
+    new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.6 })
   );
   signTextStripe.position.set(0, 2.8, 11.02);
   bazaarGrp.add(signTextStripe);
@@ -814,7 +826,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     // River Navigation Warning Beacon Light (Red / Green)
     const navLight = new THREE.Mesh(
       new THREE.SphereGeometry(0.3, 8, 8),
-      new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 0.75 })
+      new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 1.5 })
     );
     navLight.position.set(px, 1.2, brZ + 7);
     bridgeGrp.add(navLight);
@@ -889,7 +901,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
       const lightHead = new THREE.Mesh(
         new THREE.SphereGeometry(0.18, 6, 6),
-        new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.8 })
+        new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.6 })
       );
       lightHead.position.set(lx, brY + 4.9, gz);
       bridgeGrp.add(lightHead);
@@ -962,7 +974,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     portal.add(archRoof);
 
     // High-visibility Hazard Chevrons (Yellow & Black stripes)
-    const chevronMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.25 });
+    const chevronMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, emissive: 0xfacc15, emissiveIntensity: 0.5 });
     const chevron = new THREE.Mesh(new THREE.BoxGeometry(20, 0.9, 6.4), chevronMat);
     chevron.position.set(0, 13.2, 0);
     portal.add(chevron);
@@ -977,7 +989,7 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
     const signLed = new THREE.Mesh(
       new THREE.BoxGeometry(13, 1.4, 0.6),
-      new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 0.7 })
+      new THREE.MeshStandardMaterial({ color: 0x22c55e, emissive: 0x22c55e, emissiveIntensity: 1.4 })
     );
     signLed.position.set(0, 11.5, 3.22);
     portal.add(signLed);
@@ -1011,22 +1023,27 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
   const fanMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8 });
   for (const fProgress of [0.25, 0.5, 0.75]) {
     const fPt = tunCurve.getPointAt(fProgress);
-    const fan = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 3.5, 12), fanMat);
-    fan.rotation.x = Math.PI / 2;
-    fan.position.set(fPt.x, tunY + 6.6, fPt.z);
-    tunnelGrp.add(fan);
+    if (fPt) {
+      const fan = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 3.5, 12), fanMat);
+      fan.rotation.x = Math.PI / 2;
+      fan.position.set(fPt.x, tunY + 6.6, fPt.z);
+      tunnelGrp.add(fan);
+    }
   }
 
   // Interior Tunnel Lighting Array (Yellow Sodium Lamps along tunnel roof)
   for (let tx = -270; tx <= -160; tx += 15) {
-    const tPt = tunCurve.getPointAt((-tx - 160) / 110);
-    const lamp = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.2, 0.2, 1.8, 8),
-      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.9 })
-    );
-    lamp.rotation.z = Math.PI / 2;
-    lamp.position.set(tPt.x, tunY + 6.2, tPt.z);
-    tunnelGrp.add(lamp);
+    const rawU = Math.max(0, Math.min(1, (-tx - 160) / 110));
+    const tPt = tunCurve.getPointAt(rawU);
+    if (tPt) {
+      const lamp = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.2, 0.2, 1.8, 8),
+        new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.8 })
+      );
+      lamp.rotation.z = Math.PI / 2;
+      lamp.position.set(tPt.x, tunY + 6.2, tPt.z);
+      tunnelGrp.add(lamp);
+    }
   }
 
   group.add(tunnelGrp);
@@ -1110,6 +1127,230 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     vegGrp.add(tree);
   };
 
+  // =========================================================================
+  // 10. MEGA DEEP SEA PORT & CONTAINER TERMINAL (At (250, 60))
+  // =========================================================================
+  const seaPortGrp = new THREE.Group();
+  const spX = 250;
+  const spZ = 60;
+  const spY = 1.0;
+
+  // Concrete Quayside Wharf Berth (Padma/Chittagong Port style)
+  const wharfGeo = new THREE.BoxGeometry(110, 3.2, 50);
+  const wharfMesh = new THREE.Mesh(wharfGeo, darkConcreteMat);
+  wharfMesh.position.set(0, 0, 0);
+  wharfMesh.receiveShadow = true;
+  wharfMesh.castShadow = true;
+  seaPortGrp.add(wharfMesh);
+
+  // High-visibility Quayside Yellow Safety Edge
+  const curbEdge = new THREE.Mesh(
+    new THREE.BoxGeometry(110, 0.4, 1.2),
+    new THREE.MeshStandardMaterial({ color: 0xfacc15 })
+  );
+  curbEdge.position.set(0, 1.7, 24.5);
+  seaPortGrp.add(curbEdge);
+
+  // STS Quayside Container Gantry Cranes (2 Giant Cranes in Port Red & White)
+  const craneMat = new THREE.MeshStandardMaterial({ color: 0xdc2626, metalness: 0.7, roughness: 0.3 });
+  const craneLegMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, metalness: 0.5 });
+  const containerColors = [0x2563eb, 0x16a34a, 0xd97706, 0xdc2626, 0x0284c7, 0x475569];
+
+  for (const cx of [-25, 25]) {
+    const crane = new THREE.Group();
+    // 4 Heavy A-frame Truss Legs
+    for (const lx of [-4.5, 4.5]) {
+      for (const lz of [-5.5, 5.5]) {
+        const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.6, 26, 8), craneLegMat);
+        leg.position.set(lx, 13, lz);
+        leg.castShadow = true;
+        crane.add(leg);
+      }
+    }
+
+    // Upper Machine Machinery Room & Boom Beam (Extending over water)
+    const machineryHouse = new THREE.Mesh(new THREE.BoxGeometry(12, 4.5, 9), craneMat);
+    machineryHouse.position.set(0, 26, -1);
+    machineryHouse.castShadow = true;
+    crane.add(machineryHouse);
+
+    // Cantilever Outreach Boom (extends 36m over the ship)
+    const boomBeam = new THREE.Mesh(new THREE.BoxGeometry(3.2, 2.8, 38), craneMat);
+    boomBeam.position.set(0, 26.5, 15);
+    boomBeam.castShadow = true;
+    crane.add(boomBeam);
+
+    // Operator Cabin
+    const cabin = new THREE.Mesh(
+      new THREE.BoxGeometry(2.4, 2.4, 2.8),
+      new THREE.MeshStandardMaterial({ color: 0xfacc15, roughness: 0.3 })
+    );
+    cabin.position.set(0, 23.5, 10);
+    crane.add(cabin);
+
+    // Hoist Cable & Spreader Bar
+    const spreader = new THREE.Mesh(
+      new THREE.BoxGeometry(6.2, 0.6, 2.6),
+      new THREE.MeshStandardMaterial({ color: 0x0f172a })
+    );
+    spreader.position.set(0, 14, 18);
+    crane.add(spreader);
+
+    crane.position.set(cx, 1.6, 12);
+    seaPortGrp.add(crane);
+  }
+
+  // Intermodal Container Stacks in Port Yard (ISO Standard 20ft & 40ft containers)
+  for (let row = -4; row <= 4; row++) {
+    for (let col = -1; col <= 2; col++) {
+      const stackHeight = 1 + Math.floor(Math.abs(Math.sin(row * 3.7 + col)) * 3);
+      for (let h = 0; h < stackHeight; h++) {
+        const cColor = containerColors[(Math.abs(row * 5 + col * 3 + h)) % containerColors.length];
+        const container = new THREE.Mesh(
+          new THREE.BoxGeometry(9.2, 2.6, 3.8),
+          new THREE.MeshStandardMaterial({ color: cColor, roughness: 0.6, metalness: 0.3 })
+        );
+        container.position.set(row * 11, 1.6 + 1.3 + h * 2.65, -12 + col * 4.6);
+        container.castShadow = true;
+        container.receiveShadow = true;
+        seaPortGrp.add(container);
+      }
+    }
+  }
+
+  // Ocean Cargo Container Vessel (Moored at Port Berth)
+  const shipGrp = new THREE.Group();
+  const hullMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.5, metalness: 0.4 });
+  const redKeelMat = new THREE.MeshStandardMaterial({ color: 0xb91c1c, roughness: 0.6 });
+
+  // Ship Lower Keel & Main Hull
+  const shipHull = new THREE.Mesh(new THREE.BoxGeometry(78, 6.5, 16), hullMat);
+  shipHull.position.set(0, 0.5, 0);
+  shipHull.castShadow = true;
+  shipGrp.add(shipHull);
+
+  const shipKeel = new THREE.Mesh(new THREE.BoxGeometry(76, 2.5, 14), redKeelMat);
+  shipKeel.position.set(0, -3.2, 0);
+  shipGrp.add(shipKeel);
+
+  // Bow Bulbous Nose
+  const shipBow = new THREE.Mesh(new THREE.ConeGeometry(8, 16, 4), hullMat);
+  shipBow.position.set(43, 0.5, 0);
+  shipBow.rotation.z = -Math.PI / 2;
+  shipBow.rotation.y = Math.PI / 4;
+  shipGrp.add(shipBow);
+
+  // Bridge Superstructure & Radar Mast (Aft accommodation)
+  const superStructure = new THREE.Mesh(new THREE.BoxGeometry(14, 12, 14), whiteMat);
+  superStructure.position.set(-26, 8.5, 0);
+  superStructure.castShadow = true;
+  shipGrp.add(superStructure);
+
+  // Wheelhouse Navigation Bridge with Green Glass Windows
+  const wheelhouse = new THREE.Mesh(
+    new THREE.BoxGeometry(16, 3.2, 11),
+    new THREE.MeshStandardMaterial({ color: 0x0284c7, metalness: 0.9, roughness: 0.1 })
+  );
+  wheelhouse.position.set(-26, 14.5, 0);
+  shipGrp.add(wheelhouse);
+
+  // Ship Funnel Smoke Exhaust Stack
+  const shipFunnel = new THREE.Mesh(
+    new THREE.CylinderGeometry(1.6, 1.8, 6.5, 12),
+    new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.4 })
+  );
+  shipFunnel.position.set(-30, 18, 0);
+  shipGrp.add(shipFunnel);
+
+  // Cargo Containers Loaded on Ship Deck
+  for (let sRow = -2; sRow <= 3; sRow++) {
+    for (let sCol = -1; sCol <= 1; sCol++) {
+      for (let sH = 0; sH < 2; sH++) {
+        const scColor = containerColors[(Math.abs(sRow * 3 + sCol + sH)) % containerColors.length];
+        const sContainer = new THREE.Mesh(
+          new THREE.BoxGeometry(8.5, 2.4, 3.4),
+          new THREE.MeshStandardMaterial({ color: scColor, roughness: 0.5 })
+        );
+        sContainer.position.set(sRow * 9.5, 4.8 + sH * 2.45, sCol * 3.8);
+        sContainer.castShadow = true;
+        shipGrp.add(sContainer);
+      }
+    }
+  }
+
+  shipGrp.position.set(0, -0.2, 38);
+  seaPortGrp.add(shipGrp);
+
+  seaPortGrp.position.set(spX, spY, spZ);
+  group.add(seaPortGrp);
+
+  // =========================================================================
+  // 11. SUNDARBANS & HILL TRACTS DENSE RAINFOREST (At (160, -140) & (-320, 120))
+  // =========================================================================
+  const forestGrp = new THREE.Group();
+  const forestMat = new THREE.MeshStandardMaterial({ color: 0x14532d, roughness: 0.85 });
+  const deepMangroveMat = new THREE.MeshStandardMaterial({ color: 0x064e3b, roughness: 0.9 });
+  const woodTrunkMat = new THREE.MeshStandardMaterial({ color: 0x451a03, roughness: 0.9 });
+
+  // Sundarbans Mangrove Cluster (Pneumatophore root trees)
+  for (let i = 0; i < 75; i++) {
+    const fx = 80 + Math.random() * 150;
+    const fz = -180 + Math.random() * 90;
+    const fy = getElevationAt(fx, fz);
+
+    const tree = new THREE.Group();
+    // Stilt Roots
+    for (let r = 0; r < 4; r++) {
+      const rootAngle = (r * Math.PI) / 2;
+      const root = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 2.2, 5), woodTrunkMat);
+      root.position.set(Math.cos(rootAngle) * 0.7, 1.0, Math.sin(rootAngle) * 0.7);
+      root.rotation.z = (r % 2 === 0 ? 0.35 : -0.35);
+      tree.add(root);
+    }
+
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.45, 5.5, 6), woodTrunkMat);
+    trunk.position.y = 3.5;
+    tree.add(trunk);
+
+    const crown = new THREE.Mesh(new THREE.DodecahedronGeometry(3.6, 1), deepMangroveMat);
+    crown.position.y = 6.8;
+    crown.scale.set(1.3, 0.8, 1.3);
+    crown.castShadow = true;
+    tree.add(crown);
+
+    tree.position.set(fx, fy, fz);
+    forestGrp.add(tree);
+  }
+
+  // Western Tropical Rainforest Cluster
+  for (let i = 0; i < 80; i++) {
+    const fx = -350 + Math.random() * 160;
+    const fz = 60 + Math.random() * 220;
+    const fy = getElevationAt(fx, fz);
+
+    const tree = new THREE.Group();
+    const tScale = 0.8 + Math.random() * 0.7;
+
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.35 * tScale, 0.5 * tScale, 6.0 * tScale, 6), woodTrunkMat);
+    trunk.position.y = 3.0 * tScale;
+    tree.add(trunk);
+
+    const foliage1 = new THREE.Mesh(new THREE.DodecahedronGeometry(4.2 * tScale, 1), forestMat);
+    foliage1.position.y = 6.5 * tScale;
+    foliage1.castShadow = true;
+    tree.add(foliage1);
+
+    const foliage2 = new THREE.Mesh(new THREE.DodecahedronGeometry(3.0 * tScale, 1), deepMangroveMat);
+    foliage2.position.set(0.8 * tScale, 8.4 * tScale, 0);
+    foliage2.castShadow = true;
+    tree.add(foliage2);
+
+    tree.position.set(fx, fy, fz);
+    forestGrp.add(tree);
+  }
+
+  group.add(forestGrp);
+
   // Place Mountain Pines across Northern Mountains
   for (let i = 0; i < 45; i++) {
     const px = -350 + Math.random() * 260;
@@ -1134,6 +1375,79 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
 
   group.add(vegGrp);
 
+  // Mount Comprehensive Reference Infrastructure (Hospital, Construction Site, Mosque/Temple, Park, Gas Station, Flyover, Power Plant, Farmlands)
+  const richInfra = buildRichInfrastructure(getElevationAt);
+  group.add(richInfra.group);
+
+  // Mount National Expansion Infrastructure (Railway Line, Metro Rail, Deep Sea Port, Forests, Hills, Tea Highlands & Connected Roads)
+  const countryExpansion = buildCountryExpansion(getElevationAt);
+  group.add(countryExpansion.group);
+
+  // 10km National Grid High-Voltage Transmission Towers
+  const gridPylonMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.8, roughness: 0.3 });
+  const pylonGeo = new THREE.CylinderGeometry(0.8, 3.2, 45, 4);
+  const pylonCrossGeo = new THREE.BoxGeometry(22, 1.2, 1.2);
+
+  for (let pz = -4400; pz <= 4400; pz += 400) {
+    if (Math.abs(pz) < 200) continue; // skip core substation area
+    const px = -65;
+    const py = getElevationAt(px, pz);
+
+    const tower = new THREE.Group();
+    const mast = new THREE.Mesh(pylonGeo, gridPylonMat);
+    mast.position.y = 22.5;
+    tower.add(mast);
+
+    const cross1 = new THREE.Mesh(pylonCrossGeo, gridPylonMat);
+    cross1.position.y = 36;
+    tower.add(cross1);
+
+    const cross2 = new THREE.Mesh(new THREE.BoxGeometry(16, 1.0, 1.0), gridPylonMat);
+    cross2.position.y = 42;
+    tower.add(cross2);
+
+    tower.position.set(px, py, pz);
+    group.add(tower);
+  }
+
+  // Distant Northern Mountain Wind Turbines (10km Horizon)
+  const distantTurbinePositions = [
+    [-800, -1200],
+    [-1400, -1800],
+    [-2200, -2600],
+    [-3000, -3400],
+    [-1800, -3200],
+    [-600, -2200],
+  ];
+
+  distantTurbinePositions.forEach(([tx, tz]) => {
+    const ty = getElevationAt(tx, tz);
+    const dt = new THREE.Group();
+    const dTower = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 3.5, 75, 8), new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.2 }));
+    dTower.position.y = 37.5;
+    dt.add(dTower);
+
+    const dNacelle = new THREE.Mesh(new THREE.BoxGeometry(4, 4, 9), new THREE.MeshStandardMaterial({ color: 0xe2e8f0 }));
+    dNacelle.position.y = 75;
+    dt.add(dNacelle);
+
+    const dRotor = new THREE.Group();
+    dRotor.position.set(0, 75, 4.5);
+    for (let b = 0; b < 3; b++) {
+      const dBlade = new THREE.Mesh(new THREE.BoxGeometry(1.2, 32, 0.4), new THREE.MeshStandardMaterial({ color: 0xffffff }));
+      dBlade.position.y = 16;
+      const bGrp = new THREE.Group();
+      bGrp.rotation.z = (b * Math.PI * 2) / 3;
+      bGrp.add(dBlade);
+      dRotor.add(bGrp);
+    }
+    dt.add(dRotor);
+    (dt as unknown as { rotorHub: THREE.Group }).rotorHub = dRotor;
+    dt.position.set(tx, ty, tz);
+    group.add(dt);
+    windTurbines.push(dt);
+  });
+
   const updateAnimations = (time: number, delta: number) => {
     // 1. Rotate Wind Turbine Rotors
     windTurbines.forEach((wt, idx) => {
@@ -1147,6 +1461,12 @@ export function buildCountrySceneObjects(getElevationAt: (x: number, z: number) 
     if (radarDish) {
       radarDish.rotation.y += 2.4 * delta;
     }
+
+    // 3. Update Rich Infrastructure Effects (Chimney Steam / Industrial Plumes)
+    richInfra.updateAnimation(time, delta);
+
+    // 4. Update Railway Trains, Metro MRT line, and Lighthouse Light Beam
+    countryExpansion.updateAnimation(time, delta);
   };
 
   return {

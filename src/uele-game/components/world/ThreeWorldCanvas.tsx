@@ -1,19 +1,14 @@
 import * as THREE from 'three';
-import { Sky } from 'three/examples/jsm/objects/Sky.js';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
-import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader.js';
 import React, { useEffect, useRef } from 'react';
 import { TimeOfDay, WeatherType } from '../../types/game';
-import { buildMiniCountryTerrain, getNearbyLandmark, LandmarkZone } from '../../utils/miniCountryTerrain';
+import { buildMiniCountryTerrain, getNearbyLandmark, LandmarkZone, COUNTRY_LANDMARKS } from '../../utils/miniCountryTerrain';
 import { buildMiniCountryRiver } from '../../utils/miniCountryRiver';
 import { buildCountrySceneObjects } from '../../utils/countryObjectsBuilder';
 import { buildRealisticGrassSystem, RealisticGrassSystem } from '../../utils/realisticGrassSystem';
 import { buildTrafficSystem, TrafficSystem } from '../../utils/trafficSimulation';
+import { buildSpaceFlightSystem, SpaceEnvironment } from '../../utils/spaceFlightSystem';
+import { buildComprehensiveRoadNetwork, ComprehensiveRoadSystem } from '../../utils/comprehensiveRoadNetwork';
+import { buildRailAndMetroSystem, RailAndMetroSystemResult } from '../../utils/railAndMetroSystem';
 import { PlayableVehicle, VehicleTypeId, VehiclePhysicsState } from '../../utils/vehicleController';
 import { PlayableCharacter } from '../../utils/characterController';
 import { audioEngine } from '../../utils/audioEngine';
@@ -30,14 +25,32 @@ interface ThreeWorldCanvasProps {
   onPlayerPositionUpdate: (pos: [number, number]) => void;
   onLandmarkEnter: (lm: LandmarkZone | null) => void;
   onCanEnterVehicleChange: (canEnter: boolean) => void;
-  teleportTarget: LandmarkZone | null;
+  onSelectEngineeringObject?: (landmark: LandmarkZone) => void;
+  teleportTarget: LandmarkZone | [number, number] | null;
   onTeleportComplete: () => void;
   vehicleActionRef?: React.MutableRefObject<{
     honk: () => void;
     toggleHeadlights: () => void;
     resetVehicle: () => void;
   } | null>;
+  /**
+   * Lightweight decorative mode used by the homepage hero preview: builds only
+   * the terrain, river & country structures (skips grass, traffic, road/rail
+   * networks, the space-flight system, and the playable vehicle/character),
+   * disables keyboard capture & manual drag/zoom, and auto-orbits the camera
+   * around the city core instead of following a player.
+   */
+  previewMode?: boolean;
+  /** Fired on a quick click/tap anywhere on the canvas while previewMode is on. */
+  onPreviewClick?: () => void;
 }
+
+// Slow auto-orbit framing used for the homepage hero preview (aerial view
+// centered roughly over the Smart City / urban core landmark).
+const PREVIEW_TARGET = { x: 15, z: 10 };
+const PREVIEW_PHI = 0.5;
+const PREVIEW_DISTANCE = 320;
+const PREVIEW_ROTATE_SPEED = 0.045;
 
 export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   isDriving,
@@ -51,9 +64,12 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   onPlayerPositionUpdate,
   onLandmarkEnter,
   onCanEnterVehicleChange,
+  onSelectEngineeringObject,
   teleportTarget,
   onTeleportComplete,
   vehicleActionRef,
+  previewMode = false,
+  onPreviewClick,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -68,23 +84,15 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   // Systems
   const riverSystemRef = useRef<ReturnType<typeof buildMiniCountryRiver> | null>(null);
   const countryObjectsRef = useRef<ReturnType<typeof buildCountrySceneObjects> | null>(null);
+  const roadNetworkRef = useRef<ComprehensiveRoadSystem | null>(null);
+  const railMetroRef = useRef<RailAndMetroSystemResult | null>(null);
   const grassSystemRef = useRef<RealisticGrassSystem | null>(null);
   const trafficSystemRef = useRef<TrafficSystem | null>(null);
+  const spaceSystemRef = useRef<SpaceEnvironment | null>(null);
   const rainParticlesRef = useRef<THREE.Points | null>(null);
   const dirLightRef = useRef<THREE.DirectionalLight | null>(null);
   const hemiLightRef = useRef<THREE.HemisphereLight | null>(null);
   const ambientLightRef = useRef<THREE.AmbientLight | null>(null);
-
-  // Realism upgrade: physically-based sky dome + baked IBL environment map,
-  // post-processing composer (bloom / anti-aliasing / vignette / output
-  // color grading), and a night starfield.
-  const composerRef = useRef<EffectComposer | null>(null);
-  const bloomPassRef = useRef<UnrealBloomPass | null>(null);
-  const skyRef = useRef<Sky | null>(null);
-  const starsRef = useRef<THREE.Points | null>(null);
-  const pmremGeneratorRef = useRef<THREE.PMREMGenerator | null>(null);
-  const envRenderTargetRef = useRef<THREE.WebGLRenderTarget | null>(null);
-  const updateSkyEnvRef = useRef<((preset: TimeOfDay) => void) | null>(null);
 
   // Props ref to keep render loop decoupled from React state churn
   const propsRef = useRef({
@@ -98,6 +106,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     onLandmarkEnter,
     onCanEnterVehicleChange,
     onToggleDriveMode,
+    onSelectEngineeringObject,
   });
 
   useEffect(() => {
@@ -112,6 +121,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       onLandmarkEnter,
       onCanEnterVehicleChange,
       onToggleDriveMode,
+      onSelectEngineeringObject,
     };
   }, [
     isDriving,
@@ -124,6 +134,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     onLandmarkEnter,
     onCanEnterVehicleChange,
     onToggleDriveMode,
+    onSelectEngineeringObject,
   ]);
 
   // Input Tracking
@@ -131,6 +142,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
 
   // Orbit / Camera drag controls
   const isDragging = useRef(false);
+  const mouseDownStartPos = useRef({ x: 0, y: 0 });
   const previousMousePosition = useRef({ x: 0, y: 0 });
   const orbitTheta = useRef(0);
   const orbitPhi = useRef(0.35);
@@ -150,10 +162,18 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     const scene = new THREE.Scene();
     sceneRef.current = scene;
     scene.background = new THREE.Color(0x87ceeb); // Daytime sky
-    scene.fog = new THREE.FogExp2(0xcde3f5, 0.0018);
+    scene.fog = new THREE.FogExp2(0xcde3f5, 0.00015); // Atmospheric perspective for 10 km expanse
 
-    const camera = new THREE.PerspectiveCamera(55, aspect, 0.5, 2500);
-    camera.position.set(20, 15, 75);
+    const camera = new THREE.PerspectiveCamera(55, aspect, 0.5, 25000);
+    if (previewMode) {
+      camera.position.set(
+        PREVIEW_TARGET.x + PREVIEW_DISTANCE * Math.sin(0) * Math.cos(PREVIEW_PHI),
+        PREVIEW_DISTANCE * Math.sin(PREVIEW_PHI),
+        PREVIEW_TARGET.z + PREVIEW_DISTANCE * Math.cos(0) * Math.cos(PREVIEW_PHI)
+      );
+    } else {
+      camera.position.set(20, 15, 75);
+    }
     cameraRef.current = camera;
 
     // 3. WebGL Renderer Initialization
@@ -167,9 +187,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    // Lowered from 0.75 — the old value was blowing out the sky dome and any
-    // light-colored surfaces (tin roofs, concrete, white flowers) to near-white.
-    renderer.toneMappingExposure = 0.62;
+    renderer.toneMappingExposure = 1.15;
 
     // Clear any previous child nodes and attach canvas
     while (container.firstChild) {
@@ -184,201 +202,25 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     ambientLightRef.current = ambientLight;
 
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0x334155, 0.65);
-    hemiLight.position.set(0, 200, 0);
+    hemiLight.position.set(0, 500, 0);
     scene.add(hemiLight);
     hemiLightRef.current = hemiLight;
 
     const dirLight = new THREE.DirectionalLight(0xfff7ed, 1.5);
-    dirLight.position.set(120, 220, 120);
+    dirLight.position.set(250, 450, 250);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize.width = 2048;
     dirLight.shadow.mapSize.height = 2048;
     dirLight.shadow.camera.near = 10;
-    dirLight.shadow.camera.far = 420;
-    // Tight frustum (recentred on the player every frame below) instead of a
-    // huge fixed box around world origin — a fixed ±180 box left the hills
-    // (~x:-240, z:-270) and other far corners of the 800x800m map completely
-    // outside the shadow frustum, so nothing there ever received a shadow
-    // and those areas rendered flat/fully-lit ("extra light") vs. the center.
-    dirLight.shadow.camera.left = -130;
-    dirLight.shadow.camera.right = 130;
-    dirLight.shadow.camera.top = 130;
-    dirLight.shadow.camera.bottom = -130;
-    dirLight.shadow.bias = -0.0003;
-    dirLight.shadow.normalBias = 0.02;
+    dirLight.shadow.camera.far = 1200;
+    dirLight.shadow.camera.left = -320;
+    dirLight.shadow.camera.right = 320;
+    dirLight.shadow.camera.top = 320;
+    dirLight.shadow.camera.bottom = -320;
     scene.add(dirLight);
-    scene.add(dirLight.target);
     dirLightRef.current = dirLight;
 
-    // 4B. Physically-based Sky Dome (Preetham atmospheric scattering) —
-    // replaces the flat solid-color background with a real sun-driven sky,
-    // and doubles as the source for a baked image-based-lighting (IBL)
-    // environment map so water, vehicle paint, glass & metal all pick up
-    // believable reflections instead of looking flat/matte.
-    scene.background = null;
-    scene.fog = new THREE.FogExp2(0xcde3f5, 0.0018);
-
-    const sky = new Sky();
-    sky.scale.setScalar(8000);
-    scene.add(sky);
-    skyRef.current = sky;
-
-    const pmremGenerator = new THREE.PMREMGenerator(renderer);
-    pmremGenerator.compileEquirectangularShader();
-    pmremGeneratorRef.current = pmremGenerator;
-
-    const SKY_PRESETS: Record<
-      TimeOfDay,
-      {
-        elevation: number;
-        azimuth: number;
-        turbidity: number;
-        rayleigh: number;
-        mieCoefficient: number;
-        mieDirectionalG: number;
-        sunColor: number;
-        sunIntensity: number;
-        hemiSky: number;
-        hemiGround: number;
-        hemiIntensity: number;
-        ambientColor: number;
-        ambientIntensity: number;
-        fogColor: number;
-        fogDensity: number;
-        envIntensity: number;
-      }
-    > = {
-      dawn: {
-        elevation: 4, azimuth: 100, turbidity: 6, rayleigh: 1.8, mieCoefficient: 0.006, mieDirectionalG: 0.85,
-        sunColor: 0xfda4af, sunIntensity: 0.75, hemiSky: 0xfecdd3, hemiGround: 0x3f3350, hemiIntensity: 0.35,
-        ambientColor: 0xffe4e6, ambientIntensity: 0.3, fogColor: 0xfecdd3, fogDensity: 0.002, envIntensity: 0.4,
-      },
-      day: {
-        // Further toned down (round 2) — user still found this too bright/washed
-        // vs. the golden-hour preset. Dropped rayleigh (less pale-white sky), and
-        // cut sun/hemi/ambient/env intensities another ~25-30% so midday reads as
-        // a soft natural daylight instead of a flat overexposed glare.
-        elevation: 42, azimuth: 178, turbidity: 1.5, rayleigh: 0.85, mieCoefficient: 0.0012, mieDirectionalG: 0.7,
-        sunColor: 0xfff3e0, sunIntensity: 0.46, hemiSky: 0xaed4f5, hemiGround: 0x3f5468, hemiIntensity: 0.17,
-        ambientColor: 0xd8e6f5, ambientIntensity: 0.11, fogColor: 0xc9dcec, fogDensity: 0.0012, envIntensity: 0.16,
-      },
-      golden: {
-        elevation: 6, azimuth: 262, turbidity: 5.5, rayleigh: 1.6, mieCoefficient: 0.006, mieDirectionalG: 0.82,
-        sunColor: 0xfbbf24, sunIntensity: 0.95, hemiSky: 0xfde68a, hemiGround: 0x4a2c1a, hemiIntensity: 0.38,
-        ambientColor: 0xfef3c7, ambientIntensity: 0.35, fogColor: 0xfef3c7, fogDensity: 0.0018, envIntensity: 0.4,
-      },
-      night: {
-        elevation: -12, azimuth: 60, turbidity: 2, rayleigh: 0.6, mieCoefficient: 0.001, mieDirectionalG: 0.7,
-        sunColor: 0x38bdf8, sunIntensity: 0.2, hemiSky: 0x1e2a4a, hemiGround: 0x020617, hemiIntensity: 0.28,
-        ambientColor: 0x1e293b, ambientIntensity: 0.22, fogColor: 0x0f172a, fogDensity: 0.0028, envIntensity: 0.15,
-      },
-    };
-
-    const sunVector = new THREE.Vector3();
-    const updateSkyEnvironment = (preset: TimeOfDay) => {
-      const cfg = SKY_PRESETS[preset];
-      const uniforms = sky.material.uniforms;
-      uniforms['turbidity'].value = cfg.turbidity;
-      uniforms['rayleigh'].value = cfg.rayleigh;
-      uniforms['mieCoefficient'].value = cfg.mieCoefficient;
-      uniforms['mieDirectionalG'].value = cfg.mieDirectionalG;
-
-      const phi = THREE.MathUtils.degToRad(90 - cfg.elevation);
-      const theta = THREE.MathUtils.degToRad(cfg.azimuth);
-      sunVector.setFromSphericalCoords(1, phi, theta);
-      uniforms['sunPosition'].value.copy(sunVector);
-
-      if (dirLightRef.current) {
-        // Position is relative to the light's target (recentred on the
-        // player every frame in the animate loop), so this only needs to
-        // set the *offset* — the actual world position gets re-applied
-        // around the player position each frame below.
-        dirLightRef.current.position.copy(sunVector).multiplyScalar(220);
-        dirLightRef.current.color.setHex(cfg.sunColor);
-        dirLightRef.current.intensity = cfg.sunIntensity;
-      }
-      if (hemiLightRef.current) {
-        hemiLightRef.current.color.setHex(cfg.hemiSky);
-        hemiLightRef.current.groundColor.setHex(cfg.hemiGround);
-        hemiLightRef.current.intensity = cfg.hemiIntensity;
-      }
-      if (ambientLightRef.current) {
-        ambientLightRef.current.color.setHex(cfg.ambientColor);
-        ambientLightRef.current.intensity = cfg.ambientIntensity;
-      }
-      scene.fog = new THREE.FogExp2(cfg.fogColor, cfg.fogDensity);
-
-      // Bake a fresh IBL environment map from the current sky so every
-      // MeshStandardMaterial / MeshPhysicalMaterial in the scene (water,
-      // car paint, chrome, glass, wet roads) reflects the current sky
-      // instead of looking flat. Cheap enough to only run on time-of-day
-      // changes (not every frame).
-      envRenderTargetRef.current?.dispose();
-      const renderTarget = pmremGenerator.fromScene(sky as unknown as THREE.Scene, 0.02);
-      envRenderTargetRef.current = renderTarget;
-      scene.environment = renderTarget.texture;
-      // Without this, the baked sky IBL lights every material at full
-      // strength ON TOP of the sun/hemi/ambient lights above, which is
-      // what was washing the whole scene out to white. Scaling it down
-      // keeps reflections/ambient fill subtle instead of a second sun.
-      scene.environmentIntensity = cfg.envIntensity;
-
-      if (starsRef.current) {
-        starsRef.current.visible = preset === 'night';
-      }
-    };
-    updateSkyEnvRef.current = updateSkyEnvironment;
-    updateSkyEnvironment('day');
-
-    // 4C. Night starfield (only visible once time-of-day switches to night)
-    const starCount = 1400;
-    const starGeo = new THREE.BufferGeometry();
-    const starPos = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount; i++) {
-      const r = 3200 + Math.random() * 600;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(Math.random() * 0.85); // keep mostly above horizon
-      starPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      starPos[i * 3 + 1] = Math.abs(r * Math.cos(phi));
-      starPos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
-    }
-    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-    const starMat = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 3.2,
-      sizeAttenuation: false,
-      transparent: true,
-      opacity: 0.85,
-      fog: false,
-    });
-    const stars = new THREE.Points(starGeo, starMat);
-    stars.visible = false;
-    scene.add(stars);
-    starsRef.current = stars;
-
-    // 4D. Post-processing composer — subtle bloom (sun glints, headlights,
-    // neon signage), SMAA anti-aliasing, a soft cinematic vignette, and a
-    // final output pass that restores correct ACES tone-mapping / color
-    // space (required whenever rendering goes through a composer instead
-    // of straight to the canvas).
-    const composer = new EffectComposer(renderer);
-    composer.addPass(new RenderPass(scene, camera));
-
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(initWidth, initHeight), 0.07, 0.3, 0.98);
-    composer.addPass(bloomPass);
-    bloomPassRef.current = bloomPass;
-
-    composer.addPass(new SMAAPass());
-
-    const vignettePass = new ShaderPass(VignetteShader);
-    vignettePass.uniforms['offset'].value = 1.05;
-    vignettePass.uniforms['darkness'].value = 1.1;
-    composer.addPass(vignettePass);
-
-    composer.addPass(new OutputPass());
-    composerRef.current = composer;
-
-    // 5. Build Mini Country Terrain (800m x 800m)
+    // 5. Build Mini Country Terrain (10,000m x 10,000m / 10 km x 10 km True Scale)
     const terrain = buildMiniCountryTerrain();
     scene.add(terrain.mesh);
     elevationSamplerRef.current = terrain.getElevationAt;
@@ -395,28 +237,49 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     scene.add(countryObjects.group);
     countryObjectsRef.current = countryObjects;
 
-    // 8. Build Realistic 3D Grass Blades, Wildflowers & Kashful Reeds Field
-    const grassSys = buildRealisticGrassSystem(terrain.getElevationAt, terrain.isPointOnRoad);
-    scene.add(grassSys.mesh);
-    scene.add(grassSys.flowerMesh);
-    scene.add(grassSys.kashfulMesh);
-    grassSystemRef.current = grassSys;
+    // 8-9. Heavy simulation subsystems (grass, traffic, road/rail networks,
+    // space-flight, playable vehicle & character) are skipped entirely in
+    // previewMode — the homepage hero only needs the static terrain, river
+    // & country structures below for a rich decorative aerial view.
+    if (!previewMode) {
+      // 8. Build Realistic 3D Grass Blades, Wildflowers & Kashful Reeds Field
+      const grassSys = buildRealisticGrassSystem(terrain.getElevationAt, terrain.isPointOnRoad);
+      scene.add(grassSys.mesh);
+      scene.add(grassSys.flowerMesh);
+      scene.add(grassSys.kashfulMesh);
+      grassSystemRef.current = grassSys;
 
-    // 8B. Autonomous Traffic System (Buses, Trucks, CNGs, Sedans on Roads & Bridges)
-    const trafficSys = buildTrafficSystem(terrain.getElevationAt);
-    scene.add(trafficSys.group);
-    trafficSystemRef.current = trafficSys;
+      // 8B. Autonomous Traffic System (Buses, Trucks, CNGs, Sedans on Roads & Bridges)
+      const trafficSys = buildTrafficSystem(terrain.getElevationAt);
+      scene.add(trafficSys.group);
+      trafficSystemRef.current = trafficSys;
 
-    // 9. Initialize Playable Vehicle & Character
-    const initialVehiclePos = new THREE.Vector3(20, terrain.getElevationAt(20, 50) + 0.25, 50);
-    const vehicle = new PlayableVehicle(vehicleType, initialVehiclePos, 0);
-    scene.add(vehicle.group);
-    vehicleRef.current = vehicle;
+      // 8C. Comprehensive 30+ Road & Civil Infrastructure Network
+      const roadNet = buildComprehensiveRoadNetwork(terrain.getElevationAt);
+      scene.add(roadNet.group);
+      roadNetworkRef.current = roadNet;
 
-    const initialCharPos = new THREE.Vector3(22.5, terrain.getElevationAt(22.5, 50), 50);
-    const character = new PlayableCharacter(initialCharPos, 0);
-    scene.add(character.group);
-    characterRef.current = character;
+      // 8D. Complete Railway & Metro Rail Network with Automatic Trains, Stations, Signals & Crossings
+      const railMetro = buildRailAndMetroSystem(terrain.getElevationAt);
+      scene.add(railMetro.group);
+      railMetroRef.current = railMetro;
+
+      // 8E. Space & High-Altitude Flight Environment (Starfield, Moon, Rocket Launch, Dreamliner Airplane)
+      const spaceSys = buildSpaceFlightSystem();
+      scene.add(spaceSys.group);
+      spaceSystemRef.current = spaceSys;
+
+      // 9. Initialize Playable Vehicle & Character
+      const initialVehiclePos = new THREE.Vector3(20, terrain.getElevationAt(20, 50) + 0.25, 50);
+      const vehicle = new PlayableVehicle(vehicleType, initialVehiclePos, 0);
+      scene.add(vehicle.group);
+      vehicleRef.current = vehicle;
+
+      const initialCharPos = new THREE.Vector3(22.5, terrain.getElevationAt(22.5, 50), 50);
+      const character = new PlayableCharacter(initialCharPos, 0);
+      scene.add(character.group);
+      characterRef.current = character;
+    }
 
     // 9. Rain Particles System
     const rainCount = 2000;
@@ -448,7 +311,6 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
         renderer.setSize(w, h);
-        composerRef.current?.setSize(w, h);
       }
     };
 
@@ -459,7 +321,6 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
           camera.aspect = width / height;
           camera.updateProjectionMatrix();
           renderer.setSize(width, height);
-          composerRef.current?.setSize(width, height);
         }
       }
     });
@@ -467,7 +328,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     window.addEventListener('resize', handleResize);
 
     // Initial warm render call
-    composer.render();
+    renderer.render(scene, camera);
 
     // 11. Physics & Animation Render Loop
     let animId: number;
@@ -482,12 +343,22 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       const getElevation = elevationSamplerRef.current;
       const currentProps = propsRef.current;
 
-      if (getElevation && vehicleRef.current && characterRef.current) {
+      if (previewMode) {
+        // Slow, continuous turntable orbit around the city core — no
+        // player/vehicle involved, just a gentle decorative camera sweep.
+        orbitTheta.current += delta * PREVIEW_ROTATE_SPEED;
+        const groundY = getElevation ? getElevation(PREVIEW_TARGET.x, PREVIEW_TARGET.z) : 0;
+        const cx = PREVIEW_TARGET.x + PREVIEW_DISTANCE * Math.sin(orbitTheta.current) * Math.cos(PREVIEW_PHI);
+        const cy = groundY + PREVIEW_DISTANCE * Math.sin(PREVIEW_PHI);
+        const cz = PREVIEW_TARGET.z + PREVIEW_DISTANCE * Math.cos(orbitTheta.current) * Math.cos(PREVIEW_PHI);
+        camera.position.set(cx, cy, cz);
+        camera.lookAt(PREVIEW_TARGET.x, groundY + 6, PREVIEW_TARGET.z);
+      } else if (getElevation && vehicleRef.current && characterRef.current) {
         const activeVehicle = vehicleRef.current;
         const activeChar = characterRef.current;
 
         if (currentProps.isDriving) {
-          // 1. VEHICLE DRIVING PHYSICS
+          // 1. VEHICLE DRIVING & HELICOPTER FLIGHT PHYSICS
           let throttle = 0;
           if (keys['KeyW'] || keys['ArrowUp']) throttle += 1;
           if (keys['KeyS'] || keys['ArrowDown']) throttle -= 1;
@@ -496,10 +367,22 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
           if (keys['KeyA'] || keys['ArrowLeft']) steer -= 1;
           if (keys['KeyD'] || keys['ArrowRight']) steer += 1;
 
-          const brake = keys['KeyS'] || keys['ArrowDown'];
+          const brake = keys['KeyS'] || keys['ArrowDown'] || false;
           const handbrake = keys['Space'] || false;
+          const liftUp = keys['Space'] || false;
+          const descend =
+            keys['ShiftLeft'] ||
+            keys['ShiftRight'] ||
+            keys['KeyC'] ||
+            keys['KeyZ'] ||
+            (activeVehicle.type === 'helicopter' && activeVehicle.state.isAirborne && (keys['KeyS'] || keys['ArrowDown']) && !keys['KeyW'] && !keys['ArrowUp'] && !keys['Space']) ||
+            false;
 
-          activeVehicle.updatePhysics(delta, { throttle, steer, brake, handbrake }, getElevation);
+          activeVehicle.updatePhysics(
+            delta,
+            { throttle, steer, brake, handbrake, liftUp, descend },
+            getElevation
+          );
 
           // Throttled HUD dispatch (~15-20 updates/sec) to keep React thread super responsive
           if (timeNow - lastHudUpdateTime > 50) {
@@ -539,29 +422,18 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         }
 
         // 3. DYNAMIC CAMERA FOLLOW RIG
-        const targetPos = currentProps.isDriving ? activeVehicle.state.position : activeChar.state.position;
+        const targetPos = currentProps.isDriving
+          ? (activeVehicle.state?.position || activeChar.state?.position)
+          : (activeChar.state?.position || activeVehicle.state?.position);
 
-        // Recentre the sun's shadow frustum on the player every frame,
-        // keeping the same sun angle (sunVector). This is what actually
-        // fixes shadows (and therefore lighting contrast) on the hills,
-        // grass fields, and any spot far from world origin — previously
-        // the shadow camera was a fixed box around (0,0,0) so distant
-        // terrain never got a shadow and looked flat/over-lit.
-        if (dirLightRef.current) {
-          const sunOffset = sunVector.clone().multiplyScalar(220);
-          dirLightRef.current.position.set(
-            targetPos.x + sunOffset.x,
-            sunOffset.y,
-            targetPos.z + sunOffset.z
-          );
-          dirLightRef.current.target.position.set(targetPos.x, 0, targetPos.z);
-        }
+        if (!targetPos) return;
 
         if (currentProps.cameraView === 'chase' && currentProps.isDriving) {
           // Chase Cam
           const heading = activeVehicle.state.heading;
-          const camDist = 9.5;
-          const camHeight = 3.8;
+          const isHeli = activeVehicle.type === 'helicopter';
+          const camDist = isHeli ? 18.0 : 9.5;
+          const camHeight = isHeli ? 6.5 : 3.8;
           const camOffset = new THREE.Vector3(
             Math.sin(heading) * camDist,
             camHeight,
@@ -569,22 +441,21 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
           );
 
           const desiredCamPos = targetPos.clone().add(camOffset);
-          camera.position.lerp(desiredCamPos, 8 * delta);
-          camera.lookAt(targetPos.x, targetPos.y + 1.2, targetPos.z);
+          camera.position.lerp(desiredCamPos, isHeli ? 5 * delta : 8 * delta);
+          camera.lookAt(targetPos.x, targetPos.y + (isHeli ? 1.8 : 1.2), targetPos.z);
 
         } else if (currentProps.cameraView === 'hood' && currentProps.isDriving) {
-          // First-person Hood View
+          // First-person Hood / Cockpit View
           const heading = activeVehicle.state.heading;
-          const hoodOffset = new THREE.Vector3(
-            -Math.sin(heading) * 1.4,
-            1.2,
-            -Math.cos(heading) * 1.4
-          );
+          const isHeli = activeVehicle.type === 'helicopter';
+          const hoodOffset = isHeli
+            ? new THREE.Vector3(-Math.sin(heading) * 0.6, 2.0, -Math.cos(heading) * 0.6)
+            : new THREE.Vector3(-Math.sin(heading) * 1.4, 1.2, -Math.cos(heading) * 1.4);
           camera.position.copy(targetPos).add(hoodOffset);
 
           const lookDir = new THREE.Vector3(
             -Math.sin(heading) * 20,
-            0,
+            isHeli ? -2 : 0,
             -Math.cos(heading) * 20
           );
           camera.lookAt(targetPos.clone().add(lookDir));
@@ -628,6 +499,16 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       if (trafficSystemRef.current) {
         trafficSystemRef.current.update(delta);
       }
+      if (roadNetworkRef.current) {
+        roadNetworkRef.current.update(timeNow * 0.001, delta);
+      }
+      if (railMetroRef.current) {
+        railMetroRef.current.update(timeNow * 0.001, delta);
+      }
+      if (spaceSystemRef.current) {
+        const isNightTime = currentProps.timeOfDay === 'night';
+        spaceSystemRef.current.updateAnimation(timeNow * 0.001, delta, isNightTime, currentProps.timeOfDay);
+      }
       if (riverSystemRef.current) {
         const monsoon = currentProps.weather === 'rain' ? 0.65 : 0;
         riverSystemRef.current.updateAnimation(timeNow * 0.001, monsoon, 0);
@@ -647,7 +528,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       }
 
       // Final Frame Render
-      composer.render();
+      renderer.render(scene, camera);
       animId = requestAnimationFrame(animate);
     };
 
@@ -660,13 +541,6 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       if (renderer.domElement && container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
-      composerRef.current?.dispose();
-      envRenderTargetRef.current?.dispose();
-      pmremGeneratorRef.current?.dispose();
-      sky.geometry.dispose();
-      (sky.material as THREE.Material).dispose();
-      starGeo.dispose();
-      starMat.dispose();
       renderer.dispose();
     };
   }, []);
@@ -684,13 +558,15 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       vehicleActionRef.current = {
         honk: () => vehicleRef.current?.honk(),
         toggleHeadlights: () => {
-          if (vehicleRef.current) {
+          if (vehicleRef.current?.state) {
             vehicleRef.current.setHeadlights(!vehicleRef.current.state.headlightsOn);
           }
         },
         resetVehicle: () => {
-          if (vehicleRef.current && elevationSamplerRef.current) {
-            const elev = elevationSamplerRef.current(vehicleRef.current.state.position.x, vehicleRef.current.state.position.z);
+          if (vehicleRef.current?.state?.position && elevationSamplerRef.current) {
+            const posX = vehicleRef.current.state.position.x ?? 20;
+            const posZ = vehicleRef.current.state.position.z ?? 50;
+            const elev = elevationSamplerRef.current(posX, posZ);
             vehicleRef.current.resetPosition(elev);
           }
         },
@@ -701,42 +577,78 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   // Handle Teleportation when requested via Map
   useEffect(() => {
     if (teleportTarget && elevationSamplerRef.current) {
-      const [tx, tz] = teleportTarget.center;
+      let tx = 20;
+      let tz = 50;
+      if (Array.isArray(teleportTarget)) {
+        tx = typeof teleportTarget[0] === 'number' ? teleportTarget[0] : 20;
+        tz = typeof teleportTarget[1] === 'number' ? teleportTarget[1] : 50;
+      } else if (teleportTarget && typeof teleportTarget === 'object') {
+        const targetObj = teleportTarget as unknown as Record<string, unknown>;
+        if (Array.isArray(targetObj.center)) {
+          tx = typeof targetObj.center[0] === 'number' ? targetObj.center[0] : 20;
+          tz = typeof targetObj.center[1] === 'number' ? targetObj.center[1] : 50;
+        } else if (typeof targetObj.x === 'number' && typeof targetObj.z === 'number') {
+          tx = targetObj.x;
+          tz = targetObj.z;
+        }
+      }
+
       const ty = elevationSamplerRef.current(tx, tz);
 
-      if (isDriving && vehicleRef.current) {
-        vehicleRef.current.state.position.set(tx, ty + 0.5, tz);
+      if (isDriving && vehicleRef.current?.state?.position) {
+        vehicleRef.current.state.position.set(tx, ty + 0.6, tz);
         vehicleRef.current.state.velocity.set(0, 0, 0);
-      } else if (characterRef.current) {
+        vehicleRef.current.state.speedKmh = 0;
+      } else if (characterRef.current?.state?.position) {
         characterRef.current.state.position.set(tx, ty, tz);
+        characterRef.current.state.velocity.set(0, 0, 0);
       }
       onTeleportComplete();
     }
   }, [teleportTarget, isDriving, onTeleportComplete]);
 
-  // Environmental Lighting & Weather Dynamics — driven by the physically
-  // based Sky dome (sun position/color/fog/hemisphere all update together,
-  // plus the IBL environment map gets re-baked so reflections stay in sync).
+  // Environmental Lighting & Weather Dynamics
   useEffect(() => {
     if (!sceneRef.current || !dirLightRef.current || !hemiLightRef.current || !ambientLightRef.current) return;
 
-    updateSkyEnvRef.current?.(timeOfDay);
-
-    if (timeOfDay === 'night') {
+    if (timeOfDay === 'dawn') {
+      sceneRef.current.background = new THREE.Color(0xfb7185);
+      sceneRef.current.fog = new THREE.FogExp2(0xfecdd3, 0.002);
+      dirLightRef.current.color.setHex(0xfda4af);
+      dirLightRef.current.intensity = 1.0;
+      dirLightRef.current.position.set(-180, 80, 100);
+      ambientLightRef.current.color.setHex(0xffe4e6);
+      ambientLightRef.current.intensity = 0.5;
+    } else if (timeOfDay === 'golden') {
+      sceneRef.current.background = new THREE.Color(0xf59e0b);
+      sceneRef.current.fog = new THREE.FogExp2(0xfef3c7, 0.0018);
+      dirLightRef.current.color.setHex(0xfbbf24);
+      dirLightRef.current.intensity = 1.3;
+      dirLightRef.current.position.set(160, 60, -140);
+      ambientLightRef.current.color.setHex(0xfef3c7);
+      ambientLightRef.current.intensity = 0.6;
+    } else if (timeOfDay === 'night') {
+      sceneRef.current.background = new THREE.Color(0x020617);
+      sceneRef.current.fog = new THREE.FogExp2(0x0f172a, 0.0028);
+      dirLightRef.current.color.setHex(0x38bdf8);
+      dirLightRef.current.intensity = 0.25;
+      dirLightRef.current.position.set(60, 180, 60);
+      ambientLightRef.current.color.setHex(0x1e293b);
+      ambientLightRef.current.intensity = 0.3;
       vehicleRef.current?.setHeadlights(true);
+    } else {
+      // Day
+      sceneRef.current.background = new THREE.Color(0x87ceeb);
+      sceneRef.current.fog = new THREE.FogExp2(0xcde3f5, 0.0018);
+      dirLightRef.current.color.setHex(0xfff7ed);
+      dirLightRef.current.intensity = 1.4;
+      dirLightRef.current.position.set(120, 220, 120);
+      ambientLightRef.current.color.setHex(0xdbeafe);
+      ambientLightRef.current.intensity = 0.65;
     }
 
     if (rainParticlesRef.current) {
       rainParticlesRef.current.visible = weather === 'rain';
-    }
-
-    // Overcast/rainy weather thickens the haze and mutes the bloom a touch,
-    // regardless of time of day — keeps storms from looking blown out.
-    if (bloomPassRef.current) {
-      bloomPassRef.current.strength = weather === 'rain' ? 0.04 : 0.07;
-    }
-    if (sceneRef.current.fog instanceof THREE.FogExp2 && weather === 'rain') {
-      sceneRef.current.fog.density *= 1.6;
     }
   }, [timeOfDay, weather]);
 
@@ -747,24 +659,29 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         characterRef.current.group.visible = false;
         audioEngine.playDoorThud();
       } else {
-        const carPos = vehicleRef.current.state.position;
-        const carHeading = vehicleRef.current.state.heading;
+        const carPos = vehicleRef.current.state?.position;
+        const carHeading = vehicleRef.current.state?.heading ?? 0;
         const doorOffset = new THREE.Vector3(Math.cos(carHeading) * 2.2, 0, -Math.sin(carHeading) * 2.2);
 
-        const spawnX = carPos.x + doorOffset.x;
-        const spawnZ = carPos.z + doorOffset.z;
+        const spawnX = (carPos?.x ?? 20) + (doorOffset?.x ?? 0);
+        const spawnZ = (carPos?.z ?? 50) + (doorOffset?.z ?? 0);
         const spawnY = elevationSamplerRef.current(spawnX, spawnZ);
 
-        characterRef.current.state.position.set(spawnX, spawnY, spawnZ);
-        characterRef.current.state.heading = carHeading;
-        characterRef.current.group.visible = true;
+        if (characterRef.current.state?.position) {
+          characterRef.current.state.position.set(spawnX, spawnY, spawnZ);
+          characterRef.current.state.heading = carHeading;
+          characterRef.current.group.visible = true;
+        }
         audioEngine.playDoorThud();
       }
     }
   }, [isDriving]);
 
-  // Keyboard Event Listeners
+  // Keyboard Event Listeners (disabled entirely in previewMode — the
+  // homepage hero must never capture page-level key presses)
   useEffect(() => {
+    if (previewMode) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       // Prevent scrolling on space / arrow keys
       if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) {
@@ -783,14 +700,17 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       }
 
       // 'L' = Toggle Headlights
-      if (e.code === 'KeyL' && propsRef.current.isDriving && vehicleRef.current) {
+      if (e.code === 'KeyL' && propsRef.current.isDriving && vehicleRef.current?.state) {
         vehicleRef.current.setHeadlights(!vehicleRef.current.state.headlightsOn);
       }
 
       // 'R' = Reset Car
       if (e.code === 'KeyR' && propsRef.current.isDriving && vehicleRef.current && elevationSamplerRef.current) {
-        const elev = elevationSamplerRef.current(vehicleRef.current.state.position.x, vehicleRef.current.state.position.z);
-        vehicleRef.current.resetPosition(elev);
+        const pos = vehicleRef.current.state?.position;
+        if (pos && typeof pos.x === 'number' && typeof pos.z === 'number') {
+          const elev = elevationSamplerRef.current(pos.x, pos.z);
+          vehicleRef.current.resetPosition(elev);
+        }
       }
     };
 
@@ -809,13 +729,17 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   // Mouse Orbit Drag Controls
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
+    mouseDownStartPos.current = { x: e.clientX, y: e.clientY };
     previousMousePosition.current = { x: e.clientX, y: e.clientY };
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current) return;
-    const deltaX = e.clientX - previousMousePosition.current.x;
-    const deltaY = e.clientY - previousMousePosition.current.y;
+    if (previewMode) return; // camera is auto-orbiting; no manual drag-look
+    if (!isDragging.current || !previousMousePosition.current) return;
+    const prevX = previousMousePosition.current?.x ?? e.clientX;
+    const prevY = previousMousePosition.current?.y ?? e.clientY;
+    const deltaX = e.clientX - prevX;
+    const deltaY = e.clientY - prevY;
 
     orbitTheta.current -= deltaX * 0.006;
     orbitPhi.current = Math.max(0.05, Math.min(Math.PI / 2.1, orbitPhi.current + deltaY * 0.006));
@@ -823,11 +747,62 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     previousMousePosition.current = { x: e.clientX, y: e.clientY };
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (previewMode) {
+      // Any quick click/tap on the preview simply hands off to the caller
+      // (used to route into the full playable game).
+      if (mouseDownStartPos.current) {
+        const startX = mouseDownStartPos.current?.x ?? e.clientX;
+        const startY = mouseDownStartPos.current?.y ?? e.clientY;
+        const clickDist = Math.hypot(e.clientX - startX, e.clientY - startY);
+        if (clickDist < 8) {
+          onPreviewClick?.();
+        }
+      }
+      isDragging.current = false;
+      return;
+    }
+
+    // If it was a quick click (not a long drag), perform 3D raycast to detect clicked landmark
+    if (isDragging.current && mouseDownStartPos.current) {
+      const startX = mouseDownStartPos.current?.x ?? e.clientX;
+      const startY = mouseDownStartPos.current?.y ?? e.clientY;
+      const clickDist = Math.hypot(e.clientX - startX, e.clientY - startY);
+      if (clickDist < 8 && cameraRef.current && containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        const mouseY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+        const raycaster = new THREE.Raycaster();
+        raycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), cameraRef.current);
+
+        // Check against terrain / landmark centers
+        const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+        const intersectPoint = new THREE.Vector3();
+        if (raycaster.ray.intersectPlane(plane, intersectPoint) && intersectPoint) {
+          // Find closest engineering landmark within range
+          let closestLm: LandmarkZone | null = null;
+          let minDist = 110;
+          for (const lm of COUNTRY_LANDMARKS) {
+            const lmX = lm.center?.[0] ?? 0;
+            const lmZ = lm.center?.[1] ?? 0;
+            const d = Math.hypot((intersectPoint.x ?? 0) - lmX, (intersectPoint.z ?? 0) - lmZ);
+            if (d < lm.radius && d < minDist) {
+              minDist = d;
+              closestLm = lm;
+            }
+          }
+          if (closestLm && propsRef.current.onSelectEngineeringObject) {
+            propsRef.current.onSelectEngineeringObject(closestLm);
+          }
+        }
+      }
+    }
     isDragging.current = false;
   };
 
   const handleWheel = (e: React.WheelEvent) => {
+    if (previewMode) return; // zoom is fixed for the auto-orbiting preview
     orbitDistance.current = Math.max(8, Math.min(180, orbitDistance.current + e.deltaY * 0.05));
   };
 
@@ -835,12 +810,14 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     <div
       ref={containerRef}
       id="three-world-canvas-container"
-      className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing outline-none overflow-hidden bg-sky-300"
+      className={`absolute inset-0 w-full h-full outline-none overflow-hidden bg-sky-300 ${
+        previewMode ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'
+      }`}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onWheel={handleWheel}
-      tabIndex={0}
+      tabIndex={previewMode ? -1 : 0}
     />
   );
 };

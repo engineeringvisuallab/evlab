@@ -6,6 +6,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { ThreeWorldCanvas } from './components/world/ThreeWorldCanvas';
 import { GameHUD } from './components/game/GameHUD';
+import { EngineeringObjectDetailModal } from './components/game/EngineeringObjectDetailModal';
 import { TimeOfDay, WeatherType } from './types/game';
 import { VehicleTypeId, VehiclePhysicsState } from './utils/vehicleController';
 import { LandmarkZone } from './utils/miniCountryTerrain';
@@ -19,6 +20,7 @@ export default function App() {
   const [vehicleState, setVehicleState] = useState<VehiclePhysicsState | null>(null);
   const [playerPosition, setPlayerPosition] = useState<[number, number]>([20, 50]);
   const [currentLandmark, setCurrentLandmark] = useState<LandmarkZone | null>(null);
+  const [selectedEngineeringSite, setSelectedEngineeringSite] = useState<LandmarkZone | null>(null);
 
   // Camera & Environment
   const [cameraView, setCameraView] = useState<'chase' | 'hood' | 'orbit' | 'drone' | 'walk'>('chase');
@@ -27,7 +29,7 @@ export default function App() {
   const [isMuted, setIsMuted] = useState(false);
 
   // Teleportation Target
-  const [teleportTarget, setTeleportTarget] = useState<LandmarkZone | null>(null);
+  const [teleportTarget, setTeleportTarget] = useState<LandmarkZone | [number, number] | null>(null);
 
   // Vehicle action direct bindings (Honk, Lights, Reset)
   const vehicleActionRef = useRef<{
@@ -73,12 +75,13 @@ export default function App() {
         onPlayerPositionUpdate={setPlayerPosition}
         onLandmarkEnter={setCurrentLandmark}
         onCanEnterVehicleChange={setCanEnterVehicle}
+        onSelectEngineeringObject={(landmark) => setSelectedEngineeringSite(landmark)}
         teleportTarget={teleportTarget}
         onTeleportComplete={() => setTeleportTarget(null)}
         vehicleActionRef={vehicleActionRef}
       />
 
-      {/* 2. Responsive Game HUD (Speedometer, Minimap Radar, Enter/Exit & Controls) */}
+      {/* 2. Responsive Visualization HUD (Radar, Inspect Sites, Camera & Environment Controls) */}
       <GameHUD
         isDriving={isDriving}
         onToggleDriveMode={handleToggleDriveMode}
@@ -104,6 +107,15 @@ export default function App() {
         playerPosition={playerPosition}
         onTeleportToLandmark={(lm) => setTeleportTarget(lm)}
       />
+
+      {/* 3. Detailed 3D Engineering Object Details Modal (Click to inspect site) */}
+      {selectedEngineeringSite && (
+        <EngineeringObjectDetailModal
+          landmark={selectedEngineeringSite}
+          onClose={() => setSelectedEngineeringSite(null)}
+          onTeleportTo={(lm) => setTeleportTarget(lm)}
+        />
+      )}
     </main>
   );
 }

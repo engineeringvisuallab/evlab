@@ -103,7 +103,7 @@ export function buildBangladeshInfrastructure(getElevationAt: (x: number, z: num
     // Streetlight fixture and spot
     const lampHead = new THREE.Mesh(
       new THREE.BoxGeometry(0.4, 0.15, 0.6),
-      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.4 })
+      new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 0.8 })
     );
     lampHead.position.set(-2.2, 7.1, 0);
     poleGrp.add(lampHead);

@@ -142,18 +142,23 @@ export class PlayableCharacter {
     const baseSpeed = inputs.sprint ? 9.5 : 4.8; // m/s
 
     if (isMoving) {
-      // Calculate move direction relative to camera angle
-      const inputAngle = Math.atan2(inputs.moveX, inputs.moveZ);
-      const moveAngle = inputs.cameraYaw + inputAngle;
+      // inputs.moveZ: -1 for forward (W / UpArrow), +1 for backward (S / DownArrow)
+      // inputs.moveX: -1 for left (A / LeftArrow), +1 for right (D / RightArrow)
+      
+      // Calculate movement angle in world space relative to camera view yaw
+      const inputHeading = Math.atan2(inputs.moveX, -inputs.moveZ);
+      const targetHeading = inputs.cameraYaw + inputHeading;
 
+      // Smoothly rotate character mesh towards movement heading
       this.state.heading = THREE.MathUtils.lerp(
         this.state.heading,
-        moveAngle,
-        14 * dt
+        targetHeading,
+        18 * dt
       );
 
-      const moveX = Math.sin(moveAngle) * baseSpeed;
-      const moveZ = Math.cos(moveAngle) * baseSpeed;
+      // Apply forward velocity in the computed direction
+      const moveX = Math.sin(targetHeading) * baseSpeed;
+      const moveZ = -Math.cos(targetHeading) * baseSpeed;
 
       this.state.position.x += moveX * dt;
       this.state.position.z += moveZ * dt;

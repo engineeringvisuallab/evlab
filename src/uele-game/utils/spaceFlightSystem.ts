@@ -26,13 +26,13 @@ export function buildSpaceFlightSystem(): SpaceEnvironment {
   ];
 
   for (let i = 0; i < starCount; i++) {
-    // Generate upper hemisphere dome
+    // Generate upper hemisphere dome for 10km country expanse
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.acos(Math.random() * 0.95 + 0.05); // Above horizon
-    const radius = 1200 + Math.random() * 300;
+    const radius = 9000 + Math.random() * 3000;
 
     starPositions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-    starPositions[i * 3 + 1] = radius * Math.cos(phi) + 50;
+    starPositions[i * 3 + 1] = radius * Math.cos(phi) + 150;
     starPositions[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
 
     const c = starPalettes[Math.floor(Math.random() * starPalettes.length)];
@@ -129,7 +129,8 @@ export function buildSpaceFlightSystem(): SpaceEnvironment {
   const haloMesh = new THREE.Mesh(haloGeo, haloMat);
   moonGroup.add(haloMesh);
 
-  moonGroup.position.set(450, 480, -650);
+  moonGroup.scale.set(6, 6, 6);
+  moonGroup.position.set(2800, 3200, -4500);
   group.add(moonGroup);
 
   // 3. LAUNCHING & ORBITING SPACE ROCKET (Bangabandhu Satellite / Artemis class Rocket)
@@ -364,47 +365,95 @@ export function buildSpaceFlightSystem(): SpaceEnvironment {
 
     // 2. Space Rocket Ascent Physics Trajectory
     // Continuous launch into upper space / mesosphere loop
-    const rocketLoopPeriod = 42; // seconds per cycle
+    const rocketLoopPeriod = 48; // seconds per cycle
     const cycleTime = (time % rocketLoopPeriod) / rocketLoopPeriod;
 
-    // Rocket launches from space center pad (x=210, z=-140) to high altitude (y=750)
-    const launchHeight = 15 + Math.pow(cycleTime, 1.7) * 780;
-    const launchX = 210 - Math.pow(cycleTime, 2) * 450;
-    const launchZ = -140 - Math.pow(cycleTime, 2) * 550;
-    rocketGroup.position.set(launchX, launchHeight, launchZ);
+    // Launch Pad coordinates at space center pad (x=210, z=-140)
+    let launchX = 210;
+    let launchY = 12;
+    let launchZ = -140;
+    let pitchAngle = 0;
 
-    // Gravity turn pitch angle
-    const pitchAngle = Math.min(Math.PI / 2.4, cycleTime * 1.15);
+    if (cycleTime < 0.12) {
+      // Countdown / Pad ignition phase
+      launchY = 12 + Math.sin(time * 30) * 0.1;
+      pitchAngle = 0;
+    } else {
+      // Ascent phase
+      const ascentProgress = (cycleTime - 0.12) / 0.88;
+      launchY = 12 + Math.pow(ascentProgress, 1.8) * 850;
+      launchX = 210 - Math.pow(ascentProgress, 2.2) * 500;
+      launchZ = -140 - Math.pow(ascentProgress, 2.2) * 600;
+      pitchAngle = Math.min(Math.PI / 2.2, ascentProgress * 1.35);
+    }
+    rocketGroup.position.set(launchX, launchY, launchZ);
     rocketGroup.rotation.x = -pitchAngle * 0.8;
     rocketGroup.rotation.z = pitchAngle * 0.6;
-    rocketGroup.rotation.y = time * 0.2;
+    rocketGroup.rotation.y = time * 0.15;
 
     // Engine exhaust pulse
-    const flicker = 1 + (Math.sin(time * 45) + Math.cos(time * 65)) * 0.12;
-    mainPlume.scale.set(flicker, flicker * 1.1, flicker);
+    const flicker = 1 + (Math.sin(time * 50) + Math.cos(time * 70)) * 0.15;
+    mainPlume.scale.set(flicker, flicker * 1.15, flicker);
     innerCorePlume.scale.set(flicker, flicker, flicker);
 
-    // 3. Commercial Airplane Cruising Flight Path (Circumnavigating the country airspace)
-    const planeRadiusX = 380;
-    const planeRadiusZ = 340;
-    const planeSpeed = time * 0.14; // smooth cruising speed
-    const planeX = Math.cos(planeSpeed) * planeRadiusX;
-    const planeZ = Math.sin(planeSpeed) * planeRadiusZ;
-    const planeAltitude = 175 + Math.sin(planeSpeed * 2) * 15;
+    // 3. Commercial Airplane Runway Takeoff, Initial Climb & Sky Cruising Cycle
+    // Runway extends along Z axis at X = 180, from Z = 90 (start) to Z = 280 (end)
+    const flightLoopPeriod = 60; // 60 seconds full flight loop
+    const fPhase = (time % flightLoopPeriod) / flightLoopPeriod;
 
-    airplaneGroup.position.set(planeX, planeAltitude, planeZ);
+    let pX = 180;
+    let pY = 2.4;
+    let pZ = 90;
+    let pPitch = 0;
+    let pRoll = 0;
+    let pYaw = 0;
 
-    // Calculate tangent heading and banking roll
-    const tangentX = -Math.sin(planeSpeed) * planeRadiusX;
-    const tangentZ = Math.cos(planeSpeed) * planeRadiusZ;
-    const heading = Math.atan2(tangentX, tangentZ);
+    if (fPhase < 0.18) {
+      // Phase 1: Takeoff Ground Roll (accelerating from z = 90 to z = 250)
+      const rollFrac = fPhase / 0.18;
+      pZ = 90 + Math.pow(rollFrac, 1.5) * 160;
+      pY = 2.4;
+      pX = 180;
+      pYaw = 0; // facing +Z along runway
+      pPitch = rollFrac > 0.7 ? (rollFrac - 0.7) * 0.35 : 0; // Rotate nose up near V1/Vr
+    } else if (fPhase < 0.35) {
+      // Phase 2: Liftoff & Initial High Climb over delta
+      const climbFrac = (fPhase - 0.18) / 0.17;
+      pZ = 250 + climbFrac * 180;
+      pX = 180 + Math.sin(climbFrac * Math.PI * 0.5) * 80;
+      pY = 2.4 + Math.pow(climbFrac, 1.2) * 160;
+      pPitch = 0.22 - climbFrac * 0.12;
+      pRoll = -climbFrac * 0.25; // Gentle left bank
+      pYaw = climbFrac * 0.45;
+    } else if (fPhase < 0.82) {
+      // Phase 3: High Altitude Cruising Orbit around the 10km Country Airspace
+      const cruiseFrac = (fPhase - 0.35) / 0.47;
+      const angle = 0.45 + cruiseFrac * Math.PI * 2;
+      pX = Math.cos(angle) * 380;
+      pZ = Math.sin(angle) * 350;
+      pY = 165 + Math.sin(cruiseFrac * Math.PI * 4) * 15;
 
-    airplaneGroup.rotation.y = heading;
-    airplaneGroup.rotation.z = -0.22; // Inward bank angle during turn
-    airplaneGroup.rotation.x = Math.cos(planeSpeed * 2) * 0.04;
+      const tangX = -Math.sin(angle) * 380;
+      const tangZ = Math.cos(angle) * 350;
+      pYaw = Math.atan2(tangX, tangZ);
+      pRoll = -0.25; // Continuous banking in turn
+      pPitch = Math.cos(cruiseFrac * Math.PI * 4) * 0.04;
+    } else {
+      // Phase 4: Final Approach & Runway Alignment Landing
+      const landFrac = (fPhase - 0.82) / 0.18;
+      pX = THREE.MathUtils.lerp(180 + Math.sin(landFrac * Math.PI) * 40, 180, landFrac);
+      pZ = THREE.MathUtils.lerp(-150, 90, landFrac);
+      pY = THREE.MathUtils.lerp(165, 2.4, Math.pow(landFrac, 1.4));
+      pYaw = 0;
+      pPitch = -0.05 + (1 - landFrac) * 0.08;
+      pRoll = (1 - landFrac) * -0.15;
+    }
 
-    // Wing Strobe flash (1 Hz strobe burst)
-    const strobeFlash = Math.sin(time * 6) > 0.85 ? 2.5 : 0.05;
+    airplaneGroup.position.set(pX, pY, pZ);
+    airplaneGroup.rotation.set(pPitch, pYaw, pRoll);
+
+    // Wing Strobe flash (1.2 Hz strobe burst)
+    const strobeFlash = Math.sin(time * 7) > 0.82 ? 2.8 : 0.05;
     strobeWhite.scale.setScalar(strobeFlash);
 
     // 4. Shooting Star / Meteor Event

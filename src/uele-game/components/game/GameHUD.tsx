@@ -43,131 +43,8 @@ interface GameHUDProps {
   onToggleMute: () => void;
   currentLandmark: LandmarkZone | null;
   playerPosition: [number, number]; // [x, z]
-  onTeleportToLandmark?: (lm: LandmarkZone) => void;
+  onTeleportToLandmark?: (lm: LandmarkZone | [number, number]) => void;
 }
-
-// Shared "premium glass" depth treatment — a soft inner top highlight plus a
-// deep drop shadow, applied to every floating HUD panel so the whole cluster
-// reads as one coherent dashboard instead of flat cards.
-const GLASS_PANEL_SHADOW = 'shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_20px_45px_-14px_rgba(0,0,0,0.65)]';
-
-// Radial speedometer + RPM dial — replaces the old flat number + linear
-// bar with an analog gauge cluster (tick marks, sweeping needle, redline
-// RPM arc) for a more premium/realistic driving-sim feel.
-const DashboardGauge: React.FC<{
-  speedKmh: number;
-  topSpeedKmh: number;
-  rpm: number;
-  gear: string;
-}> = ({ speedKmh, topSpeedKmh, rpm, gear }) => {
-  const R = 50;
-  const RPM_R = 40;
-  const CX = 60;
-  const CY = 60;
-  const CIRC = 2 * Math.PI * R;
-  const RPM_CIRC = 2 * Math.PI * RPM_R;
-  const GAUGE_FRACTION = 0.75; // 270° sweep
-  const START_ROTATE = 135; // bottom-left start, opens at the bottom
-  const speedFrac = Math.max(0, Math.min(1, speedKmh / Math.max(topSpeedKmh, 1)));
-  const rpmFrac = Math.max(0, Math.min(1, rpm));
-  const needleAngle = START_ROTATE + speedFrac * GAUGE_FRACTION * 360;
-  const rpmColor = rpmFrac > 0.85 ? '#ef4444' : rpmFrac > 0.6 ? '#f59e0b' : '#22d3ee';
-
-  const ticks = Array.from({ length: 6 }, (_, i) => {
-    const t = i / 5;
-    const angleDeg = START_ROTATE + t * GAUGE_FRACTION * 360;
-    const angleRad = (angleDeg * Math.PI) / 180;
-    const inner = R - 9;
-    const outer = R - 3;
-    return {
-      key: i,
-      x1: CX + inner * Math.cos(angleRad),
-      y1: CY + inner * Math.sin(angleRad),
-      x2: CX + outer * Math.cos(angleRad),
-      y2: CY + outer * Math.sin(angleRad),
-      label: Math.round(t * topSpeedKmh),
-      lx: CX + (R - 17) * Math.cos(angleRad),
-      ly: CY + (R - 17) * Math.sin(angleRad),
-    };
-  });
-
-  return (
-    <div className={`pointer-events-auto bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-3 text-white flex flex-col items-center ${GLASS_PANEL_SHADOW}`}>
-      <div className="relative w-[132px] h-[132px]">
-        <svg viewBox="0 0 120 120" className="w-full h-full -rotate-0">
-          <defs>
-            <linearGradient id="speedArcGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#22d3ee" />
-              <stop offset="60%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#818cf8" />
-            </linearGradient>
-          </defs>
-
-          {/* Outer speed track */}
-          <circle
-            cx={CX} cy={CY} r={R} fill="none" stroke="#0f172a" strokeWidth={7}
-            strokeDasharray={`${CIRC * GAUGE_FRACTION} ${CIRC}`}
-            strokeLinecap="round"
-            transform={`rotate(${START_ROTATE} ${CX} ${CY})`}
-          />
-          {/* Speed value arc */}
-          <circle
-            cx={CX} cy={CY} r={R} fill="none" stroke="url(#speedArcGradient)" strokeWidth={7}
-            strokeDasharray={`${CIRC * GAUGE_FRACTION * speedFrac} ${CIRC}`}
-            strokeLinecap="round"
-            transform={`rotate(${START_ROTATE} ${CX} ${CY})`}
-            style={{ transition: 'stroke-dasharray 100ms linear' }}
-          />
-          {/* Inner RPM track + value (redlines past 85%) */}
-          <circle
-            cx={CX} cy={CY} r={RPM_R} fill="none" stroke="#0f172a" strokeWidth={4}
-            strokeDasharray={`${RPM_CIRC * GAUGE_FRACTION} ${RPM_CIRC}`}
-            strokeLinecap="round"
-            transform={`rotate(${START_ROTATE} ${CX} ${CY})`}
-          />
-          <circle
-            cx={CX} cy={CY} r={RPM_R} fill="none" stroke={rpmColor} strokeWidth={4}
-            strokeDasharray={`${RPM_CIRC * GAUGE_FRACTION * rpmFrac} ${RPM_CIRC}`}
-            strokeLinecap="round"
-            transform={`rotate(${START_ROTATE} ${CX} ${CY})`}
-            style={{ transition: 'stroke-dasharray 75ms linear' }}
-          />
-
-          {/* Tick marks + km/h labels */}
-          {ticks.map((t) => (
-            <g key={t.key}>
-              <line x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke="#475569" strokeWidth={1.5} />
-              <text x={t.lx} y={t.ly} fontSize="6" fill="#64748b" textAnchor="middle" dominantBaseline="middle" fontFamily="monospace">
-                {t.label}
-              </text>
-            </g>
-          ))}
-
-          {/* Needle */}
-          <g transform={`rotate(${needleAngle} ${CX} ${CY})`} style={{ transition: 'transform 100ms linear' }}>
-            <line x1={CX} y1={CY} x2={CX + (R - 12)} y2={CY} stroke="#f8fafc" strokeWidth={2} strokeLinecap="round" />
-          </g>
-          <circle cx={CX} cy={CY} r={4} fill="#0f172a" stroke="#f8fafc" strokeWidth={1.5} />
-        </svg>
-
-        {/* Center digital readout */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pt-4 pointer-events-none">
-          <span className="text-3xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-300">
-            {speedKmh}
-          </span>
-          <span className="text-[9px] font-bold uppercase tracking-wider text-cyan-400 -mt-1">km/h</span>
-        </div>
-      </div>
-
-      {/* Gear Indicator */}
-      <div className="flex items-center gap-2 -mt-1 font-mono font-bold text-xs">
-        <span className={`px-1.5 py-0.5 rounded ${gear === 'P' ? 'bg-red-500/40 text-red-300 font-black' : 'text-slate-600'}`}>P</span>
-        <span className={`px-1.5 py-0.5 rounded ${gear === 'R' ? 'bg-amber-500/40 text-amber-300 font-black' : 'text-slate-600'}`}>R</span>
-        <span className={`px-1.5 py-0.5 rounded ${gear === 'D' ? 'bg-emerald-500/40 text-emerald-300 font-black' : 'text-slate-600'}`}>D</span>
-      </div>
-    </div>
-  );
-};
 
 export const GameHUD: React.FC<GameHUDProps> = ({
   isDriving,
@@ -193,6 +70,38 @@ export const GameHUD: React.FC<GameHUDProps> = ({
 }) => {
   const [showControlsModal, setShowControlsModal] = useState(false);
   const [showVehiclesModal, setShowVehiclesModal] = useState(false);
+  const [radarZoom, setRadarZoom] = useState<'local' | 'country'>('country');
+  const [teleportToast, setTeleportToast] = useState<{ x: number; z: number } | null>(null);
+
+  const handleMinimapClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const normX = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const normY = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+
+    let targetX: number;
+    let targetZ: number;
+
+    if (radarZoom === 'country') {
+      // 10 km scale: X: -5000 to +5000, Z: -5000 to +5000
+      targetX = -5000 + normX * 10000;
+      targetZ = -5000 + normY * 10000;
+    } else {
+      // Local 800m scale: X: -400 to +400, Z: -400 to +400
+      targetX = -400 + normX * 800;
+      targetZ = -400 + normY * 800;
+    }
+
+    targetX = Math.round(Math.max(-4850, Math.min(4850, targetX)));
+    targetZ = Math.round(Math.max(-4850, Math.min(4850, targetZ)));
+
+    if (onTeleportToLandmark) {
+      onTeleportToLandmark([targetX, targetZ]);
+      setTeleportToast({ x: targetX, z: targetZ });
+      setTimeout(() => {
+        setTeleportToast(null);
+      }, 2500);
+    }
+  };
 
   const speedKmh = vehicleState ? vehicleState.speedKmh : 0;
   const rpm = vehicleState ? vehicleState.rpm : 0;
@@ -204,7 +113,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
   return (
     <div id="uele-game-hud" className="pointer-events-none absolute inset-0 flex flex-col justify-between p-3 md:p-5 select-none overflow-hidden font-sans">
       {/* 1. TOP BAR: Title, Active Landmark, Camera, Time/Weather & Audio */}
-      <header className={`pointer-events-auto flex flex-wrap items-center justify-between gap-2.5 bg-slate-900/85 backdrop-blur-md border border-slate-700/60 rounded-2xl px-4 py-2.5 text-white ${GLASS_PANEL_SHADOW}`}>
+      <header className="pointer-events-auto flex flex-wrap items-center justify-between gap-2.5 bg-slate-900/85 backdrop-blur-md border border-slate-700/60 rounded-2xl px-4 py-2.5 shadow-2xl text-white">
         {/* Left: Brand Identity & Location */}
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/25 border border-cyan-300/40">
@@ -213,15 +122,15 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="font-extrabold text-base tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-200 to-indigo-300">
-                UELE: 3D MINI COUNTRY
+                UELE: 10 KM × 10 KM COUNTRY
               </span>
               <span className="text-[10px] font-semibold uppercase px-2 py-0.5 bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 rounded-full flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                <span>Open World 3D</span>
+                <span>100 km² Area</span>
               </span>
             </div>
             <p className="text-[11px] text-slate-300 font-mono flex items-center gap-1.5">
-              <span>{currentLandmark ? `${currentLandmark.icon} ${currentLandmark.name}` : '🗺️ Open Highway Network'}</span>
+              <span>{currentLandmark ? `${currentLandmark.icon} ${currentLandmark.name}` : '🗺️ 10km National Infrastructure Corridor'}</span>
               <span className="text-slate-600">•</span>
               <span className="text-cyan-400 font-medium">X: {Math.round(playerPosition[0])}m, Z: {Math.round(playerPosition[1])}m</span>
             </p>
@@ -368,150 +277,190 @@ export const GameHUD: React.FC<GameHUDProps> = ({
       {/* 3. BOTTOM AREA: Left Minimap Radar, Center Enter/Exit & Vehicle Controls, Right Speedometer */}
       <div className="flex items-end justify-between gap-4">
         {/* Left: Minimap Radar */}
-        <div className={`pointer-events-auto bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-3 text-white flex flex-col items-center ${GLASS_PANEL_SHADOW}`}>
-          <div className="flex items-center justify-between w-full mb-1.5 px-1">
+        <div className="pointer-events-auto bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-3 shadow-2xl text-white flex flex-col items-center">
+          <div className="flex items-center justify-between w-full mb-1.5 px-1 gap-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1">
               <Navigation className="w-3 h-3 text-cyan-400" />
-              <span>Mini Country Map</span>
+              <span>{radarZoom === 'country' ? '10km Radar' : 'Local Radar'}</span>
             </span>
+            <button
+              onClick={() => setRadarZoom(radarZoom === 'country' ? 'local' : 'country')}
+              className="text-[9px] font-mono px-1.5 py-0.5 bg-slate-800 hover:bg-slate-700 text-cyan-300 rounded border border-slate-700 cursor-pointer"
+            >
+              {radarZoom === 'country' ? '10 km' : '800 m'}
+            </button>
           </div>
 
-          {/* SVG Map Canvas — realistic terrain-style minimap (not a sci-fi radar) */}
-          <div className="relative w-36 h-36 bg-[#5c7a4a] rounded-xl border border-slate-800 overflow-hidden">
-            <svg viewBox="-400 -400 800 800" className="w-full h-full">
-              <defs>
-                <radialGradient id="mapVignette" cx="50%" cy="50%" r="70%">
-                  <stop offset="60%" stopColor="#000000" stopOpacity="0" />
-                  <stop offset="100%" stopColor="#000000" stopOpacity="0.35" />
-                </radialGradient>
-                <linearGradient id="riverShade" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#0e5e73" />
-                  <stop offset="45%" stopColor="#2f96b4" />
-                  <stop offset="55%" stopColor="#5ec4de" />
-                  <stop offset="100%" stopColor="#0e5e73" />
-                </linearGradient>
-                <radialGradient id="youAreHereGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
-                </radialGradient>
-              </defs>
+          {/* SVG Map Canvas with Fast-Teleport Click */}
+          <div
+            onClick={handleMinimapClick}
+            title="Click anywhere on the map to fast-teleport vehicle/character"
+            className="relative w-40 h-40 bg-slate-950 rounded-xl border border-slate-700/80 overflow-hidden cursor-crosshair group shadow-inner"
+          >
+            {/* Teleport Flash Overlay Feedback */}
+            {teleportToast && (
+              <div className="absolute inset-0 z-20 pointer-events-none bg-cyan-400/20 animate-pulse flex flex-col items-center justify-center p-1 backdrop-blur-[1px]">
+                <div className="bg-slate-900/90 border border-cyan-400/80 px-2 py-1 rounded-lg text-center shadow-lg">
+                  <span className="text-[10px] font-bold text-cyan-300 flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-yellow-400 animate-spin" />
+                    <span>Teleported!</span>
+                  </span>
+                  <span className="text-[8px] font-mono text-slate-300 block">
+                    X: {teleportToast.x}m, Z: {teleportToast.z}m
+                  </span>
+                </div>
+              </div>
+            )}
 
-              {/* Base terrain — soft grassland fill */}
-              <rect x="-400" y="-400" width="800" height="800" fill="#5c7a4a" />
+            {radarZoom === 'country' ? (
+              <svg viewBox="-5000 -5000 10000 10000" className="w-full h-full">
+                {/* 10km Outer Bounds Grid */}
+                <rect x="-4900" y="-4900" width="9800" height="9800" fill="#090d16" stroke="#1e293b" strokeWidth="120" rx="400" />
 
-              {/* Farmland patchwork (agricultural south-west) */}
-              <g opacity="0.5">
-                <rect x="-320" y="-60" width="90" height="70" rx="4" fill="#6f8f4e" />
-                <rect x="-320" y="20" width="70" height="80" rx="4" fill="#65834a" />
-                <rect x="-230" y="10" width="80" height="60" rx="4" fill="#6f8f4e" />
-              </g>
+                {/* Southern Sea Bay (z: 1400 to 5000) */}
+                <rect x="-4900" y="1400" width="9800" height="3500" fill="#0369a1" opacity="0.5" />
 
-              {/* Forested mountain ridge (north-west) */}
-              <g opacity="0.85">
-                <ellipse cx="-230" cy="-230" rx="120" ry="95" fill="#3f5a3a" />
-                <ellipse cx="-160" cy="-270" rx="70" ry="55" fill="#46633f" />
-                <ellipse cx="-270" cy="-160" rx="60" ry="50" fill="#3a5335" />
-              </g>
+                {/* Northern Mountain Ridge (z: -5000 to -1200) */}
+                <path d="M -4900 -5000 L 4900 -5000 L 4900 -1200 L -4900 -1200 Z" fill="#14532d" opacity="0.35" />
 
-              {/* Urban core tint (center) */}
-              <rect x="-40" y="-90" width="150" height="160" rx="18" fill="#8a8f7a" opacity="0.45" />
+                {/* Western Tea Highlands */}
+                <rect x="-4900" y="-1200" width="2400" height="2600" fill="#15803d" opacity="0.3" />
 
-              {/* Industrial zone tint (south-east) */}
-              <rect x="90" y="150" width="120" height="100" rx="10" fill="#8f7a5c" opacity="0.4" />
+                {/* Sundarbans Mangrove Forest */}
+                <circle cx="800" cy="-800" r="600" fill="#14532d" opacity="0.35" />
 
-              {/* River — natural winding blue channel */}
-              <path
-                d="M 180 -400 Q 210 -260 175 -170 Q 140 -80 220 -10 Q 280 60 195 140 Q 150 220 200 400"
-                fill="none"
-                stroke="url(#riverShade)"
-                strokeWidth="26"
-                strokeLinecap="round"
-                opacity="0.95"
-              />
-              <path
-                d="M 180 -400 Q 210 -260 175 -170 Q 140 -80 220 -10 Q 280 60 195 140 Q 150 220 200 400"
-                fill="none"
-                stroke="#bff0ff"
-                strokeWidth="4"
-                strokeLinecap="round"
-                opacity="0.5"
-              />
+                {/* 10km Trans-Country River System */}
+                <path
+                  d="M 180 -4800 Q 800 -2000 200 0 Q -200 2000 160 4900"
+                  fill="none"
+                  stroke="#0284c7"
+                  strokeWidth="380"
+                  opacity="0.85"
+                />
 
-              {/* Roads — asphalt base + dashed centerline, like a real street map */}
-              {[
-                { d: 'M 20 -370 L 20 370', w: 16 },
-                { d: 'M -140 -10 L 210 -10', w: 14 },
-                { d: 'M 20 100 L 180 200', w: 12 },
-                { d: 'M 20 -10 Q -60 -100 -220 -250', w: 11, curve: true },
-                { d: 'M -320 -15 L 20 -10', w: 10 },
-                { d: 'M 100 150 L 210 150', w: 10 },
-              ].map((road, i) => (
-                <g key={i}>
-                  <path d={road.d} fill="none" stroke="#3f3f46" strokeWidth={road.w} strokeLinecap="round" opacity="0.9" />
-                  <path
-                    d={road.d}
-                    fill="none"
-                    stroke="#f5d24a"
-                    strokeWidth="1.6"
-                    strokeDasharray="10 8"
-                    strokeLinecap="round"
-                    opacity="0.85"
-                  />
-                </g>
-              ))}
+                {/* 10km Railway Line (Black dashed railroad) */}
+                <line x1="-120" y1="-4800" x2="-120" y2="4800" stroke="#f59e0b" strokeWidth="110" strokeDasharray="200,100" />
 
-              {/* Landmark Pins — map-style teardrop markers, colored by category */}
-              {COUNTRY_LANDMARKS.map((lm) => {
-                const categoryColor: Record<string, string> = {
-                  city: '#64748b',
-                  mountain: '#78716c',
-                  energy: '#f59e0b',
-                  transport: '#3b82f6',
-                  water: '#0ea5e9',
-                  agriculture: '#65a30d',
-                  industry: '#ea580c',
-                };
-                const fill = categoryColor[lm.category] || '#64748b';
-                return (
+                {/* Elevated Metro Rail Line (Cyan MRT viaduct) */}
+                <line x1="-600" y1="-45" x2="1200" y2="-45" stroke="#06b6d4" strokeWidth="120" />
+
+                {/* 10km Trans-Country Expressway N5 */}
+                <line x1="20" y1="-4800" x2="20" y2="4800" stroke="#64748b" strokeWidth="220" strokeLinecap="round" />
+
+                {/* 10km Central East-West Corridor */}
+                <line x1="-4800" y1="-10" x2="4800" y2="-10" stroke="#475569" strokeWidth="180" />
+
+                {/* Coastal Deep Sea Port Expressway */}
+                <path d="M 20 200 Q 180 750 600 1800 L 1200 2200" fill="none" stroke="#64748b" strokeWidth="160" />
+
+                {/* Northern Mountain Switchback Pass */}
+                <path d="M 20 -10 Q -450 -800 -1600 -2200" fill="none" stroke="#64748b" strokeWidth="150" />
+
+                {/* Western Tea Highlands Highway */}
+                <path d="M -140 -10 Q -1050 220 -1800 400" fill="none" stroke="#64748b" strokeWidth="150" />
+
+                {/* Sundarbans Rainforest Scenic Highway */}
+                <path d="M 20 -10 Q 380 -380 800 -800" fill="none" stroke="#64748b" strokeWidth="150" />
+
+                {/* Landmark Pins across 10 km */}
+                {COUNTRY_LANDMARKS.map((lm) => (
                   <g
                     key={lm.id}
                     className="cursor-pointer hover:opacity-100 opacity-90 transition-opacity"
-                    onClick={() => onTeleportToLandmark && onTeleportToLandmark(lm)}
-                    transform={`translate(${lm.center[0]}, ${lm.center[1]})`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (onTeleportToLandmark) {
+                        onTeleportToLandmark(lm);
+                        setTeleportToast({ x: lm.center[0], z: lm.center[1] });
+                        setTimeout(() => setTeleportToast(null), 2500);
+                      }
+                    }}
                   >
-                    <ellipse cx="0" cy="16" rx="9" ry="3" fill="#000000" opacity="0.25" />
-                    <path
-                      d="M 0 -20 C 10 -20 17 -13 17 -4 C 17 8 0 22 0 22 C 0 22 -17 8 -17 -4 C -17 -13 -10 -20 0 -20 Z"
-                      fill={fill}
-                      stroke="#0f172a"
-                      strokeWidth="1.5"
-                    />
-                    <circle cx="0" cy="-4" r="9" fill="#0f172a" />
-                    <text x="0" y="0" textAnchor="middle" fontSize="11" className="select-none">
+                    <circle cx={lm.center[0]} cy={lm.center[1]} r="240" fill="#0f172a" stroke="#38bdf8" strokeWidth="60" />
+                    <text
+                      x={lm.center[0]}
+                      y={lm.center[1] + 80}
+                      textAnchor="middle"
+                      fontSize="220"
+                      className="select-none"
+                    >
                       {lm.icon}
                     </text>
                   </g>
-                );
-              })}
+                ))}
 
-              {/* "You are here" — GPS-style location dot (not a radar ping) */}
-              <g transform={`translate(${playerPosition[0]}, ${playerPosition[1]})`}>
-                <circle r="26" fill="url(#youAreHereGlow)" />
-                <circle r="9" fill="#3b82f6" opacity="0.25" className="animate-ping" />
-                <circle r="6.5" fill="#2563eb" stroke="#ffffff" strokeWidth="2.5" />
-              </g>
+                {/* Player / Vehicle Blip on 10km map */}
+                <g transform={`translate(${playerPosition[0]}, ${playerPosition[1]})`}>
+                  <circle r="300" fill="#22c55e" opacity="0.5" className="animate-ping" />
+                  <circle r="150" fill="#22c55e" stroke="#ffffff" strokeWidth="40" />
+                </g>
+              </svg>
+            ) : (
+              <svg viewBox="-400 -400 800 800" className="w-full h-full">
+                {/* Rivers */}
+                <path
+                  d="M 180 -220 Q 220 -100 170 0 Q 140 100 230 20 Q 260 200 160 360"
+                  fill="none"
+                  stroke="#0284c7"
+                  strokeWidth="28"
+                  opacity="0.8"
+                />
+                {/* Railway Track (Yellow/black dashed line) */}
+                <line x1="-120" y1="-390" x2="-120" y2="390" stroke="#f59e0b" strokeWidth="6" strokeDasharray="14,6" />
 
-              {/* Map vignette for depth, like a real GPS display */}
-              <rect x="-400" y="-400" width="800" height="800" fill="url(#mapVignette)" />
-            </svg>
+                {/* Metro Rail Viaduct (Cyan line) */}
+                <line x1="-390" y1="-45" x2="390" y2="-45" stroke="#06b6d4" strokeWidth="8" opacity="0.9" />
 
-            {/* Compass */}
-            <div className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-slate-950/70 border border-slate-600/60 flex items-center justify-center">
-              <span className="text-[8px] font-black text-red-400">N</span>
-            </div>
+                {/* Roads */}
+                {/* Expressway N5 */}
+                <line x1="20" y1="-370" x2="20" y2="370" stroke="#64748b" strokeWidth="18" strokeLinecap="round" />
+                {/* City Boulevard */}
+                <line x1="-380" y1="-10" x2="380" y2="-10" stroke="#64748b" strokeWidth="16" />
+                {/* Airport Connector */}
+                <line x1="20" y1="100" x2="180" y2="200" stroke="#64748b" strokeWidth="14" />
+                {/* Port Highway Branch */}
+                <path d="M 20 200 Q 180 300 380 390" fill="none" stroke="#64748b" strokeWidth="14" />
+                {/* Mountain road */}
+                <path d="M 20 -10 Q -60 -100 -220 -250" fill="none" stroke="#475569" strokeWidth="12" />
 
-            {/* Glass sheen overlay */}
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/[0.04] via-transparent to-transparent" />
+                {/* Landmark Pins */}
+                {COUNTRY_LANDMARKS.map((lm) => (
+                  <g
+                    key={lm.id}
+                    className="cursor-pointer hover:opacity-100 opacity-80 transition-opacity"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (onTeleportToLandmark) {
+                        onTeleportToLandmark(lm);
+                        setTeleportToast({ x: lm.center[0], z: lm.center[1] });
+                        setTimeout(() => setTeleportToast(null), 2500);
+                      }
+                    }}
+                  >
+                    <circle cx={lm.center[0]} cy={lm.center[1]} r="18" fill="#0f172a" stroke="#38bdf8" strokeWidth="3" />
+                    <text
+                      x={lm.center[0]}
+                      y={lm.center[1] + 6}
+                      textAnchor="middle"
+                      fontSize="16"
+                      className="select-none"
+                    >
+                      {lm.icon}
+                    </text>
+                  </g>
+                ))}
+
+                {/* Player / Vehicle Blip */}
+                <g transform={`translate(${playerPosition[0]}, ${playerPosition[1]})`}>
+                  <circle r="12" fill="#22c55e" opacity="0.4" className="animate-ping" />
+                  <circle r="6" fill="#22c55e" stroke="#ffffff" strokeWidth="2" />
+                </g>
+              </svg>
+            )}
+          </div>
+
+          <div className="mt-1.5 flex items-center justify-center gap-1 text-[9px] text-cyan-400/90 font-medium">
+            <span>⚡ Click map to jump</span>
           </div>
         </div>
 
@@ -541,7 +490,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           </button>
 
           {/* Quick Vehicle Controls Bar */}
-          <div className={`flex items-center gap-2 bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-1.5 text-white ${GLASS_PANEL_SHADOW}`}>
+          <div className="flex items-center gap-2 bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-1.5 text-white shadow-xl">
             {isDriving && (
               <>
                 <button
@@ -589,21 +538,68 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           </div>
         </div>
 
-        {/* Right: Speedometer & RPM Gauges (when driving) */}
+        {/* Right: Speedometer & Altitude/RPM Gauges (when driving) */}
         {isDriving && (
-          <DashboardGauge
-            speedKmh={speedKmh}
-            topSpeedKmh={currentVehicleDef.topSpeedKmh}
-            rpm={rpm}
-            gear={gear}
-          />
+          <div className="pointer-events-auto bg-slate-900/90 backdrop-blur-xl border border-slate-700/80 rounded-2xl p-4 shadow-2xl text-white flex flex-col items-center min-w-[160px]">
+            {/* Speed Gauge Display */}
+            <div className="text-center">
+              <span className="text-4xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-300">
+                {speedKmh}
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400 block -mt-1">
+                KM / H
+              </span>
+            </div>
+
+            {/* Helicopter Altitude Display */}
+            {vehicleType === 'helicopter' && (
+              <div className="w-full mt-2 bg-sky-950/60 border border-sky-600/40 rounded-xl p-1.5 text-center">
+                <div className="text-[9px] font-bold uppercase tracking-wider text-sky-400">Altitude</div>
+                <div className="text-lg font-black font-mono text-sky-200">
+                  {vehicleState?.altitudeMeters || 0} <span className="text-[10px] font-normal text-sky-400">meters</span>
+                </div>
+              </div>
+            )}
+
+            {/* RPM Radial Meter Bar */}
+            <div className="w-full mt-2.5">
+              <div className="flex justify-between text-[9px] font-mono text-slate-400 mb-0.5">
+                <span>{vehicleType === 'helicopter' ? 'ROTOR' : 'RPM'}</span>
+                <span>{gear}</span>
+              </div>
+              <div className="w-full bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-800">
+                <div
+                  className="h-full rounded-full transition-all duration-75"
+                  style={{
+                    width: `${Math.min(rpm * 100, 100)}%`,
+                    backgroundColor: rpm > 0.85 ? '#ef4444' : (rpm > 0.6 ? '#f59e0b' : '#38bdf8'),
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Gear / Mode Indicator */}
+            <div className="flex items-center gap-2 mt-2 font-mono font-bold text-xs">
+              {vehicleType === 'helicopter' ? (
+                <span className="px-2 py-0.5 rounded bg-sky-500/40 text-sky-300 font-black tracking-widest text-[10px]">
+                  FLIGHT MODE
+                </span>
+              ) : (
+                <>
+                  <span className={`px-1.5 py-0.5 rounded ${gear === 'P' ? 'bg-red-500/40 text-red-300 font-black' : 'text-slate-600'}`}>P</span>
+                  <span className={`px-1.5 py-0.5 rounded ${gear === 'R' ? 'bg-amber-500/40 text-amber-300 font-black' : 'text-slate-600'}`}>R</span>
+                  <span className={`px-1.5 py-0.5 rounded ${gear === 'D' ? 'bg-emerald-500/40 text-emerald-300 font-black' : 'text-slate-600'}`}>D</span>
+                </>
+              )}
+            </div>
+          </div>
         )}
       </div>
 
       {/* 4. VEHICLE SELECTOR MODAL */}
       {showVehiclesModal && (
         <div className="pointer-events-auto fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in">
-          <div className={`bg-slate-900 border border-slate-700 rounded-3xl p-6 max-w-md w-full text-white space-y-4 ${GLASS_PANEL_SHADOW}`}>
+          <div className="bg-slate-900 border border-slate-700 rounded-3xl p-6 max-w-md w-full shadow-2xl text-white space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-extrabold text-base flex items-center gap-2 text-cyan-300">
                 <Car className="w-5 h-5" />
@@ -656,7 +652,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
       {/* 5. CONTROLS GUIDE MODAL */}
       {showControlsModal && (
         <div className="pointer-events-auto fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in">
-          <div className={`bg-slate-900 border border-slate-700 rounded-3xl p-6 max-w-lg w-full text-white space-y-4 ${GLASS_PANEL_SHADOW}`}>
+          <div className="bg-slate-900 border border-slate-700 rounded-3xl p-6 max-w-lg w-full shadow-2xl text-white space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-extrabold text-base flex items-center gap-2 text-cyan-300">
                 <HelpCircle className="w-5 h-5" />
@@ -672,30 +668,41 @@ export const GameHUD: React.FC<GameHUDProps> = ({
 
             <div className="grid grid-cols-2 gap-3 text-xs">
               <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800 space-y-2">
-                <h4 className="font-bold text-cyan-400 uppercase text-[10px]">🚗 Driving Controls</h4>
-                <p><strong>W / Up Arrow:</strong> Accelerate</p>
-                <p><strong>S / Down Arrow:</strong> Brake / Reverse</p>
-                <p><strong>A / D / Left / Right:</strong> Steer Left / Right</p>
-                <p><strong>Space:</strong> Handbrake / Drift</p>
-                <p><strong>F / Enter:</strong> Exit Car to Walk on Foot</p>
-                <p><strong>H:</strong> Honk Car Horn</p>
-                <p><strong>L:</strong> Toggle Night Headlights</p>
-                <p><strong>R:</strong> Reset Car if Flipped</p>
+                <h4 className="font-bold text-sky-400 uppercase text-[10px]">🚁 Helicopter Flight Controls</h4>
+                <p><strong>Space:</strong> Lift UP / Climb Altitude</p>
+                <p><strong>Shift / C / S:</strong> Descend / Lower Altitude</p>
+                <p><strong>Up Arrow / W:</strong> Fly Forward</p>
+                <p><strong>Down Arrow / S:</strong> Fly Backward / Brake</p>
+                <p><strong>Left / Right Arrow (A/D):</strong> Rotate & Turn</p>
+                <p><strong>L:</strong> High-Beam Searchlight</p>
+                <p><strong>F / Enter:</strong> Exit Helicopter</p>
               </div>
 
               <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800 space-y-2">
-                <h4 className="font-bold text-emerald-400 uppercase text-[10px]">🚶 Walking Controls</h4>
+                <h4 className="font-bold text-cyan-400 uppercase text-[10px]">🚗 Car, Train & Metro Driving</h4>
+                <p><strong>W / Up Arrow:</strong> Accelerate / Throttle Notch</p>
+                <p><strong>S / Down Arrow:</strong> Brake / Train Air Brake</p>
+                <p><strong>A / D / Left / Right:</strong> Steer / Switch Track Direction</p>
+                <p><strong>Space:</strong> Emergency Brake / Handbrake</p>
+                <p><strong>F / Enter:</strong> Exit Vehicle / Switch to Walk</p>
+                <p><strong>H:</strong> Honk Train Horn / Metro Chime</p>
+                <p><strong>L:</strong> High-Beam Headlights</p>
+                <p><strong>R:</strong> Reset Vehicle if Stuck</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800 space-y-1.5 text-xs">
+              <h4 className="font-bold text-emerald-400 uppercase text-[10px]">🚶 Walking Controls</h4>
+              <div className="grid grid-cols-2 gap-2">
                 <p><strong>W, A, S, D:</strong> Move Character</p>
                 <p><strong>Shift:</strong> Sprint / Fast Run</p>
                 <p><strong>Space:</strong> Jump</p>
-                <p><strong>F / Enter:</strong> Enter Vehicle when near</p>
-                <p><strong>Mouse Drag:</strong> Rotate Camera Angle</p>
-                <p><strong>Scroll Wheel:</strong> Zoom In / Out</p>
+                <p><strong>F / Enter:</strong> Enter Vehicle / Train / Helicopter</p>
               </div>
             </div>
 
             <div className="bg-cyan-950/40 p-3 rounded-xl border border-cyan-800/40 text-xs text-cyan-200">
-              💡 <strong>Explore the Country:</strong> Drive across the Highway N5, climb the Mountain Wind Energy Ridge, visit the Hydro Dam Reservoir, explore the Smart City Core skyscrapers, and speed down the 240m Airport Runway!
+              💡 <strong>Engineering Multi-Modal Network:</strong> Experience 30+ road types (Flyovers, Expressways, Cloverleaf Interchanges, Tunnels, Roundabouts) alongside an active double-track Railway and elevated MRT Line-6 Metro Rail system with automated trains and interactive drive controls!
             </div>
           </div>
         </div>

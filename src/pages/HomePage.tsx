@@ -11,6 +11,7 @@ const SECTION_PATHS: Record<string, string> = {
   roadmap: '/career-roadmap',
   'career-roadmap': '/career-roadmap',
   uele: '/uele',
+  'uele-game': '/uele/play',
   learn: '/learn',
   resources: '/resources',
   plugins: '/plugins',

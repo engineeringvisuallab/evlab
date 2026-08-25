@@ -68,7 +68,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 id="hero-explore-demo-btn"
-                onClick={() => onNavigate('uele')}
+                onClick={() => onNavigate('uele-game')}
                 className="px-5 py-3 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 text-slate-200 hover:text-white font-semibold text-sm transition-all flex items-center space-x-2 cursor-pointer shadow-md"
               >
                 <div className="w-5 h-5 rounded-full border border-slate-400/60 flex items-center justify-center">

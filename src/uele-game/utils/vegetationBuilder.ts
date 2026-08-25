@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { createBarkTexture, createLeafClusterTexture } from './terrainTextures';
 
 export interface BuiltVegetation {
   group: THREE.Group;
@@ -9,57 +8,36 @@ export function buildBangladeshVegetation(getElevationAt: (x: number, z: number)
   const group = new THREE.Group();
   group.name = 'vegetation_group';
 
-  // Bark & foliage textures — replaces flat single-color trunks/canopies with
-  // photoreal-leaning procedural detail (bark fissures, mottled leaf dabs,
-  // soft silhouette falloff) so trees stop reading as plain geometric primitives.
-  const palmBarkTex = createBarkTexture('palm');
-  const broadleafBarkTex = createBarkTexture('broadleaf');
-
   // Materials
   const palmTrunkMat = new THREE.MeshStandardMaterial({
-    map: palmBarkTex,
-    color: 0xcabb9e,
+    color: 0x5c4d3c,
     roughness: 0.9,
   });
 
   const palmFrondMat = new THREE.MeshStandardMaterial({
-    map: createLeafClusterTexture('#2e6f3b', '#173a1f', '#5aa350'),
-    color: 0xbfe3bf,
-    roughness: 0.7,
-    alphaTest: 0.15,
-    transparent: true,
+    color: 0x2e6f3b, // Tropical lush palm green
+    roughness: 0.6,
     side: THREE.DoubleSide,
   });
 
   const broadleafTrunkMat = new THREE.MeshStandardMaterial({
-    map: broadleafBarkTex,
-    color: 0xcabb9e,
-    roughness: 0.9,
+    color: 0x4a3728,
+    roughness: 0.85,
   });
 
-  // Several foliage tone variants (instead of just two flat colors) so
-  // canopies vary naturally across the map rather than repeating identically.
-  const canopyPalettes: [string, string, string][] = [
-    ['#245e2f', '#12331a', '#4d8a44'], // deep shade green
-    ['#3b7d38', '#1e4a20', '#79b25c'], // sunlit mid green
-    ['#356b34', '#1a3d1c', '#63a052'], // mango-tree olive green
-    ['#2f6a3e', '#173a22', '#5ea768'], // rain-tree emerald
-  ];
-  const canopyMats = canopyPalettes.map(([base, dark, light]) => new THREE.MeshStandardMaterial({
-    map: createLeafClusterTexture(base, dark, light),
-    color: 0xd9e8d0,
-    roughness: 0.75,
-    alphaTest: 0.12,
-    transparent: true,
-    side: THREE.DoubleSide,
-  }));
+  const canopyMat1 = new THREE.MeshStandardMaterial({
+    color: 0x245e2f,
+    roughness: 0.8,
+  });
+
+  const canopyMat2 = new THREE.MeshStandardMaterial({
+    color: 0x3b7d38,
+    roughness: 0.8,
+  });
 
   const bananaLeafMat = new THREE.MeshStandardMaterial({
-    map: createLeafClusterTexture('#4ade80', '#1f7a44', '#a5f0b0'),
-    color: 0xd6f5da,
-    roughness: 0.55,
-    alphaTest: 0.12,
-    transparent: true,
+    color: 0x4ade80,
+    roughness: 0.5,
     side: THREE.DoubleSide,
   });
 
@@ -113,9 +91,8 @@ export function buildBangladeshVegetation(getElevationAt: (x: number, z: number)
     trunk.castShadow = true;
     treeGrp.add(trunk);
 
-    // Foliage Clusters — pick from the varied canopy palette (keyed off matType
-    // plus position) instead of only two repeating flat colors.
-    const foliageMat = canopyMats[Math.abs(matType + Math.floor(x * 3 + z * 7)) % canopyMats.length];
+    // Foliage Clusters
+    const foliageMat = matType === 1 ? canopyMat1 : canopyMat2;
     const clusterPositions = [
       [0, 5.0 * scale, 0, 2.4 * scale],
       [-1.2 * scale, 4.2 * scale, 0.8 * scale, 1.8 * scale],
@@ -127,9 +104,6 @@ export function buildBangladeshVegetation(getElevationAt: (x: number, z: number)
       const folGeo = new THREE.DodecahedronGeometry(rad, 1);
       const folMesh = new THREE.Mesh(folGeo, foliageMat);
       folMesh.position.set(cx, cy, cz);
-      // Random rotation per cluster so identical geometry doesn't line up
-      // the same facets across every tree — breaks up the "clone stamp" look.
-      folMesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
       folMesh.castShadow = true;
       treeGrp.add(folMesh);
     });
