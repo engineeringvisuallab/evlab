@@ -93,6 +93,11 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   const riverVesselsRef = useRef<RiverVesselInstance | null>(null);
   const vegetationRef = useRef<VegetationSystemInstance | null>(null);
   const helicopterTransitRef = useRef<HelicopterTransitInstance | null>(null);
+  // Tracks which flight target we last actually started, so that if this
+  // effect ever re-runs while the SAME flight is still in progress (e.g. a
+  // parent re-render passing a fresh-but-equivalent callback), we don't
+  // restart the flight from scratch and reset it back to spoolup/0m.
+  const activeFlightKeyRef = useRef<string | null>(null);
   const rainParticlesRef = useRef<THREE.Points | null>(null);
   const dirLightRef = useRef<THREE.DirectionalLight | null>(null);
   const hemiLightRef = useRef<THREE.HemisphereLight | null>(null);
@@ -639,6 +644,16 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   // Handle Helicopter Air Transit from current player position to landmark
   useEffect(() => {
     if (helicopterFlightTarget && helicopterTransitRef.current && elevationSamplerRef.current) {
+      // Guard: don't restart a flight that's already headed to this exact
+      // destination — only (re)start when the target actually changed.
+      const flightKey = `${helicopterFlightTarget.destinationName}:${helicopterFlightTarget.targetPos[0]}:${helicopterFlightTarget.targetPos[1]}`;
+      const alreadyFlyingThere =
+        activeFlightKeyRef.current === flightKey && helicopterTransitRef.current.getCurrentInfo().isActive;
+      if (alreadyFlyingThere) {
+        return;
+      }
+      activeFlightKeyRef.current = flightKey;
+
       let startX = 20;
       let startZ = 50;
 
@@ -674,6 +689,10 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
         targetVec,
         helicopterFlightTarget.destinationName,
         (landingPos) => {
+          // Landing complete — clear the guard so a future click on this
+          // same destination is able to start a fresh flight.
+          activeFlightKeyRef.current = null;
+
           // Landing complete — the SkyHawk sets down at the site and the
           // player is dropped off on foot beside it, ready to inspect.
           if (vehicleRef.current?.state?.position) {

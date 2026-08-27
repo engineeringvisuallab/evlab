@@ -44,10 +44,6 @@ export default function App() {
     resetVehicle: () => void;
   } | null>(null);
 
-  const helicopterActionRef = useRef<{
-    skipFlight: () => void;
-  } | null>(null);
-
   const handleToggleDriveMode = useCallback(() => {
     setIsDriving((prev) => {
       const nextDriving = !prev;
@@ -74,8 +70,8 @@ export default function App() {
     setHelicopterFlightTarget({ targetPos: target, destinationName });
   }, []);
 
-  const handleSkipHelicopterFlight = useCallback(() => {
-    helicopterActionRef.current?.skipFlight();
+  const handleHelicopterFlightComplete = useCallback(() => {
+    setHelicopterFlightTarget(null);
   }, []);
 
   const handleHelicopterLanded = useCallback(() => {
@@ -107,9 +103,8 @@ export default function App() {
         onTeleportComplete={() => setTeleportTarget(null)}
         helicopterFlightTarget={helicopterFlightTarget}
         onHelicopterFlightUpdate={setHelicopterFlightInfo}
-        onHelicopterFlightComplete={() => setHelicopterFlightTarget(null)}
+        onHelicopterFlightComplete={handleHelicopterFlightComplete}
         onHelicopterFlightLanded={handleHelicopterLanded}
-        helicopterActionRef={helicopterActionRef}
         vehicleActionRef={vehicleActionRef}
       />
 
@@ -140,7 +135,6 @@ export default function App() {
         onTeleportToLandmark={(lm) => setTeleportTarget(lm)}
         helicopterFlightInfo={helicopterFlightInfo}
         onStartHelicopterTour={handleStartHelicopterTour}
-        onSkipHelicopterFlight={handleSkipHelicopterFlight}
       />
     </main>
   );

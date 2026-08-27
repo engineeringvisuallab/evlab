@@ -23,9 +23,7 @@ import {
   Radio,
   Video,
   Play,
-  FastForward,
   Gauge,
-  MapPin,
 } from 'lucide-react';
 import { TimeOfDay, WeatherType } from '../../types/game';
 import { VehicleTypeId, VEHICLE_CATALOG, VehiclePhysicsState } from '../../utils/vehicleController';
@@ -56,7 +54,6 @@ interface GameHUDProps {
   onTeleportToLandmark?: (lm: LandmarkZone | [number, number]) => void;
   helicopterFlightInfo?: HelicopterFlightInfo | null;
   onStartHelicopterTour?: (target: [number, number], destinationName: string) => void;
-  onSkipHelicopterFlight?: () => void;
 }
 
 export const GameHUD: React.FC<GameHUDProps> = ({
@@ -82,7 +79,6 @@ export const GameHUD: React.FC<GameHUDProps> = ({
   onTeleportToLandmark,
   helicopterFlightInfo,
   onStartHelicopterTour,
-  onSkipHelicopterFlight,
 }) => {
   const [showControlsModal, setShowControlsModal] = useState(false);
   const [showVehiclesModal, setShowVehiclesModal] = useState(false);
@@ -303,84 +299,11 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         </div>
       </header>
 
-      {/* 2. MIDDLE AREA: Interactive Prompt Toast & Helicopter Flight HUD */}
+      {/* 2. MIDDLE AREA: Interactive Prompt Toast */}
+      {/* Site-visit helicopter flights are fully automatic (auto climb to
+          150m, auto cruise, auto land) — intentionally no flight HUD,
+          no "Land Now" button, and no status text while it's in the air. */}
       <div className="flex flex-col items-center gap-3">
-        {/* Active Helicopter Site-Visit Flight Overlay */}
-        {helicopterFlightInfo?.isActive && (
-          <div className="pointer-events-auto w-full max-w-xl bg-slate-900/95 backdrop-blur-2xl border-2 border-sky-500/80 rounded-3xl p-4 shadow-2xl text-white space-y-3 animate-in fade-in zoom-in-95 duration-200">
-            {/* Top Flight Header */}
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-              <div className="flex items-center gap-2.5">
-                <span className="text-2xl animate-bounce">🚁</span>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-black uppercase tracking-widest text-sky-400">
-                      AYT SkyHawk Air Cruise
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-sky-500/20 text-sky-300 border border-sky-400/30 animate-pulse">
-                      {helicopterFlightInfo.phase}
-                    </span>
-                  </div>
-                  <h3 className="font-extrabold text-sm text-white flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-pink-400 shrink-0" />
-                    <span>{helicopterFlightInfo.destinationName}</span>
-                  </h3>
-                </div>
-              </div>
-
-              {onSkipHelicopterFlight && (
-                <button
-                  id="btn-skip-helicopter-flight"
-                  onClick={onSkipHelicopterFlight}
-                  className="px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black rounded-xl text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-transform cursor-pointer"
-                  title="Fast-forward helicopter directly to landing site"
-                >
-                  <FastForward className="w-3.5 h-3.5 fill-current" />
-                  <span>Land Now</span>
-                </button>
-              )}
-            </div>
-
-            {/* Flight Gauges (Speed, Altitude, Distance) */}
-            <div className="grid grid-cols-3 gap-2 text-center">
-              <div className="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-2">
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Airspeed</span>
-                <span className="text-lg font-black font-mono text-cyan-300">
-                  {Math.round(helicopterFlightInfo.speedKmh)} <span className="text-[10px] text-slate-400 font-normal">km/h</span>
-                </span>
-              </div>
-
-              <div className="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-2">
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Altitude AGL</span>
-                <span className="text-lg font-black font-mono text-emerald-300">
-                  {Math.round(helicopterFlightInfo.altitudeAgl)} <span className="text-[10px] text-slate-400 font-normal">m</span>
-                </span>
-              </div>
-
-              <div className="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-2">
-                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Distance</span>
-                <span className="text-lg font-black font-mono text-pink-300">
-                  {Math.round(helicopterFlightInfo.distRemainingM)} <span className="text-[10px] text-slate-400 font-normal">m</span>
-                </span>
-              </div>
-            </div>
-
-            {/* Smooth Progress Bar */}
-            <div className="space-y-1">
-              <div className="flex justify-between text-[10px] font-semibold text-slate-400">
-                <span>Flight Progress</span>
-                <span className="font-mono text-sky-300">{Math.round(helicopterFlightInfo.progress * 100)}%</span>
-              </div>
-              <div className="w-full bg-slate-950 h-2.5 rounded-full overflow-hidden border border-slate-800 p-0.5">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-sky-400 via-cyan-400 to-pink-500 transition-all duration-150"
-                  style={{ width: `${Math.max(4, Math.min(100, helicopterFlightInfo.progress * 100))}%` }}
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Drive/Exit Prompt */}
         {!helicopterFlightInfo?.isActive && !isDriving && canEnterVehicle && (
           <div className="pointer-events-auto bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-slate-950 font-bold px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce border border-emerald-300/40">
