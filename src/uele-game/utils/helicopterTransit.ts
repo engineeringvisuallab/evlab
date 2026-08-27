@@ -11,6 +11,48 @@ const SKYHAWK_DEF = VEHICLE_CATALOG.find((v) => v.id === 'helicopter')!;
 const TOUR_CRUISE_ALTITUDE_M = 150; // Fixed AGL cruise altitude for the site-visit tour
 const TOUR_TOP_SPEED_KMH = SKYHAWK_DEF.topSpeedKmh; // Fly at the SkyHawk's rated max speed
 
+// --- Smoothed trapezoidal velocity profile -------------------------------
+// Fraction of the flight (at each end) spent accelerating / decelerating.
+const RAMP_FRACTION = 0.2;
+
+// Cubic smoothstep, 0 -> 1, with ZERO slope at both ends.
+function smoothstep01(u: number): number {
+  const c = THREE.MathUtils.clamp(u, 0, 1);
+  return c * c * (3 - 2 * c);
+}
+
+// Antiderivative of smoothstep01 over [0, u] (u in [0,1]).
+function smoothstepIntegral(u: number): number {
+  const c = THREE.MathUtils.clamp(u, 0, 1);
+  return c * c * c - 0.5 * c * c * c * c;
+}
+
+// Normalized velocity fraction (0..1 of cruise speed) at a given progress.
+// This is smoothstep-shaped during accel/decel, so it has ZERO slope right
+// where it meets the constant-speed cruise segment (which also has zero
+// slope) — no stall-then-snap discontinuity, and it can never exceed 1.
+function flightVelocityFraction(progress: number, r: number): number {
+  if (progress < r) {
+    return smoothstep01(progress / r);
+  } else if (progress > 1 - r) {
+    return smoothstep01((1 - progress) / r);
+  }
+  return 1;
+}
+
+// Normalized position fraction (0..1) obtained by integrating the velocity
+// profile above, so the on-screen motion's actual derivative matches the
+// speed we report (and never dips to zero right before "cruise" speed).
+function flightPositionFraction(progress: number, r: number): number {
+  const k = 1 / (1 - r); // normalizes total integral to exactly 1
+  if (progress < r) {
+    return k * r * smoothstepIntegral(progress / r);
+  } else if (progress > 1 - r) {
+    return 1 - k * r * smoothstepIntegral((1 - progress) / r);
+  }
+  return k * r * smoothstepIntegral(1) + k * (progress - r);
+}
+
 export type HelicopterFlightPhase =
   | 'idle'
   | 'spoolup'
@@ -98,10 +140,16 @@ export function buildHelicopterTransitSystem(): HelicopterTransitInstance {
     destinationName = destName;
     onFlightComplete = onComplete;
 
-    // Calculate dynamic flight duration proportional to distance across 10 km
+    // Calculate flight duration from distance so the cruise speed lands
+    // exactly at (never above) the SkyHawk's rated top speed. With the
+    // smoothed ramp taking up RAMP_FRACTION at each end, the average speed
+    // over the whole flight is topSpeed * (1 - RAMP_FRACTION), so:
     const dist = startPos.distanceTo(targetPos);
-    // At the SkyHawk's top speed, flight time is clamped between 10s and 24s
-    totalFlightDuration = Math.max(10, Math.min(24, 7 + dist * 0.0028));
+    const topSpeedMs = (TOUR_TOP_SPEED_KMH * 1000) / 3600;
+    const requiredDuration = dist / (topSpeedMs * (1 - RAMP_FRACTION));
+    // Keep a floor so very short hops don't feel instantaneous; no ceiling,
+    // since capping duration for long trips is what forced speed above 240.
+    totalFlightDuration = Math.max(10, requiredDuration);
 
     flightTime = 0;
     isFlightActive = true;
@@ -186,17 +234,10 @@ export function buildHelicopterTransitSystem(): HelicopterTransitInstance {
     const cruiseAltitudeOffset = TOUR_CRUISE_ALTITUDE_M;
 
     // Linear X, Z interpolation
-    // Easing curve for smooth takeoff and touchdown
-    let easedT = progress;
-    if (progress < 0.2) {
-      // Smooth acceleration out of takeoff
-      const t = progress / 0.2;
-      easedT = 0.2 * (t * t * (3 - 2 * t));
-    } else if (progress > 0.8) {
-      // Smooth deceleration into landing
-      const t = (progress - 0.8) / 0.2;
-      easedT = 0.8 + 0.2 * (t * t * (3 - 2 * t));
-    }
+    // Position fraction from the smoothed velocity profile (see helpers
+    // above) — its derivative matches cruise speed at both seams, so there
+    // is no stall-then-snap near the ends of takeoff/landing.
+    const easedT = flightPositionFraction(progress, RAMP_FRACTION);
 
     const curX = THREE.MathUtils.lerp(startPos.x, targetPos.x, easedT);
     const curZ = THREE.MathUtils.lerp(startPos.z, targetPos.z, easedT);
@@ -232,15 +273,11 @@ export function buildHelicopterTransitSystem(): HelicopterTransitInstance {
     distRemainingM = remainingVec.length();
     altitudeAgl = curY - groundY;
 
-    // Flight Speed calculation (km/h) — cruises at the SkyHawk's rated top speed
-    const baseCruiseSpeed = TOUR_TOP_SPEED_KMH;
-    if (flightPhase === 'takeoff') {
-      speedKmh = THREE.MathUtils.lerp(0, baseCruiseSpeed, progress / 0.15);
-    } else if (flightPhase === 'descent' || flightPhase === 'touchdown') {
-      speedKmh = THREE.MathUtils.lerp(baseCruiseSpeed, 0, (progress - 0.82) / 0.18);
-    } else {
-      speedKmh = baseCruiseSpeed;
-    }
+    // Flight Speed calculation (km/h) — driven by the exact same profile
+    // used for the actual on-screen motion above, so the number reported
+    // always matches what's visually happening and never exceeds the
+    // SkyHawk's rated top speed.
+    speedKmh = flightVelocityFraction(progress, RAMP_FRACTION) * TOUR_TOP_SPEED_KMH;
 
     // 3. Helicopter Aerodynamic Banking, Pitch & Yaw
     // travelHeading = actual direction of travel (used for the camera).
