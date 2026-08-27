@@ -5,11 +5,13 @@ import { buildSkyHawkHelicopterMesh } from './skyhawkHelicopterModel';
 import { VEHICLE_CATALOG } from './vehicleController';
 
 // The Site-Visit Air Transit tour flies the player's own SkyHawk helicopter —
-// the same vehicle from the vehicle switcher — at a fixed survey altitude
-// and at the aircraft's rated top speed, never a different "taxi" model.
+// the same vehicle from the vehicle switcher — at a fixed survey altitude.
+// The tour uses its own faster cruise speed (500 km/h) so site-visit trips
+// don't take too long; this does NOT change the SkyHawk's actual rated
+// topSpeedKmh (240) used elsewhere (vehicle switcher, HUD, etc.).
 const SKYHAWK_DEF = VEHICLE_CATALOG.find((v) => v.id === 'helicopter')!;
 const TOUR_CRUISE_ALTITUDE_M = 150; // Fixed AGL cruise altitude for the site-visit tour
-const TOUR_TOP_SPEED_KMH = SKYHAWK_DEF.topSpeedKmh; // Fly at the SkyHawk's rated max speed
+const TOUR_TOP_SPEED_KMH = 500; // Tour-only cruise speed, faster than the SkyHawk's normal rated speed
 
 // --- Smoothed trapezoidal velocity profile -------------------------------
 // Fraction of the flight (at each end) spent accelerating / decelerating.
