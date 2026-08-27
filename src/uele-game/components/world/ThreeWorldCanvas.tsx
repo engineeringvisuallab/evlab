@@ -642,7 +642,16 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       let startX = 20;
       let startZ = 50;
 
-      if (isDriving && vehicleRef.current?.state?.position) {
+      // If the SkyHawk is already mid-flight (player clicked a new site while
+      // en route to a previous one), redirect from its CURRENT in-air
+      // position — not the player's stale pre-flight ground position, which
+      // would otherwise cause the helicopter to visually snap back to where
+      // it originally took off from.
+      const existingFlight = helicopterTransitRef.current.getCurrentInfo();
+      if (existingFlight.isActive) {
+        startX = existingFlight.currentPos.x;
+        startZ = existingFlight.currentPos.z;
+      } else if (isDriving && vehicleRef.current?.state?.position) {
         startX = vehicleRef.current.state.position.x;
         startZ = vehicleRef.current.state.position.z;
       } else if (characterRef.current?.state?.position) {

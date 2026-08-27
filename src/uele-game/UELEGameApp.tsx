@@ -6,7 +6,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { ThreeWorldCanvas } from './components/world/ThreeWorldCanvas';
 import { GameHUD } from './components/game/GameHUD';
-import { EngineeringObjectDetailModal } from './components/game/EngineeringObjectDetailModal';
 import { TimeOfDay, WeatherType } from './types/game';
 import { VehicleTypeId, VehiclePhysicsState } from './utils/vehicleController';
 import { LandmarkZone } from './utils/miniCountryTerrain';
@@ -21,7 +20,6 @@ export default function App() {
   const [vehicleState, setVehicleState] = useState<VehiclePhysicsState | null>(null);
   const [playerPosition, setPlayerPosition] = useState<[number, number]>([20, 50]);
   const [currentLandmark, setCurrentLandmark] = useState<LandmarkZone | null>(null);
-  const [selectedEngineeringSite, setSelectedEngineeringSite] = useState<LandmarkZone | null>(null);
 
   // Helicopter Air Transit State
   const [helicopterFlightTarget, setHelicopterFlightTarget] = useState<{
@@ -102,7 +100,9 @@ export default function App() {
         onPlayerPositionUpdate={setPlayerPosition}
         onLandmarkEnter={setCurrentLandmark}
         onCanEnterVehicleChange={setCanEnterVehicle}
-        onSelectEngineeringObject={(landmark) => setSelectedEngineeringSite(landmark)}
+        onSelectEngineeringObject={(landmark) =>
+          handleStartHelicopterTour(landmark.center, landmark.name)
+        }
         teleportTarget={teleportTarget}
         onTeleportComplete={() => setTeleportTarget(null)}
         helicopterFlightTarget={helicopterFlightTarget}
@@ -142,16 +142,6 @@ export default function App() {
         onStartHelicopterTour={handleStartHelicopterTour}
         onSkipHelicopterFlight={handleSkipHelicopterFlight}
       />
-
-      {/* 3. Detailed 3D Engineering Object Details Modal (Click to inspect site) */}
-      {selectedEngineeringSite && (
-        <EngineeringObjectDetailModal
-          landmark={selectedEngineeringSite}
-          onClose={() => setSelectedEngineeringSite(null)}
-          onTeleportTo={(lm) => setTeleportTarget(lm)}
-          onStartHelicopterTour={handleStartHelicopterTour}
-        />
-      )}
     </main>
   );
 }
