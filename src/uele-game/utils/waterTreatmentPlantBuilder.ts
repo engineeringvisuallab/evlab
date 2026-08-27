@@ -6,10 +6,14 @@ export interface WaterTreatmentPlantResult {
   position: THREE.Vector3;
 }
 
-// Placed just off the east bank of the Karatoya River (river centerline at
-// this Z is roughly x≈24, half-width 16 — so x=55 sits safely on dry land,
-// a short walk/drive from the water's edge).
-export const WATER_TREATMENT_PLANT_POSITION: [number, number] = [55, 130];
+// Placed on the UPSTREAM (south, z<0) stretch of the Karatoya River, on the
+// east bank — the intake sits before the river reaches the city/industrial
+// reach downstream, so it draws clean raw water. River centerline at this Z
+// is roughly x≈-45, half-width 16 — so x=-15 sits safely on dry land, a
+// short walk/drive from the water's edge. This is the WTP site of the
+// 4-plant treatment layout (WTP upstream ↔ STP/ETP/SWM downstream, see
+// miniCountryTerrain.ts COUNTRY_LANDMARKS for the other three).
+export const WATER_TREATMENT_PLANT_POSITION: [number, number] = [-15, -160];
 
 /**
  * Builds a small procedural riverside water treatment plant: a few circular

@@ -60,11 +60,11 @@ export const COUNTRY_LANDMARKS: LandmarkZone[] = [
   },
   {
     id: 'water_treatment_plant',
-    name: 'River Water Treatment Plant',
+    name: 'Water Treatment Plant (WTP) — Upstream Intake',
     category: 'water',
-    center: [55, 130],
+    center: [-15, -160],
     radius: 40,
-    description: 'Riverside water treatment facility — clarifier tanks, filtration hall, and elevated water tower drawing from the Karatoya.',
+    description: 'Upstream riverside water treatment facility — clarifier tanks, filtration hall, and elevated water tower drawing clean raw water from the Karatoya before it reaches the city/industrial reach downstream.',
     icon: '💧',
   },
   {
