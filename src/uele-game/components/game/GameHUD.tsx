@@ -6,6 +6,9 @@ import {
   Sun,
   Moon,
   CloudRain,
+  CloudLightning,
+  Cloud,
+  Sunrise,
   Volume2,
   VolumeX,
   Camera,
@@ -18,10 +21,17 @@ import {
   Footprints,
   Lightbulb,
   Radio,
+  Video,
+  Play,
+  FastForward,
+  Gauge,
+  MapPin,
 } from 'lucide-react';
 import { TimeOfDay, WeatherType } from '../../types/game';
 import { VehicleTypeId, VEHICLE_CATALOG, VehiclePhysicsState } from '../../utils/vehicleController';
 import { LandmarkZone, COUNTRY_LANDMARKS } from '../../utils/miniCountryTerrain';
+import { CINEMATIC_TOUR_PRESETS } from '../../utils/environmentalEffects';
+import { HelicopterFlightInfo } from '../../utils/helicopterTransit';
 
 interface GameHUDProps {
   isDriving: boolean;
@@ -44,6 +54,9 @@ interface GameHUDProps {
   currentLandmark: LandmarkZone | null;
   playerPosition: [number, number]; // [x, z]
   onTeleportToLandmark?: (lm: LandmarkZone | [number, number]) => void;
+  helicopterFlightInfo?: HelicopterFlightInfo | null;
+  onStartHelicopterTour?: (target: [number, number], destinationName: string) => void;
+  onSkipHelicopterFlight?: () => void;
 }
 
 export const GameHUD: React.FC<GameHUDProps> = ({
@@ -67,9 +80,13 @@ export const GameHUD: React.FC<GameHUDProps> = ({
   currentLandmark,
   playerPosition,
   onTeleportToLandmark,
+  helicopterFlightInfo,
+  onStartHelicopterTour,
+  onSkipHelicopterFlight,
 }) => {
   const [showControlsModal, setShowControlsModal] = useState(false);
   const [showVehiclesModal, setShowVehiclesModal] = useState(false);
+  const [showCinematicModal, setShowCinematicModal] = useState(false);
   const [radarZoom, setRadarZoom] = useState<'local' | 'country'>('country');
   const [teleportToast, setTeleportToast] = useState<{ x: number; z: number } | null>(null);
 
@@ -194,10 +211,17 @@ export const GameHUD: React.FC<GameHUDProps> = ({
           </button>
         </div>
 
-        {/* Right: Environment Toggles & Help */}
+        {/* Right: Environment Toggles, Cinematic Tours & Help */}
         <div className="flex items-center gap-2">
           {/* Time of Day */}
           <div className="flex items-center bg-slate-950/80 rounded-xl p-1 border border-slate-800 gap-1 text-xs">
+            <button
+              title="Dawn / Sunrise"
+              onClick={() => onSetTimeOfDay('dawn')}
+              className={`p-1.5 rounded-lg transition-colors ${timeOfDay === 'dawn' ? 'bg-rose-500/30 text-rose-300 border border-rose-500/50' : 'text-slate-400 hover:text-white'}`}
+            >
+              <Sunrise className="w-4 h-4 text-rose-400" />
+            </button>
             <button
               title="Daylight"
               onClick={() => onSetTimeOfDay('day')}
@@ -206,7 +230,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
               <Sun className="w-4 h-4 text-sky-400" />
             </button>
             <button
-              title="Sunset / Golden Hour"
+              title="Golden Hour / Sunset"
               onClick={() => onSetTimeOfDay('golden')}
               className={`p-1.5 rounded-lg transition-colors ${timeOfDay === 'golden' ? 'bg-amber-500/30 text-amber-300 border border-amber-500/50' : 'text-slate-400 hover:text-white'}`}
             >
@@ -220,13 +244,36 @@ export const GameHUD: React.FC<GameHUDProps> = ({
               <Moon className="w-4 h-4 text-indigo-400" />
             </button>
             <div className="w-px h-4 bg-slate-800 mx-0.5" />
+            {/* Weather Presets */}
             <button
-              title="Toggle Rain"
-              onClick={() => onSetWeather(weather === 'rain' ? 'clear' : 'rain')}
+              title="Clear Skies"
+              onClick={() => onSetWeather('clear')}
+              className={`p-1.5 rounded-lg transition-colors ${weather === 'clear' ? 'bg-amber-500/30 text-amber-300 border border-amber-500/50' : 'text-slate-400 hover:text-white'}`}
+            >
+              <Sun className="w-3.5 h-3.5" />
+            </button>
+            <button
+              title="Cloud Cover"
+              onClick={() => onSetWeather('overcast')}
+              className={`p-1.5 rounded-lg transition-colors ${weather === 'overcast' ? 'bg-slate-500/30 text-slate-300 border border-slate-500/50' : 'text-slate-400 hover:text-white'}`}
+            >
+              <Cloud className="w-3.5 h-3.5" />
+            </button>
+            <button
+              title="Rainfall"
+              onClick={() => onSetWeather('rain')}
               className={`p-1.5 rounded-lg transition-colors ${weather === 'rain' ? 'bg-cyan-500/30 text-cyan-300 border border-cyan-500/50' : 'text-slate-400 hover:text-white'}`}
             >
-              <CloudRain className="w-4 h-4 text-cyan-400" />
+              <CloudRain className="w-3.5 h-3.5 text-cyan-400" />
             </button>
+            <button
+              title="Thunderstorm & Lightning"
+              onClick={() => onSetWeather('storm')}
+              className={`p-1.5 rounded-lg transition-colors ${weather === 'storm' ? 'bg-purple-500/30 text-purple-300 border border-purple-500/50' : 'text-slate-400 hover:text-white'}`}
+            >
+              <CloudLightning className="w-3.5 h-3.5 text-purple-400" />
+            </button>
+            <div className="w-px h-4 bg-slate-800 mx-0.5" />
             <button
               title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
               onClick={onToggleMute}
@@ -235,6 +282,16 @@ export const GameHUD: React.FC<GameHUDProps> = ({
               {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
             </button>
           </div>
+
+          {/* Cinematic Flyover Tours Button */}
+          <button
+            onClick={() => setShowCinematicModal(true)}
+            className="flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-pink-600/80 to-purple-600/80 hover:from-pink-500 hover:to-purple-500 text-white rounded-xl border border-pink-500/40 transition-all shadow-md shadow-pink-500/20 text-xs font-bold"
+            title="Cinematic Landmark Flyovers"
+          >
+            <Video className="w-4 h-4 text-pink-200 animate-pulse" />
+            <span className="hidden sm:inline">Flyover Tours</span>
+          </button>
 
           <button
             onClick={() => setShowControlsModal(true)}
@@ -246,10 +303,86 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         </div>
       </header>
 
-      {/* 2. MIDDLE AREA: Interactive Prompt Toast (When near car or entering a new landmark) */}
+      {/* 2. MIDDLE AREA: Interactive Prompt Toast & Helicopter Flight HUD */}
       <div className="flex flex-col items-center gap-3">
+        {/* Active Helicopter Site-Visit Flight Overlay */}
+        {helicopterFlightInfo?.isActive && (
+          <div className="pointer-events-auto w-full max-w-xl bg-slate-900/95 backdrop-blur-2xl border-2 border-sky-500/80 rounded-3xl p-4 shadow-2xl text-white space-y-3 animate-in fade-in zoom-in-95 duration-200">
+            {/* Top Flight Header */}
+            <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div className="flex items-center gap-2.5">
+                <span className="text-2xl animate-bounce">🚁</span>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-black uppercase tracking-widest text-sky-400">
+                      AYT SkyHawk Air Cruise
+                    </span>
+                    <span className="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-sky-500/20 text-sky-300 border border-sky-400/30 animate-pulse">
+                      {helicopterFlightInfo.phase}
+                    </span>
+                  </div>
+                  <h3 className="font-extrabold text-sm text-white flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-pink-400 shrink-0" />
+                    <span>{helicopterFlightInfo.destinationName}</span>
+                  </h3>
+                </div>
+              </div>
+
+              {onSkipHelicopterFlight && (
+                <button
+                  id="btn-skip-helicopter-flight"
+                  onClick={onSkipHelicopterFlight}
+                  className="px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black rounded-xl text-xs flex items-center gap-1.5 shadow-lg active:scale-95 transition-transform cursor-pointer"
+                  title="Fast-forward helicopter directly to landing site"
+                >
+                  <FastForward className="w-3.5 h-3.5 fill-current" />
+                  <span>Land Now</span>
+                </button>
+              )}
+            </div>
+
+            {/* Flight Gauges (Speed, Altitude, Distance) */}
+            <div className="grid grid-cols-3 gap-2 text-center">
+              <div className="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-2">
+                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Airspeed</span>
+                <span className="text-lg font-black font-mono text-cyan-300">
+                  {Math.round(helicopterFlightInfo.speedKmh)} <span className="text-[10px] text-slate-400 font-normal">km/h</span>
+                </span>
+              </div>
+
+              <div className="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-2">
+                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Altitude AGL</span>
+                <span className="text-lg font-black font-mono text-emerald-300">
+                  {Math.round(helicopterFlightInfo.altitudeAgl)} <span className="text-[10px] text-slate-400 font-normal">m</span>
+                </span>
+              </div>
+
+              <div className="bg-slate-950/70 border border-slate-800/80 rounded-2xl p-2">
+                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Distance</span>
+                <span className="text-lg font-black font-mono text-pink-300">
+                  {Math.round(helicopterFlightInfo.distRemainingM)} <span className="text-[10px] text-slate-400 font-normal">m</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Smooth Progress Bar */}
+            <div className="space-y-1">
+              <div className="flex justify-between text-[10px] font-semibold text-slate-400">
+                <span>Flight Progress</span>
+                <span className="font-mono text-sky-300">{Math.round(helicopterFlightInfo.progress * 100)}%</span>
+              </div>
+              <div className="w-full bg-slate-950 h-2.5 rounded-full overflow-hidden border border-slate-800 p-0.5">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-sky-400 via-cyan-400 to-pink-500 transition-all duration-150"
+                  style={{ width: `${Math.max(4, Math.min(100, helicopterFlightInfo.progress * 100))}%` }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Drive/Exit Prompt */}
-        {!isDriving && canEnterVehicle && (
+        {!helicopterFlightInfo?.isActive && !isDriving && canEnterVehicle && (
           <div className="pointer-events-auto bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-slate-950 font-bold px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce border border-emerald-300/40">
             <Car className="w-5 h-5 fill-current" />
             <span>Near {currentVehicleDef.name} — Press <strong>[F]</strong> or Click to Drive!</span>
@@ -263,7 +396,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         )}
 
         {/* Landmark Zone Discovery Toast */}
-        {currentLandmark && (
+        {!helicopterFlightInfo?.isActive && currentLandmark && (
           <div className="bg-slate-900/90 backdrop-blur-md border border-cyan-500/40 text-white px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2.5 animate-in fade-in slide-in-from-top-2 duration-300">
             <span className="text-xl">{currentLandmark.icon}</span>
             <div>
@@ -317,52 +450,72 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                 {/* 10km Outer Bounds Grid */}
                 <rect x="-4900" y="-4900" width="9800" height="9800" fill="#090d16" stroke="#1e293b" strokeWidth="120" rx="400" />
 
-                {/* Southern Sea Bay (z: 1400 to 5000) */}
-                <rect x="-4900" y="1400" width="9800" height="3500" fill="#0369a1" opacity="0.5" />
+                {/* 10km Precision Coordinate Grid */}
+                {[-4000, -3000, -2000, -1000, 0, 1000, 2000, 3000, 4000].map((g) => (
+                  <g key={`grid-10k-${g}`}>
+                    <line x1={g} y1="-5000" x2={g} y2="5000" stroke="#334155" strokeWidth="25" strokeDasharray="150,150" opacity="0.4" />
+                    <line x1="-5000" y1={g} x2="5000" y2={g} stroke="#334155" strokeWidth="25" strokeDasharray="150,150" opacity="0.4" />
+                  </g>
+                ))}
 
-                {/* Northern Mountain Ridge (z: -5000 to -1200) */}
-                <path d="M -4900 -5000 L 4900 -5000 L 4900 -1200 L -4900 -1200 Z" fill="#14532d" opacity="0.35" />
+                {/* Hydrography (Part 2) - Reservoir & Water Resources Lake */}
+                <ellipse cx="2400" cy="-4100" rx="1350" ry="1200" fill="#0284c7" opacity="0.75" stroke="#38bdf8" strokeWidth="40" />
 
-                {/* Western Tea Highlands */}
-                <rect x="-4900" y="-1200" width="2400" height="2600" fill="#15803d" opacity="0.3" />
+                {/* Hydrography (Part 2) - South-West Coastal Wetlands */}
+                <rect x="-4900" y="3400" width="3100" height="1500" rx="200" fill="#0d9488" opacity="0.5" />
 
-                {/* Sundarbans Mangrove Forest */}
-                <circle cx="800" cy="-800" r="600" fill="#14532d" opacity="0.35" />
+                {/* Hydrography (Part 2) - Sports Retention Lake */}
+                <circle cx="-200" cy="3050" r="260" fill="#0284c7" opacity="0.7" />
 
-                {/* 10km Trans-Country River System */}
+                {/* Hydrography (Part 2) - Urban Karatoya River Corridor */}
                 <path
-                  d="M 180 -4800 Q 800 -2000 200 0 Q -200 2000 160 4900"
+                  d="M -5000 -800 Q -2500 -1200 -1200 -500 Q 0 -600 1400 -700 Q 2800 -400 5000 -800"
                   fill="none"
                   stroke="#0284c7"
-                  strokeWidth="380"
+                  strokeWidth="320"
+                  strokeLinecap="round"
                   opacity="0.85"
                 />
 
-                {/* 10km Railway Line (Black dashed railroad) */}
-                <line x1="-120" y1="-4800" x2="-120" y2="4800" stroke="#f59e0b" strokeWidth="110" strokeDasharray="200,100" />
+                {/* Civil Transport Network (Part 3) */}
+                {/* 1. East-West Expressway (Z = -3000) */}
+                <line x1="-5000" y1="-3000" x2="5000" y2="-3000" stroke="#f59e0b" strokeWidth="120" opacity="0.9" />
+                <line x1="-5000" y1="-3000" x2="5000" y2="-3000" stroke="#1e293b" strokeWidth="60" opacity="0.9" />
 
-                {/* Elevated Metro Rail Line (Cyan MRT viaduct) */}
-                <line x1="-600" y1="-45" x2="1200" y2="-45" stroke="#06b6d4" strokeWidth="120" />
+                {/* 2. North-South National Highway (X = 0) */}
+                <line x1="0" y1="-5000" x2="0" y2="5000" stroke="#94a3b8" strokeWidth="100" opacity="0.9" />
+                <line x1="0" y1="-5000" x2="0" y2="5000" stroke="#334155" strokeWidth="40" opacity="0.9" />
 
-                {/* 10km Trans-Country Expressway N5 */}
-                <line x1="20" y1="-4800" x2="20" y2="4800" stroke="#64748b" strokeWidth="220" strokeLinecap="round" />
+                {/* 3. Circular Ring Road (R = 2.0 km) */}
+                <circle cx="0" cy="0" r="2000" fill="none" stroke="#64748b" strokeWidth="110" opacity="0.95" />
+                <circle cx="0" cy="0" r="2000" fill="none" stroke="#f8fafc" strokeWidth="14" strokeDasharray="60,60" opacity="0.9" />
 
-                {/* 10km Central East-West Corridor */}
-                <line x1="-4800" y1="-10" x2="4800" y2="-10" stroke="#475569" strokeWidth="180" />
+                {/* 4. National Railway (Z = 0) */}
+                <line x1="-5000" y1="0" x2="5000" y2="0" stroke="#475569" strokeWidth="60" strokeDasharray="100,50" opacity="0.85" />
 
-                {/* Coastal Deep Sea Port Expressway */}
-                <path d="M 20 200 Q 180 750 600 1800 L 1200 2200" fill="none" stroke="#64748b" strokeWidth="160" />
+                {/* 5. Metro Rail (MRT) Circular Loop */}
+                <circle cx="0" cy="0" r="2022" fill="none" stroke="#8b5cf6" strokeWidth="40" strokeDasharray="80,40" opacity="0.9" />
 
-                {/* Northern Mountain Switchback Pass */}
-                <path d="M 20 -10 Q -450 -800 -1600 -2200" fill="none" stroke="#64748b" strokeWidth="150" />
+                {/* Major Sector Visual Footprints (Part 4, 5, 6) */}
+                {/* Central Core Circle */}
+                <circle cx="0" cy="0" r="400" fill="#0284c7" opacity="0.25" stroke="#38bdf8" strokeWidth="30" />
 
-                {/* Western Tea Highlands Highway */}
-                <path d="M -140 -10 Q -1050 220 -1800 400" fill="none" stroke="#64748b" strokeWidth="150" />
+                {/* Airport Runway Strip */}
+                <rect x="-4800" y="2265" width="3200" height="70" rx="10" fill="#334155" stroke="#f8fafc" strokeWidth="15" />
 
-                {/* Sundarbans Rainforest Scenic Highway */}
-                <path d="M 20 -10 Q 380 -380 800 -800" fill="none" stroke="#64748b" strokeWidth="150" />
+                {/* Olympic Stadium Oval */}
+                <ellipse cx="0" cy="2300" rx="180" ry="150" fill="#059669" opacity="0.4" stroke="#10b981" strokeWidth="30" />
 
-                {/* Landmark Pins across 10 km */}
+                {/* Solar Farm Grid */}
+                <rect x="3300" y="-2500" width="1300" height="1100" rx="40" fill="#1e3a8a" opacity="0.3" stroke="#60a5fa" strokeWidth="25" />
+
+                {/* Industrial Cargo Zone */}
+                <rect x="-4700" y="-800" width="1600" height="1600" rx="50" fill="#475569" opacity="0.25" stroke="#94a3b8" strokeWidth="25" />
+
+                {/* Forestry Reserve */}
+                <rect x="2500" y="3600" width="2300" height="1200" rx="80" fill="#14532d" opacity="0.35" stroke="#22c55e" strokeWidth="25" />
+
+                {/* Landmark Pins across 10 km (if any) */}
                 {COUNTRY_LANDMARKS.map((lm) => (
                   <g
                     key={lm.id}
@@ -397,33 +550,21 @@ export const GameHUD: React.FC<GameHUDProps> = ({
               </svg>
             ) : (
               <svg viewBox="-400 -400 800 800" className="w-full h-full">
-                {/* Rivers */}
-                <path
-                  d="M 180 -220 Q 220 -100 170 0 Q 140 100 230 20 Q 260 200 160 360"
-                  fill="none"
-                  stroke="#0284c7"
-                  strokeWidth="28"
-                  opacity="0.8"
-                />
-                {/* Railway Track (Yellow/black dashed line) */}
-                <line x1="-120" y1="-390" x2="-120" y2="390" stroke="#f59e0b" strokeWidth="6" strokeDasharray="14,6" />
+                {/* Local Precision Coordinate Grid */}
+                {[-300, -200, -100, 0, 100, 200, 300].map((g) => (
+                  <g key={`radar-grid-${g}`}>
+                    <line x1={g} y1="-400" x2={g} y2="400" stroke="#334155" strokeWidth="1.5" strokeDasharray="10,10" opacity="0.4" />
+                    <line x1="-400" y1={g} x2="400" y2={g} stroke="#334155" strokeWidth="1.5" strokeDasharray="10,10" opacity="0.4" />
+                  </g>
+                ))}
 
-                {/* Metro Rail Viaduct (Cyan line) */}
-                <line x1="-390" y1="-45" x2="390" y2="-45" stroke="#06b6d4" strokeWidth="8" opacity="0.9" />
+                {/* Center Crosshairs */}
+                <circle cx="0" cy="0" r="100" fill="none" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="4,4" opacity="0.3" />
+                <circle cx="0" cy="0" r="250" fill="none" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="4,4" opacity="0.2" />
+                <line x1="0" y1="-400" x2="0" y2="400" stroke="#38bdf8" strokeWidth="2" opacity="0.4" />
+                <line x1="-400" y1="0" x2="400" y2="0" stroke="#38bdf8" strokeWidth="2" opacity="0.4" />
 
-                {/* Roads */}
-                {/* Expressway N5 */}
-                <line x1="20" y1="-370" x2="20" y2="370" stroke="#64748b" strokeWidth="18" strokeLinecap="round" />
-                {/* City Boulevard */}
-                <line x1="-380" y1="-10" x2="380" y2="-10" stroke="#64748b" strokeWidth="16" />
-                {/* Airport Connector */}
-                <line x1="20" y1="100" x2="180" y2="200" stroke="#64748b" strokeWidth="14" />
-                {/* Port Highway Branch */}
-                <path d="M 20 200 Q 180 300 380 390" fill="none" stroke="#64748b" strokeWidth="14" />
-                {/* Mountain road */}
-                <path d="M 20 -10 Q -60 -100 -220 -250" fill="none" stroke="#475569" strokeWidth="12" />
-
-                {/* Landmark Pins */}
+                {/* Landmark Pins (if any) */}
                 {COUNTRY_LANDMARKS.map((lm) => (
                   <g
                     key={lm.id}
@@ -466,6 +607,24 @@ export const GameHUD: React.FC<GameHUDProps> = ({
 
         {/* Center: Action Controls & Vehicle Switcher */}
         <div className="pointer-events-auto flex flex-col items-center gap-2">
+          {/* Helicopter Flight Control Hint Banner */}
+          {isDriving && vehicleType === 'helicopter' && (
+            <div className="bg-sky-950/90 border border-sky-500/50 rounded-2xl px-4 py-1.5 shadow-xl text-sky-200 text-xs font-semibold flex items-center gap-3 backdrop-blur-md animate-pulse">
+              <span className="flex items-center gap-1 text-emerald-300 font-bold bg-emerald-950/80 px-2 py-0.5 rounded-lg border border-emerald-500/40">
+                <span>⬆️ SPACE:</span> <span>Up (উপরে)</span>
+              </span>
+              <span className="flex items-center gap-1 text-amber-300 font-bold bg-amber-950/80 px-2 py-0.5 rounded-lg border border-amber-500/40">
+                <span>⬇️ BACK ARROW / S:</span> <span>Down (নিচে)</span>
+              </span>
+              <span className="hidden sm:flex items-center gap-1 text-cyan-300">
+                <span>⏩ W/UP: Forward</span>
+              </span>
+              <span className="hidden sm:flex items-center gap-1 text-slate-300">
+                <span>🔄 A/D: Turn</span>
+              </span>
+            </div>
+          )}
+
           {/* Main Enter/Exit Button */}
           <button
             id="btn-toggle-drive-walk"
@@ -669,12 +828,11 @@ export const GameHUD: React.FC<GameHUDProps> = ({
             <div className="grid grid-cols-2 gap-3 text-xs">
               <div className="bg-slate-950/70 p-3 rounded-xl border border-slate-800 space-y-2">
                 <h4 className="font-bold text-sky-400 uppercase text-[10px]">🚁 Helicopter Flight Controls</h4>
-                <p><strong>Space:</strong> Lift UP / Climb Altitude</p>
-                <p><strong>Shift / C / S:</strong> Descend / Lower Altitude</p>
-                <p><strong>Up Arrow / W:</strong> Fly Forward</p>
-                <p><strong>Down Arrow / S:</strong> Fly Backward / Brake</p>
-                <p><strong>Left / Right Arrow (A/D):</strong> Rotate & Turn</p>
-                <p><strong>L:</strong> High-Beam Searchlight</p>
+                <p><strong>Space:</strong> ⬆️ Lift UP / Climb (উপরে উঠবে)</p>
+                <p><strong>Down / Back Arrow / S:</strong> ⬇️ Descend / Land (নিচে নামবে)</p>
+                <p><strong>Up Arrow / W:</strong> ⏩ Fly Forward (সামনে যাবে)</p>
+                <p><strong>Left / Right Arrow (A/D):</strong> 🔄 Rotate / Turn</p>
+                <p><strong>L:</strong> Searchlight</p>
                 <p><strong>F / Enter:</strong> Exit Helicopter</p>
               </div>
 
@@ -703,6 +861,65 @@ export const GameHUD: React.FC<GameHUDProps> = ({
 
             <div className="bg-cyan-950/40 p-3 rounded-xl border border-cyan-800/40 text-xs text-cyan-200">
               💡 <strong>Engineering Multi-Modal Network:</strong> Experience 30+ road types (Flyovers, Expressways, Cloverleaf Interchanges, Tunnels, Roundabouts) alongside an active double-track Railway and elevated MRT Line-6 Metro Rail system with automated trains and interactive drive controls!
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 6. CINEMATIC LANDMARK HELICOPTER FLYOVERS MODAL */}
+      {showCinematicModal && (
+        <div className="pointer-events-auto fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in">
+          <div className="bg-slate-900 border border-slate-700 rounded-3xl p-6 max-w-md w-full shadow-2xl text-white space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="font-extrabold text-base flex items-center gap-2 text-pink-400">
+                <span className="text-xl">🚁</span>
+                <span>Helicopter Landmark Flyover Tours</span>
+              </h3>
+              <button
+                onClick={() => setShowCinematicModal(false)}
+                className="text-slate-400 hover:text-white text-sm px-2 py-1 bg-slate-800 rounded-lg cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="text-xs text-slate-300 bg-sky-950/40 p-2.5 rounded-xl border border-sky-800/40">
+              🚁 <strong>Interactive Helicopter Transit:</strong> Click any site below to board the executive helicopter. It will spool up rotors at your exact current position and fly you over the country to that landmark!
+            </div>
+
+            <div className="space-y-2.5 max-h-80 overflow-y-auto pr-1">
+              {CINEMATIC_TOUR_PRESETS.map((tour) => (
+                <button
+                  key={tour.id}
+                  onClick={() => {
+                    if (onStartHelicopterTour) {
+                      onStartHelicopterTour([tour.startPos.x, tour.startPos.z], tour.name);
+                    } else if (onTeleportToLandmark) {
+                      onTeleportToLandmark([tour.startPos.x, tour.startPos.z]);
+                      onChangeCameraView('drone');
+                    }
+                    setShowCinematicModal(false);
+                  }}
+                  className="w-full p-3 bg-slate-950/60 hover:bg-slate-800/90 border border-slate-800 hover:border-sky-500/60 rounded-2xl flex items-center justify-between text-left transition-all group cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{tour.icon}</span>
+                    <div>
+                      <h4 className="font-bold text-sm text-white group-hover:text-sky-300 transition-colors">
+                        {tour.name}
+                      </h4>
+                      <p className="text-[11px] text-slate-400 line-clamp-1">{tour.description}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 bg-sky-500/20 text-sky-300 border border-sky-500/30 rounded-xl text-xs font-bold shrink-0 group-hover:bg-sky-500 group-hover:text-slate-950 transition-all">
+                    <span>🚁 Fly</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <div className="text-[11px] text-slate-500 text-center">
+              The helicopter will calculate real-time flight telemetry from your current coordinates.
             </div>
           </div>
         </div>

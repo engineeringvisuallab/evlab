@@ -11,6 +11,7 @@ import { TimeOfDay, WeatherType } from './types/game';
 import { VehicleTypeId, VehiclePhysicsState } from './utils/vehicleController';
 import { LandmarkZone } from './utils/miniCountryTerrain';
 import { audioEngine } from './utils/audioEngine';
+import { HelicopterFlightInfo } from './utils/helicopterTransit';
 
 export default function App() {
   // Game Play State
@@ -22,6 +23,13 @@ export default function App() {
   const [currentLandmark, setCurrentLandmark] = useState<LandmarkZone | null>(null);
   const [selectedEngineeringSite, setSelectedEngineeringSite] = useState<LandmarkZone | null>(null);
 
+  // Helicopter Air Transit State
+  const [helicopterFlightTarget, setHelicopterFlightTarget] = useState<{
+    targetPos: [number, number];
+    destinationName: string;
+  } | null>(null);
+  const [helicopterFlightInfo, setHelicopterFlightInfo] = useState<HelicopterFlightInfo | null>(null);
+
   // Camera & Environment
   const [cameraView, setCameraView] = useState<'chase' | 'hood' | 'orbit' | 'drone' | 'walk'>('chase');
   const [timeOfDay, setTimeOfDay] = useState<TimeOfDay>('day');
@@ -31,11 +39,15 @@ export default function App() {
   // Teleportation Target
   const [teleportTarget, setTeleportTarget] = useState<LandmarkZone | [number, number] | null>(null);
 
-  // Vehicle action direct bindings (Honk, Lights, Reset)
+  // Action direct bindings (Honk, Lights, Reset, Helicopter Skip)
   const vehicleActionRef = useRef<{
     honk: () => void;
     toggleHeadlights: () => void;
     resetVehicle: () => void;
+  } | null>(null);
+
+  const helicopterActionRef = useRef<{
+    skipFlight: () => void;
   } | null>(null);
 
   const handleToggleDriveMode = useCallback(() => {
@@ -60,6 +72,21 @@ export default function App() {
     });
   }, []);
 
+  const handleStartHelicopterTour = useCallback((target: [number, number], destinationName: string) => {
+    setHelicopterFlightTarget({ targetPos: target, destinationName });
+  }, []);
+
+  const handleSkipHelicopterFlight = useCallback(() => {
+    helicopterActionRef.current?.skipFlight();
+  }, []);
+
+  const handleHelicopterLanded = useCallback(() => {
+    // The SkyHawk has landed at the site — drop the player off on foot.
+    setIsDriving(false);
+    setCameraView('walk');
+    audioEngine.stopEngineSound();
+  }, []);
+
   return (
     <main className="relative w-screen h-screen overflow-hidden bg-slate-950 font-sans select-none">
       {/* 1. Main Interactive 3D WebGL Mini Country Canvas */}
@@ -78,6 +105,11 @@ export default function App() {
         onSelectEngineeringObject={(landmark) => setSelectedEngineeringSite(landmark)}
         teleportTarget={teleportTarget}
         onTeleportComplete={() => setTeleportTarget(null)}
+        helicopterFlightTarget={helicopterFlightTarget}
+        onHelicopterFlightUpdate={setHelicopterFlightInfo}
+        onHelicopterFlightComplete={() => setHelicopterFlightTarget(null)}
+        onHelicopterFlightLanded={handleHelicopterLanded}
+        helicopterActionRef={helicopterActionRef}
         vehicleActionRef={vehicleActionRef}
       />
 
@@ -106,6 +138,9 @@ export default function App() {
         currentLandmark={currentLandmark}
         playerPosition={playerPosition}
         onTeleportToLandmark={(lm) => setTeleportTarget(lm)}
+        helicopterFlightInfo={helicopterFlightInfo}
+        onStartHelicopterTour={handleStartHelicopterTour}
+        onSkipHelicopterFlight={handleSkipHelicopterFlight}
       />
 
       {/* 3. Detailed 3D Engineering Object Details Modal (Click to inspect site) */}
@@ -114,6 +149,7 @@ export default function App() {
           landmark={selectedEngineeringSite}
           onClose={() => setSelectedEngineeringSite(null)}
           onTeleportTo={(lm) => setTeleportTarget(lm)}
+          onStartHelicopterTour={handleStartHelicopterTour}
         />
       )}
     </main>

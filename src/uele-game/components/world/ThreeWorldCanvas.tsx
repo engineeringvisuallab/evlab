@@ -2,13 +2,16 @@ import * as THREE from 'three';
 import React, { useEffect, useRef } from 'react';
 import { TimeOfDay, WeatherType } from '../../types/game';
 import { buildMiniCountryTerrain, getNearbyLandmark, LandmarkZone, COUNTRY_LANDMARKS } from '../../utils/miniCountryTerrain';
-import { buildMiniCountryRiver } from '../../utils/miniCountryRiver';
-import { buildCountrySceneObjects } from '../../utils/countryObjectsBuilder';
-import { buildRealisticGrassSystem, RealisticGrassSystem } from '../../utils/realisticGrassSystem';
-import { buildTrafficSystem, TrafficSystem } from '../../utils/trafficSimulation';
-import { buildSpaceFlightSystem, SpaceEnvironment } from '../../utils/spaceFlightSystem';
-import { buildComprehensiveRoadNetwork, ComprehensiveRoadSystem } from '../../utils/comprehensiveRoadNetwork';
-import { buildRailAndMetroSystem, RailAndMetroSystemResult } from '../../utils/railAndMetroSystem';
+import { buildMasterPlanWaterSystems, WaterSystemInstance } from '../../utils/waterSystems';
+import { buildMasterPlanRoadNetwork, MasterPlanRoadSystemResult } from '../../utils/masterPlanRoads';
+import { buildCentralCityCore, CentralCityResult } from '../../utils/centralCityCore';
+import { buildNorthernSectors, NorthernSectorsResult } from '../../utils/northernSectors';
+import { buildSouthernSectors, SouthernSectorsResult } from '../../utils/southernSectors';
+import { buildTrafficTransitSystem, TrafficTransitInstance } from '../../utils/trafficTransitSystem';
+import { buildEnvironmentalEffects, EnvironmentFXInstance, TimePreset } from '../../utils/environmentalEffects';
+import { buildRiverVesselsSystem, RiverVesselInstance } from '../../utils/riverVessels';
+import { buildVegetationSystem, VegetationSystemInstance } from '../../utils/vegetationSystem';
+import { buildHelicopterTransitSystem, HelicopterTransitInstance, HelicopterFlightInfo } from '../../utils/helicopterTransit';
 import { PlayableVehicle, VehicleTypeId, VehiclePhysicsState } from '../../utils/vehicleController';
 import { PlayableCharacter } from '../../utils/characterController';
 import { audioEngine } from '../../utils/audioEngine';
@@ -28,29 +31,22 @@ interface ThreeWorldCanvasProps {
   onSelectEngineeringObject?: (landmark: LandmarkZone) => void;
   teleportTarget: LandmarkZone | [number, number] | null;
   onTeleportComplete: () => void;
+  helicopterFlightTarget?: { targetPos: [number, number]; destinationName: string } | null;
+  onHelicopterFlightUpdate?: (info: HelicopterFlightInfo | null) => void;
+  onHelicopterFlightComplete?: () => void;
+  onHelicopterFlightLanded?: () => void;
+  helicopterActionRef?: React.MutableRefObject<{ skipFlight: () => void } | null>;
   vehicleActionRef?: React.MutableRefObject<{
     honk: () => void;
     toggleHeadlights: () => void;
     resetVehicle: () => void;
   } | null>;
-  /**
-   * Lightweight decorative mode used by the homepage hero preview: builds only
-   * the terrain, river & country structures (skips grass, traffic, road/rail
-   * networks, the space-flight system, and the playable vehicle/character),
-   * disables keyboard capture & manual drag/zoom, and auto-orbits the camera
-   * around the city core instead of following a player.
-   */
+  /** Lightweight homepage-hero preview: disables keyboard/player input and
+   *  slowly auto-rotates the orbit camera instead. */
   previewMode?: boolean;
-  /** Fired on a quick click/tap anywhere on the canvas while previewMode is on. */
+  /** Called when the user clicks/taps the canvas while in previewMode. */
   onPreviewClick?: () => void;
 }
-
-// Slow auto-orbit framing used for the homepage hero preview (aerial view
-// centered roughly over the Smart City / urban core landmark).
-const PREVIEW_TARGET = { x: 15, z: 10 };
-const PREVIEW_PHI = 0.5;
-const PREVIEW_DISTANCE = 320;
-const PREVIEW_ROTATE_SPEED = 0.045;
 
 export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   isDriving,
@@ -67,8 +63,13 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   onSelectEngineeringObject,
   teleportTarget,
   onTeleportComplete,
+  helicopterFlightTarget,
+  onHelicopterFlightUpdate,
+  onHelicopterFlightComplete,
+  onHelicopterFlightLanded,
+  helicopterActionRef,
   vehicleActionRef,
-  previewMode = false,
+  previewMode,
   onPreviewClick,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -82,13 +83,16 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   const elevationSamplerRef = useRef<((x: number, z: number) => number) | null>(null);
 
   // Systems
-  const riverSystemRef = useRef<ReturnType<typeof buildMiniCountryRiver> | null>(null);
-  const countryObjectsRef = useRef<ReturnType<typeof buildCountrySceneObjects> | null>(null);
-  const roadNetworkRef = useRef<ComprehensiveRoadSystem | null>(null);
-  const railMetroRef = useRef<RailAndMetroSystemResult | null>(null);
-  const grassSystemRef = useRef<RealisticGrassSystem | null>(null);
-  const trafficSystemRef = useRef<TrafficSystem | null>(null);
-  const spaceSystemRef = useRef<SpaceEnvironment | null>(null);
+  const waterSystemsRef = useRef<WaterSystemInstance | null>(null);
+  const roadNetworkRef = useRef<MasterPlanRoadSystemResult | null>(null);
+  const centralCityRef = useRef<CentralCityResult | null>(null);
+  const northernSectorsRef = useRef<NorthernSectorsResult | null>(null);
+  const southernSectorsRef = useRef<SouthernSectorsResult | null>(null);
+  const trafficTransitRef = useRef<TrafficTransitInstance | null>(null);
+  const environmentFXRef = useRef<EnvironmentFXInstance | null>(null);
+  const riverVesselsRef = useRef<RiverVesselInstance | null>(null);
+  const vegetationRef = useRef<VegetationSystemInstance | null>(null);
+  const helicopterTransitRef = useRef<HelicopterTransitInstance | null>(null);
   const rainParticlesRef = useRef<THREE.Points | null>(null);
   const dirLightRef = useRef<THREE.DirectionalLight | null>(null);
   const hemiLightRef = useRef<THREE.HemisphereLight | null>(null);
@@ -107,6 +111,8 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     onCanEnterVehicleChange,
     onToggleDriveMode,
     onSelectEngineeringObject,
+    previewMode,
+    onPreviewClick,
   });
 
   useEffect(() => {
@@ -122,6 +128,8 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       onCanEnterVehicleChange,
       onToggleDriveMode,
       onSelectEngineeringObject,
+      previewMode,
+      onPreviewClick,
     };
   }, [
     isDriving,
@@ -135,6 +143,8 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     onCanEnterVehicleChange,
     onToggleDriveMode,
     onSelectEngineeringObject,
+    previewMode,
+    onPreviewClick,
   ]);
 
   // Input Tracking
@@ -165,15 +175,7 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     scene.fog = new THREE.FogExp2(0xcde3f5, 0.00015); // Atmospheric perspective for 10 km expanse
 
     const camera = new THREE.PerspectiveCamera(55, aspect, 0.5, 25000);
-    if (previewMode) {
-      camera.position.set(
-        PREVIEW_TARGET.x + PREVIEW_DISTANCE * Math.sin(0) * Math.cos(PREVIEW_PHI),
-        PREVIEW_DISTANCE * Math.sin(PREVIEW_PHI),
-        PREVIEW_TARGET.z + PREVIEW_DISTANCE * Math.cos(0) * Math.cos(PREVIEW_PHI)
-      );
-    } else {
-      camera.position.set(20, 15, 75);
-    }
+    camera.position.set(6, 10, 60);
     cameraRef.current = camera;
 
     // 3. WebGL Renderer Initialization
@@ -225,61 +227,66 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     scene.add(terrain.mesh);
     elevationSamplerRef.current = terrain.getElevationAt;
 
-    // 6. Build Karatoya River & Reservoir
-    const river = buildMiniCountryRiver();
-    scene.add(river.waterMesh);
-    scene.add(river.lakeMesh);
-    river.pondWaterMeshes.forEach((p) => scene.add(p));
-    riverSystemRef.current = river;
+    // 6. Master Plan Part 2: Hydrography & Water Systems
+    const waterSystems = buildMasterPlanWaterSystems();
+    scene.add(waterSystems.group);
+    waterSystemsRef.current = waterSystems;
 
-    // 7. Build Country 3D Structures (Wind Turbines, Hydro Dam, City, Airport, Solar Farm, Villages, Trees)
-    const countryObjects = buildCountrySceneObjects(terrain.getElevationAt);
-    scene.add(countryObjects.group);
-    countryObjectsRef.current = countryObjects;
+    // 6b. Master Plan Part 3: Civil Transport & Road Network
+    const roadNetwork = buildMasterPlanRoadNetwork();
+    scene.add(roadNetwork.group);
+    roadNetworkRef.current = roadNetwork;
 
-    // 8-9. Heavy simulation subsystems (grass, traffic, road/rail networks,
-    // space-flight, playable vehicle & character) are skipped entirely in
-    // previewMode — the homepage hero only needs the static terrain, river
-    // & country structures below for a rich decorative aerial view.
-    if (!previewMode) {
-      // 8. Build Realistic 3D Grass Blades, Wildflowers & Kashful Reeds Field
-      const grassSys = buildRealisticGrassSystem(terrain.getElevationAt, terrain.isPointOnRoad);
-      scene.add(grassSys.mesh);
-      scene.add(grassSys.flowerMesh);
-      scene.add(grassSys.kashfulMesh);
-      grassSystemRef.current = grassSys;
+    // 6c. Master Plan Part 4: UELE Central City Core (0,0 to R=2.0km)
+    const centralCity = buildCentralCityCore();
+    scene.add(centralCity.group);
+    centralCityRef.current = centralCity;
 
-      // 8B. Autonomous Traffic System (Buses, Trucks, CNGs, Sedans on Roads & Bridges)
-      const trafficSys = buildTrafficSystem(terrain.getElevationAt);
-      scene.add(trafficSys.group);
-      trafficSystemRef.current = trafficSys;
+    // 6d. Master Plan Part 5: Northern Sectors (Renewable Wind, Agriculture, University R&D, Residential, Solar Farm)
+    const northernSectors = buildNorthernSectors();
+    scene.add(northernSectors.group);
+    northernSectorsRef.current = northernSectors;
 
-      // 8C. Comprehensive 30+ Road & Civil Infrastructure Network
-      const roadNet = buildComprehensiveRoadNetwork(terrain.getElevationAt);
-      scene.add(roadNet.group);
-      roadNetworkRef.current = roadNet;
+    // 6e. Master Plan Part 6: Western & Southern Sectors (Industrial, Airport, Sports Stadium, Construction, SEZ & Forestry)
+    const southernSectors = buildSouthernSectors();
+    scene.add(southernSectors.group);
+    southernSectorsRef.current = southernSectors;
 
-      // 8D. Complete Railway & Metro Rail Network with Automatic Trains, Stations, Signals & Crossings
-      const railMetro = buildRailAndMetroSystem(terrain.getElevationAt);
-      scene.add(railMetro.group);
-      railMetroRef.current = railMetro;
+    // 6f. Master Plan Part 7: Dynamic Traffic & Autonomous Transit System
+    const trafficTransit = buildTrafficTransitSystem();
+    scene.add(trafficTransit.group);
+    trafficTransitRef.current = trafficTransit;
 
-      // 8E. Space & High-Altitude Flight Environment (Starfield, Moon, Rocket Launch, Dreamliner Airplane)
-      const spaceSys = buildSpaceFlightSystem();
-      scene.add(spaceSys.group);
-      spaceSystemRef.current = spaceSys;
+    // 6g. Master Plan Part 8: Advanced Environmental Atmosphere & Weather FX
+    const envFX = buildEnvironmentalEffects();
+    scene.add(envFX.group);
+    environmentFXRef.current = envFX;
 
-      // 9. Initialize Playable Vehicle & Character
-      const initialVehiclePos = new THREE.Vector3(20, terrain.getElevationAt(20, 50) + 0.25, 50);
-      const vehicle = new PlayableVehicle(vehicleType, initialVehiclePos, 0);
-      scene.add(vehicle.group);
-      vehicleRef.current = vehicle;
+    // 6h. Master Plan Part 9: Active River Vessels, Ferries, Freighters & Shipping Ports
+    const riverVessels = buildRiverVesselsSystem();
+    scene.add(riverVessels.group);
+    riverVesselsRef.current = riverVessels;
 
-      const initialCharPos = new THREE.Vector3(22.5, terrain.getElevationAt(22.5, 50), 50);
-      const character = new PlayableCharacter(initialCharPos, 0);
-      scene.add(character.group);
-      characterRef.current = character;
-    }
+    // 6i. Master Plan Part 10: Non-Overlapping Procedural Vegetation & Forestry Reserve Biosphere
+    const vegetation = buildVegetationSystem();
+    scene.add(vegetation.group);
+    vegetationRef.current = vegetation;
+
+    // 6j. Master Plan Part 11: Helicopter Air Transit & Flyover System
+    const heliTransit = buildHelicopterTransitSystem();
+    scene.add(heliTransit.group);
+    helicopterTransitRef.current = heliTransit;
+
+    // 7. Initialize Playable Vehicle & Character
+    const initialVehiclePos = new THREE.Vector3(6, terrain.getElevationAt(6, 40) + 0.25, 40);
+    const vehicle = new PlayableVehicle(vehicleType, initialVehiclePos, 0);
+    scene.add(vehicle.group);
+    vehicleRef.current = vehicle;
+
+    const initialCharPos = new THREE.Vector3(14, terrain.getElevationAt(14, 40), 40);
+    const character = new PlayableCharacter(initialCharPos, 0);
+    scene.add(character.group);
+    characterRef.current = character;
 
     // 9. Rain Particles System
     const rainCount = 2000;
@@ -343,40 +350,61 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       const getElevation = elevationSamplerRef.current;
       const currentProps = propsRef.current;
 
-      if (previewMode) {
-        // Slow, continuous turntable orbit around the city core — no
-        // player/vehicle involved, just a gentle decorative camera sweep.
-        orbitTheta.current += delta * PREVIEW_ROTATE_SPEED;
-        const groundY = getElevation ? getElevation(PREVIEW_TARGET.x, PREVIEW_TARGET.z) : 0;
-        const cx = PREVIEW_TARGET.x + PREVIEW_DISTANCE * Math.sin(orbitTheta.current) * Math.cos(PREVIEW_PHI);
-        const cy = groundY + PREVIEW_DISTANCE * Math.sin(PREVIEW_PHI);
-        const cz = PREVIEW_TARGET.z + PREVIEW_DISTANCE * Math.cos(orbitTheta.current) * Math.cos(PREVIEW_PHI);
-        camera.position.set(cx, cy, cz);
-        camera.lookAt(PREVIEW_TARGET.x, groundY + 6, PREVIEW_TARGET.z);
-      } else if (getElevation && vehicleRef.current && characterRef.current) {
+      // Homepage-hero preview: slow auto-rotate instead of taking player input
+      if (currentProps.previewMode) {
+        orbitTheta.current += delta * 0.15;
+      }
+
+      // 0. Check for Active Helicopter Air Transit
+      let isFlightCamActive = false;
+      if (helicopterTransitRef.current) {
+        const flightResult = helicopterTransitRef.current.update(delta, timeNow * 0.001);
+        if (flightResult && flightResult.isFlightActive) {
+          isFlightCamActive = true;
+          camera.position.lerp(flightResult.cameraPosition, 8 * delta);
+          camera.lookAt(flightResult.cameraLookAt);
+
+          // Temporarily hide ground vehicle and character during air transit
+          if (vehicleRef.current) vehicleRef.current.group.visible = false;
+          if (characterRef.current) characterRef.current.group.visible = false;
+
+          currentProps.onPlayerPositionUpdate([
+            flightResult.info.currentPos.x,
+            flightResult.info.currentPos.z,
+          ]);
+
+          if (onHelicopterFlightUpdate) {
+            onHelicopterFlightUpdate(flightResult.info);
+          }
+        }
+      }
+
+      if (!isFlightCamActive && getElevation && vehicleRef.current && characterRef.current) {
         const activeVehicle = vehicleRef.current;
         const activeChar = characterRef.current;
 
         if (currentProps.isDriving) {
           // 1. VEHICLE DRIVING & HELICOPTER FLIGHT PHYSICS
+          const isHeli = activeVehicle.type === 'helicopter';
+
           let throttle = 0;
           if (keys['KeyW'] || keys['ArrowUp']) throttle += 1;
-          if (keys['KeyS'] || keys['ArrowDown']) throttle -= 1;
+          if (!isHeli && (keys['KeyS'] || keys['ArrowDown'])) throttle -= 1;
 
           let steer = 0;
           if (keys['KeyA'] || keys['ArrowLeft']) steer -= 1;
           if (keys['KeyD'] || keys['ArrowRight']) steer += 1;
 
-          const brake = keys['KeyS'] || keys['ArrowDown'] || false;
-          const handbrake = keys['Space'] || false;
-          const liftUp = keys['Space'] || false;
-          const descend =
-            keys['ShiftLeft'] ||
-            keys['ShiftRight'] ||
-            keys['KeyC'] ||
-            keys['KeyZ'] ||
-            (activeVehicle.type === 'helicopter' && activeVehicle.state.isAirborne && (keys['KeyS'] || keys['ArrowDown']) && !keys['KeyW'] && !keys['ArrowUp'] && !keys['Space']) ||
-            false;
+          const brake = !isHeli && (keys['KeyS'] || keys['ArrowDown'] || false);
+          const handbrake = !isHeli && (keys['Space'] || false);
+
+          // Helicopter specific vertical flight controls:
+          // Space: Lift UP (Ascend / উপরে উঠবে)
+          // Down Arrow / S / Shift / C: Descend (নিচে নামবে)
+          const liftUp = isHeli ? Boolean(keys['Space']) : false;
+          const descend = isHeli
+            ? Boolean(keys['ArrowDown'] || keys['KeyS'] || keys['ShiftLeft'] || keys['ShiftRight'] || keys['KeyC'] || keys['KeyZ'])
+            : false;
 
           activeVehicle.updatePhysics(
             delta,
@@ -490,28 +518,29 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       }
 
       // Subsystems Animation Updates
-      if (countryObjectsRef.current) {
-        countryObjectsRef.current.updateAnimations(timeNow * 0.001, delta);
+      if (waterSystemsRef.current) {
+        waterSystemsRef.current.update(delta, timeNow * 0.001);
       }
-      if (grassSystemRef.current) {
-        grassSystemRef.current.updateAnimation(timeNow * 0.001);
+      if (centralCityRef.current) {
+        centralCityRef.current.update(timeNow * 0.001, delta);
       }
-      if (trafficSystemRef.current) {
-        trafficSystemRef.current.update(delta);
+      if (northernSectorsRef.current) {
+        northernSectorsRef.current.update(timeNow * 0.001, delta);
       }
-      if (roadNetworkRef.current) {
-        roadNetworkRef.current.update(timeNow * 0.001, delta);
+      if (southernSectorsRef.current) {
+        southernSectorsRef.current.update(timeNow * 0.001, delta);
       }
-      if (railMetroRef.current) {
-        railMetroRef.current.update(timeNow * 0.001, delta);
+      if (trafficTransitRef.current) {
+        trafficTransitRef.current.update(delta, timeNow * 0.001);
       }
-      if (spaceSystemRef.current) {
-        const isNightTime = currentProps.timeOfDay === 'night';
-        spaceSystemRef.current.updateAnimation(timeNow * 0.001, delta, isNightTime, currentProps.timeOfDay);
+      if (environmentFXRef.current) {
+        environmentFXRef.current.update(delta, timeNow * 0.001, currentProps.timeOfDay, currentProps.weather);
       }
-      if (riverSystemRef.current) {
-        const monsoon = currentProps.weather === 'rain' ? 0.65 : 0;
-        riverSystemRef.current.updateAnimation(timeNow * 0.001, monsoon, 0);
+      if (riverVesselsRef.current) {
+        riverVesselsRef.current.update(delta, timeNow * 0.001);
+      }
+      if (vegetationRef.current) {
+        vegetationRef.current.update(delta, timeNow * 0.001);
       }
       if (rainParticlesRef.current && rainParticlesRef.current.visible) {
         const positions = rainParticlesRef.current.geometry.attributes.position.array as Float32Array;
@@ -607,48 +636,96 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     }
   }, [teleportTarget, isDriving, onTeleportComplete]);
 
+  // Handle Helicopter Air Transit from current player position to landmark
+  useEffect(() => {
+    if (helicopterFlightTarget && helicopterTransitRef.current && elevationSamplerRef.current) {
+      let startX = 20;
+      let startZ = 50;
+
+      if (isDriving && vehicleRef.current?.state?.position) {
+        startX = vehicleRef.current.state.position.x;
+        startZ = vehicleRef.current.state.position.z;
+      } else if (characterRef.current?.state?.position) {
+        startX = characterRef.current.state.position.x;
+        startZ = characterRef.current.state.position.z;
+      }
+
+      const startY = elevationSamplerRef.current(startX, startZ);
+      const startVec = new THREE.Vector3(startX, startY, startZ);
+
+      const targetX = helicopterFlightTarget.targetPos[0];
+      const targetZ = helicopterFlightTarget.targetPos[1];
+      const targetY = elevationSamplerRef.current(targetX, targetZ);
+      const targetVec = new THREE.Vector3(targetX, targetY, targetZ);
+
+      audioEngine.playHelicopterTakeoffChime();
+
+      helicopterTransitRef.current.startTransit(
+        startVec,
+        targetVec,
+        helicopterFlightTarget.destinationName,
+        (landingPos) => {
+          // Landing complete — the SkyHawk sets down at the site and the
+          // player is dropped off on foot beside it, ready to inspect.
+          if (vehicleRef.current?.state?.position) {
+            vehicleRef.current.state.position.copy(landingPos).add(new THREE.Vector3(0, 0.6, 0));
+            vehicleRef.current.state.velocity.set(0, 0, 0);
+            vehicleRef.current.state.speedKmh = 0;
+            vehicleRef.current.group.visible = true;
+          }
+          if (characterRef.current?.state?.position) {
+            // Step out a couple meters clear of the parked rotor disc
+            characterRef.current.state.position.set(landingPos.x + 2.5, landingPos.y, landingPos.z + 2.5);
+            characterRef.current.state.velocity.set(0, 0, 0);
+            characterRef.current.group.visible = true;
+          }
+
+          if (onHelicopterFlightComplete) {
+            onHelicopterFlightComplete();
+          }
+          if (onHelicopterFlightUpdate) {
+            onHelicopterFlightUpdate(null);
+          }
+          if (onHelicopterFlightLanded) {
+            // Tell the parent to exit drive mode — player is now on foot.
+            onHelicopterFlightLanded();
+          }
+          audioEngine.playDoorThud();
+        }
+      );
+    }
+  }, [helicopterFlightTarget, isDriving, onHelicopterFlightComplete, onHelicopterFlightUpdate, onHelicopterFlightLanded]);
+
+  // Bind Helicopter Action Ref (Skip Flight)
+  useEffect(() => {
+    if (helicopterActionRef) {
+      helicopterActionRef.current = {
+        skipFlight: () => helicopterTransitRef.current?.skipTransit(),
+      };
+    }
+  }, [helicopterActionRef]);
+
   // Environmental Lighting & Weather Dynamics
   useEffect(() => {
     if (!sceneRef.current || !dirLightRef.current || !hemiLightRef.current || !ambientLightRef.current) return;
 
-    if (timeOfDay === 'dawn') {
-      sceneRef.current.background = new THREE.Color(0xfb7185);
-      sceneRef.current.fog = new THREE.FogExp2(0xfecdd3, 0.002);
-      dirLightRef.current.color.setHex(0xfda4af);
-      dirLightRef.current.intensity = 1.0;
-      dirLightRef.current.position.set(-180, 80, 100);
-      ambientLightRef.current.color.setHex(0xffe4e6);
-      ambientLightRef.current.intensity = 0.5;
-    } else if (timeOfDay === 'golden') {
-      sceneRef.current.background = new THREE.Color(0xf59e0b);
-      sceneRef.current.fog = new THREE.FogExp2(0xfef3c7, 0.0018);
-      dirLightRef.current.color.setHex(0xfbbf24);
-      dirLightRef.current.intensity = 1.3;
-      dirLightRef.current.position.set(160, 60, -140);
-      ambientLightRef.current.color.setHex(0xfef3c7);
-      ambientLightRef.current.intensity = 0.6;
-    } else if (timeOfDay === 'night') {
-      sceneRef.current.background = new THREE.Color(0x020617);
-      sceneRef.current.fog = new THREE.FogExp2(0x0f172a, 0.0028);
-      dirLightRef.current.color.setHex(0x38bdf8);
-      dirLightRef.current.intensity = 0.25;
-      dirLightRef.current.position.set(60, 180, 60);
-      ambientLightRef.current.color.setHex(0x1e293b);
-      ambientLightRef.current.intensity = 0.3;
+    if (environmentFXRef.current) {
+      environmentFXRef.current.setLightingParams(
+        sceneRef.current,
+        dirLightRef.current,
+        ambientLightRef.current,
+        hemiLightRef.current,
+        timeOfDay as TimePreset,
+        weather
+      );
+    }
+
+    if (timeOfDay === 'night') {
       vehicleRef.current?.setHeadlights(true);
-    } else {
-      // Day
-      sceneRef.current.background = new THREE.Color(0x87ceeb);
-      sceneRef.current.fog = new THREE.FogExp2(0xcde3f5, 0.0018);
-      dirLightRef.current.color.setHex(0xfff7ed);
-      dirLightRef.current.intensity = 1.4;
-      dirLightRef.current.position.set(120, 220, 120);
-      ambientLightRef.current.color.setHex(0xdbeafe);
-      ambientLightRef.current.intensity = 0.65;
     }
 
     if (rainParticlesRef.current) {
-      rainParticlesRef.current.visible = weather === 'rain';
+      rainParticlesRef.current.visible = weather === 'rain' || weather === 'storm';
     }
   }, [timeOfDay, weather]);
 
@@ -677,12 +754,12 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     }
   }, [isDriving]);
 
-  // Keyboard Event Listeners (disabled entirely in previewMode — the
-  // homepage hero must never capture page-level key presses)
+  // Keyboard Event Listeners
   useEffect(() => {
-    if (previewMode) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Preview mode (homepage hero) ignores all keyboard input.
+      if (propsRef.current.previewMode) return;
+
       // Prevent scrolling on space / arrow keys
       if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) {
         e.preventDefault();
@@ -734,7 +811,6 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (previewMode) return; // camera is auto-orbiting; no manual drag-look
     if (!isDragging.current || !previousMousePosition.current) return;
     const prevX = previousMousePosition.current?.x ?? e.clientX;
     const prevY = previousMousePosition.current?.y ?? e.clientY;
@@ -748,26 +824,19 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   };
 
   const handleMouseUp = (e: React.MouseEvent) => {
-    if (previewMode) {
-      // Any quick click/tap on the preview simply hands off to the caller
-      // (used to route into the full playable game).
-      if (mouseDownStartPos.current) {
-        const startX = mouseDownStartPos.current?.x ?? e.clientX;
-        const startY = mouseDownStartPos.current?.y ?? e.clientY;
-        const clickDist = Math.hypot(e.clientX - startX, e.clientY - startY);
-        if (clickDist < 8) {
-          onPreviewClick?.();
-        }
-      }
-      isDragging.current = false;
-      return;
-    }
-
     // If it was a quick click (not a long drag), perform 3D raycast to detect clicked landmark
     if (isDragging.current && mouseDownStartPos.current) {
       const startX = mouseDownStartPos.current?.x ?? e.clientX;
       const startY = mouseDownStartPos.current?.y ?? e.clientY;
       const clickDist = Math.hypot(e.clientX - startX, e.clientY - startY);
+
+      // Preview mode (homepage hero): any quick click just enters the full game.
+      if (clickDist < 8 && propsRef.current.previewMode) {
+        propsRef.current.onPreviewClick?.();
+        isDragging.current = false;
+        return;
+      }
+
       if (clickDist < 8 && cameraRef.current && containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
         const mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
@@ -802,7 +871,6 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   };
 
   const handleWheel = (e: React.WheelEvent) => {
-    if (previewMode) return; // zoom is fixed for the auto-orbiting preview
     orbitDistance.current = Math.max(8, Math.min(180, orbitDistance.current + e.deltaY * 0.05));
   };
 
@@ -810,14 +878,12 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     <div
       ref={containerRef}
       id="three-world-canvas-container"
-      className={`absolute inset-0 w-full h-full outline-none overflow-hidden bg-sky-300 ${
-        previewMode ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing'
-      }`}
+      className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing outline-none overflow-hidden bg-sky-300"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onWheel={handleWheel}
-      tabIndex={previewMode ? -1 : 0}
+      tabIndex={0}
     />
   );
 };

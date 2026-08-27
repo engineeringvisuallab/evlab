@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { audioEngine } from './audioEngine';
+import { buildSkyHawkHelicopterMesh } from './skyhawkHelicopterModel';
 
 export type VehicleTypeId = 'helicopter' | 'suv' | 'sports' | 'cng' | 'truck' | 'train' | 'metro';
 
@@ -274,192 +275,18 @@ export class PlayableVehicle {
     if (this.type === 'helicopter') {
       // =========================================================================
       // HIGH-FIDELITY TURBINE INSPECTION HELICOPTER (SkyHawk)
+      // Shared model — the exact same helicopter used by the Site-Visit Air
+      // Transit "Fly via Helicopter" tour (see helicopterTransit.ts), so the
+      // player always sees and flies the one SkyHawk, whether driving it
+      // manually or being flown to a site automatically.
       // =========================================================================
-      const heliBody = new THREE.Group();
+      const heliModel = buildSkyHawkHelicopterMesh(this.def.bodyColor);
+      this.chassisMesh = heliModel.root;
+      this.mainRotorGroup = heliModel.mainRotor;
+      this.tailRotorGroup = heliModel.tailRotor;
+      this.headlights.push(heliModel.searchLight);
+      this.group.add(heliModel.root);
 
-      // 1. Aerodynamic Main Fuselage Pod
-      const fuselage = new THREE.Mesh(new THREE.BoxGeometry(2.4, 2.2, 5.2), bodyMat);
-      fuselage.position.set(0, 1.8, 0.4);
-      fuselage.castShadow = true;
-      heliBody.add(fuselage);
-
-      // Rounded Front Nose
-      const nose = new THREE.Mesh(new THREE.ConeGeometry(1.2, 1.8, 16), bodyMat);
-      nose.rotation.x = -Math.PI / 2;
-      nose.position.set(0, 1.8, -2.5);
-      nose.scale.set(1.0, 1.0, 0.9);
-      heliBody.add(nose);
-
-      // Panoramic Cockpit Bubble Windshield Glass
-      const cockpitGlass = new THREE.Mesh(new THREE.BoxGeometry(2.32, 1.6, 2.4), glassMat);
-      cockpitGlass.position.set(0, 2.1, -1.2);
-      heliBody.add(cockpitGlass);
-
-      // Pilot Seats & Dashboard inside
-      const seatL = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.9, 0.7), blackTrimMat);
-      seatL.position.set(-0.55, 1.5, -0.9);
-      heliBody.add(seatL);
-
-      const seatR = seatL.clone();
-      seatR.position.x = 0.55;
-      heliBody.add(seatR);
-
-      const avionics = new THREE.Mesh(
-        new THREE.BoxGeometry(1.6, 0.5, 0.4),
-        new THREE.MeshStandardMaterial({ color: 0x0284c7, emissive: 0x0284c7, emissiveIntensity: 0.6 })
-      );
-      avionics.position.set(0, 1.5, -1.8);
-      heliBody.add(avionics);
-
-      // High-vis Contrast Stripe (Red & White VIP / Inspection livery)
-      const stripe = new THREE.Mesh(new THREE.BoxGeometry(2.44, 0.4, 5.24), new THREE.MeshStandardMaterial({ color: 0xdc2626 }));
-      stripe.position.set(0, 1.5, 0.4);
-      heliBody.add(stripe);
-
-      // 2. Overhead Turboshaft Engine Cowling & Air Intakes
-      const engineCowling = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.9, 2.8), whiteMat);
-      engineCowling.position.set(0, 3.0, 0.5);
-      heliBody.add(engineCowling);
-
-      // Dual Jet Air Intakes
-      for (const ox of [-0.55, 0.55]) {
-        const intake = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.35, 0.8, 12), blackTrimMat);
-        intake.rotation.x = Math.PI / 2;
-        intake.position.set(ox, 3.1, -0.9);
-        heliBody.add(intake);
-
-        // Stainless Exhaust Nozzles
-        const exhaust = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.28, 0.7, 10), chromeMat);
-        exhaust.rotation.x = -Math.PI / 4;
-        exhaust.position.set(ox, 3.1, 1.9);
-        heliBody.add(exhaust);
-      }
-
-      // 3. Tail Boom & Empennage
-      const tailBoom = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.65, 6.2, 8), bodyMat);
-      tailBoom.rotation.x = Math.PI / 2;
-      tailBoom.position.set(0, 2.3, 5.8);
-      heliBody.add(tailBoom);
-
-      // Horizontal Stabilizer Wing
-      const horizStab = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.1, 0.6), whiteMat);
-      horizStab.position.set(0, 2.3, 7.5);
-      heliBody.add(horizStab);
-
-      // Vertical Tail Fin
-      const vertFin = new THREE.Mesh(new THREE.BoxGeometry(0.14, 2.2, 1.2), bodyMat);
-      vertFin.position.set(0, 3.1, 8.8);
-      vertFin.rotation.x = -0.2;
-      heliBody.add(vertFin);
-
-      // Aviation Navigation & Strobe Lights
-      const navRed = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshBasicMaterial({ color: 0xef4444 }));
-      navRed.position.set(-1.25, 1.8, 0.5);
-      heliBody.add(navRed);
-
-      const navGreen = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshBasicMaterial({ color: 0x22c55e }));
-      navGreen.position.set(1.25, 1.8, 0.5);
-      heliBody.add(navGreen);
-
-      const tailStrobe = new THREE.Mesh(new THREE.SphereGeometry(0.15, 8, 8), new THREE.MeshBasicMaterial({ color: 0xf8fafc }));
-      tailStrobe.position.set(0, 4.2, 8.7);
-      heliBody.add(tailStrobe);
-
-      // 4. Tubular Skid Landing Gear
-      const skidMat = chromeMat;
-      for (const sx of [-1.15, 1.15]) {
-        // Longitudinal Skid Tube
-        const skidTube = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 5.0, 8), skidMat);
-        skidTube.rotation.x = Math.PI / 2;
-        skidTube.position.set(sx, 0.25, 0.2);
-        heliBody.add(skidTube);
-
-        // Curved Front Toe
-        const toe = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.7, 8), skidMat);
-        toe.rotation.x = Math.PI / 3;
-        toe.position.set(sx, 0.45, -2.4);
-        heliBody.add(toe);
-
-        // Front Cross-Strut
-        const frontStrut = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 8), skidMat);
-        frontStrut.rotation.z = sx > 0 ? -0.4 : 0.4;
-        frontStrut.position.set(sx * 0.7, 0.65, -1.2);
-        heliBody.add(frontStrut);
-
-        // Rear Cross-Strut
-        const rearStrut = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 8), skidMat);
-        rearStrut.rotation.z = sx > 0 ? -0.4 : 0.4;
-        rearStrut.position.set(sx * 0.7, 0.65, 1.6);
-        heliBody.add(rearStrut);
-      }
-
-      this.chassisMesh = heliBody;
-      this.group.add(heliBody);
-
-      // 5. MAIN ROTOR SYSTEM (4 Blades with Yellow Tips)
-      const mainRotor = new THREE.Group();
-      mainRotor.position.set(0, 3.65, 0.3);
-
-      // Rotor Mast & Swashplate Hub
-      const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.8, 12), chromeMat);
-      mast.position.y = -0.15;
-      mainRotor.add(mast);
-
-      const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.25, 16), blackTrimMat);
-      hub.position.y = 0.25;
-      mainRotor.add(hub);
-
-      // 4 High-Aspect Rotor Blades (Diameter 11m)
-      const bladeLen = 5.2;
-      for (let b = 0; b < 4; b++) {
-        const bladeArm = new THREE.Group();
-        bladeArm.rotation.y = (b * Math.PI) / 2;
-
-        const blade = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.04, bladeLen), rotorBladeMat);
-        blade.position.set(0, 0.25, bladeLen / 2 + 0.3);
-        blade.castShadow = true;
-        bladeArm.add(blade);
-
-        // High-vis Yellow Blade Tip
-        const tip = new THREE.Mesh(new THREE.BoxGeometry(0.31, 0.05, 0.6), yellowTipMat);
-        tip.position.set(0, 0.25, bladeLen + 0.05);
-        bladeArm.add(tip);
-
-        mainRotor.add(bladeArm);
-      }
-      this.mainRotorGroup = mainRotor;
-      this.group.add(mainRotor);
-
-      // 6. TAIL ANTI-TORQUE ROTOR (2 Blades)
-      const tailRotor = new THREE.Group();
-      tailRotor.position.set(0.22, 3.4, 8.8);
-
-      const tailHub = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.2, 10), chromeMat);
-      tailHub.rotation.z = Math.PI / 2;
-      tailRotor.add(tailHub);
-
-      for (let tb = 0; tb < 2; tb++) {
-        const tBlade = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.4, 0.03), rotorBladeMat);
-        tBlade.rotation.x = (tb * Math.PI) / 2;
-        tailRotor.add(tBlade);
-      }
-      this.tailRotorGroup = tailRotor;
-      this.group.add(tailRotor);
-
-      // 7. HIGH-POWER FORWARD SEARCHLIGHT / LANDING LIGHT
-      const searchLight = new THREE.SpotLight(0xfef08a, 4.0, 180, Math.PI / 3.2, 0.35, 1.2);
-      searchLight.position.set(0, 1.0, -2.4);
-      searchLight.target.position.set(0, -20, -60);
-      this.group.add(searchLight);
-      this.group.add(searchLight.target);
-      this.headlights.push(searchLight);
-
-      const searchBulb = new THREE.Mesh(
-        new THREE.SphereGeometry(0.25, 12, 12),
-        new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.0 })
-      );
-      searchBulb.position.set(0, 0.9, -2.45);
-      this.group.add(searchBulb);
 
     } else if (this.type === 'suv') {
       // 1. 4x4 Safari SUV
@@ -839,10 +666,9 @@ export class PlayableVehicle {
       // =======================================================================
       // HELICOPTER AERIAL FLIGHT SIMULATOR (6-DOF AERODYNAMICS)
       // Controls:
-      //   - Space / liftUp: Lift UP (ascend)
-      //   - Shift / descend / brake: Descend
-      //   - ArrowUp / W (throttle > 0): Pitch forward & fly forward
-      //   - ArrowDown / S (throttle < 0): Pitch up & fly backward
+      //   - Space / liftUp: Lift UP (Ascend / উপরে উঠবে)
+      //   - ArrowDown / S / Back Arrow / Shift / C: Descend (নিচে নামবে)
+      //   - ArrowUp / W (throttle > 0): Fly Forward
       //   - ArrowLeft / A (steer < 0): Turn & roll left
       //   - ArrowRight / D (steer > 0): Turn & roll right
       // =======================================================================
@@ -850,31 +676,30 @@ export class PlayableVehicle {
       const minLandingY = groundY + 0.65;
       const currentAltitude = Math.max(0, this.state.position.y - minLandingY);
       this.state.altitudeMeters = Math.round(currentAltitude);
-      const isAirborne = currentAltitude > 0.3;
+      const isAirborne = currentAltitude > 0.2;
       this.state.isAirborne = isAirborne;
       this.state.gear = 'FLY';
 
       // 1. VERTICAL LIFT & ALTITUDE
-      const liftForce = inputs.liftUp ? 24 : 0;
-      const descendForce = (inputs.descend || (inputs.brake && isAirborne)) ? 16 : 0;
-      
-      if (inputs.liftUp) {
-        this.verticalVelocity += (liftForce - 9.8) * dt;
-      } else if (descendForce > 0) {
-        this.verticalVelocity -= (descendForce + 6.0) * dt;
+      // Space: Smooth rapid ascent (+16 m/s)
+      // Back Arrow / S / Shift / C: Smooth controlled descent (-14 m/s)
+      if (inputs.liftUp && !inputs.descend) {
+        this.verticalVelocity = THREE.MathUtils.lerp(this.verticalVelocity, 18, 4.5 * dt);
+      } else if (inputs.descend && !inputs.liftUp) {
+        this.verticalVelocity = THREE.MathUtils.lerp(this.verticalVelocity, -15, 5.0 * dt);
       } else if (isAirborne) {
-        // Aerodynamic hover dampening
-        this.verticalVelocity = THREE.MathUtils.lerp(this.verticalVelocity, 0, 3.5 * dt);
+        // Aerodynamic hover dampening when in air with no vertical input
+        this.verticalVelocity = THREE.MathUtils.lerp(this.verticalVelocity, 0, 4.0 * dt);
       } else {
         this.verticalVelocity = 0;
       }
 
       // Clamp vertical speeds
-      this.verticalVelocity = THREE.MathUtils.clamp(this.verticalVelocity, -25, 32);
+      this.verticalVelocity = THREE.MathUtils.clamp(this.verticalVelocity, -20, 26);
       this.state.position.y += this.verticalVelocity * dt;
 
-      // Ground touchdown / collision
-      if (this.state.position.y < minLandingY) {
+      // Ground touchdown / collision & soft landing
+      if (this.state.position.y <= minLandingY) {
         this.state.position.y = minLandingY;
         this.verticalVelocity = 0;
       }
@@ -886,32 +711,29 @@ export class PlayableVehicle {
       }
 
       // 2. YAW STEERING (Turning left/right)
-      const turnRate = 2.4; // rad/s
+      const turnRate = 2.6; // rad/s
       if (Math.abs(inputs.steer) > 0.05) {
         this.state.heading -= inputs.steer * turnRate * dt;
       }
 
-      // 3. HORIZONTAL FLIGHT (Pitch & Forward/Backward thrust)
+      // 3. HORIZONTAL FLIGHT (Pitch & Forward thrust)
       const forwardVec = new THREE.Vector3(-Math.sin(this.state.heading), 0, -Math.cos(this.state.heading));
 
       const maxSpeedMs = (def.topSpeedKmh * 1000) / 3600; // ~66.7 m/s (240 km/h)
       let currentHorizSpeed = this.state.velocity.dot(forwardVec);
 
-      // Pitch tilt when accelerating forward or backward
+      // Pitch tilt when accelerating forward
       let targetPitch = 0;
       if (inputs.throttle > 0) {
         targetPitch = -0.28; // nose down forward
         currentHorizSpeed += def.acceleration * inputs.throttle * dt;
-      } else if (inputs.throttle < 0) {
-        targetPitch = 0.22; // nose up braking/backward
-        currentHorizSpeed += def.acceleration * inputs.throttle * dt * 0.7;
       } else {
         // Air resistance dampening
         targetPitch = 0;
-        currentHorizSpeed = THREE.MathUtils.lerp(currentHorizSpeed, 0, 1.8 * dt);
+        currentHorizSpeed = THREE.MathUtils.lerp(currentHorizSpeed, 0, 2.0 * dt);
       }
 
-      currentHorizSpeed = THREE.MathUtils.clamp(currentHorizSpeed, -25, maxSpeedMs);
+      currentHorizSpeed = THREE.MathUtils.clamp(currentHorizSpeed, -10, maxSpeedMs);
 
       // Bank Roll when turning
       const targetRoll = -inputs.steer * (0.35 + (Math.abs(currentHorizSpeed) / maxSpeedMs) * 0.2);
@@ -925,10 +747,10 @@ export class PlayableVehicle {
       this.state.position.z += this.state.velocity.z * dt;
 
       this.state.speedKmh = Math.round(Math.abs(currentHorizSpeed) * 3.6);
-      this.state.rpm = Math.min(1.0, 0.4 + (Math.abs(currentHorizSpeed) / maxSpeedMs) * 0.6);
+      this.state.rpm = Math.min(1.0, (inputs.liftUp || isAirborne ? 0.7 : 0.3) + (Math.abs(currentHorizSpeed) / maxSpeedMs) * 0.3);
 
       // 4. ANIMATE ROTORS
-      const rotorSpeed = (isAirborne || inputs.liftUp || Math.abs(inputs.throttle) > 0.05) ? 45 : 20;
+      const rotorSpeed = (isAirborne || inputs.liftUp || Math.abs(inputs.throttle) > 0.05) ? 50 : 25;
       if (this.mainRotorGroup) {
         this.mainRotorGroup.rotation.y += rotorSpeed * dt;
       }

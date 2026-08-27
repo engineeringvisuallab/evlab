@@ -6,18 +6,42 @@ interface EngineeringObjectDetailModalProps {
   landmark: LandmarkZone | null;
   onClose: () => void;
   onTeleportTo: (lm: LandmarkZone) => void;
+  onStartHelicopterTour?: (target: [number, number], name: string) => void;
 }
 
 export const EngineeringObjectDetailModal: React.FC<EngineeringObjectDetailModalProps> = ({
   landmark,
   onClose,
   onTeleportTo,
+  onStartHelicopterTour,
 }) => {
   if (!landmark) return null;
 
   // Technical engineering specifications generated per category/object
   const getEngineeringSpecs = (lm: LandmarkZone) => {
     switch (lm.id) {
+      case 'ayt_mart_mall':
+        return [
+          { label: 'Facility Type', value: 'Multi-Level Commercial Complex & Hypermarket' },
+          { label: 'Footprint Area', value: '85m × 70m (4 Stories + Skylight Atrium)' },
+          { label: 'Parking & Green Mobility', value: 'High-Capacity EV Fast-Charging Plaza' },
+          { label: 'Structural System', value: 'Post-Tensioned Flat Slabs with Steel Truss Roof' },
+        ];
+      case 'ayt_books_library':
+        return [
+          { label: 'Architectural Style', value: 'Modern Louvered Facade & Panoramic Reading Atrium' },
+          { label: 'Collection Capacity', value: '500,000+ Physical Volumes & Digital Archive' },
+          { label: 'Environmental Design', value: 'Solar Shading Fins with High-Comfort Natural Daylighting' },
+          { label: 'Outdoor Amenities', value: 'Timber Pergola Reading Courtyard & Study Garden' },
+        ];
+      case 'international_airport_zone':
+        return [
+          { label: 'Airfield Classification', value: 'ICAO Code 4F International Airport' },
+          { label: 'Primary Runway 09L/27R', value: '3,400m × 75m Heavy-Load Asphalt Pavement' },
+          { label: 'Terminal Architecture', value: 'Curved Wing Aerodynamic Terminal with 4 Jet Bridges' },
+          { label: 'Air Traffic Control', value: '85m ATC Tower with 360° Panoramic Control Cab & Radar' },
+          { label: 'Security & Perimeter', value: 'Heavy Reinforced Concrete Boundary Wall & 24/7 Watchtowers' },
+        ];
       case 'smart_city_core':
         return [
           { label: 'Structural Type', value: 'High-Density Reinforced Concrete & Steel Frame' },
@@ -198,19 +222,30 @@ export const EngineeringObjectDetailModal: React.FC<EngineeringObjectDetailModal
           <div className="flex items-center gap-2">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-xl transition"
+              className="px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-xl transition cursor-pointer"
             >
               Close
             </button>
+            {onStartHelicopterTour && (
+              <button
+                onClick={() => {
+                  onStartHelicopterTour(landmark.center, landmark.name);
+                  onClose();
+                }}
+                className="px-3.5 py-2 text-xs font-bold text-slate-950 bg-gradient-to-r from-sky-400 to-cyan-400 hover:from-sky-300 hover:to-cyan-300 rounded-xl shadow-lg shadow-sky-500/25 flex items-center gap-1.5 transition cursor-pointer"
+              >
+                <span>🚁 Fly via Helicopter</span>
+              </button>
+            )}
             <button
               onClick={() => {
                 onTeleportTo(landmark);
                 onClose();
               }}
-              className="px-4 py-2 text-xs font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 rounded-xl shadow-lg shadow-cyan-500/25 flex items-center gap-1.5 transition"
+              className="px-3.5 py-2 text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-xl shadow-lg shadow-amber-500/25 flex items-center gap-1.5 transition cursor-pointer"
             >
               <Eye className="w-3.5 h-3.5" />
-              <span>Inspect in 3D</span>
+              <span>Jump Instant</span>
             </button>
           </div>
         </div>

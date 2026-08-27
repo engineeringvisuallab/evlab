@@ -51,12 +51,12 @@ class AudioEngine {
         this.engineGain = this.ctx.createGain();
 
         this.engineOsc.type = isHelicopter ? 'triangle' : 'sawtooth';
-        this.engineOsc.frequency.setValueAtTime(isHelicopter ? 28 : 45, this.ctx.currentTime);
+        this.engineOsc.frequency.setValueAtTime(isHelicopter ? 22 : 45, this.ctx.currentTime);
         this.engineGain.gain.setValueAtTime(0.04, this.ctx.currentTime);
 
         const filter = this.ctx.createBiquadFilter();
         filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(isHelicopter ? 220 : 380, this.ctx.currentTime);
+        filter.frequency.setValueAtTime(isHelicopter ? 180 : 380, this.ctx.currentTime);
 
         this.engineOsc.connect(filter);
         filter.connect(this.engineGain);
@@ -71,10 +71,11 @@ class AudioEngine {
 
     if (this.engineOsc && this.engineGain && this.ctx) {
       if (isHelicopter) {
-        const targetFreq = 24 + rpmNormalized * 40;
-        const targetVol = 0.04 + rpmNormalized * 0.05;
-        this.engineOsc.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.05);
-        this.engineGain.gain.setTargetAtTime(targetVol, this.ctx.currentTime, 0.05);
+        // Dynamic rhythmic rotor blade sound
+        const targetFreq = 18 + rpmNormalized * 32;
+        const targetVol = 0.05 + rpmNormalized * 0.08;
+        this.engineOsc.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.04);
+        this.engineGain.gain.setTargetAtTime(targetVol, this.ctx.currentTime, 0.04);
       } else {
         const targetFreq = 42 + rpmNormalized * 110;
         const targetVol = 0.03 + rpmNormalized * 0.05;
@@ -82,6 +83,37 @@ class AudioEngine {
         this.engineGain.gain.setTargetAtTime(targetVol, this.ctx.currentTime, 0.06);
       }
     }
+  }
+
+  public playHelicopterTakeoffChime() {
+    if (this.isMuted) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    const osc1 = this.ctx.createOscillator();
+    const osc2 = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc1.type = 'sine';
+    osc1.frequency.setValueAtTime(523.25, now); // C5
+    osc1.frequency.setValueAtTime(659.25, now + 0.15); // E5
+
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(783.99, now + 0.3); // G5
+    osc2.frequency.setValueAtTime(1046.50, now + 0.45); // C6
+
+    gain.gain.setValueAtTime(0.12, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
+
+    osc1.connect(gain);
+    osc2.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc1.start(now);
+    osc1.stop(now + 0.3);
+    osc2.start(now + 0.3);
+    osc2.stop(now + 0.9);
   }
 
   public stopEngineSound() {
