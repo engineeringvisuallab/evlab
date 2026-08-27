@@ -10,6 +10,7 @@ import { buildSouthernSectors, SouthernSectorsResult } from '../../utils/souther
 import { buildTrafficTransitSystem, TrafficTransitInstance } from '../../utils/trafficTransitSystem';
 import { buildEnvironmentalEffects, EnvironmentFXInstance, TimePreset } from '../../utils/environmentalEffects';
 import { buildRiverVesselsSystem, RiverVesselInstance } from '../../utils/riverVessels';
+import { buildWaterTreatmentPlant } from '../../utils/waterTreatmentPlantBuilder';
 import { buildVegetationSystem, VegetationSystemInstance } from '../../utils/vegetationSystem';
 import { buildHelicopterTransitSystem, HelicopterTransitInstance, HelicopterFlightInfo } from '../../utils/helicopterTransit';
 import { PlayableVehicle, VehicleTypeId, VehiclePhysicsState } from '../../utils/vehicleController';
@@ -271,6 +272,10 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     const riverVessels = buildRiverVesselsSystem();
     scene.add(riverVessels.group);
     riverVesselsRef.current = riverVessels;
+
+    // 6h2. Riverside Water Treatment Plant (clickable landmark — enters interior view)
+    const waterTreatmentPlant = buildWaterTreatmentPlant();
+    scene.add(waterTreatmentPlant.group);
 
     // 6i. Master Plan Part 10: Non-Overlapping Procedural Vegetation & Forestry Reserve Biosphere
     const vegetation = buildVegetationSystem();

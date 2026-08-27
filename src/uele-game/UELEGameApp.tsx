@@ -11,6 +11,7 @@ import { VehicleTypeId, VehiclePhysicsState } from './utils/vehicleController';
 import { LandmarkZone } from './utils/miniCountryTerrain';
 import { audioEngine } from './utils/audioEngine';
 import { HelicopterFlightInfo } from './utils/helicopterTransit';
+import { WaterTreatmentPlantOverlay } from './water-treatment-plant/WaterTreatmentPlantOverlay';
 
 export default function App() {
   // Game Play State
@@ -20,6 +21,9 @@ export default function App() {
   const [vehicleState, setVehicleState] = useState<VehiclePhysicsState | null>(null);
   const [playerPosition, setPlayerPosition] = useState<[number, number]>([20, 50]);
   const [currentLandmark, setCurrentLandmark] = useState<LandmarkZone | null>(null);
+
+  // Water Treatment Plant Interior View
+  const [waterTreatmentPlantOpen, setWaterTreatmentPlantOpen] = useState(false);
 
   // Helicopter Air Transit State
   const [helicopterFlightTarget, setHelicopterFlightTarget] = useState<{
@@ -97,7 +101,9 @@ export default function App() {
         onLandmarkEnter={setCurrentLandmark}
         onCanEnterVehicleChange={setCanEnterVehicle}
         onSelectEngineeringObject={(landmark) =>
-          handleStartHelicopterTour(landmark.center, landmark.name)
+          landmark.id === 'water_treatment_plant'
+            ? setWaterTreatmentPlantOpen(true)
+            : handleStartHelicopterTour(landmark.center, landmark.name)
         }
         teleportTarget={teleportTarget}
         onTeleportComplete={() => setTeleportTarget(null)}
@@ -136,6 +142,11 @@ export default function App() {
         helicopterFlightInfo={helicopterFlightInfo}
         onStartHelicopterTour={handleStartHelicopterTour}
       />
+
+      {/* Water Treatment Plant Interior View (full-screen overlay) */}
+      {waterTreatmentPlantOpen && (
+        <WaterTreatmentPlantOverlay onClose={() => setWaterTreatmentPlantOpen(false)} />
+      )}
     </main>
   );
 }

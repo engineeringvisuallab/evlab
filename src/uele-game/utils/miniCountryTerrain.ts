@@ -59,6 +59,15 @@ export const COUNTRY_LANDMARKS: LandmarkZone[] = [
     icon: '🌱',
   },
   {
+    id: 'water_treatment_plant',
+    name: 'River Water Treatment Plant',
+    category: 'water',
+    center: [55, 130],
+    radius: 40,
+    description: 'Riverside water treatment facility — clarifier tanks, filtration hall, and elevated water tower drawing from the Karatoya.',
+    icon: '💧',
+  },
+  {
     id: 'reservoir_water_zone',
     name: 'Reservoir & Water Resources Zone',
     category: 'water',
