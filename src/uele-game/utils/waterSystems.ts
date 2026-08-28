@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { getRiverCenterZ, RIVER_WATER_LEVEL, RIVER_HALF_WIDTH } from './riverAndBridges';
 
 /**
  * Creates dynamic normal texture for realistic water ripples
@@ -102,8 +103,8 @@ export function buildMasterPlanWaterSystems(): WaterSystemInstance {
   // 1. Karatoya-Style Urban River Water Mesh
   // ==========================================
   // Custom curve following the carved river channel across 10 km
-  const riverSegments = 120;
-  const riverWidth = 360;
+  const riverSegments = 240;
+  const riverWidth = RIVER_HALF_WIDTH * 2; // 240m full width
   const riverGeo = new THREE.BufferGeometry();
   const riverPositions: number[] = [];
   const riverUVs: number[] = [];
@@ -113,13 +114,13 @@ export function buildMasterPlanWaterSystems(): WaterSystemInstance {
     const t = i / riverSegments;
     const x = -5000 + t * 10000;
     // River centerline formula matching Part 1 carved elevation
-    const zCenter = -700 - Math.sin(x * 0.0007) * 350 + (x * 0.05);
-    const y = -2.2; // River water level nestled deep in the carved riverbed
+    const zCenter = getRiverCenterZ(x);
+    const y = RIVER_WATER_LEVEL; // River water level nestled accurately in the carved riverbed
 
     // River tangents to calculate normal width offset
     const dx = 10000 / riverSegments;
     const nextX = x + dx;
-    const nextZ = -700 - Math.sin(nextX * 0.0007) * 350 + (nextX * 0.05);
+    const nextZ = getRiverCenterZ(nextX);
     const tangent = new THREE.Vector2(dx, nextZ - zCenter).normalize();
     const normal = new THREE.Vector2(-tangent.y, tangent.x);
 
@@ -133,8 +134,8 @@ export function buildMasterPlanWaterSystems(): WaterSystemInstance {
     riverPositions.push(leftX, y, leftZ);
     riverPositions.push(rightX, y, rightZ);
 
-    riverUVs.push(0, t * 24);
-    riverUVs.push(1, t * 24);
+    riverUVs.push(0, t * 40);
+    riverUVs.push(1, t * 40);
 
     if (i < riverSegments) {
       const v0 = i * 2;

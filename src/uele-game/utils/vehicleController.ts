@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { audioEngine } from './audioEngine';
-import { buildSkyHawkHelicopterMesh } from './skyhawkHelicopterModel';
+import { resolveBuildingObstacleCollision } from './buildingCollisions';
 
 export type VehicleTypeId = 'helicopter' | 'suv' | 'sports' | 'cng' | 'truck' | 'train' | 'metro';
 
@@ -275,18 +275,192 @@ export class PlayableVehicle {
     if (this.type === 'helicopter') {
       // =========================================================================
       // HIGH-FIDELITY TURBINE INSPECTION HELICOPTER (SkyHawk)
-      // Shared model — the exact same helicopter used by the Site-Visit Air
-      // Transit "Fly via Helicopter" tour (see helicopterTransit.ts), so the
-      // player always sees and flies the one SkyHawk, whether driving it
-      // manually or being flown to a site automatically.
       // =========================================================================
-      const heliModel = buildSkyHawkHelicopterMesh(this.def.bodyColor);
-      this.chassisMesh = heliModel.root;
-      this.mainRotorGroup = heliModel.mainRotor;
-      this.tailRotorGroup = heliModel.tailRotor;
-      this.headlights.push(heliModel.searchLight);
-      this.group.add(heliModel.root);
+      const heliBody = new THREE.Group();
 
+      // 1. Aerodynamic Main Fuselage Pod
+      const fuselage = new THREE.Mesh(new THREE.BoxGeometry(2.4, 2.2, 5.2), bodyMat);
+      fuselage.position.set(0, 1.8, 0.4);
+      fuselage.castShadow = true;
+      heliBody.add(fuselage);
+
+      // Rounded Front Nose
+      const nose = new THREE.Mesh(new THREE.ConeGeometry(1.2, 1.8, 16), bodyMat);
+      nose.rotation.x = -Math.PI / 2;
+      nose.position.set(0, 1.8, -2.5);
+      nose.scale.set(1.0, 1.0, 0.9);
+      heliBody.add(nose);
+
+      // Panoramic Cockpit Bubble Windshield Glass
+      const cockpitGlass = new THREE.Mesh(new THREE.BoxGeometry(2.32, 1.6, 2.4), glassMat);
+      cockpitGlass.position.set(0, 2.1, -1.2);
+      heliBody.add(cockpitGlass);
+
+      // Pilot Seats & Dashboard inside
+      const seatL = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.9, 0.7), blackTrimMat);
+      seatL.position.set(-0.55, 1.5, -0.9);
+      heliBody.add(seatL);
+
+      const seatR = seatL.clone();
+      seatR.position.x = 0.55;
+      heliBody.add(seatR);
+
+      const avionics = new THREE.Mesh(
+        new THREE.BoxGeometry(1.6, 0.5, 0.4),
+        new THREE.MeshStandardMaterial({ color: 0x0284c7, emissive: 0x0284c7, emissiveIntensity: 0.6 })
+      );
+      avionics.position.set(0, 1.5, -1.8);
+      heliBody.add(avionics);
+
+      // High-vis Contrast Stripe (Red & White VIP / Inspection livery)
+      const stripe = new THREE.Mesh(new THREE.BoxGeometry(2.44, 0.4, 5.24), new THREE.MeshStandardMaterial({ color: 0xdc2626 }));
+      stripe.position.set(0, 1.5, 0.4);
+      heliBody.add(stripe);
+
+      // 2. Overhead Turboshaft Engine Cowling & Air Intakes
+      const engineCowling = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.9, 2.8), whiteMat);
+      engineCowling.position.set(0, 3.0, 0.5);
+      heliBody.add(engineCowling);
+
+      // Dual Jet Air Intakes
+      for (const ox of [-0.55, 0.55]) {
+        const intake = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.35, 0.8, 12), blackTrimMat);
+        intake.rotation.x = Math.PI / 2;
+        intake.position.set(ox, 3.1, -0.9);
+        heliBody.add(intake);
+
+        // Stainless Exhaust Nozzles
+        const exhaust = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.28, 0.7, 10), chromeMat);
+        exhaust.rotation.x = -Math.PI / 4;
+        exhaust.position.set(ox, 3.1, 1.9);
+        heliBody.add(exhaust);
+      }
+
+      // 3. Tail Boom & Empennage
+      const tailBoom = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.65, 6.2, 8), bodyMat);
+      tailBoom.rotation.x = Math.PI / 2;
+      tailBoom.position.set(0, 2.3, 5.8);
+      heliBody.add(tailBoom);
+
+      // Horizontal Stabilizer Wing
+      const horizStab = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.1, 0.6), whiteMat);
+      horizStab.position.set(0, 2.3, 7.5);
+      heliBody.add(horizStab);
+
+      // Vertical Tail Fin
+      const vertFin = new THREE.Mesh(new THREE.BoxGeometry(0.14, 2.2, 1.2), bodyMat);
+      vertFin.position.set(0, 3.1, 8.8);
+      vertFin.rotation.x = -0.2;
+      heliBody.add(vertFin);
+
+      // Aviation Navigation & Strobe Lights
+      const navRed = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshBasicMaterial({ color: 0xef4444 }));
+      navRed.position.set(-1.25, 1.8, 0.5);
+      heliBody.add(navRed);
+
+      const navGreen = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 8), new THREE.MeshBasicMaterial({ color: 0x22c55e }));
+      navGreen.position.set(1.25, 1.8, 0.5);
+      heliBody.add(navGreen);
+
+      const tailStrobe = new THREE.Mesh(new THREE.SphereGeometry(0.15, 8, 8), new THREE.MeshBasicMaterial({ color: 0xf8fafc }));
+      tailStrobe.position.set(0, 4.2, 8.7);
+      heliBody.add(tailStrobe);
+
+      // 4. Tubular Skid Landing Gear
+      const skidMat = chromeMat;
+      for (const sx of [-1.15, 1.15]) {
+        // Longitudinal Skid Tube
+        const skidTube = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 5.0, 8), skidMat);
+        skidTube.rotation.x = Math.PI / 2;
+        skidTube.position.set(sx, 0.25, 0.2);
+        heliBody.add(skidTube);
+
+        // Curved Front Toe
+        const toe = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.7, 8), skidMat);
+        toe.rotation.x = Math.PI / 3;
+        toe.position.set(sx, 0.45, -2.4);
+        heliBody.add(toe);
+
+        // Front Cross-Strut
+        const frontStrut = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 8), skidMat);
+        frontStrut.rotation.z = sx > 0 ? -0.4 : 0.4;
+        frontStrut.position.set(sx * 0.7, 0.65, -1.2);
+        heliBody.add(frontStrut);
+
+        // Rear Cross-Strut
+        const rearStrut = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 8), skidMat);
+        rearStrut.rotation.z = sx > 0 ? -0.4 : 0.4;
+        rearStrut.position.set(sx * 0.7, 0.65, 1.6);
+        heliBody.add(rearStrut);
+      }
+
+      this.chassisMesh = heliBody;
+      this.group.add(heliBody);
+
+      // 5. MAIN ROTOR SYSTEM (4 Blades with Yellow Tips)
+      const mainRotor = new THREE.Group();
+      mainRotor.position.set(0, 3.65, 0.3);
+
+      // Rotor Mast & Swashplate Hub
+      const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.8, 12), chromeMat);
+      mast.position.y = -0.15;
+      mainRotor.add(mast);
+
+      const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.25, 16), blackTrimMat);
+      hub.position.y = 0.25;
+      mainRotor.add(hub);
+
+      // 4 High-Aspect Rotor Blades (Diameter 11m)
+      const bladeLen = 5.2;
+      for (let b = 0; b < 4; b++) {
+        const bladeArm = new THREE.Group();
+        bladeArm.rotation.y = (b * Math.PI) / 2;
+
+        const blade = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.04, bladeLen), rotorBladeMat);
+        blade.position.set(0, 0.25, bladeLen / 2 + 0.3);
+        blade.castShadow = true;
+        bladeArm.add(blade);
+
+        // High-vis Yellow Blade Tip
+        const tip = new THREE.Mesh(new THREE.BoxGeometry(0.31, 0.05, 0.6), yellowTipMat);
+        tip.position.set(0, 0.25, bladeLen + 0.05);
+        bladeArm.add(tip);
+
+        mainRotor.add(bladeArm);
+      }
+      this.mainRotorGroup = mainRotor;
+      this.group.add(mainRotor);
+
+      // 6. TAIL ANTI-TORQUE ROTOR (2 Blades)
+      const tailRotor = new THREE.Group();
+      tailRotor.position.set(0.22, 3.4, 8.8);
+
+      const tailHub = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.2, 10), chromeMat);
+      tailHub.rotation.z = Math.PI / 2;
+      tailRotor.add(tailHub);
+
+      for (let tb = 0; tb < 2; tb++) {
+        const tBlade = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.4, 0.03), rotorBladeMat);
+        tBlade.rotation.x = (tb * Math.PI) / 2;
+        tailRotor.add(tBlade);
+      }
+      this.tailRotorGroup = tailRotor;
+      this.group.add(tailRotor);
+
+      // 7. HIGH-POWER FORWARD SEARCHLIGHT / LANDING LIGHT
+      const searchLight = new THREE.SpotLight(0xfef08a, 4.0, 180, Math.PI / 3.2, 0.35, 1.2);
+      searchLight.position.set(0, 1.0, -2.4);
+      searchLight.target.position.set(0, -20, -60);
+      this.group.add(searchLight);
+      this.group.add(searchLight.target);
+      this.headlights.push(searchLight);
+
+      const searchBulb = new THREE.Mesh(
+        new THREE.SphereGeometry(0.25, 12, 12),
+        new THREE.MeshStandardMaterial({ color: 0xfef08a, emissive: 0xfef08a, emissiveIntensity: 1.0 })
+      );
+      searchBulb.position.set(0, 0.9, -2.45);
+      this.group.add(searchBulb);
 
     } else if (this.type === 'suv') {
       // 1. 4x4 Safari SUV
@@ -1011,6 +1185,9 @@ export class PlayableVehicle {
     // Update position
     this.state.position.x += this.state.velocity.x * dt;
     this.state.position.z += this.state.velocity.z * dt;
+
+    // Solid Building Obstacle Collision (Prevents entering building walls)
+    resolveBuildingObstacleCollision(this.state.position, 2.2);
 
     // Ground elevation & slope pitch/roll calculation
     const groundY = getElevationAt(this.state.position.x, this.state.position.z);

@@ -28,6 +28,8 @@ import {
 import { TimeOfDay, WeatherType } from '../../types/game';
 import { VehicleTypeId, VEHICLE_CATALOG, VehiclePhysicsState } from '../../utils/vehicleController';
 import { LandmarkZone, COUNTRY_LANDMARKS } from '../../utils/miniCountryTerrain';
+import { ZONE_BOUNDARIES } from '../../utils/siteBoundariesSystem';
+import { RAILWAY_MAIN_LOOP_NODES } from '../../utils/mapWideRailwaySystem';
 import { CINEMATIC_TOUR_PRESETS } from '../../utils/environmentalEffects';
 import { HelicopterFlightInfo } from '../../utils/helicopterTransit';
 
@@ -413,30 +415,102 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                 <circle cx="0" cy="0" r="2000" fill="none" stroke="#64748b" strokeWidth="110" opacity="0.95" />
                 <circle cx="0" cy="0" r="2000" fill="none" stroke="#f8fafc" strokeWidth="14" strokeDasharray="60,60" opacity="0.9" />
 
-                {/* 4. National Railway (Z = 0) */}
-                <line x1="-5000" y1="0" x2="5000" y2="0" stroke="#475569" strokeWidth="60" strokeDasharray="100,50" opacity="0.85" />
+                {/* 4. Map-Wide Dual Railway Network (City Bypass + All Sectors Circuit) */}
+                <polygon
+                  points={RAILWAY_MAIN_LOOP_NODES.map((n) => `${n.x},${n.z}`).join(' ')}
+                  fill="none"
+                  stroke="#38bdf8"
+                  strokeWidth="80"
+                  strokeLinejoin="round"
+                  opacity="0.85"
+                />
+                <polygon
+                  points={RAILWAY_MAIN_LOOP_NODES.map((n) => `${n.x},${n.z}`).join(' ')}
+                  fill="none"
+                  stroke="#0f172a"
+                  strokeWidth="35"
+                  strokeDasharray="90,40"
+                  strokeLinejoin="round"
+                  opacity="0.95"
+                />
 
                 {/* 5. Metro Rail (MRT) Circular Loop */}
                 <circle cx="0" cy="0" r="2022" fill="none" stroke="#8b5cf6" strokeWidth="40" strokeDasharray="80,40" opacity="0.9" />
 
-                {/* Major Sector Visual Footprints (Part 4, 5, 6) */}
-                {/* Central Core Circle */}
-                <circle cx="0" cy="0" r="400" fill="#0284c7" opacity="0.25" stroke="#38bdf8" strokeWidth="30" />
+                {/* Individual Zone Boundaries & Fences Demarcation on 10km Radar */}
+                {ZONE_BOUNDARIES.map((zone) => {
+                  const strokeColor = '#' + zone.glowColor.toString(16).padStart(6, '0');
+                  const fillColor = '#' + zone.themeColor.toString(16).padStart(6, '0');
+
+                  if (zone.shape === 'rect' && zone.rectBounds) {
+                    const [minX, maxX, minZ, maxZ] = zone.rectBounds;
+                    const w = maxX - minX;
+                    const h = maxZ - minZ;
+                    return (
+                      <g key={zone.id}>
+                        {/* Zone Area Fill & Perimeter Fence */}
+                        <rect
+                          x={minX}
+                          y={minZ}
+                          width={w}
+                          height={h}
+                          rx="40"
+                          fill={fillColor}
+                          fillOpacity="0.16"
+                          stroke={strokeColor}
+                          strokeWidth="35"
+                          strokeDasharray="140,40"
+                        />
+                        {/* Gate Openings */}
+                        {zone.gates.map((g, gi) => (
+                          <circle
+                            key={gi}
+                            cx={g.center[0]}
+                            cy={g.center[1]}
+                            r="60"
+                            fill="#f59e0b"
+                            stroke="#0f172a"
+                            strokeWidth="20"
+                          />
+                        ))}
+                      </g>
+                    );
+                  } else if (zone.shape === 'circle' && zone.circleCenter && zone.circleRadius) {
+                    const [cx, cz] = zone.circleCenter;
+                    return (
+                      <g key={zone.id}>
+                        <circle
+                          cx={cx}
+                          cy={cz}
+                          r={zone.circleRadius}
+                          fill={fillColor}
+                          fillOpacity="0.12"
+                          stroke={strokeColor}
+                          strokeWidth="35"
+                          strokeDasharray="160,40"
+                        />
+                        {zone.gates.map((g, gi) => (
+                          <circle
+                            key={gi}
+                            cx={g.center[0]}
+                            cy={g.center[1]}
+                            r="70"
+                            fill="#f59e0b"
+                            stroke="#0f172a"
+                            strokeWidth="20"
+                          />
+                        ))}
+                      </g>
+                    );
+                  }
+                  return null;
+                })}
 
                 {/* Airport Runway Strip */}
                 <rect x="-4800" y="2265" width="3200" height="70" rx="10" fill="#334155" stroke="#f8fafc" strokeWidth="15" />
 
                 {/* Olympic Stadium Oval */}
                 <ellipse cx="0" cy="2300" rx="180" ry="150" fill="#059669" opacity="0.4" stroke="#10b981" strokeWidth="30" />
-
-                {/* Solar Farm Grid */}
-                <rect x="3300" y="-2500" width="1300" height="1100" rx="40" fill="#1e3a8a" opacity="0.3" stroke="#60a5fa" strokeWidth="25" />
-
-                {/* Industrial Cargo Zone */}
-                <rect x="-4700" y="-800" width="1600" height="1600" rx="50" fill="#475569" opacity="0.25" stroke="#94a3b8" strokeWidth="25" />
-
-                {/* Forestry Reserve */}
-                <rect x="2500" y="3600" width="2300" height="1200" rx="80" fill="#14532d" opacity="0.35" stroke="#22c55e" strokeWidth="25" />
 
                 {/* Landmark Pins across 10 km (if any) */}
                 {COUNTRY_LANDMARKS.map((lm) => (

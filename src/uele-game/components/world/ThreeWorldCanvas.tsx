@@ -10,9 +10,14 @@ import { buildSouthernSectors, SouthernSectorsResult } from '../../utils/souther
 import { buildTrafficTransitSystem, TrafficTransitInstance } from '../../utils/trafficTransitSystem';
 import { buildEnvironmentalEffects, EnvironmentFXInstance, TimePreset } from '../../utils/environmentalEffects';
 import { buildRiverVesselsSystem, RiverVesselInstance } from '../../utils/riverVessels';
-import { buildWaterTreatmentPlant } from '../../utils/waterTreatmentPlantBuilder';
 import { buildVegetationSystem, VegetationSystemInstance } from '../../utils/vegetationSystem';
 import { buildHelicopterTransitSystem, HelicopterTransitInstance, HelicopterFlightInfo } from '../../utils/helicopterTransit';
+import { buildSiteBoundariesSystem, SiteBoundaryResult } from '../../utils/siteBoundariesSystem';
+import { buildMapWideRailwaySystem, MapWideRailwaySystem } from '../../utils/mapWideRailwaySystem';
+import { buildSpaceFlightSystem, SpaceEnvironment } from '../../utils/spaceFlightSystem';
+import { buildWildlifeAnimalsSystem, WildlifeSystemInstance } from '../../utils/wildlifeAnimalsSystem';
+import { buildRuralVillageArea, RuralVillageInstance } from '../../utils/ruralVillageArea';
+import { buildUtilityInfrastructureZones, UtilityInfrastructureInstance } from '../../utils/utilityInfrastructureZones';
 import { PlayableVehicle, VehicleTypeId, VehiclePhysicsState } from '../../utils/vehicleController';
 import { PlayableCharacter } from '../../utils/characterController';
 import { audioEngine } from '../../utils/audioEngine';
@@ -99,6 +104,12 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
   // parent re-render passing a fresh-but-equivalent callback), we don't
   // restart the flight from scratch and reset it back to spoolup/0m.
   const activeFlightKeyRef = useRef<string | null>(null);
+  const siteBoundariesRef = useRef<SiteBoundaryResult | null>(null);
+  const mapWideRailwayRef = useRef<MapWideRailwaySystem | null>(null);
+  const spaceFlightRef = useRef<SpaceEnvironment | null>(null);
+  const wildlifeAnimalsRef = useRef<WildlifeSystemInstance | null>(null);
+  const ruralVillageRef = useRef<RuralVillageInstance | null>(null);
+  const utilityInfrastructureRef = useRef<UtilityInfrastructureInstance | null>(null);
   const rainParticlesRef = useRef<THREE.Points | null>(null);
   const dirLightRef = useRef<THREE.DirectionalLight | null>(null);
   const hemiLightRef = useRef<THREE.HemisphereLight | null>(null);
@@ -273,10 +284,6 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     scene.add(riverVessels.group);
     riverVesselsRef.current = riverVessels;
 
-    // 6h2. Riverside Water Treatment Plant (clickable landmark — enters interior view)
-    const waterTreatmentPlant = buildWaterTreatmentPlant();
-    scene.add(waterTreatmentPlant.group);
-
     // 6i. Master Plan Part 10: Non-Overlapping Procedural Vegetation & Forestry Reserve Biosphere
     const vegetation = buildVegetationSystem();
     scene.add(vegetation.group);
@@ -286,6 +293,36 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     const heliTransit = buildHelicopterTransitSystem();
     scene.add(heliTransit.group);
     helicopterTransitRef.current = heliTransit;
+
+    // 6k. Master Plan Part 12: Individual Site Boundaries & Perimeter Fencing System
+    const siteBoundaries = buildSiteBoundariesSystem();
+    scene.add(siteBoundaries.group);
+    siteBoundariesRef.current = siteBoundaries;
+
+    // 6l. Master Plan Part 13: Map-Wide Dual Railway Network & Autonomous Moving Trains
+    const mapRailway = buildMapWideRailwaySystem();
+    scene.add(mapRailway.group);
+    mapWideRailwayRef.current = mapRailway;
+
+    // 6m. Master Plan Part 14: Aerospace Spaceport & Autonomous Rocket Flight / Airliner Runway Takeoff
+    const spaceFlight = buildSpaceFlightSystem();
+    scene.add(spaceFlight.group);
+    spaceFlightRef.current = spaceFlight;
+
+    // 6n. Master Plan Part 15: Forest Biosphere Wildlife & Fauna (Deer, Tigers, Elephants, Birds)
+    const wildlifeAnimals = buildWildlifeAnimalsSystem();
+    scene.add(wildlifeAnimals.group);
+    wildlifeAnimalsRef.current = wildlifeAnimals;
+
+    // 6o. Master Plan Part 16: Traditional Rural Village & Agricultural Landscape (Paddy fields, Tin homesteads, Pond ghat)
+    const ruralVillage = buildRuralVillageArea();
+    scene.add(ruralVillage.group);
+    ruralVillageRef.current = ruralVillage;
+
+    // 6p. Master Plan Part 17: Municipal & Environmental Treatment Plants (WTP, STP, ETP, SWM)
+    const utilityInfrastructure = buildUtilityInfrastructureZones();
+    scene.add(utilityInfrastructure.group);
+    utilityInfrastructureRef.current = utilityInfrastructure;
 
     // 7. Initialize Playable Vehicle & Character
     const initialVehiclePos = new THREE.Vector3(6, terrain.getElevationAt(6, 40) + 0.25, 40);
@@ -551,6 +588,29 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
       }
       if (vegetationRef.current) {
         vegetationRef.current.update(delta, timeNow * 0.001);
+      }
+      if (siteBoundariesRef.current) {
+        siteBoundariesRef.current.update(timeNow * 0.001, delta);
+      }
+      if (mapWideRailwayRef.current) {
+        mapWideRailwayRef.current.update(delta, timeNow * 0.001);
+      }
+      if (spaceFlightRef.current) {
+        spaceFlightRef.current.updateAnimation(
+          timeNow * 0.001,
+          delta,
+          currentProps.timeOfDay === 'night',
+          currentProps.timeOfDay
+        );
+      }
+      if (wildlifeAnimalsRef.current) {
+        wildlifeAnimalsRef.current.update(timeNow * 0.001, delta);
+      }
+      if (ruralVillageRef.current) {
+        ruralVillageRef.current.update(timeNow * 0.001, delta);
+      }
+      if (utilityInfrastructureRef.current) {
+        utilityInfrastructureRef.current.update(timeNow * 0.001, delta);
       }
       if (rainParticlesRef.current && rainParticlesRef.current.visible) {
         const positions = rainParticlesRef.current.geometry.attributes.position.array as Float32Array;

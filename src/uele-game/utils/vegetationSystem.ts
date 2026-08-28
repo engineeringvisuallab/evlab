@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { calcMasterPlanElevation } from './miniCountryTerrain';
+import { getFlyoverSurfaceElevation } from './strategicFlyoverMetro';
 
 export interface VegetationSystemInstance {
   group: THREE.Group;
@@ -10,18 +11,19 @@ export interface VegetationSystemInstance {
 /**
  * Strict Collision & Exclusion Matrix to guarantee NO tree ever overlaps with:
  * - Roads, highways, ring road, railway
- * - River channel and lake water surfaces
- * - Airport runways, taxiways, terminals
+ * - River channel and lake water surfaces (guaranteed clear flowing river water between two tree-lined banks)
+ * - Bridge decks, flyover viaducts, ramps
+ * - Airport runways, taxiways, terminals, aerospace launch pads
  * - Stadium, Central Twin Towers, industrial factories, solar arrays, construction yards
  */
 export function isTreeLocationValid(x: number, z: number, y: number): boolean {
   // 1. World Bounds Check
   if (Math.abs(x) > 4920 || Math.abs(z) > 4920) return false;
 
-  // 2. Water Bodies & River Channel (MUST NOT BE IN WATER)
-  // 2a. Karatoya River
+  // 2. Water Bodies & River Channel (MUST NOT BE IN WATER - KEEP CHANNEL 100% CLEAR)
+  // 2a. Karatoya River (channel width 380m: clear zone ±225m from river centerline)
   const riverCenterZ = -700 - Math.sin(x * 0.0007) * 350 + (x * 0.05);
-  if (Math.abs(z - riverCenterZ) < 190 || y < -1.4) {
+  if (Math.abs(z - riverCenterZ) < 225 || y < -0.1) {
     return false;
   }
   // 2b. North-East Reservoir Lake
@@ -42,63 +44,76 @@ export function isTreeLocationValid(x: number, z: number, y: number): boolean {
     return false;
   }
 
-  // 3. Roads, Expressways, Highways & Rails
-  // 3a. East-West Expressway (Z = -3000)
-  if (Math.abs(z - (-3000)) < 40) return false;
-  // 3b. North-South National Highway (X = 0)
-  if (Math.abs(x) < 32) return false;
-  // 3c. Ring Road (Radius = 2000m)
+  // 3. Bridges & Flyovers Over River
+  if (Math.abs(z - riverCenterZ) < 360) {
+    // Grand Central Arch Bridge
+    if (Math.abs(x) < 55) return false;
+    // Downtown Twin Avenues Bridges
+    if (Math.abs(x - (-1200)) < 55 || Math.abs(x - 1200) < 55) return false;
+    // East & West Suspension / Cable-Stayed Bridges
+    if (Math.abs(x - (-3200)) < 55 || Math.abs(x - 3200) < 55) return false;
+    // Railway Bridges
+    if (Math.abs(x - (-4100)) < 50 || Math.abs(x - 3600) < 50) return false;
+  }
+
+  // Check Flyover & Ramps Elevated Deck
+  if (getFlyoverSurfaceElevation(x, z) !== null) {
+    return false;
+  }
+
+  // 4. Roads, Expressways, Highways & Rails
+  // 4a. East-West Expressway (Z = -3000)
+  if (Math.abs(z - (-3000)) < 45) return false;
+  // 4b. North-South National Highway (X = 0)
+  if (Math.abs(x) < 38) return false;
+  // 4c. Ring Road (Radius = 2000m)
   const distToCenter = Math.hypot(x, z);
-  if (Math.abs(distToCenter - 2000) < 42) return false;
-  // 3d. East-West Railway (Z = 0)
-  if (Math.abs(z) < 28) return false;
-  // 3e. Central City Radial Boulevards (Diagonal axes at 45 deg)
+  if (Math.abs(distToCenter - 2000) < 48) return false;
+  // 4d. East-West Railway (Z = 0)
+  if (Math.abs(z) < 32) return false;
+  // 4e. Central City Radial Boulevards (Diagonal axes at 45 deg)
   if (distToCenter < 1950) {
     const diag1 = Math.abs(x - z) / Math.SQRT2;
     const diag2 = Math.abs(x + z) / Math.SQRT2;
-    if (diag1 < 24 || diag2 < 24) return false;
+    if (diag1 < 28 || diag2 < 28) return false;
   }
 
-  // 4. International Airport & Runway Corridor
-  // Runway is at Z: 2150 to 2450, Terminals at Z: 1600 to 2150 (X: -4800 to -1400)
+  // 5. International Airport & Aerospace Corridor
   if (x >= -4850 && x <= -1350 && z >= 1400 && z <= 3400) {
     return false;
   }
 
-  // 5. Olympic Sports Stadium & Arena Complex
+  // 6. Olympic Sports Stadium & Arena Complex
   if (Math.abs(x) < 550 && z >= 1950 && z <= 2650) {
     return false;
   }
 
-  // 6. Central City Core - High-Density Footprints
-  // AYT Twin Towers & Central Plaza (within 400m of origin)
+  // 7. Central City Core - High-Density Footprints
   if (distToCenter < 420) return false;
-  // Metro hub & major inner blocks
   if (distToCenter < 1200) {
-    // Keep space open for city avenues and skyscrapers
-    const blockX = (Math.abs(x) % 300);
-    const blockZ = (Math.abs(z) % 300);
-    if (blockX < 80 || blockZ < 80) return false; // street corridor
+    const blockX = Math.abs(x) % 300;
+    const blockZ = Math.abs(z) % 300;
+    if (blockX < 85 || blockZ < 85) return false;
   }
 
-  // 7. Photovoltaic Solar Farm Arrays
+  // 8. Photovoltaic Solar Farm Arrays
   if (x >= 3100 && x <= 4850 && z >= -2700 && z <= -1000) {
     return false;
   }
 
-  // 8. Heavy Industrial Plants & Chemical Storage
+  // 9. Heavy Industrial Plants & Chemical Storage
   if (x >= -4850 && x <= -2500 && z >= -850 && z <= 850) {
     return false;
   }
 
-  // 9. Construction Heavy Equipment & Sand Mounds Yard
+  // 10. Construction Heavy Equipment Yard
   if (x >= 2100 && x <= 3900 && z >= 1800 && z <= 2900) {
     return false;
   }
 
-  // 10. Agricultural Greenhouses
+  // 11. Agricultural Greenhouses
   if (x >= -2500 && x <= -700 && z >= -4850 && z <= -3500) {
-    const ghX = (Math.abs(x) % 200);
+    const ghX = Math.abs(x) % 200;
     if (ghX < 120) return false;
   }
 
@@ -228,13 +243,13 @@ export function buildVegetationSystem(): VegetationSystemInstance {
   }
 
   // =========================================================================
-  // 3. RIVERBANK GREEN CORRIDORS & WATERFRONT PROMENADES
+  // 3. RIVERBANK GREEN CORRIDORS & WATERFRONT PROMENADES (BOTH SIDES OF RIVER)
   // =========================================================================
-  for (let bx = -4800; bx <= 4800; bx += 30) {
+  for (let bx = -4800; bx <= 4800; bx += 25) {
     const riverCenterZ = -700 - Math.sin(bx * 0.0007) * 350 + (bx * 0.05);
 
-    // North Bank Tree Line (offset: +195m to +240m from centerline)
-    const nZ = riverCenterZ - (195 + Math.random() * 45);
+    // North Bank Tree Line (offset: +235m to +290m from centerline on lush embankment)
+    const nZ = riverCenterZ - (235 + Math.random() * 55);
     const nY = calcMasterPlanElevation(bx, nZ);
     if (isTreeLocationValid(bx, nZ, nY)) {
       dummy.position.set(bx, nY, nZ);
@@ -254,8 +269,8 @@ export function buildVegetationSystem(): VegetationSystemInstance {
       }
     }
 
-    // South Bank Tree Line
-    const sZ = riverCenterZ + (195 + Math.random() * 45);
+    // South Bank Tree Line (offset: +235m to +290m from centerline on lush embankment)
+    const sZ = riverCenterZ + (235 + Math.random() * 55);
     const sY = calcMasterPlanElevation(bx, sZ);
     if (isTreeLocationValid(bx, sZ, sY)) {
       dummy.position.set(bx, sY, sZ);

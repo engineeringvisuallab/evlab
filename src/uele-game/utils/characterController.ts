@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { audioEngine } from './audioEngine';
+import { resolveBuildingObstacleCollision } from './buildingCollisions';
 
 export interface CharacterState {
   position: THREE.Vector3;
@@ -162,6 +163,9 @@ export class PlayableCharacter {
 
       this.state.position.x += moveX * dt;
       this.state.position.z += moveZ * dt;
+
+      // Solid Building Obstacle Collision for pedestrian
+      resolveBuildingObstacleCollision(this.state.position, 0.45);
 
       // Limb swing animation
       this.animTimer += dt * (inputs.sprint ? 14 : 8);

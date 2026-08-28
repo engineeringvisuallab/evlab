@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 import { createMasterPlanTerrainTexture, createMasterPlanNormalMap } from './masterPlanTerrain';
+import { getBridgeDeckElevation, getRiverCenterZ, RIVER_HALF_WIDTH } from './riverAndBridges';
+import { getFlyoverSurfaceElevation } from './strategicFlyoverMetro';
+import { getBuildingRooftopElevation } from './buildingCollisions';
 
 export interface LandmarkZone {
   id: string;
@@ -57,15 +60,6 @@ export const COUNTRY_LANDMARKS: LandmarkZone[] = [
     radius: 1100,
     description: 'Precision farming greenhouses, grain silos, and agro-storage facilities.',
     icon: '🌱',
-  },
-  {
-    id: 'water_treatment_plant',
-    name: 'Water Treatment Plant (WTP) — Upstream Intake',
-    category: 'water',
-    center: [-15, -160],
-    radius: 40,
-    description: 'Upstream riverside water treatment facility — clarifier tanks, filtration hall, and elevated water tower drawing clean raw water from the Karatoya before it reaches the city/industrial reach downstream.',
-    icon: '💧',
   },
   {
     id: 'reservoir_water_zone',
@@ -163,8 +157,62 @@ export const COUNTRY_LANDMARKS: LandmarkZone[] = [
     category: 'agriculture',
     center: [3800, 4200],
     radius: 1200,
-    description: 'Protected biosphere reserve, dense timber canopy, and botanical lake.',
+    description: 'Protected biosphere reserve with spotted deer herds, Royal Bengal tigers, and botanical lake.',
     icon: '🌲',
+  },
+  {
+    id: 'rural_village_settlement',
+    name: 'Rural Village & Agrarian Landscape',
+    category: 'agriculture',
+    center: [-1800, -3900],
+    radius: 900,
+    description: 'Traditional tin-shed homesteads, serpentine brick roads, golden paddy fields, and bathing pond ghat.',
+    icon: '🌾',
+  },
+  {
+    id: 'aerospace_launch_complex',
+    name: 'Aerospace Spaceport & Launch Center',
+    category: 'energy',
+    center: [-4200, 3400],
+    radius: 700,
+    description: 'Satellite rocket launch platform, gantry umbilical tower, cryo propellant tanks, and launch trench.',
+    icon: '🚀',
+  },
+  {
+    id: 'wtp_upstream_plant',
+    name: 'Water Treatment Plant (WTP - Upstream)',
+    category: 'water',
+    center: [3800, -1200],
+    radius: 500,
+    description: 'River intake pump house, circular clariflocculators, rapid sand filter basins, and disinfection building.',
+    icon: '💧',
+  },
+  {
+    id: 'stp_downstream_plant',
+    name: 'Sewage Treatment Plant (STP - Downstream)',
+    category: 'water',
+    center: [-4200, -350],
+    radius: 500,
+    description: 'Activated sludge biological aeration basins, secondary clarifiers, and anaerobic sludge digester domes.',
+    icon: '♻️',
+  },
+  {
+    id: 'etp_industrial_plant',
+    name: 'Effluent Treatment Plant (ETP - Industrial SEZ)',
+    category: 'industry',
+    center: [-3600, 300],
+    radius: 500,
+    description: 'Chemical neutralization tanks, DAF units, bioreactor towers, and filter press dewatering.',
+    icon: '🧪',
+  },
+  {
+    id: 'swm_landfill_facility',
+    name: 'Solid Waste Management & Sanitary Landfill (SWM)',
+    category: 'energy',
+    center: [3200, 1200],
+    radius: 600,
+    description: 'Material recovery sorting facility (MRF), organic composting windrows, and lined landfill cells.',
+    icon: '🚛',
   },
 ];
 
@@ -213,15 +261,15 @@ export function calcMasterPlanElevation(x: number, z: number): number {
   }
 
   // 4. Urban River Corridor (Karatoya-Style) Deep Carved Basin & Channel (Traversing West to East around Z: -600 to -1000)
-  // Curve equation: Z_river ≈ -700 - sin(X * 0.0007) * 350 + (X * 0.05)
-  const riverCenterZ = -700 - Math.sin(x * 0.0007) * 350 + (x * 0.05);
+  // Continuous accurate centerline: Z_river(x) = -700 - sin(x * 0.0007) * 350 + (x * 0.05)
+  const riverCenterZ = getRiverCenterZ(x);
   const distToRiver = Math.abs(z - riverCenterZ);
-  const riverHalfWidth = 190; // 380m total carved river valley
-  if (distToRiver < riverHalfWidth && x > -4950 && x < 4950) {
+  const riverHalfWidth = RIVER_HALF_WIDTH + 50; // 340m total carved river valley with gentle floodplains
+  if (distToRiver < riverHalfWidth && x > -4990 && x < 4990) {
     const normDist = distToRiver / riverHalfWidth;
     // Cosine profile for smooth, steep natural river banks and deep flat riverbed
     const bankProfile = Math.cos(normDist * (Math.PI / 2));
-    const channelDepth = Math.pow(bankProfile, 1.3) * 7.8; // Carves down to -6.5m to -7.5m
+    const channelDepth = Math.pow(bankProfile, 1.4) * 7.5; // Carves down to -6.5m
     elevation -= channelDepth;
   }
 
@@ -300,23 +348,54 @@ export function buildMasterPlanTerrain(): {
   const isPointOnRoad = (x: number, z: number): { onRoad: boolean; roadName: string } => {
     // East-West Expressway (Z = -3000)
     if (Math.abs(z - (-3000)) < 30) {
-      return { onRoad: true, roadName: 'East - West Expressway (6-8 Lane)' };
+      return { onRoad: true, roadName: 'East-West Northern Super-Expressway (8-Lane)' };
     }
     // North-South National Highway (X = 0)
     if (Math.abs(x) < 25) {
-      return { onRoad: true, roadName: 'National Highway (North-South)' };
+      return { onRoad: true, roadName: 'Grand National Highway (North-South)' };
     }
-    // Ring Road (R = 2000m)
-    const distToCenter = Math.hypot(x, z);
-    if (Math.abs(distToCenter - 2000) < 30) {
-      return { onRoad: true, roadName: 'Ring Road (R = 2.0 km)' };
+    // Western Expressway (X = -3200)
+    if (Math.abs(x - (-3200)) < 25) {
+      return { onRoad: true, roadName: 'Western Airport-Seaport Expressway (6-Lane)' };
+    }
+    // Eastern Expressway (X = +3200)
+    if (Math.abs(x - 3200) < 25) {
+      return { onRoad: true, roadName: 'Eastern Innovation Expressway (6-Lane)' };
+    }
+    // Downtown Boulevard (Z = 0)
+    if (Math.abs(z) < 20 && Math.abs(x) <= 3200) {
+      return { onRoad: true, roadName: 'Downtown Central Grand Boulevard' };
+    }
+    // Coastal Highway (Z = +4500)
+    if (Math.abs(z - 4500) < 22) {
+      return { onRoad: true, roadName: 'Southern Coastal Marine Highway' };
+    }
+    // Village & Agro Roads
+    if (x >= -2400 && x <= 0 && z >= -4800 && z <= -3200) {
+      return { onRoad: true, roadName: 'North Agro Village Heritage Road' };
     }
     return { onRoad: false, roadName: '' };
   };
 
+  const getElevationAt = (x: number, z: number): number => {
+    const buildingRooftop = getBuildingRooftopElevation(x, z);
+    if (buildingRooftop !== null) {
+      return buildingRooftop;
+    }
+    const flyoverElevation = getFlyoverSurfaceElevation(x, z);
+    if (flyoverElevation !== null) {
+      return flyoverElevation;
+    }
+    const bridgeElevation = getBridgeDeckElevation(x, z);
+    if (bridgeElevation !== null) {
+      return bridgeElevation;
+    }
+    return calcMasterPlanElevation(x, z);
+  };
+
   return {
     mesh,
-    getElevationAt: calcMasterPlanElevation,
+    getElevationAt,
     isPointOnRoad,
   };
 }

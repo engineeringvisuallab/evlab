@@ -133,7 +133,70 @@ export function buildSpaceFlightSystem(): SpaceEnvironment {
   moonGroup.position.set(2800, 3200, -4500);
   group.add(moonGroup);
 
-  // 3. LAUNCHING & ORBITING SPACE ROCKET (Bangabandhu Satellite / Artemis class Rocket)
+  // 3. AEROSPACE LAUNCH COMPLEX & LAUNCHING SPACE ROCKET (Bangabandhu Satellite Heavy Launch Vehicle)
+  const aerospaceComplex = new THREE.Group();
+  aerospaceComplex.name = 'aerospace_launch_complex';
+
+  // Concrete Launch Pad Platform (X = -4200, Z = 3400)
+  const padGeo = new THREE.CylinderGeometry(42, 46, 6, 8);
+  const padMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.9 });
+  const padMesh = new THREE.Mesh(padGeo, padMat);
+  padMesh.position.set(-4200, 3, 3400);
+  padMesh.receiveShadow = true;
+  aerospaceComplex.add(padMesh);
+
+  // Flame Trench Channel
+  const trenchGeo = new THREE.BoxGeometry(22, 5, 60);
+  const trenchMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.95 });
+  const trenchMesh = new THREE.Mesh(trenchGeo, trenchMat);
+  trenchMesh.position.set(-4200, 2.5, 3435);
+  aerospaceComplex.add(trenchMesh);
+
+  // Umbilical Gantry Launch Tower (Height 62m)
+  const gantryTower = new THREE.Group();
+  gantryTower.position.set(-4226, 0, 3400);
+
+  const latticeMat = new THREE.MeshStandardMaterial({ color: 0xdc2626, metalness: 0.6, roughness: 0.4 }); // Red & White
+  const gantryLegGeo = new THREE.BoxGeometry(1.2, 62, 1.2);
+  for (const lx of [-4, 4]) {
+    for (const lz of [-4, 4]) {
+      const leg = new THREE.Mesh(gantryLegGeo, latticeMat);
+      leg.position.set(lx, 31, lz);
+      gantryTower.add(leg);
+    }
+  }
+  // Gantry Platforms & Horizontal Truss Braces
+  for (let gh = 10; gh <= 58; gh += 8) {
+    const platform = new THREE.Mesh(new THREE.BoxGeometry(9.5, 0.8, 9.5), padMat);
+    platform.position.y = gh;
+    gantryTower.add(platform);
+  }
+  // Swing Arm Umbilical Bridge
+  const swingArm = new THREE.Mesh(
+    new THREE.BoxGeometry(20, 2.2, 2.5),
+    new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.5 })
+  );
+  swingArm.position.set(10, 48, 0);
+  gantryTower.add(swingArm);
+
+  // Lightning Protection Mast on top of tower
+  const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.6, 18, 8), latticeMat);
+  mast.position.set(0, 71, 0);
+  gantryTower.add(mast);
+
+  aerospaceComplex.add(gantryTower);
+
+  // Cryogenic Fuel Spherical Storage Tanks
+  const cryoMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.3, metalness: 0.7 });
+  for (const cx of [-4255, -4275]) {
+    const tank = new THREE.Mesh(new THREE.SphereGeometry(7.5, 24, 24), cryoMat);
+    tank.position.set(cx, 8.5, 3435);
+    aerospaceComplex.add(tank);
+  }
+
+  group.add(aerospaceComplex);
+
+  // Dynamic Rocket Group
   const rocketGroup = new THREE.Group();
   rocketGroup.name = 'space_rocket';
 
@@ -141,7 +204,7 @@ export function buildSpaceFlightSystem(): SpaceEnvironment {
   const rocketWhite = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.25, metalness: 0.6 });
   const rocketBlack = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.4 });
   const rocketFireMat = new THREE.MeshBasicMaterial({ color: 0xf97316 });
-  const rocketGlowFire = new THREE.MeshBasicMaterial({ color: 0xfef08a, transparent: true, opacity: 0.9 });
+  const rocketGlowFire = new THREE.MeshBasicMaterial({ color: 0xfef08a, transparent: true, opacity: 0.95 });
 
   const stage1 = new THREE.Mesh(new THREE.CylinderGeometry(2.4, 2.4, 26, 24), rocketWhite);
   stage1.position.y = 13;
@@ -215,13 +278,13 @@ export function buildSpaceFlightSystem(): SpaceEnvironment {
   innerCorePlume.rotation.x = Math.PI;
   rocketGroup.add(innerCorePlume);
 
-  // Rocket Point Light (Casts dramatic night ground & cloud illumination)
-  const rocketLight = new THREE.PointLight(0xf97316, 4.5, 350, 1.2);
+  // Rocket Point Light (Casts dramatic ground & cloud launch illumination)
+  const rocketLight = new THREE.PointLight(0xf97316, 5.0, 500, 1.2);
   rocketLight.position.set(0, -6, 0);
   rocketGroup.add(rocketLight);
 
-  rocketGroup.scale.set(0.65, 0.65, 0.65);
-  rocketGroup.position.set(220, 40, -150);
+  rocketGroup.scale.set(0.9, 0.9, 0.9);
+  rocketGroup.position.set(-4200, 6, 3400);
   group.add(rocketGroup);
 
   // 4. COMMERCIAL PASSENGER AIRLINER (Biman Bangladesh Airlines Boeing 787 Dreamliner)
@@ -365,26 +428,38 @@ export function buildSpaceFlightSystem(): SpaceEnvironment {
 
     // 2. Space Rocket Ascent Physics Trajectory
     // Continuous launch into upper space / mesosphere loop
-    const rocketLoopPeriod = 48; // seconds per cycle
+    const rocketLoopPeriod = 55; // seconds per cycle
     const cycleTime = (time % rocketLoopPeriod) / rocketLoopPeriod;
 
-    // Launch Pad coordinates at space center pad (x=210, z=-140)
-    let launchX = 210;
-    let launchY = 12;
-    let launchZ = -140;
+    // Launch Pad coordinates at Aerospace Spaceport (X = -4200, Z = 3400)
+    let launchX = -4200;
+    let launchY = 6.0;
+    let launchZ = 3400;
     let pitchAngle = 0;
 
-    if (cycleTime < 0.12) {
+    if (cycleTime < 0.14) {
       // Countdown / Pad ignition phase
-      launchY = 12 + Math.sin(time * 30) * 0.1;
+      launchY = 6.0 + Math.sin(time * 35) * 0.15;
       pitchAngle = 0;
-    } else {
-      // Ascent phase
-      const ascentProgress = (cycleTime - 0.12) / 0.88;
-      launchY = 12 + Math.pow(ascentProgress, 1.8) * 850;
-      launchX = 210 - Math.pow(ascentProgress, 2.2) * 500;
-      launchZ = -140 - Math.pow(ascentProgress, 2.2) * 600;
+      mainPlume.visible = cycleTime > 0.08;
+      innerCorePlume.visible = cycleTime > 0.08;
+      rocketLight.intensity = cycleTime > 0.08 ? 7.0 : 1.2;
+    } else if (cycleTime < 0.92) {
+      // Ascent & Orbital Insertion Phase
+      mainPlume.visible = true;
+      innerCorePlume.visible = true;
+      const ascentProgress = (cycleTime - 0.14) / 0.78;
+      launchY = 6.0 + Math.pow(ascentProgress, 1.9) * 1650;
+      launchX = -4200 - Math.pow(ascentProgress, 2.3) * 1200;
+      launchZ = 3400 + Math.pow(ascentProgress, 2.3) * 1400;
       pitchAngle = Math.min(Math.PI / 2.2, ascentProgress * 1.35);
+      rocketLight.intensity = 8.0;
+    } else {
+      // Return / Reset cycle
+      launchY = 6.0;
+      mainPlume.visible = false;
+      innerCorePlume.visible = false;
+      rocketLight.intensity = 0.5;
     }
     rocketGroup.position.set(launchX, launchY, launchZ);
     rocketGroup.rotation.x = -pitchAngle * 0.8;
@@ -396,57 +471,58 @@ export function buildSpaceFlightSystem(): SpaceEnvironment {
     mainPlume.scale.set(flicker, flicker * 1.15, flicker);
     innerCorePlume.scale.set(flicker, flicker, flicker);
 
-    // 3. Commercial Airplane Runway Takeoff, Initial Climb & Sky Cruising Cycle
-    // Runway extends along Z axis at X = 180, from Z = 90 (start) to Z = 280 (end)
-    const flightLoopPeriod = 60; // 60 seconds full flight loop
+    // 3. Commercial Passenger Airliner: Airport Runway Takeoff, Country Airspace Cruise & ILS Landing
+    // Runway extends along X axis from X = -4400 to X = -1900 at Z = 2300 (Runway elevation Y = 2.4)
+    const flightLoopPeriod = 75; // 75 seconds full flight cycle
     const fPhase = (time % flightLoopPeriod) / flightLoopPeriod;
 
-    let pX = 180;
+    let pX = -4400;
     let pY = 2.4;
-    let pZ = 90;
+    let pZ = 2300;
     let pPitch = 0;
     let pRoll = 0;
-    let pYaw = 0;
+    let pYaw = Math.PI / 2; // Facing +X (Eastbound runway 09)
 
     if (fPhase < 0.18) {
-      // Phase 1: Takeoff Ground Roll (accelerating from z = 90 to z = 250)
+      // Phase 1: Takeoff Ground Roll (accelerating from X = -4400 to X = -2400)
       const rollFrac = fPhase / 0.18;
-      pZ = 90 + Math.pow(rollFrac, 1.5) * 160;
+      pX = -4400 + Math.pow(rollFrac, 1.4) * 2000;
       pY = 2.4;
-      pX = 180;
-      pYaw = 0; // facing +Z along runway
-      pPitch = rollFrac > 0.7 ? (rollFrac - 0.7) * 0.35 : 0; // Rotate nose up near V1/Vr
-    } else if (fPhase < 0.35) {
-      // Phase 2: Liftoff & Initial High Climb over delta
-      const climbFrac = (fPhase - 0.18) / 0.17;
-      pZ = 250 + climbFrac * 180;
-      pX = 180 + Math.sin(climbFrac * Math.PI * 0.5) * 80;
-      pY = 2.4 + Math.pow(climbFrac, 1.2) * 160;
+      pZ = 2300;
+      pYaw = Math.PI / 2;
+      pPitch = rollFrac > 0.65 ? (rollFrac - 0.65) * 0.45 : 0; // Rotate nose up near V1
+      pRoll = 0;
+    } else if (fPhase < 0.36) {
+      // Phase 2: Liftoff & Initial Climb towards Central City & River
+      const climbFrac = (fPhase - 0.18) / 0.18;
+      pX = -2400 + climbFrac * 2200;
+      pY = 2.4 + Math.pow(climbFrac, 1.2) * 360;
+      pZ = 2300 - Math.sin(climbFrac * Math.PI * 0.5) * 800;
       pPitch = 0.22 - climbFrac * 0.12;
-      pRoll = -climbFrac * 0.25; // Gentle left bank
-      pYaw = climbFrac * 0.45;
-    } else if (fPhase < 0.82) {
-      // Phase 3: High Altitude Cruising Orbit around the 10km Country Airspace
-      const cruiseFrac = (fPhase - 0.35) / 0.47;
-      const angle = 0.45 + cruiseFrac * Math.PI * 2;
-      pX = Math.cos(angle) * 380;
-      pZ = Math.sin(angle) * 350;
-      pY = 165 + Math.sin(cruiseFrac * Math.PI * 4) * 15;
+      pRoll = -climbFrac * 0.28; // Bank left
+      pYaw = Math.PI / 2 - climbFrac * 0.65;
+    } else if (fPhase < 0.80) {
+      // Phase 3: High Altitude Country Airspace Orbit (Radius ~3200m, Altitude ~420m)
+      const cruiseFrac = (fPhase - 0.36) / 0.44;
+      const angle = -0.35 + cruiseFrac * Math.PI * 2;
+      pX = Math.cos(angle) * 3100;
+      pZ = Math.sin(angle) * 2800;
+      pY = 420 + Math.sin(cruiseFrac * Math.PI * 4) * 25;
 
-      const tangX = -Math.sin(angle) * 380;
-      const tangZ = Math.cos(angle) * 350;
+      const tangX = -Math.sin(angle) * 3100;
+      const tangZ = Math.cos(angle) * 2800;
       pYaw = Math.atan2(tangX, tangZ);
-      pRoll = -0.25; // Continuous banking in turn
+      pRoll = -0.28; // Continuous smooth bank in turn
       pPitch = Math.cos(cruiseFrac * Math.PI * 4) * 0.04;
     } else {
       // Phase 4: Final Approach & Runway Alignment Landing
-      const landFrac = (fPhase - 0.82) / 0.18;
-      pX = THREE.MathUtils.lerp(180 + Math.sin(landFrac * Math.PI) * 40, 180, landFrac);
-      pZ = THREE.MathUtils.lerp(-150, 90, landFrac);
-      pY = THREE.MathUtils.lerp(165, 2.4, Math.pow(landFrac, 1.4));
-      pYaw = 0;
-      pPitch = -0.05 + (1 - landFrac) * 0.08;
-      pRoll = (1 - landFrac) * -0.15;
+      const landFrac = (fPhase - 0.80) / 0.20;
+      pX = THREE.MathUtils.lerp(-5600, -4400, landFrac);
+      pZ = THREE.MathUtils.lerp(2300 + Math.sin(landFrac * Math.PI) * 120, 2300, landFrac);
+      pY = THREE.MathUtils.lerp(380, 2.4, Math.pow(landFrac, 1.3));
+      pYaw = Math.PI / 2;
+      pPitch = -0.06 + (1 - landFrac) * 0.08;
+      pRoll = (1 - landFrac) * -0.12;
     }
 
     airplaneGroup.position.set(pX, pY, pZ);
