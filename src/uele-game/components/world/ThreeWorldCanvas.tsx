@@ -21,6 +21,7 @@ import { buildUtilityInfrastructureZones, UtilityInfrastructureInstance } from '
 import { PlayableVehicle, VehicleTypeId, VehiclePhysicsState } from '../../utils/vehicleController';
 import { PlayableCharacter } from '../../utils/characterController';
 import { audioEngine } from '../../utils/audioEngine';
+import { getGraphicsSettings } from '../../utils/graphicsQuality';
 
 interface ThreeWorldCanvasProps {
   isDriving: boolean;
@@ -196,15 +197,20 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
     cameraRef.current = camera;
 
     // 3. WebGL Renderer Initialization
+    // Graphics settings are scaled to the device instead of always maxing
+    // out shadows/antialias/pixel-ratio, since those are the renderer's
+    // most expensive knobs and the biggest lever for a lightweight feel
+    // on lower-end laptops/phones.
+    const graphicsSettings = getGraphicsSettings();
     const renderer = new THREE.WebGLRenderer({
-      antialias: true,
+      antialias: graphicsSettings.antialias,
       powerPreference: 'high-performance',
       alpha: false,
     });
     renderer.setSize(initWidth, initHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, graphicsSettings.pixelRatioCap));
+    renderer.shadowMap.enabled = graphicsSettings.shadowsEnabled;
+    renderer.shadowMap.type = graphicsSettings.shadowMapType === 'soft' ? THREE.PCFSoftShadowMap : THREE.BasicShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
 
@@ -227,9 +233,9 @@ export const ThreeWorldCanvas: React.FC<ThreeWorldCanvasProps> = ({
 
     const dirLight = new THREE.DirectionalLight(0xfff7ed, 1.5);
     dirLight.position.set(250, 450, 250);
-    dirLight.castShadow = true;
-    dirLight.shadow.mapSize.width = 2048;
-    dirLight.shadow.mapSize.height = 2048;
+    dirLight.castShadow = graphicsSettings.shadowsEnabled;
+    dirLight.shadow.mapSize.width = graphicsSettings.shadowMapSize;
+    dirLight.shadow.mapSize.height = graphicsSettings.shadowMapSize;
     dirLight.shadow.camera.near = 10;
     dirLight.shadow.camera.far = 1200;
     dirLight.shadow.camera.left = -320;
