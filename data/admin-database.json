@@ -1,0 +1,133 @@
+{
+  "admins": [
+    {
+      "admin_id": "EVL-ADMIN-001",
+      "name": "EVLab Administrator",
+      "email": "engineering.visual.lab@gmail.com",
+      "password_hash": "52582ad658168ad3bd4c05eee852ca9523bf225107b15a9898c27f36548c90b1",
+      "role": "super_admin",
+      "status": "active",
+      "created_at": "2026-08-13T08:38:21.285Z",
+      "last_login": "2026-08-13T09:06:49.175Z",
+      "failed_attempts": 0,
+      "locked_until": ""
+    }
+  ],
+  "settings": {
+    "maxFailedAttempts": 5,
+    "lockoutMinutes": 15,
+    "sessionHours": 8
+  },
+  "auditLogs": [
+    {
+      "id": "audit-1786612009175-2xrf",
+      "timestamp": "2026-08-13T09:06:49.175Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Login Successful",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin].",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786612006701-esf7",
+      "timestamp": "2026-08-13T09:06:46.701Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Login Successful",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin].",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786611884823-d5oj",
+      "timestamp": "2026-08-13T09:04:44.823Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Logout",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Admin logged out.",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786611874209-4g2a",
+      "timestamp": "2026-08-13T09:04:34.209Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Created Entity",
+      "module": "gisLayer",
+      "object_id": "shp-1786611870992-4ptoc",
+      "details": "Saved gisLayer \"Project Area Shapefile\" with status [published].",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786611829459-gdaw",
+      "timestamp": "2026-08-13T09:03:49.459Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Login Successful",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Authenticated successfully as [super_admin].",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786611810470-40jk",
+      "timestamp": "2026-08-13T09:03:30.470Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Login Failed",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 3/5",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786611792164-wu22",
+      "timestamp": "2026-08-13T09:03:12.164Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Login Failed",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 2/5",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786611771857-v883",
+      "timestamp": "2026-08-13T09:02:51.857Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Login Failed",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 1/5",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786610396622-gt9a",
+      "timestamp": "2026-08-13T08:39:56.622Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Login Failed",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 2/5",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786610393608-3gxp",
+      "timestamp": "2026-08-13T08:39:53.608Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "Login Failed",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Incorrect password. Failed attempt 1/5",
+      "ip_or_context": "EVLab Web Server"
+    },
+    {
+      "id": "audit-1786610301285",
+      "timestamp": "2026-08-13T08:38:21.285Z",
+      "admin_id": "EVL-ADMIN-001",
+      "action": "System Provisioned",
+      "module": "Auth",
+      "object_id": "EVL-ADMIN-001",
+      "details": "Initial Super Admin account EVL-ADMIN-001 provisioned with Google Sheets sync architecture.",
+      "ip_or_context": "Server Boot"
+    }
+  ]
+}

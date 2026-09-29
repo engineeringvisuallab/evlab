@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="energy-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#00F0FF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="energy-bloom">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="500" height="400" fill="#0A101D" rx="16"/>
+  <circle cx="250" cy="200" r="180" fill="url(#energy-glow)"/>
+
+  <!-- Base Pedestal -->
+  <ellipse cx="250" cy="290" rx="190" ry="75" fill="#20180B" stroke="#F59E0B" stroke-width="2"/>
+  <ellipse cx="250" cy="275" rx="160" ry="60" fill="#2E1C06" stroke="#FDE047" stroke-width="1.5"/>
+
+  <!-- High-Voltage Transmission Lattice Pylon -->
+  <g transform="translate(225, 40)">
+    <line x1="25" y1="0" x2="5" y2="180" stroke="#FDE047" stroke-width="2.5"/>
+    <line x1="25" y1="0" x2="45" y2="180" stroke="#FDE047" stroke-width="2.5"/>
+    <!-- Crossarms -->
+    <line x1="-15" y1="40" x2="65" y2="40" stroke="#FDE047" stroke-width="2.5"/>
+    <line x1="-5" y1="80" x2="55" y2="80" stroke="#FDE047" stroke-width="2.5"/>
+    <!-- Bracing -->
+    <line x1="8" y1="40" x2="42" y2="80" stroke="#F59E0B" stroke-width="1.8"/>
+    <line x1="42" y1="40" x2="8" y2="80" stroke="#F59E0B" stroke-width="1.8"/>
+    <line x1="10" y1="80" x2="40" y2="130" stroke="#F59E0B" stroke-width="1.8"/>
+    <line x1="40" y1="80" x2="10" y2="130" stroke="#F59E0B" stroke-width="1.8"/>
+    <!-- Corona Top Spark -->
+    <circle cx="25" cy="0" r="4" fill="#FDE047" filter="url(#energy-bloom)"/>
+  </g>
+
+  <!-- Solar PV Farm Panels -->
+  <g transform="translate(80, 180)">
+    <polygon points="10,25 45,10 80,25 45,40" fill="url(#panel-blue)" stroke="#38BDF8" stroke-width="1.5"/>
+    <line x1="28" y1="18" x2="62" y2="33" stroke="#93C5FD" stroke-width="1.2"/>
+
+    <polygon points="60,45 95,30 130,45 95,60" fill="url(#panel-blue)" stroke="#38BDF8" stroke-width="1.5"/>
+    <line x1="78" y1="38" x2="112" y2="53" stroke="#93C5FD" stroke-width="1.2"/>
+  </g>
+
+  <!-- Wind Turbine -->
+  <g transform="translate(350, 90)">
+    <line x1="25" y1="30" x2="25" y2="150" stroke="#E2E8F0" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="25" cy="30" r="5" fill="#00F0FF" filter="url(#energy-bloom)"/>
+    <line x1="25" y1="30" x2="25" y2="-10" stroke="#F8FAFC" stroke-width="3" stroke-linecap="round"/>
+    <line x1="25" y1="30" x2="60" y2="50" stroke="#F8FAFC" stroke-width="3" stroke-linecap="round"/>
+    <line x1="25" y1="30" x2="-10" y2="50" stroke="#F8FAFC" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Power Arc Grid Line -->
+  <path d="M 120 220 Q 250 180 380 240" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="6 4" filter="url(#energy-bloom)"/>
+</svg>

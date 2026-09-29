@@ -1,0 +1,66 @@
+/*
+ * Scoped styles for the Ayatullah Imani portfolio page, ported from its
+ * original standalone AI-Studio project. Tailwind's utility classes are
+ * already loaded globally by EVLab's own src/index.css, so this file only
+ * adds the portfolio's custom fonts/tokens/decorative classes — all scoped
+ * under .ayt-portfolio so they never leak onto the rest of the EVLab site.
+ */
+.ayt-portfolio {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  font-family: var(--font-body);
+  background-color: #080d1a;
+  color: #e2e8f0;
+}
+
+.ayt-portfolio h1,
+.ayt-portfolio h2,
+.ayt-portfolio h3,
+.ayt-portfolio .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.ayt-portfolio code,
+.ayt-portfolio pre,
+.ayt-portfolio .font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* CAD Engineering Grid Pattern */
+.ayt-portfolio .bg-cad-grid {
+  background-image:
+    linear-gradient(to right, rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.ayt-portfolio .bg-cad-grid-dense {
+  background-image:
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.ayt-portfolio .bg-radial-vignette {
+  background: radial-gradient(circle at 50% 30%, rgba(14, 165, 233, 0.07) 0%, transparent 70%);
+}
+
+/* Custom subtle scrollbar, scoped to this page's own scroll container */
+.ayt-portfolio ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.ayt-portfolio ::-webkit-scrollbar-track {
+  background: #080d1a;
+}
+.ayt-portfolio ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+.ayt-portfolio ::-webkit-scrollbar-thumb:hover {
+  background: #0ea5e9;
+}

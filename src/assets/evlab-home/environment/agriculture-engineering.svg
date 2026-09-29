@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="agri-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#00F0FF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="crop-field-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="50%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#064E3B"/>
+    </linearGradient>
+    <linearGradient id="crop-field-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#022C22"/>
+    </linearGradient>
+    <filter id="agri-bloom">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="500" height="400" fill="#0A101D" rx="16"/>
+  <circle cx="250" cy="200" r="180" fill="url(#agri-glow)"/>
+
+  <!-- Pedestal Foundation Base -->
+  <ellipse cx="250" cy="280" rx="190" ry="75" fill="#0D201A" stroke="#10B981" stroke-width="2"/>
+  <ellipse cx="250" cy="265" rx="160" ry="60" fill="#042F2E" stroke="#34D399" stroke-width="1.5"/>
+
+  <!-- Terraced Agricultural Plots (Isometric View) -->
+  <!-- Field 1 -->
+  <g transform="translate(70, 150)">
+    <polygon points="20,40 100,5 160,35 80,70" fill="url(#crop-field-1)" stroke="#34D399" stroke-width="2"/>
+    <!-- Precision Crop Furrows -->
+    <line x1="40" y1="35" x2="120" y2="15" stroke="#064E3B" stroke-width="2"/>
+    <line x1="60" y1="45" x2="140" y2="25" stroke="#064E3B" stroke-width="2"/>
+    <!-- Sensor Pods -->
+    <circle cx="60" cy="45" r="2.5" fill="#00F0FF" filter="url(#agri-bloom)"/>
+    <circle cx="120" cy="15" r="2.5" fill="#00F0FF" filter="url(#agri-bloom)"/>
+  </g>
+
+  <!-- Field 2 -->
+  <g transform="translate(180, 110)">
+    <polygon points="20,40 100,5 160,35 80,70" fill="url(#crop-field-2)" stroke="#10B981" stroke-width="2"/>
+    <line x1="40" y1="35" x2="120" y2="15" stroke="#6EE7B7" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <line x1="60" y1="45" x2="140" y2="25" stroke="#6EE7B7" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <circle cx="100" cy="35" r="2.5" fill="#10B981" filter="url(#agri-bloom)"/>
+  </g>
+
+  <!-- Irrigation Canal Network with Flowing Water -->
+  <path d="M 60 210 Q 180 180 260 220 T 420 200" fill="none" stroke="#00F0FF" stroke-width="4" stroke-linecap="round" filter="url(#agri-bloom)"/>
+  <path d="M 260 220 L 260 280" fill="none" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Pumping Station Structure & Control Sluice -->
+  <g transform="translate(300, 180)">
+    <polygon points="15,0 45,15 45,45 15,30" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+    <polygon points="15,0 45,15 30,25 0,10" fill="#334155" stroke="#10B981" stroke-width="1"/>
+    <polygon points="0,10 30,25 30,55 0,40" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+    <!-- Indicator status LED -->
+    <circle cx="22" cy="12" r="3" fill="#00F0FF" filter="url(#agri-bloom)"/>
+  </g>
+
+  <!-- Center Pivot Irrigation Rotor -->
+  <g transform="translate(320, 90)">
+    <ellipse cx="40" cy="35" rx="35" ry="20" fill="none" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.6"/>
+    <circle cx="40" cy="35" r="5" fill="#10B981" stroke="#00F0FF" stroke-width="1.5"/>
+    <line x1="40" y1="35" x2="68" y2="20" stroke="#F8FAFC" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="68" cy="20" r="3" fill="#00F0FF" filter="url(#agri-bloom)"/>
+  </g>
+</svg>

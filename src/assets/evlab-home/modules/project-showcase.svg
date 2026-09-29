@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="mod-proj-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#8B5CF6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="proj-bloom">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="320" height="200" fill="#0A101D" rx="12"/>
+  <circle cx="160" cy="100" r="100" fill="url(#mod-proj-glow)"/>
+
+  <!-- Pedestal Base -->
+  <ellipse cx="160" cy="165" rx="90" ry="25" fill="#0B1C33" stroke="#38BDF8" stroke-width="1.8"/>
+
+  <!-- Miniature 3D Cable-Stayed Bridge Scene -->
+  <g transform="translate(50, 70)">
+    <!-- Bridge Roadway -->
+    <polygon points="10,80 140,25 210,55 80,110" fill="#1E293B" stroke="#00F0FF" stroke-width="1.5"/>
+    <line x1="45" y1="95" x2="175" y2="40" stroke="#FDE047" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+    <!-- Pylon Tower Structure -->
+    <polygon points="110,0 118,5 118,85 110,80 102,85 102,5" fill="#334155" stroke="#00F0FF" stroke-width="1.8"/>
+    <circle cx="110" cy="0" r="3.5" fill="#00F0FF" filter="url(#proj-bloom)"/>
+
+    <!-- Cables Left -->
+    <line x1="110" y1="15" x2="40" y2="85" stroke="#38BDF8" stroke-width="1.2"/>
+    <line x1="110" y1="35" x2="65" y2="78" stroke="#38BDF8" stroke-width="1.2"/>
+    
+    <!-- Cables Right -->
+    <line x1="110" y1="15" x2="175" y2="35" stroke="#38BDF8" stroke-width="1.2"/>
+    <line x1="110" y1="35" x2="150" y2="45" stroke="#38BDF8" stroke-width="1.2"/>
+
+    <!-- Traffic Glow Stream -->
+    <line x1="55" y1="90" x2="105" y2="70" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round" filter="url(#proj-bloom)"/>
+    <line x1="135" y1="55" x2="185" y2="35" stroke="#F43F5E" stroke-width="2.5" stroke-linecap="round" filter="url(#proj-bloom)"/>
+  </g>
+
+  <!-- Distant Skyline Silhouettes -->
+  <g transform="translate(190, 40)" opacity="0.7">
+    <polygon points="10,0 20,5 20,45 10,50 0,45 0,5" fill="#1E1B4B" stroke="#8B5CF6" stroke-width="1"/>
+    <polygon points="30,10 42,16 42,55 30,60 18,55 18,16" fill="#1E1B4B" stroke="#38BDF8" stroke-width="1"/>
+  </g>
+</svg>

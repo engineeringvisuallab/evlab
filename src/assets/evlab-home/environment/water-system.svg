@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="water-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="basin-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="70%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+    <linearGradient id="metal-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0A101D"/>
+    </linearGradient>
+    <filter id="water-bloom">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="500" height="400" fill="#0A101D" rx="16"/>
+  <circle cx="250" cy="200" r="180" fill="url(#water-glow)"/>
+
+  <!-- Pedestal Platform Base -->
+  <ellipse cx="250" cy="280" rx="190" ry="75" fill="url(#metal-base)" stroke="#00F0FF" stroke-width="2"/>
+  <ellipse cx="250" cy="265" rx="160" ry="60" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+
+  <!-- Primary Clarifier Basin Unit -->
+  <g transform="translate(100, 140)">
+    <ellipse cx="60" cy="50" rx="55" ry="28" fill="url(#basin-grad)" stroke="#00F0FF" stroke-width="2.5"/>
+    <ellipse cx="60" cy="50" rx="16" ry="8" fill="#0C4A6E" stroke="#38BDF8" stroke-width="1.5"/>
+    <!-- Scraper Arm -->
+    <line x1="60" y1="50" x2="105" y2="35" stroke="#F8FAFC" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="60" cy="50" r="4" fill="#00F0FF" filter="url(#water-bloom)"/>
+  </g>
+
+  <!-- Aeration Tank with Diffusers -->
+  <g transform="translate(240, 110)">
+    <polygon points="20,40 100,10 180,40 100,70" fill="url(#basin-grad)" stroke="#00F0FF" stroke-width="2"/>
+    <line x1="40" y1="35" x2="120" y2="65" stroke="#BAE6FD" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <line x1="60" y1="28" x2="140" y2="58" stroke="#BAE6FD" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <line x1="80" y1="20" x2="160" y2="50" stroke="#BAE6FD" stroke-width="1.5" stroke-dasharray="4 3"/>
+  </g>
+
+  <!-- High-Pressure Storage Silos -->
+  <g transform="translate(320, 200)">
+    <path d="M 10 20 L 10 65 Q 30 80 50 65 L 50 20 Z" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5"/>
+    <ellipse cx="30" cy="20" rx="20" ry="10" fill="#475569" stroke="#38BDF8" stroke-width="1.5"/>
+    <circle cx="30" cy="20" r="4" fill="#00F0FF" filter="url(#water-bloom)"/>
+  </g>
+
+  <!-- Hydraulic Pipe Network -->
+  <path d="M 160 190 L 220 190 L 220 160 L 260 160" fill="none" stroke="#00F0FF" stroke-width="4" stroke-linecap="round" filter="url(#water-bloom)"/>
+  <path d="M 280 230 L 330 230" fill="none" stroke="#38BDF8" stroke-width="3"/>
+
+  <!-- Valve & Flow Indicators -->
+  <g transform="translate(210, 180)">
+    <polygon points="0,5 10,0 10,10" fill="#00F0FF"/>
+    <polygon points="20,5 10,0 10,10" fill="#00F0FF"/>
+  </g>
+</svg>
