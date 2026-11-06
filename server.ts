@@ -45,72 +45,18 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
-  // Support up to 50mb JSON payloads for rich GIS GeoJSON vector layers & 3D models
+  // Allow reasonably large JSON payloads
   app.use(express.json({ limit: '50mb' }));
   app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
   // Paths for server-side databases
   const DATA_DIR = path.join(process.cwd(), 'data');
-  const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
-  const GIS_FILE = path.join(DATA_DIR, 'custom-uploaded-gis.json');
-  const UELE_DB_FILE = path.join(DATA_DIR, 'uele-database.json');
   const ADMIN_DB_FILE = path.join(DATA_DIR, 'admin-database.json');
 
   // Ensure directories exist
-  [DATA_DIR, UPLOADS_DIR, path.join(UPLOADS_DIR, 'models')].forEach((dir) => {
+  [DATA_DIR].forEach((dir) => {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   });
-
-  // Ensure GIS storage file exists
-  if (!fs.existsSync(GIS_FILE)) {
-    fs.writeFileSync(GIS_FILE, JSON.stringify({ layers: [], features: [] }, null, 2), 'utf-8');
-  }
-
-  // Ensure UELE Central Database file exists with empty initial structures
-  if (!fs.existsSync(UELE_DB_FILE)) {
-    const initialDb = {
-      worlds: [
-        {
-          id: 'world-sherpur-master',
-          name: 'Sherpur Smart Country Master World',
-          tagline: 'Digital Twin Master Ecosystem',
-          description: 'Master regional boundary encompassing urban, rural, hydrological, and agricultural engineering zones.',
-          status: 'published',
-          centerLat: 24.6800,
-          centerLng: 89.4100,
-          crs: 'EPSG:4326',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-      ],
-      regions: [],
-      zones: [],
-      facilities: [],
-      components: [],
-      networks: [],
-      gisLayers: [],
-      models3D: [],
-      parameters: [],
-      learningLinks: [],
-      standards: [],
-      software: [],
-      courses: [],
-      videos: [],
-      resources: [],
-      auditLogs: [
-        {
-          id: 'log-1',
-          action: 'System Initialized',
-          userEmail: AUTHORIZED_ADMIN_EMAIL,
-          timestamp: new Date().toISOString(),
-          objectType: 'System',
-          objectId: 'world-sherpur-master',
-          details: 'Central EVLab Admin Panel & UELE Database initialized.',
-        },
-      ],
-    };
-    fs.writeFileSync(UELE_DB_FILE, JSON.stringify(initialDb, null, 2), 'utf-8');
-  }
 
   // Ensure Admin Database file exists with default initial administrator EVL-ADMIN-001
   const initialPass = process.env.INITIAL_ADMIN_PASSWORD || 'EVLab@2026!Admin';
@@ -175,9 +121,6 @@ async function startServer() {
     }
   }
 
-  // Serve static uploaded files (e.g. 3D GLB models)
-  app.use('/uploads', express.static(UPLOADS_DIR));
-
   // Helper: Read Admin Database
   const readAdminDatabase = () => {
     try {
@@ -207,21 +150,6 @@ async function startServer() {
     }
   };
 
-  // Helper: Read UELE Database
-  const readUELEDatabase = () => {
-    try {
-      if (!fs.existsSync(UELE_DB_FILE)) return null;
-      return JSON.parse(fs.readFileSync(UELE_DB_FILE, 'utf-8'));
-    } catch {
-      return null;
-    }
-  };
-
-  // Helper: Write UELE Database
-  const writeUELEDatabase = (db: any) => {
-    fs.writeFileSync(UELE_DB_FILE, JSON.stringify(db, null, 2), 'utf-8');
-  };
-
   // Helper: Log Audit Entry
   const addAuditLog = (action: string, adminIdOrEmail: string, module: string, objectId: string, details: string) => {
     const adminDb = readAdminDatabase() || {};
@@ -239,21 +167,6 @@ async function startServer() {
     adminDb.auditLogs.unshift(entry);
     if (adminDb.auditLogs.length > 300) adminDb.auditLogs = adminDb.auditLogs.slice(0, 300);
     writeAdminDatabase(adminDb);
-
-    // Also mirror to UELE DB audit logs for backward compatibility
-    const ueleDb = readUELEDatabase() || {};
-    if (!ueleDb.auditLogs) ueleDb.auditLogs = [];
-    ueleDb.auditLogs.unshift({
-      id: entry.id,
-      action,
-      userEmail: adminIdOrEmail,
-      timestamp: entry.timestamp,
-      objectType: module,
-      objectId,
-      details,
-    });
-    if (ueleDb.auditLogs.length > 200) ueleDb.auditLogs = ueleDb.auditLogs.slice(0, 200);
-    writeUELEDatabase(ueleDb);
   };
 
   // Middleware: Verify Admin Session Token
@@ -631,311 +544,6 @@ async function startServer() {
     addAuditLog('Updated Settings', (req as any).adminId, 'Settings', 'SystemSettings', 'Updated Admin Security & Lockout Policy settings.');
 
     res.json({ success: true, settings: adminDb.settings });
-  });
-
-  // ==========================================
-  // PUBLIC UELE ENDPOINTS
-  // ==========================================
-
-  // Public: GET all published UELE entities for public 2D Map & 3D Twin
-  app.get('/api/uele/public', (req, res) => {
-    try {
-      const db = readUELEDatabase() || {
-        worlds: [],
-        regions: [],
-        zones: [],
-        facilities: [],
-        networks: [],
-        gisLayers: [],
-        models3D: [],
-      };
-
-      const filterPublished = (arr: any[]) => (arr || []).filter((item) => !item.status || item.status === 'published');
-
-      res.json({
-        worlds: filterPublished(db.worlds),
-        regions: filterPublished(db.regions),
-        zones: filterPublished(db.zones),
-        facilities: filterPublished(db.facilities),
-        networks: filterPublished(db.networks),
-        gisLayers: filterPublished(db.gisLayers),
-        models3D: filterPublished(db.models3D),
-      });
-    } catch (err: any) {
-      console.error('Error serving public UELE dataset:', err);
-      res.status(500).json({ error: 'Failed to retrieve public UELE dataset.' });
-    }
-  });
-
-  // ==========================================
-  // ADMIN UELE CRUD ENDPOINTS (PROTECTED)
-  // ==========================================
-
-  const PLURAL_ENTITY_MAP: Record<string, string> = {
-    world: 'worlds',
-    region: 'regions',
-    zone: 'zones',
-    facility: 'facilities',
-    component: 'components',
-    network: 'networks',
-    gisLayer: 'gisLayers',
-    model3D: 'models3D',
-    parameter: 'parameters',
-    link: 'learningLinks',
-    standard: 'standards',
-    software: 'software',
-    course: 'courses',
-    video: 'videos',
-    resource: 'resources',
-  };
-
-  app.get('/api/admin/uele/all', requireAdminAuth, (req, res) => {
-    try {
-      const db = readUELEDatabase() || {
-        worlds: [],
-        regions: [],
-        zones: [],
-        facilities: [],
-        components: [],
-        networks: [],
-        gisLayers: [],
-        models3D: [],
-        parameters: [],
-        learningLinks: [],
-        standards: [],
-        software: [],
-        courses: [],
-        videos: [],
-        resources: [],
-        auditLogs: [],
-      };
-      res.json(db);
-    } catch (err: any) {
-      res.status(500).json({ error: 'Failed to read admin UELE database.' });
-    }
-  });
-
-  app.post('/api/admin/uele/:entityType', requireAdminAuth, (req, res) => {
-    try {
-      const { entityType } = req.params;
-      const { item } = req.body;
-
-      const key = PLURAL_ENTITY_MAP[entityType];
-      if (!key) return res.status(400).json({ error: 'Invalid entity type' });
-
-      const db = readUELEDatabase() || {};
-      if (!db[key]) db[key] = [];
-
-      const itemId = item.id || item.videoId || `item-${Date.now()}`;
-      const existingIndex = db[key].findIndex((i: any) => (i.id || i.videoId) === itemId);
-      const now = new Date().toISOString();
-
-      const newItem = {
-        ...item,
-        id: itemId,
-        status: item.status || 'draft',
-        updatedAt: now,
-        ...(existingIndex === -1 ? { createdAt: now } : {}),
-      };
-
-      if (existingIndex >= 0) {
-        db[key][existingIndex] = newItem;
-      } else {
-        db[key].unshift(newItem);
-      }
-
-      writeUELEDatabase(db);
-      addAuditLog(
-        existingIndex >= 0 ? 'Updated Entity' : 'Created Entity',
-        (req as any).adminId,
-        entityType,
-        itemId,
-        `Saved ${entityType} "${item.name || item.title || item.modelName || itemId}" with status [${newItem.status}].`
-      );
-
-      res.json({ success: true, item: newItem });
-    } catch (err: any) {
-      res.status(500).json({ error: 'Failed to save entity.' });
-    }
-  });
-
-  app.delete('/api/admin/uele/:entityType/:id', requireAdminAuth, (req, res) => {
-    try {
-      const { entityType, id } = req.params;
-
-      const key = PLURAL_ENTITY_MAP[entityType];
-      if (!key) return res.status(400).json({ error: 'Invalid entity type' });
-
-      const db = readUELEDatabase() || {};
-      if (db[key]) {
-        db[key] = db[key].filter((i: any) => (i.id || i.videoId) !== id);
-        writeUELEDatabase(db);
-        addAuditLog('Deleted Entity', (req as any).adminId, entityType, id, `Deleted ${entityType} ID: ${id}`);
-      }
-
-      res.json({ success: true });
-    } catch (err: any) {
-      res.status(500).json({ error: 'Failed to delete entity.' });
-    }
-  });
-
-  app.patch('/api/admin/uele/:entityType/:id/status', requireAdminAuth, (req, res) => {
-    try {
-      const { entityType, id } = req.params;
-      const { status } = req.body;
-
-      const key = PLURAL_ENTITY_MAP[entityType];
-      if (!key) return res.status(400).json({ error: 'Invalid entity type' });
-
-      const db = readUELEDatabase() || {};
-      if (db[key]) {
-        const item = db[key].find((i: any) => (i.id || i.videoId) === id);
-        if (item) {
-          item.status = status;
-          item.updatedAt = new Date().toISOString();
-          writeUELEDatabase(db);
-          addAuditLog('Changed Status', (req as any).adminId, entityType, id, `Set status to [${status}] for ${item.name || item.title || id}`);
-        }
-      }
-
-      res.json({ success: true });
-    } catch (err: any) {
-      res.status(500).json({ error: 'Failed to update status.' });
-    }
-  });
-
-  app.post('/api/admin/uele/:entityType/:id/duplicate', requireAdminAuth, (req, res) => {
-    try {
-      const { entityType, id } = req.params;
-
-      const key = PLURAL_ENTITY_MAP[entityType];
-      const db = readUELEDatabase() || {};
-
-      if (!key || !db[key]) return res.status(400).json({ error: 'Item not found' });
-
-      const item = db[key].find((i: any) => (i.id || i.videoId) === id);
-      if (!item) return res.status(404).json({ error: 'Item not found' });
-
-      const newId = `${id}-copy-${Math.random().toString(36).substring(2, 6)}`;
-      const now = new Date().toISOString();
-      const duplicated = {
-        ...JSON.parse(JSON.stringify(item)),
-        ...(item.videoId ? { videoId: newId } : { id: newId }),
-        name: item.name ? `${item.name} (Copy)` : item.title ? `${item.title} (Copy)` : item.modelName ? `${item.modelName} (Copy)` : newId,
-        status: 'draft',
-        createdAt: now,
-        updatedAt: now,
-      };
-
-      db[key].unshift(duplicated);
-      writeUELEDatabase(db);
-      addAuditLog('Duplicated Entity', (req as any).adminId, entityType, id, `Duplicated to ${newId}`);
-
-      db[key].unshift(duplicated);
-      writeUELEDatabase(db);
-      addAuditLog('Duplicated Entity', (req as any).adminId, entityType, id, `Duplicated to ${newId}`);
-
-      res.json({ success: true, duplicatedItem: duplicated });
-    } catch (err: any) {
-      res.status(500).json({ error: 'Failed to duplicate entity.' });
-    }
-  });
-
-  app.post('/api/admin/models/upload', requireAdminAuth, (req, res) => {
-    try {
-      const { metadata, fileBase64, fileName } = req.body;
-      const parsedMeta = typeof metadata === 'string' ? JSON.parse(metadata) : metadata || {};
-
-      const id = parsedMeta.id || `model-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
-      let fileUrl = parsedMeta.fileUrl || '/uploads/models/default-sample.glb';
-
-      if (fileBase64 && fileName) {
-        const cleanBase64 = fileBase64.replace(/^data:.*?;base64,/, '');
-        const targetPath = path.join(UPLOADS_DIR, 'models', `${id}-${fileName}`);
-        fs.writeFileSync(targetPath, Buffer.from(cleanBase64, 'base64'));
-        fileUrl = `/uploads/models/${id}-${fileName}`;
-      }
-
-      const modelRecord = {
-        id,
-        modelName: parsedMeta.modelName || 'New 3D Engineering Model',
-        facilityId: parsedMeta.facilityId || '',
-        fileUrl,
-        fileName: fileName || parsedMeta.fileName || 'model.glb',
-        fileSize: parsedMeta.fileSize || 1024 * 500,
-        format: parsedMeta.format || 'glb',
-        anchor: parsedMeta.anchor || { latitude: 24.6800, longitude: 89.4100, elevation: 18.5 },
-        crs: parsedMeta.crs || 'EPSG:4326',
-        rotation: parsedMeta.rotation || { x: 0, y: 0, z: 0 },
-        scale: parsedMeta.scale || { x: 1, y: 1, z: 1 },
-        units: parsedMeta.units || 'meters',
-        localOrigin: parsedMeta.localOrigin || { x: 0, y: 0, z: 0 },
-        northReference: parsedMeta.northReference || 0,
-        verticalDatum: parsedMeta.verticalDatum || 'MSL',
-        modelBounds: parsedMeta.modelBounds || { minX: 0, minY: 0, minZ: 0, maxX: 10, maxY: 10, maxZ: 10 },
-        georeferenceStatus: 'valid',
-        status: parsedMeta.status || 'draft',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      };
-
-      const db = readUELEDatabase() || {};
-      if (!db.models3D) db.models3D = [];
-      db.models3D.unshift(modelRecord);
-      writeUELEDatabase(db);
-
-      addAuditLog('Uploaded 3D Model', (req as any).adminId, 'model3D', id, `Uploaded GLB model "${modelRecord.modelName}"`);
-
-      res.json({ success: true, model: modelRecord });
-    } catch (err: any) {
-      console.error('Error uploading 3D model:', err);
-      res.status(500).json({ error: 'Failed to upload 3D model.' });
-    }
-  });
-
-  // GIS Layer endpoints
-  app.get('/api/gis/layers', (req, res) => {
-    try {
-      const db = readUELEDatabase() || { gisLayers: [] };
-      const rawGIS = fs.existsSync(GIS_FILE) ? JSON.parse(fs.readFileSync(GIS_FILE, 'utf-8')) : { layers: [], features: [] };
-      res.json({
-        layers: [...(db.gisLayers || []).filter((l: any) => l.status === 'published'), ...(rawGIS.layers || [])],
-        features: rawGIS.features || [],
-      });
-    } catch {
-      res.json({ layers: [], features: [] });
-    }
-  });
-
-  app.post('/api/gis/layers', (req, res) => {
-    try {
-      const { layer, features } = req.body;
-      let data = { layers: [] as any[], features: [] as any[] };
-      if (fs.existsSync(GIS_FILE)) {
-        data = JSON.parse(fs.readFileSync(GIS_FILE, 'utf-8'));
-      }
-      data.layers = [layer, ...data.layers.filter((l: any) => l.id !== layer.id)];
-      data.features = [...features, ...data.features.filter((f: any) => f.properties?.layerId !== layer.id)];
-      fs.writeFileSync(GIS_FILE, JSON.stringify(data, null, 2), 'utf-8');
-      res.json({ success: true, layer, featureCount: features.length });
-    } catch {
-      res.status(500).json({ error: 'Failed to save GIS layer.' });
-    }
-  });
-
-  app.delete('/api/gis/layers/:id', (req, res) => {
-    try {
-      const { id } = req.params;
-      if (fs.existsSync(GIS_FILE)) {
-        const data = JSON.parse(fs.readFileSync(GIS_FILE, 'utf-8'));
-        data.layers = data.layers.filter((l: any) => l.id !== id);
-        data.features = data.features.filter((f: any) => f.properties?.layerId !== id);
-        fs.writeFileSync(GIS_FILE, JSON.stringify(data, null, 2), 'utf-8');
-      }
-      res.json({ success: true });
-    } catch {
-      res.status(500).json({ error: 'Failed to delete GIS layer.' });
-    }
   });
 
   // Catch-all for unhandled /api routes to prevent HTML responses

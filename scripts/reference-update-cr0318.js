@@ -1189,7 +1189,6 @@ const stage03Specializations = [
         "construction-safety-osha-pocket-guide"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1252,7 +1251,6 @@ const stage03Specializations = [
         "bim-execution-plan-template-handbook"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1317,7 +1315,6 @@ const stage03Specializations = [
         "infrastructure-bim-handbook"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1375,7 +1372,6 @@ const stage03Specializations = [
         "bim-coordination-checklist-resource"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1435,7 +1431,6 @@ const stage03Specializations = [
         "aace-cost-engineering-handbook"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1493,7 +1488,6 @@ const stage03Specializations = [
         "primavera-p6-user-guide-resource"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1553,7 +1547,6 @@ const stage03Specializations = [
         "model-based-estimating-guide-resource"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1612,7 +1605,6 @@ const stage03Specializations = [
         "digital-boq-estimation-handbook"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1671,7 +1663,6 @@ const stage03Specializations = [
         "construction-safety-osha-pocket-guide"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1734,7 +1725,6 @@ const stage03Specializations = [
         "geodesy-gnss-surveying-handbook"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1793,7 +1783,6 @@ const stage03Specializations = [
         "rhd-road-design-manual-resource"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1853,7 +1842,6 @@ const stage03Specializations = [
         "iot-smart-construction-handbook"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1911,7 +1899,6 @@ const stage03Specializations = [
         "python-geospatial-ai-cookbook"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -1969,7 +1956,6 @@ const stage03Specializations = [
         "construction-safety-osha-pocket-guide"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -2031,7 +2017,6 @@ const stage03Specializations = [
         "iso-55000-asset-management-guidelines-resource"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -2091,7 +2076,6 @@ const stage03Specializations = [
         "construction-data-analytics-guide-resource"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -2150,7 +2134,6 @@ const stage03Specializations = [
         "construction-safety-osha-pocket-guide"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -2211,7 +2194,6 @@ const stage03Specializations = [
         "modular-construction-dfma-guide-resource"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -2272,7 +2254,6 @@ const stage03Specializations = [
         "advanced-concrete-materials-handbook"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   },
   {
@@ -2332,7 +2313,6 @@ const stage03Specializations = [
         "digital-asset-handover-guide-resource"
       ]
     },
-    "ueleLink": "",
     "comingSoon": false
   }
 ];

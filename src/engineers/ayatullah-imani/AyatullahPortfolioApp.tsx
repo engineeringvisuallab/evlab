@@ -21,7 +21,7 @@ import { Footer } from './components/Footer';
  * Md. Ayatullah Imani — full standalone engineering portfolio, ported in as-is
  * from its own AI-Studio project and embedded at /engineers/ayatullah-imani.
  * Renders full-screen with its own nav/theme (same treatment as the other
- * standalone /software/* and /uele/play tools) rather than EVLab's chrome.
+ * standalone /software/* tools) rather than EVLab's chrome.
  */
 export default function AyatullahPortfolioApp() {
   const [selectedServiceInquiry, setSelectedServiceInquiry] = useState<string>('AutoCAD');

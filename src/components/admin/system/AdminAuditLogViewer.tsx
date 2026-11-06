@@ -108,10 +108,6 @@ export const AdminAuditLogViewer: React.FC = () => {
             <option value="auth">Auth & Security</option>
             <option value="usermanagement">User Management</option>
             <option value="settings">Settings</option>
-            <option value="world">UELE World</option>
-            <option value="facilities">UELE Facilities</option>
-            <option value="gislayer">GIS Layers</option>
-            <option value="model3d">3D Models</option>
           </select>
         </div>
       </div>

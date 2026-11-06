@@ -297,17 +297,6 @@ export interface Stage05MasteryRecord {
   // Section 20: Resources & References
   resources: ResourceRef[];
 
-  // Section 21: UELE Connections
-  ueleConnection: {
-    objectId?: string;
-    objectName?: string;
-    world?: string;
-    what: string;
-    why: string;
-    howToInspect: string;
-    isAvailable: boolean;
-  };
-
   // Section 22: Career Mastery Timeline
   timeline: TimelinePhase[];
 

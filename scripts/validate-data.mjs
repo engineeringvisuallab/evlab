@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 
 const tree = JSON.parse(fs.readFileSync('src/data/roadmap-tree.json', 'utf8'));
-const uele = JSON.parse(fs.readFileSync('src/data/uele-objects.json', 'utf8'));
 
 const registryFiles = [
   'knowledge', 'skills', 'software', 'standards', 'workflow', 'projects',
@@ -63,11 +62,6 @@ for (const n of nodes) {
   }
 }
 
-// UELE object ID uniqueness
-const ueleObjects = Array.isArray(uele) ? uele : uele.objects;
-const ueleIds = ueleObjects.map(o => o.id);
-const dupUeleIds = ueleIds.filter((id, i) => ueleIds.indexOf(id) !== i);
-
 console.log('--- Roadmap ---');
 console.log('Total nodes:', nodes.length);
 console.log('Duplicate node IDs:', dupNodeIds.length ? dupNodeIds : 'none');
@@ -78,8 +72,3 @@ console.log('ID/key mismatches:', Object.keys(idMismatches).length ? idMismatche
 console.log('');
 console.log('--- Relations ---');
 console.log('Broken relation references:', broken.length ? broken : 'none');
-console.log('');
-console.log('--- UELE ---');
-const ueleEnvironments = new Set(ueleObjects.map(o => o.environment));
-console.log('Environments:', ueleEnvironments.size, 'Objects:', ueleObjects.length);
-console.log('Duplicate UELE object IDs:', dupUeleIds.length ? dupUeleIds : 'none');

@@ -48,7 +48,6 @@ export interface AdminSettings {
 
 export type AdminModule =
   | 'dashboard'
-  | 'uele'
   | 'projects'
   | 'software'
   | 'roadmap'
@@ -57,38 +56,3 @@ export type AdminModule =
   | 'admins'
   | 'audit'
   | 'settings';
-
-export type UELESubModule =
-  | 'world'
-  | 'regions'
-  | 'zones'
-  | 'facilities'
-  | 'components'
-  | 'networks'
-  | 'gis'
-  | 'models'
-  | 'engineering'
-  | 'parameters'
-  | 'links'
-  | 'standards'
-  | 'software'
-  | 'courses'
-  | 'videos'
-  | 'resources'
-  | 'publish'
-  | 'validation';
-
-export interface AdminDashboardMetrics {
-  worldsCount: number;
-  regionsCount: number;
-  zonesCount: number;
-  facilitiesCount: number;
-  componentsCount: number;
-  networksCount: number;
-  gisLayersCount: number;
-  models3DCount: number;
-  publishedCount: number;
-  draftCount: number;
-  archivedCount: number;
-  totalAdminsCount?: number;
-}

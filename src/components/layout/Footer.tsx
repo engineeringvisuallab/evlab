@@ -6,7 +6,7 @@ const FOOTER_COLUMNS: { title: string; links: { label: string; to: string }[] }[
     title: 'Explore',
     links: [
       { label: 'Career Roadmap', to: '/career-roadmap' },
-      { label: 'UELE Ecosystem', to: '/uele' },
+      { label: 'EVCity', to: '/evcity' },
       { label: 'Learn & Courses', to: '/learn' },
       { label: 'EV Software', to: '/ev-software' },
     ],

@@ -9,7 +9,6 @@ export type PlanetId =
   | 'simulation'
   | 'materials'
   | 'ai'
-  | 'uele'
   | 'projects';
 
 export interface SoftwareMoon {
@@ -65,7 +64,6 @@ export interface PlanetData {
     | 'simulation_mesh'
     | 'crystal_lattice'
     | 'neural_network'
-    | 'uele_diagrams'
     | 'projects_blocks';
   ringSystem?: {
     radiusInner: number;
@@ -99,7 +97,6 @@ export type StudioKey =
   | 'stp'
   | 'waterflow'
   | 'planner'
-  | 'uele'
   | 'proving_bench'
   | 'dashboard';
 

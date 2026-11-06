@@ -54,27 +54,27 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onNavigate }) => {
             </Button>
           </div>
 
-          {/* UELE CTA */}
+          {/* EVCity CTA */}
           <div className="p-6 rounded-3xl bg-[var(--bg-surface)] border border-[var(--accent-emerald)]/40 hover:border-[var(--accent-emerald)] transition-all space-y-4 shadow-xl text-left flex flex-col justify-between group">
             <div className="space-y-2">
               <div className="p-3 rounded-2xl bg-[var(--accent-emerald-bg)] text-[var(--accent-emerald)] w-fit">
                 <Layers className="w-6 h-6" />
               </div>
               <h3 className="font-bold text-xl text-[var(--text-primary)] group-hover:text-[var(--accent-emerald)] transition-colors">
-                UELE 3D World
+                EVCity
               </h3>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                Explore physical engineering systems, water treatment plants, smart cities and infrastructure.
+                A game that is really an engineering simulation — learn Civil, Mechanical and Electrical engineering by playing.
               </p>
             </div>
             <Button
-              variant="uele"
+              variant="emerald"
               size="lg"
               fullWidth
               rightIcon={<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
-              onClick={() => onNavigate('uele')}
+              onClick={() => onNavigate('evcity')}
             >
-              Enter UELE 3D
+              Open EVCity
             </Button>
           </div>
         </div>

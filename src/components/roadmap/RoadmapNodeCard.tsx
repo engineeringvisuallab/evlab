@@ -211,12 +211,6 @@ export const RoadmapNodeCard: React.FC<RoadmapNodeCardProps> = ({
                     {node.relations.knowledge.length} Knowledge
                   </span>
                 )}
-                {node.ueleLink && (
-                  <span className="flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[var(--accent-emerald-bg)] text-[var(--accent-emerald)] font-semibold border border-[var(--accent-emerald)]/30">
-                    <Box className="w-3 h-3" />
-                    3D UELE
-                  </span>
-                )}
               </div>
             )}
 

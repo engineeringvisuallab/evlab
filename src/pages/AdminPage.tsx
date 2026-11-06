@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { AdminSession, AdminModule, UELESubModule } from '../types/admin';
+import { AdminSession, AdminModule } from '../types/admin';
 import { AUTHORIZED_ADMIN_EMAIL, AdminAuthService } from '../services/adminAuthService';
-import { FullUELEDatabase, UELEAdminService } from '../services/ueleAdminService';
 import { AdminLoginForm } from '../components/admin/AdminLoginForm';
 import { AdminSidebar } from '../components/admin/AdminSidebar';
 import { AdminHeader } from '../components/admin/AdminHeader';
 import { AdminDashboard } from '../components/admin/AdminDashboard';
-import { AdminFacilityManager } from '../components/admin/uele/AdminFacilityManager';
-import { Admin3DModelManager } from '../components/admin/uele/Admin3DModelManager';
-import { AdminGISLayerManager } from '../components/admin/uele/AdminGISLayerManager';
-import { AdminHierarchyManager } from '../components/admin/uele/AdminHierarchyManager';
-import { AdminComponentManager } from '../components/admin/uele/AdminComponentManager';
-import { AdminNetworkManager } from '../components/admin/uele/AdminNetworkManager';
-import { AdminEngineeringInfoManager } from '../components/admin/uele/AdminEngineeringInfoManager';
-import { AdminParameterManager } from '../components/admin/uele/AdminParameterManager';
-import { AdminLearningIntegrationManager } from '../components/admin/uele/AdminLearningIntegrationManager';
-import { AdminPublishManager } from '../components/admin/uele/AdminPublishManager';
-import { AdminValidationManager } from '../components/admin/uele/AdminValidationManager';
 import { AdminUserManagement } from '../components/admin/system/AdminUserManagement';
 import { AdminAuditLogViewer } from '../components/admin/system/AdminAuditLogViewer';
 import { AdminSettingsManager } from '../components/admin/system/AdminSettingsManager';
@@ -26,19 +14,6 @@ export const AdminPage: React.FC = () => {
   const [session, setSession] = useState<AdminSession | null>(null);
   const [checkingSession, setCheckingSession] = useState<boolean>(true);
   const [activeModule, setActiveModule] = useState<AdminModule>('dashboard');
-  const [activeUELESubModule, setActiveUELESubModule] = useState<UELESubModule>('facilities');
-  const [database, setDatabase] = useState<FullUELEDatabase>({
-    worlds: [],
-    regions: [],
-    zones: [],
-    facilities: [],
-    components: [],
-    networks: [],
-    gisLayers: [],
-    models3D: [],
-    auditLogs: [],
-  });
-  const [loadingDb, setLoadingDb] = useState<boolean>(false);
 
   // Check current active session on mount
   useEffect(() => {
@@ -55,26 +30,6 @@ export const AdminPage: React.FC = () => {
     checkAuth();
   }, []);
 
-  // Fetch full UELE database when authenticated
-  const loadAdminDatabase = async () => {
-    if (!session) return;
-    setLoadingDb(true);
-    try {
-      const db = await UELEAdminService.getFullUELEDatabase();
-      setDatabase(db);
-    } catch (err) {
-      console.error('Failed to load admin database:', err);
-    } finally {
-      setLoadingDb(false);
-    }
-  };
-
-  useEffect(() => {
-    if (session) {
-      loadAdminDatabase();
-    }
-  }, [session]);
-
   const handleLoginSuccess = (newSession: AdminSession) => {
     setSession(newSession);
   };
@@ -84,21 +39,8 @@ export const AdminPage: React.FC = () => {
     setSession(null);
   };
 
-  const handleSelectModule = (module: AdminModule, subModule?: UELESubModule) => {
+  const handleSelectModule = (module: AdminModule) => {
     setActiveModule(module);
-    if (subModule) {
-      setActiveUELESubModule(subModule);
-    }
-  };
-
-  const handleQuickAction = (action: 'add-facility' | 'add-gis' | 'add-model' | 'add-region' | 'add-zone' | 'add-network') => {
-    setActiveModule('uele');
-    if (action === 'add-facility') setActiveUELESubModule('facilities');
-    else if (action === 'add-gis') setActiveUELESubModule('gis');
-    else if (action === 'add-model') setActiveUELESubModule('models');
-    else if (action === 'add-region') setActiveUELESubModule('regions');
-    else if (action === 'add-zone') setActiveUELESubModule('zones');
-    else if (action === 'add-network') setActiveUELESubModule('networks');
   };
 
   if (checkingSession) {
@@ -123,7 +65,6 @@ export const AdminPage: React.FC = () => {
         <AdminSidebar
           role={session.role || 'super_admin'}
           activeModule={activeModule}
-          activeUELESubModule={activeUELESubModule}
           onSelectModule={handleSelectModule}
         />
 
@@ -136,27 +77,14 @@ export const AdminPage: React.FC = () => {
             adminEmail={session.email || AUTHORIZED_ADMIN_EMAIL}
             role={session.role || 'super_admin'}
             activeModule={activeModule}
-            activeUELESubModule={activeUELESubModule}
-            onQuickAction={handleQuickAction}
-            onLogout={handleLogout}
+              onLogout={handleLogout}
           />
 
           {/* Body Content */}
           <main className="flex-1 overflow-y-auto bg-slate-950">
-            {loadingDb && activeModule === 'uele' ? (
-              <div className="p-12 flex flex-col items-center justify-center text-slate-400 gap-3">
-                <RefreshCw className="w-6 h-6 animate-spin text-cyan-400" />
-                <span className="text-xs font-mono">Synchronizing Central EVLab Dataset...</span>
-              </div>
-            ) : activeModule === 'dashboard' ? (
+            {activeModule === 'dashboard' ? (
               <AdminDashboard
                 session={session}
-                database={database}
-                onNavigateUELE={(sub) => {
-                  setActiveModule('uele');
-                  setActiveUELESubModule(sub);
-                }}
-                onQuickAction={handleQuickAction}
                 onNavigateModule={(mod) => setActiveModule(mod)}
               />
             ) : activeModule === 'admins' ? (
@@ -165,70 +93,6 @@ export const AdminPage: React.FC = () => {
               <AdminAuditLogViewer />
             ) : activeModule === 'settings' ? (
               <AdminSettingsManager />
-            ) : activeModule === 'uele' ? (
-              activeUELESubModule === 'facilities' ? (
-                <AdminFacilityManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'models' ? (
-                <Admin3DModelManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'gis' ? (
-                <AdminGISLayerManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'components' ? (
-                <AdminComponentManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'networks' ? (
-                <AdminNetworkManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'engineering' ? (
-                <AdminEngineeringInfoManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'parameters' ? (
-                <AdminParameterManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'links' ||
-                activeUELESubModule === 'standards' ||
-                activeUELESubModule === 'software' ||
-                activeUELESubModule === 'courses' ||
-                activeUELESubModule === 'videos' ||
-                activeUELESubModule === 'resources' ? (
-                <AdminLearningIntegrationManager
-                  database={database}
-                  activeSubModule={activeUELESubModule}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'publish' ? (
-                <AdminPublishManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : activeUELESubModule === 'validation' ? (
-                <AdminValidationManager
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              ) : (
-                <AdminHierarchyManager
-                  subModule={activeUELESubModule}
-                  database={database}
-                  onRefreshDatabase={loadAdminDatabase}
-                />
-              )
             ) : (
               <div className="p-12 text-center text-slate-500">
                 <p className="text-sm font-semibold text-slate-400 capitalize">{activeModule} Module Architecture Ready</p>

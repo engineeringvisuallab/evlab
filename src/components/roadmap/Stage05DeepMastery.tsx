@@ -45,7 +45,6 @@ export interface Stage05DeepMasteryProps {
     specialization?: RoadmapNode;
   };
   onBack: () => void;
-  onNavigateToUele?: (ueleId: string) => void;
 }
 
 type TabKey = 'overview' | 'knowledge' | 'tools' | 'practical' | 'careers' | 'readiness';
@@ -54,7 +53,6 @@ export const Stage05DeepMastery: React.FC<Stage05DeepMasteryProps> = ({
   node,
   parentPath,
   onBack,
-  onNavigateToUele,
 }) => {
   const [activeTab, setActiveTab] = useState<TabKey>('overview');
   const [copiedSyllabus, setCopiedSyllabus] = useState(false);
@@ -439,36 +437,6 @@ export const Stage05DeepMastery: React.FC<Stage05DeepMasteryProps> = ({
                 ))}
               </div>
             </div>
-
-            {/* Section 21: UELE Connection */}
-            {record.ueleConnection.isAvailable && (
-              <div className="p-5 rounded-2xl bg-[var(--accent-emerald-bg)]/30 border border-[var(--accent-emerald)]/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-center space-x-3">
-                  <div className="p-3 rounded-xl bg-[var(--accent-emerald)] text-white shrink-0">
-                    <Box className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-[var(--text-primary)]">
-                      Section 21 • Connected 3D Digital Twin Available in UELE
-                    </h4>
-                    <p className="text-xs text-[var(--text-secondary)]">
-                      {record.ueleConnection.what}
-                    </p>
-                  </div>
-                </div>
-                {onNavigateToUele && (
-                  <Button
-                    variant="uele"
-                    size="sm"
-                    rightIcon={<Box className="w-4 h-4" />}
-                    onClick={() => onNavigateToUele(record.ueleConnection.objectId!)}
-                    className="shrink-0"
-                  >
-                    Inspect 3D Geometry
-                  </Button>
-                )}
-              </div>
-            )}
           </div>
         )}
 

@@ -10,21 +10,18 @@ export interface RoadmapDetailCardProps {
     specialization?: RoadmapNode;
   };
   onBack: () => void;
-  onNavigateToUele?: (ueleId: string) => void;
 }
 
 export const RoadmapDetailCard: React.FC<RoadmapDetailCardProps> = ({
   node,
   parentPath,
   onBack,
-  onNavigateToUele,
 }) => {
   return (
     <Stage05DeepMastery
       node={node}
       parentPath={parentPath}
       onBack={onBack}
-      onNavigateToUele={onNavigateToUele}
     />
   );
 };

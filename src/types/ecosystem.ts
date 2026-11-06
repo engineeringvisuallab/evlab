@@ -16,7 +16,7 @@ export type EngineeringDiscipline =
 
 export type EcosystemSection =
   | 'roadmap'
-  | 'uele'
+  | 'evcity'
   | 'learn'
   | 'resources'
   | 'plugins'

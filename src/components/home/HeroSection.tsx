@@ -68,13 +68,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <button
                 type="button"
                 id="hero-explore-demo-btn"
-                onClick={() => onNavigate('uele-game')}
+                onClick={() => onNavigate('evcity')}
                 className="px-5 py-3 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 text-slate-200 hover:text-white font-semibold text-sm transition-all flex items-center space-x-2 cursor-pointer shadow-md"
               >
                 <div className="w-5 h-5 rounded-full border border-slate-400/60 flex items-center justify-center">
                   <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
                 </div>
-                <span>Explore Demo</span>
+                <span>Explore EVCity</span>
               </button>
             </div>
 
@@ -149,7 +149,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
           {/* RIGHT HERO 3D DIGITAL TWIN DIORAMA (7 cols on desktop) */}
           <div className="lg:col-span-7 relative flex items-center justify-center">
-            <Hero3DCanvas onNavigate={onNavigate} />
+            <Hero3DCanvas />
           </div>
         </div>
       </div>

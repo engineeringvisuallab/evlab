@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Compass,
-  Globe,
+  Gamepad2,
   GraduationCap,
   Puzzle,
   FileText,
@@ -13,12 +13,12 @@ import {
 } from 'lucide-react';
 import {
   modCareerRoadmap,
-  modUeleGlobe,
   modAcademyCap,
   modPluginCubes,
   modResourceBooks,
   modProjectBridge,
 } from '@/assets/images';
+import evcityLogo from '@/assets/evcity/evcity-logo.png';
 
 export interface SixModuleCardsProps {
   onNavigate: (sectionId: string) => void;
@@ -37,14 +37,15 @@ export const SixModuleCards: React.FC<SixModuleCardsProps> = ({ onNavigate }) =>
       image: modCareerRoadmap,
     },
     {
-      id: 'uele',
-      title: 'UELE Platform',
-      subtitle: 'Universal Engineering Learning Experience',
-      icon: Globe,
+      id: 'evcity',
+      title: 'EVCity',
+      subtitle: 'A game that is really an engineering simulation',
+      icon: Gamepad2,
       color: 'blue',
       badgeBg: 'bg-blue-600/20 text-blue-400 border-blue-500/40',
       glow: 'hover:border-blue-500/80 shadow-blue-500/10',
-      image: modUeleGlobe,
+      image: evcityLogo,
+      contain: true,
     },
     {
       id: 'learning-paths',
@@ -158,11 +159,19 @@ export const SixModuleCards: React.FC<SixModuleCardsProps> = ({ onNavigate }) =>
                 </div>
 
                 {/* 3D Photorealistic Inset Preview Box */}
-                <div className="h-44 w-full rounded-2xl bg-[#050811] border border-slate-800/80 overflow-hidden relative shadow-inner group-hover:border-slate-700 transition-all">
+                <div
+                  className={`h-44 w-full rounded-2xl border border-slate-800/80 overflow-hidden relative shadow-inner group-hover:border-slate-700 transition-all ${
+                    card.contain
+                      ? 'bg-[radial-gradient(ellipse_at_center,#0f2a3a_0%,#08111d_70%,#050811_100%)]'
+                      : 'bg-[#050811]'
+                  }`}
+                >
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover filter contrast-[1.05] group-hover:scale-105 transition-transform duration-500"
+                    className={`w-full h-full filter contrast-[1.05] group-hover:scale-105 transition-transform duration-500 ${
+                      card.contain ? 'object-contain p-6' : 'object-cover'
+                    }`}
                     referrerPolicy="no-referrer"
                   />
                 </div>

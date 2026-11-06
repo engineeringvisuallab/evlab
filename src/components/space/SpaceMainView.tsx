@@ -23,7 +23,6 @@ const PLANET_TO_STUDIO_KEY: Partial<Record<PlanetData['id'], StudioKey>> = {
   sewer: 'stp',
   hydraulics: 'waterflow',
   projects: 'planner',
-  uele: 'uele',
 };
 
 export const SpaceMainView: React.FC<SpaceMainViewProps> = ({ onOpenStudio }) => {

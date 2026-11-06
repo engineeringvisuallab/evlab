@@ -1005,17 +1005,6 @@ export function getStage05MasteryRecord(
     // Section 20: Resources & References
     resources: resourceItems,
 
-    // Section 21: UELE Connections
-    ueleConnection: {
-      objectId: node.ueleLink || '',
-      objectName: node.ueleLink ? `${nodeTitle} 3D Model` : undefined,
-      world: 'Ultimate Engineering Learning Ecosystem (UELE)',
-      what: `Interactive 3D digital model showing full spatial geometry, internal components, and material assemblies for ${nodeTitle}.`,
-      why: `Allows engineers to explore realistic structural joints, mechanical assemblies, flow paths, and constructability details in a dynamic 3D viewport.`,
-      howToInspect: `Launch the UELE 3D Viewer to rotate, explode components, inspect cross-sections, and view real-time engineering telemetry.`,
-      isAvailable: Boolean(node.ueleLink),
-    },
-
     // Section 22: Career Mastery Timeline
     timeline: [
       {

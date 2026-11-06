@@ -3,7 +3,7 @@
 @import "maplibre-gl/dist/maplibre-gl.css";
 
 @layer utilities {
-  /* Used by UELE Play's compass logo + radar sweep (src/uele-game) */
+  /* Slow spin used by the EV Software space universe visuals */
   @keyframes spin-slow {
     from {
       transform: rotate(0deg);
@@ -32,8 +32,6 @@
   --color-brand-blue-deep: #2563eb;
   --color-roadmap-purple: #8b5cf6;
   --color-roadmap-purple-deep: #7c3aed;
-  --color-uele-emerald: #10b981;
-  --color-uele-emerald-deep: #059669;
   --color-warning-gold: #f59e0b;
   --color-cyan-glow: #06b6d4;
 

@@ -17,13 +17,11 @@ import roadmapTreeData from '../data/roadmap-tree.json';
 export interface RoadmapPageProps {
   initialFieldId?: string | null;
   onNavigateHome?: () => void;
-  onNavigateToUele?: (ueleId: string) => void;
 }
 
 export const RoadmapPage: React.FC<RoadmapPageProps> = ({
   initialFieldId,
   onNavigateHome,
-  onNavigateToUele,
 }) => {
   const treeNodes = roadmapTreeData as RoadmapNode[];
 
@@ -519,7 +517,6 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             setSelectedArea(null);
             updateHash(selectedField, selectedBranch, selectedSpec, null);
           }}
-          onNavigateToUele={onNavigateToUele}
         />
       ) : (
         /* STANDARD LEVEL GRID VIEW (Step 1, Step 2, Step 3, or Step 4 options) */

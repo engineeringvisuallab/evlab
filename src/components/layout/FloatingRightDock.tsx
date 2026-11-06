@@ -34,9 +34,9 @@ export const FloatingRightDock: React.FC<FloatingRightDockProps> = ({ onNavigate
     setChatInput('');
 
     setTimeout(() => {
-      let reply = `Great question regarding "${userText}". You can explore our Career Roadmap with 26 fields and 1,465 focus areas or check UELE 3D for interactive digital twin simulations.`;
+      let reply = `Great question regarding "${userText}". You can explore our Career Roadmap with 26 fields and 1,465 focus areas or try EVCity, our engineering simulation game.`;
       if (userText.toLowerCase().includes('water') || userText.toLowerCase().includes('hydraulic')) {
-        reply = `For Water Engineering, check out our EPANET & WaterCAD software modules, AWWA standards, and the WTP digital twin in UELE 3D!`;
+        reply = `For Water Engineering, check out our EPANET & WaterCAD software modules, AWWA standards, and the WTP design tool in EV Software!`;
       } else if (userText.toLowerCase().includes('civil') || userText.toLowerCase().includes('structure')) {
         reply = `For Civil Engineering, explore structural analysis in ETABS, ACI 318 design codes, and AutoCAD cross-sections.`;
       }

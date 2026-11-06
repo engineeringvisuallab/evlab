@@ -27,7 +27,6 @@ export interface RoadmapNode {
   stats?: Record<string, string>;
   children?: RoadmapNode[];
   relations?: RoadmapRelations;
-  ueleLink?: string;
   comingSoon?: boolean;
 }
 

@@ -3,7 +3,7 @@ import React from 'react';
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   padding?: 'none' | 'sm' | 'md' | 'lg';
   hoverable?: boolean;
-  variant?: 'default' | 'elevated' | 'outline' | 'roadmap' | 'uele';
+  variant?: 'default' | 'elevated' | 'outline' | 'roadmap';
   children: React.ReactNode;
 }
 
@@ -35,8 +35,6 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         'bg-transparent border border-[var(--border-color)] text-[var(--text-primary)]',
       roadmap:
         'bg-[var(--bg-surface)] border border-[var(--accent-purple)]/30 hover:border-[var(--accent-purple)] text-[var(--text-primary)]',
-      uele:
-        'bg-[var(--bg-surface)] border border-[var(--accent-emerald)]/30 hover:border-[var(--accent-emerald)] text-[var(--text-primary)]',
     };
 
     const hoverStyle = hoverable

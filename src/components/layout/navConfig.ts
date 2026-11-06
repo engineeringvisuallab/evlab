@@ -8,7 +8,7 @@ export interface NavSection {
 export const NAV_SECTIONS: NavSection[] = [
   { section: 'home', label: 'Home', path: '/' },
   { section: 'career-roadmap', label: 'Career Roadmap', path: '/career-roadmap' },
-  { section: 'uele', label: 'UELE', path: '/uele' },
+  { section: 'evcity', label: 'EVCity', path: '/evcity' },
   { section: 'learn', label: 'Learn & Courses', path: '/learn' },
   { section: 'resources', label: 'Resources', path: '/resources' },
   { section: 'plugins', label: 'Plugins', path: '/plugins' },

@@ -10,7 +10,7 @@
  * BASE-PATH AWARENESS: when deployed to a sub-path (e.g. GitHub Pages
  * project sites at username.github.io/repo-name/), Vite's `base`
  * config controls the real URL prefix. The rest of the app always
- * works with clean, app-relative absolute paths like "/uele" or
+ * works with clean, app-relative absolute paths like "/evcity" or
  * "/career-roadmap/civil-engineering" — this module transparently
  * adds/strips the deployment base so app code never has to know about it.
  *

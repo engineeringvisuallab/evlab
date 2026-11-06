@@ -185,13 +185,6 @@ export const SpaceSvgDefs: React.FC = () => {
           <circle cx="14" cy="14" r="2.5" fill="#ddd6fe" fillOpacity="0.9" />
         </pattern>
 
-        {/* UELE Engineering Diagram Texture */}
-        <pattern id="pat-uele" width="26" height="26" patternUnits="userSpaceOnUse">
-          <rect x="3" y="3" width="20" height="20" rx="3" fill="none" stroke="#2dd4bf" strokeWidth="0.6" strokeOpacity="0.35" />
-          <circle cx="13" cy="13" r="5" fill="none" stroke="#14b8a6" strokeWidth="0.5" strokeOpacity="0.4" />
-          <line x1="3" y1="13" x2="23" y2="13" stroke="#5eead4" strokeWidth="0.5" strokeOpacity="0.3" />
-        </pattern>
-
         {/* Projects Blocks Texture */}
         <pattern id="pat-projects" width="28" height="28" patternUnits="userSpaceOnUse">
           <rect x="2" y="2" width="10" height="7" rx="1" fill="none" stroke="#818cf8" strokeWidth="0.6" strokeOpacity="0.4" />

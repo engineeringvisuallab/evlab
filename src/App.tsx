@@ -6,7 +6,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { HomePage } from '@/pages/HomePage'
 import { RoadmapPage } from '@/pages/RoadmapPage'
-import { UELEPage } from '@/pages/UELEPage'
+import { EVCityPage } from '@/pages/EVCityPage'
 import { PluginsPage } from '@/pages/PluginsPage'
 import { EngineersPage } from '@/pages/EngineersPage'
 import { LearnPage } from '@/pages/LearnPage'
@@ -37,21 +37,13 @@ const PluginHubApp = lazy(() => import('@/plugin-hub/PluginHubApp'))
 // standalone way as the Plugin Hub above. /engineers itself (the directory
 // grid) is a regular EVLab page with the site's own Navbar/Footer; each
 // profile at /engineers/<slug> is a full-screen standalone portfolio with
-// its own nav/theme, same treatment as /uele/play and the /software/* tools.
+// its own nav/theme, same treatment as the /software/* tools.
 const AyatullahPortfolioApp = lazy(
   () => import('@/engineers/ayatullah-imani/AyatullahPortfolioApp')
 )
 const AdminPage = lazy(() =>
   import('@/pages/AdminPage').then((m) => ({ default: m.AdminPage }))
 )
-
-// UELE — The Engineering World: the playable open-world 3D simulation
-// game (drivable vehicles, missions, boss challenges, skill tree, build
-// mode), ported in as-is from its own AI-Studio project. Fully separate
-// from the GIS-based real-project UELE viewer above — the game lives at
-// /uele/play and does not touch /uele's Sherpur GIS data, layers, or
-// import/admin pipeline in any way.
-const UELEGameApp = lazy(() => import('@/uele-game/UELEGameApp'))
 
 // Learn > Engineering Foundations — standalone interactive subject labs,
 // loaded the same lazy/standalone way as the /software tools above.
@@ -133,7 +125,6 @@ function AppShell() {
           <RoadmapPage
             initialFieldId={roadmapFieldId ?? null}
             onNavigateHome={() => navigate('/')}
-            onNavigateToUele={(ueleId) => navigate(ueleId ? `/uele/${ueleId}` : '/uele')}
           />
         </main>
         <Footer />
@@ -141,35 +132,14 @@ function AppShell() {
     )
   }
 
-  // UELE Play — the open-world 3D game. Full-screen, no Navbar/Footer
-  // chrome (same treatment as the standalone /software/* tools below),
-  // since the game owns its own HUD and viewport. Checked before the
-  // generic /uele match so it doesn't get swallowed by UELEPage.
-  if (path === '/uele/play') {
-    return (
-      <Suspense
-        fallback={
-          <div className="w-full h-screen flex items-center justify-center bg-slate-950 text-slate-400 font-mono text-sm">
-            Loading UELE — The Engineering World…
-          </div>
-        }
-      >
-        <UELEGameApp />
-      </Suspense>
-    )
-  }
-
-  if (isActivePath(path, '/uele')) {
+  // EVCity — an image + the idea. The game itself is hosted separately and
+  // opens from the image.
+  if (isActivePath(path, '/evcity')) {
     return (
       <div className="flex min-h-screen flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]">
         <Navbar />
         <main className="flex-1">
-          <UELEPage
-            onNavigateHome={() => navigate('/')}
-            onNavigateToRoadmap={(fieldId) =>
-              navigate(fieldId ? `/career-roadmap/${fieldId}` : '/career-roadmap')
-            }
-          />
+          <EVCityPage />
         </main>
         <Footer />
       </div>
@@ -178,8 +148,7 @@ function AppShell() {
 
   // Standalone admin panel — no public Navbar/Footer chrome, has its own
   // login gate + shell (sidebar/header). Talks to the optional Express API
-  // in server.ts (run via `npm run dev:admin`) for auth, the UELE
-  // database, and GIS layer storage.
+  // in server.ts (run via `npm run dev:admin`) for auth, audit and settings.
   if (isActivePath(path, '/admin')) {
     return (
       <Suspense
@@ -322,7 +291,6 @@ function AppShell() {
       else if (studioKey === 'stp') navigate('/software/stp')
       else if (studioKey === 'waterflow') navigate('/software/waterflow')
       else if (studioKey === 'planner') navigate('/software/planner')
-      else if (studioKey === 'uele') navigate('/uele')
       else if (studioKey === 'proving_bench') navigate('/ev-software/workspace/proving_bench')
       else navigate('/ev-software/workspace')
     }

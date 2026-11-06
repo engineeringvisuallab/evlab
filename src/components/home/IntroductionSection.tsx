@@ -36,8 +36,8 @@ export const IntroductionSection: React.FC = () => {
       color: 'emerald',
     },
     {
-      title: 'Interactive 3D UELE',
-      description: 'Visual exploration of physical infrastructure and engineering systems.',
+      title: 'EVCity',
+      description: 'A game that is really an engineering simulation — learn by playing.',
       icon: Layers,
       color: 'emerald',
     },
